@@ -13,11 +13,20 @@ RIA autentimisteenus on keskne autentimisteenus, millega asutuse e-teenus saab a
 
 RIA autentimisteenus avatakse `TBD`. Teenusega liidestumise tehnilised tingimused ja juhend avaldatakse `TBD`. Liidestuste testimise keskkond avatakse `TBD`.
 
-Autentimismeetodina toetatakse esialgu mobiil-ID-d. Hiljem RIA autentimisteenuse võimalused laienevad: lisanduvad ühekordne sisselogimine (SSO) – asutustele, kes soovivad kasutada; lisatakse autentimismeetodeid (eIDAS, ID-kaart, SmartID, pangalingid).
+Autentimismeetodina toetatakse esialgu mobiil-ID-d. Hiljem RIA autentimisteenuse võimalused laienevad [_Märkus. Vastavate otsuste tegemisel_]: lisanduvad ühekordne sisselogimine (SSO) – asutustele, kes soovivad kasutada; lisatakse autentimismeetodeid (eIDAS, ID-kaart, SmartID, pangalingid).
 
 E-teenus liidestatakse teenusega OpenID Connect protokolli kohaselt. 
 
 RIA autentimisteenus on eriti suunatud asutustele, kes soovivad kiiresti pakkuda oma klientidele mobiil-ID-ga autentimist, kuid ei soovi ise DigiDoc teenusega liidestumist läbi teha.
+
+## Viited
+
+[1] Riigi Infosüsteemi Amet. RIA SSO autentimisteenuse kavand. 18 lk.<br>
+[2] [TP-93 RIA autentimisteenus](https://jira.ria.ee/browse/TP-93). RIA teenuseportfelli kirje. [mitteavalik]<br>
+[3] Ettepanekud ja probleemid (GitHub Issues) [https://github.com/e-gov/Autentimisteenus/issues](https://github.com/e-gov/Autentimisteenus/issues) 
+
+## Lühendid
+- TBD - _to be defined_
 
 ## Teenuse arenduskava
 
@@ -25,7 +34,7 @@ RIA autentimisteenus on eriti suunatud asutustele, kes soovivad kiiresti pakkuda
 |----------|------|---------|--------------|
 | MVP/PoC  | Arendaja: 1) paneb üles OpenID Connect serveri; 2) koostab testimiseks vajaliku makettrakenduse ja 3) mobiil-ID-ga autentimise komponendi. | Töötav tarkvara, mis realiseerib eesmärgiks seatud kasutusloo; käideldavus v-o madal; dokumentatsioon v.o mittetäielik. | 2 nädalat |
 | Tarkvara toodanguvalmis | RIA ja CGI koostöös: 1) testivad põhjalikult; 2) koostavad SLA ja teevad vajalikud tööd selle saavutamiseks (klaster); 3) viimistlevad dokumentatsiooni | Tarkvara testitud, tootmisse paigaldamiseks valmis, korralik dokumentatsioon | 2 nädalat |
-| Asutustele suunatud kommunikatsiooni-pakett valmis | RIA: 1) avaldab teenuse – teabematerjal + liidestumisjuhend; 2) edaspidi toetab liidestujaid tööde kavandamisel | Liitumiseks vajalik teave sihtrühmale edastatud | 1 nädal |
+| Asutustele suunatud kommunikatsiooni-pakett valmis | RIA: 1) avaldab teenuse – teabematerjal + liidestumisjuhend; 2) edaspidi toetab liidestujaid tööde kavandamisel | Liitumiseks vajalik teave sihtrühmale edastatud; kommunikatsioonipaketti on vähemalt ühe asutuse peal testitud | 1 nädal |
 | Testteenus avatud | RIA: 1) paneb üles keskkonna, mille vastu liidestujad saavad oma arendusi testida; 2) edaspidi teenindab liidestujaid liideste testimisel (konf-ne jms) | Liitujad saavad oma liideseid testteenuse vastu testida | 1 nädal |
 | Teenuse avamine toodangus | RIA: 1) avab teenuse toodangukeskkonna;
 2) edaspidi laseb teenusekasutajad (pärast testide läbimist) toodangusse | | 1 nädal |
@@ -59,7 +68,7 @@ Arvestada edasise tööde järjekorraga, vt joonis ja [1]: 1) kasutusloo autenti
 | nimetus | kirjeldus | koostaja  | seis |
 |---------|-----------|-----------|------|
 | Teenuse kirjeldus (ärivaates) |  |  |  |
-| Tehniline kirjeldus | Tarkvara spetsifikatsioon, sisaldab: arh-ijoonis, kasutusloo või -lugude kirjeldust (lähtudes [1]), tarkvara oluliste mittefunktsionaalsete omaduste kirjeldust - teave kasutatud teekide kohta, logimise lahenduse kirjeldus, hinnang tööjõudlusele |
+| Tehniline kirjeldus | Tarkvara spetsifikatsioon, sisaldab: arh-ijoonist, kasutusloo või -lugude kirjeldust (lähtudes [1]), tarkvara oluliste mittefunktsionaalsete omaduste kirjeldust - teave kasutatud teekide kohta, logimise lahenduse kirjeldus, hinnang tööjõudlusele |
 | Testistrateegia | kirjeldab, kuidas ja mida testitakse, joonis testimise setup-i kohta |  |  |
 | Testilood   | | | |
 | Testiraport | | | |
@@ -69,7 +78,3 @@ Arvestada edasise tööde järjekorraga, vt joonis ja [1]: 1) kasutusloo autenti
 | Juhend liidestujale (ärivaates) | | |
 | Tehniline juhend liidestajale | | |
 
-## Viited
-
-[1] Riigi Infosüsteemi Amet. RIA SSO autentimisteenuse kavand. 18 lk.
-[2] [TP-93 RIA autentimisteenus](https://jira.ria.ee/browse/TP-93). RIA teenuseportfelli kirje. [mitteavalik]
