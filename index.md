@@ -19,7 +19,7 @@ E-teenus liidestatakse teenusega OpenID Connect protokolli kohaselt.
 
 RIA autentimisteenus on eriti suunatud asutustele, kes soovivad kiiresti pakkuda oma klientidele mobiil-ID-ga autentimist, kuid ei soovi ise DigiDoc teenusega liidestumist läbi teha.
 
-##Teenuse arenduskava
+## Teenuse arenduskava
 
 | teetähis | tööd | tulemus | orienteeruv, minimaalne ajakava |
 |----------|------|---------|--------------|
@@ -33,6 +33,7 @@ RIA autentimisteenus on eriti suunatud asutustele, kes soovivad kiiresti pakkuda
 ## Arhitektuur
 
 ![](img/ARH-01.PNG)
+<img src=''>
 
 Esimeses järgus teostatavad komponendid ja kasutusvoog on joonisel näidatud rõhutatult. Joonisel on kujutatud ka  teenuse EIDAS-autentimisega laiendamise võimalus.
 
@@ -47,6 +48,11 @@ koostada RIA rakendus, mis etendab autentimisteenust kasutavat Eesti e-teenust. 
 teostada komponent, mis teostab Eesti mobiil-ID-ga autentimise. Siduda mobiil-ID autentija  ja OpenID Connect liidese haldur tervikuks. 
 
 Arvestada edasise tööde järjekorraga, vt joonis ja [1]: 1) kasutusloo autentimise olemasolu kontroll teostamine; 2) kasutusloo väljalogimine teostamine; 3) komponentide Seansihaldur ja selle koosseisus Seansihoidla teostamine; 4) komponendi Isikutuvastusportaal teostamine (võimaldab kasutajal valida mitme autentimismeetodi vahel); 5) liidestamine eIDAS konnektorteenusega (vajalik välismaalaste autentimisel).
+
+## Arenduskorraldus
+- Skype (eraldi vestlused sisemiselt ja arendajaga)
+- tööülesanded JIRA-s
+- tulemkood - ja dokumentatsioon: GitHub (varundamisega)
 
 ## Kood ja dokumentatsioon
 
@@ -63,7 +69,7 @@ Arvestada edasise tööde järjekorraga, vt joonis ja [1]: 1) kasutusloo autenti
 | Juhend liidestujale (ärivaates) | | |
 | Tehniline juhend liidestajale | | |
 
-
 ## Viited
 
 [1] Riigi Infosüsteemi Amet. RIA SSO autentimisteenuse kavand. 18 lk.
+[2] [TP-93 RIA autentimisteenus](https://jira.ria.ee/browse/TP-93). RIA teenuseportfelli kirje. [mitteavalik]

@@ -35,7 +35,7 @@ body {
 .kursusePais { font-family: 'Anonymous Pro', sans-serif;
   font-size: 13pt; margin-bottom: 8px; }
 
-#Tekst { width: 50rem; }
+#Tekst { width: 40rem; }
 
 /* ---- Avalehe paigutus ---- */  
 #Container { display: flex; max-width: 60em; }
