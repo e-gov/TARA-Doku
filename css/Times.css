@@ -1,0 +1,225 @@
+---
+---
+
+$mutedblue: #607D8B;
+$grey800: #424242;
+$grey700: #616161; /* Ikoonides */
+$erepunane: #FF5252; /* Material design A200 */
+.erepunane { color: $erepunane !important; }
+$pruun700: #5D4037;
+$brown400: #8D6E63;
+.brown400 { color: $brown400 !important; }
+$sinine700: #1976D2; 
+$bluegrey100: #CFD8DC;
+$yellow100: #FFF9C4;
+.yellow100 { color: $yellow100 !important; }
+$teal400: #26A69A;
+.teal { color: $teal400 !important; }
+$pink400: #EC407A;
+$purple500: #9C27B0;
+.purple { color: $purple500 !important; }
+/*  https://material.io/guidelines/style/color.html#color-color-palette */
+
+/* ---- Keha -------- */
+body {
+  max-width: 60em;
+  margin: 0 0; 
+  padding: 0.6em 1.5em 2em 2em; 
+  font-family: 'Times New Roman', serif;
+  font-size: 12pt; 
+  color: black !important;
+  line-height: 1.25 !important;
+  }
+
+/* Kursuse päis */
+.kursusePais { font-family: 'Anonymous Pro', sans-serif;
+  font-size: 13pt; margin-bottom: 8px; }
+
+#Tekst { width: 50rem; }
+
+/* ---- Avalehe paigutus ---- */  
+#Container { display: flex; max-width: 60em; }
+#Avatekst {
+  flex-grow: 1; margin-left: 2rem;
+  max-width: 63rem; /* Teksti loetavuse huvides */
+}  
+
+/* ==== Pealkirjad ==== */
+h1 {
+  font-size: 14pt !important;
+  font-weight: bold;
+  margin-top: 1em;
+  margin-bottom: 1rem;
+}
+h2 {
+  font-size: 12pt !important;
+  margin-bottom: 0.5rem;
+  text-decoration: underline;
+  margin-bottom: 0;
+}
+
+/* ==== Külgriba ======== */
+#Riba {
+  flex-grow: 0; width: 18rem;
+  padding: 0 1rem 2rem 1rem;
+  margin-right: 1rem;
+  background-color: Azure;
+}
+.RibaElement { display: block; line-height: 1.75; }
+
+.lyliti {
+  cursor: pointer;
+  color: $mutedblue; 
+}
+
+/* Tekstiparagrahv */
+p { margin: 0 0 1em 0; }
+
+/* ==== Loetelud ==== */
+#Tekst > ul {
+  list-style-type: circle;
+  margin: 0 0 1em 0;
+  padding-left: 1em;
+}
+#Tekst > ol {
+  padding-left: 1em;
+}
+
+/* Külgriba loetelud */
+nav > ul {
+  font-family: 'Anonymous Pro', sans-serif;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+nav ul {
+  padding-left: 0;
+  list-style: none;
+}
+nav ul ul { margin-left: 1em; }
+
+/* ==== TOC genereeritud === */
+#markdown-toc { padding-left: 0 !important; }
+#markdown-toc li:before {
+    content: none !important;
+    margin-left: 0 !important;
+}
+#markdown-toc > li {
+  list-style: none;
+}
+
+/* ==== Tabelid ==== */
+table { table-layout: fixed;
+    width: 100%; margin: 0 4em 2em 0; }
+table { border-collapse: collapse; }    
+table, th, td { border: 1px solid black; }
+th, td { padding: 2px; }
+
+.ei, .jah { text-align: center; }
+.ei { color: White; background-color: #D1F3D1; } /* Doodle */
+.jah { background-color: #FFCCCA; } /* Doodle */
+
+/* Tekst */
+.disabled { color:#000000; opacity:0.38; }
+.s { font-size: 10pt; }
+
+/* Allkriipsutus */
+.u { text-decoration: underline; }
+
+/* Plokktsitaat */
+blockquote { 
+  font-style: italic; 
+  font-family: 'Anonymous Pro', monospace;
+  font-size: 16px;
+  margin-left: 0;
+}
+
+/* Kood; asciiflow joonised */
+pre, code, samp {
+  font-family: 'Anonymous Pro', monospace;
+  font-size: 16px; color: blue;
+  overflow-y: hidden; overflow-x: hidden;
+  page-break-inside: avoid; hyphens: none;
+  text-transform: none;
+}
+pre code,
+code code {
+  font-size: 100%;
+}
+pre { margin-top: 1em; margin-bottom: 1em; }
+
+/* Lingid */
+a[href] {
+  color: $mutedblue;
+  text-decoration: none;
+  border-bottom: 1px solid $mutedblue;
+  padding: 0 1px 0;
+  margin: 0 -1px 0;
+}
+a:visited {
+  border-bottom-color: $mutedblue;
+}
+
+a[href]:focus,
+a[href]:hover {
+  background: $mutedblue;
+  background: rgba(75%, 75%, 75%, .25);
+  border-bottom-width: 3px;
+  margin-bottom: -2px;
+}
+a[href]:active {
+  color: #C00;
+  border-color: #C00;
+}
+
+/* Material design ikoonid */
+.ikoon { color: $grey700; font-size: 48px !important; }
+
+/* Silt e tag */
+.tags { margin: 1em 0 0 -8em; 
+  text-transform: uppercase;
+  color: $pruun700; 
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 8pt;
+  letter-spacing: 2px;
+}
+.tag { color: $grey700;
+  border-radius: 8px;
+  padding: 4px;
+  }
+
+/* Mis on uut? */
+.uut { text-transform: uppercase;
+  color: $pruun700; 
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 8pt;
+  letter-spacing: 2px; 
+}
+
+/* ======== Paneelid ======== */
+.action, .note, .teade, .noue { border-radius: 8px; padding: 1rem; }
+
+/* Tegevus */
+.action {
+  border: 1px solid $bluegrey100; 
+  background-color: $bluegrey100; 
+}
+/* Märkus */
+.note { 
+  border: 1px solid coral;
+  background-color: lavenderblush;
+  color: coral;
+}
+/* TL;DR */
+.tldr {
+  margin: 2rem 0;
+  border-radius: 8px;
+  padding: 10px;
+  border: 1px solid coral;
+  background-color: lavenderblush;
+  color: Gray;
+}
+
+.noue {
+  border: 1px solid darkcyan;
+}
+

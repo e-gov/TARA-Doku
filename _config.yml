@@ -1,0 +1,12 @@
+title: Autentimisteenus
+baseurl: "https://e-gov.github.io/Autentimisteenus"
+
+defaults:
+  -
+    scope:
+      path: "" # Kõik failid
+    values:
+      layout: "Times"
+      sidebar: "false"
+
+  
