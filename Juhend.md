@@ -4,6 +4,8 @@ permalink: Juhend
 
 # RIA Autentimisteenus. Tehnilised tingimused ja liidestamise juhend
 
+Vt ka [Ärikirjeldus](Arikirjeldus)
+
 ## Mõisted
 
 - _asutus_, autentimisteenust kasutav Eesti avaliku sektori asutus
@@ -24,7 +26,7 @@ Autentimisprotsess vastab OpenID Connect 1.0 protokollile (_authorization code_ 
 2 Rakendus moodustab OpenID Connect autentimispäringu ja saadab sirvijale korralduse kasutaja suunamiseks autentimisteenusesse (HTTP _redirect_). Autentimispäringu näide:
 
 ````
-HTTP GET https://auth.ria.com/login?
+HTTP GET https://auth.ria.ee/login?
 redirect_uri=https%3A%2F%2eteenindus.asutus.ee%2FCallback&
 scope=user&
 state=hkMVY7vjuN7xyLl5&
@@ -32,7 +34,7 @@ response_type=code&
 client_id=58e7ba35aab5b4f1671a
 ````
 Ümbersuunamis-URL-is on kuus autentimiseks vajalikku teabeelementi:
-- autentimisteenuse URL `https://auth.ria.com/login`
+- autentimisteenuse URL `https://auth.ria.ee/login`
 - tagasipöördumis-URL `https://eteenindus.asutus.ee/Callback` (asutus valib selle ise)
 - õigused, mida rakendus kasutajalt küsib (`scope` = `user` (kasutaja profiiliandmed)
 - turvakaalutlusel nõutav autentimise unikaalne identifikaator (server genereeris selle juhuslikult) `state`

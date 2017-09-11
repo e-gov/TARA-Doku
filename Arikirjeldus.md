@@ -1,5 +1,5 @@
 ---
-permalink: Autentimisteenus
+permalink: Arikirjeldus
 ---
 
 # RIA autentimisteenus
@@ -13,5 +13,9 @@ E-teenus liidestatakse autentimisteenusega OpenID Connect protokolli kohaselt.
 RIA autentimisteenus on eriti suunatud asutustele, kes tahavad  pakkuda oma klientidele mobiil-ID-ga autentimise võimalust, kuid ei soovi ise Sertifitseerimiskeskuse DigiDoc teenusega liidestumist  teha.
 
 Tehnilised tingimused ja liidestamise juhend: [https://e-gov.github.io/Autentimisteenus/Juhend](/Juhend.md).
+
+![](img/KUVA-01.png)
+
+![](img/KUVA-02.png)
 
 Riigi Infosüsteemi Amet, help@ria.ee, [www.ria.ee](www.ria.ee)
