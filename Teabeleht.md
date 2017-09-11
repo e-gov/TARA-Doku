@@ -44,3 +44,7 @@ RIA registreerib teie rakenduse teenuse kliendiks ja avab teile testteenuse<br>
 - nõustamine ja tugi
 
 Ootame asutusi, kes sooviksid olla teenuse pilootkasutajad. Kontakt: `Piret.Elm@ria.ee`.
+
+[Tehnilised tingimused ja liidestamise juhend](Juhend)
+
+![](img/KUVA-04.png)
