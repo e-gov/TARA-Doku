@@ -1,0 +1,17 @@
+---
+permalink: Autentimisteenus
+---
+
+# RIA autentimisteenus
+
+Autentimisteenus on Riigi Infosüsteemi uus pakutav teenus, millega asutus saab oma e-teenusesse lisada mobiil-ID kasutaja autentimise toe.
+
+Autentimismeetodina toetab teenus esialgu mobiil-ID-d. Kavas on lisada teisi autentimismeetodeid.
+
+E-teenus liidestatakse autentimisteenusega OpenID Connect protokolli kohaselt. 
+
+RIA autentimisteenus on eriti suunatud asutustele, kes tahavad  pakkuda oma klientidele mobiil-ID-ga autentimise võimalust, kuid ei soovi ise Sertifitseerimiskeskuse DigiDoc teenusega liidestumist  teha.
+
+Tehnilised tingimused ja liidestamise juhend: [https://e-gov.github.io/Autentimisteenus/Juhend](/Juhend.md).
+
+Riigi Infosüsteemi Amet, help@ria.ee, [www.ria.ee](www.ria.ee)
