@@ -14,8 +14,8 @@ RIA autentimisteenus on eriti suunatud asutustele, kes tahavad  pakkuda oma klie
 
 Tehnilised tingimused ja liidestamise juhend: [https://e-gov.github.io/Autentimisteenus/Juhend](/Juhend.md).
 
-![](img/KUVA-01.png)
+![](img/KUVA-03.png)
 
-![](img/KUVA-02.png)
+![](img/KUVA-04.png)
 
 Riigi Infosüsteemi Amet, help@ria.ee, [www.ria.ee](www.ria.ee)
