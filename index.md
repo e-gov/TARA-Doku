@@ -11,9 +11,12 @@ E-teenus kasutab TARA OpenID Connect protokolli kohaselt. Edaspidi TARA võimalu
 
 ## Kood ja dokumentatsioon
 
+- [TARA-Server](https://github.com/e-gov/TARA-Server) (teenuse server)
+- [TARA-Client](https://github.com/e-gov/TARA-Client) (makettrakendus teenuse testimiseks)
+- [TARA-Doku](https://github.com/e-gov/TARA-Doku) (teenuse dokumentatsioon)
+
 | nimetus, asukoht             |  seis     |
 |------------------------------|-----------|
-|                                |           |
 | 1 [Teabeleht](Teabeleht)       | kavand    |
 | 2 [Ärikirjeldus](Arikirjeldus) | kavand    |
 | 3 [Tehnilised tingimused ja liidestamise juhend](Juhend) | alustatud |
@@ -22,12 +25,8 @@ E-teenus kasutab TARA OpenID Connect protokolli kohaselt. Edaspidi TARA võimalu
 | 6 [Paigaldusjuhend]()          |            |
 | 7 [Haldusjuhend]()             |            |
 | 8 [Testistrateegia]()          |            |
-| 9 [Testilood]                  |            |
-| 10 [Testiraport]                |            |
-|--------------------------------|------------|
-| [TARA-Server](https://github.com/e-gov/TARA-Server) (teenuse server)  |   |
-| [TARA-Client](https://github.com/e-gov/TARA-Client) (makettrakendus teenuse testimiseks) |   |
-| [TARA-Doku](https://github.com/e-gov/TARA-Doku) (teenuse dokumentatsioon) |  |
+| 9 [Testilood]()                  |            |
+| 10 [Testiraport]()                |            |
 
 ***Tehniline kirjeldus*** - tarkvara spetsifikatsioon, sisaldab: arh-ijoonist, paigaldusjoonist, kasutusloo või -lugude kirjeldust, tarkvara oluliste mittefunktsionaalsete omaduste kirjeldust - teave kasutatud teekide kohta, logimise lahenduse kirjeldus, hinnang tööjõudlusele
 
@@ -39,7 +38,7 @@ E-teenus kasutab TARA OpenID Connect protokolli kohaselt. Edaspidi TARA võimalu
 
 [1] Riigi Infosüsteemi Amet. RIA SSO autentimisteenuse kavand. 18 lk.<br>
 [2] [TP-93 RIA autentimisteenus](https://jira.ria.ee/browse/TP-93). RIA teenuseportfelli kirje. [mitteavalik]<br>
-[3] Ettepanekud ja probleemid (GitHub Issues) [https://github.com/e-gov/Autentimisteenus/issues](https://github.com/e-gov/Autentimisteenus/issues) 
+[3] Ettepanekud ja probleemid (GitHub Issues) [https://github.com/e-gov/TARA-Doku/issues](https://github.com/e-gov/TARA-Doku/issues) 
 
 ## Teenuse arenduskava
 
@@ -74,10 +73,10 @@ Arvestada edasise tööde järjekorraga, vt joonis ja [1]: 1) kasutusloo autenti
 ## Arenduskorraldus
 
 TARA Confluence-is:<br>
-https://confluence.ria.ee/display/TARA 
+[https://confluence.ria.ee/display/TARA](https://confluence.ria.ee/display/TARA) 
 
 TARA JIRA-s:<br>
-https://jira.ria.ee/browse/DD4J-88 
+[https://jira.ria.ee/browse/DD4J-88](https://jira.ria.ee/browse/DD4J-88) 
 
 TARA Skype-is:<br>
 Autentimisteenuse arendus
