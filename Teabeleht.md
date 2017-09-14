@@ -2,9 +2,7 @@
 permalink: Teabeleht
 ---
 
-# RIA AUTENTIMISTEENUS
-
-12.09.2017
+# TARA autentimisteenus
 
 Autentimisteenusega saab asutus oma e-teenusesse lisada mobiil-ID kasutaja autentimise toe. 
 

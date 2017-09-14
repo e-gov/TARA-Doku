@@ -2,31 +2,44 @@
 permalink: /
 ---
 
-# RIA autentimisteenus (TP-192)
-{: .no_toc}
+# TARA autentimisteenus (TP-192)
 
-- TOC
-{:toc}
+TARA on turvaline autentimisteenus, millega asutuse e-teenus saab autentida mobiil-ID kasutaja.
+TARA teenust pakub RIA.
 
-## Ülevaade
-RIA autentimisteenus on keskne autentimisteenus, millega asutuse e-teenus saab autentida mobiil-ID kasutaja.
+E-teenus kasutab TARA OpenID Connect protokolli kohaselt. Edaspidi TARA võimalused laienevad: ühekordne sisselogimine, täiendavad autentimismeetodid, sh piiriülene eIDAS-autentimine jm. 
 
-RIA autentimisteenus avatakse `TBD`. Teenusega liidestumise tehnilised tingimused ja juhend avaldatakse `TBD`. Liidestuste testimise keskkond avatakse `TBD`.
+## Kood ja dokumentatsioon
 
-Autentimismeetodina toetatakse esialgu mobiil-ID-d. Hiljem RIA autentimisteenuse võimalused laienevad [_Märkus. Vastavate otsuste tegemisel_]: lisanduvad ühekordne sisselogimine (SSO) – asutustele, kes soovivad kasutada; lisatakse autentimismeetodeid (eIDAS, ID-kaart, SmartID, pangalingid).
+| nimetus, asukoht             |  seis     |
+|------------------------------|-----------|
+|                                |           |
+| 1 [Teabeleht](Teabeleht)       | kavand    |
+| 2 [Ärikirjeldus](Arikirjeldus) | kavand    |
+| 3 [Tehnilised tingimused ja liidestamise juhend](Juhend) | alustatud |
+| 4 [Tehniline kirjeldus](TehnilineKirjeldus) |    |
+| 5 [SLA]()                      |            |
+| 6 [Paigaldusjuhend]()          |            |
+| 7 [Haldusjuhend]()             |            |
+| 8 [Testistrateegia]()          |            |
+| 9 [Testilood]                  |            |
+| 10 [Testiraport]                |            |
+|--------------------------------|------------|
+| [TARA-Server](https://github.com/e-gov/TARA-Server) (teenuse server)  |   |
+| [TARA-Client](https://github.com/e-gov/TARA-Client) (makettrakendus teenuse testimiseks) |   |
+| [TARA-Doku](https://github.com/e-gov/TARA-Doku) (teenuse dokumentatsioon) |  |
 
-E-teenus liidestatakse teenusega OpenID Connect protokolli kohaselt. 
+***Tehniline kirjeldus*** - tarkvara spetsifikatsioon, sisaldab: arh-ijoonist, paigaldusjoonist, kasutusloo või -lugude kirjeldust, tarkvara oluliste mittefunktsionaalsete omaduste kirjeldust - teave kasutatud teekide kohta, logimise lahenduse kirjeldus, hinnang tööjõudlusele
 
-RIA autentimisteenus on eriti suunatud asutustele, kes soovivad kiiresti pakkuda oma klientidele mobiil-ID-ga autentimist, kuid ei soovi ise DigiDoc teenusega liidestumist läbi teha.
+***Testistrateegia*** - kirjeldab, kuidas ja mida testitakse, joonis testimise setup-i kohta
+
+***SLA*** - nii test-kui ka toodanguteenusele
 
 ## Viited
 
 [1] Riigi Infosüsteemi Amet. RIA SSO autentimisteenuse kavand. 18 lk.<br>
 [2] [TP-93 RIA autentimisteenus](https://jira.ria.ee/browse/TP-93). RIA teenuseportfelli kirje. [mitteavalik]<br>
 [3] Ettepanekud ja probleemid (GitHub Issues) [https://github.com/e-gov/Autentimisteenus/issues](https://github.com/e-gov/Autentimisteenus/issues) 
-
-## Lühendid
-- TBD - _to be defined_
 
 ## Teenuse arenduskava
 
@@ -59,22 +72,16 @@ teostada komponent, mis teostab Eesti mobiil-ID-ga autentimise. Siduda mobiil-ID
 Arvestada edasise tööde järjekorraga, vt joonis ja [1]: 1) kasutusloo autentimise olemasolu kontroll teostamine; 2) kasutusloo väljalogimine teostamine; 3) komponentide Seansihaldur ja selle koosseisus Seansihoidla teostamine; 4) komponendi Isikutuvastusportaal teostamine (võimaldab kasutajal valida mitme autentimismeetodi vahel); 5) liidestamine eIDAS konnektorteenusega (vajalik välismaalaste autentimisel).
 
 ## Arenduskorraldus
-- Skype (eraldi vestlused sisemiselt ja arendajaga)
-- tööülesanded JIRA-s
-- tulemkood - ja dokumentatsioon: GitHub (varundamisega)
 
-## Kood ja dokumentatsioon
+TARA Confluence-is:<br>
+https://confluence.ria.ee/display/TARA 
 
-| nimetus | kirjeldus | koostaja  | seis |
-|---------|-----------|-----------|------|
-| Teenuse kirjeldus (ärivaates) |  |  |  |
-| Tehniline kirjeldus | Tarkvara spetsifikatsioon, sisaldab: arh-ijoonist, kasutusloo või -lugude kirjeldust (lähtudes [1]), tarkvara oluliste mittefunktsionaalsete omaduste kirjeldust - teave kasutatud teekide kohta, logimise lahenduse kirjeldus, hinnang tööjõudlusele |
-| Testistrateegia | kirjeldab, kuidas ja mida testitakse, joonis testimise setup-i kohta |  |  |
-| Testilood   | | | |
-| Testiraport | | | |
-| Kood        | | | |
-| Paigaldusjuhend | (kirjeldab ka makettrakenduse paigaldamist) | | |
-| SLA         | nii test-kui ka toodanguteenusele | |
-| Juhend liidestujale (ärivaates) | | |
-| Tehniline juhend liidestajale | | |
+TARA JIRA-s:<br>
+https://jira.ria.ee/browse/DD4J-88 
+
+TARA Skype-is:<br>
+Autentimisteenuse arendus
+
+
+
 

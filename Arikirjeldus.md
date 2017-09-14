@@ -2,7 +2,7 @@
 permalink: Arikirjeldus
 ---
 
-# RIA autentimisteenus
+# TARA autentimisteenus. Ärikirjeldus
 
 Autentimisteenus on Riigi Infosüsteemi uus pakutav teenus, millega asutus saab oma e-teenusesse lisada mobiil-ID kasutaja autentimise toe.
 
