@@ -24,7 +24,7 @@ E-teenus kasutab TARA OpenID Connect protokolli kohaselt. Edaspidi TARA võimalu
 | 5 [SLA]()                      |            |
 | 6 [Paigaldusjuhend]()          |            |
 | 7 [Haldusjuhend]()             |            |
-| 8 [Testistrateegia]()          |            |
+| 8 [Testistrateegia](Testistrateegia)          |            |
 | 9 [Testilood]()                  |            |
 | 10 [Testiraport]()                |            |
 
