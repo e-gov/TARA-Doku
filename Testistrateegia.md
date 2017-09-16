@@ -2,7 +2,7 @@
 permalink: Testistrateegia
 ---
 
-# TARA autentimisteenus. Testistrateegia
+# Testistrateegia
 
 Käesoleva dokumendiga kavandatakse TARA autentimisteenuse tarkvara testimise ja laiemalt - kvaliteeditagamise tööd.
 

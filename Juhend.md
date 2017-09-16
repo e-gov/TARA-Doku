@@ -2,7 +2,7 @@
 permalink: Juhend
 ---
 
-# TARA autentimisteenus. Tehnilised tingimused ja liidestamise juhend
+# Tehnilised tingimused ja liidestamise juhend
 
 Vt ka [Ärikirjeldus](Arikirjeldus)
 
