@@ -18,11 +18,11 @@ E-teenus kasutab TARA OpenID Connect protokolli kohaselt. Edaspidi TARA võimalu
 | 1 [Teabeleht](Teabeleht)       | kavand    |
 | 2 [Ärikirjeldus](Arikirjeldus) | kavand    |
 | 3 [Tehnilised tingimused ja liidestamise juhend](Juhend) | alustatud |
-| 4 [Tehniline kirjeldus](TehnilineKirjeldus) |    |
+| 4 [Tehniline kirjeldus](TehnilineKirjeldus) | alustatud   |
 | 5 [SLA]()                      |            |
 | 6 [Paigaldusjuhend]()          |            |
 | 7 [Haldusjuhend]()             |            |
-| 8 [Testistrateegia](Testistrateegia)          |            |
+| 8 [Testistrateegia](Testistrateegia)          | alustatud           |
 | 9 [Testilood]()                  |            |
 | 10 [Testiraport]()                |            |
 
@@ -40,6 +40,8 @@ E-teenus kasutab TARA OpenID Connect protokolli kohaselt. Edaspidi TARA võimalu
 
 ## Teenuse arenduskava
 
+I arendusjärk
+
 | teetähis | tööd | tulemus | orienteeruv, minimaalne ajakava |
 |----------|------|---------|--------------|
 | MVP/PoC  | Arendaja: 1) paneb üles OpenID Connect serveri; 2) koostab testimiseks vajaliku makettrakenduse ja 3) mobiil-ID-ga autentimise komponendi. | Töötav tarkvara, mis realiseerib eesmärgiks seatud kasutusloo; käideldavus v-o madal; dokumentatsioon v.o mittetäielik. | 2 nädalat |
@@ -48,6 +50,10 @@ E-teenus kasutab TARA OpenID Connect protokolli kohaselt. Edaspidi TARA võimalu
 | Testteenus avatud | RIA: 1) paneb üles keskkonna, mille vastu liidestujad saavad oma arendusi testida; 2) edaspidi teenindab liidestujaid liideste testimisel (konf-ne jms) | Liitujad saavad oma liideseid testteenuse vastu testida | 1 nädal |
 | Teenuse avamine toodangus | RIA: 1) avab teenuse toodangukeskkonna;
 2) edaspidi laseb teenusekasutajad (pärast testide läbimist) toodangusse | | 1 nädal |
+
+II arendusjärk
+
+eIDAS jm autentimismeetodid
 
 ## Arhitektuur
 
