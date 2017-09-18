@@ -2,7 +2,7 @@
 permalink: TehnilineKirjeldus
 ---
 
-# TARA autentimisteenus. Tehniline kirjeldus
+# Tehniline kirjeldus
 {: .no_toc}
 
 - TOC
