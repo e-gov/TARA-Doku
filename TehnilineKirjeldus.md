@@ -10,13 +10,13 @@ permalink: TehnilineKirjeldus
 
 ## Mõisted
 
-***TARA autentimisteenus***, lühidalt TARA-teenus, Riigi Infosüsteemi Ameti  osutatav teenus, millega asutus saab oma e-teenusesse lisada mobiil-ID kasutaja autentimise toe. Teenuse II arendusjärgus lisatakse eIDAS jt autentimismeetodite tugi, hiljem võimalik, et ka ühekordse sisselogimise (SSO) tugi.<br>
-***e-teenus*** - kodanikule, aga ka välismaalasele osutatav elektrooniline teenus.<br>
-***klientrakendus*** - TARA autentimisteenust kasutav süsteem.<br>
-***eestlane*** - Eesti eID kasutaja.<br>
-***välismaalane*** -  Euroopa Liidu teise riigi eID kasutaja.<br>
-***registreerimine*** - klientrakenduse registreerimine TARA-teenuse kasutajaks, vastavalt OpenID Connect protokolli nõuetele.<br>
-***RIA***, Riigi Infosüsteemi Amet, osutab TARA-teenust.
+- _TARA autentimisteenus_, lühidalt TARA-teenus, Riigi Infosüsteemi Ameti  osutatav teenus, millega asutus saab oma e-teenusesse lisada mobiil-ID kasutaja autentimise toe. Teenuse II arendusjärgus lisatakse eIDAS jt autentimismeetodite tugi, hiljem võimalik, et ka ühekordse sisselogimise (SSO) tugi.<br>
+- _e-teenus_ - kodanikule, aga ka välismaalasele osutatav elektrooniline teenus.<br>
+- _klientrakendus_ - TARA autentimisteenust kasutav süsteem.<br>
+- _eestlane_ - Eesti eID kasutaja.<br>
+- _välismaalane_ -  Euroopa Liidu teise riigi eID kasutaja.<br>
+- _registreerimine_ - klientrakenduse registreerimine TARA-teenuse kasutajaks, vastavalt OpenID Connect protokolli nõuetele.<br>
+- _RIA_, Riigi Infosüsteemi Amet, osutab TARA-teenust.
 
 ## Komponendid
 
@@ -24,15 +24,15 @@ permalink: TehnilineKirjeldus
 
 TARA autentimisteenuse teostavad järgmised tarkvarakomponendid:
 - Teenuseosutaja taristusse paigaldatavad:
-  - ***Open ID Connect haldur*** teostab liidese klientrakenduse poole.
-  - ***Teenusehalduri tööriista*** abil määratleb teenusehaldur millised klientrakendused ja kuidas TARA-teenust kasutavad. Vt [CAS Service Management].
-  - ***Klientrakenduste register*** hoitakse klientrakenduste seadistusteavet.
-  - ***m-ID autentija*** teostab liidese Sertifitseerimiskeskuse DigiDoc teenusega.
-  - ***eIDAS autentija*** teostab välismaalase autentimise eIDAS taristu kaudu, vastavalt eIDAS nõuetele [eIDAS].
+  - _Open ID Connect haldur_ teostab liidese klientrakenduse poole.
+  - _Teenusehalduri tööriista_ abil määratleb teenusehaldur millised klientrakendused ja kuidas TARA-teenust kasutavad. Vt [CAS Service Management].
+  - _Klientrakenduste register_ hoitakse klientrakenduste seadistusteavet.
+  - _m-ID autentija_ teostab liidese Sertifitseerimiskeskuse DigiDoc teenusega.
+  - _eIDAS autentija_ teostab välismaalase autentimise eIDAS taristu kaudu, vastavalt eIDAS nõuetele [eIDAS].
 - Teenusekasutaja taristusse paigaldatavad:
   - Open ID Connect klienditeek vms  
 - Testimiseks kasutatavad:
-  - Kliendirakenduse makett (_mock-up_).
+  - _Kliendirakenduse makett_ (_mock-up_).
 
 ## Arendusjärgud
 
