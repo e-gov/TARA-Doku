@@ -3,6 +3,10 @@ permalink: Tehniline
 ---
 
 # TARA autentimisteenus. Tehniline kirjeldus
+{: .no_toc}
+
+- TOC
+{:toc}
 
 <img src='img/TEGELIK.PNG' style='width: 400px;'>
 
@@ -43,9 +47,42 @@ TARA autentimisteenuse teostavad järgmised tarkvarakomponendid:
 
 Klientrakendus kasutab teenust OpenID Connect protokolli järgi. Täpsemalt on valitud volituskoodi voog (_authorization flow_) ja avaliku sektori profiil [iGOV].
 
+## Klientrakenduse registreerimine
+
+````
+{
+ "@class": "org.apereo.cas.services.OidcRegisteredService",
+ "clientId": "openIdDemo",
+ "clientSecret": "secret",
+ "serviceId": "https://localhost:8451/oauth/response",
+ "signIdToken": true,
+ "name": "openIdDemo",
+ "id": 322,
+ "evaluationOrder": 100,
+ "bypassApprovalPrompt": true,
+ "jsonFormat": true,
+ "ssoEnabled": false,
+ "generateRefreshToken": false,
+ "description": "openIdDemo",
+ "scopes": [
+  "java.util.HashSet", [ "openid",  "profile" ]
+ ],
+ "attributeReleasePolicy": {
+  "@class": "org.apereo.cas.services.ReturnAllAttributeReleasePolicy",
+  "principalAttributesRepository":
+  {
+   "@class": "org.apereo.cas.authentication.principal.DefaultPrincipalAttributesRepository",
+   "expiration": 2,
+   "timeUnit": "HOURS"
+  }
+ }
+}
+````
+
 ## Autentimisvoog
 
 ID token:
+
 ````
   {
     "jti": "fb38d930-9255-49df-8bed-d2621e38c44e",
