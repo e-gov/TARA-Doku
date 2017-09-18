@@ -1,5 +1,5 @@
 ---
-permalink: Tehniline
+permalink: TehnilineKirjeldus
 ---
 
 # TARA autentimisteenus. Tehniline kirjeldus
