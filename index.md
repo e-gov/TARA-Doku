@@ -55,13 +55,6 @@ II arendusjärk
 
 eIDAS jm autentimismeetodid
 
-## Arhitektuur
-
-![](img/ARH-01.PNG)
-<img src=''>
-
-Esimeses järgus teostatavad komponendid ja kasutusvoog on joonisel näidatud rõhutatult. Joonisel on kujutatud ka  teenuse EIDAS-autentimisega laiendamise võimalus.
-
 ## Esimesed arendustööd
 1)	OpenID Connect serveri ülespanek (joonisel „OpenID Connect liidese haldur“)<br>
 valida sobiv teek, võiks olla Java-põhine; otsus kooskõlastada Tellijaga. Seadistada ja täiendada teeki nii, et tarkvara teostab esmase autentimise kasutusloo [1].
