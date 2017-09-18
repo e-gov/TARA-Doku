@@ -8,19 +8,19 @@ permalink: TehnilineKirjeldus
 - TOC
 {:toc}
 
-<img src='img/TEGELIK.PNG' style='width: 400px;'>
-
 ## Mõisted
 
-***TARA autentimisteenus***, lühidalt TARA-teenus, Riigi Infosüsteemi Ameti uus pakutav teenus, millega asutus saab oma e-teenusesse lisada mobiil-ID kasutaja autentimise toe. Teenuse II arendusjärgus lisatakse eIDAS jt autentimismeetodite tugi, hiljem võimalik, et ka ühekordse sisselogimise (SSO) tugi.
+***TARA autentimisteenus***, lühidalt TARA-teenus, Riigi Infosüsteemi Ameti  osutatav teenus, millega asutus saab oma e-teenusesse lisada mobiil-ID kasutaja autentimise toe. Teenuse II arendusjärgus lisatakse eIDAS jt autentimismeetodite tugi, hiljem võimalik, et ka ühekordse sisselogimise (SSO) tugi.<br>
 ***e-teenus*** - kodanikule, aga ka välismaalasele osutatav elektrooniline teenus.<br>
 ***klientrakendus*** - TARA autentimisteenust kasutav süsteem.<br>
 ***eestlane*** - Eesti eID kasutaja.<br>
 ***välismaalane*** -  Euroopa Liidu teise riigi eID kasutaja.<br>
-***registreerimine*** - klientrakenduse registreerimine TARA-teenuse kasutajaks (vastavalt OpenID Connect protokolli nõuetele).<br>
+***registreerimine*** - klientrakenduse registreerimine TARA-teenuse kasutajaks, vastavalt OpenID Connect protokolli nõuetele.<br>
 ***RIA***, Riigi Infosüsteemi Amet, osutab TARA-teenust.
 
 ## Komponendid
+
+<img src='img/TEGELIK.PNG' style='width: 600px;'>
 
 TARA autentimisteenuse teostavad järgmised tarkvarakomponendid:
 - Teenuseosutaja taristusse paigaldatavad:
@@ -36,12 +36,9 @@ TARA autentimisteenuse teostavad järgmised tarkvarakomponendid:
 
 ## Arendusjärgud
 
-***I arendusjärgus*** teostatakse:
-- OpenID Connect haldur, teenusehalduri tööriist, klientrakenduste register, m-ID autentija.
+***I arendusjärgus*** teostatakse: OpenID Connect haldur, teenusehalduri tööriist, klientrakenduste register, m-ID autentija.
 
-***II arendusjärgus*** teostatakse:
-- eIDAS autentimine
-- muud autentimismeetodid.
+***II arendusjärgus*** teostatakse: eIDAS autentimine; muud autentimismeetodid.
 
 ## Protokoll
 
@@ -50,32 +47,32 @@ Klientrakendus kasutab teenust OpenID Connect protokolli järgi. Täpsemalt on v
 ## Klientrakenduse registreerimine
 
 ````
-{
- "@class": "org.apereo.cas.services.OidcRegisteredService",
- "clientId": "openIdDemo",
- "clientSecret": "secret",
- "serviceId": "https://localhost:8451/oauth/response",
- "signIdToken": true,
- "name": "openIdDemo",
- "id": 322,
- "evaluationOrder": 100,
- "bypassApprovalPrompt": true,
- "jsonFormat": true,
- "ssoEnabled": false,
- "generateRefreshToken": false,
- "description": "openIdDemo",
- "scopes": [
-  "java.util.HashSet", [ "openid",  "profile" ]
- ],
- "attributeReleasePolicy": {
-  "@class": "org.apereo.cas.services.ReturnAllAttributeReleasePolicy",
-  "principalAttributesRepository":
   {
-   "@class": "org.apereo.cas.authentication.principal.DefaultPrincipalAttributesRepository",
-   "expiration": 2,
-   "timeUnit": "HOURS"
+  "@class": "org.apereo.cas.services.OidcRegisteredService",
+  "clientId": "openIdDemo",
+  "clientSecret": "secret",
+  "serviceId": "https://localhost:8451/oauth/response",
+  "signIdToken": true,
+  "name": "openIdDemo",
+  "id": 322,
+  "evaluationOrder": 100,
+  "bypassApprovalPrompt": true,
+  "jsonFormat": true,
+  "ssoEnabled": false,
+  "generateRefreshToken": false,
+  "description": "openIdDemo",
+  "scopes": [
+    "java.util.HashSet", [ "openid",  "profile" ]
+  ],
+  "attributeReleasePolicy": {
+    "@class": "org.apereo.cas.services.ReturnAllAttributeReleasePolicy",
+    "principalAttributesRepository":
+    {
+    "@class": "org.apereo.cas.authentication.principal.DefaultPrincipalAttributesRepository",
+    "expiration": 2,
+    "timeUnit": "HOURS"
+    }
   }
- }
 }
 ````
 
