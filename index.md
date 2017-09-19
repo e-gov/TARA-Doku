@@ -86,6 +86,8 @@ TARA JIRA-s:<br>
 TARA Skype-is:<br>
 Autentimisteenuse arendus
 
+-----
 
+[Teekaardi lähtejoonis](https://docs.google.com/drawings/d/1t-SfFV4VYMjPjjEav-ZL4TPNgYZE1Ko9XU6Y94Ypbw8/edit) (Google Docs)
 
 
