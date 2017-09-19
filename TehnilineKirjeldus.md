@@ -11,6 +11,8 @@ permalink: TehnilineKirjeldus
 Vt ka:
 - [Sonastik](Sonastik)
 
+## Autentimismeetodi valik
+
 ## Autentimistasemed
 
 Klientrakendusele väljastatakse identiteeditõendis (_ID token_) ka usaldustase, millega autentimine läbi viidi (autentimistase), kui kasutatud autentimismeetodile on usaldustase määratud. 

@@ -36,9 +36,24 @@ E-teenus kasutab TARA OpenID Connect protokolli kohaselt. Edaspidi TARA võimalu
 
 ***SLA*** - nii test-kui ka toodanguteenusele
 
-## Teenuse arenduskava
+## Teekaart
 
-I arendusjärk
+<img src='img/TEEKAART.PNG' style='width: 600px;'>
+
+Töös, kaalumisel ja horisondil on tööpaketid:
+
+|    tööpakett | selgitus  | maht (orientiir) |
+|--------------|-----------|------------------|
+| ***"m-ID"*** | Tarkvaraarendus: 1) OpenID Connect serveri kohandamine ja ülespanek; 2) testeesmärgilise makettrakenduse koostamine; 3) mobiil-ID-ga autentimise komponendi teostus. Arenduse osana: dokumentatsiooni koostamine ja tarkvara testimine. Teenuse käitamiseks vajaliku dokumentatsiooni koostamine (vt detailsemalt allpool). | 4-6 nädalat |
+| ***"ID-kaart"*** | ID-kaardiga autentimise lisamine, koos dokumentatsiooni vastava täiendamisega ja testimisega. | 2 nädalat |
+| ***"eIDAS"*** | eIDAS autentimise lisamine, sh liidestamine RIA eIDAS konnektorteenusega; koos dokumentatsiooni vastava täiendamisega ja testimisega. | 2 nädalat |
+| ***"Smart-ID"*** | Smart-ID autentimise lisamine; koos dokumentatsiooni vastava täiendamisega ja testimisega. | 2 nädalat |
+| ***"Pangalingid"*** | Pangalink-autentimise lisamine; koos dokumentatsiooni vastava täiendamisega ja testimisega. (3 panka). | 2 nädalat |
+| ***"Uuring"*** | ühekordse sisselogimise (Single Sign-On, SSO) teenusele lisamise vajalikkuse ja teostatavuse uuring. Sisaldab _Proof of Concept" (PoC) lahenduse teostust ja selle hindamist. | 2 nädalat |
+| ***"SSO"*** | ühekordse sisselogimise (SSO) teenusele lisamine. Sisaldab uuringus tehtud PoC lahenduse viimistlemist, dokumenteerimist ja testimist. | 2 nädalat |
+| ***"Lisaatribuudid"*** | teenuse laiendamine täiendavate atribuutide pakkumisega. Nt päring äriregistrisse esindusõiguse kindlakstegemiseks, päring Rahvastikuregistrisse, võimalik, et päring Personali- ja palgaandmete andmekogusse (SAP-i). | 2 nädalat |
+
+## I arendusjärk (töös)
 
 | teetähis | tööd | tulemus | orienteeruv, minimaalne ajakava |
 |----------|------|---------|--------------|
@@ -48,11 +63,7 @@ I arendusjärk
 | Testteenus avatud | RIA: 1) paneb üles keskkonna, mille vastu liidestujad saavad oma arendusi testida; 2) edaspidi teenindab liidestujaid liideste testimisel (konf-ne jms) | Liitujad saavad oma liideseid testteenuse vastu testida | 1 nädal |
 | Teenuse avamine toodangus | RIA: 1) avab teenuse toodangukeskkonna; 2) edaspidi laseb teenusekasutajad (pärast testide läbimist) toodangusse | | 1 nädal |
 
-II arendusjärk
-
-eIDAS jm autentimismeetodid
-
-## Esimesed arendustööd
+Arendustööd:
 1)	OpenID Connect serveri ülespanek (joonisel „OpenID Connect liidese haldur“)<br>
 valida sobiv teek, võiks olla Java-põhine; otsus kooskõlastada Tellijaga. Seadistada ja täiendada teeki nii, et tarkvara teostab esmase autentimise kasutusloo [kavand].
 
