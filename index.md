@@ -21,24 +21,20 @@ E-teenus kasutab TARA OpenID Connect protokolli kohaselt. Edaspidi TARA võimalu
 | 2 [Ärikirjeldus](Arikirjeldus) | kavand    |
 | 3 [Tehnilised tingimused ja liidestamise juhend](Juhend) | alustatud |
 | 4 [Tehniline kirjeldus](TehnilineKirjeldus) | alustatud   |
-| 5 [SLA]()                      |            |
-| 6 [Paigaldusjuhend]()          |            |
-| 7 [Haldusjuhend]()             |            |
-| 8 [Testistrateegia](Testistrateegia)          | alustatud           |
-| 9 [Testilood](Testilood)                  |  alustatud      |
-| 10 [Testiraport]()                |            |
+| 5 [Sõnastik](Sõnastik) | töös |  |
+| 6 [Viited](Viited)   | Töös |   |
+| 7 [SLA]()                      |            |
+| 8 [Paigaldusjuhend]()          |            |
+| 9 [Haldusjuhend]()   |            |
+| 10 [Testistrateegia](Testistrateegia)  | alustatud           |
+| 11 [Testilood](Testilood)                  |  alustatud      |
+| 12 [Testiraport]()                |            |
 
 ***Tehniline kirjeldus*** - tarkvara spetsifikatsioon, sisaldab: arh-ijoonist, paigaldusjoonist, kasutusloo või -lugude kirjeldust, tarkvara oluliste mittefunktsionaalsete omaduste kirjeldust - teave kasutatud teekide kohta, logimise lahenduse kirjeldus, hinnang tööjõudlusele
 
 ***Testistrateegia*** - kirjeldab, kuidas ja mida testitakse, joonis testimise setup-i kohta
 
 ***SLA*** - nii test-kui ka toodanguteenusele
-
-## Viited
-
-[1] Riigi Infosüsteemi Amet. RIA SSO autentimisteenuse kavand. 18 lk.<br>
-[2] [TP-93 RIA autentimisteenus](https://jira.ria.ee/browse/TP-93). RIA teenuseportfelli kirje. [mitteavalik]<br>
-[3] Ettepanekud ja probleemid (GitHub Issues) [https://github.com/e-gov/TARA-Doku/issues](https://github.com/e-gov/TARA-Doku/issues) 
 
 ## Teenuse arenduskava
 
@@ -58,7 +54,7 @@ eIDAS jm autentimismeetodid
 
 ## Esimesed arendustööd
 1)	OpenID Connect serveri ülespanek (joonisel „OpenID Connect liidese haldur“)<br>
-valida sobiv teek, võiks olla Java-põhine; otsus kooskõlastada Tellijaga. Seadistada ja täiendada teeki nii, et tarkvara teostab esmase autentimise kasutusloo [1].
+valida sobiv teek, võiks olla Java-põhine; otsus kooskõlastada Tellijaga. Seadistada ja täiendada teeki nii, et tarkvara teostab esmase autentimise kasutusloo [kavand].
 
 2)	Makettrakenduse loomine<br>
 koostada RIA rakendus, mis etendab autentimisteenust kasutavat Eesti e-teenust. Makettrakenduse eesmärk on testida loodavat RIA autentimisteenust. Selleks valida sobiv OpenID Connect kliendi teek. Ei pea olema Java.
@@ -66,7 +62,7 @@ koostada RIA rakendus, mis etendab autentimisteenust kasutavat Eesti e-teenust. 
 3)	mobiil-ID autentija loomine<br>
 teostada komponent, mis teostab Eesti mobiil-ID-ga autentimise. Siduda mobiil-ID autentija  ja OpenID Connect liidese haldur tervikuks. 
 
-Arvestada edasise tööde järjekorraga, vt joonis ja [1]: 1) kasutusloo autentimise olemasolu kontroll teostamine; 2) kasutusloo väljalogimine teostamine; 3) komponentide Seansihaldur ja selle koosseisus Seansihoidla teostamine; 4) komponendi Isikutuvastusportaal teostamine (võimaldab kasutajal valida mitme autentimismeetodi vahel); 5) liidestamine eIDAS konnektorteenusega (vajalik välismaalaste autentimisel).
+Arvestada edasise tööde järjekorraga, vt joonis ja [kavand]: 1) kasutusloo autentimise olemasolu kontroll teostamine; 2) kasutusloo väljalogimine teostamine; 3) komponentide Seansihaldur ja selle koosseisus Seansihoidla teostamine; 4) komponendi Isikutuvastusportaal teostamine (võimaldab kasutajal valida mitme autentimismeetodi vahel); 5) liidestamine eIDAS konnektorteenusega (vajalik välismaalaste autentimisel).
 
 ## Arenduskorraldus
 

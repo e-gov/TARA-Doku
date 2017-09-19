@@ -8,15 +8,23 @@ permalink: TehnilineKirjeldus
 - TOC
 {:toc}
 
-## Mõisted
+Vt ka:
+- [Sonastik](Sonastik)
 
-- _TARA autentimisteenus_, lühidalt TARA-teenus, Riigi Infosüsteemi Ameti  osutatav teenus, millega asutus saab oma e-teenusesse lisada mobiil-ID kasutaja autentimise toe. Teenuse II arendusjärgus lisatakse eIDAS jt autentimismeetodite tugi, hiljem võimalik, et ka ühekordse sisselogimise (SSO) tugi.<br>
-- _e-teenus_ - kodanikule, aga ka välismaalasele osutatav elektrooniline teenus.<br>
-- _klientrakendus_ - TARA autentimisteenust kasutav süsteem.<br>
-- _eestlane_ - Eesti eID kasutaja.<br>
-- _välismaalane_ -  Euroopa Liidu teise riigi eID kasutaja.<br>
-- _registreerimine_ - klientrakenduse registreerimine TARA-teenuse kasutajaks, vastavalt OpenID Connect protokolli nõuetele.<br>
-- _RIA_, Riigi Infosüsteemi Amet, osutab TARA-teenust.
+## Autentimistasemed
+
+Klientrakendusele väljastatakse identiteeditõendis (_ID token_) ka usaldustase, millega autentimine läbi viidi (autentimistase), kui kasutatud autentimismeetodile on usaldustase määratud. 
+
+eIDAS autentimistasemed [tasemed], ingl _level of assurance_ esitatakse tehniliselt URI-dega, vastavalt eIDAS spetsifikatsioonile [eIDAS]:
+- madal - `http://eidas.europa.eu/LoA/low`
+- märkimisväärne - `http://eidas.europa.eu/LoA/substantial`
+- kõrge - `http://eidas.europa.eu/LoA/high`
+
+Autentimistase esitatakse JWT väites (_claim_) `acr` (level of assurance). Näiteks:
+
+`"acr": "http://eidas.europa.eu/LoA/low"`
+
+Kui autentimistase ei ole teada, siis väidet ei esitata.
 
 ## Komponendid
 
@@ -32,7 +40,7 @@ TARA autentimisteenuse teostavad järgmised tarkvarakomponendid:
 - Teenusekasutaja taristusse paigaldatavad:
   - Open ID Connect klienditeek vms  
 - Testimiseks kasutatavad:
-  - _Kliendirakenduse makett_ (_mock-up_).
+  - _Klientrakenduse makett_ (_mock-up_).
 
 ## Arendusjärgud
 
@@ -102,12 +110,5 @@ ID token:
 ## Tehniline platvorm
 
 Süsteem on ehitatud Apereo CAS platvormile [CAS].
-
-## Viited
-
-[eIDAS] eIDAS Technical specification v.1.1, [https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/eIDAS+Profile](https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/eIDAS+Profile).<br>
-[CAS] [Apereo CAS - Enterprise Single Sign On](https://github.com/apereo/cas)
-[CAS Service Management]<br>[https://apereo.github.io/cas/4.2.x/installation/Service-Management.html](https://apereo.github.io/cas/4.2.x/installation/Service-Management.html)<br>
-[iGOV] OpenID Connect avaliku sektori profiil [http://openid.net/specs/openid-igov-openid-connect-1_0-02.html](http://openid.net/specs/openid-igov-openid-connect-1_0-02.html)
 
  

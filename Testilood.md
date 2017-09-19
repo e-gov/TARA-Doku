@@ -6,7 +6,8 @@ permalink: Testilood
 
 _Detailsed testilugude kirjeldused on JIRAs. Käesolev loetelu ei võta veel seisukohta, millised testid, millal ja kuidas läbi tehakse._
 
-Vt ka: [Testistrateegia](Testistrateegia).
+Vt ka:
+- [Testistrateegia](Testistrateegia).
 
 1 Kontrollida, et CAS protokoll on välja lülitatud. Meetod: Saata CAS SAML päring, tulemüüri filter peab selle kinni pidama. 
 
