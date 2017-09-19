@@ -2,6 +2,8 @@
 permalink: /
 ---
 
+![](img/LOVID.png)
+
 TARA on turvaline autentimisteenus, millega asutuse e-teenus saab autentida mobiil-ID kasutaja.
 TARA teenust pakub RIA.
 

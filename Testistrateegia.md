@@ -6,6 +6,8 @@ permalink: Testistrateegia
 
 Käesolev dokument annab ülevaate TARA autentimisteenuse kavandatavatest testitöödest.
 
+Lähem käsitlus vt [TARA testistrateegia](https://confluence.ria.ee/display/TARA/TARA+testistrateegia) &#128274;
+
 Vt ka: [Testilood](Testilood). 
 
 1  ***Vastavus Open ID Connect avaliku sektori profiilile***. Open ID Connect Foundation on üllitanud avaliku sektori asutustele suunatud profiili International Government Assurance Profile (iGov) for OpenID Connect 1.0 [2], lühidalt _iGov profiil_. Profiil sätestab rea turvalisuse seisukohalt olulisi valikuid ja kontrolle. TARA-teenuse kavandis [1] ei ole profiilist otseselt lähtutud, kuid profiiliga vastavuse tagamine on mõistlik. _Vaja on läbi vaadata ja saada kinnitus, kas tarkvara vastab iGov profiilile. Profiilist lahknevuste korral peame otsustama, mida teha_ (riskihindamise alusel).
