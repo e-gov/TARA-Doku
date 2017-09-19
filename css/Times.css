@@ -53,9 +53,10 @@ h1 {
 }
 h2 {
   font-size: 12pt !important;
+  font-weight: bold;
   margin-bottom: 0.5rem;
   text-decoration: underline;
-  margin-bottom: 0;
+  margin-bottom: 0.5rem;
 }
 
 /* ==== Külgriba ======== */
