@@ -20,11 +20,13 @@ eIDAS autentimistasemed [tasemed], ingl _level of assurance_ esitatakse tehnilis
 - märkimisväärne - `http://eidas.europa.eu/LoA/substantial`
 - kõrge - `http://eidas.europa.eu/LoA/high`
 
-Autentimistase esitatakse JWT väites (_claim_) `acr` (level of assurance). Näiteks:
+Autentimistase esitatakse JWT väites (_claim_) `acr` (Authentication Context Class Reference). Näiteks:
 
 `"acr": "http://eidas.europa.eu/LoA/low"`
 
 Kui autentimistase ei ole teada, siis väidet ei esitata.
+
+JWT väidete kohta vt ka [https://www.iana.org/assignments/jwt/jwt.xhtml](https://www.iana.org/assignments/jwt/jwt.xhtml).
 
 ## Komponendid
 

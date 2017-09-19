@@ -21,7 +21,7 @@ E-teenus kasutab TARA OpenID Connect protokolli kohaselt. Edaspidi TARA võimalu
 | 2 [Ärikirjeldus](Arikirjeldus) | kavand    |
 | 3 [Tehnilised tingimused ja liidestamise juhend](Juhend) | alustatud |
 | 4 [Tehniline kirjeldus](TehnilineKirjeldus) | alustatud   |
-| 5 [Sõnastik](Sõnastik) | töös |  |
+| 5 [Sõnastik](Sonastik) | töös |  |
 | 6 [Viited](Viited)   | Töös |   |
 | 7 [SLA]()                      |            |
 | 8 [Paigaldusjuhend]()          |            |
