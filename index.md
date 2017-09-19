@@ -5,9 +5,9 @@ permalink: /
 ![](img/LOVID.png)
 
 TARA on turvaline autentimisteenus, millega asutuse e-teenus saab autentida mobiil-ID kasutaja.
-TARA teenust pakub RIA.
+TARA teenust pakub Riigi Infosüsteemi Amet.
 
-E-teenus kasutab TARA OpenID Connect protokolli kohaselt. Edaspidi TARA võimalused laienevad: ühekordne sisselogimine, täiendavad autentimismeetodid, sh piiriülene eIDAS-autentimine jm. 
+E-teenus kasutab TARA OpenID Connect protokolli kohaselt. Edaspidi TARA võimalused laienevad: täiendavad autentimismeetodid, sh piiriülene eIDAS-autentimine, võimalik, et ka ühekordne sisselogimine (SSO) jm. 
 
 - TOC
 {:toc}
@@ -22,41 +22,38 @@ Töös, kaalumisel ja horisondil on tööpaketid:
 
 |    tööpakett | selgitus  | maht (orientiir) |
 |--------------|-----------|------------------|
-| ***"m-ID"*** | Tarkvaraarendus: 1) OpenID Connect serveri kohandamine ja ülespanek; 2) testeesmärgilise makettrakenduse koostamine; 3) mobiil-ID-ga autentimise komponendi teostus. Arenduse osana: dokumentatsiooni koostamine ja tarkvara testimine. Teenuse käitamiseks vajaliku dokumentatsiooni koostamine (vt detailsemalt allpool). | 4-6 nädalat |
+| ***"m-ID"*** | Tarkvaraarendus: 1) OpenID Connect serveri kohandamine ja ülespanek; 2) testeesmärgilise makettrakenduse koostamine; 3) mobiil-ID-ga autentimise komponendi teostus. Arenduse osana: dokumentatsiooni koostamine ja tarkvara testimine. Teenuse käitamiseks vajaliku dokumentatsiooni koostamine (vt detailsemalt allpool, jaotises "I arendusjärk"). | 4-6 nädalat |
 | ***"ID-kaart"*** | ID-kaardiga autentimise lisamine, koos dokumentatsiooni vastava täiendamisega ja testimisega. | 2 nädalat |
 | ***"eIDAS"*** | eIDAS autentimise lisamine, sh liidestamine RIA eIDAS konnektorteenusega; koos dokumentatsiooni vastava täiendamisega ja testimisega. | 2 nädalat |
 | ***"Smart-ID"*** | Smart-ID autentimise lisamine; koos dokumentatsiooni vastava täiendamisega ja testimisega. | 2 nädalat |
 | ***"Pangalingid"*** | Pangalink-autentimise lisamine; koos dokumentatsiooni vastava täiendamisega ja testimisega. (3 panka). | 2 nädalat |
-| ***"Uuring"*** | ühekordse sisselogimise (Single Sign-On, SSO) teenusele lisamise vajalikkuse ja teostatavuse uuring. Sisaldab _Proof of Concept" (PoC) lahenduse teostust ja selle hindamist. | 2 nädalat |
-| ***"SSO"*** | ühekordse sisselogimise (SSO) teenusele lisamine. Sisaldab uuringus tehtud PoC lahenduse viimistlemist, dokumenteerimist ja testimist. | 2 nädalat |
-| ***"Lisaatribuudid"*** | teenuse laiendamine täiendavate atribuutide pakkumisega. Nt päring äriregistrisse esindusõiguse kindlakstegemiseks, päring Rahvastikuregistrisse, võimalik, et päring Personali- ja palgaandmete andmekogusse (SAP-i). | 2 nädalat |
+| ***"Uuring"*** | Ühekordse sisselogimise (Single Sign-On, SSO) teenusele lisamise vajalikkuse ja teostatavuse uuring. Sisaldab _Proof of Concept" (PoC) lahenduse teostust ja selle hindamist. PoC ja hindamine v-o tellitakse eraldi.  | 2 nädalat PoC, 2 nädalat hindamine |
+| ***"SSO"*** | Ühekordse sisselogimise (SSO) teenusele lisamine, lähtudes eelnevalt tehtud uuringu tulemustest. Sisaldab uuringus tehtud PoC lahenduse viimistlemist, dokumenteerimist ja testimist. | 2 nädalat |
+| ***"Lisaatribuudid"*** | Teenuse laiendamine täiendavate atribuutide pakkumisega. Nt päring äriregistrisse esindusõiguse kindlakstegemiseks, päring Rahvastikuregistrisse, võimalik, et päring Personali- ja palgaandmete andmekogusse (SAP-i). | 2 nädalat |
 
 ## Kood ja dokumentatsioon
+
+Kood ja dokumentatsioon üldjuhul on avalik. Piiratud juurdepääsuga on RIA-sisese paigaldusega, turvatestimisega ja teenuse haldusega seonduv. Avalik kood ja dokumentatsioon asub repodes:
 
 - [TARA-Server](https://github.com/e-gov/TARA-Server) (teenuse server)
 - [TARA-Client](https://github.com/e-gov/TARA-Client) (makettrakendus teenuse testimiseks)
 - [TARA-Doku](https://github.com/e-gov/TARA-Doku) (teenuse dokumentatsioon)
 
-| nimetus, asukoht             |  seis     |
-|------------------------------|-----------|
-| 1 [Teabeleht](Teabeleht)       | kavand    |
-| 2 [Ärikirjeldus](Arikirjeldus) | kavand    |
-| 3 [Tehnilised tingimused ja liidestamise juhend](Juhend) | alustatud |
-| 4 [Tehniline kirjeldus](TehnilineKirjeldus) | alustatud   |
-| 5 [Sõnastik](Sonastik) | töös |  |
-| 6 [Viited](Viited)   | Töös |   |
-| 7 [SLA]()                      |            |
-| 8 [Paigaldusjuhend]()          |            |
-| 9 [Haldusjuhend]()   |            |
-| 10 [Testistrateegia](Testistrateegia)  | alustatud           |
-| 11 [Testilood](Testilood)                  |  alustatud      |
-| 12 [Testiraport]()                |            |
-
-***Tehniline kirjeldus*** - tarkvara spetsifikatsioon, sisaldab: arh-ijoonist, paigaldusjoonist, kasutusloo või -lugude kirjeldust, tarkvara oluliste mittefunktsionaalsete omaduste kirjeldust - teave kasutatud teekide kohta, logimise lahenduse kirjeldus, hinnang tööjõudlusele
-
-***Testistrateegia*** - kirjeldab, kuidas ja mida testitakse, joonis testimise setup-i kohta
-
-***SLA*** - nii test-kui ka toodanguteenusele
+| nimetus, asukoht             |  seis     | märkused |
+|------------------------------|-----------|----------|
+| 1 [Teabeleht](Teabeleht)       | kavand    |  |
+| 2 [Ärikirjeldus](Arikirjeldus) | kavand    |  |
+| 3 Teekaart - käesoleval lehel | kavand    |  |
+| 4 [Tehnilised tingimused ja liidestamise juhend](Juhend) | alustatud |  |
+| 5 [Tehniline kirjeldus](TehnilineKirjeldus) | alustatud   | tarkvara spetsifikatsioon, sisaldab: arh-ijoonist, paigaldusjoonist, kasutusloo või -lugude kirjeldust, tarkvara oluliste mittefunktsionaalsete omaduste kirjeldust - teave kasutatud teekide kohta, logimise lahenduse kirjeldus, hinnang tööjõudlusele |
+| 6 [Sõnastik](Sonastik) | töös |  |
+| 7 [Viited](Viited)   | Töös |   |
+| 8 [SLA]()   |        | nii test-kui ka toodanguteenusele |
+| 9 [Paigaldusjuhend]()          |            |
+| 10 [Haldusjuhend]()   |            |
+| 11 [Testistrateegia](Testistrateegia)  | alustatud | kirjeldab, kuidas ja mida testitakse, joonis testimise setup-i kohta |
+| 12 [Testilood](Testilood) |  alustatud |  |
+| 13 [Testiraport]()      |            |  |
 
 ## I arendusjärk (töös)
 
