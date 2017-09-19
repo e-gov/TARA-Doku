@@ -23,7 +23,7 @@ E-teenus kasutab TARA OpenID Connect protokolli kohaselt. Edaspidi TARA võimalu
 | 6 [Paigaldusjuhend]()          |            |
 | 7 [Haldusjuhend]()             |            |
 | 8 [Testistrateegia](Testistrateegia)          | alustatud           |
-| 9 [Testilood]()                  |            |
+| 9 [Testilood](Testilood)                  |  alustatud      |
 | 10 [Testiraport]()                |            |
 
 ***Tehniline kirjeldus*** - tarkvara spetsifikatsioon, sisaldab: arh-ijoonist, paigaldusjoonist, kasutusloo või -lugude kirjeldust, tarkvara oluliste mittefunktsionaalsete omaduste kirjeldust - teave kasutatud teekide kohta, logimise lahenduse kirjeldus, hinnang tööjõudlusele
