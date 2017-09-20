@@ -11,6 +11,11 @@ permalink: TehnilineKirjeldus
 Vt ka:
 - [Sonastik](Sonastik)
 
+## Ülevaade
+
+
+
+
 ## Autentimistasemed
 
 Klientrakendusele väljastatakse identiteeditõendis (_ID token_) ka usaldustase, millega autentimine läbi viidi (autentimistase), kui kasutatud autentimismeetodile on usaldustase määratud. 
@@ -37,7 +42,6 @@ Rakendus võib autentimispäringus esitada minimaalse autentimistaseme, mille ko
 
 Kasutajale esitatakse autentimisteenuses ainult need autentimismeetodid, mille autentimistase on võrdne või suurem päringus esitatud minimaalsest autentimistasemest.
 {: .note}
-
 
 ## Protokoll
 
