@@ -8,8 +8,7 @@ permalink: TehnilineKirjeldus
 - TOC
 {:toc}
 
-Vt ka:
-- [Sonastik](Sonastik)
+Vt ka: [Sonastik](Sonastik), [Viited](Viited)
 
 ## Ülevaade
 
@@ -19,39 +18,9 @@ Teenuse tähtsamad omadused:
 - rakendusele edastatakse ka eIDAS autentimistase, kui see on teada.
 - autentimismeetodi valib kasutaja autentimisteenuses.
 
-## Klientrakenduse registreerimine
-
-````
-  {
-  "@class": "org.apereo.cas.services.OidcRegisteredService",
-  "clientId": "openIdDemo",
-  "clientSecret": "secret",
-  "serviceId": "https://localhost:8451/oauth/response",
-  "signIdToken": true,
-  "name": "openIdDemo",
-  "id": 322,
-  "evaluationOrder": 100,
-  "bypassApprovalPrompt": true,
-  "jsonFormat": true,
-  "ssoEnabled": false,
-  "generateRefreshToken": false,
-  "description": "openIdDemo",
-  "scopes": [
-    "java.util.HashSet", [ "openid",  "profile" ]
-  ],
-  "attributeReleasePolicy": {
-    "@class": "org.apereo.cas.services.ReturnAllAttributeReleasePolicy",
-    "principalAttributesRepository":
-    {
-    "@class": "org.apereo.cas.authentication.principal.DefaultPrincipalAttributesRepository",
-    "expiration": 2,
-    "timeUnit": "HOURS"
-    }
-  }
-}
-````
-
 ## Autentimisprotsess
+
+<img src='img/VOOG.PNG' style='width: 600px;'>
 
 1. ***Autentimispäringu saatmine***
 
@@ -179,6 +148,39 @@ Autentimistase esitatakse JWT väites (_claim_) `acr` (Authentication Context Cl
 Kui autentimistase ei ole teada, siis väidet ei esitata.
 
 JWT väidete kohta vt ka [https://www.iana.org/assignments/jwt/jwt.xhtml](https://www.iana.org/assignments/jwt/jwt.xhtml).
+
+
+## Klientrakenduse registreerimine
+
+````
+  {
+  "@class": "org.apereo.cas.services.OidcRegisteredService",
+  "clientId": "openIdDemo",
+  "clientSecret": "secret",
+  "serviceId": "https://localhost:8451/oauth/response",
+  "signIdToken": true,
+  "name": "openIdDemo",
+  "id": 322,
+  "evaluationOrder": 100,
+  "bypassApprovalPrompt": true,
+  "jsonFormat": true,
+  "ssoEnabled": false,
+  "generateRefreshToken": false,
+  "description": "openIdDemo",
+  "scopes": [
+    "java.util.HashSet", [ "openid",  "profile" ]
+  ],
+  "attributeReleasePolicy": {
+    "@class": "org.apereo.cas.services.ReturnAllAttributeReleasePolicy",
+    "principalAttributesRepository":
+    {
+    "@class": "org.apereo.cas.authentication.principal.DefaultPrincipalAttributesRepository",
+    "expiration": 2,
+    "timeUnit": "HOURS"
+    }
+  }
+}
+````
 
 ## Tehniline ülesehitus
 

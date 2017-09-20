@@ -46,16 +46,16 @@ body {
 
 /* ==== Pealkirjad ==== */
 h1 {
-  font-size: 14pt !important;
+  font-size: 16pt !important;
   font-weight: bold;
   margin-top: 1em;
   margin-bottom: 1rem;
+  text-transform: uppercase;
 }
 h2 {
-  font-size: 12pt !important;
+  font-size: 14pt !important;
   font-weight: bold;
   margin-bottom: 0.5rem;
-  text-decoration: underline;
   margin-bottom: 0.5rem;
 }
 
