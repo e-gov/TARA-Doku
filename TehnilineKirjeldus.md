@@ -13,39 +13,11 @@ Vt ka:
 
 ## Ülevaade
 
-
-
-
-## Autentimistasemed
-
-Klientrakendusele väljastatakse identiteeditõendis (_ID token_) ka usaldustase, millega autentimine läbi viidi (autentimistase), kui kasutatud autentimismeetodile on usaldustase määratud. 
-
-eIDAS autentimistasemed [tasemed], ingl _level of assurance_ esitatakse tehniliselt URI-dega, vastavalt eIDAS spetsifikatsioonile [eIDAS]:
-- madal - `http://eidas.europa.eu/LoA/low`
-- märkimisväärne - `http://eidas.europa.eu/LoA/substantial`
-- kõrge - `http://eidas.europa.eu/LoA/high`
-
-Autentimistase esitatakse JWT väites (_claim_) `acr` (Authentication Context Class Reference). Näiteks:
-
-`"acr": "http://eidas.europa.eu/LoA/low"`
-
-Kui autentimistase ei ole teada, siis väidet ei esitata.
-
-JWT väidete kohta vt ka [https://www.iana.org/assignments/jwt/jwt.xhtml](https://www.iana.org/assignments/jwt/jwt.xhtml).
-
-## Minimaalne autentimistase
-
-Rakendus võib autentimispäringus esitada minimaalse autentimistaseme, mille korral kasutaja e-teenusesse lubatakse. Minimaalne autentimistase esitatakse parameetriga `loamin=väärtus`, kus väärtus on autentimistaseme eIDAS-kood. Näiteks:
-{: .note}
-
-`loamin=`http://eidas.europa.eu/LoA/high`
-
-Kasutajale esitatakse autentimisteenuses ainult need autentimismeetodid, mille autentimistase on võrdne või suurem päringus esitatud minimaalsest autentimistasemest.
-{: .note}
-
-## Protokoll
-
-Klientrakendus kasutab teenust OpenID Connect protokolli järgi. Täpsemalt on valitud volituskoodi voog (_authorization flow_) ja avaliku sektori profiil [iGOV].
+Teenuse tähtsamad omadused:
+- autentimisprotsessi aluseks on OpenID Connect 1.0 protokoll, täpsemalt volituskoodi  (_authorization code_) kasutusvoog. Arvestatud on ka protokolli avaliku sektori profiiliga [iGOV].
+- kogu teave autenditud kasutaja kohta edastatakse rakendusele identsustõendis (_ID token_).
+- rakendusele edastatakse ka eIDAS autentimistase, kui see on teada.
+- autentimismeetodi valib kasutaja autentimisteenuses.
 
 ## Klientrakenduse registreerimine
 
@@ -80,8 +52,6 @@ Klientrakendus kasutab teenust OpenID Connect protokolli järgi. Täpsemalt on v
 ````
 
 ## Autentimisprotsess
-
-Autentimisprotsessi aluseks on OpenID Connect 1.0 protokoll, täpsemalt volituskoodi  (_authorization code_) kasutusvoog.
 
 1. ***Autentimispäringu saatmine***
 
@@ -193,12 +163,26 @@ Autentimisteenus kontrollib, et identsustõendit küsib õige rakendus, koostab 
 
 Rakendus loob saadud identsustõendi alusel kasutajaga seansi. Seansi loomine ja pidamine on rakenduse kohustus. Kuidas seda teha, ei ole autentimisteenuse skoobis.
 
+## Autentimistasemed
 
-## Tehniline platvorm
+Klientrakendusele väljastatakse identiteeditõendis (_ID token_) ka usaldustase, millega autentimine läbi viidi (autentimistase), kui kasutatud autentimismeetodile on usaldustase määratud. 
+
+eIDAS autentimistasemed [tasemed], ingl _level of assurance_ esitatakse tehniliselt URI-dega, vastavalt eIDAS spetsifikatsioonile [eIDAS]:
+- madal - `http://eidas.europa.eu/LoA/low`
+- märkimisväärne - `http://eidas.europa.eu/LoA/substantial`
+- kõrge - `http://eidas.europa.eu/LoA/high`
+
+Autentimistase esitatakse JWT väites (_claim_) `acr` (Authentication Context Class Reference). Näiteks:
+
+`"acr": "http://eidas.europa.eu/LoA/low"`
+
+Kui autentimistase ei ole teada, siis väidet ei esitata.
+
+JWT väidete kohta vt ka [https://www.iana.org/assignments/jwt/jwt.xhtml](https://www.iana.org/assignments/jwt/jwt.xhtml).
+
+## Tehniline ülesehitus
 
 Süsteem on ehitatud Apereo CAS platvormile [CAS].
-
-## Komponendid
 
 <img src='img/TEGELIK.PNG' style='width: 600px;'>
 
@@ -213,8 +197,6 @@ TARA autentimisteenuse teostavad järgmised tarkvarakomponendid:
   - Open ID Connect klienditeek vms  
 - Testimiseks kasutatavad:
   - _Klientrakenduse makett_ (_mock-up_).
-
-## Arendusjärgud
 
 ***I arendusjärgus*** teostatakse: OpenID Connect haldur, teenusehalduri tööriist, klientrakenduste register, m-ID autentija.
 
