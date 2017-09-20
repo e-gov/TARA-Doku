@@ -14,10 +14,10 @@ Vt ka: [Sonastik](Sonastik), [Viited](Viited)
 
 Autentimisteenus on Riigi Infosüsteemi Ameti uus pakutav teenus, millega asutus saab oma e-teenusesse lisada mobiil-ID kasutaja autentimise toe.
 
-Autentimismeetodina toetab teenus esialgu mobiil-ID-d. Järgmistes arendusjärkudes lisatakse teiste autentimismeetodite - ID-kaardiga, eIDAS jt - tugi.
+Autentimismeetodina toetab teenus esialgu mobiil-ID-d. Järgmistes arendusjärkudes lisatakse teiste autentimismeetodite - ID-kaart, eIDAS jt - tugi.
 
 Teenuse tähtsamad tunnusjooned:
-1. autentimisprotsessi aluseks on OpenID Connect 1.0 protokoll, täpsemalt volituskoodi  (_authorization code_) kasutusvoog. Arvestatud on ka protokolli avaliku sektori profiiliga [iGOV].
+1. autentimisprotsessi aluseks on OpenID Connect 1.0 protokoll [Core], täpsemalt volituskoodi  (_authorization code_) kasutusvoog. Arvestatud on ka protokolli avaliku sektori profiiliga [iGOV].
 2. kogu teave autenditud kasutaja kohta edastatakse rakendusele identsustõendis (_ID token_).
 3. rakendusele edastatakse ka eIDAS autentimistase, kui see on teada.
 4. autentimismeetodi valib kasutaja autentimisteenuses.
@@ -25,6 +25,13 @@ Teenuse tähtsamad tunnusjooned:
 ## Autentimisprotsess
 
 <img src='img/VOOG.PNG' style='width: 480px;'>
+
+Autentimisprotsess koosneb 5 sammust:
+1. Autentimispäringu saatmine
+2. Autentimismeetodi valik
+3. Autentimine
+4. Tagasisuunamine
+5. Identsustõendi küsimine.
 
 1 ***Autentimispäringu saatmine***
 
@@ -46,8 +53,7 @@ Autentimispäringu elemendid:
 | URL-i element          | näide                       |  selgitus     |
 |------------------------|-----------------------------|---------------|
 | protokoll, host ja tee (_path_) | `https://tara.eesti.ee/login` |               |
-| tagasipöördumis-URL    | `https://eteenindus.
-asutus.ee/Callback` | tagasipöördumis-URL-i valib asutus ise |
+| tagasipöördumis-URL    | `https://et...ee/Callback` | tagasipöördumis-URL-i valib asutus ise |
 | autentimise skoop      | `scope=openid`               |        |
 | turvakood              | `state=hkMVY7vjuN7xyLl5`     | rakenduse serveripool genereerib turvakoodi, mis aitab tagada, et erinevate kasutajate autentimised sassi ei lähe ja ründaja ei saa protsessi vahele sekkuda |
 | autentimise tulemuse serverile edastamise viis; toetatud on volituskoodi viis `code` | `response_type=code` |   |
@@ -94,7 +100,7 @@ Autentimisteenus kontrollib, et identsustõendit küsib õige rakendus, koostab 
 {  
    "sub":"11412090004",
    "amr":[  
-      "AcceptUsersAuthenticationHandler"
+      "mID"
    ],
    "iss":"http:\/\/localhost:8080\/cas\/oidc",
 
@@ -116,15 +122,15 @@ Autentimisteenus kontrollib, et identsustõendit küsib õige rakendus, koostab 
 ````
 
 Identsustõendis esitatakse järgmised väljad (_claims_). Identsustõend võib sisaldada muid Open ID Connect protokolli kohaseid välju, kuid neid teenuses ei kasutata. 
+JWT väljade tähenduse kohta vt vajadusel [https://www.iana.org/assignments/jwt/jwt.xhtml](https://www.iana.org/assignments/jwt/jwt.xhtml).
 
 | Identsustõendi element | näide                       |  selgitus     |
 |------------------------|-----------------------------|---------------|
 | `sub`                  | `"sub":"11412090004"` | autenditud kasutaja identifikaator (isikukood või eIDAS identifikaator) |
-| `amr`                  | `"amr":["AcceptUsersAuthenticationHandler"]` | kasutaja autentimiseks kasutatud autentimismeetod |
+| `amr`                  | `"amr":["mID"]` | kasutaja autentimiseks kasutatud autentimismeetod |
 | `iss`              | `"iss":"http:\/\/localhost:8080\/cas\/oidc"` | tõendi väljastaja (TARA-teenus) |
-| `profile_attributes`              | | |
 | `personalCode`         | `"personalCode":"11412090004"` | autenditud kasutaja identifikaator (isikukood või eIDAS identifikaator) |
-| `firstName`              | `"firstName":"MARY ÄNN"` | autenditud kasutaja eesnimi |
+| `firstName`              | `"firstName":"MARY ANN"` | autenditud kasutaja eesnimi |
 | `lastName`              | `"lastName":"O\u2019CONNEŽ-ŠUSLIK"` | autenditud kasutaja perekonnanimi |
 | `mobileNumber`          | `"mobileNumber":"+37200000766"` | |
 | `nonce`                 | `"nonce":"qrstuvwxyzabcdef"` | |
@@ -146,14 +152,11 @@ eIDAS autentimistasemed [tasemed], ingl _level of assurance_ esitatakse tehnilis
 - märkimisväärne - `http://eidas.europa.eu/LoA/substantial`
 - kõrge - `http://eidas.europa.eu/LoA/high`
 
-Autentimistase esitatakse JWT väites (_claim_) `acr` (Authentication Context Class Reference). Näiteks:
+Autentimistase esitatakse JWT väites (_claim_) `acr` (_Authentication Context Class Reference_). Näiteks:
 
 `"acr": "http://eidas.europa.eu/LoA/low"`
 
 Kui autentimistase ei ole teada, siis väidet ei esitata.
-
-JWT väidete kohta vt ka [https://www.iana.org/assignments/jwt/jwt.xhtml](https://www.iana.org/assignments/jwt/jwt.xhtml).
-
 
 ## Klientrakenduse registreerimine
 
@@ -189,6 +192,8 @@ JWT väidete kohta vt ka [https://www.iana.org/assignments/jwt/jwt.xhtml](https:
 
 ## Tehniline ülesehitus
 
+_Märkus. Järgnev hõlmab ka teenuse edasisi arendusjärke._
+
 Süsteem on ehitatud Apereo CAS platvormile [CAS].
 
 <img src='img/TEGELIK.PNG' style='width: 600px;'>
@@ -207,5 +212,5 @@ TARA autentimisteenuse teostavad järgmised tarkvarakomponendid:
 
 ***I arendusjärgus*** teostatakse: OpenID Connect haldur, teenusehalduri tööriist, klientrakenduste register, m-ID autentija.
 
-***II arendusjärgus*** teostatakse: eIDAS autentimine; muud autentimismeetodid.
+***II jj arendusjärkudes*** teostatakse muud autentimismeetodid.
  
