@@ -12,17 +12,21 @@ Vt ka: [Sonastik](Sonastik), [Viited](Viited)
 
 ## Ülevaade
 
-Teenuse tähtsamad omadused:
-- autentimisprotsessi aluseks on OpenID Connect 1.0 protokoll, täpsemalt volituskoodi  (_authorization code_) kasutusvoog. Arvestatud on ka protokolli avaliku sektori profiiliga [iGOV].
-- kogu teave autenditud kasutaja kohta edastatakse rakendusele identsustõendis (_ID token_).
-- rakendusele edastatakse ka eIDAS autentimistase, kui see on teada.
-- autentimismeetodi valib kasutaja autentimisteenuses.
+Autentimisteenus on Riigi Infosüsteemi Ameti uus pakutav teenus, millega asutus saab oma e-teenusesse lisada mobiil-ID kasutaja autentimise toe.
+
+Autentimismeetodina toetab teenus esialgu mobiil-ID-d. Järgmistes arendusjärkudes lisatakse teiste autentimismeetodite - ID-kaardiga, eIDAS jt - tugi.
+
+Teenuse tähtsamad tunnusjooned:
+1. autentimisprotsessi aluseks on OpenID Connect 1.0 protokoll, täpsemalt volituskoodi  (_authorization code_) kasutusvoog. Arvestatud on ka protokolli avaliku sektori profiiliga [iGOV].
+2. kogu teave autenditud kasutaja kohta edastatakse rakendusele identsustõendis (_ID token_).
+3. rakendusele edastatakse ka eIDAS autentimistase, kui see on teada.
+4. autentimismeetodi valib kasutaja autentimisteenuses.
 
 ## Autentimisprotsess
 
-<img src='img/VOOG.PNG' style='width: 600px;'>
+<img src='img/VOOG.PNG' style='width: 480px;'>
 
-1. ***Autentimispäringu saatmine***
+1 ***Autentimispäringu saatmine***
 
 Kasutaja vajutab nupule "Logi sisse" vms. Rakendus võib ka ise algatada autentimise.
 
@@ -37,18 +41,19 @@ response_type=code&
 client_id=58e7ba35aab5b4f1671a
 ````
 
-Ümbersuunamispäringu elemendid:
+Autentimispäringu elemendid:
 
 | URL-i element          | näide                       |  selgitus     |
 |------------------------|-----------------------------|---------------|
-| protokoll, host ja tee | `https://tara.eesti.ee/login` |               |
-| tagasipöördumis-URL    | `https://eteenindus.asutus.ee/Callback` | tagasipöördumis-URL-i valib asutus ise |
+| protokoll, host ja tee (_path_) | `https://tara.eesti.ee/login` |               |
+| tagasipöördumis-URL    | `https://eteenindus.
+asutus.ee/Callback` | tagasipöördumis-URL-i valib asutus ise |
 | autentimise skoop      | `scope=openid`               |        |
 | turvakood              | `state=hkMVY7vjuN7xyLl5`     | rakenduse serveripool genereerib turvakoodi, mis aitab tagada, et erinevate kasutajate autentimised sassi ei lähe ja ründaja ei saa protsessi vahele sekkuda |
 | autentimise tulemuse serverile edastamise viis; toetatud on volituskoodi viis `code` | `response_type=code` |   |
-| rakenduse identifikaator `client_id` | `client_id=58e7ba35aab5b4f1671a` | rakenduse identifikaatori annab RIA asutusele e-teenuse registreerimisel autentimisteenuse kasutajaks |
+| rakenduse identifikaator `client_id` | `client_id=58e7...` | rakenduse identifikaatori annab RIA asutusele e-teenuse registreerimisel autentimisteenuse kasutajaks |
 
-2. ***Autentimismeetodi valik***
+2 ***Autentimismeetodi valik***
 
 Kasutaja saabudes autentimisteenusesse avaneb talle leht "TARA isikutuvastusteenus". Lehel on toetatavad autentimismeetodid.
 
@@ -56,11 +61,11 @@ Teenuse I arendusjärgus toetatakse ühte autentimismeetodit - mobiil-ID-d.
 
 Kasutaja valib autentimismeetodi.
 
-3. ***Autentimine***
+3 ***Autentimine***
 
 Kasutaja läbib autentimisprotseduuri, vastavalt valitud autentimismeetodile. 
 
-4. ***Tagasisuunamine***
+4 ***Tagasisuunamine***
 
 Autentimisrakendus suunab kasutaja tagasi rakendusse (rakenduse poolt kaasa antud naasmisaadressile), andes kaasa volituskoodi (_authorization code_). Tehniliselt tehakse tagasisuunamine HTTP päringuga. Näide:
 
@@ -74,11 +79,12 @@ Tagasisuunamispäringu elemendid:
 
 | URL-i element          | näide                       |  selgitus     |
 |------------------------|-----------------------------|---------------|
-| tagasisuunamis-URL | https://eteenindus.asutus.ee/Callback? | ühtib autentimispäringus saadetuga |
-| volituskood `code` | `code=71ed5797c3d957817d31`  | ingl _authorization code_. Volituskood on ühekordne “lubatäht” identsustõendi saamiseks |
+| tagasisuunamis-URL | `https://eteenindus.asutus.ee
+/Callback?` | ühtib autentimispäringus saadetuga |
+| volituskood `code` | `code=71ed579...`  | ingl _authorization code_. Volituskood on ühekordne “lubatäht” identsustõendi saamiseks |
 | turvakood `state`            | `state=OFfVLKu0kNbJ2EZk`     |  unikaalne identifikaator () |
 
-5. ***Identsustõendi küsimine***
+5 ***Identsustõendi küsimine***
 
 Rakendus küsib autentimisteenuselt, volituskoodi esitades,  identsustõendi (_ID token_).
 
@@ -86,7 +92,6 @@ Autentimisteenus kontrollib, et identsustõendit küsib õige rakendus, koostab 
 
 ````
 {  
-   "at_hash":"fUW7LGn0churo+TXbC4T0A==",
    "sub":"11412090004",
    "amr":[  
       "AcceptUsersAuthenticationHandler"
@@ -110,25 +115,25 @@ Autentimisteenus kontrollib, et identsustõendit küsib õige rakendus, koostab 
 }
 ````
 
+Identsustõendis esitatakse järgmised väljad (_claims_). Identsustõend võib sisaldada muid Open ID Connect protokolli kohaseid välju, kuid neid teenuses ei kasutata. 
+
 | Identsustõendi element | näide                       |  selgitus     |
 |------------------------|-----------------------------|---------------|
-| `at_hash`              | | |
-| `sub`                  | "sub":"11412090004" | autenditud kasutaja identifikaator (isikukood või eIDAS identifikaator) |
-| `amr`                  | "amr":["AcceptUsersAuthenticationHandler"] | kasutaja autentimiseks kasutatud autentimismeetod |
-| `iss`              | "iss":"http:\/\/localhost:8080\/cas\/oidc"  | tõendi väljastaja (TARA-teenus) |
+| `sub`                  | `"sub":"11412090004"` | autenditud kasutaja identifikaator (isikukood või eIDAS identifikaator) |
+| `amr`                  | `"amr":["AcceptUsersAuthenticationHandler"]` | kasutaja autentimiseks kasutatud autentimismeetod |
+| `iss`              | `"iss":"http:\/\/localhost:8080\/cas\/oidc"` | tõendi väljastaja (TARA-teenus) |
 | `profile_attributes`              | | |
-| `personalCode`         | "personalCode":"11412090004" | autenditud kasutaja identifikaator (isikukood või eIDAS identifikaator) |
-| `firstName`              | "firstName":"MARY ÄNN" | autenditud kasutaja eesnimi |
-| `lastName`              | "lastName":"O\u2019CONNEŽ-ŠUSLIK"| autenditud kasutaja perekonnanimi |
-| `mobileNumber`          | "mobileNumber":"+37200000766" | |
-| `nonce`                 | "nonce":"qrstuvwxyzabcdef" | |
-| `aud`              | "aud":"openIdDemo" | autentimist küsinud infosüsteemi ID (kasutaja autentimisele suunamisel määratud `client_id` välja väärtus)|
+| `personalCode`         | `"personalCode":"11412090004"` | autenditud kasutaja identifikaator (isikukood või eIDAS identifikaator) |
+| `firstName`              | `"firstName":"MARY ÄNN"` | autenditud kasutaja eesnimi |
+| `lastName`              | `"lastName":"O\u2019CONNEŽ-ŠUSLIK"` | autenditud kasutaja perekonnanimi |
+| `mobileNumber`          | `"mobileNumber":"+37200000766"` | |
+| `nonce`                 | `"nonce":"qrstuvwxyzabcdef"` | |
+| `aud`              | `"aud":"openIdDemo"` | autentimist küsinud infosüsteemi ID (kasutaja autentimisele suunamisel määratud `client_id` välja väärtus)|
 | `state`            | `"state":"abcdefghijklmnop"` |   |
-| `exp`              | "exp":1505847597 | tõendi aegumisaeg |
-| `iat`              | "iat":1505818797 | tõendi väljaandmisaeg |
+| `exp`              | `"exp":1505847597` | tõendi aegumisaeg |
+| `iat`              | `"iat":1505818797` | tõendi väljaandmisaeg |
 | `acr`              | `"acr": "http://eidas.europa.eu/LoA/low"` | autentimistase, vastavalt eIDAS tasemetele|
-| `jti`              | "jti":"0e12bf29-2a3b-4a81-a85e-973d0a2303d1" | tõendi identifikaator |
-| `nbf`              | "nbf":1505818497|  _not before_, aeg, enne mida tõend ei kehti |
+| `jti`              | `"jti":"0e12bf29-2a3b-4a81-a85e-973d0a2303d1"` | tõendi identifikaator |
 
 Rakendus loob saadud identsustõendi alusel kasutajaga seansi. Seansi loomine ja pidamine on rakenduse kohustus. Kuidas seda teha, ei ole autentimisteenuse skoobis.
 
