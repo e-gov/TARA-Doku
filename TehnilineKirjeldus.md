@@ -40,7 +40,8 @@ Kasutaja vajutab nupule "Logi sisse" vms. Rakendus võib ka ise algatada autenti
 Rakendus moodustab OpenID Connect autentimispäringu ja saadab sirvijale korralduse kasutaja suunamiseks autentimisteenusesse (HTTP _redirect_). Autentimispäringu näide:
 
 ````
-HTTP GET https://auth.ria.ee/login?
+GET https://auth.ria.ee/login?
+
 redirect_uri=https%3A%2F%2eteenindus.asutus.ee%2FCallback&
 scope=user&
 state=hkMVY7vjuN7xyLl5&
@@ -92,7 +93,28 @@ Tagasisuunamispäringu elemendid:
 
 5 ***Identsustõendi küsimine***
 
-Rakendus küsib autentimisteenuselt, volituskoodi esitades,  identsustõendi (_ID token_).
+Rakendus küsib autentimisteenuselt, volituskoodi esitades,  identsustõendi (_ID token_). Tõendiküsimispäringu näide:
+
+````
+POST /token HTTP/1.1
+Host: tara.ria.ee/token
+Content-Type: application/x-www-form-urlencoded
+Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW
+
+grant_type=authorization_code&
+code=SplxlOBeZQQYbYS6WxSbIA&redirect_uri=https%3A%2F%2eteenindus.asutus.ee%2FCallback&
+client_id=58e7ba35aab5b4f1671a&
+client_secret={client_secret}
+````
+
+| URL-i element          | näide                       |  selgitus     |
+|------------------------|-----------------------------|---------------|
+| protokoll, host ja tee (_path_) | https://tara.ria.ee/token |   |
+| `grant_type`  | `grant_type=authorization_code` | nõutav väärtus `authorization_code` |
+| `code` | `code=Splx...` | autentimisteenuselt saadud volituskood | 
+| `redirect_uri` | `redirect_uri=https%3A%2F` | autentimispäringus saadetud ümbersuunamis-URI |
+| `client_id` | `client_id=58e7...` | klientrakenduse ID |
+| `client_secret` | `client_secret={client_secret}` | klientrakendusele antud salasõna |
 
 Autentimisteenus kontrollib, et identsustõendit küsib õige rakendus, koostab identsustõendi ning tagastab need rakendusele. Näide:
 
@@ -220,5 +242,5 @@ TARA autentimisteenuse teostavad järgmised tarkvarakomponendid:
 |---------------|-----------------|---------------|
 | teenuseteave (_server discovery_) | ? | ? |
 | kliendi registreerimine | - | - |
-| autentimine | `https://tara.ria.ee/login` | `https://tara-test.ria.ee/login` |
+| autentimine (_authorization_) | `https://tara.ria.ee/login` | `https://tara-test.ria.ee/login` |
 | tõendiväljastus (_token_) | `https://tara.ria.ee/token` | `https://tara-test.ria.ee/token` |
