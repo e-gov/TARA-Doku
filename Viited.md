@@ -4,13 +4,22 @@ permalink: Viited
 
 # Viited
 
-- [CAS] [Apereo CAS - Enterprise Single Sign On](https://github.com/apereo/cas)
+[CAS] [Apereo CAS - Enterprise Single Sign On](https://github.com/apereo/cas)
 [CAS Service Management]
-- [Core] OpenID Connect Core 1.0, 
+
+[Core] OpenID Connect Core 1.0, 
 [http://openid.net/specs/openid-connect-core-1_0.html](http://openid.net/specs/openid-connect-core-1_0.html)
-- [eIDAS] eIDAS Technical specification v.1.1, [https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/eIDAS+Profile](https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/eIDAS+Profile).
-- [iGOV] OpenID Connect avaliku sektori profiil, [International Government Assurance Profile (iGov) for OpenID Connect 1.0](http://openid.net/specs/openid-igov-openid-connect-1_0-02.html) (Draft 02)
-- [kavand] Riigi Infosüsteemi Amet. RIA SSO autentimisteenuse kavand. 18 lk.
-- [https://apereo.github.io/cas/4.2.x/installation/Service-Management.html](https://apereo.github.io/cas/4.2.x/installation/Service-Management.html)
-- [tasemed] Riigi Infosüsteemi Amet. eIDAS autentimistasemed. v1.0, 15.03.2017, [https://www.ria.ee/public/PKI/eIDAS-autentimistasemed.pdf](https://www.ria.ee/public/PKI/eIDAS-autentimistasemed.pdf).
-- [TP-192 RIA autentimisteenus](https://jira.ria.ee/browse/TP-93). RIA teenuseportfelli kirje. [mitteavalik]
+
+[eIDAS] eIDAS Technical specification v.1.1, [https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/eIDAS+Profile](https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/eIDAS+Profile).
+
+[iGOV] OpenID Connect avaliku sektori profiil, [International Government Assurance Profile (iGov) for OpenID Connect 1.0](http://openid.net/specs/openid-igov-openid-connect-1_0-02.html) (Draft 02)
+
+[kavand] Riigi Infosüsteemi Amet. RIA SSO autentimisteenuse kavand. 18 lk.
+
+[https://apereo.github.io/cas/4.2.x/installation/Service-Management.html](https://apereo.github.io/cas/4.2.x/installation/Service-Management.html)
+
+[mID] Sertifitseerimiskeskus. DigiDocService. Tehniline lisainfo. [https://www.sk.ee/teenused/kehtivuskinnituse-teenus/digidoc-veebiteenus/](https://www.sk.ee/teenused/kehtivuskinnituse-teenus/digidoc-veebiteenus/) 
+
+[tasemed] Riigi Infosüsteemi Amet. eIDAS autentimistasemed. v1.0, 15.03.2017, [https://www.ria.ee/public/PKI/eIDAS-autentimistasemed.pdf](https://www.ria.ee/public/PKI/eIDAS-autentimistasemed.pdf).
+
+[TP-192 RIA autentimisteenus](https://jira.ria.ee/browse/TP-93). RIA teenuseportfelli kirje. [mitteavalik]
