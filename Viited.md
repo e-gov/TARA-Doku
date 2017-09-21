@@ -13,4 +13,4 @@ permalink: Viited
 - [kavand] Riigi Infosüsteemi Amet. RIA SSO autentimisteenuse kavand. 18 lk.
 - [https://apereo.github.io/cas/4.2.x/installation/Service-Management.html](https://apereo.github.io/cas/4.2.x/installation/Service-Management.html)
 - [tasemed] Riigi Infosüsteemi Amet. eIDAS autentimistasemed. v1.0, 15.03.2017, [https://www.ria.ee/public/PKI/eIDAS-autentimistasemed.pdf](https://www.ria.ee/public/PKI/eIDAS-autentimistasemed.pdf).
-- [TP-93 RIA autentimisteenus](https://jira.ria.ee/browse/TP-93). RIA teenuseportfelli kirje. [mitteavalik]
+- [TP-192 RIA autentimisteenus](https://jira.ria.ee/browse/TP-93). RIA teenuseportfelli kirje. [mitteavalik]

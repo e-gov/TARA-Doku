@@ -213,4 +213,12 @@ TARA autentimisteenuse teostavad järgmised tarkvarakomponendid:
 ***I arendusjärgus*** teostatakse: OpenID Connect haldur, teenusehalduri tööriist, klientrakenduste register, m-ID autentija.
 
 ***II jj arendusjärkudes*** teostatakse muud autentimismeetodid.
- 
+
+## Otspunktid
+
+| otspunkt      | toodang-URL     | test-URL      |
+|---------------|-----------------|---------------|
+| teenuseteave (_server discovery_) | ? | ? |
+| kliendi registreerimine | - | - |
+| autentimine | `https://tara.ria.ee/login` | `https://tara-test.ria.ee/login` |
+| tõendiväljastus (_token_) | `https://tara.ria.ee/token` | `https://tara-test.ria.ee/token` |
