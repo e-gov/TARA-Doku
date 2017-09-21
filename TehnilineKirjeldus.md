@@ -102,14 +102,15 @@ Content-Type: application/x-www-form-urlencoded
 Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW
 
 grant_type=authorization_code&
-code=SplxlOBeZQQYbYS6WxSbIA&redirect_uri=https%3A%2F%2eteenindus.asutus.ee%2FCallback&
+code=SplxlOBeZQQYbYS6WxSbIA&
+redirect_uri=https%3A%2F%2eteenindus.asutus.ee%2FCallback&
 client_id=58e7ba35aab5b4f1671a&
 client_secret={client_secret}
 ````
 
 | URL-i element          | näide                       |  selgitus     |
 |------------------------|-----------------------------|---------------|
-| protokoll, host ja tee (_path_) | https://tara.ria.ee/token |   |
+| protokoll, host ja tee | `https://tara.ria.ee/token` |   |
 | `grant_type`  | `grant_type=authorization_code` | nõutav väärtus `authorization_code` |
 | `code` | `code=Splx...` | autentimisteenuselt saadud volituskood | 
 | `redirect_uri` | `redirect_uri=https%3A%2F` | autentimispäringus saadetud ümbersuunamis-URI |
@@ -242,5 +243,5 @@ TARA autentimisteenuse teostavad järgmised tarkvarakomponendid:
 |---------------|-----------------|---------------|
 | teenuseteave (_server discovery_) | ? | ? |
 | kliendi registreerimine | - | - |
-| autentimine (_authorization_) | `https://tara.ria.ee/login` | `https://tara-test.ria.ee/login` |
+| autentimine (_authorization_) | `https://tara.ria.ee/authorize` | `https://tara-test.ria.ee/authorize` |
 | tõendiväljastus (_token_) | `https://tara.ria.ee/token` | `https://tara-test.ria.ee/token` |
