@@ -12,6 +12,28 @@ E-teenus kasutab TARA OpenID Connect protokolli kohaselt. Edaspidi TARA võimalu
 - TOC
 {:toc}
 
+## Kood ja dokumentatsioon
+
+Kood ja dokumentatsioon üldjuhul on avalik. Piiratud juurdepääsuga on RIA-sisese paigaldusega, turvatestimisega ja teenuse haldusega seonduv. Avalik kood ja dokumentatsioon asub repodes:
+
+- [TARA-Server](https://github.com/e-gov/TARA-Server) (teenuse server)
+- [TARA-Client](https://github.com/e-gov/TARA-Client) (makettrakendus teenuse testimiseks)
+- [TARA-Doku](https://github.com/e-gov/TARA-Doku) (teenuse dokumentatsioon)
+
+| nimetus, asukoht             |  seis     | märkused |
+|------------------------------|-----------|----------|
+| 2 [Ärikirjeldus](Arikirjeldus) | kavand    |  |
+| 3 Teekaart - käesoleval lehel | kavand    |  |
+| 5 [Tehniline kirjeldus](TehnilineKirjeldus) | alustatud   | tarkvara spetsifikatsioon, sisaldab: arh-ijoonist, paigaldusjoonist, kasutusloo või -lugude kirjeldust, tarkvara oluliste mittefunktsionaalsete omaduste kirjeldust - teave kasutatud teekide kohta, logimise lahenduse kirjeldus, hinnang tööjõudlusele |
+| 6 [Sõnastik](Sonastik) | töös |  |
+| 7 [Viited](Viited)   | Töös |   |
+| 8 [SLA]()   |        | nii test-kui ka toodanguteenusele |
+| 9 [Paigaldusjuhend]()          |            |
+| 10 [Haldusjuhend]()   |            |
+| 11 [Testistrateegia](Testistrateegia)  | alustatud | kirjeldab, kuidas ja mida testitakse, joonis testimise setup-i kohta |
+| 12 [Testilood](Testilood) |  alustatud |  |
+| 13 [Testiraport]()      |            |  |
+
 ## Teekaart
 
 _Märkus. Teekaardil esitatut tuleb võtta mitte lukkulöödud plaanina, vaid indikatsioonina agiilselt toimuva arenduse suuna ja kavade kohta._
@@ -30,30 +52,6 @@ Töös, kaalumisel ja horisondil on tööpaketid:
 | ***"Uuring"*** | Ühekordse sisselogimise (Single Sign-On, SSO) teenusele lisamise vajalikkuse ja teostatavuse uuring. Sisaldab _Proof of Concept" (PoC) lahenduse teostust ja selle hindamist. PoC ja hindamine v-o tellitakse eraldi.  | 2 nädalat PoC, 2 nädalat hindamine |
 | ***"SSO"*** | Ühekordse sisselogimise (SSO) teenusele lisamine, lähtudes eelnevalt tehtud uuringu tulemustest. Sisaldab uuringus tehtud PoC lahenduse viimistlemist, dokumenteerimist ja testimist. | 2 nädalat |
 | ***"Lisaatribuudid"*** | Teenuse laiendamine täiendavate atribuutide pakkumisega. Nt päring äriregistrisse esindusõiguse kindlakstegemiseks, päring Rahvastikuregistrisse, võimalik, et päring Personali- ja palgaandmete andmekogusse (SAP-i). | 2 nädalat |
-
-## Kood ja dokumentatsioon
-
-Kood ja dokumentatsioon üldjuhul on avalik. Piiratud juurdepääsuga on RIA-sisese paigaldusega, turvatestimisega ja teenuse haldusega seonduv. Avalik kood ja dokumentatsioon asub repodes:
-
-- [TARA-Server](https://github.com/e-gov/TARA-Server) (teenuse server)
-- [TARA-Client](https://github.com/e-gov/TARA-Client) (makettrakendus teenuse testimiseks)
-- [TARA-Doku](https://github.com/e-gov/TARA-Doku) (teenuse dokumentatsioon)
-
-| nimetus, asukoht             |  seis     | märkused |
-|------------------------------|-----------|----------|
-| 1 [Teabeleht](Teabeleht)       | kavand    |  |
-| 2 [Ärikirjeldus](Arikirjeldus) | kavand    |  |
-| 3 Teekaart - käesoleval lehel | kavand    |  |
-| 4 [Tehnilised tingimused ja liidestamise juhend](Juhend) | alustatud |  |
-| 5 [Tehniline kirjeldus](TehnilineKirjeldus) | alustatud   | tarkvara spetsifikatsioon, sisaldab: arh-ijoonist, paigaldusjoonist, kasutusloo või -lugude kirjeldust, tarkvara oluliste mittefunktsionaalsete omaduste kirjeldust - teave kasutatud teekide kohta, logimise lahenduse kirjeldus, hinnang tööjõudlusele |
-| 6 [Sõnastik](Sonastik) | töös |  |
-| 7 [Viited](Viited)   | Töös |   |
-| 8 [SLA]()   |        | nii test-kui ka toodanguteenusele |
-| 9 [Paigaldusjuhend]()          |            |
-| 10 [Haldusjuhend]()   |            |
-| 11 [Testistrateegia](Testistrateegia)  | alustatud | kirjeldab, kuidas ja mida testitakse, joonis testimise setup-i kohta |
-| 12 [Testilood](Testilood) |  alustatud |  |
-| 13 [Testiraport]()      |            |  |
 
 ## I arendusjärk (töös)
 

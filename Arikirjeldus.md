@@ -2,18 +2,54 @@
 permalink: Arikirjeldus
 ---
 
-# Ärikirjeldus
+# TARA autentimisteenus
 
-Autentimisteenus on Riigi Infosüsteemi Ameti uus pakutav teenus, millega asutus saab oma e-teenusesse lisada mobiil-ID kasutaja autentimise toe.
+TARA autentimisteenus on Riigi Infosüsteemi Ameti uus pakutav teenus, millega asutus saab oma e-teenusesse lisada mobiil-ID kasutaja autentimise toe.
 
-Autentimismeetodina toetab teenus esialgu mobiil-ID-d. Kavas on lisada teisi autentimismeetodeid.
+Autentimismeetodina toetab teenus esialgu mobiil-ID-d. Hiljem lisanduvad teised autentimismeetodid (ID-kaart, eIDAS autentimine).
 
 E-teenus liidestatakse autentimisteenusega OpenID Connect protokolli kohaselt. 
 
-RIA autentimisteenus on eriti suunatud asutustele, kes tahavad  pakkuda oma klientidele mobiil-ID-ga autentimise võimalust, kuid ei soovi ise Sertifitseerimiskeskuse DigiDoc teenusega liidestumist  teha.
+***Kellele?*** Avaliku sektori asutustele, kes soovivad oma e-teenustes mobiil-ID kasutajaid autentida, ise seda tegemata.
 
-[Tehnilised tingimused ja liidestamise juhend](Juhend)
+***Tehnilised tingimused?***
+- E-teenus liidestatakse autentimisteenusega OpenID Connect protokolli kohaselt.
+- Autentimismeetodina toetame esialgu mobiil-ID-d.
+- Teenuse esimese järgu valmides on kavas lisada teisi autentimismeetodeid, sh eIDAS e välismaa eID kasutaja autentimine.
+
+***Kuidas liituda?*** Asutusel tuleb:<br>
+1. välja selgitada, kas ja millistes e-teenustes RIA autentimisteenust tahab kasutada<br>
+2. kavandada ja tellida liidestamistöö
+  - autentimiskomponendi täiendamine OpenID Connect-ga või väljavahetamine
+  - hinnanguline töömaht: kogenud arendajal u 2 päeva, kui OpenID Connect-i pole varem teinud, siis 2 nädalat.
+3. teostada arendus<br>
+4. esitada RIA-le taotlus teenusega liitumiseks<br>
+  - seejuures esitada kasutajate arvu prognoos
+  - RIA registreerib teie rakenduse teenuse kliendiks ja avab teile testteenuse.
+5. testida liidest RIA testteenuse vastu
+  - RIA abistab võimalike probleemide lahendamisel
+6. eduka testimise järel taodelda ühendamist toodanguteenusega<br>
+  - RIA avab toodanguteenuse.
+
+***Millal?***
+- teenuse ärikirjelduse, tehnilised tingimused ja liidestamise juhendi avaldame 2 nädala pärast
+- testteenuse - 2 nädala pärast
+- tootmisteenuse - 3 nädala pärast
+
+***Mida pakume?***
+- teenuse ärikirjeldus
+- SLA-d
+- tehnilised tingimused ja liidestamise juhend
+- testteenus
+- tootmisteenus
+- nõustamine ja tugi
+
+Ootame asutusi, kes sooviksid olla teenuse pilootkasutajad. Kontakt: `Piret.Elm@ria.ee`.
+
+[Tehniline kirjeldus](TehnilineKirjeldus)
 
 ![](img/KUVA-04.png)
+
+----
 
 Riigi Infosüsteemi Amet, help@ria.ee, [www.ria.ee](www.ria.ee)
