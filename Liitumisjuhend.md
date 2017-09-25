@@ -4,24 +4,25 @@ permalink: Liitumisjuhend
 
 # Liitumisjuhend
 
-Käesolev juhend kirjeldab asutuse tegevusi TARA autentimisteenusega liitumisel.
+Käesolev juhend kirjeldab teenust kasutava asutuse ja teenusepakkuja (RIA) tegevusi TARA autentimisteenuse kasutuselevõtul.
 
 Vt ka: [Sonastik](Sonastik), [Viited](Viited)
 
-## 1 liidetava e-teenuse (või -teenuste) väljaselgitamine
+## Selgitada välja liidetavav e-teenus (või -teenused)
 
 Asutus selgitab välja, kas ja millistes oma e-teenustes soovib TARA autentimisteenust kasutada. Selleks palume:
 - tutvuda TARA-teenuse [ärikirjeldusega](Arikirjeldus), teenustaseme leppega (SLA-ga), vajadusel ka [tehnilise kirjeldusega](TehnilineKirjeldus)
-- võib olla kasulik tutvuda ka teenuse [teekaardiga](https://e-gov.github.io/TARA-Doku/#teekaart)
+- heita pilk ka teenuse [teekaardiga](https://e-gov.github.io/TARA-Doku/#teekaart)
 - vajadusel pidada nõu RIA-ga, `help@ria.ee`.
 
-## 2 arenduse kavandamine ja teostamine
+## Kavandada ja teostada arendus
 Asutus kavandab ja teostab teenuse kasutamiseks vajalikud arendustööd. 
   - klientrakenduse täiendamine OpenID Connect protokolli kohase klientkomponendiga
   - hinnanguline töömaht: kogenud arendajal u 2 päeva, kui OpenID Connect-i pole varem teinud, siis 2 nädalat
-  - aluseks [tehniline kirjeldus](TehnilineKirjeldus).
+  - aluseks [tehniline kirjeldus](TehnilineKirjeldus)
+  - kasulikku võib leida [makettrakendusest](https://github.com/e-gov/TARA-Client).
 
-## 3 testteenusega liitumine
+## Liituda TARA testteenusega
 Asutus esitab taotluse testteenusega liitumiseks. Taotluse võib esitada juba enne arenduse algust. Taotluses palume teatada:
 - e-teenus või -teenused, mille kasutajaid soovitakse TARA abil autentida
 - kasutajate arvu prognoos
@@ -45,16 +46,16 @@ Testteenuse URL-id:
 | autentimine (_authorization_) | `https://tara-test.ria.ee/authorize` | 
 | tõendiväljastus (_token_) | `https://tara-test.ria.ee/token` | 
 
-## 4 liidestuse testimine
-- Asutus testib liidestust.
-- RIA abistab võimalike probleemide lahendamisel
+## Testida liidestust
+- Asutus testib liidestust
+- RIA abistab võimalike probleemide lahendamisel.
 
-## 5 toodanguteenusega liitumine
+## Liituda TARA toodanguteenusega
 Eduka testimise järel asutus esitab taotluse toodanguteenuse avamiseks klientrakendusele. Taotluses näidata:
-- klientrakenduse toodanguversiooni tagasisuunamis-URL (_redirect-URL_), OpenID Connect protokolli kohaselt
+- klientrakenduse toodanguversiooni tagasisuunamis-URL (_redirect-URL_), OpenID Connect protokolli kohaselt.
 
-RIA, rahuldades taotlus:
-- väljastab asutusele klientrakenduse toodanguversiooni salasõna `client_secret`.
+RIA, rahuldades taotluse:
+- väljastab asutusele klientrakenduse toodanguversiooni salasõna `client_secret`
 - avab asutuse klientrakenduse toodanguversioonile juurdepääsu toodanguteenusele.
 
 Toodanguteenuse URL-id:
