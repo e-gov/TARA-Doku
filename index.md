@@ -23,17 +23,18 @@ Kood ja dokumentatsioon üldjuhul on avalik. Piiratud juurdepääsuga on RIA-sis
 
 | nimetus, asukoht             |  seis     | märkused |
 |------------------------------|-----------|----------|
-| 2 [Ärikirjeldus](Arikirjeldus) | kavand    |  |
+| 1 [Ärikirjeldus](Arikirjeldus) | kavand    |  |
+| 2 [Liitumisjuhend](Liitumisjuhend) | |
 | 3 Teekaart - käesoleval lehel | kavand    |  |
-| 5 [Tehniline kirjeldus](TehnilineKirjeldus) | alustatud   | tarkvara spetsifikatsioon, sisaldab: arh-ijoonist, paigaldusjoonist, kasutusloo või -lugude kirjeldust, tarkvara oluliste mittefunktsionaalsete omaduste kirjeldust - teave kasutatud teekide kohta, logimise lahenduse kirjeldus, hinnang tööjõudlusele |
-| 6 [Sõnastik](Sonastik) | töös |  |
-| 7 [Viited](Viited)   | Töös |   |
-| 8 [SLA]()   |        | nii test-kui ka toodanguteenusele |
-| 9 [Paigaldusjuhend]()          |            |
-| 10 [Haldusjuhend]()   |            |
-| 11 [Testistrateegia](Testistrateegia)  | alustatud | kirjeldab, kuidas ja mida testitakse, joonis testimise setup-i kohta |
-| 12 [Testilood](Testilood) |  alustatud |  |
-| 13 [Testiraport]()      |            |  |
+| 4 [Tehniline kirjeldus](TehnilineKirjeldus) | alustatud   | tarkvara spetsifikatsioon, sisaldab: arh-ijoonist, paigaldusjoonist, kasutusloo või -lugude kirjeldust, tarkvara oluliste mittefunktsionaalsete omaduste kirjeldust - teave kasutatud teekide kohta, logimise lahenduse kirjeldus, hinnang tööjõudlusele |
+| 5 [Sõnastik](Sonastik) | töös |  |
+| 6 [Viited](Viited)   | töös |   |
+| 7 [SLA]()   |        | nii test-kui ka toodanguteenusele, töös |
+| 8 [Paigaldusjuhend]() | töös  |
+| 9 [Haldusjuhend]()   |            |
+| 10 [Testistrateegia](Testistrateegia)  | alustatud | kirjeldab, kuidas ja mida testitakse, joonis testimise setup-i kohta |
+| 11 [Testilood](Testilood) |  alustatud |  |
+| 12 [Testiraport]()      |            |  |
 
 ## Teekaart
 
