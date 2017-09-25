@@ -33,7 +33,7 @@ Autentimisprotsess koosneb 5 sammust:
 4. Tagasisuunamine
 5. Identsustõendi küsimine.
 
-1 ***Autentimispäringu saatmine***
+### 1 Autentimispäringu saatmine
 
 Kasutaja vajutab nupule "Logi sisse" vms. Rakendus võib ka ise algatada autentimise.
 
@@ -49,18 +49,18 @@ response_type=code&
 client_id=58e7ba35aab5b4f1671a
 ````
 
-Autentimispäringu elemendid:
+Autentimispäringu elemendid (kõik elemendid on kohustuslikud):
 
 | URL-i element          | näide                       |  selgitus     |
 |------------------------|-----------------------------|---------------|
-| protokoll, host ja tee (_path_) | `https://tara.eesti.ee/login` |               |
+| protokoll, host ja tee (_path_) | `https://tara.eesti.ee/authorize` |               |
 | tagasipöördumis-URL    | `https://et...ee/Callback` | tagasipöördumis-URL-i valib asutus ise |
-| autentimise skoop      | `scope=openid`               |        |
-| turvakood              | `state=hkMVY7vjuN7xyLl5`     | rakenduse serveripool genereerib turvakoodi, mis aitab tagada, et erinevate kasutajate autentimised sassi ei lähe ja ründaja ei saa protsessi vahele sekkuda |
-| autentimise tulemuse serverile edastamise viis; toetatud on volituskoodi viis `code` | `response_type=code` |   |
-| rakenduse identifikaator `client_id` | `client_id=58e7...` | rakenduse identifikaatori annab RIA asutusele e-teenuse registreerimisel autentimisteenuse kasutajaks |
+| autentimise skoop `scope`; toetatud on väärtus `openid` | `scope=openid`               |        |
+| turvakood `state` | `state=hkMVY7vjuN7xyLl5`     | klientrakenduse serveripool peab genereerima ja päringus esitama turvakoodi, mis aitab tagada, et erinevate kasutajate autentimised sassi ei lähe ja ründaja ei saa protsessi vahele sekkuda. Turvakood peegeldatakse tagasi vastuses; klientrakendus peab kontrollima, et saab vastuses sama turvakoodi, mille saatis päringus.  |
+| autentimise tulemuse serverile edastamise viis `response_type`; toetatud on volituskoodi viis `code` | `response_type=code` |   |
+| rakenduse identifikaator `client_id` | `client_id=58e7...` | rakenduse identifikaatori annab RIA asutusele klientrakenduse registreerimisel autentimisteenuse kasutajaks |
 
-2 ***Autentimismeetodi valik***
+### 2 Autentimismeetodi valik
 
 Kasutaja saabudes autentimisteenusesse avaneb talle leht "TARA isikutuvastusteenus". Lehel on toetatavad autentimismeetodid.
 
@@ -68,11 +68,11 @@ Teenuse I arendusjärgus toetatakse ühte autentimismeetodit - mobiil-ID-d.
 
 Kasutaja valib autentimismeetodi.
 
-3 ***Autentimine***
+### 3 Autentimine
 
 Kasutaja läbib autentimisprotseduuri, vastavalt valitud autentimismeetodile. 
 
-4 ***Tagasisuunamine***
+### 4 Tagasisuunamine
 
 Autentimisrakendus suunab kasutaja tagasi rakendusse (rakenduse poolt kaasa antud naasmisaadressile), andes kaasa volituskoodi (_authorization code_). Tehniliselt tehakse tagasisuunamine HTTP päringuga. Näide:
 
@@ -91,7 +91,7 @@ Tagasisuunamispäringu elemendid:
 | volituskood `code` | `code=71ed579...`  | ingl _authorization code_. Volituskood on ühekordne “lubatäht” identsustõendi saamiseks |
 | turvakood `state`            | `state=OFfVLKu0kNbJ2EZk`     |  unikaalne identifikaator () |
 
-5 ***Identsustõendi küsimine***
+### 5 Identsustõendi küsimine
 
 Rakendus küsib autentimisteenuselt, volituskoodi esitades,  identsustõendi (_ID token_). Tõendiküsimispäringu näide:
 

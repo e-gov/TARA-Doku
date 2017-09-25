@@ -22,6 +22,8 @@ permalink: Viited
 
 [mID] Sertifitseerimiskeskus. DigiDocService. Tehniline lisainfo. [https://www.sk.ee/teenused/kehtivuskinnituse-teenus/digidoc-veebiteenus/](https://www.sk.ee/teenused/kehtivuskinnituse-teenus/digidoc-veebiteenus/) 
 
+[Semver] Semantic Versioning. [http://semver.org/](http://semver.org/)
+
 [tasemed] Riigi Infosüsteemi Amet. eIDAS autentimistasemed. v1.0, 15.03.2017, [https://www.ria.ee/public/PKI/eIDAS-autentimistasemed.pdf](https://www.ria.ee/public/PKI/eIDAS-autentimistasemed.pdf).
 
 [TP-192 RIA autentimisteenus](https://jira.ria.ee/browse/TP-93). RIA teenuseportfelli kirje. [mitteavalik]
