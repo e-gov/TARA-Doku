@@ -56,3 +56,12 @@ Eduka testimise järel asutus esitab taotluse toodanguteenuse avamiseks klientra
 RIA, rahuldades taotlus:
 - väljastab asutusele klientrakenduse toodanguversiooni salasõna `client_secret`.
 - avab asutuse klientrakenduse toodanguversioonile juurdepääsu toodanguteenusele.
+
+Toodanguteenuse URL-id:
+
+| otspunkt      |                        URL      |
+|---------------|---------------------------------|
+| teenuseteave (_server discovery_) | `https://tara.ria.ee/oidc/.well-known`, `https://tara.ria.ee/oidc/.well-known/openid-configuration` |
+| teenuse avalik allkirjastamisvõti | `https://tara.ria.ee/oidc/jwks` |
+| autentimine (_authorization_) | `https://tara.ria.ee/authorize` | 
+| tõendiväljastus (_token_) | `https://tara.ria.ee/token` | 
