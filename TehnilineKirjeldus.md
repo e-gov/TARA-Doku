@@ -183,33 +183,45 @@ Kui autentimistase ei ole teada, siis väidet ei esitata.
 
 ## Klientrakenduse registreerimine
 
+Klientrakendus registreeritakse TARA-teenuses RIA teenusehalduri poolt. Registreerimine on eelduseks juurdepääsu saamisele teenusele. Registreerimine tehakse test- ja toodanguteenuse jaoks eraldi. Toodanguteenuses registreerimise eelduseks on liidestuse edukas testimine testteenuses.
+
+Märkus. Klientrakenduse registreerimise kohta lähemalt vt [CAS OpenID Connect].
+
 ````
-  {
-  "@class": "org.apereo.cas.services.OidcRegisteredService",
-  "clientId": "openIdDemo",
-  "clientSecret": "secret",
-  "serviceId": "https://localhost:8451/oauth/response",
-  "signIdToken": true,
-  "name": "openIdDemo",
-  "id": 322,
-  "evaluationOrder": 100,
-  "bypassApprovalPrompt": true,
-  "jsonFormat": true,
-  "ssoEnabled": false,
-  "generateRefreshToken": false,
-  "description": "openIdDemo",
-  "scopes": [
-    "java.util.HashSet", [ "openid",  "profile" ]
+{
+  "issuer": "https://sso-fe1.arendus.kit",
+  "scopes_supported": [
+    "openid"
   ],
-  "attributeReleasePolicy": {
-    "@class": "org.apereo.cas.services.ReturnAllAttributeReleasePolicy",
-    "principalAttributesRepository":
-    {
-    "@class": "org.apereo.cas.authentication.principal.DefaultPrincipalAttributesRepository",
-    "expiration": 2,
-    "timeUnit": "HOURS"
-    }
-  }
+  "response_types_supported": [
+    "code"
+  ],
+  "subject_types_supported": [
+    "public"
+  ],
+  "claim_types_supported": [
+    "normal"
+  ],
+  "claims_supported": [
+    "sub",
+    "firstName",
+    "lastName",
+    "mobileNumber",
+    "personalCode"
+  ],
+  "grant_types_supported": [
+    "authorization_code"
+  ],
+  "id_token_signing_alg_values_supported": [
+    "none",
+    "RS256"
+  ],
+  "jwks_uri": "https://sso-fe1.arendus.kit/oidc/jwks",
+  "authorization_endpoint": "https://sso-fe1.arendus.kit/oidc/authorize",
+  "token_endpoint": "https://sso-fe1.arendus.kit/oidc/accessToken",
+  "userinfo_endpoint": "https://sso-fe1.arendus.kit/oidc/profile",
+  "registration_endpoint": "https://sso-fe1.arendus.kit/oidc/register",
+  "end_session_endpoint": "https://sso-fe1.arendus.kit/logout"
 }
 ````
 
@@ -217,7 +229,7 @@ Kui autentimistase ei ole teada, siis väidet ei esitata.
 
 _Märkus. Järgnev hõlmab ka teenuse edasisi arendusjärke._
 
-Süsteem on ehitatud Apereo CAS platvormile [CAS].
+Süsteem on ehitatud Apereo CAS platvormile, versioon 5.1 [CAS].
 
 <img src='img/TEGELIK.PNG' style='width: 600px;'>
 
@@ -239,9 +251,24 @@ TARA autentimisteenuse teostavad järgmised tarkvarakomponendid:
 
 ## Otspunktid
 
-| otspunkt      | toodang-URL     | test-URL      |
-|---------------|-----------------|---------------|
-| teenuseteave (_server discovery_) | ? | ? |
-| kliendi registreerimine | - | - |
-| autentimine (_authorization_) | `https://tara.ria.ee/authorize` | `https://tara-test.ria.ee/authorize` |
-| tõendiväljastus (_token_) | `https://tara.ria.ee/token` | `https://tara-test.ria.ee/token` |
+Testteenus
+
+| otspunkt      |                        URL      |
+|---------------|---------------------------------|
+| teenuseteave (_server discovery_) | `https://tara-test.ria.ee/oidc/.well-known`, `https://tara.ria.ee/oidc/.well-known/openid-configuration` |
+| teenuse avalik allkirjastamisvõti | `https://tara-test.ria.ee/oidc/jwks` |
+| kliendi registreerimine | dünaamilist registreerimist ei toetata, registreerimine staatiliselt, `help@ria.ee` kaudu |
+| autentimine (_authorization_) | `https://tara-test.ria.ee/authorize` | 
+| tõendiväljastus (_token_) | `https://tara-test.ria.ee/token` | 
+
+Toodanguteenus
+
+| otspunkt      |                        URL      |
+|---------------|---------------------------------|
+| teenuseteave (_server discovery_) | `https://tara.ria.ee/oidc/.well-known`, `https://tara.ria.ee/oidc/.well-known/openid-configuration` |
+| teenuse avalik allkirjastamisvõti | `https://tara.ria.ee/oidc/jwks` |
+| kliendi registreerimine | dünaamilist registreerimist ei toetata, registreerimine staatiliselt, `help@ria.ee` kaudu |
+| autentimine (_authorization_) | `https://tara.ria.ee/authorize` | 
+| tõendiväljastus (_token_) | `https://tara.ria.ee/token` | 
+
+Märkus. Otspunktide kohta lähemalt vt [CAS OpenID Connect].

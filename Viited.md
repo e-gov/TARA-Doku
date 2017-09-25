@@ -7,6 +7,8 @@ permalink: Viited
 [CAS] [Apereo CAS - Enterprise Single Sign On](https://github.com/apereo/cas)
 [CAS Service Management]
 
+[CAS OpenID Connect] [CAS OpenID Connect Authentication](https://apereo.github.io/cas/5.1.x/installation/OIDC-Authentication.html).
+
 [Core] OpenID Connect Core 1.0, 
 [http://openid.net/specs/openid-connect-core-1_0.html](http://openid.net/specs/openid-connect-core-1_0.html)
 

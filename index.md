@@ -19,6 +19,7 @@ Kood ja dokumentatsioon üldjuhul on avalik. Piiratud juurdepääsuga on RIA-sis
 - [TARA-Server](https://github.com/e-gov/TARA-Server) (teenuse server)
 - [TARA-Client](https://github.com/e-gov/TARA-Client) (makettrakendus teenuse testimiseks)
 - [TARA-Doku](https://github.com/e-gov/TARA-Doku) (teenuse dokumentatsioon)
+- [TARA-Management](https://github.com/e-gov/TARA-Management) (teenuse haldustööriist)
 
 | nimetus, asukoht             |  seis     | märkused |
 |------------------------------|-----------|----------|

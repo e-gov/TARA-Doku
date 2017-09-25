@@ -19,6 +19,8 @@ Käesolev dokument määratleb TARA-teenuse kasutamise, haldamise ja arendamise 
 - _RIA_, Riigi Infosüsteemi Amet, osutab TARA-teenust.
 - _registreerimine_, klientrakenduse registreerimine TARA-teenuse kasutajaks, vastavalt OpenID Connect protokolli nõuetele.
 - _tagatistase_, Euroopa Liidu eIDAS määruse kohane eID ehk autentimislahenduse tagatistase [tasemed].
+- _testteenus_, TARA-teenuse instants, mida kasutatakse teenusega liidestumiste testimiseks.
+- _toodanguteenus_, TARA-teenuse instants, kus toimub reaalsete andmetega, toodangutähenduses autentimine.
 - _TARA autentimisteenus_, lühidalt TARA-teenus, Riigi Infosüsteemi Ameti  osutatav teenus, millega asutus saab oma e-teenusesse lisada mobiil-ID kasutaja autentimise toe. Teenuse II arendusjärgus lisatakse eIDAS jt autentimismeetodite tugi, hiljem võimalik, et ka ühekordse sisselogimise (SSO) tugi.
 - _volituskood_, (_authorization code_), juhuarv, mille esitamisel rakendus saab autentimisteenuselt identsustõendi ja pääsutalongi.
 - _välismaalane_, Euroopa Liidu teise riigi eID kasutaja.
