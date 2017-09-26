@@ -10,7 +10,7 @@ permalink: TehnilineKirjeldus
 
 Vt ka: [Sonastik](Sonastik), [Viited](Viited)
 
-## Ülevaade
+## 1 Ülevaade
 
 Autentimisteenus on Riigi Infosüsteemi Ameti uus pakutav teenus, millega asutus saab oma e-teenusesse lisada mobiil-ID kasutaja autentimise toe.
 
@@ -22,7 +22,7 @@ Teenuse tähtsamad tunnusjooned:
 3. rakendusele edastatakse ka eIDAS autentimistase, kui see on teada.
 4. autentimismeetodi valib kasutaja autentimisteenuses.
 
-## Autentimisprotsess
+## 2 Autentimisprotsess
 
 <img src='img/VOOG.PNG' style='width: 480px;'>
 
@@ -33,7 +33,7 @@ Autentimisprotsess koosneb 5 sammust:
 4. Tagasisuunamine
 5. Identsustõendi küsimine.
 
-1 ***Autentimispäringu saatmine***
+### 2.1 Autentimispäringu saatmine
 
 Kasutaja vajutab nupule "Logi sisse" vms. Rakendus võib ka ise algatada autentimise.
 
@@ -60,7 +60,7 @@ Autentimispäringu elemendid:
 | autentimise tulemuse serverile edastamise viis; toetatud on volituskoodi viis `code` | `response_type=code` |   |
 | rakenduse identifikaator `client_id` | `client_id=58e7...` | rakenduse identifikaatori annab RIA asutusele e-teenuse registreerimisel autentimisteenuse kasutajaks |
 
-2 ***Autentimismeetodi valik***
+### 2.2 Autentimismeetodi valik
 
 Kasutaja saabudes autentimisteenusesse avaneb talle leht "TARA isikutuvastusteenus". Lehel on toetatavad autentimismeetodid.
 
@@ -68,11 +68,11 @@ Teenuse I arendusjärgus toetatakse ühte autentimismeetodit - mobiil-ID-d.
 
 Kasutaja valib autentimismeetodi.
 
-3 ***Autentimine***
+### 2.3 Autentimine
 
 Kasutaja läbib autentimisprotseduuri, vastavalt valitud autentimismeetodile. 
 
-4 ***Tagasisuunamine***
+### 2.4 Tagasisuunamine
 
 Autentimisrakendus suunab kasutaja tagasi rakendusse (rakenduse poolt kaasa antud naasmisaadressile), andes kaasa volituskoodi (_authorization code_). Tehniliselt tehakse tagasisuunamine HTTP päringuga. Näide:
 
@@ -91,7 +91,7 @@ Tagasisuunamispäringu elemendid:
 | volituskood `code` | `code=71ed579...`  | ingl _authorization code_. Volituskood on ühekordne “lubatäht” identsustõendi saamiseks |
 | turvakood `state`            | `state=OFfVLKu0kNbJ2EZk`     |  unikaalne identifikaator () |
 
-5 ***Identsustõendi küsimine***
+### 2.5 Identsustõendi küsimine
 
 Rakendus küsib autentimisteenuselt, volituskoodi esitades,  identsustõendi (_ID token_). Tõendiküsimispäringu näide:
 
@@ -150,7 +150,7 @@ JWT väljade tähenduse kohta vt vajadusel [https://www.iana.org/assignments/jwt
 | Identsustõendi element | näide                       |  selgitus     |
 |------------------------|-----------------------------|---------------|
 | `sub`                  | `"sub":"11412090004"` | autenditud kasutaja identifikaator (isikukood või eIDAS identifikaator) |
-| `amr`                  | `"amr":["mID"]` | kasutaja autentimiseks kasutatud autentimismeetod |
+| `amr`                  | `"amr":["mID"]` | kasutaja autentimiseks kasutatud autentimismeetod (_Authentication Method Reference_) |
 | `iss`              | `"iss":"http:\/\/localhost:8080\/cas\/oidc"` | tõendi väljastaja (TARA-teenus) |
 | `personalCode`         | `"personalCode":"11412090004"` | autenditud kasutaja identifikaator (isikukood või eIDAS identifikaator) |
 | `firstName`              | `"firstName":"MARY ANN"` | autenditud kasutaja eesnimi |
@@ -161,12 +161,12 @@ JWT väljade tähenduse kohta vt vajadusel [https://www.iana.org/assignments/jwt
 | `state`            | `"state":"abcdefghijklmnop"` |   |
 | `exp`              | `"exp":1505847597` | tõendi aegumisaeg |
 | `iat`              | `"iat":1505818797` | tõendi väljaandmisaeg |
-| `acr`              | `"acr": "http://eidas.europa.eu/LoA/low"` | autentimistase, vastavalt eIDAS tasemetele|
+| `acr`              | `"acr": "http://eidas.europa.eu/LoA/low"` | autentimistase, vastavalt eIDAS tasemetele (_Authentication Context Class Reference_) |
 | `jti`              | `"jti":"0e12bf29-2a3b-4a81-a85e-973d0a2303d1"` | tõendi identifikaator |
 
 Rakendus loob saadud identsustõendi alusel kasutajaga seansi. Seansi loomine ja pidamine on rakenduse kohustus. Kuidas seda teha, ei ole autentimisteenuse skoobis.
 
-## Autentimistasemed
+## 3 Autentimistasemed
 
 Klientrakendusele väljastatakse identiteeditõendis (_ID token_) ka usaldustase, millega autentimine läbi viidi (autentimistase), kui kasutatud autentimismeetodile on usaldustase määratud. 
 
@@ -181,7 +181,36 @@ Autentimistase esitatakse JWT väites (_claim_) `acr` (_Authentication Context C
 
 Kui autentimistase ei ole teada, siis väidet ei esitata.
 
-## Klientrakenduse registreerimine
+Autentimistasemete kohta lähemalt vt [autentimistasemed].
+
+## 4 Autentimismeetodid
+
+Autentimisteenus pakub järgmisi autentimismeetodeid:
+
+|  kood | nimetus |
+|-------|---------|
+| `mID` | mobiil-id [DSS] |
+
+Märkus. Autentimismeetodite lisandudes tabel täieneb. Vt ka [RFC8176].
+
+Klientrakendusele avatud autentimismeetodid määratakse klientrakenduse registreerimisel.
+
+Isiku autentimiseks kasutatud autentimismeetod või -meetodid näidatakse identsustõendis, väljas `amr`. 
+
+## 5 Isikuandmete vorming
+
+Eduka autentimise korral edastatakse isikuandmed so autenditud isikut identifitseerivad ja kirjeldavad andmed identsustõendis klientrakendusele. Kuna teenus hakkab toetama ka piiriülest eIDAS-autentimismeetodit, esitatakse isikuandmed eIDAS nõuetele vastavas, ühtlustatud vormingus - ka siis, kui autentimisel kasutati muud autentimismeetodit. (Vt [eIDAS SAML Attribute Profile] jaotis 2.2 "Attributes for Natural Persons"). Autentimismeetodist tulevad isikuandmed vajadusel teisendatakse eIDAS nõuetele vastavasse vormingusse.
+
+### 5.1 Isikuandmete teisendus mobiil-ID-ga autentimisel
+
+|  DigiDocService poolt väljastatud andmed | eIDAS atribuut | väljastatakse identsustõendis |
+|------------------------------------------|----------------|-------------------------------|
+|    ?                                     | PersonIdentifier, vt _idem_, jaotis 2.2.3 | OpenID Connect väide (_claim_) `sub`, väärtuseks isikukood, eesliitega `EE` |
+|    ?                                     | FamilyName, vt _idem_, jaotis 2.2.4 | OpenID Connect väide (_claim_) `family_name` (vt [Core], jaotis 5.1 "Standard Claims") |
+|    ?                                     | GivenName, vt _idem_, jaotis 2.2.5 | OpenID Connect väide (_claim_) `given_name` (vt [Core], jaotis 5.1 "Standard Claims") |
+|                                                      | - | `mobileNumber` |
+
+## 5 Klientrakenduse registreerimine
 
 Klientrakendus registreeritakse TARA-teenuses RIA teenusehalduri poolt. Registreerimine on eelduseks juurdepääsu saamisele teenusele. Registreerimine tehakse test- ja toodanguteenuse jaoks eraldi. Toodanguteenuses registreerimise eelduseks on liidestuse edukas testimine testteenuses.
 
@@ -225,7 +254,7 @@ Märkus. Klientrakenduse registreerimise kohta lähemalt vt [CAS OpenID Connect]
 }
 ````
 
-## Tehniline ülesehitus
+## 5 Tehniline ülesehitus
 
 _Märkus. Järgnev hõlmab ka teenuse edasisi arendusjärke._
 
@@ -249,7 +278,7 @@ TARA autentimisteenuse teostavad järgmised tarkvarakomponendid:
 
 ***II jj arendusjärkudes*** teostatakse muud autentimismeetodid.
 
-## Otspunktid
+## 6 Otspunktid
 
 Testteenus
 
