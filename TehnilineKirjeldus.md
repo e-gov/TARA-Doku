@@ -49,16 +49,16 @@ response_type=code&
 client_id=58e7ba35aab5b4f1671a
 ````
 
-Autentimispäringu elemendid:
+Autentimispäringu elemendid (kõik elemendid on kohustuslikud):
 
 | URL-i element          | näide                       |  selgitus     |
 |------------------------|-----------------------------|---------------|
-| protokoll, host ja tee (_path_) | `https://tara.eesti.ee/login` |               |
+| protokoll, host ja tee (_path_) | `https://tara.eesti.ee/authorize` |               |
 | tagasipöördumis-URL    | `https://et...ee/Callback` | tagasipöördumis-URL-i valib asutus ise |
-| autentimise skoop      | `scope=openid`               |        |
-| turvakood              | `state=hkMVY7vjuN7xyLl5`     | rakenduse serveripool genereerib turvakoodi, mis aitab tagada, et erinevate kasutajate autentimised sassi ei lähe ja ründaja ei saa protsessi vahele sekkuda |
-| autentimise tulemuse serverile edastamise viis; toetatud on volituskoodi viis `code` | `response_type=code` |   |
-| rakenduse identifikaator `client_id` | `client_id=58e7...` | rakenduse identifikaatori annab RIA asutusele e-teenuse registreerimisel autentimisteenuse kasutajaks |
+| autentimise skoop `scope`; toetatud on väärtus `openid` | `scope=openid`               |        |
+| turvakood `state` | `state=hkMVY7vjuN7xyLl5`     | klientrakenduse serveripool peab genereerima ja päringus esitama turvakoodi, mis aitab tagada, et erinevate kasutajate autentimised sassi ei lähe ja ründaja ei saa protsessi vahele sekkuda. Turvakood peegeldatakse tagasi vastuses; klientrakendus peab kontrollima, et saab vastuses sama turvakoodi, mille saatis päringus.  |
+| autentimise tulemuse serverile edastamise viis `response_type`; toetatud on volituskoodi viis `code` | `response_type=code` |   |
+| rakenduse identifikaator `client_id` | `client_id=58e7...` | rakenduse identifikaatori annab RIA asutusele klientrakenduse registreerimisel autentimisteenuse kasutajaks |
 
 ### 2.2 Autentimismeetodi valik
 
@@ -210,7 +210,7 @@ Eduka autentimise korral edastatakse isikuandmed so autenditud isikut identifits
 |    ?                                     | GivenName, vt _idem_, jaotis 2.2.5 | OpenID Connect väide (_claim_) `given_name` (vt [Core], jaotis 5.1 "Standard Claims") |
 |                                                      | - | `mobileNumber` |
 
-## 5 Klientrakenduse registreerimine
+## 6 Klientrakenduse registreerimine
 
 Klientrakendus registreeritakse TARA-teenuses RIA teenusehalduri poolt. Registreerimine on eelduseks juurdepääsu saamisele teenusele. Registreerimine tehakse test- ja toodanguteenuse jaoks eraldi. Toodanguteenuses registreerimise eelduseks on liidestuse edukas testimine testteenuses.
 
@@ -254,7 +254,7 @@ Märkus. Klientrakenduse registreerimise kohta lähemalt vt [CAS OpenID Connect]
 }
 ````
 
-## 5 Tehniline ülesehitus
+## 7 Tehniline ülesehitus
 
 _Märkus. Järgnev hõlmab ka teenuse edasisi arendusjärke._
 
@@ -278,7 +278,7 @@ TARA autentimisteenuse teostavad järgmised tarkvarakomponendid:
 
 ***II jj arendusjärkudes*** teostatakse muud autentimismeetodid.
 
-## 6 Otspunktid
+## 8 Otspunktid
 
 Testteenus
 

@@ -30,6 +30,8 @@ permalink: Viited
 
 [RFC8176] IETF (2017) RFC 8176. Authentication Method Reference Values. [https://tools.ietf.org/html/rfc8176](https://tools.ietf.org/html/rfc8176).
 
+[Semver] Semantic Versioning. [http://semver.org/](http://semver.org/)
+
 [tasemed] Riigi Infosüsteemi Amet. eIDAS autentimistasemed. v1.0, 15.03.2017, [https://www.ria.ee/public/PKI/eIDAS-autentimistasemed.pdf](https://www.ria.ee/public/PKI/eIDAS-autentimistasemed.pdf).
 
 [TP-192 RIA autentimisteenus](https://jira.ria.ee/browse/TP-93). RIA teenuseportfelli kirje. [mitteavalik]
