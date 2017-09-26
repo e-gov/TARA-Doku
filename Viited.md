@@ -24,7 +24,7 @@ permalink: Viited
 
 [kavand] Riigi Infosüsteemi Amet. RIA SSO autentimisteenuse kavand. 18 lk.
 
-[https://apereo.github.io/cas/4.2.x/installation/Service-Management.html](https://apereo.github.io/cas/4.2.x/installation/Service-Management.html).
+[CAS Service Management] [https://apereo.github.io/cas/4.2.x/installation/Service-Management.html](https://apereo.github.io/cas/4.2.x/installation/Service-Management.html).
 
 [mID] Sertifitseerimiskeskus. DigiDocService. Tehniline lisainfo. [https://www.sk.ee/teenused/kehtivuskinnituse-teenus/digidoc-veebiteenus/](https://www.sk.ee/teenused/kehtivuskinnituse-teenus/digidoc-veebiteenus/).
 
