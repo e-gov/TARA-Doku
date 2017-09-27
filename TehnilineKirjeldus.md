@@ -131,7 +131,7 @@ Autentimisteenus kontrollib, et identsustõendit küsib õige rakendus, koostab 
    "iss":"https://tara.ria.ee",
    "profile_attributes":{  
       "given_name":"MARY ÄNN",
-      "family_name":"O\u2019CONNEŽ-ŠUSLIK",
+      "family_name":"O’CONNEŽ-ŠUSLIK",
       "mobile_Number":"+37200000766"
    },
    "state":"abcdefghijklmnop",
@@ -155,7 +155,7 @@ JWT väljade tähenduse kohta vt vajadusel [https://www.iana.org/assignments/jwt
 | `iss`              | `"iss":"https://tara.ria.ee"` - tõendi väljastaja (TARA-teenus); testteenuse puhul `"iss":"https://tara-test.ria.ee"` |
 | `profile_attributes`   | `"profile_attributes": {"given_name":"MARY ÄNN", "family_name":"O’CONNEŽ-ŠUSLIK", "mobile_number":"+37200000766"}` - autenditud isikut kirjeldavad andmed|
 | `given_name`              | `"given_name":"MARY ÄNN"` - autenditud kasutaja eesnimi (testnimi, valitud täpitähtede sisalduvuse pärast) |
-| `family_name`              | `"family_name":"O’CONNEŽ-ŠUSLIK"` - autenditud kasutaja perekonnanimi (testnimi, valitud täpitähtede sisalduvuse pärast) |
+| `family_name`              | `"family_name":"O’CONNEŽ-ŠUSLIK"` - autenditud kasutaja perekonnanimi (testnimi, valitud täpitähtede jm eritärkide sisalduvuse pärast) |
 | `mobile_number`          | `"mobile_number":"+37200000766"` - m-ID kasutaja autentimisel kasutatud telefoninumber |
 | `state`            | `"state":"abcdefghijklmnop"` - turvaelement  |
 | `exp`              | `"exp":1505847597` - tõendi aegumisaeg |
