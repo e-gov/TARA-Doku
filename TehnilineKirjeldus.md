@@ -163,8 +163,8 @@ JWT väljade tähenduse kohta vt vajadusel [https://www.iana.org/assignments/jwt
 | `exp`              | `"exp":1505847597` - tõendi aegumisaeg |
 | `iat`              | `"iat":1505818797` - tõendi väljaandmisaeg |
 | `nonce`                 | `"nonce":"qrstuvwxyzabcdef"` - turvaelement |
-| `acr`              | `"acr": "http://eidas.europa.eu/LoA/low"` - autentimistase, vastavalt eIDAS tasemetele (_Authentication Context Class Reference_). Elementi ei kasutata, kuid autentimistase ei kohaldu või pole teada |
-| `jti`              | `"jti":"0e12bf29-2a3b-4a81-a85e-973d0a2303d1"` - tõendi identifikaator |
+| `acr`              | `"acr": "http://eidas.europa.eu/LoA/low"` - autentimistase, vastavalt eIDAS tasemetele (_Authentication Context Class Reference_). Elementi ei kasutata, kui autentimistase ei kohaldu või pole teada |
+| `jti`              | `"jti":"0e12bf29-2a3b-4a81-a85e-973d0a2303d1"` - identsustõendi identifikaator |
 
 Rakendus loob saadud identsustõendi alusel kasutajaga seansi. Seansi loomine ja pidamine on rakenduse kohustus. Kuidas seda teha, ei ole autentimisteenuse skoobis.
 
