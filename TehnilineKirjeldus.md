@@ -148,7 +148,7 @@ Identsustõendis esitatakse järgmised väljad (_claims_). Identsustõend võib 
 JWT väljade tähenduse kohta vt vajadusel [https://www.iana.org/assignments/jwt/jwt.xhtml](https://www.iana.org/assignments/jwt/jwt.xhtml).
 
 | Identsustõendi element | näide, selgitus     |
-|------------------------|-----------------------------|---------------|
+|-----|-------------------------------------------|
 | `at_hash`              | pääsutõendi räsi (ei kasutata) |
 | `aud`                  | `"aud":"openIdDemo"` - autentimist küsinud infosüsteemi ID (kasutaja autentimisele suunamisel määratud `client_id` välja väärtus)|
 | `sub`                  | `"sub":"EE11412090004"` - autenditud kasutaja identifikaator (isikukood või eIDAS identifikaator). Isikukood antakse eesliitega `EE`  |
