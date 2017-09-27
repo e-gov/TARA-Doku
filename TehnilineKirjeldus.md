@@ -43,7 +43,7 @@ Rakendus moodustab OpenID Connect autentimispäringu ja saadab sirvijale korrald
 GET https://auth.ria.ee/login?
 
 redirect_uri=https%3A%2F%2eteenindus.asutus.ee%2FCallback&
-scope=user&
+scope=openid&
 state=hkMVY7vjuN7xyLl5&
 response_type=code&
 client_id=58e7ba35aab5b4f1671a
@@ -152,7 +152,7 @@ JWT väljade tähenduse kohta vt vajadusel [https://www.iana.org/assignments/jwt
 | `sub`                  | `"sub":"EE11412090004"` - autenditud kasutaja identifikaator (isikukood või eIDAS identifikaator). Isikukood antakse eesliitega `EE`  |
 | `nbf`                  | `"nbf":"Wed Sep 27 11:47:22 EEST 2017"` - tõendi kehtivuse algusaeg (_Not Before_) |
 | `amr`                  | `"amr":["mID"]` - kasutaja autentimiseks kasutatud autentimismeetod (_Authentication Method Reference_) |
-| `iss`              | `"iss":"https://tara.ria.ee"` - tõendi väljastaja (TARA-teenus); testteenuse puhul `"iss":"https://tara-test.ria.ee"` |
+| `iss`              | `"iss":"https://tara.ria.ee"` - tõendi väljastaja (TARA-teenus); testteenuse puhul `"iss":"https://test-tara.ria.ee"` |
 | `profile_attributes`   | `"profile_attributes": {"given_name":"MARY ÄNN", "family_name":"O’CONNEŽ-ŠUSLIK", "mobile_number":"+37200000766"}` - autenditud isikut kirjeldavad andmed|
 | `given_name`              | `"given_name":"MARY ÄNN"` - autenditud kasutaja eesnimi (testnimi, valitud täpitähtede sisalduvuse pärast) |
 | `family_name`              | `"family_name":"O’CONNEŽ-ŠUSLIK"` - autenditud kasutaja perekonnanimi (testnimi, valitud täpitähtede jm eritärkide sisalduvuse pärast) |
@@ -214,45 +214,7 @@ Eduka autentimise korral edastatakse isikuandmed so autenditud isikut identifits
 
 Klientrakendus registreeritakse TARA-teenuses RIA teenusehalduri poolt. Registreerimine on eelduseks juurdepääsu saamisele teenusele. Registreerimine tehakse test- ja toodanguteenuse jaoks eraldi. Toodanguteenuses registreerimise eelduseks on liidestuse edukas testimine testteenuses.
 
-Märkus. Klientrakenduse registreerimise kohta lähemalt vt [CAS OpenID Connect].
-
-````
-{
-  "issuer": "https://sso-fe1.arendus.kit",
-  "scopes_supported": [
-    "openid"
-  ],
-  "response_types_supported": [
-    "code"
-  ],
-  "subject_types_supported": [
-    "public"
-  ],
-  "claim_types_supported": [
-    "normal"
-  ],
-  "claims_supported": [
-    "sub",
-    "firstName",
-    "lastName",
-    "mobileNumber",
-    "personalCode"
-  ],
-  "grant_types_supported": [
-    "authorization_code"
-  ],
-  "id_token_signing_alg_values_supported": [
-    "none",
-    "RS256"
-  ],
-  "jwks_uri": "https://sso-fe1.arendus.kit/oidc/jwks",
-  "authorization_endpoint": "https://sso-fe1.arendus.kit/oidc/authorize",
-  "token_endpoint": "https://sso-fe1.arendus.kit/oidc/accessToken",
-  "userinfo_endpoint": "https://sso-fe1.arendus.kit/oidc/profile",
-  "registration_endpoint": "https://sso-fe1.arendus.kit/oidc/register",
-  "end_session_endpoint": "https://sso-fe1.arendus.kit/logout"
-}
-````
+Klientrakenduse registreerimise kohta lähemalt vt [CAS OpenID Connect].
 
 ## 7 Tehniline ülesehitus
 
@@ -284,11 +246,11 @@ Testteenus
 
 | otspunkt      |                        URL      |
 |---------------|---------------------------------|
-| teenuseteave (_server discovery_) | `https://tara-test.ria.ee/oidc/.well-known`, `https://tara.ria.ee/oidc/.well-known/openid-configuration` |
-| teenuse avalik allkirjastamisvõti | `https://tara-test.ria.ee/oidc/jwks` |
+| teenuseteave (_server discovery_) | `https://test-tara.ria.ee/oidc/.well-known`, `https://tara.ria.ee/oidc/.well-known/openid-configuration` |
+| teenuse avalik allkirjastamisvõti | `https://test-tara.ria.ee/oidc/jwks` |
 | kliendi registreerimine | dünaamilist registreerimist ei toetata, registreerimine staatiliselt, `help@ria.ee` kaudu |
-| autentimine (_authorization_) | `https://tara-test.ria.ee/authorize` | 
-| tõendiväljastus (_token_) | `https://tara-test.ria.ee/token` | 
+| autentimine (_authorization_) | `https://test-tara.ria.ee/authorize` | 
+| tõendiväljastus (_token_) | `https://test-tara.ria.ee/token` | 
 
 Toodanguteenus
 
