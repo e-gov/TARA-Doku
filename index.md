@@ -34,7 +34,8 @@ Kood ja dokumentatsioon üldjuhul on avalik. Piiratud juurdepääsuga on RIA-sis
 | 9 [Teenusehalduri juhend](https://confluence.ria.ee/display/TARA/TARA+autentimisteenus.+Teenusehalduri+juhend)   |            |
 | 10 [Testistrateegia](https://confluence.ria.ee/display/TARA/TARA+testistrateegia)  | kirjeldab, kuidas ja mida testitakse, joonis testimise setup-i kohta |
 | 11 [Testplaan](https://confluence.ria.ee/display/TARA/TARA+testplaan) |   |
-| 12 [Testiraport]()      |            |  |
+| 12 [Testiraport]()      |            | 
+| 13 [Turvaanalüüs](Turvaanaluus) | |
 
 ## Arenduskorraldus
 
