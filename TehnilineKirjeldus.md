@@ -147,24 +147,24 @@ Autentimisteenus kontrollib, et identsustõendit küsib õige rakendus, koostab 
 Identsustõendis esitatakse järgmised väljad (_claims_). Identsustõend võib sisaldada muid Open ID Connect protokolli kohaseid välju, kuid neid teenuses ei kasutata. 
 JWT väljade tähenduse kohta vt vajadusel [https://www.iana.org/assignments/jwt/jwt.xhtml](https://www.iana.org/assignments/jwt/jwt.xhtml).
 
-| Identsustõendi element | näide                       |  selgitus     |
+| Identsustõendi element | näide, selgitus     |
 |------------------------|-----------------------------|---------------|
-| `at_hash`              |                             | pääsutõendi räsi (ei kasutata) |
-| `aud`                  | `"aud":"openIdDemo"` | autentimist küsinud infosüsteemi ID (kasutaja autentimisele suunamisel määratud `client_id` välja väärtus)|
-| `sub`                  | `"sub":"EE11412090004"` | autenditud kasutaja identifikaator (isikukood või eIDAS identifikaator). Isikukood antakse eesliitega `EE`  |
-| `nbf`                  | `"nbf":"Wed Sep 27 11:47:22 EEST 2017"` | tõendi kehtivuse algusaeg (_Not Before_) |
-| `amr`                  | `"amr":["mID"]` | kasutaja autentimiseks kasutatud autentimismeetod (_Authentication Method Reference_) |
-| `iss`              | `"iss":"https://tara.ria.ee"` | tõendi väljastaja (TARA-teenus) |
-| `profile_attributes`   | `"profile_attributes": {"given_name":"MARY ÄNN", "family_name":"O’CONNEŽ-ŠUSLIK", "mobile_number":"+37200000766"}` | autenditud isikut kirjeldavad andmed|
-| `given_name`              | `"given_name":"MARY ÄNN"` | autenditud kasutaja eesnimi (testnimi, valitud täpitähtede sisalduvuse pärast) |
-| `family_name`              | `"family_name":"O’CONNEŽ-ŠUSLIK"` | autenditud kasutaja perekonnanimi (testnimi, valitud täpitähtede sisalduvuse pärast) |
-| `mobile_number`          | `"mobile_number":"+37200000766"` | m-ID kasutaja autentimisel kasutatud telefoninumber |
-| `state`            | `"state":"abcdefghijklmnop"` | turvaelement  |
-| `exp`              | `"exp":1505847597` | tõendi aegumisaeg |
-| `iat`              | `"iat":1505818797` | tõendi väljaandmisaeg |
-| `nonce`                 | `"nonce":"qrstuvwxyzabcdef"` | turvaelement |
-| `acr`              | `"acr": "http://eidas.europa.eu/LoA/low"` | autentimistase, vastavalt eIDAS tasemetele (_Authentication Context Class Reference_). Elementi ei kasutata, kuid autentimistase ei kohaldu või pole teada |
-| `jti`              | `"jti":"0e12bf29-2a3b-4a81-a85e-973d0a2303d1"` | tõendi identifikaator |
+| `at_hash`              | pääsutõendi räsi (ei kasutata) |
+| `aud`                  | `"aud":"openIdDemo"` - autentimist küsinud infosüsteemi ID (kasutaja autentimisele suunamisel määratud `client_id` välja väärtus)|
+| `sub`                  | `"sub":"EE11412090004"` - autenditud kasutaja identifikaator (isikukood või eIDAS identifikaator). Isikukood antakse eesliitega `EE`  |
+| `nbf`                  | `"nbf":"Wed Sep 27 11:47:22 EEST 2017"` - tõendi kehtivuse algusaeg (_Not Before_) |
+| `amr`                  | `"amr":["mID"]` - kasutaja autentimiseks kasutatud autentimismeetod (_Authentication Method Reference_) |
+| `iss`              | `"iss":"https://tara.ria.ee"` - tõendi väljastaja (TARA-teenus); testteenuse puhul `"iss":"https://tara-test.ria.ee"` |
+| `profile_attributes`   | `"profile_attributes": {"given_name":"MARY ÄNN", "family_name":"O’CONNEŽ-ŠUSLIK", "mobile_number":"+37200000766"}` - autenditud isikut kirjeldavad andmed|
+| `given_name`              | `"given_name":"MARY ÄNN"` - autenditud kasutaja eesnimi (testnimi, valitud täpitähtede sisalduvuse pärast) |
+| `family_name`              | `"family_name":"O’CONNEŽ-ŠUSLIK"` - autenditud kasutaja perekonnanimi (testnimi, valitud täpitähtede sisalduvuse pärast) |
+| `mobile_number`          | `"mobile_number":"+37200000766"` - m-ID kasutaja autentimisel kasutatud telefoninumber |
+| `state`            | `"state":"abcdefghijklmnop"` - turvaelement  |
+| `exp`              | `"exp":1505847597` - tõendi aegumisaeg |
+| `iat`              | `"iat":1505818797` - tõendi väljaandmisaeg |
+| `nonce`                 | `"nonce":"qrstuvwxyzabcdef"` - turvaelement |
+| `acr`              | `"acr": "http://eidas.europa.eu/LoA/low"` - autentimistase, vastavalt eIDAS tasemetele (_Authentication Context Class Reference_). Elementi ei kasutata, kuid autentimistase ei kohaldu või pole teada |
+| `jti`              | `"jti":"0e12bf29-2a3b-4a81-a85e-973d0a2303d1"` - tõendi identifikaator |
 
 Rakendus loob saadud identsustõendi alusel kasutajaga seansi. Seansi loomine ja pidamine on rakenduse kohustus. Kuidas seda teha, ei ole autentimisteenuse skoobis.
 
