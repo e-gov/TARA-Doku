@@ -145,6 +145,7 @@ Autentimisteenus kontrollib, et identsustõendit küsib õige rakendus, koostab 
 Identsustõendis esitatakse järgmised väljad (_claims_). Identsustõend võib sisaldada muid Open ID Connect protokolli kohaseid välju, kuid neid teenuses ei kasutata. 
 JWT väljade tähenduse kohta vt vajadusel [https://www.iana.org/assignments/jwt/jwt.xhtml](https://www.iana.org/assignments/jwt/jwt.xhtml).
 
+|-----|-------------------------------------------|
 | Identsustõendi element | näide, selgitus     |
 |-----|-------------------------------------------|
 | `at_hash`              | pääsutõendi räsi (ei kasutata) |
