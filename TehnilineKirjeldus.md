@@ -121,25 +121,23 @@ Autentimisteenus kontrollib, et identsustõendit küsib õige rakendus, koostab 
 
 ````
 {  
-   "sub":"11412090004",
+   "at_hash": "...",
+   "aud": "openIdDemo",
+   "sub": "EE11412090004",
+   "nbf": 1505818497,
    "amr":[  
       "mID"
    ],
-   "iss":"http:\/\/localhost:8080\/cas\/oidc",
-
+   "iss":"https://tara.ria.ee",
    "profile_attributes":{  
-      "personalCode":"11412090004",
-      "firstName":"MARY ÄNN",
-      "lastName":"O\u2019CONNEŽ-ŠUSLIK",
-      "mobileNumber":"+37200000766"
+      "given_name":"MARY ÄNN",
+      "family_name":"O\u2019CONNEŽ-ŠUSLIK",
+      "mobile_Number":"+37200000766"
    },
-   "preferred_username":"openIdDemo",
-   "nonce":"qrstuvwxyzabcdef",
-   "aud":"openIdDemo",
-   "nbf":1505818497,
    "state":"abcdefghijklmnop",
    "exp":1505847597,
    "iat":1505818797,
+   "nonce":"qrstuvwxyzabcdef",
    "jti":"0e12bf29-2a3b-4a81-a85e-973d0a2303d1"
 }
 ````
