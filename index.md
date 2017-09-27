@@ -21,20 +21,31 @@ Kood ja dokumentatsioon üldjuhul on avalik. Piiratud juurdepääsuga on RIA-sis
 - [TARA-Doku](https://github.com/e-gov/TARA-Doku) (teenuse dokumentatsioon)
 - [TARA-Management](https://github.com/e-gov/TARA-Management) (teenuse haldustööriist)
 
-| nimetus, asukoht             |  seis     | märkused |
-|------------------------------|-----------|----------|
-| 1 [Ärikirjeldus](Arikirjeldus) | kavand    |  |
-| 2 [Liitumisjuhend](Liitumisjuhend) | töös |
-| 3 Teekaart - käesoleval lehel | kavand    |  |
-| 4 [Tehniline kirjeldus](TehnilineKirjeldus) | alustatud   | tarkvara spetsifikatsioon, sisaldab: arh-ijoonist, paigaldusjoonist, kasutusloo või -lugude kirjeldust, tarkvara oluliste mittefunktsionaalsete omaduste kirjeldust - teave kasutatud teekide kohta, logimise lahenduse kirjeldus, hinnang tööjõudlusele |
-| 5 [Sõnastik](Sonastik) | töös |  |
-| 6 [Viited](Viited)   | töös |   |
-| 7 [SLA]()   |        | nii test-kui ka toodanguteenusele, töös |
-| 8 [Paigaldusjuhend]() | töös  |
-| 9 [Haldusjuhend]()   |            |
-| 10 [Testistrateegia](Testistrateegia)  | alustatud | kirjeldab, kuidas ja mida testitakse, joonis testimise setup-i kohta |
-| 11 [Testilood](Testilood) |  alustatud |  |
+| nimetus, asukoht             |  märkused |
+|------------------------------|-----------|
+| 1 [Ärikirjeldus](Arikirjeldus) |  |
+| 2 [Liitumisjuhend](Liitumisjuhend) |  |
+| 3 Teekaart - käesoleval lehel |   |
+| 4 [Tehniline kirjeldus](TehnilineKirjeldus) | tarkvara spetsifikatsioon, sisaldab: arh-ijoonist, paigaldusjoonist, kasutusloo või -lugude kirjeldust, tarkvara oluliste mittefunktsionaalsete omaduste kirjeldust - teave kasutatud teekide kohta, logimise lahenduse kirjeldus, hinnang tööjõudlusele |
+| 5 [Sõnastik](Sonastik) |   |
+| 6 [Viited](Viited)   |   |
+| 7 [SLA]()   | nii test-kui ka toodanguteenusele, töös |
+| 8 [Paigaldusjuhend](https://confluence.ria.ee/pages/viewpage.action?pageId=71172276) |  |
+| 9 [Teenusehalduri juhend](https://confluence.ria.ee/display/TARA/TARA+autentimisteenus.+Teenusehalduri+juhend)   |            |
+| 10 [Testistrateegia](https://confluence.ria.ee/display/TARA/TARA+testistrateegia)  | kirjeldab, kuidas ja mida testitakse, joonis testimise setup-i kohta |
+| 11 [Testplaan](https://confluence.ria.ee/display/TARA/TARA+testplaan) |   |
 | 12 [Testiraport]()      |            |  |
+
+## Arenduskorraldus
+
+TARA Confluence-is:<br>
+[https://confluence.ria.ee/display/TARA](https://confluence.ria.ee/display/TARA) 
+
+TARA JIRA-s:<br>
+[https://jira.ria.ee/browse/DD4J-88](https://jira.ria.ee/browse/DD4J-88) 
+
+TARA Skype-is:<br>
+Autentimisteenuse arendus
 
 ## Teekaart
 
@@ -76,17 +87,6 @@ koostada RIA rakendus, mis etendab autentimisteenust kasutavat Eesti e-teenust. 
 teostada komponent, mis teostab Eesti mobiil-ID-ga autentimise. Siduda mobiil-ID autentija  ja OpenID Connect liidese haldur tervikuks. 
 
 Arvestada edasise tööde järjekorraga, vt joonis ja [kavand]: 1) kasutusloo autentimise olemasolu kontroll teostamine; 2) kasutusloo väljalogimine teostamine; 3) komponentide Seansihaldur ja selle koosseisus Seansihoidla teostamine; 4) komponendi Isikutuvastusportaal teostamine (võimaldab kasutajal valida mitme autentimismeetodi vahel); 5) liidestamine eIDAS konnektorteenusega (vajalik välismaalaste autentimisel).
-
-## Arenduskorraldus
-
-TARA Confluence-is:<br>
-[https://confluence.ria.ee/display/TARA](https://confluence.ria.ee/display/TARA) 
-
-TARA JIRA-s:<br>
-[https://jira.ria.ee/browse/DD4J-88](https://jira.ria.ee/browse/DD4J-88) 
-
-TARA Skype-is:<br>
-Autentimisteenuse arendus
 
 -----
 
