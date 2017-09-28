@@ -43,4 +43,6 @@ permalink: Nonss
 
 Märgime veel, et tõendi taasesitusrünnet loetakse vastumeedet vajavaks ohuks OpenID Connect otsevoo (_Implicit Flow_) variandi korral. Volituskoodi (_Authorization Flow_) varianti puhul `nonce` ei ole protokollis nõutav, kuigi ka sellisel juhul võib ründaja autentimisteenusesse sisse murda või tõendi saatmist pealt kuulata. 
 
-Vt ka Võltspäringurünne ja kaitse selle vastu](Volts)
+----
+
+Vt ka [Võltspäringurünne ja kaitse selle vastu](Volts)

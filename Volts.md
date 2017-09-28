@@ -10,7 +10,9 @@ TL;DR Võltspäringutõke tuleb siduda sessiooniga, muidu pole sellest kasu.
 
 ## Normaalprotsess
 
-1a Kasutaja vajutab nupule "Logi sisse" vms. Selle toimel saadab sirvija serverisse päringu `HTTP GET https://asutus.ee/Login`.
+1a Kasutaja vajutab nupule "Logi sisse" vms. Selle toimel saadab sirvija serverisse päringu
+
+`HTTP GET https://asutus.ee/Login`.
 
 1b Server saadab päringule vastuseks ümbersuunamiskorralduse (_redirect_) autentimisteenusesse. HTTP vastuse staatusekood on 302. Vastuses on OpenID Connect protokolli kohased elemendid, nende seas võltspäringutõke `state`.
 
@@ -50,7 +52,9 @@ code=71ed5797c3d957817d31&
 state=hkMVY7vjuN7xyLl5
 ```
 
-3b Server teeb nüüd päringu autentimisteenuse otspunkti `/Token` ja saab volituskoodi vastu identsustõendi (_ID token_). Identsustõendis on autenditud kasutaja isikukood, nimi jm autentimisandmed. Sellega on autentimisprotsess lõppenud.
+3b Server teeb nüüd päringu autentimisteenuse otspunkti `/Token` ja saab volituskoodi vastu identsustõendi (_ID token_). Identsustõendis on autenditud kasutaja isikukood, nimi jm autentimisandmed. Server saadab sirvijasse vastuse, milles on seansiidentifikaatori või fikseerib autentimise tulemuse muul viisil. 
+
+Sellega on autentimisprotsess lõppenud.
 
 ## Rünne
 
@@ -84,5 +88,7 @@ Sirvija talletab saadud küpsise. Autentimisteenusest tagasipöördumisel paneb 
 Server saab päringust 3a kätte nii tõkestava elemendi `state` kui ka küpsises hoitud seansiidentifikaatori. Server PEAB kontrollima, et saadud `state = hash(2h5ft6)`.
 
 Kui selline kaitse on rakendatud, siis ründaja võib oma sirvijast küll seansiküpsise kätte saada, kuid tal ei ole lihtsat võimalust küpsise paigaldamiseks ohvri arvutisse. Kuna ohvri arvutis vajalikku küpsist ei ole (või on seal teine küpsis, teise seansiidentifikaatoriga), siis võltspäringu saatmine ei õnnestu - eeldusel, et klientrakenduses on `state` kontroll õigesti teostatud.
+
+----
 
 Vt ka [Taasesitusrünne ja kaitse selle vastu](Nonss)
