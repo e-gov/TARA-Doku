@@ -54,8 +54,7 @@ state=hkMVY7vjuN7xyLl5
 
 ## Rünne
 
-Ründaja laeb klientrakenduse oma sirvijasse. Vajutab "Logi sisse" ja teeb autentimisteenuses läbi autentimise. Püüab kinni autentimisteenuse vcode=71ed5797c3d957817d31&
-state=hkMVY7vjuN7xyLl5astuse 2b ja tõkestab selles sisalduva ümbersuunamiskorralduse täitmist. See tähendab, et päring 3a sirvijast välja ei lähegi.
+Ründaja laeb klientrakenduse oma sirvijasse. Vajutab "Logi sisse" ja teeb autentimisteenuses läbi autentimise. Püüab kinni autentimisteenuse vastuse 2b ja tõkestab selles sisalduva ümbersuunamiskorralduse täitmist. See tähendab, et päring 3a sirvijast välja ei lähegi.
 
 Selle asemel moodustab võltspärigu ja pettuse abil paneb ohvri võltspäringut serverile saatma. Näiteks saates ohvrile näiliselt süütu veebilehe aadressi; veebilehel on aga võltspäringut käivitav peidetud element
 
@@ -64,25 +63,26 @@ Selle asemel moodustab võltspärigu ja pettuse abil paneb ohvri võltspäringut
 code=71ed5797c3d957817d31&state=hkMVY7vjuN7xyLl5">
 ```
 
-Kui selline päring jõuab serverisse ja server ei suuda aru saada, et 1a ja 3a tulevad erinevatest sirvijatest, siis ta pahaaimamatult täidab päringu. Tulemuseks on, et ründaja on ohvri sirvijas klientrakendusse sisse logitud.
+Kui selline päring jõuab serverisse ja server ei suuda aru saada, et 1a ja 3a tulevad erinevatest sirvijatest, siis ta pahaaimamatult täidab päringu. Tulemusena logitakse ründaja ohvri sirvijas klientrakendusse sisse.
 
 ## Kaitse
 
-Võltspäringuründe vastu pakub kaitset tõkkeelement `state`. Kuid `state` peab olema sirvijaga seotud. Korrektne kaitseprotseduur on järgmine:
+Võltspäringuründe vastu pakub kaitset tõkestav element `state`. Kuid `state` peab olema sirvijaga seotud. Korrektne kaitseprotseduur on järgmine:
 
-Vastuse 1b saatmisel paneb server kaasa ka küpsise seansidentifikaatoriga:
+Vastuse 1b saatmisel paneb server kaasa küpsise, milles sisaldub seansidentifikaator (_session ID_):
 
 ```
 Set-Cookie: SessionID=2h5ft6; HttpOnly
 ``` 
 
-Seansiidentifikaator `2h5ft6` on juhustring. Tõkkeelemendi `state` moodustab sirvija võttes seansiidentifikaatorist räsi: `state = hash(2h5ft6)`.
+Seansiidentifikaator (näites `2h5ft6`) on juhustring. Tõkestava elemendi `state` moodustab sirvija, arvutades seansiidentifikaatori räsi: `state = hash(2h5ft6)`.
 
 Nii seotakse `state` konkreetse sirvijaga, kuid seansiidentifikaator ei ole räsi põhjal arvutatav.
 
 Sirvija talletab saadud küpsise. Autentimisteenusest tagasipöördumisel paneb sirvija küpsise päringusse 3a kaasa.
 
-Server saab päringust 3a nii tõkkeelemendi `state` kui ka küpsises hoitud seansiidentifikaatori. Server PEAB kontrollima, et saadud `state = hash(2h5ft6)`.
+Server saab päringust 3a kätte nii tõkestava elemendi `state` kui ka küpsises hoitud seansiidentifikaatori. Server PEAB kontrollima, et saadud `state = hash(2h5ft6)`.
 
-Ründaja võib oma sirvijast küll küpsise kätte saada, kuid tal ei ole lihtsat võimalust küpsise paigaldamiseks ohvri arvutisse. Kuna ohvri arvutis vajalikku küpsist ei ole (või on seal teine seansiidentifikaator), siis võltspäringu saatmine ei õnnestu - eeldusel, et klientrakenduses on `state` kontroll õigesti teostatud.
- 
+Kui selline kaitse on rakendatud, siis ründaja võib oma sirvijast küll seansiküpsise kätte saada, kuid tal ei ole lihtsat võimalust küpsise paigaldamiseks ohvri arvutisse. Kuna ohvri arvutis vajalikku küpsist ei ole (või on seal teine küpsis, teise seansiidentifikaatoriga), siis võltspäringu saatmine ei õnnestu - eeldusel, et klientrakenduses on `state` kontroll õigesti teostatud.
+
+Vt ka [Taasesitusrünne ja kaitse selle vastu](Nonss)
