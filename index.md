@@ -110,6 +110,8 @@ TARA-Server (CAS) muudatused päringut x509 sertifikaadi lugemiseks ning töötl
 
 7 makettrakenduse täiendamine nii, et testimine oleks hõlpsam (makettrakendus kuvab sirvijas identsustõendi)
 
+8 _hardening_-tegevused - mitmesugused läbivaatused, ülekontrollid ja vajadusel tarkvara täiendused, suunaga teenuse turvalisuse tagamisele. 
+
 -----
 
 [Teekaardi lähtejoonis](https://docs.google.com/drawings/d/1t-SfFV4VYMjPjjEav-ZL4TPNgYZE1Ko9XU6Y94Ypbw8/edit) (Google Docs)
