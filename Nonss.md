@@ -2,7 +2,7 @@
 permalink: Nonss
 ---
 
-# Parameetri nonce tähendusest
+# Taasesitusrünne ja kaitse selle vastu
 
 ![](img/Nonce.PNG)
 
@@ -42,3 +42,7 @@ permalink: Nonss
 - Ründaja ei saa pealtkuulatud tõendit kasutada, sest tal ei ole sessiooniküpsist. Ründaja ei saa ka räsi aluselt küpsise väärtust tuletada.
 
 Märgime veel, et tõendi taasesitusrünnet loetakse vastumeedet vajavaks ohuks OpenID Connect otsevoo (_Implicit Flow_) variandi korral. Volituskoodi (_Authorization Flow_) varianti puhul `nonce` ei ole protokollis nõutav, kuigi ka sellisel juhul võib ründaja autentimisteenusesse sisse murda või tõendi saatmist pealt kuulata. 
+
+----
+
+Vt ka [Võltspäringurünne ja kaitse selle vastu](Volts)
