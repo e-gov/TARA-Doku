@@ -89,6 +89,27 @@ teostada komponent, mis teostab Eesti mobiil-ID-ga autentimise. Siduda mobiil-ID
 
 Arvestada edasise tööde järjekorraga, vt joonis ja [kavand]: 1) kasutusloo autentimise olemasolu kontroll teostamine; 2) kasutusloo väljalogimine teostamine; 3) komponentide Seansihaldur ja selle koosseisus Seansihoidla teostamine; 4) komponendi Isikutuvastusportaal teostamine (võimaldab kasutajal valida mitme autentimismeetodi vahel); 5) liidestamine eIDAS konnektorteenusega (vajalik välismaalaste autentimisel).
 
+## II arendusjärk 
+
+Eesmärk: lisada TARA-le ID-kaardiga autentimise funktsionaalsus
+
+Tööd:
+
+1 täiendada liitumisjuhendit ja tehnilist kirjeldust. (uue autentimismeetodi kood - "idcard").
+
+2 täiendada autentimise kasutajaliidest - autentimismeetodi valik
+
+3 ID-kaardiga autentimise komponent (serdi võtmine F5-st)
+TARA-Server (CAS) muudatused päringut x509 sertifikaadi lugemiseks ning töötlemiseks (info lugemine sertifikaadilt ja atribuutide lisamine ID Tokenisse)
+
+4 kehtivuskinnituse päring (OCSP)
+
+5 testistrateegia, -plaani ja -testide vastav täiendamine
+
+6 täiendada nii, et saaks tagastada eIDAS autentimistaset. Igale autentimismeetodile peab konfiguratsioonis saama omistada autentimistaseme. Esialgu on nii m-ID kui ka ID-kaardi autentimistase määratlemata. Autentimistase esitatakse identsustõendis (v.a kui autentimistase on määratlemata).
+
+7 makettrakenduse täiendamine nii, et testimine oleks hõlpsam (makettrakendus kuvab sirvijas identsustõendi)
+
 -----
 
 [Teekaardi lähtejoonis](https://docs.google.com/drawings/d/1t-SfFV4VYMjPjjEav-ZL4TPNgYZE1Ko9XU6Y94Ypbw8/edit) (Google Docs)
