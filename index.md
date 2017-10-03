@@ -25,6 +25,7 @@ Kood ja dokumentatsioon üldjuhul on avalik. Piiratud juurdepääsuga on RIA-sis
 |------------------------------|-----------|
 | 1 [Ärikirjeldus](Arikirjeldus) |  |
 | 2 [Liitumisjuhend](Liitumisjuhend) |  |
+| 2a [Taotluse vorm](TaotluseVorm) |  |
 | 3 Teekaart - käesoleval lehel |   |
 | 4 [Tehniline kirjeldus](TehnilineKirjeldus) | tarkvara spetsifikatsioon, sisaldab: arh-ijoonist, paigaldusjoonist, kasutusloo või -lugude kirjeldust, tarkvara oluliste mittefunktsionaalsete omaduste kirjeldust - teave kasutatud teekide kohta, logimise lahenduse kirjeldus, hinnang tööjõudlusele |
 | 5 [Sõnastik](Sonastik) |   |
