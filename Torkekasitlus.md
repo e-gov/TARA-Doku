@@ -1,14 +1,12 @@
 ---
-permalink: Veakasitlus
+permalink: Torkekasitlus
 ---
 
-# Veakäsitlus
+# Tõrkekäsitlus
 
 <img src='img/KuvaVoog.PNG' style='width: 500px;'>
 
-- Kuidas käsitletakse autentimise ebaõnnestumised?
-
-- Kuidas käsitletakse olukorrad, kus mõni teenus on maas?
+- Kuidas käsitletakse autentimise ebaõnnestumised, olukorrad, kus mõni osateenus on maas jm tõrked?
   - Kuidas saadakse teada?
   - Kuidas teavitatakse?
 
