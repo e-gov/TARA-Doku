@@ -21,18 +21,21 @@ Edaspidi TARA võimalused laienevad: täiendavad autentimismeetodid, sh piiriül
 
 ## Dokumentatsioon
 
-| nimetus, asukoht                  | avalik | kasutajale | arendajale | haldajale |
-|-----------------------------------|:------:|:------:|:------:|:------:|
-| 1 [Ärikirjeldus](Arikirjeldus)    | jah    | jah    |        |           |
-| 2 [Liitumisjuhend](Liitumisjuhend) | jah   | jah    |        |   jah     |
-| 2a [Taotluse vorm](TaotluseVorm)  | jah    | jah    |        |   jah     |
-| 3 [Teekaart](Teekaart)            | jah    |        |  jah   |        |
-| 4 [Tehniline kirjeldus](TehnilineKirjeldus) | jah | jah  |   jah     |        |
-| 5 [Sõnastik](Sonastik)            | jah    | jah    |  jah      |  jah      |
-| 6 [Viited](Viited)                | jah    | jah    |  jah      |  jah      |
-| 7 [Teenuse tingimused](SLA) (SLA) | jah    | jah    |        |   jah   |
+| nimetus, asukoht                             | avalik | kasutajale | arendajale | haldajale |
+|----------------------------------------------|:------:|:------:|:------:|:-------:|
+| 1 [Ärikirjeldus](Arikirjeldus)               | jah    | jah    |        |         |
+| 2 [Liitumisjuhend](Liitumisjuhend)           | jah    | jah    |        |   jah   |
+| 2a [Taotluse vorm](TaotluseVorm)             | jah    | jah    |        |   jah   |
+| 3 [Teekaart](Teekaart)                       | jah    |        |  jah   |         |
+| 4 [Tehniline kirjeldus](TehnilineKirjeldus)  | jah    | jah    |  jah   |         |
+| 5 [Sõnastik](Sonastik)                       | jah    | jah    |  jah   |  jah    |
+| 6 [Viited](Viited)                           | jah    | jah    |  jah   |  jah    |
+| 7 [Teenuse tingimused](SLA) (SLA)            | jah    | jah    |        |   jah   |
+
+| nimetus, asukoht                             | avalik | kasutajale | arendajale | haldajale |
+|----------------------------------------------|:------:|:------:|:------:|:-------:|
 | 8 [Paigaldusjuhend](https://confluence.ria.ee/pages/viewpage.action?pageId=71172276) | ei |  | jah | jah |
-| 9 [Teenusehalduri juhend](https://confluence.ria.ee/display/TARA/TARA+autentimisteenus.+Teenusehalduri+juhend)   | ei |    | jah | jah |           |
+| 9 [Teenusehalduri juhend](https://confluence.ria.ee/display/TARA/TARA+autentimisteenus.+Teenusehalduri+juhend) | ei |    | jah | jah |           |
 | 10 [Testistrateegia](https://confluence.ria.ee/display/TARA/TARA+testistrateegia)  | ei |   | jah |  |
 | 11 [Testplaan](https://confluence.ria.ee/display/TARA/TARA+testplaan)  | ei |   | jah |  |
 | 12 [Testiraport]()  | ei |   | jah |  |   
