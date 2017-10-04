@@ -10,11 +10,9 @@ RIA teavitab teenuse kasutajaid esimesel võimalusel kõigist teadaolevatest tee
 
 ## Korralised hooldustööd
 
-RIA toodangukeskkonna teenuste tööajal toimuvatest katkestustest ning suurematest hooldustöödest teavitatakse teenuse kasutajaid e-posti teel vähemalt 48 tundi enne nende toimumist. Samuti avaldatakse vastav info RIA kodulehe hooldusteadetes (http://www.ria.ee/hooldusteated) ning hooldusteadete RSS voos.
+RIA toodangukeskkonna teenuste tööajal toimuvatest katkestustest ning suurematest hooldustöödest teavitatakse teenuse kasutajaid e-posti teel vähemalt 48 tundi enne nende toimumist. Samuti avaldatakse vastav info RIA kodulehe hooldusteadetes [http://www.ria.ee/hooldusteated](http://www.ria.ee/hooldusteated) ning hooldusteadete RSS voos.
 
 RIA toodangukeskkonna korrapärased infrastruktuuri hooldustööd toimuvad iga kuu kolmandal neljapäeval ajavahemikul 18.00–01.00
-
-RIA toodangukeskkonna korrapärased hooldustööd ei põhjusta reeglina katkestust x-tee veebiteenuste keskkonna teenuse töös.
 
 ## Teenustaseme parameetrid
 
