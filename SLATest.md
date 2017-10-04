@@ -43,7 +43,7 @@ RIA toodangukeskkonna korrapärased infrastruktuuri hooldustööd toimuvad iga k
 
 **Funktsionaalsus**. Funktsionaalsus on tegevus, mida kasutaja saab (äriteenusega seotud) rakenduse/infosüsteemi abil iseseisvalt (st ei eelda RIA inimese tegevust) sooritada.
 
-**Kriitilisuse klass**. Kriitilisuse klass on teenuse taastamise maksimaalne ajakulu ning prioriteet, mis järjekorras katastroofiolukorras (näiteks serveriruumide vee- või tulekahjustuste või muu ootamatu eriolukorra puhul) teenuseid taastatakse. Kriitilisuse klass on määratud vastavalt „Käideldavuse halduse- ja Talitluspidevuse korrale&quot;. Lähtuvalt taasteaegadest, jaotatakse infosüsteemi osad järgnevatesse kriitilisuse klassidesse: I – taasteaeg 72 h; II – taasteaeg 168 h; III – taasteaeg määratlemata.
+**Kriitilisuse klass**. Kriitilisuse klass on teenuse taastamise maksimaalne ajakulu ning prioriteet, mis järjekorras katastroofiolukorras (näiteks serveriruumide vee- või tulekahjustuste või muu ootamatu eriolukorra puhul) teenuseid taastatakse.  Lähtuvalt taasteaegadest, jaotatakse infosüsteemi osad järgnevatesse kriitilisuse klassidesse: I – taasteaeg 72 h; II – taasteaeg 168 h; III – taasteaeg määratlemata.
 
 **Maksimaalne lubatud üheaegne pöördumiste arv**. Üheaegselt teenust kasutavate pöördumiste arv (üheaegsete päringute arv), mille korral on veel tagatud teenuse ekspluatatsiooninõuete vastav toimimine.
 
@@ -57,7 +57,7 @@ RIA toodangukeskkonna korrapärased infrastruktuuri hooldustööd toimuvad iga k
 
 **Reaktsiooniaeg**. Reaktsiooniaeg on aeg, mis kulub sisestushetkest või päringusignaalist kuni vastuse saamiseni. 90% päringutest peavad mahtuma maksimaalse viite sisse. Reaktsiooniaegade mitte vastamisel esitatud nõuetele antakse RIA-le vea kõrvaldamiseks aega 10 (kümme) tööpäeva alates RIA kasutajatoe teavitamisest.
 
-**Teenuse taastamiskoha klass**. Teenuse taastamiskoha klass määrab maksimaalse andmehulga, mis võib minna kaotsi teenuse taastamise käigus. Taastamiskoha klass määratakse ajavahemikuna enne tõrget. Näiteks taastamiskoha klass üks ööpäev saavutatakse igapäevase varundamisega, kus maksimaalne andmekadu võib olla 24 tunni andmed. Taastekoha klassid on järgmised:            I – 24 h;            II – 72 h;            III – 168 h;            IV – üks kuu;            V – määratlemata.
+**Teenuse taastamiskoha klass**. Teenuse taastamiskoha klass määrab maksimaalse andmehulga, mis võib minna kaotsi teenuse taastamise käigus. Taastamiskoha klass määratakse ajavahemikuna enne tõrget. Näiteks taastamiskoha klass üks ööpäev saavutatakse igapäevase varundamisega, kus maksimaalne andmekadu võib olla 24 tunni andmed. Taastekoha klassid on järgmised: I – 24 h; II – 72 h; III – 168 h; IV – üks kuu; V – määratlemata.
 
 **Tööaeg**. Tööaeg on kokkulepitud ajavahemik, millal IT teenus peab kasutajale garanteeritult kättesaadav olema ning mille jooksul pakutakse IT teenusele kasutajatoe tuge (kasutusnõustamine, planeerimata katkestuste lahendamine jms). Teenuste töö väljaspool tööaega on monitooritud. Tööaeg on jaotatud klassidesse järgnevalt: I – 9:00-17:00
 
