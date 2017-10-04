@@ -36,7 +36,7 @@ Asutus esitab taotluse testteenusega liitumiseks. Taotluse võib esitada juba en
 2) kasutajate arvu prognoos<br>
 3) nõustumine teenustasemega (SLA-ga); kui on vajadus kõrgema SLA järele, siis rääkida RIA-ga läbi<br>
 
-[TARA testkeskkonna teenustase (SLA)](SLATest.md)
+[TARA testkeskkonna teenustase (SLA)](SLATest)
 
 4) klientrakenduse identifikaatori ettepanek -`client_id` OpenID Connect protokolli kohaselt<br>
 5) klientrakenduse testversiooni tagasisuunamis-URL (_redirect-URL_), OpenID Connect protokolli kohaselt<br>
