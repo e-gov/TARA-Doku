@@ -16,6 +16,10 @@ Autentimisteenus on Riigi Infosüsteemi Ameti uus pakutav teenus, millega asutus
 
 Autentimismeetodina toetab teenus esialgu mobiil-ID-d. Järgmistes arendusjärkudes lisatakse teiste autentimismeetodite - ID-kaart, eIDAS jt - tugi.
 
+<img src='img/KuvaVoog.PNG' style='width: 600px;'>
+
+Joonis 1. Ülevaade
+
 Teenuse tähtsamad tunnusjooned:
 1. autentimisprotsessi aluseks on OpenID Connect 1.0 protokoll [Core], täpsemalt volituskoodi  (_authorization code_) kasutusvoog. Arvestatud on ka protokolli avaliku sektori profiiliga [iGOV].
 2. kogu teave autenditud kasutaja kohta edastatakse rakendusele identsustõendis (_ID token_).
@@ -25,6 +29,8 @@ Teenuse tähtsamad tunnusjooned:
 ## 2 Autentimisprotsess
 
 <img src='img/VOOG.PNG' style='width: 480px;'>
+
+Joonis 2. Tehniline ülevaade
 
 Autentimisprotsess koosneb 5 sammust:
 1. Autentimispäringu saatmine
@@ -105,7 +111,6 @@ grant_type=authorization_code&
 code=SplxlOBeZQQYbYS6WxSbIA&
 redirect_uri=https%3A%2F%2eteenindus.asutus.ee%2FCallback&
 client_id=58e7ba35aab5b4f1671a&
-client_secret={client_secret}
 ````
 
 | URL-i element          | näide                       |  selgitus     |
@@ -121,7 +126,6 @@ Autentimisteenus kontrollib, et identsustõendit küsib õige rakendus, koostab 
 
 ````
 {  
-   "at_hash": "...",
    "aud": "openIdDemo",
    "sub": "EE11412090004",
    "nbf": 1505818497,
@@ -148,7 +152,6 @@ JWT väljade tähenduse kohta vt vajadusel [https://www.iana.org/assignments/jwt
 |-----|-------------------------------------------|
 | Identsustõendi element | näide, selgitus     |
 |-----|-------------------------------------------|
-| `at_hash`              | pääsutõendi räsi (ei kasutata) |
 | `aud`                  | `"aud":"openIdDemo"` - autentimist küsinud infosüsteemi ID (kasutaja autentimisele suunamisel määratud `client_id` välja väärtus)|
 | `sub`                  | `"sub":"EE11412090004"` - autenditud kasutaja identifikaator (isikukood või eIDAS identifikaator). Isikukood antakse eesliitega `EE`  |
 | `nbf`                  | `"nbf":"Wed Sep 27 11:47:22 EEST 2017"` - tõendi kehtivuse algusaeg (_Not Before_) |
@@ -224,6 +227,8 @@ _Märkus. Järgnev hõlmab ka teenuse edasisi arendusjärke._
 Süsteem on ehitatud Apereo CAS platvormile, versioon 5.1 [CAS].
 
 <img src='img/TEGELIK.PNG' style='width: 600px;'>
+
+Joonis 3. Tehniline ülesehitus
 
 TARA autentimisteenuse teostavad järgmised tarkvarakomponendid:
 - Teenuseosutaja taristusse paigaldatavad:

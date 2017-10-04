@@ -26,8 +26,9 @@ Asutus kavandab ja teostab teenuse kasutamiseks vajalikud arendustööd.
   - aluseks [tehniline kirjeldus](TehnilineKirjeldus)
   - kasulikku võib leida [makettrakendusest](https://github.com/e-gov/TARA-Client).
 
-Eriti tähele panna: 1) identsustõendit tuleb nõuetekohaselt kontrollida, vt [ID token validation](http://openid.net/specs/openid-connect-core-1_0.html#ImplicitIDTValidation) [Core]; 2) parameeter `state` tuleb siduda sessiooniga, vt [OpenID Connect Basic Client Implementer's Guide 1.0](https://openid.net/specs/openid-connect-basic-1_0.html), jaotis "2.1.1.1 Request Parameters".
-{: .no_toc}  
+Eriti tähele panna:<br>
+1) identsustõendit tuleb nõuetekohaselt kontrollida, vt [ID token validation](http://openid.net/specs/openid-connect-core-1_0.html#ImplicitIDTValidation) [Core]<br>
+2) parameeter `state` tuleb siduda sessiooniga, vt [OpenID Connect Basic Client Implementer's Guide 1.0](https://openid.net/specs/openid-connect-basic-1_0.html), jaotis "2.1.1.1 Request Parameters".  
 
 ## 3 Liituda TARA testteenusega
 Asutus esitab taotluse testteenusega liitumiseks. Taotluse võib esitada juba enne arenduse algust. Taotluses palume teatada:
