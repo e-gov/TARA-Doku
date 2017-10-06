@@ -26,7 +26,11 @@ permalink: Viited
 
 [CAS Service Management] [https://apereo.github.io/cas/4.2.x/installation/Service-Management.html](https://apereo.github.io/cas/4.2.x/installation/Service-Management.html).
 
-[mID] Sertifitseerimiskeskus. DigiDocService. Tehniline lisainfo. [https://www.sk.ee/teenused/kehtivuskinnituse-teenus/digidoc-veebiteenus/](https://www.sk.ee/teenused/kehtivuskinnituse-teenus/digidoc-veebiteenus/).
+[mID1] Sertifitseerimiskeskus. DigiDocService. Tehniline lisainfo. [https://www.sk.ee/teenused/kehtivuskinnituse-teenus/digidoc-veebiteenus/](https://www.sk.ee/teenused/kehtivuskinnituse-teenus/digidoc-veebiteenus/).
+
+[mID2] Sertifitseerimiskeskus. Mobiil-ID kasutamine veebis. Autentimine. [http://www.id.ee/index.php?id=36940](http://www.id.ee/index.php?id=36940).
+
+[Mobile Signature Service] [ETSI TS 102 204](http://www.etsi.org/deliver/etsi_ts/102200_102299/102204/01.01.04_60/ts_102204v010104p.pdf).
 
 [RFC8176] IETF (2017) RFC 8176. Authentication Method Reference Values. [https://tools.ietf.org/html/rfc8176](https://tools.ietf.org/html/rfc8176).
 
