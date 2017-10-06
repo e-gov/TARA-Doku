@@ -39,3 +39,12 @@ permalink: Viited
 [tasemed] Riigi Infosüsteemi Amet. eIDAS autentimistasemed. v1.0, 15.03.2017, [https://www.ria.ee/public/PKI/eIDAS-autentimistasemed.pdf](https://www.ria.ee/public/PKI/eIDAS-autentimistasemed.pdf).
 
 [TP-192 RIA autentimisteenus](https://jira.ria.ee/browse/TP-93). RIA teenuseportfelli kirje. [mitteavalik]
+
+----
+
+[EU Login](https://ecas.ec.europa.eu/cas/about.html) - Euroopa Komisjoni autentimisteenus
+
+[Suomi.fi tunnistus](https://tunnistaminen.suomi.fi/sivut/info/tietoapalvelusta/) - Soome avalike e-teenuste ühtne autentimisteenus; [kasutuselevõtu kirjeldus](https://esuomi.fi/suomi-fi-tunnistusta-kayttaa-jo-suuri-joukko-kansalaisia-julkishallinnon-organisaatioiden-otettava-palvelu-kayttoon-syyskuuhun-2017-mennessa/)
+
+
+
