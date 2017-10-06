@@ -32,11 +32,7 @@ Joonis 2 esitab kasutaja liikumise kuvade kaupa.
 
 1 Tegevus algab klientrakenduses. Kasutajale esitatakse kuva, millel on nupp "Logi sisse".
 
-2 Vajutusega "Logi sisse" suunatakse kasutaja TARA-teenusesse, autentimismeetodi valiku kuvale. Kasutaja võib valida:
-- m-ID autentimise (3a)
-- ID-kaardiga autentimise (4a)
-- eIDAS-autentimise (8)
-- tagasipöördumise klientrakendusse (1).
+2 Vajutusega nupule "Logi sisse" suunatakse kasutaja TARA-teenusesse, autentimismeetodi valiku kuvale. Siin võib kasutaja valida: m-ID autentimise (3a); ID-kaardiga autentimise (4a); eIDAS-autentimise (8); tagasipöördumise klientrakendusse (1).
 
 3a Mobiilinumbri ja isikukoodi sisestamine. _Kas on võimalik katkestada?_
 
@@ -44,9 +40,9 @@ Joonis 2 esitab kasutaja liikumise kuvade kaupa.
 
 3c Kinnituse ootamine. _Kas 3b ja 3c oleks otstarbekas ühitada?_
 
-4a Kasutajale kuvatakse teave autentimisserdi kohta. Kasutaja kinnitab serdivaliku.
+4a ID-kaardiga autentimine algab kasutajale teabe kuvamisega autentimisserdi kohta. Kasutaja kinnitab serdivaliku.
 
-4b Kasutaja sisestab PIN1-koodi (ID-kaart).
+4b Kasutaja sisestab PIN1-koodi (ID-kaart). Tulemuseks on autenditult suunamine tagasi klientrakendusse (6) või veateate lehele (5).
 
 5 Veateate lehelt saab kasutaja minna tagasi autentimimeetodi valikusse (2) ja seal kas üritada uuesti, võimalik, et teise autentimismeetodiga või katkestada autentimise ja minna tagasi klientrakendusse.
 
@@ -60,9 +56,11 @@ Joonis 2 esitab kasutaja liikumise kuvade kaupa.
 
 8 eIDAS autentimine toimub välisriigi süsteemis. 
 
-<img src='img/KasutajaVoog.PNG' style='width: 480px;'>
+<img src='img/KasutajaVoog.PNG' style='width: 600px;'>
 
-Joonis 2. Kasutaja voog
+Joonis 2. Kasutaja liikumistee kuvade kaupa
+
+_Märkus. Võrdluseks Suomi.fi [autentimisteenus](https://www.suomi.fi/etusivu/) ("Kirjaudu sisään")._
 
 ## 3 Autentimisprotsess
 
