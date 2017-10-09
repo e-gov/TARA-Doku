@@ -2,7 +2,7 @@
 permalink: Teekaart
 ---
 
-_Märkus. Teekaardil esitatut tuleb võtta mitte lukkulöödud plaanina, vaid indikatsioonina agiilselt toimuva arenduse suuna ja kavade kohta._
+Teekaart markeerib teenuse arendamise suunad, ärinõuded ja neid teostavad tööpaketid ning  arendusjärgud.
 
 <img src='img/TEEKAART.PNG' style='width: 600px;'>
 
