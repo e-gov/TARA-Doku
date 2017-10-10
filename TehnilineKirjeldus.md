@@ -305,3 +305,7 @@ Toodanguteenus
 | tõendiväljastus (_token_) | `https://tara.ria.ee/token` | 
 
 Märkus. Otspunktide kohta lähemalt vt [CAS OpenID Connect].
+
+-----
+
+[Kasutaja liikumistee lähtejoonis](https://docs.google.com/drawings/d/1i4vHGa02SsfVmJWNblI3IEUehRzcA95UwpZHbzI936o/edit)

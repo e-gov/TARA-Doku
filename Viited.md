@@ -46,5 +46,11 @@ permalink: Viited
 
 [Suomi.fi tunnistus](https://tunnistaminen.suomi.fi/sivut/info/tietoapalvelusta/) - Soome avalike e-teenuste ühtne autentimisteenus; [kasutuselevõtu kirjeldus](https://esuomi.fi/suomi-fi-tunnistusta-kayttaa-jo-suuri-joukko-kansalaisia-julkishallinnon-organisaatioiden-otettava-palvelu-kayttoon-syyskuuhun-2017-mennessa/)
 
+----
 
+Taustamaterjale
+
+[Taasesitusrünne ja kaitse selle vastu](Nonss)
+
+[Võltspäringurünne ja kaitse selle vastu](Volts)
 
