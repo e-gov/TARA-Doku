@@ -22,7 +22,7 @@ permalink: Viited
 
 [iGOV] OpenID Connect avaliku sektori profiil, [International Government Assurance Profile (iGov) for OpenID Connect 1.0](http://openid.net/specs/openid-igov-openid-connect-1_0-02.html) (Draft 02).
 
-[kavand] Riigi Infosüsteemi Amet. RIA SSO autentimisteenuse kavand. 18 lk.
+[kavand] Riigi Infosüsteemi Amet. RIA SSO autentimisteenuse kavand. 18 lk. [https://github.com/ria-eidas/RIA-autentimisteenus/wiki/Teenuse-kontseptsioon](https://github.com/ria-eidas/RIA-autentimisteenus/wiki/Teenuse-kontseptsioon)
 
 [CAS Service Management] [https://apereo.github.io/cas/4.2.x/installation/Service-Management.html](https://apereo.github.io/cas/4.2.x/installation/Service-Management.html).
 
@@ -46,5 +46,11 @@ permalink: Viited
 
 [Suomi.fi tunnistus](https://tunnistaminen.suomi.fi/sivut/info/tietoapalvelusta/) - Soome avalike e-teenuste ühtne autentimisteenus; [kasutuselevõtu kirjeldus](https://esuomi.fi/suomi-fi-tunnistusta-kayttaa-jo-suuri-joukko-kansalaisia-julkishallinnon-organisaatioiden-otettava-palvelu-kayttoon-syyskuuhun-2017-mennessa/)
 
+----
 
+Taustamaterjale
+
+[Taasesitusrünne ja kaitse selle vastu](Nonss)
+
+[Võltspäringurünne ja kaitse selle vastu](Volts)
 

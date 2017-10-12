@@ -69,10 +69,10 @@ Testteenuse URL-id:
 
 | otspunkt      |                        URL      |
 |---------------|---------------------------------|
-| teenuseteave (_server discovery_) | `https://test-tara.ria.ee/oidc/.well-known`, `https://tara.ria.ee/oidc/.well-known/openid-configuration` |
-| teenuse avalik allkirjastamisvõti | `https://test-tara.ria.ee/oidc/jwks` |
-| autentimine (_authorization_) | `https://test-tara.ria.ee/authorize` | 
-| tõendiväljastus (_token_) | `https://test-tara.ria.ee/token` | 
+| teenuseteave (_server discovery_) | `https://tara-test.ria.ee/oidc/.well-known`, `https://tara.ria.ee/oidc/.well-known/openid-configuration` |
+| teenuse avalik allkirjastamisvõti | `https://tara-test.ria.ee/oidc/jwks` |
+| autentimine (_authorization_) | `https://tara-test.ria.ee/authorize` | 
+| tõendiväljastus (_token_) | `https://tara-test.ria.ee/token` | 
 
 Toodanguteenuse URL-id:
 

@@ -59,7 +59,7 @@ RIA toodangukeskkonna korrapärased infrastruktuuri hooldustööd toimuvad iga k
 
 **Teenuse taastamiskoha klass**. Teenuse taastamiskoha klass määrab maksimaalse andmehulga, mis võib minna kaotsi teenuse taastamise käigus. Taastamiskoha klass määratakse ajavahemikuna enne tõrget. Näiteks taastamiskoha klass üks ööpäev saavutatakse igapäevase varundamisega, kus maksimaalne andmekadu võib olla 24 tunni andmed. Taastekoha klassid on järgmised: I – 24 h; II – 72 h; III – 168 h; IV – üks kuu; V – määratlemata.
 
-**Tööaeg**. Tööaeg on kokkulepitud ajavahemik, millal IT teenus peab kasutajale garanteeritult kättesaadav olema ning mille jooksul pakutakse IT teenusele kasutajatoe tuge (kasutusnõustamine, planeerimata katkestuste lahendamine jms). Teenuste töö väljaspool tööaega on monitooritud. Tööaeg on jaotatud klassidesse järgnevalt: I – 9:00-17:00
+**Tööaeg**. Tööaeg on kokkulepitud ajavahemik, millal IT teenus peab kasutajale garanteeritult kättesaadav olema ning mille jooksul pakutakse IT teenusele kasutajatoe tuge (kasutusnõustamine, planeerimata katkestuste lahendamine jms). Teenuste töö väljaspool tööaega on monitooritud. Tööaeg on jaotatud klassidesse järgnevalt: I – 9:00-17:00.
 
 **Varukoopiate paigutamine lühiajalisele säilitamisele**. Varukoopia paigutamine lühiajalisele säilitamisele määratleb varukoopia tsükli pikkuse, ehk ajavahemiku, kui kaua säilitatakse varukoopiaid enne kustutamist.
 
