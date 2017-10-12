@@ -116,7 +116,7 @@ Kasutaja läbib autentimisprotseduuri, vastavalt valitud autentimismeetodile.
 
 ### 3.4 Tagasisuunamine
 
-Autentimisrakendus suunab kasutaja tagasi rakendusse (rakenduse poolt kaasa antud naasmisaadressile), andes kaasa volituskoodi (_authorization code_). Tehniliselt tehakse tagasisuunamine HTTP päringuga. Näide:
+Autentimisteenus suunab kasutaja tagasi rakendusse (klientrakenduse poolt kaasa antud naasmisaadressile), andes kaasa volituskoodi (_authorization code_). Tehniliselt tehakse tagasisuunamine HTTP _redirect_-päringuga. Näide:
 
 ````
 HTTP GET https://eteenindus.asutus.ee/Callback?
