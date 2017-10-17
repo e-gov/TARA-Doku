@@ -32,7 +32,7 @@ Edaspidi TARA võimalused laienevad: täiendavad autentimismeetodid, sh piiriül
 | 6 [Viited](Viited)                           | jah    | jah    |  jah   |  jah    |
 | 7 [Teenustase (Test)](SLATest) [Teenustase (Toodang)]() | jah    | jah    |        |   jah   |
 | 8 [Paigaldusjuhend](https://confluence.ria.ee/pages/viewpage.action?pageId=71172276) | ei |  | jah | jah |
-| 9 [Teenusehalduri juhend](https://confluence.ria.ee/display/TARA/TARA+autentimisteenus.+Teenusehalduri+juhend) | ei |    | jah | jah |  
+| 9 [Teenusehalduri juhend](https://confluence.ria.ee/display/TARA/TARA+autentimisteenus.+Teenusehalduri+juhend) 9a [Kasutaja probleemi lahendamine](Kasutaja) | ei |    | jah | jah |  
 | 10 [Testistrateegia](https://confluence.ria.ee/display/TARA/TARA+testistrateegia)  | ei |   | jah |  |
 | 11 [Testplaan](https://confluence.ria.ee/display/TARA/TARA+testplaan)  | ei |   | jah |  |
 | 12 [Testiraport]()  | ei |   | jah |  |   
