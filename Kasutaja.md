@@ -18,6 +18,8 @@ Vt ka [Sõnastik](Sonastik).
 
 1. Kasutaja iga probleem peab saama lahenduse.
 2. Teenus tuleb maksimaalselt kujundada selliseks, et probleeme ennetada.
+3. Probleemilahendust tuleb järjepidevalt automatiseerida, eesmärgiks on inimtöö osaluse vähendamine
+4. Automatiseerimise eelduseks on probleemide klassifitseerimine.
 
 ## Kommunikatsiooniteed
 
