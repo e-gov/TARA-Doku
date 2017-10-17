@@ -116,7 +116,7 @@ Kasutaja läbib autentimisprotseduuri, vastavalt valitud autentimismeetodile.
 
 ### 3.4 Tagasisuunamine
 
-Autentimisrakendus suunab kasutaja tagasi rakendusse (rakenduse poolt kaasa antud naasmisaadressile), andes kaasa volituskoodi (_authorization code_). Tehniliselt tehakse tagasisuunamine HTTP päringuga. Näide:
+Autentimisteenus suunab kasutaja tagasi rakendusse (klientrakenduse poolt kaasa antud naasmisaadressile), andes kaasa volituskoodi (_authorization code_). Tehniliselt tehakse tagasisuunamine HTTP _redirect_-päringuga. Näide:
 
 ````
 HTTP GET https://eteenindus.asutus.ee/Callback?
@@ -288,8 +288,8 @@ Testteenus
 
 | otspunkt      |                        URL      |
 |---------------|---------------------------------|
-| teenuseteave (_server discovery_) | `https://tara-test.ria.ee/oidc/.well-known`, `https://tara.ria.ee/oidc/.well-known/openid-configuration` |
-| teenuse avalik allkirjastamisvõti | `https://tara-test.ria.ee/oidc/jwks` |
+| teenuseteave (_server discovery_) |  `https://tara.ria.ee/.well-known/openid-configuration` |
+| teenuse avalik allkirjastamisvõti | `https://test-tara.ria.ee/jwks` |
 | kliendi registreerimine | dünaamilist registreerimist ei toetata, registreerimine staatiliselt, `help@ria.ee` kaudu |
 | autentimine (_authorization_) | `https://tara-test.ria.ee/authorize` | 
 | tõendiväljastus (_token_) | `https://tara-test.ria.ee/token` | 
@@ -298,8 +298,8 @@ Toodanguteenus
 
 | otspunkt      |                        URL      |
 |---------------|---------------------------------|
-| teenuseteave (_server discovery_) | `https://tara.ria.ee/oidc/.well-known`, `https://tara.ria.ee/oidc/.well-known/openid-configuration` |
-| teenuse avalik allkirjastamisvõti | `https://tara.ria.ee/oidc/jwks` |
+| teenuseteave (_server discovery_) | `https://tara.ria.ee/.well-known/openid-configuration` |
+| teenuse avalik allkirjastamisvõti | `https://tara.ria.ee/jwks` |
 | kliendi registreerimine | dünaamilist registreerimist ei toetata, registreerimine staatiliselt, `help@ria.ee` kaudu |
 | autentimine (_authorization_) | `https://tara.ria.ee/authorize` | 
 | tõendiväljastus (_token_) | `https://tara.ria.ee/token` | 
