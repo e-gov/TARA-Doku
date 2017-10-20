@@ -85,25 +85,13 @@ p { margin: 0 0 1em 0; }
 
 /* ==== Loetelud ==== */
 #Tekst > ul {
-  list-style-type: circle;
+  list-style-type: none;
   margin: 0 0 1em 0;
   padding-left: 1em;
 }
 #Tekst > ol {
   padding-left: 1em;
 }
-
-/* Külgriba loetelud */
-nav > ul {
-  font-family: 'Anonymous Pro', sans-serif;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-nav ul {
-  padding-left: 0;
-  list-style: none;
-}
-nav ul ul { margin-left: 1em; }
 
 /* ==== TOC genereeritud === */
 #markdown-toc { padding-left: 0 !important; }
@@ -121,14 +109,6 @@ table { table-layout: fixed;
 table { border-collapse: collapse; }    
 table, th, td { border: 1px solid black; }
 th, td { padding: 2px; }
-
-.ei, .jah { text-align: center; }
-.ei { color: White; background-color: #D1F3D1; } /* Doodle */
-.jah { background-color: #FFCCCA; } /* Doodle */
-
-/* Tekst */
-.disabled { color:#000000; opacity:0.38; }
-.s { font-size: 10pt; }
 
 /* Allkriipsutus */
 .u { text-decoration: underline; }
@@ -166,27 +146,6 @@ a, a:hover, a:active, a:visited {
 
 /* Material design ikoonid */
 .ikoon { color: $grey700; font-size: 48px !important; }
-
-/* Silt e tag */
-.tags { margin: 1em 0 0 -8em; 
-  text-transform: uppercase;
-  color: $pruun700; 
-  font-family: 'Roboto Condensed', sans-serif;
-  font-size: 8pt;
-  letter-spacing: 2px;
-}
-.tag { color: $grey700;
-  border-radius: 8px;
-  padding: 4px;
-  }
-
-/* Mis on uut? */
-.uut { text-transform: uppercase;
-  color: $pruun700; 
-  font-family: 'Roboto Condensed', sans-serif;
-  font-size: 8pt;
-  letter-spacing: 2px; 
-}
 
 /* ======== Paneelid ======== */
 .action, .note, .teade, .noue { border-radius: 8px; padding: 1rem; }
