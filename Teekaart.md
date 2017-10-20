@@ -2,6 +2,8 @@
 permalink: Teekaart
 ---
 
+# Teekaart
+
 Teekaart markeerib teenuse arendamise suunad, ärinõuded ja neid teostavad tööpaketid ning  arendusjärgud.
 
 <img src='img/TEEKAART.PNG' style='width: 600px;'>
