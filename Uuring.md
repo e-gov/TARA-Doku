@@ -1,5 +1,5 @@
 ---
-permalink: SSO
+permalink: Uuring
 ---
 
 # SSO uuring. Lähteülesanne
@@ -10,17 +10,19 @@ kavand 0.1, 20.10.2017
 - TOC
 {:toc}
 
-E-teenuste ühtses inforuumis ei ole senine infosüsteemi- või asutusepõhine sisselogimine enam optimaalne lahendus. Kasutaja liigub erinevate e-teenuste vahel, näiteks alustab eesti.ee-s, leiab ja kasutab erinevaid teenuseid. Riigi teenusruumis sujuvaks liikumiseks tuleks kasutusele võtta ***ühekordse sisselogimise*** (ingl _single sign-on, SSO_) põhimõte.
+E-teenuste ühtses inforuumis ei ole senine infosüsteemi- või asutusepõhine sisselogimine enam optimaalne lahendus. Kasutaja liigub erinevate e-teenuste vahel, näiteks alustab eesti.ee-s, avastab ja tarbib erinevaid teenuseid. Riigi teenusruumis sujuvaks liikumiseks tuleks kasutusele võtta ***ühekordse sisselogimise*** (ingl _single sign-on, SSO_) lahendus.
 
-Avaliku sektori keskse autentimisteenuse on loonud paljud riigid [1][2]. Välisriikidest on eeskujuna meile olulisim Soome. Suomi.fi autentimisteenus töötab SSO põhimõttel [2]. Samas ei saa me välisriikide kogemust lihtsalt kopeerida.
+Keskse autentimisteenuse on loonud paljud riigid [1][2]. Välisriikidest on eeskujuna meile olulisim Soome. Suomi.fi autentimisteenus töötab SSO põhimõttel [2].
 
-Eestis on keskne autentimisteenus seni puudunud. RIA on 2017. a sügisest arendanud keskset autentimistteenust TARA [3]. Esimeses järgus TARA pakub lihtsat autentimisteenust, ühtse sisselogimise lisamine nõuab kõigepealt küsimuse uurimist.
+Eestis on keskne autentimisteenus seni puudunud. RIA on 2017. a sügisest saati aktiivselt arendanud keskset autentimistteenust TARA [3]. Esimeses, juba käivitunud järgus pakub TARA ainult lihtsat, SSO-ta autentimisteenust.
 
-SSO autentimisteenust on RIA-s kavandatud alates 2015. a. Tulemusena on valminud kavand [6].
+Ühtse sisselogimise lisamine nõuab kõigepealt küsimuse uurimist. SSO autentimisteenust on RIA-s kavandatud, vaheaegadega, alates 2015. a. Tulemusena on valminud kavand [6], mis käsitleb küll tehnilist külge, kuid sisalda ärivajaduse ega turvalisuse analüüsi.
 
 ## Uurimisvajadus
 
-Ühekordse sisselogimise rakendamine nõuab mitmete oluliste küsimuste selgitamist. Vaja on uurida kolme küsimuste rühma: 1) teenuse ärivajadus; 2) teenuse tehnilise kontseptsiooni headus; 3) turvalisus.
+Ühekordse sisselogimise ehitamine mõjutab praktiliselt kogu avaliku sektori infosüsteemi. Mõjult on tegu peaaegu uue kindlustava süsteemi loomisega. SSO pakub potentsiaalset atraktiivset kasutajakogemust, kuid on seotud ka oluliste ümberehitustega - &mdash; ja sellega seotud kuludega teenust kasutavates e-teenustes. Riigi ulatusega SSO-teenuses on tähtsad ka andmekaitselised ja infoturbelised aspektid.
+
+Seetõttu ei saa SSO lahenduse väljatöötamisele asuda enne, kui rida olulisi küsimusi on põhjalikult läbi vaagitud. Uurimist vajavad küsimused on otstarbekas rühmitada kolme rühma: 1) teenuse ärivajadus; 2) teenuse tehnilise kontseptsiooni headus; 3) turvalisus.
 
 ## SSO ärivajadus
 
@@ -30,7 +32,7 @@ SSO autentimisteenust on RIA-s kavandatud alates 2015. a. Tulemusena on valminud
 - kas asutused on huvitatud?
 - kas teenus tasub end ära?
 
-Küsimustele vastamiseks on otstarbekas koostada teenuse kasutuselevõtu (prognostiline) mudel. Mudel peab esitama argumenteeritud, kompaktse ja tervikliku käsitluse:
+Küsimustele vastamiseks on otstarbekas koostada teenuse kasutuselevõtu (prognostiline) mudel. _Võimalikud on ka teised metoodilised lähenemised._ Mudel peab esitama argumenteeritud, kompaktse ja tervikliku käsitluse:
 - asutuste motiividest SSO teenust kasutada
 - asutuste motiividest SSO teenust mitte kasutada
 - barjääridest teenuse kasutuselevõtmisel asutustes
@@ -38,15 +40,15 @@ Küsimustele vastamiseks on otstarbekas koostada teenuse kasutuselevõtu (progno
 - teenuse kasutuselevõtuga seotud kuludest
 - teenusest saadavast kasust võrreldes alternatiividega.
 
-Väga oluline on, kas teenuse kasutamine on kohustuslik, _de facto_ kohustuslik või vabatahtlik. Milline saab olema asutuste motiiv teenust kasutada? Kas kasutaja liikumine ilma täiendavate sisselogimisteta võib osutuda "mitte kellegi probleemiks"? Millised tehnilised või organisatsioonilised barjäärid tuleb asutusel ületada? _Näiteks iframe-e kasutav lahendus [7] võimaldab hea kasutajaliidest, kuid tõenäoliselt tähendab autentimis- ja sessioonihalduse loogika suurt muutmist asutuste infosüsteemides._
+Väga oluline on, kas teenuse kasutamine on kohustuslik, _de facto_ kohustuslik või vabatahtlik. Milline saab olema asutuste motiiv teenust kasutada? Kas kasutaja liikumine ilma täiendavate sisselogimisteta võib osutuda "mitte kellegi probleemiks" &mdash; ja järelikult asutuste motiiv teenust juurutada jääks kesiseks? Millised tehnilised või organisatsioonilised barjäärid tuleb asutusel ületada? _Näiteks iframe-e kasutav lahendus [7] võimaldab hea kasutajaliidest, kuid tõenäoliselt tähendab autentimis- ja sessioonihalduse loogika suurt muutmist asutuste infosüsteemides._
 
 Praegune nägemus on arendada SSO võimekus juurde RIA pakutavale TARA teenusele (vt TARA teenuse teekaart [4]). Teenust pakub RIA. Need Küsimused ei vaja uurimist.
 
 ## SSO teenuse tehnilise kontseptsiooni headus
 
-TARA suhtleb teenust kasutavate klientrakendustega OpenID Connect protokollile põhineva liidese abil [5]. Tarkvaralahendus on ehitatud CAS platvormile. SSO lisamine võiks toimuda vastavate funktsionaalsuste kasutuselevõtuga CAS-i platvormil töötavas OpenID Connect moodulis. Kuigi ühtse sisselogimise põhiidee on selge, on tehnilises teostuses nüansse ja otsustuskohti, mis vajavad tähelepanu ja kaalutletud otsuseid. Otstarbekas on tugineda standarditele. Seejuures peab arvestama, et OpenID Connect ja sellel alusstandard OAuth 2.0 on mitmeid valikuid pakkuvad raamistikud. Ei ole mõtet teostada kõiki standardi võimalusi. SSO teostamisel tuleks lähtuda OpenID fondi seansihalduse ja ühhekordse väljalogimise standarditest [7-9].
+TARA suhtleb teenust kasutavate klientrakendustega OpenID Connect protokollile põhineva liidese abil [5]. Tarkvaralahendus on ehitatud CAS platvormile. SSO lisamine on kavandatud vastavate funktsionaalsuste kasutuselevõtuga CAS-i platvormil töötavas OpenID Connect moodulis. Kuigi ühtse sisselogimise põhiidee on selge, on tehnilises teostuses nüansse ja otsustuskohti, mis vajavad tähelepanu ja kaalutletud otsuseid. Otstarbekas on tugineda standarditele. Seejuures peab arvestama, et OpenID Connect ja sellel alusstandard OAuth 2.0 on mitmeid valikuid pakkuvad raamistikud. Ei ole mõtet teostada kõiki standardi võimalusi. SSO teostamisel tuleks lähtuda OpenID fondi seansihalduse ja ühekordse väljalogimise standarditest [7-9].
 
-Protokollivoogude valimine ja tehtud valikute verifitseerimine.
+Uuring peaks kavandi [6] ja standardite [7-9] alusel andma soovituse sobivaima SSO protokollivoo valimiseks.
 
 ## SSO turvalisus
 
