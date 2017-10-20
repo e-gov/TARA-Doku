@@ -18,7 +18,7 @@ kavand 0.1, 20.10.2017
 
 1.2 Keskse autentimisteenuse on loonud paljud riigid [1][2]. Välisriikidest on eeskujuna meile olulisim Soome. Suomi.fi autentimisteenus töötab SSO põhimõttel [2].
 
-1.3 Eestis on keskne autentimisteenus seni puudunud. RIA on 2017. a sügisest saati aktiivselt arendanud keskset autentimistteenust TARA [3]. Esimeses, juba käivitunud järgus pakub TARA ainult lihtsat, SSO-ta autentimisteenust.
+1.3 Eestis on keskne autentimisteenus seni puudunud. RIA on 2017. a sügisest saati aktiivselt arendanud keskset autentimisteenust TARA [3]. Esimeses, juba käivitunud järgus pakub TARA ainult lihtsat, SSO-ta autentimisteenust.
 
 1.4 Ühtse sisselogimise lisamine nõuab kõigepealt küsimuse uurimist. SSO autentimisteenust on RIA-s kavandatud, vaheaegadega, alates 2015. a. Tulemusena on valminud kavand [6], mis käsitleb küll tehnilist külge, kuid sisalda ärivajaduse ega turvalisuse analüüsi.
 
@@ -52,7 +52,7 @@ Uurimist vajavad küsimused on otstarbekas rühmitada kolme rühma: 1) teenuse �
 
 ## 3 Ei ole uuringu skoobis
 
-3.1 Uuring ei peaks süvitsi minema küsimustes, mis võivad küll olla olulised laiemas kontekstis, kuid ei ole ühtse sisselogimisteenuse teostamise seisukohalt kriitilised. Sinna kuuluvad: 1) autentimise õiguslik regulatsioon Eesti Vabariigis. Vajadus asju täiendada võib olla. Kui, siis uuring peaks käsitlema küsimusi: kas SSO teenuse osutamiseks on praeguses õigusruumis takistusi? kui teenus teha kohustuslikuks, siis millise õigusaktiga? 2) autentimismeetodite areng; 3)  konkreetste autentimismeetodite tehnilised detailid; 4) OpenID Connect protokollist väljuv autentimise tehniliste, sotsiaalsete,filosoofiliste küsimuste ("mis on identiteet?") käsitlus.
+3.1 Uuring ei peaks süvitsi minema küsimustes, mis võivad küll olla olulised laiemas kontekstis, kuid ei ole ühtse sisselogimisteenuse teostamise seisukohalt kriitilised. Sinna kuuluvad: 1) autentimise õiguslik regulatsioon Eesti Vabariigis. Vajadus asju täiendada võib olla. Kui, siis uuring peaks käsitlema küsimusi: kas SSO teenuse osutamiseks on praeguses õigusruumis takistusi? kui teenus teha kohustuslikuks, siis millise õigusaktiga? 2) autentimismeetodite areng; 3)  konkreetsete autentimismeetodite tehnilised detailid; 4) OpenID Connect protokollist väljuv autentimise tehniliste, sotsiaalsete, filosoofiliste küsimuste ("mis on identiteet?") käsitlus.
 
 ## 4 Uuringu läbiviimise kord
 
