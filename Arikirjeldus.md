@@ -37,7 +37,7 @@ E-teenus liidestatakse autentimisteenusega OpenID Connect protokolli kohaselt.
 
 Ootame asutusi, kes sooviksid olla teenuse pilootkasutajad. Kontakt: `Piret.Elm@ria.ee`.
 
-[Liitumisjuhend](Liitumisjuhend)
+[Liitumisjuhend](Liitumisjuhend)<br>
 [Tehniline kirjeldus](TehnilineKirjeldus)
 
 <img src='img/KUVA-04.png' width='500'>
