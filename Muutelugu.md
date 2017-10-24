@@ -17,6 +17,7 @@ Versiooninumber on nii test- kui ka toodanguteenusel.
 ## Dokumentatsiooni muutelugu
 
 - 24.10.2017
-  - täpsustatud identsustõendi päringus klientrakenduse autentimist
+  - keele valik
+  - identsustõendi pärimisel klientrakenduse autentimine
 - 25.09.2017
   - ettevalmistav tööversioon
