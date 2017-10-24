@@ -14,7 +14,7 @@ E-teenus liidestatakse autentimisteenusega OpenID Connect protokolli kohaselt.
 
 ***Tehnilised tingimused?***
 - E-teenus liidestatakse autentimisteenusega OpenID Connect protokolli kohaselt.
-- Autentimismeetodina toetame esialgu mobiil-ID-d.
+- Autentimismeetodina toetame mobiil-ID-d ja ID-kaarti.
 - Teenuse esimese järgu valmides on kavas lisada teisi autentimismeetodeid, sh eIDAS e välismaa eID kasutaja autentimine.
 
 ***Kuidas liituda?*** Asutusel tuleb:<br>
@@ -32,19 +32,12 @@ E-teenus liidestatakse autentimisteenusega OpenID Connect protokolli kohaselt.
   - RIA avab toodanguteenuse.
 
 ***Millal?***
-- testteenus on avatud
-- tootmisteenuse avame kokkuleppel esimeste kasutajatega.
-
-***Mida pakume?***
-- teenuse ärikirjeldus
-- SLA-d
-- tehnilised tingimused ja liidestamise juhend
-- testteenus
-- tootmisteenus
-- nõustamine ja tugi
+- Testteenus on avatud.
+- Tootmisteenuse avame kokkuleppel esimeste kasutajatega.
 
 Ootame asutusi, kes sooviksid olla teenuse pilootkasutajad. Kontakt: `Piret.Elm@ria.ee`.
 
+[Liitumisjuhend](Liitumisjuhend)
 [Tehniline kirjeldus](TehnilineKirjeldus)
 
 <img src='img/KUVA-04.png' width='500'></img>
