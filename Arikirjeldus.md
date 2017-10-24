@@ -4,7 +4,7 @@ permalink: Arikirjeldus
 
 # TARA autentimisteenus
 
-TARA autentimisteenus on Riigi Infosüsteemi Ameti uus pakutav teenus, millega asutus saab oma e-teenusesse lisada mobiil-ID kasutaja autentimise toe.
+TARA autentimisteenus on Riigi Infosüsteemi Ameti uus pakutav teenus, millega asutus saab oma e-teenusesse lisada mobiil-ID ja ID-kaardiga autentimise toe.
 
 Autentimismeetodina toetab teenus esialgu mobiil-ID-d. Hiljem lisanduvad teised autentimismeetodid (ID-kaart, eIDAS autentimine).
 
