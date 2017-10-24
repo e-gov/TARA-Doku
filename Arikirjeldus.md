@@ -32,9 +32,8 @@ E-teenus liidestatakse autentimisteenusega OpenID Connect protokolli kohaselt.
   - RIA avab toodanguteenuse.
 
 ***Millal?***
-- teenuse ärikirjelduse, tehnilised tingimused ja liidestamise juhendi avaldame 2 nädala pärast
-- testteenuse - 2 nädala pärast
-- tootmisteenuse - 3 nädala pärast
+- testteenus on avatud
+- tootmisteenuse avame kokkuleppel esimeste kasutajatega.
 
 ***Mida pakume?***
 - teenuse ärikirjeldus
@@ -48,8 +47,10 @@ Ootame asutusi, kes sooviksid olla teenuse pilootkasutajad. Kontakt: `Piret.Elm@
 
 [Tehniline kirjeldus](TehnilineKirjeldus)
 
-![](img/KUVA-04.png)
+<img src='img/KUVA-04.png' width='500'></img>
 
 ----
 
 Riigi Infosüsteemi Amet, help@ria.ee, [www.ria.ee](www.ria.ee)
+
+_Viimati muudetud: 24.10.2017_

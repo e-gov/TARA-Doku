@@ -149,16 +149,16 @@ redirect_uri=https%3A%2F%2eteenindus.asutus.ee%2FCallback&
 client_id=58e7ba35aab5b4f1671a&
 ````
 
-| URL-i element          | näide                       |  selgitus     |
+| POST päringu keha element | näide                    |  selgitus     |
 |------------------------|-----------------------------|---------------|
 | protokoll, host ja tee | `https://tara.ria.ee/token` |   |
 | `grant_type`  | `grant_type=authorization_code` | nõutav väärtus `authorization_code` |
 | `code` | `code=Splx...` | autentimisteenuselt saadud volituskood | 
 | `redirect_uri` | `redirect_uri=https%3A%2F` | autentimispäringus saadetud ümbersuunamis-URI |
-| `client_id` | `client_id=58e7...` | klientrakenduse ID |
-| `client_secret` | `client_secret={client_secret}` | klientrakendusele antud salasõna |
 
-Autentimisteenus kontrollib, et identsustõendit küsib õige rakendus, koostab identsustõendi ning tagastab need rakendusele. Näide:
+Päringus tuleb anda `Authorization` päis, väärtusega, mis moodustatakse sõnast `Basic`, tühikust ja base64 kodeeringus stringist `<client_id>:<client_secret>` (vt RFC 2617 HTTP Authentication: Basic and Digest Access Authentication, jaotis 2 Basic Authentication Scheme).
+
+Autentimisteenus kontrollib, et identsustõendit küsib õige rakendus, koostab identsustõendi ning tagastab selle rakendusele. Näide:
 
 ````
 {  
@@ -182,7 +182,7 @@ Autentimisteenus kontrollib, et identsustõendit küsib õige rakendus, koostab 
 }
 ````
 
-Identsustõendis esitatakse järgmised väljad (_claims_). Identsustõend võib sisaldada muid Open ID Connect protokolli kohaseid välju, kuid neid teenuses ei kasutata. 
+Identsustõendis esitatakse järgmised väljad (_claims_). Identsustõend võib sisaldada muid OpenID Connect protokolli kohaseid välju, kuid neid teenuses ei kasutata. 
 JWT väljade tähenduse kohta vt vajadusel [https://www.iana.org/assignments/jwt/jwt.xhtml](https://www.iana.org/assignments/jwt/jwt.xhtml).
 
 |-----|-------------------------------------------|
@@ -309,3 +309,7 @@ Märkus. Otspunktide kohta lähemalt vt [CAS OpenID Connect].
 -----
 
 [Kasutaja liikumistee lähtejoonis](https://docs.google.com/drawings/d/1i4vHGa02SsfVmJWNblI3IEUehRzcA95UwpZHbzI936o/edit)
+
+----
+
+_Viimati muudetud: 24.10.2017_
