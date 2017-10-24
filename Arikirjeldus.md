@@ -40,7 +40,7 @@ Ootame asutusi, kes sooviksid olla teenuse pilootkasutajad. Kontakt: `Piret.Elm@
 [Liitumisjuhend](Liitumisjuhend)
 [Tehniline kirjeldus](TehnilineKirjeldus)
 
-<img src='img/KUVA-04.png' width='500'></img>
+<img src='img/KUVA-04.png' width='500'>
 
 ----
 
