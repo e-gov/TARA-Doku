@@ -103,6 +103,8 @@ Autentimispäringu elemendid (kõik elemendid on kohustuslikud):
 | rakenduse identifikaator `client_id` | `client_id=58e7...` | rakenduse identifikaatori annab RIA asutusele klientrakenduse registreerimisel autentimisteenuse kasutajaks |
 | kasutajaliidese keele valik `locale` | `locale=et` | toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ka ise valida. |
 
+Autentimispäringus võib lisada ka taasesitusründeid vältida aitava parameetri `nonce`, vastavalt protokollile [Core], jaotis 3.1.2.1.  Authentication Request. Parameeter `nonce` ei ole kohustuslik.
+
 ### 3.2 Autentimismeetodi valik
 
 Kasutaja saabudes autentimisteenusesse avaneb talle leht "TARA isikutuvastusteenus". Lehel on toetatavad autentimismeetodid.
