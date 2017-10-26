@@ -82,7 +82,7 @@ Kasutaja vajutab nupule "Logi sisse" vms. Rakendus võib ka ise algatada autenti
 Rakendus moodustab OpenID Connect autentimispäringu ja saadab sirvijale korralduse kasutaja suunamiseks autentimisteenusesse (HTTP _redirect_). Autentimispäringu näide:
 
 ````
-GET https://auth.ria.ee/login?
+GET https://tara.eesti.ee/authorize?
 
 redirect_uri=https%3A%2F%2eteenindus.asutus.ee%2FCallback&
 scope=openid&
@@ -146,8 +146,7 @@ Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW
 
 grant_type=authorization_code&
 code=SplxlOBeZQQYbYS6WxSbIA&
-redirect_uri=https%3A%2F%2eteenindus.asutus.ee%2FCallback&
-client_id=58e7ba35aab5b4f1671a&
+redirect_uri=https%3A%2F%2eteenindus.asutus.ee%2FCallback
 ````
 
 | POST päringu keha element | näide                    |  selgitus     |
@@ -156,6 +155,7 @@ client_id=58e7ba35aab5b4f1671a&
 | `grant_type`  | `grant_type=authorization_code` | nõutav väärtus `authorization_code` |
 | `code` | `code=Splx...` | autentimisteenuselt saadud volituskood | 
 | `redirect_uri` | `redirect_uri=https%3A%2F` | autentimispäringus saadetud ümbersuunamis-URI |
+| 
 
 Päringus tuleb anda `Authorization` päis, väärtusega, mis moodustatakse sõnast `Basic`, tühikust ja base64 kodeeringus stringist `<client_id>:<client_secret>` (vt RFC 2617 HTTP Authentication: Basic and Digest Access Authentication, jaotis 2 Basic Authentication Scheme).
 
@@ -204,6 +204,8 @@ JWT väljade tähenduse kohta vt vajadusel [https://www.iana.org/assignments/jwt
 | `nonce`                 | `"nonce":"qrstuvwxyzabcdef"` - turvaelement |
 | `acr`              | `"acr": "http://eidas.europa.eu/LoA/low"` - autentimistase, vastavalt eIDAS tasemetele (_Authentication Context Class Reference_). Elementi ei kasutata, kui autentimistase ei kohaldu või pole teada |
 | `jti`              | `"jti":"0e12bf29-2a3b-4a81-a85e-973d0a2303d1"` - identsustõendi identifikaator |
+
+Kui identsustõendit ei pärita 5 minuti jooksul, siis identsustõend aegub ja autentimisprotsessi tuleb korrata.
 
 Rakendus loob saadud identsustõendi alusel kasutajaga seansi. Seansi loomine ja pidamine on rakenduse kohustus. Kuidas seda teha, ei ole autentimisteenuse skoobis.
 
