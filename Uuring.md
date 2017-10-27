@@ -4,7 +4,7 @@ layout: Lihtne
 ---
 
 Autentimisteenuse turvauuring
-{. pais}
+{: .pais}
 
 {: .no_toc}
 

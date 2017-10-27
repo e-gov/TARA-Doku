@@ -6,6 +6,8 @@ body {
   font-family: 'Times New Roman', serif;
   font-size: 12pt; 
   line-height: 1.25;
+  color: black !important;
+  line-height: 1.25 !important;
   }
 
 /* Päis */
@@ -20,6 +22,7 @@ h1 {
   margin-bottom: 1rem;
 }
 h2, h3 {
+  font-size: 12pt !important;
   margin-top: 1rem;
 }
 
@@ -56,4 +59,10 @@ th, td { padding: 2px; }
 /* Allkriipsutus */
 .u { text-decoration: underline; }
 
-
+/* Määra üle Bootstrapi lingivärv */
+a, a:hover, a:active, a:visited {
+  color: #292B2C !important;
+  text-decoration: underline;
+  text-decoration-style: dashed;
+  text-decoration-color: DarkBlue;
+}
