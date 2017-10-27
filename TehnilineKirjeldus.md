@@ -241,6 +241,7 @@ Autentimisteenus pakub järgmisi autentimismeetodeid:
 |  kood | nimetus |
 |-------|---------|
 | `mID` | mobiil-id [DSS] |
+| `idcard` | Eesti ID-kaart |
 
 Märkus. Autentimismeetodite lisandudes tabel täieneb. Vt ka [RFC8176].
 
