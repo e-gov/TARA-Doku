@@ -15,6 +15,35 @@ kavand 0.2, 27.10.2017
 - TOC
 {:toc}
 
+## Mõisted
+
+_autentimine_, kasutaja isiku tuvastamise toiming (tehniliselt täpsemas tähenduses: isikusamasuse tuvastamine)
+_autentimine kui teenus_, arhitektuurimuster, kus rakendus ei autendi kasutajat ise, vaid delegeerib autentimise eraldiseisvale e-teenusele.
+_e-teenus_, asutuse poolt kasutajale, sh välismaalasele pakutav e-teenus
+_kasutaja_, e-teenust kasutav füüsiline isik
+_rakendus_, asutuse veebirakendus, mis pakub e-teenust; koosneb kahest osast: 1) kasutaja sirvijasse laetav osa; 2) serveripoolne osa
+_sisselogimine_, (_sing-on_, _sign-in_), toiming, millega kasutaja isik tuvastatakse ja luuakse seanss kasutaja ja rakenduse vahel
+_ühekordne sisselogimine_, (single sign-on, SSO), arhitektuurimuster, kus kasutaja saab ühe sisselogimisega kasutada mitut e-teenust.
+_ühekordne väljalogimine_ (single sign-off), arhitektuurimuster, kus kasutaja logitakse ühe väljalogimisega välja mitmest e-teenusest.
+_seanss_, ka _sessioon_, ajas piiratud suhe kasutaja ja rakenduse vahel. Võib alata sisselogimisega aga ka lihtsalt sirvijas esimese pöördumisega rakenduse poole; võib lõppeda väljalogimisega, aga ka sirvija sulgemisega, seansi ühepoolse lõpetamisega rakenduse poolt vms.
+_seansihaldus_, ka _seansi pidamine_, seansi loomise, hoidmise, turvamise ja lõpetamise toimingud.
+
+Käesolevas lähteülesandes kasutatakse ka veebilehel [https://e-gov.github.io/TARA-Doku/Sonastik](https://e-gov.github.io/TARA-Doku/Sonastik) määratletud mõisteid.
+
+## Autentimisteenuse ulatus 
+
+Autentimistoiming on protseduur, mis lõpeb _autentimissündmusega_. See on hetk, kus jõutakse 0/1 tulemuseni - kas isik loetakse tuvastatuks või mitte. 
+
+Kuid autentimisteenus võib olla &mdash; ja sageli ongi &mdash; seotud täiendavate teenustega:
+- ***autentimisteenuste vahendamise teenus***. Teenus koondab ja teeb rakendusele kättesaadavaks erinevate teenuseosutajate pakutavaid autentimisteenuseid.  
+- ***kasutaja rollide väljaselgitamise teenus***. Näiteks, autentimisteenusega võib olla ühitatud päring äriregistrisse. Autentimise tulemus sisaldab kasutaja esindusõiguste nimekirja.
+- ***rolli valimise teenus***. Näiteks autentimisdialoogis valib kasutaja ühtlasi organisatsiooni, kelle nimel ta tegutseb. 
+- ***kasutajat kirjeldavate tunnuste (atribuutide) teenus***. Minimaalsel juhul tekib autentimissündmuses väga väike teabekogum: tuvastatud isiku identifikaator, nimi, autentimisteenuse nimi, autentimise aeg, mõned konteksti kirjeldavad andmed. Tihti soovitakse, et autentimisega selgitatakse välja täiendavaid kasutajaga seotud andmeid. Rakendus võib kasutajaandmeid käia autentimisteenusest isegi hiljem pärimas (nt OpenID Connect protokollis UserInfo otspunkti kaudu).
+- ***kasutaja nõusoleku võtmise teenus***. Kasutaja nõusoleku andmine on tihedalt seotud isiku tuvastamisega. Seetõttu teostatakse need funktsionaalsused tihti koos. Kasutaja nõusolek (_user consent_) võib olla andmete töötlemiseks või ka muuks. OAuth 2.0 ongi eelkõige kasutaja nõusoleku võtmise protokoll, kus autentimine on vaid nõusoleku võtmise kaasnähtus.
+- ***sessioonihalduse teenus***. _Lihtne autentimisteenus_ viib läbi ühekordse autentimistoimingu. Autentimistoimingu tulemuseks on rakendusele väljastatav teave autentimissündmuse kohta (OpenID Connect protokollis _identsustõendi_ vormis). Seansi loomisega ega hoidmisega lihtne autentimisteenus ei tegele. Sessioonihaldust sisaldav autentimisteenus võtab enda kanda ka teisi sessiooni haldamise tegevusi, nt kasutaja perioodiline uuesti autentimine, seansi aegumise jälgimine jms.  
+- ***ühekordse sisselogimise teenus***. 
+- ühekordse väljalogimise teenus
+
 ## 1 Uurimisvajadus
 
 1.1 E-teenuste ühtses inforuumis ei ole senine infosüsteemi- või asutusepõhine sisselogimine enam optimaalne lahendus. Kasutaja liigub erinevate e-teenuste vahel, näiteks alustab eesti.ee-s, avastab ja tarbib erinevaid teenuseid. Riigi teenusruumis sujuvaks liikumiseks tuleks kasutusele võtta ***ühekordne sisselogimine*** (_single sign-on, SSO_).
