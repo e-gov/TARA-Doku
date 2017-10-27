@@ -14,23 +14,23 @@ Vt ka: [Sonastik](Sonastik), [Viited](Viited)
 
 ## 1 Ülevaade
 
-Autentimisteenus on Riigi Infosüsteemi Ameti uus pakutav teenus, millega asutus saab oma e-teenusesse lisada mobiil-ID kasutaja autentimise toe.
+Käesolev dokument esitab teenuse tehnilised omadused. Fookus on OpenID Connect protokolli rakendamisel tehtud valikutel, erinevustel ja täiendustel OpenID Connect protokolliga võrreldes. Esitatakse päringute näited. Liidestuja peab kindlasti tutvuma ka OpenID Connect protokolliga [Core]. Liidestuja peab erilist tähelepanu pöörama, et kõik protokollikohased kontrollid saaksid tehtud - turvaelemendi `state` ja kui kasutatakse, siis ka `nonce` kontroll, identsustõendi kontroll jm. 
 
-Autentimismeetodina toetab teenus mobiil-ID-d ja ID-kaarti. Järgmistes arendusjärkudes lisatakse teiste autentimismeetodite, sh piiriülese eIDAS-autentimise tugi.
+Autentimisteenus on Riigi Infosüsteemi Ameti uus pakutav teenus, millega asutus saab oma e-teenusesse lisada mobiil-ID ja ID-kaardi kasutaja autentimise toe. Järgmistes arendusjärkudes lisatakse teiste autentimismeetodite, sh piiriülese eIDAS-autentimise tugi.
 
-<img src='img/KuvaVoog.PNG' style='width: 600px;'>
+TARA teenuse aluseks on OpenID Connect protokoll [Core], mis omakorda põhineb OAuth 2.0 protokollil. Võrreldes OpenID Connect protokolliga on tehtud järgmised valikud, erisused ja täiendused:
 
-Joonis 1. Ülevaade
-
-TARA teenuse aluseks on OpenID Connect protokoll [Core] (mis omakorda põhineb OAuth 2.0 protokollil). Võrreldes OpenID Connect protokolliga on tehtud järgmised valikud, erisused ja täiendused:
-
-1. teenus toetab volituskoodi (_authorization code_) kasutusvoogu.
+1. teenus toetab ainult volituskoodi (_authorization code_) kasutusvoogu.
 2. kogu teave autenditud kasutaja kohta edastatakse rakendusele identsustõendis (_ID token_). Access token-it ja UserInfo otspunkti kaudu kasutaja atribuutide andmist ei toetata.
-3. rakendusele edastatakse ka eIDAS autentimistase, kui see on teada.
+3. rakendusele edastatakse ka eIDAS autentimistase, kui see on teada (`acr` väites).
 4. teenus toetab kasutajaliidese keeleeelistuse andmist autentimispäringus (`locale` parameetriga)
 4. autentimismeetodi valib kasutaja autentimisteenuses.
 
-Käesolev dokument esitab teenuse tehnilised omadused, fookusega OpenID Connect protokolli rakendamisel tehtud valikutele, erinevustele ja täiendustele OpenID Connect protokolliga võrreldes. Esitatakse päringute näited. Liidestuja peab kindlasti tutvuma ka OpenID Connect protokolliga [Core]. Liidestuja peab erilist tähelepanu pöörama, et kõik protokollikohased kontrollid saaksid tehtud - turvaelemendi `state` ja kui kasutatakse, siis ka `nonce` kontroll, identsustõendi kontroll jm. 
+Joonis 1 esitab teenuse ülevaatelise skeemi
+
+<img src='img/KuvaVoog.PNG' style='width: 600px;'>
+
+Joonis 1
 
 ## 2 Kasutaja liikumistee
 

@@ -2,7 +2,7 @@
 permalink: Viited
 ---
 
-# Viited
+## Viited
 
 [autentimistasemed] Riigi Infosüsteemi Amet. eIDAS autentimistasemed. v1.0, 15.03.2017.
 
@@ -40,7 +40,7 @@ permalink: Viited
 
 [TP-192 RIA autentimisteenus](https://jira.ria.ee/browse/TP-93). RIA teenuseportfelli kirje. [mitteavalik]
 
-# Teisi autentimisteenuseid
+## Teisi autentimisteenuseid
 
 [EU Login](https://ecas.ec.europa.eu/cas/about.html) - Euroopa Komisjoni autentimisteenus
 
@@ -48,9 +48,9 @@ permalink: Viited
 
 [GOV.UK Verify](https://www.gov.uk/government/publications/introducing-govuk-verify/introducing-govuk-verify) 
 
-# Taustamaterjale
+## Taustamaterjale
 
-[Taasesitusrünne ja kaitse selle vastu](Nonss)
+[Taasesitusrünne ja kaitse selle vastu](https://agiil.github.io/6068/Nonss)
 
-[Võltspäringurünne ja kaitse selle vastu](Volts)
+[Võltspäringurünne ja kaitse selle vastu](https://agiil.github.io/6068/Volts)
 
