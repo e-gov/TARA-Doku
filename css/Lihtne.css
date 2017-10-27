@@ -30,12 +30,12 @@ h2, h3 {
 p { margin: 0 0 1em 0; }
 
 /* ==== Loetelud ==== */
-#Tekst > ul {
+ul {
   list-style-type: none;
   margin: 0 0 1em 0;
   padding-left: 1em;
 }
-#Tekst > ol {
+ol {
   padding-left: 1em;
 }
 
@@ -44,6 +44,9 @@ p { margin: 0 0 1em 0; }
 #markdown-toc li:before {
     content: none !important;
     margin-left: 0 !important;
+}
+#markdown-toc > ul {
+  list-style-type: none;
 }
 #markdown-toc > li {
   list-style: none;
