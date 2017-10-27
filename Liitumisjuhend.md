@@ -2,6 +2,8 @@
 permalink: Liitumisjuhend
 ---
 
+{% include Issue.html %}
+
 # Liitumisjuhend
 {: .no_toc}
 

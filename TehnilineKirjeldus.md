@@ -2,6 +2,8 @@
 permalink: TehnilineKirjeldus
 ---
 
+{% include Issue.html %}
+
 # Tehniline kirjeldus
 {: .no_toc}
 
@@ -14,17 +16,21 @@ Vt ka: [Sonastik](Sonastik), [Viited](Viited)
 
 Autentimisteenus on Riigi Infosüsteemi Ameti uus pakutav teenus, millega asutus saab oma e-teenusesse lisada mobiil-ID kasutaja autentimise toe.
 
-Autentimismeetodina toetab teenus esialgu mobiil-ID-d. Järgmistes arendusjärkudes lisatakse teiste autentimismeetodite - ID-kaart, eIDAS jt - tugi.
+Autentimismeetodina toetab teenus mobiil-ID-d ja ID-kaarti. Järgmistes arendusjärkudes lisatakse teiste autentimismeetodite, sh piiriülese eIDAS-autentimise tugi.
 
 <img src='img/KuvaVoog.PNG' style='width: 600px;'>
 
 Joonis 1. Ülevaade
 
-Teenuse tähtsamad tunnusjooned:
-1. autentimisprotsessi aluseks on OpenID Connect 1.0 protokoll [Core], täpsemalt volituskoodi  (_authorization code_) kasutusvoog. Arvestatud on ka protokolli avaliku sektori profiiliga [iGOV].
-2. kogu teave autenditud kasutaja kohta edastatakse rakendusele identsustõendis (_ID token_).
+TARA teenuse aluseks on OpenID Connect protokoll [Core] (mis omakorda põhineb OAuth 2.0 protokollil). Võrreldes OpenID Connect protokolliga on tehtud järgmised valikud, erisused ja täiendused:
+
+1. teenus toetab volituskoodi (_authorization code_) kasutusvoogu.
+2. kogu teave autenditud kasutaja kohta edastatakse rakendusele identsustõendis (_ID token_). Access token-it ja UserInfo otspunkti kaudu kasutaja atribuutide andmist ei toetata.
 3. rakendusele edastatakse ka eIDAS autentimistase, kui see on teada.
+4. teenus toetab kasutajaliidese keeleeelistuse andmist autentimispäringus (`locale` parameetriga)
 4. autentimismeetodi valib kasutaja autentimisteenuses.
+
+Käesolev dokument esitab teenuse tehnilised omadused, fookusega OpenID Connect protokolli rakendamisel tehtud valikutele, erinevustele ja täiendustele OpenID Connect protokolliga võrreldes. Esitatakse päringute näited. Liidestuja peab kindlasti tutvuma ka OpenID Connect protokolliga [Core]. Liidestuja peab erilist tähelepanu pöörama, et kõik protokollikohased kontrollid saaksid tehtud - turvaelemendi `state` ja kui kasutatakse, siis ka `nonce` kontroll, identsustõendi kontroll jm. 
 
 ## 2 Kasutaja liikumistee
 
@@ -317,4 +323,4 @@ Märkus. Otspunktide kohta lähemalt vt [CAS OpenID Connect].
 
 ----
 
-_Viimati muudetud: 24.10.2017_
+_Viimati muudetud: 27.10.2017_

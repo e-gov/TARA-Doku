@@ -40,15 +40,15 @@ permalink: Viited
 
 [TP-192 RIA autentimisteenus](https://jira.ria.ee/browse/TP-93). RIA teenuseportfelli kirje. [mitteavalik]
 
-----
+# Teisi autentimisteenuseid
 
 [EU Login](https://ecas.ec.europa.eu/cas/about.html) - Euroopa Komisjoni autentimisteenus
 
 [Suomi.fi tunnistus](https://tunnistaminen.suomi.fi/sivut/info/tietoapalvelusta/) - Soome avalike e-teenuste ühtne autentimisteenus; [kasutuselevõtu kirjeldus](https://esuomi.fi/suomi-fi-tunnistusta-kayttaa-jo-suuri-joukko-kansalaisia-julkishallinnon-organisaatioiden-otettava-palvelu-kayttoon-syyskuuhun-2017-mennessa/)
 
-----
+[GOV.UK Verify](https://www.gov.uk/government/publications/introducing-govuk-verify/introducing-govuk-verify) 
 
-Taustamaterjale
+# Taustamaterjale
 
 [Taasesitusrünne ja kaitse selle vastu](Nonss)
 
