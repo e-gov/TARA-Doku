@@ -1,0 +1,59 @@
+/* ---- Keha -------- */
+body {
+  max-width: 44rem;
+  margin: 0 0; 
+  padding: 0.6em 1.5em 2em 2em; 
+  font-family: 'Times New Roman', serif;
+  font-size: 12pt; 
+  line-height: 1.25;
+  }
+
+/* Päis */
+.pais { font-family: 'Anonymous Pro', sans-serif;
+  font-size: 13pt; margin-bottom: 8px; }
+
+/* ==== Pealkirjad ==== */
+h1 {
+  font-size: 16pt !important;
+  font-weight: bold;
+  margin-top: 1em;
+  margin-bottom: 1rem;
+}
+h2, h3 {
+  margin-top: 1rem;
+}
+
+/* Tekstiparagrahv */
+p { margin: 0 0 1em 0; }
+
+/* ==== Loetelud ==== */
+#Tekst > ul {
+  list-style-type: none;
+  margin: 0 0 1em 0;
+  padding-left: 1em;
+}
+#Tekst > ol {
+  padding-left: 1em;
+}
+
+/* ==== TOC genereeritud === */
+#markdown-toc { padding-left: 0 !important; }
+#markdown-toc li:before {
+    content: none !important;
+    margin-left: 0 !important;
+}
+#markdown-toc > li {
+  list-style: none;
+}
+
+/* ==== Tabelid ==== */
+table { table-layout: fixed;
+    width: 100%; margin: 0 4em 2em 0; }
+table { border-collapse: collapse; }    
+table, th, td { border: 1px solid black; }
+th, td { padding: 2px; }
+
+/* Allkriipsutus */
+.u { text-decoration: underline; }
+
+

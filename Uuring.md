@@ -1,13 +1,16 @@
 ---
 permalink: Uuring
+layout: Lihtne
 ---
 
-# SSO uuring
+Autentimisteenuse turvauuring
+{. pais}
+
 {: .no_toc}
 
-lähteülesanne
+# Lähteülesanne
 
-kavand 0.1, 20.10.2017
+kavand 0.2, 27.10.2017
 
 - TOC
 {:toc}
