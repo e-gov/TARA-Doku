@@ -40,13 +40,17 @@ Kuid autentimisteenus võib olla &mdash; ja sageli ongi &mdash; seotud täiendav
 - ***rolli valimise teenus***. Näiteks autentimisdialoogis valib kasutaja ühtlasi organisatsiooni, kelle nimel ta tegutseb. 
 - ***kasutajat kirjeldavate tunnuste (atribuutide) teenus***. Minimaalsel juhul tekib autentimissündmuses väga väike teabekogum: tuvastatud isiku identifikaator, nimi, autentimisteenuse nimi, autentimise aeg, mõned konteksti kirjeldavad andmed. Tihti soovitakse, et autentimisega selgitatakse välja täiendavaid kasutajaga seotud andmeid. Rakendus võib kasutajaandmeid käia autentimisteenusest isegi hiljem pärimas (nt OpenID Connect protokollis UserInfo otspunkti kaudu).
 - ***kasutaja nõusoleku võtmise teenus***. Kasutaja nõusoleku andmine on tihedalt seotud isiku tuvastamisega. Seetõttu teostatakse need funktsionaalsused tihti koos. Kasutaja nõusolek (_user consent_) võib olla andmete töötlemiseks või ka muuks. OAuth 2.0 ongi eelkõige kasutaja nõusoleku võtmise protokoll, kus autentimine on vaid nõusoleku võtmise kaasnähtus.
-- ***sessioonihalduse teenus***. _Lihtne autentimisteenus_ viib läbi ühekordse autentimistoimingu. Autentimistoimingu tulemuseks on rakendusele väljastatav teave autentimissündmuse kohta (OpenID Connect protokollis _identsustõendi_ vormis). Seansi loomisega ega hoidmisega lihtne autentimisteenus ei tegele. Sessioonihaldust sisaldav autentimisteenus võtab enda kanda ka teisi sessiooni haldamise tegevusi, nt kasutaja perioodiline uuesti autentimine, seansi aegumise jälgimine jms.  
+- ***sessioonihalduse teenus***. _Lihtne autentimisteenus_ piirdub ühekordse autentimistoimingu läbiviimisega ja sessioonihaldusega ei tegele. Autentimistoimingu tulemuseks on rakendusele väljastatav teave autentimissündmuse kohta (OpenID Connect protokollis _identsustõendi_ vormis). Seansi loomisega ega hoidmisega lihtne autentimisteenus ei tegele. Sessioonihaldust sisaldav autentimisteenus võtab enda kanda ka teisi sessiooni haldamise tegevusi, nt kasutaja perioodiline uuesti autentimine, seansi aegumise jälgimine jms.  
 - ***ühekordse sisselogimise teenus***. 
-- ühekordse väljalogimise teenus
+- ***ühekordse väljalogimise teenus***.
+
+Laiemas tähenduses võib kõiki neid teenuseid nimetada autentimisteenusteks.
+
+Oluline küsimus on kas ja millist osateenuste buketti pakkuda.
 
 ## 1 Uurimisvajadus
 
-1.1 E-teenuste ühtses inforuumis ei ole senine infosüsteemi- või asutusepõhine sisselogimine enam optimaalne lahendus. Kasutaja liigub erinevate e-teenuste vahel, näiteks alustab eesti.ee-s, avastab ja tarbib erinevaid teenuseid. Riigi teenusruumis sujuvaks liikumiseks tuleks kasutusele võtta ***ühekordne sisselogimine*** (_single sign-on, SSO_).
+1.1 E-teenuste ühtses inforuumis ei ole senine infosüsteemi- või asutusepõhine sisselogimine enam optimaalne lahendus. Kasutaja liigub erinevate e-teenuste vahel, näiteks alustab eesti.ee-s, avastab ja tarbib erinevaid teenuseid. Riigi teenusruumis sujuvaks liikumiseks tuleks kasutusele võtta ühekordne sisselogimine (_single sign-on, SSO_).
 
 1.2 Keskse autentimisteenuse on loonud paljud riigid [1][2]. Välisriikidest on eeskujuna meile olulisim Soome. Suomi.fi autentimisteenus töötab SSO põhimõttel [2].
 
