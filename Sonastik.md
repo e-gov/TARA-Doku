@@ -14,6 +14,7 @@ Käesolev dokument määratleb TARA-teenuse kasutamise, haldamise ja arendamise 
 - _eestlane_ - Eesti eID kasutaja.
 - _e-teenus_, asutuse poolt kasutajale, sh välismaalasele pakutav e-teenus
 - _identsustõend_, (_ID token_), autentimisteenuse poolt rakendusele väljastatav teave kasutaja tuvastatud identiteedi kohta (isikukood ja tehnilised andmed)
+- _ID-kaart_, hõlmab ka elamisloakaarte ja digi-ID-kaarte
 - _kasutaja_, e-teenust kasutav füüsiline isik
 - _klientrakendus_, lühidalt _rakendus_, TARA autentimisteenust kasutav süsteem.
 - _pääsutalong_, (_access token_), autentimisteenuse poolt rakendusele väljastatav allkirjastatud teave

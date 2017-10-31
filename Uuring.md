@@ -22,7 +22,7 @@ _autentimine kui teenus_, arhitektuurimuster, kus rakendus ei autendi kasutajat 
 _e-teenus_, asutuse poolt kasutajale, sh välismaalasele pakutav e-teenus.<br>
 _kasutaja_, e-teenust kasutav füüsiline isik.<br>
 _rakendus_, asutuse veebirakendus, mis pakub e-teenust; koosneb kahest osast: 1) kasutaja sirvijasse laetav osa; 2) serveripoolne osa.<br>
-_sisselogimine_, (_sing-on_, _sign-in_), toiming, millega kasutaja isik tuvastatakse ja luuakse seanss kasutaja ja rakenduse vahel.<br>
+_sisselogimine_, (_sign-on_, _sign-in_), toiming, millega kasutaja isik tuvastatakse ja luuakse seanss kasutaja ja rakenduse vahel.<br>
 _ühekordne sisselogimine_, (_single sign-on_, _SSO_), arhitektuurimuster, kus kasutaja saab ühe sisselogimisega kasutada mitut e-teenust.<br>
 _ühekordne väljalogimine_ (_single sign-off_), arhitektuurimuster, kus kasutaja logitakse ühe väljalogimisega välja mitmest e-teenusest.<br>
 _seanss_, ka _sessioon_, ajas piiratud suhe kasutaja ja rakenduse vahel. Võib alata sisselogimisega aga ka lihtsalt sirvijas esimese pöördumisega rakenduse poole; võib lõppeda väljalogimisega, aga ka sirvija sulgemisega või seansi ühepoolse lõpetamisega rakenduse poolt.<br>
