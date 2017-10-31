@@ -301,20 +301,20 @@ Testteenus
 | otspunkt      |                        URL      |
 |---------------|---------------------------------|
 | teenuseteave (_server discovery_) |  `https://tara-test.ria.ee/oidc/.well-known/openid-configuration` |
-| teenuse avalik allkirjastamisvõti | `https://tara-test.ria.ee/jwks` |
+| teenuse avalik allkirjastamisvõti | `https://tara-test.ria.ee/oidc/jwks` |
 | kliendi registreerimine | dünaamilist registreerimist ei toetata, registreerimine staatiliselt, `help@ria.ee` kaudu |
-| autentimine (_authorization_) | `https://tara-test.ria.ee/authorize` | 
-| tõendiväljastus (_token_) | `https://tara-test.ria.ee/token` | 
+| autentimine (_authorization_) | `https://tara-test.ria.ee/oidc/authorize` | 
+| tõendiväljastus (_token_) | `https://tara-test.ria.ee/oidc/token` | 
 
 Toodanguteenus
 
 | otspunkt      |                        URL      |
 |---------------|---------------------------------|
 | teenuseteave (_server discovery_) | `https://tara.ria.ee/oidc/.well-known/openid-configuration` |
-| teenuse avalik allkirjastamisvõti | `https://tara.ria.ee/jwks` |
+| teenuse avalik allkirjastamisvõti | `https://tara.ria.ee/oidc/jwks` |
 | kliendi registreerimine | dünaamilist registreerimist ei toetata, registreerimine staatiliselt, `help@ria.ee` kaudu |
-| autentimine (_authorization_) | `https://tara.ria.ee/authorize` | 
-| tõendiväljastus (_token_) | `https://tara.ria.ee/token` | 
+| autentimine (_authorization_) | `https://tara.ria.ee/oidc/authorize` | 
+| tõendiväljastus (_token_) | `https://tara.ria.ee/oidc/token` | 
 
 Märkus. Otspunktide kohta lähemalt vt [CAS OpenID Connect].
 
