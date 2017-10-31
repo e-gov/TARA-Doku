@@ -300,8 +300,8 @@ Testteenus
 
 | otspunkt      |                        URL      |
 |---------------|---------------------------------|
-| teenuseteave (_server discovery_) |  `https://tara.ria.ee/.well-known/openid-configuration` |
-| teenuse avalik allkirjastamisvõti | `https://test-tara.ria.ee/jwks` |
+| teenuseteave (_server discovery_) |  `https://tara-test.ria.ee/oidc/.well-known/openid-configuration` |
+| teenuse avalik allkirjastamisvõti | `https://tara-test.ria.ee/jwks` |
 | kliendi registreerimine | dünaamilist registreerimist ei toetata, registreerimine staatiliselt, `help@ria.ee` kaudu |
 | autentimine (_authorization_) | `https://tara-test.ria.ee/authorize` | 
 | tõendiväljastus (_token_) | `https://tara-test.ria.ee/token` | 
@@ -310,7 +310,7 @@ Toodanguteenus
 
 | otspunkt      |                        URL      |
 |---------------|---------------------------------|
-| teenuseteave (_server discovery_) | `https://tara.ria.ee/.well-known/openid-configuration` |
+| teenuseteave (_server discovery_) | `https://tara.ria.ee/oidc/.well-known/openid-configuration` |
 | teenuse avalik allkirjastamisvõti | `https://tara.ria.ee/jwks` |
 | kliendi registreerimine | dünaamilist registreerimist ei toetata, registreerimine staatiliselt, `help@ria.ee` kaudu |
 | autentimine (_authorization_) | `https://tara.ria.ee/authorize` | 

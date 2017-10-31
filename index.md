@@ -4,7 +4,7 @@ permalink: /
 
 ![](img/LOVID.png)
 
-TARA on turvaline autentimisteenus, millega asutuse e-teenus saab autentida mobiil-ID kasutaja.
+TARA on turvaline autentimisteenus, millega asutuse e-teenus saab autentida ID-kaardi või mobiil-ID kasutaja.
 Edaspidi TARA võimalused laienevad: täiendavad autentimismeetodid, sh piiriülene eIDAS-autentimine, võimalik, et ka ühekordne sisselogimine (SSO) jm. TARA teenust pakub Riigi Infosüsteemi Amet. 
 
 - TOC
