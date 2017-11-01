@@ -4,45 +4,52 @@ permalink: /
 
 ![](img/LOVID.png)
 
-TARA on turvaline autentimisteenus, millega asutuse e-teenus saab autentida ID-kaardi või mobiil-ID kasutaja.
-Edaspidi TARA võimalused laienevad: täiendavad autentimismeetodid, sh piiriülene eIDAS-autentimine, võimalik, et ka ühekordne sisselogimine (SSO) jm. TARA teenust pakub Riigi Infosüsteemi Amet. 
+TARA on teenus, millega asutus saab oma e-teenuses  autentida ID-kaardi või mobiil-ID kasutaja. 2018. a lisandub eIDAS e välismaalaste autentimine, ühtne sisselogimine (SSO) jt autentimismeetodeid.
+
+TARA teenust pakub Riigi Infosüsteemi Amet. 
 
 - TOC
 {:toc}
 
-## Kood
+## Ärikasutajale
 
-| varamu  | eesmärk     |
-|-------|------|
-| [TARA-Server](https://github.com/e-gov/TARA-Server) | teenuse server |
-| [TARA-Client](https://github.com/e-gov/TARA-Client) | makettrakendus teenuse testimiseks |
-| [TARA-Doku](https://github.com/e-gov/TARA-Doku) | teenuse dokumentatsioon |
-| [TARA-Management](https://github.com/e-gov/TARA-Management) | teenuse haldustööriist |
+[Ärikirjeldus](Arikirjeldus)<br>
+[Liitumisjuhend](Liitumisjuhend)<br>
+[Taotluse vorm](TaotluseVorm)<br>
+[Teenustase (Test)](SLATest)<br>
+[Teenustase (Toodang)]()<br>
+[Teekaart](Teekaart)<br>
 
-## Dokumentatsioon
+## Klientrakenduse liidese arendajale
 
-| nimetus, asukoht                             | avalik | kasutajale | arendajale | haldajale |
-|----------------------------------------------|:------:|:------:|:------:|:-------:|
-| 1 [Ärikirjeldus](Arikirjeldus)               | jah    | jah    |        |         |
-| 2 [Liitumisjuhend](Liitumisjuhend)           | jah    | jah    |        |   jah   |
-| 2a [Taotluse vorm](TaotluseVorm)             | jah    | jah    |        |   jah   |
-| 3 [Teekaart](Teekaart)                       | jah    |        |  jah   |         |
-| 4 [Tehniline kirjeldus](TehnilineKirjeldus)  | jah    | jah    |  jah   |         |
-| 5 [Sõnastik](Sonastik)                       | jah    | jah    |  jah   |  jah    |
-| 6 [Viited](Viited)                           | jah    | jah    |  jah   |  jah    |
-| 7 [Teenustase (Test)](SLATest) [Teenustase (Toodang)]() | jah    | jah    |        |   jah   |
-| 8 [Paigaldusjuhend](https://confluence.ria.ee/pages/viewpage.action?pageId=71172276) | ei |  | jah | jah |
-| 9 [Teenusehalduri juhend](https://confluence.ria.ee/display/TARA/TARA+autentimisteenus.+Teenusehalduri+juhend) 9a [Kasutaja probleemi lahendamine](Kasutaja) | ei |    | jah | jah |  
-| 10 [Testistrateegia](https://confluence.ria.ee/display/TARA/TARA+testistrateegia)  | ei |   | jah |  |
-| 11 [Testplaan](https://confluence.ria.ee/display/TARA/TARA+testplaan)  | ei |   | jah |  |
-| 12 [Testiraport]()  | ei |   | jah |  |   
-| 13 [Turvaanalüüs](Turvaanaluus) | jah |  | jah | jah |
-| 14 [Vead ja tõrked. Ennetamine ja Käsitlemine](Veakasitlus) | jah |  | jah | jah |
+[Tehniline kirjeldus](TehnilineKirjeldus)<br>
+[Sõnastik](Sonastik)<br>
+[Viited](Viited)<br>
 
-## Arenduskorraldus
+## TARA teenuse käitajale
 
-TARA Confluence-is: [https://confluence.ria.ee/display/TARA](https://confluence.ria.ee/display/TARA)<br>
-TARA JIRA-s: [https://jira.ria.ee/browse/DD4J-88](https://jira.ria.ee/browse/DD4J-88)<br>
-TARA Skype-is: vestlus "Autentimisteenuse arendus"<br>
+[Paigaldusjuhend](https://confluence.ria.ee/pages/viewpage.action?pageId=71172276)<br>
+[Teenusehalduri juhend](https://confluence.ria.ee/display/TARA/TARA+autentimisteenus.+Teenusehalduri+juhend)
+
+## TARA teenuse arendajale
+
+[TARA-Server](https://github.com/e-gov/TARA-Server), teenuse server<br>
+[TARA-Client](https://github.com/e-gov/TARA-Client), makettrakendus teenuse testimiseks<br>
+[TARA-Doku](https://github.com/e-gov/TARA-Doku), teenuse dokumentatsioon<br>
+[TARA-Management](https://github.com/e-gov/TARA-Management), teenuse haldustööriist<br>
+
+[Kasutaja probleemi lahendamine](Kasutaja)<br>
+[Testistrateegia](https://confluence.ria.ee/display/TARA/TARA+testistrateegia)<br>
+[Testiplaan](https://confluence.ria.ee/display/TARA/TARA+testplaan)<br>
+[Turvaanalüüs](Turvaanaluus)<br>
+[Vead ja tõrked. Ennetamine ja Käsitlemine](Veakasitlus)<br>
+[Autentimisteenuse turvauuring. Lähteülesanne](Uuring)
+
+Confluence-is: [https://confluence.ria.ee/display/TARA]<br>(https://confluence.ria.ee/display/TARA)<br>
+JIRA-s: [https://jira.ria.ee/browse/DD4J-88](https://jira.ria.ee/browse/DD4J-88)<br>
+Skype-is: vestlused<br>
+  "TARA arendus"<br>
+  "TARA kasutajaliidese disain ja UI testimine"<br>
+  "TARA logimine"
 
 

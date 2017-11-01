@@ -10,7 +10,7 @@ body {
   }
 
 /* Kursuse päis */
-.kursusePais { font-family: 'Anonymous Pro', sans-serif;
+.pais { font-family: 'Anonymous Pro', sans-serif;
   font-size: 13pt; margin-bottom: 8px; }
 
 #Tekst { width: 40rem; }
