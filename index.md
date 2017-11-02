@@ -16,7 +16,7 @@ TARA teenust pakub Riigi Infosüsteemi Amet.
 [Teenustase (Test)](SLATest)<br>
 [Teenustase (Toodang)]()<br>
 [Teekaart](Teekaart)<br>
-[eIDAS autentimise lisamine e-teenusele](files/TARA-tutvustus.pdf), esitlus eID infopäeval 31.10.2017
+<a href='https://egov.github.io/TARA-Doku/files/TARA-tutvustus.pdf' target='_new'>eIDAS autentimise lisamine e-teenusele</a>, esitlus eID infopäeval 31.10.2017
 {: .pais}
 
 ## Klientrakenduse liidese arendajale
