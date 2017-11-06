@@ -6,7 +6,7 @@ permalink: Arikirjeldus
 
 TARA autentimisteenus on Riigi Infosüsteemi Ameti uus pakutav teenus, millega asutus saab oma e-teenusesse lisada mobiil-ID ja ID-kaardiga autentimise toe.
 
-Autentimismeetodina toetab teenus esialgu mobiil-ID-d. Hiljem lisanduvad teised autentimismeetodid (ID-kaart, eIDAS autentimine).
+2018. a esimesel poolel lisandub eIDAS autentimine.
 
 E-teenus liidestatakse autentimisteenusega OpenID Connect protokolli kohaselt. 
 
@@ -35,7 +35,7 @@ E-teenus liidestatakse autentimisteenusega OpenID Connect protokolli kohaselt.
 - Testteenus on avatud.
 - Tootmisteenuse avame kokkuleppel esimeste kasutajatega.
 
-Ootame asutusi, kes sooviksid olla teenuse pilootkasutajad. Kontakt: `Piret.Elm@ria.ee`.
+Ootame asutusi, kes sooviksid olla teenuse pilootkasutajad. Kontakt: `help@ria.ee`.
 
 [Liitumisjuhend](Liitumisjuhend)<br>
 [Tehniline kirjeldus](TehnilineKirjeldus)
@@ -46,4 +46,4 @@ Ootame asutusi, kes sooviksid olla teenuse pilootkasutajad. Kontakt: `Piret.Elm@
 
 Riigi Infosüsteemi Amet, help@ria.ee, [www.ria.ee](www.ria.ee)
 
-_Viimati muudetud: 24.10.2017_
+_Viimati muudetud: 06.11.2017_
