@@ -116,6 +116,7 @@ Meie plaan on kasutada eIDAS Node tarkvara.
   2b mõni muu tarkvarakomplekt.
 
 * Võib olla on see üldse saavutamatu ideaal. Windows 10, Android uued versioonid tulevad, tahame seda või ei taha; need tarkvarad ole ei täielikult hoomatavad ega saa neid ka täiesti oma tahtmise järgi seada.
+{:.vaike }
 
 ## Viited
 
