@@ -45,9 +45,9 @@ TARA teenust pakub Riigi Infosüsteemi Amet.
 [Testiplaan](https://confluence.ria.ee/display/TARA/TARA+testplaan)<br>
 [Turvaanalüüs](Turvaanaluus)<br>
 [Vead ja tõrked. Ennetamine ja Käsitlemine](Veakasitlus)<br>
-[Autentimisteenuse turvauuring. Lähteülesanne](Uuring)
-{: .pais}
+[Autentimisteenuse turvauuring. Lähteülesanne](Uuring)<br>
 [TARA arhitektuurne jätkusuutlikkus](Jatkusuutlikkus)
+{: .pais}
 
 [Confluence-is](https://confluence.ria.ee/display/TARA)<br>
 [JIRA-s](https://jira.ria.ee/browse/DD4J-88)<br>
