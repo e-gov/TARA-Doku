@@ -34,7 +34,7 @@ Siiski on TARA tarkvara jätkusuutlikkuse tagamiseks vaja uurida ja hinnata, kas
 
 Kavas on TARA-teenust laiendada. Esimese tööna lisame eIDAS piiriülese autentimise, seejärel, vastavalt enne läbiviidava uuringu tulemustele ühekordse sisselogimise, võimalik, et ka täiendavaid autentimismeetodeid.
 
-Laiendamise kavast annab ülevaate ettekanne ["Piiriülene autentimine"](PiiriyleneAutentimine.pdf), kuva 20.
+Laiendamise kavast annab ülevaate ettekanne ["Piiriülene autentimine"](https://e-gov.github.io/TARA-Doku/PiiriyleneAutentimine.pdf), kuva 20.
 
 Jätkusuutlikkus tähendab, et:
   - tarkvara täiendamisel ei kasva haldus- ja arenduskulud eksponentsiaalselt
