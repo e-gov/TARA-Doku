@@ -2,7 +2,7 @@
 permalink: Jatkusuutlikkus
 ---
 
-# TARA arhitektuurne jätkusuutlikkus
+# TARA tarkvara jätkusuutlikkus
 {: .no_toc}
 
 - TOC
@@ -111,7 +111,7 @@ Meie plaan on kasutada eIDAS Node tarkvara.
 1. Jätkata CAS-ga.<br>
   1a teha fork.<br>
   1b hoida meie lisandused sellised, et (tõenäoliselt) saaksime mõistliku arenduskuluga kasutada CAS-i tulevasi versiooniuuendusi.
-2. Lülituda ümber tarkvarale, mida suudame mõista ja  kohandada täpselt nii, nagu tahame(1).<br>
+2. Lülituda ümber tarkvarale, mida suudame mõista ja  kohandada täpselt nii, nagu tahame (1).<br>
   2a MITREid Connect + mõni SAML-i kliendi teek<br>
   2b mõni muu tarkvarakomplekt.<br>
 
@@ -136,8 +136,8 @@ Peame mõtlema ja arutama. Ei ole ka ainult nii, et tellija ütleb, kuidas tahab
 
 [1] eIDAS-Node software releases. [https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/eIDAS-Node+-+Current+release](https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/eIDAS-Node+-+Current+release).<br>
 [2] eIDAS Node National IdP and SP Integration Guide. v 1.0 16.10.2017, [link dokumendile](https://ec.europa.eu/cefdigital/wiki/download/attachments/46992189/eIDAS-Node%20National%20IdP%20and%20SP%20Integration%20Guide.pdf?version=1&modificationDate=1507819905716&api=v2).<br>
-[3] eIDAS Technical specification v.1.1, https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/eIDAS+Profile.<br>
+[3] eIDAS Technical specification v.1.1, [https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/eIDAS+Profile](https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/eIDAS+Profile).<br>
 [4] Apereo CAS. https://github.com/apereo/cas.<br>
-[5] MITREid Connect. https://github.com/mitreid-connect/.<br>
-[6] Tomas Petricek (2015) „Library patterns Why frameworks are evil“, http://tomasp.net/blog/2015/library-frameworks/.<br>
+[5] MITREid Connect. [https://github.com/mitreid-connect/](https://github.com/mitreid-connect/).<br>
+[6] Tomas Petricek (2015) „Library patterns Why frameworks are evil“, [http://tomasp.net/blog/2015/library-frameworks/](http://tomasp.net/blog/2015/library-frameworks/).<br>
 
