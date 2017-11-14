@@ -118,6 +118,19 @@ Meie plaan on kasutada eIDAS Node tarkvara.
 * Võib olla on see üldse saavutamatu ideaal. Windows 10, Android uued versioonid tulevad, tahame seda või ei taha; need tarkvarad ole ei täielikult hoomatavad ega saa neid ka täiesti oma tahtmise järgi seada.
 {:.vaike }
 
+## Võrdluskogemus
+
+Minu kogemus on individuaalne ja paratamatult piiratud. Mõned punktid siiski:
+- tööriista tundmaõppimine võtab aega. Näiteks Jekylli koos seonduvate tehnoloogiatega omandasin u aasta.
+- "võimas", paljude omadustega tööriist ei tarvitse olla parim. Näiteks OpenID Connect klientrakenduse kirjutamiseks ei ole vaja spetsiaalselt teeki. Piisab tavalistest programmeerimiskeele võimalustest ja standardsetest teekidest (HTTP, JWT teek). Võib leida OpenID Connect klienditeeke, kus eesmärgiks on olnud programmeerimiskeelte uute võimaluste demonstreerimine ja protokolli kõigi võimaluste lahendamine; peab mõtlema, kas vajad kõike seda.
+- tööriist ei tohi tööd tõkestada, selles mõttes, et seab piiranguid või kirjutab ette, mida teha. Nt Jekyll-is ei ole ükski konstruktsioon kohustuslik - võib kirjutada puhta HTML-i ja Jekyll laseb selle läbi.
+- tarkvara _hoarding_ pole hea mõte. See, et tasuta saab, pole kogu tõde ega alati kasulik.
+- esimene valik pole alati parim. Node.js platvormil olen teegi mitu korda välja vahetanud. (Hea indikaator on npm näidatav teegi kasutusstatistika).
+
+## Kokkuvõte
+
+Peame mõtlema ja arutama. Ei ole ka ainult nii, et tellija ütleb, kuidas tahab. Tähtis on ka kuidas arendajale töötada meeldiks.
+
 ## Viited
 
 [1] eIDAS-Node software releases. [https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/eIDAS-Node+-+Current+release](https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/eIDAS-Node+-+Current+release).
