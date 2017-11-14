@@ -107,13 +107,13 @@ Meie plaan on kasutada eIDAS Node tarkvara.
 
 ## Alternatiivid
 
-1 Jätkata CAS-ga
-  1a teha fork.
-  1b hoida meie lisandused sellised, et (tõenäoliselt) saaksime mõistliku arenduskuluga kasutada CAS-i tulevasi versiooniuuendusi
+1 Jätkata CAS-ga.<br>
+  1a teha fork.<br>
+  1b hoida meie lisandused sellised, et (tõenäoliselt) saaksime mõistliku arenduskuluga kasutada CAS-i tulevasi versiooniuuendusi.
 
-2 Lülituda ümber tarkvarale, mida suudame mõista ja  kohandada täpselt nii, nagu tahame*.
-  2a MITREid Connect + mõni SAML-i kliendi teek 
-  2b mõni muu tarkvarakomplekt.
+2 Lülituda ümber tarkvarale, mida suudame mõista ja  kohandada täpselt nii, nagu tahame*.<br>
+  2a MITREid Connect + mõni SAML-i kliendi teek<br>
+  2b mõni muu tarkvarakomplekt.<br>
 
 * Võib olla on see üldse saavutamatu ideaal. Windows 10, Android uued versioonid tulevad, tahame seda või ei taha; need tarkvarad ole ei täielikult hoomatavad ega saa neid ka täiesti oma tahtmise järgi seada.
 {:.vaike }
