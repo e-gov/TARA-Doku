@@ -1,0 +1,28 @@
+---
+permalink: Statistika
+---
+
+# TARA statistika
+
+## Vajadused
+
+Statistikavajadus tuleneb vajadusest:
+- 1) tagada deklareeritud teenustase (SLA)
+- 2) pidada väliste, tasuliste teenuste (DigiDocService) tarbimise arvestust
+- 3) pidada arvestust teenuse kasutamise kohta klientide lõikes.
+
+Statistika võib olla ka kasulik ka teenuse turvamisel.
+
+Statistikat vajame:
+- autentimiste arv kuus
+  - kokku
+  - klientide lõikes (klient TARA mõistes on Eesti e-teenuse omanik-asutus)
+    - klientrakenduste lõikes (kliendil võib olla mitu klientrakendust)
+  - piiriülene/siseriiklik lõikes
+    - välisriikide lõikes
+  - autentimismeetodite lõikes
+- edukate autentimiste osakaal
+
+Statistika tootmiseks tuleks kasutada oma lahendust. Google Analyticsile tuginemine, eriti kui teenust hakatakse laialdaselt kasutama, sh ühekordse sisselogimise režiimis, tekitab riski, et autentimisandmestik, kuigi sealt on isikukoodid ja nimed eemaldatud, võimaldab muude andmetega kombineerides teha järeldusi, mille võimalikku kasu või kahju me ei oska hinnata.
+
+
