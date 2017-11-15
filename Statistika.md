@@ -32,6 +32,8 @@ Kõike võib-olla kohe teostada ei jõua, kuid järk-järgult. Piiriülene stati
 
 Huvi pakuks ka palju siis erinevaid välismaalasi teenuses autenditakse? See nõuaks eIDAS-identifikaatorite andmebaasi pidamist. Keerukas ja oht, et problemaatiline andmekaitse seisukohalt. Kui, siis teises järjekorras.
 
+Ülalesitatu ei sisalda SSO statistikat. SSO toob kaasa täiesti uued küsimused: Kui palju SSO-d kasutatakse? Mitmesse teenusesse SSO-ga sisse logitakse? Kes SSO-d kasutab?
+
 ## Lahendus
 
 Statistika tootmiseks tuleks võimalusel kasutada oma lahendust. Google Analyticsile tuginemine, eriti kui teenust hakatakse laialdaselt kasutama, sh ühekordse sisselogimise režiimis, tekitab riski, et autentimisandmestik, kuigi sealt on isikukoodid ja nimed eemaldatud, võimaldab muude andmetega kombineerides teha järeldusi, mille võimalikku kasu või kahju me ei oska hinnata.
