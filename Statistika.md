@@ -14,14 +14,16 @@ Statistikavajadus tuleneb vajadusest:
 Statistika võib olla ka kasulik ka teenuse turvamisel.
 
 Vajame statistilisi näitajaid (periood - kuu):
-- autentimiste
+- autentimiste arv
   - kokku
   - klientide lõikes (klient TARA mõistes on Eesti e-teenuse omanik-asutus)
     - klientrakenduste lõikes (kliendil võib olla mitu klientrakendust)
   - piiriülene/siseriiklik lõikes
     - välisriikide lõikes
   - autentimismeetodite lõikes
-- edukate autentimiste osakaal
+- edukate autentimiste osakaal.
+
+Huvi pakuks ka palju siis erinevaid välismaalasi teenuses autenditakse? See nõuaks eIDAS-identifikaatorite andmebaasi pidamist. Keerukas ja oht, et problemaatiline andmekaitse seisukohalt. Kui, siis teises järjekorras.
 
 ## Lahendus
 
