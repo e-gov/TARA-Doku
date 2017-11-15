@@ -27,4 +27,7 @@ Vajame statistilisi näitajaid (periood - kuu):
 
 Statistika tootmiseks tuleks võimalusel kasutada oma lahendust. Google Analyticsile tuginemine, eriti kui teenust hakatakse laialdaselt kasutama, sh ühekordse sisselogimise režiimis, tekitab riski, et autentimisandmestik, kuigi sealt on isikukoodid ja nimed eemaldatud, võimaldab muude andmetega kombineerides teha järeldusi, mille võimalikku kasu või kahju me ei oska hinnata.
 
+----
+
+_Viimati muudetud: 15.11.2017_
 

@@ -46,7 +46,7 @@ TARA teenust pakub Riigi Infosüsteemi Amet.
 [Turvaanalüüs](Turvaanaluus)<br>
 [Vead ja tõrked. Ennetamine ja Käsitlemine](Veakasitlus)<br>
 [Autentimisteenuse turvauuring. Lähteülesanne](Uuring)<br>
-[TARA arhitektuurne jätkusuutlikkus](Jatkusuutlikkus)
+[TARA arhitektuurne jätkusuutlikkus](Jatkusuutlikkus)<br>
 [TARA statistika](Statistika)
 {: .pais}
 
