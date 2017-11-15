@@ -14,7 +14,7 @@ Statistikavajadus tuleneb vajadusest:
 Statistika võib olla ka kasulik ka teenuse turvamisel.
 
 Vajame statistilisi näitajaid (periood - kuu):
-kasutusstatistika
+- kasutusstatistika
   - autentimiste arv
     - kokku
     - klientide lõikes (klient TARA mõistes on Eesti e-teenuse omanik-asutus)
@@ -23,7 +23,7 @@ kasutusstatistika
       - välisriikide lõikes
     - autentimismeetodite lõikes
   - edukate autentimiste osakaal
-teenustaseme statistika
+- teenustaseme statistika
   - välisriigi teenuse maasoleku tõttu ebaõnnestunud autentimiste arv
   - välisriigi teenuste ülevaloleku protsent
   - Eesti TARA-välise teenuse maasoleku tõttu ebaõnnestunud autentimiste arv
