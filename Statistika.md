@@ -39,7 +39,7 @@ Huvi pakuks ka palju siis erinevaid välismaalasi teenuses autenditakse? See nõ
 Alternatiivid:
 - 1) majasisese ELK-stacki baasil
 - 2) programmeerida eraldi statistikaotstarbeline logi + statistika arvutamise skript (majasisene)
-- 3) välineteenus, in-premise paigaldus - Pivic
+- 3) väline teenus, _in-premise_ paigaldus - Pivic
 - 4) Google Analytics.
 
 Statistika tootmiseks tuleks võimalusel kasutada oma lahendust. Google Analyticsile tuginemine, eriti kui teenust hakatakse laialdaselt kasutama, sh ühekordse sisselogimise režiimis, tekitab riski, et autentimisandmestik, kuigi sealt on isikukoodid ja nimed eemaldatud, võimaldab muude andmetega kombineerides teha järeldusi, mille võimalikku kasu või kahju me ei oska hinnata.
