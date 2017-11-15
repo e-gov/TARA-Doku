@@ -4,7 +4,7 @@ permalink: Statistika
 
 # TARA statistika
 
-## Vajadused
+## Vajadus
 
 Statistikavajadus tuleneb vajadusest:
 - 1) tagada deklareeritud teenustase (SLA)
@@ -13,8 +13,8 @@ Statistikavajadus tuleneb vajadusest:
 
 Statistika võib olla ka kasulik ka teenuse turvamisel.
 
-Statistikat vajame:
-- autentimiste arv kuus
+Vajame statistilisi näitajaid (periood - kuu):
+- autentimiste
   - kokku
   - klientide lõikes (klient TARA mõistes on Eesti e-teenuse omanik-asutus)
     - klientrakenduste lõikes (kliendil võib olla mitu klientrakendust)
@@ -23,6 +23,8 @@ Statistikat vajame:
   - autentimismeetodite lõikes
 - edukate autentimiste osakaal
 
-Statistika tootmiseks tuleks kasutada oma lahendust. Google Analyticsile tuginemine, eriti kui teenust hakatakse laialdaselt kasutama, sh ühekordse sisselogimise režiimis, tekitab riski, et autentimisandmestik, kuigi sealt on isikukoodid ja nimed eemaldatud, võimaldab muude andmetega kombineerides teha järeldusi, mille võimalikku kasu või kahju me ei oska hinnata.
+## Lahendus
+
+Statistika tootmiseks tuleks võimalusel kasutada oma lahendust. Google Analyticsile tuginemine, eriti kui teenust hakatakse laialdaselt kasutama, sh ühekordse sisselogimise režiimis, tekitab riski, et autentimisandmestik, kuigi sealt on isikukoodid ja nimed eemaldatud, võimaldab muude andmetega kombineerides teha järeldusi, mille võimalikku kasu või kahju me ei oska hinnata.
 
 
