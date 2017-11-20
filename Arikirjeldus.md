@@ -10,7 +10,9 @@ Juba 2018. a esimesel poolel lisandub eIDAS autentimine.
 
 E-teenus liidestatakse autentimisteenusega OpenID Connect protokolli kohaselt. 
 
-***Kellele?*** Avaliku sektori asutustele, kes soovivad oma e-teenustes mobiil-ID kasutajaid autentida, ise seda tegemata.
+***Kellele?*** Avaliku sektori asutustele, kes soovivad:
+- oma e-teenustes mobiil-ID ja ID-kaardi kasutajaid autentida, ise seda tegemata.
+- lisada oma e-teenusele piiriülese autentimise toe.
 
 ***Tehnilised tingimused?***
 - E-teenus liidestatakse autentimisteenusega OpenID Connect protokolli kohaselt.
