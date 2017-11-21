@@ -68,7 +68,7 @@ Statistika tootmiseks tuleks võimalusel kasutada oma lahendust. Google Analytic
 | 2.	| klientrakendus	| klientrakenduse nimi, `client id` OpenID Connecti mõistes.	| sõne	| `KalanduseIS` |
 | 3.	| asutus	| klientrakenduse omaniku - asutuse registrikood.	| registrikood	| `70001231` |
 | 4.	| autentimismeetod	| `eID`, `mID` jne. Piiriülese autentimise koodid lisame siis, kui eIDASe osa hakkame tegema.	| sõne	| `eID` |
-| 5.	| toimingu tulemus	| sõne `OK` (autentimine edukas) või `NOK` (autentimine ebaedukas)	| `OK` |
+| 5.	| toimingu tulemus	| sõne `OK` (autentimine edukas) või `NOK` (autentimine ebaedukas)	| | `OK` |
 | 6.	| ebaedu põhjus	| autentimistoimingu ebaõnnestumise põhjus, kui on teada; õnnestumise korral jäetakse väli tühjaks.	| põhjuse kood (sõnena). Koodid vt [1]. | `mID.15` | 
 
 2\.	Autentimistoiming<br>
@@ -89,7 +89,7 @@ Statistika tootmiseks tuleks võimalusel kasutada oma lahendust. Google Analytic
 3\.3\.	Statistiline aruanne koostatakse kuu statistikalogi faili põhjal, spetsiaalse skriptiga.<br>
 3\.4\.	Statistiline aruanne vormistatakse inimloetava, UTF-8 vormingus tekstifailina. Kujundus ei ole vajalik.<br>
 
-[1] [https://confluence.ria.ee/display/TARA/TARA+veateated+ja+kasutajale+antavad+juhised](https://confluence.ria.ee/display/TARA/TARA+veateated+ja+kasutajale+antavad+juhised). 
+[1] [https://confluence.ria.ee/display/TARA/TARA+veateated+ja+kasutajale+antavad+juhised](https://confluence.ria.ee/display/TARA/TARA+veateated+ja+kasutajale+antavad+juhised) &#128274;. 
 
 ----
 
