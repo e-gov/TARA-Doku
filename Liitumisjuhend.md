@@ -34,16 +34,19 @@ Eriti tähele panna:<br>
 
 ## 3 Liituda TARA testteenusega
 Asutus esitab taotluse testteenusega liitumiseks. Taotluse võib esitada juba enne arenduse algust. Taotluses palume teatada:
-1) e-teenus või -teenused, mille kasutajaid soovitakse TARA abil autentida<br>
-2) kasutajate arvu prognoos<br>
-3) nõustumine teenustasemega (SLA-ga); kui on vajadus kõrgema SLA järele, siis rääkida RIA-ga läbi<br>
+1) teenus, millega soovitakse liituda (test- või toodanguteenus)
+2) kinnitus, et liituja on välja arendanud omapoolse liidese ja seda TARA testteenuse vastu testinud (toodanguteenusega liitumise puhul)<br>
+3) e-teenus või -teenused, mille kasutajaid soovitakse TARA abil autentida<br>
+4) kasutajate arvu prognoos<br>
+5) kohustumus kasutada teenust eesmärgipäraselt. Sh testteenust kasutada ainult testimiseks, mitte toodangus autentimiseks<br>
+6) nõustumus teenustasemega (SLA-ga); kui on vajadus kõrgema SLA järele, siis rääkida RIA-ga läbi<br>
 
 [TARA testkeskkonna teenustase (SLA)](SLATest)
 
-4) klientrakenduse identifikaatori ettepanek -`client_id` OpenID Connect protokolli kohaselt<br>
-5) klientrakenduse testversiooni tagasisuunamis-URL (_redirect-URL_), OpenID Connect protokolli kohaselt<br>
-6) klientrakenduse haldaja kontaktandmed (e-post, telefon, isikukood)<br>
-7) autentimismeetod või meetodid, mida soovitakse kasutada.
+7) klientrakenduse identifikaatori ettepanek -`client_id` OpenID Connect protokolli kohaselt<br>
+8) klientrakenduse testversiooni tagasisuunamis-URL (_redirect-URL_), OpenID Connect protokolli kohaselt<br>
+9) autentimismeetod või meetodid, mida soovitakse kasutada<br>
+10) klientrakenduse haldaja kontaktandmed (e-post, telefon, isikukood).
 
 Taotlus esitatakse ja edasine suhtlus teenuse haldamisel käib läbi RIA kasutajatoe, `help@ria.ee`.
 
@@ -84,3 +87,7 @@ Toodanguteenuse URL-id:
 | teenuse avalik allkirjastamisvõti | `https://tara.ria.ee/oidc/jwks` |
 | autentimine (_authorization_) | `https://tara.ria.ee/authorize` | 
 | tõendiväljastus (_token_) | `https://tara.ria.ee/token` | 
+
+----
+
+_Viimati muudetud: 21.11.2017_
