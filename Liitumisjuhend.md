@@ -33,16 +33,13 @@ Eriti tähele panna:<br>
 2) parameeter `state` tuleb siduda sessiooniga, vt [OpenID Connect Basic Client Implementer's Guide 1.0](https://openid.net/specs/openid-connect-basic-1_0.html), jaotis "2.1.1.1 Request Parameters".  
 
 ## 3 Liituda TARA testteenusega
-Asutus esitab taotluse testteenusega liitumiseks. Taotluse võib esitada juba enne arenduse algust. Taotluses palume teatada:
-1) teenus, millega soovitakse liituda (test- või toodanguteenus)
+Asutus esitab taotluse testteenusega liitumiseks. Taotluse võib esitada juba enne arenduse algust. Taotluses palume teatada:<br>
+1) teenus, millega soovitakse liituda (test- või toodanguteenus)<br>
 2) kinnitus, et liituja on välja arendanud omapoolse liidese ja seda TARA testteenuse vastu testinud (toodanguteenusega liitumise puhul)<br>
 3) e-teenus või -teenused, mille kasutajaid soovitakse TARA abil autentida<br>
 4) kasutajate arvu prognoos<br>
 5) kohustumus kasutada teenust eesmärgipäraselt. Sh testteenust kasutada ainult testimiseks, mitte toodangus autentimiseks<br>
-6) nõustumus teenustasemega (SLA-ga); kui on vajadus kõrgema SLA järele, siis rääkida RIA-ga läbi<br>
-
-[TARA testkeskkonna teenustase (SLA)](SLATest)
-
+6) nõustumus teenustasemega (SLA-ga); kui on vajadus kõrgema SLA järele, siis rääkida RIA-ga läbi - vt [TARA testkeskkonna teenustase (SLA)](SLATest)<br>
 7) klientrakenduse identifikaatori ettepanek -`client_id` OpenID Connect protokolli kohaselt<br>
 8) klientrakenduse testversiooni tagasisuunamis-URL (_redirect-URL_), OpenID Connect protokolli kohaselt<br>
 9) autentimismeetod või meetodid, mida soovitakse kasutada<br>
