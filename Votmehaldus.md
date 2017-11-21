@@ -18,4 +18,4 @@ RIA eIDAS konnektorteenusega suhtlemisel kasutatakse SAML sõnumivormingut. SAML
 
 Võtmehaldus reguleeritakse võtmepoliitikaga.
 
-Täiendav teave: [https://confluence.ria.ee/pages/viewpage.action?pageId=77856950](https://confluence.ria.ee/pages/viewpage.action?pageId=77856950) (juurdepääs piiratud).
+Täiendav teave: [https://confluence.ria.ee/pages/viewpage.action?pageId=77856950](https://confluence.ria.ee/pages/viewpage.action?pageId=77856950) &#128274;.

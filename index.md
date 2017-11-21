@@ -52,12 +52,12 @@ TARA teenust pakub Riigi Infosüsteemi Amet.
 [Võtmehaldus](Votmehaldus)
 {: .pais}
 
-[Confluence-is](https://confluence.ria.ee/display/TARA)<br>
-[JIRA-s](https://jira.ria.ee/browse/DD4J-88)<br>
+[Confluence-is](https://confluence.ria.ee/display/TARA) &#128274;<br>
+[JIRA-s](https://jira.ria.ee/browse/DD4J-88) &#128274;<br>
 Skype-is:<br>
-  "TARA arendus"<br>
-  "TARA kasutajaliidese disain ja UI testimine"<br>
-  "TARA logimine"
+  "TARA arendus" &#128274;<br>
+  "TARA kasutajaliidese disain ja UI testimine" &#128274;<br>
+  "TARA logimine" &#128274;
 {: .pais}
 
 
