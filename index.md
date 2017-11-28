@@ -2,7 +2,7 @@
 permalink: /
 ---
 
-![](img/LOVID.png)
+<img src='img/LOVID.png' style='width: 80px;'>
 
 TARA on teenus, millega asutus saab oma e-teenuses  autentida ID-kaardi või mobiil-ID kasutaja.
 
