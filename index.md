@@ -49,7 +49,8 @@ TARA teenust pakub Riigi Infosüsteemi Amet.
 [Autentimisteenuse turvauuring. Lähteülesanne](Uuring)<br>
 [TARA arhitektuurne jätkusuutlikkus](Jatkusuutlikkus)<br>
 [TARA statistika](Statistika)<br>
-[Võtmehaldus](Votmehaldus)
+[Võtmehaldus](Votmehaldus)<br>
+[Muutelugu](Muutelugu)
 {: .pais}
 
 [Confluence-is](https://confluence.ria.ee/display/TARA) &#128274;<br>
@@ -60,4 +61,7 @@ Skype-is:<br>
   "TARA logimine" &#128274;
 {: .pais}
 
+----
+
+_Viimati muudetud: 28.11.2017_
 
