@@ -142,6 +142,8 @@ Tagasisuunamispäringu elemendid:
 | volituskood `code` | `code=71ed579...`  | ingl _authorization code_. Volituskood on ühekordne “lubatäht” identsustõendi saamiseks |
 | turvakood `state`            | `state=OFfVLKu0kNbJ2EZk`     |  unikaalne identifikaator () |
 
+Märkus. Kasutatava alustarkvara (CAS) piirangu tõttu palume tagasisuunamis-URL-is küsimärki (`?`) mitte kasutada.
+
 ### 3.5 Identsustõendi küsimine
 
 Rakendus küsib autentimisteenuselt, volituskoodi esitades,  identsustõendi (_ID token_). Tõendiküsimispäringu näide:
