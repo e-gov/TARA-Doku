@@ -326,4 +326,4 @@ Märkus. Otspunktide kohta lähemalt vt [CAS OpenID Connect].
 
 ----
 
-_Viimati muudetud: 27.10.2017_
+_Viimati muudetud: 28.11.2017_

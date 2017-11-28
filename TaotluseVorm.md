@@ -27,4 +27,4 @@ _toodanguteenusega liitumise taotluse puhul asutuse esindusõigusega isiku digit
 
 ----
 
-_Viimati muudetud: 21.11.2017_
+_Viimati muudetud: 28.11.2017_
