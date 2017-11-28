@@ -29,8 +29,8 @@ TARA teenust pakub Riigi Infosüsteemi Amet.
 
 ## TARA teenuse käitajale
 
-[Paigaldusjuhend](https://confluence.ria.ee/pages/viewpage.action?pageId=71172276)<br>
-[Teenusehalduri juhend](https://confluence.ria.ee/display/TARA/TARA+autentimisteenus.+Teenusehalduri+juhend)
+[Paigaldusjuhend](https://confluence.ria.ee/pages/viewpage.action?pageId=71172276) &#128274;<br>
+[Teenusehalduri juhend](https://confluence.ria.ee/display/TARA/TARA+autentimisteenus.+Teenusehalduri+juhend) &#128274;
 {: .pais}
 
 ## TARA teenuse arendajale
@@ -42,8 +42,8 @@ TARA teenust pakub Riigi Infosüsteemi Amet.
 {: .pais}
 
 [Kasutaja probleemi lahendamine](Kasutaja)<br>
-[Testistrateegia](https://confluence.ria.ee/display/TARA/TARA+testistrateegia)<br>
-[Testiplaan](https://confluence.ria.ee/display/TARA/TARA+testplaan)<br>
+[Testistrateegia](https://confluence.ria.ee/display/TARA/TARA+testistrateegia) &#128274;<br>
+[Testiplaan](https://confluence.ria.ee/display/TARA/TARA+testplaan) &#128274;<br>
 [Turvaanalüüs](Turvaanaluus)<br>
 [Vead ja tõrked. Ennetamine ja Käsitlemine](Veakasitlus)<br>
 [Autentimisteenuse turvauuring. Lähteülesanne](Uuring)<br>
