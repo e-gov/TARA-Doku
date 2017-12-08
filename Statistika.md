@@ -11,7 +11,7 @@ permalink: Statistika
 Teostatud on kasutusstatistika logifaili moodustamine. Statistilise aruande moodustamise skript on töös.
 {:.note}
 
-Vt ka: https://github.com/e-gov/TARA-Server/wiki/Logimine 
+Vt ka: [logimise käsitlus TARA-Server repo vikis](https://github.com/e-gov/TARA-Server/wiki/Logimine). 
 
 ## Vajadus
 
@@ -55,7 +55,7 @@ Statistika tootmiseks tuleks võimalusel kasutada oma lahendust. Google Analytic
 
 ## TARA statistikalahendus. Spetsifikatsioon
 
-20\.11.2017, Priit Parmakson
+20\.11.2017, täiendatud 8.12.2017, Priit Parmakson
 
 1\.	Statistikalogi<br>
 1\.1\.	Statistikalogi eesmärk on koguda andmeid RIHA kasutusstatistika koostamiseks.<br>
