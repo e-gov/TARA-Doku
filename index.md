@@ -36,6 +36,7 @@ TARA teenust pakub Riigi Infosüsteemi Amet.
 ## TARA teenuse arendajale
 
 [TARA-Server](https://github.com/e-gov/TARA-Server), teenuse server (koodirepo)<br>
+- vt ka [dok-n vikis](https://github.com/e-gov/TARA-Server/wiki) (nt logimise käsitlus) 
 [TARA-Client](https://github.com/e-gov/TARA-Client), makettrakendus teenuse testimiseks (koodirepo)<br>
 [TARA-Doku](https://github.com/e-gov/TARA-Doku), teenuse dokumentatsioon (dok-nirepo)<br>
 [TARA-Management](https://github.com/e-gov/TARA-Management), teenuse haldustööriist (koodirepo)<br>
@@ -58,7 +59,6 @@ TARA teenust pakub Riigi Infosüsteemi Amet.
 Skype-is:<br>
   "TARA arendus" &#128274;<br>
   "TARA kasutajaliidese disain ja UI testimine" &#128274;<br>
-  "TARA logimine" &#128274;
 {: .pais}
 
 ----
