@@ -8,6 +8,11 @@ permalink: Statistika
 - TOC
 {:toc}
 
+Teostatud on kasutusstatistika logifaili moodustamine. Statistilise aruande moodustamise skript on töös.
+{:.note}
+
+Vt ka: https://github.com/e-gov/TARA-Server/wiki/Logimine 
+
 ## Vajadus
 
 Statistikavajadus tuleneb vajadusest:
@@ -15,7 +20,7 @@ Statistikavajadus tuleneb vajadusest:
 - 2) pidada väliste, tasuliste teenuste (DigiDocService) tarbimise arvestust
 - 3) pidada arvestust teenuse kasutamise kohta klientide lõikes.
 
-Statistika võib olla ka kasulik ka teenuse turvamisel.
+Statistika võib olla ka kasulik ka teenuse turvamisel, nt kahtlaste kasutusmustrite otsimisel.
 
 Vajame statistilisi näitajaid (periood - kuu):
 - kasutusstatistika
@@ -66,7 +71,7 @@ Statistika tootmiseks tuleks võimalusel kasutada oma lahendust. Google Analytic
 |-----|------|------------|---------|-------|
 | 1.	| toimingu aeg	| autentimistoimingu alustamise aeg.	| ISO 8601, `YYYY-MM-DDThh:mm:ssTZD`	| `2017-11-20T16:49:42+02:00` |
 | 2.	| klientrakendus	| klientrakenduse nimi, `client id` OpenID Connecti mõistes.	| sõne	| `KalanduseIS` |
-| 3.	| asutus	| klientrakenduse omaniku - asutuse registrikood.	| registrikood	| `70001231` |
+| 3.	| <strike>asutus</strike>	| <strike>klientrakenduse omaniku - asutuse registrikood.</strike> Märkus. Ei teostata esimeses järjekorras.	| registrikood	| `70001231` |
 | 4.	| autentimismeetod	| `eID`, `mID` jne. Piiriülese autentimise koodid lisame siis, kui eIDASe osa hakkame tegema.	| sõne	| `eID` |
 | 5.	| toimingu tulemus	| sõne `OK` (autentimine edukas) või `NOK` (autentimine ebaedukas)	| | `OK` |
 | 6.	| ebaedu põhjus	| autentimistoimingu ebaõnnestumise põhjus, kui on teada; õnnestumise korral jäetakse väli tühjaks.	| põhjuse kood (sõnena). Koodid vt [1]. | `mID.15` | 
@@ -93,5 +98,32 @@ Statistika tootmiseks tuleks võimalusel kasutada oma lahendust. Google Analytic
 
 ----
 
-_Viimati muudetud: 21.11.2017_
+Logifaili näidis:
+
+````
+08.12.2017 12:03:42;openIdDemo;MOBILE_ID;START_AUTH;
+08.12.2017 12:03:42;openIdDemo;MOBILE_ID;ERROR;NOT_ACTIVATED
+08.12.2017 12:05:19;openIdDemo;ID_CARD;START_AUTH;
+08.12.2017 12:05:19;openIdDemo;ID_CARD;SUCCESSFUL_AUTH;
+````
+
+Kasutusstatistika logifailid asuvad kaustas `/etc/cas/logs/statistics`.
+
+Kasutatakse log4j appenderit ja hetke reeglid ja konfiguratsioon:
+
+````
+<RollingFile name="statisticsAppender" fileName="${sys:cas.log.dir}/statistics/stats.log" append="true"
+filePattern="${sys:cas.log.dir}/statistics/stats-%d{yyyy-MM-dd-HH}-%i.log">
+<PatternLayout pattern="%m%n"/>
+<Policies>
+<OnStartupTriggeringPolicy/>
+<TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+<SizeBasedTriggeringPolicy size="10 MB"/>
+</Policies>
+</RollingFile>
+````
+
+----
+
+_Viimati muudetud: 8.12.2017_
 
