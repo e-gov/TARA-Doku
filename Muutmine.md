@@ -2,7 +2,7 @@
 permalink: Muutmine
 ---
 
-# Teenuse muutmine
+# Teenuse muudatused
 {: .no_toc}
 
 - TOC
