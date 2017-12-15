@@ -14,21 +14,19 @@ ___Stabiilsus___. Eesmärk on pakkuda stabiilset teenust &mdash; nii, et teenuse
 
 ## 2 Teenusemuudatused
 
-___Teenusemuudatus___. Samas on kavas aeg-ajalt teenusesse lisada klientidele väärtust lisavaid uusi omadusi, nt täiendavaid autentimismeetodeid. Teenuse muutmine võib olla vajalik kasutatavuse, käideldavuse, turvalisuse jms omaduste parandamiseks. Samuti ei ole välistatud teenuse muutmine vigade parandamiseks. Teenuse muudatus võib hõlmata nii protokolli, tarkvara kui ka dokumentatsiooni muudatust.
+___Teenusemuudatus___. Samas on kavas aeg-ajalt teenusesse lisada klientidele väärtust lisavaid uusi omadusi, nt täiendavaid autentimismeetodeid. Teenuse muutmine võib olla vajalik kasutatavuse, käideldavuse, turvalisuse jm omaduste parandamiseks. Samuti ei ole välistatud teenuse muutmine vigade parandamiseks. Teenuse muudatus võib hõlmata nii liides spetsifikatsiooni (protokolli), tarkvara kui ka dokumentatsiooni muudatust.
 
 ___"Katkitegev muudatus"___ on selline, mis nõuab või võib nõuda muudatust klientrakenduses. Katkitegevaid muudatusi võimaluste piires minimeeritakse.
 
-__Teenusemuudatustest teavitamine___:
-- muudatuse kokkuvõte avaldatakse teenuse dokumentatsioonis (käesoleval veebilehel)
-- muudatusest teavitatakse teenust kasutavaid asutusi. Katkitegeva muudatuse korral antakse asutustele varakult teada ja lepitakse kokku üleminekukava.
+__Teenusemuudatustest teavitamine__. Muudatusest teavitatakse teenust kasutavaid asutusi. Katkitegeva muudatuse korral antakse asutustele varakult teada ja lepitakse kokku üleminekukava. Muudatuse kokkuvõte avaldatakse teenuse dokumentatsioonis (käesoleval veebilehel).
 
-___Üleminekukavas___ detailiseeritakse teenuse tarkvara uuele suurversioonile ümberlülitumise tehniline ja ajaline korraldus, sh testimine ja tagasilülitamine. 
+___Üleminekukavas___ detailiseeritakse teenuse tarkvara uuele suurversioonile (vt allpool) ümberlülitumise tehniline ja ajaline korraldus, sh testimine ja varuplaanina &mdash; tagasilülitamine. 
 
 ## 3 Tarkvaramuudatused
 
 ___Tarkvaramuudatus___ on muudatus TARA teenust teostavas, RIA taristusse paigaldatud tarkvaras. Iga tarkvaramuudatus, nt teenuse siseehitust või kasutamise väheolulisi detaile puudutav, ei too kaasa teenusemuudatust.
 
-___Reliis___ on teenuse tarkvara uue versiooni avaldamine ja paigaldamine test- ja seejärel toodanguteenusesse.
+___Reliis___ on teenuse tarkvara uue versiooni avaldamine ja paigaldamine RIA taristus, test- ja seejärel toodanguteenuse teostamiseks.
 
 ___Tarkvaramuudatuste kokkuvõte___, (_release notes_), avaldatakse TARA tarkvararepodes. Tarkvaramuudatuste kokkuvõtted on mõeldud eelkõige TARA teenusepakkujale ja arendajatele endile.
 
