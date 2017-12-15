@@ -10,18 +10,23 @@ permalink: Muutmine
 
 ___Stabiilsus___. Eesmärk on pakkuda stabiilset teenust &mdash; nii, et teenusega liidestatud klientrakenduses oleks kasutamise perioodil muudatusi vaja teha võimalikult vähe või üldse mitte.
 
-___Teenuse muudatus___. Samas on kavas aeg-ajalt teenusesse lisada klientidele väärtust lisavaid uusi omadusi, nt täiendavaid autentimismeetodeid. Teenuse muutmine võib olla vajalik kasutatavuse, käideldavuse, turvalisuse jms omaduste parandamiseks. Samuti ei ole välistatud teenuse muutmine vigade parandamiseks. Teenuse muudatus võib hõlmata nii protokolli, tarkvara kui ka dokumentatsiooni muudatust.
+___Teenusemuudatus___. Samas on kavas aeg-ajalt teenusesse lisada klientidele väärtust lisavaid uusi omadusi, nt täiendavaid autentimismeetodeid. Teenuse muutmine võib olla vajalik kasutatavuse, käideldavuse, turvalisuse jms omaduste parandamiseks. Samuti ei ole välistatud teenuse muutmine vigade parandamiseks. Teenuse muudatus võib hõlmata nii protokolli, tarkvara kui ka dokumentatsiooni muudatust.
 
-___"Katkitegev muudatus"___ on selline, mis nõuab või võib nõuda muudatust klientrakenduses. Katkitegevaid muudatusi võimaluste piires minimeeritakse. Katkitegevast muudatusest antakse asutustele varakult teada ja lepitakse kokku üleminekukava.
+___"Katkitegev muudatus"___ on selline, mis nõuab või võib nõuda muudatust klientrakenduses. Katkitegevaid muudatusi võimaluste piires minimeeritakse.
 
-___Reliis___ on teenuse uue versiooni avaldamine, sisaldades:
-- muudatuste kokkuvõtte (_release notes_) avaldamist teenuse dokumentatsiooni veebilehel (käesolev leht)
-- teenust kasutavate asutuste teavitamist; seejuures väikeste, teenuse siseehitust või kasutamise väheolulisi detaile puudutavatest muudatustest ei pea teavitama
-- uue versiooni paigaldamist test- ja seejärel toodanguteenusesse. 
+__Teenusemuudatustest teavitamine___:
+- muudatuse kokkuvõte avaldatakse teenuse dokumentatsioonis (käesoleval veebilehel)
+- muudatusest teavitatakse teenust kasutavaid asutusi. Katkitegeva muudatuse korral antakse asutustele varakult teada ja lepitakse kokku üleminekukava.
 
-___Üleminekukavas___ detailiseeritakse uuele suurversioonile ümberlülitumise tehniline ja ajaline korraldus, sh testimine ja tagasilülitamine. 
+___Üleminekukavas___ detailiseeritakse teenuse tarkvara uuele suurversioonile ümberlülitumise tehniline ja ajaline korraldus, sh testimine ja tagasilülitamine. 
 
-Muudatuste markeerimiseks teenus versioneeritakse.
+___Tarkvaramuudatus___ on muudatus TARA teenust teostavas, RIA taristusse paigaldatud tarkvaras. Iga tarkvaramuudatus, nt teenuse siseehitust või kasutamise väheolulisi detaile puudutav, ei too kaasa teenusemuudatust.
+
+___Reliis___ on teenuse tarkvara uue versiooni avaldamine ja paigaldamine test- ja seejärel toodanguteenusesse.
+
+___Tarkvaramuudatuste kokkuvõte___, (_release notes_), avaldatakse TARA tarkvararepodes. Tarkvaramuudatuste kokkuvõtted on mõeldud eelkõige TARA teenusepakkujale ja arendajatele endile.
+
+Muudatuste markeerimiseks tarkvara versioneeritakse.
 
 ___Versiooninumbrite süsteem___. Järgime semantilise versioneerimise põhimõtet [Semver]:
 
@@ -31,5 +36,5 @@ ___Versiooninumbrite süsteem___. Järgime semantilise versioneerimise põhimõt
 | väikeversioon | 1.1, 1.2 jne | lisab uusi võimalusi &mdash; nt uue  autentimismeetodi, kuid klientrakendus ei ole kohustatud uut võimalust kasutama; klientrakendus, mis ei soovi uusi võimalusi kasutada, ei pea midagi muutma; teiste sõnadega &mdash; tagasiühilduvus on tagatud |
 | paik e pisiparandus | 1.0.1, 1.0.2 jne | väike täiendus, mis ei lisa uusi võimalusi ega nõua klientrakenduse tarkvara muutmist |
 
-Versiooninumber näidatakse teenuse kasutajaliideses.
+Tarkvara versiooninumber näidatakse teenuse kasutajaliideses.
 
