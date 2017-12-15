@@ -8,49 +8,22 @@ permalink: Statistika
 - TOC
 {:toc}
 
-Vt ka: [logimise käsitlus TARA-Server repo vikis](https://github.com/e-gov/TARA-Server/wiki/Logimine). 
-
-## Vajadus
-
-Statistikavajadus tuleneb vajadusest:
-- 1) tagada deklareeritud teenustase (SLA)
-- 2) pidada väliste, tasuliste teenuste (DigiDocService) tarbimise arvestust
-- 3) pidada arvestust teenuse kasutamise kohta klientide lõikes.
-
-Statistika võib olla ka kasulik ka teenuse turvamisel, nt kahtlaste kasutusmustrite otsimisel.
-
-Vajame statistilisi näitajaid (periood - kuu):
-- kasutusstatistika
-  - autentimiste arv
-    - kokku
-    - klientide lõikes (klient TARA mõistes on Eesti e-teenuse omanik-asutus)
-      - klientrakenduste lõikes (kliendil võib olla mitu klientrakendust)
-    - piiriülene/siseriiklik lõikes
-      - välisriikide lõikes
-    - autentimismeetodite lõikes
-  - edukate autentimiste osakaal
-- teenustaseme statistika
-  - välisriigi teenuse maasoleku tõttu ebaõnnestunud autentimiste arv
-  - välisriigi teenuste ülevaloleku protsent
-  - Eesti TARA-välise teenuse maasoleku tõttu ebaõnnestunud autentimiste arv
-
-Kõike võib-olla kohe teostada ei jõua, kuid järk-järgult. Piiriülene statistika muutub aktuaalseks siis, kui lisame eIDAS-autentimise.
-
-Huvi pakuks ka palju siis erinevaid välismaalasi teenuses autenditakse? See nõuaks eIDAS-identifikaatorite andmebaasi pidamist. Keerukas ja oht, et problemaatiline andmekaitse seisukohalt. Kui, siis teises järjekorras.
-
-Ülalesitatu ei sisalda SSO statistikat. SSO toob kaasa täiesti uued küsimused: Kui palju SSO-d kasutatakse? Mitmesse teenusesse SSO-ga sisse logitakse? Kes SSO-d kasutab?
+Vt ka:
+- [TARA-107](https://jira.ria.ee/browse/TARA-107) (JIRA)
+- [logimise käsitlus TARA-Server repo vikis](https://github.com/e-gov/TARA-Server/wiki/Logimine). 
 
 ## TARA statistikalogi. Spetsifikatsioon
 
 20\.11.2017, täiendatud 8.12.2017, 15.12.2017 Priit Parmakson
 
 1\.	Statistikalogi eesmärk on koguda andmeid RIHA kasutusstatistika koostamiseks.<br>
-2\.	Statistikalogi salvestatakse eraldi logifailis.<br>
+2\.	Statistikalogi salvestatakse eraldi logifailide kogumina.<br>
 3\.	Statistikalogi hõlmab nii siseriiklikku kui ka piiriülest autentimist.<br>
 4\.	Logisse ei salvestata isikuandmeid.<br>
 5\.	Logi ei toimetata RIA taristust välja.<br>
 6\.	Statistika tootmise kõrval võib logi kasutada ka teenuse tõrgete põhjuste otsimisel ja turvajuhtumite uurimisel.<br>
 7\.	Logi säilitatakse 1 aasta.<br>
+8\.	Logifaili näide:
 
 ````
 08.12.2017 12:03:42;openIdDemo;MOBILE_ID;START_AUTH;
@@ -78,7 +51,7 @@ Huvi pakuks ka palju siis erinevaid välismaalasi teenuses autenditakse? See nõ
 15.12.2017 11:59:10;openIdDemo;MobileID;START_AUTH;
 ````
 
-8\.	Logikirje formaat. Logikirjeid on kahte tüüpi:
+9\.	Logikirje formaat. Logikirjeid on kahte tüüpi:
 
 - autentimistoimingu alustamise kirje
 
@@ -93,25 +66,30 @@ Huvi pakuks ka palju siis erinevaid välismaalasi teenuses autenditakse? See nõ
 
 | nr	| väli |	selgitus	| formaat	|
 |-----|------|------------|---------|
-| 1.	| toimingu aeg	| autentimistoimingu alustamise aeg.	| ISO 8601, `YYYY-MM-DD hh:mm:ssTZD` |
+| 1.	| toimingu aeg	| autentimistoimingu alustamise aeg.	| ISO 8601, `YYYY-MM-DD hh:mm:ss` |
 | 2.	| klientrakendus	| klientrakenduse nimi, `client id` OpenID Connecti mõistes.	| sõne	|
 | 4.	| autentimismeetod	| `MobileID`, `ID_CARD` jne	| sõne	|
 | 5.  | toimingu tulemus | õnnestumise puhul `SUCCESSFUL_AUTH`, ebaedu puhul `ERROR` |  |
 | 6.  | veateade | õnnestumise puhul tühi |  |
  
-9\.	Autentimistoiming<br>
-9\.1\.	Autentimistoimingu alguseks loeme hetke, kus TARA teenusesse saabunud kasutaja valib autentimismeetodi.<br>
-9\.2\.	Autentimistoiming lõpeb kas edukalt või ebaedukalt.<br>
-9\.3\.	Autentimistoimingu loeme lõppenuks edukalt siis, kui klientrakendusele väljastatakse identsustõend.<br>
-9\.4\.	Kõigil muudel juhtudel loetakse autentimistoiming lõppenuks ebaedukalt.<br>
+Logikirjed on ajalises järgnevuses, kuid mitte paariti - s.t autentimistoimingu tulemuse kirje ei tarvitse vahetult järgneda autentimistoimingu alustamise kirjele.
 
-10\.Kasutusstatistika logifailid asuvad kaustas `/etc/cas/logs/statistics`.
+10\.	Autentimistoiming<br>
+10\.1\.	Autentimistoimingu alguseks loeme hetke, kus TARA teenusesse saabunud kasutaja valib autentimismeetodi.<br>
+10\.2\.	Autentimistoiming lõpeb kas edukalt või ebaedukalt.<br>
+10\.3\.	Autentimistoimingu loeme lõppenuks edukalt siis, kui klientrakendusele väljastatakse identsustõend.<br>
+10\.4\.	Kõigil muudel juhtudel loetakse autentimistoiming lõppenuks ebaedukalt.<br>
 
-11\.Kasutatakse log4j appenderit. Reeglid ja konfiguratsioon:
+11\.Kasutusstatistika logifailid asuvad kaustas `/etc/cas/logs/statistics`.
+
+Kasutusstatistika aruande moodustamisel tuleb arvestada, et teenuse paigaldamisel mitmes instantsis (koormusjaoturi taga), moodustab kumbki oma logifailid.
+
+12\.Kasutatakse log4j appenderit. Reeglid ja konfiguratsioon:
 
 ````
-<RollingFile name="statisticsAppender" fileName="${sys:cas.log.dir}/statistics/stats.log" append="true"
-filePattern="${sys:cas.log.dir}/statistics/stats-%d{yyyy-MM-dd-HH}-%i.log">
+<RollingFile name="statisticsAppender"
+  fileName="${sys:cas.log.dir}/statistics/stats.log" append="true"
+  filePattern="${sys:cas.log.dir}/statistics/stats-%d{yyyy-MM-dd-HH}-%i.log">
 <PatternLayout pattern="%m%n"/>
 <Policies>
 <OnStartupTriggeringPolicy/>
@@ -128,9 +106,9 @@ filePattern="${sys:cas.log.dir}/statistics/stats-%d{yyyy-MM-dd-HH}-%i.log">
 1\.2\.	piiriülene/siseriiklik lõikes<br>
 1\.3\.	välisriikide lõikes<br>
 1\.4\.	autentimismeetodite lõikes<br>
-1\.5\.	autentimitoimingu õnnestumise/ebaõnnestumise lõikes<br>
+1\.5\.	autentimistoimingu õnnestumise/ebaõnnestumise lõikes<br>
 1\.6\.	ajalises lõikes.<br>
-2\.	Statistikaperioodiks on 1 kuu.<br>
-3\.	Statistiline aruanne koostatakse kuu statistikalogi faili põhjal, spetsiaalse skriptiga.<br>
-4\.	Statistiline aruanne vormistatakse inimloetava, UTF-8 vormingus tekstifailina. Kujundus ei ole vajalik.<br>
+2\.	Statistikaperioodiks on 1 kuu või 1 nädal, aga võib olla ka muu.<br>
+3\.	Statistiline aruanne koostatakse perioodi statistikalogi faili(de) põhjal, spetsiaalse skriptiga.<br>
+4\.	Statistiline aruanne vormistatakse inimloetava, UTF-8 vormingus tekstifailina. Eriline kujundus ei ole vajalik.<br>
 
