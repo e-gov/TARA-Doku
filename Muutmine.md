@@ -8,7 +8,11 @@ permalink: Muutmine
 - TOC
 {:toc}
 
+## 1 Eesmärgid
+
 ___Stabiilsus___. Eesmärk on pakkuda stabiilset teenust &mdash; nii, et teenusega liidestatud klientrakenduses oleks kasutamise perioodil muudatusi vaja teha võimalikult vähe või üldse mitte.
+
+## 2 Teenusemuudatused
 
 ___Teenusemuudatus___. Samas on kavas aeg-ajalt teenusesse lisada klientidele väärtust lisavaid uusi omadusi, nt täiendavaid autentimismeetodeid. Teenuse muutmine võib olla vajalik kasutatavuse, käideldavuse, turvalisuse jms omaduste parandamiseks. Samuti ei ole välistatud teenuse muutmine vigade parandamiseks. Teenuse muudatus võib hõlmata nii protokolli, tarkvara kui ka dokumentatsiooni muudatust.
 
@@ -19,6 +23,8 @@ __Teenusemuudatustest teavitamine___:
 - muudatusest teavitatakse teenust kasutavaid asutusi. Katkitegeva muudatuse korral antakse asutustele varakult teada ja lepitakse kokku üleminekukava.
 
 ___Üleminekukavas___ detailiseeritakse teenuse tarkvara uuele suurversioonile ümberlülitumise tehniline ja ajaline korraldus, sh testimine ja tagasilülitamine. 
+
+## 3 Tarkvaramuudatused
 
 ___Tarkvaramuudatus___ on muudatus TARA teenust teostavas, RIA taristusse paigaldatud tarkvaras. Iga tarkvaramuudatus, nt teenuse siseehitust või kasutamise väheolulisi detaile puudutav, ei too kaasa teenusemuudatust.
 
@@ -37,4 +43,3 @@ ___Versiooninumbrite süsteem___. Järgime semantilise versioneerimise põhimõt
 | paik e pisiparandus | 1.0.1, 1.0.2 jne | väike täiendus, mis ei lisa uusi võimalusi ega nõua klientrakenduse tarkvara muutmist |
 
 Tarkvara versiooninumber näidatakse teenuse kasutajaliideses.
-
