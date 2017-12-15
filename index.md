@@ -15,6 +15,7 @@ TARA teenust pakub Riigi Infosüsteemi Amet.
 [Taotluse vorm](TaotluseVorm)<br>
 [Teenustase (Test)](SLATest)<br>
 [Teenustase (Toodang)]()<br>
+[Muutmine](Muutmine)
 [Teekaart](Teekaart)<br>
 <a href='https://e-gov.github.io/TARA-Doku/files/TARA-tutvustus.pdf' target='_new'>eIDAS autentimise lisamine e-teenusele</a>, esitlus eID infopäeval 31.10.2017<br>
 <a href='https://e-gov.github.io/TARA-Doku/PiiriyleneAutentimine.pdf' target='_new'>Piiriülene autentimine</a>, esitlus eID infopäeval 15.11.2017<br> 
@@ -51,7 +52,6 @@ TARA teenust pakub Riigi Infosüsteemi Amet.
 [TARA arhitektuurne jätkusuutlikkus](Jatkusuutlikkus)<br>
 [TARA statistika](Statistika)<br>
 [Võtmehaldus](Votmehaldus)<br>
-[Muutelugu](Muutelugu)
 {: .pais}
 
 [Confluence-is](https://confluence.ria.ee/display/TARA) &#128274;<br>

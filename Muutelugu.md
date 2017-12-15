@@ -1,23 +1,35 @@
 ---
-permalink: Muutelugu
+permalink: Muutmine
 ---
 
-# Muutelugu
+# Teenuse muutmine
 {: .no_toc}
 
 - TOC
 {:toc}
 
-## Versioonid
+Eesmärk on pakkuda asutustele stabiilset teenust, nii, et  klientrakendustes muudatusi oleks võimalikult vähe või üldse mitte. Samas on kavas aeg-ajalt teenusesse lisada klientidele väärtust lisavaid uusi omadusi, nt täiendavaid autentimismeetodeid. Teenuse muutmine võib olla vajalik kasutatavuse, käideldavuse, turvalisuse jms omaduste parandamiseks. Samuti ei ole välistatud teenuse muutmine vigade parandamiseks. 
 
-TARA autentimisteenus on versioneeritud. Järgitakse semantilise versioneerimise kokkulepet [Semver]: suur versioon_ (2.0, 3.0 jne) võib sisaldada klientrakendustes ümbertegemist nõudvaid muudatusi s.t tagasiühilduvus ei ole tagatud; _väike versioon_ (1.1, 1.2 jne) lisab uusi võimalusi - nt uusi autentimismeetodeid, kuid klientrakendustes, mis uusi võimalusi ei kasuta, ei ole vaja midagi muuta - tagasiühilduvus on tagatud;  _paik_ e pisiparandus (1.0.1, 1.0.2 jne) on teenuse dokumentatsiooni või tarkvara väike täiendus, mis ei lisa uusi võimalusi ega nõua klientrakenduse tarkvara muutmist.
+Teenuse muudatus võib tähendada nii protokolli, tarkvara kui ka dokumentatsiooni muudatust.
 
-Versiooninumber on nii test- kui ka toodanguteenusel.
+___"Katkitegev muudatus"___ on selline, mis nõuab või võib nõuda muudatust klientrakenduses. Katkitegevaid muudatusi minimeeritakse. Katkitegevast muudatusest antakse asutustele varakult teada ja lepitakse kokku üleminekukava.
 
-## Dokumentatsiooni muutelugu
+___Reliis___ on teenuse uue versiooni avaldamine, sisaldades:
+- muudatuste kokkuvõtte (_release notes_) avaldamist teenuse dokumentatsiooni veebilehel (käesolev leht)
+- teenust kasutavate asutuste teavitamist; seejuures väikeste, teenuse siseehitust või kasutamise väheolulisi detaile puudutavatest muudatustest ei pea teavitama
+- uue versiooni paigaldamist test- ja seejärel toodanguteenusesse. 
 
-- 24.10.2017
-  - keele valik
-  - identsustõendi pärimisel klientrakenduse autentimine
-- 25.09.2017
-  - ettevalmistav tööversioon
+___Üleminekukavas___ detailiseeritakse uuele suurversioonile ümberlülitumise tehniline ja ajalike korraldus, sh testimine ja tagasilülitamine. 
+
+Muudatuste markeerimiseks teenus versioneeritakse.
+
+___Versiooninumbrite süsteem___. Järgime semantilise versioneerimise põhimõtet [Semver]:
+
+|        | näide      | tähendus       |
+|--------|------------|----------------|
+| suurversioon | 2.0, 3.0 jne | toob muudatusi, mis nõuavad klientrakenduse  ümbertegemist; teiste sõnadega, tagasiühilduvus ei ole tagatud |
+| väikeversioon | 1.1, 1.2 jne | lisab uusi võimalusi - nt uue  autentimismeetodi, kuid klientrakendus ei ole kohustatud uut võimalust kasutama; klientrakendus, mis ei soovi uusi võimalusi kasutada, ei pea midagi muutma; teiste sõnadega - tagasiühilduvus on tagatud |
+| paik e pisiparandus | 1.0.1, 1.0.2 jne | väike täiendus, mis ei lisa uusi võimalusi ega nõua klientrakenduse tarkvara muutmist |
+
+Versiooninumber näidatakse teenuse kasutajaliideses.
+
