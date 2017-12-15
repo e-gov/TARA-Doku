@@ -8,9 +8,6 @@ permalink: Statistika
 - TOC
 {:toc}
 
-Teostatud on kasutusstatistika logifaili moodustamine. Statistilise aruande moodustamise skript on töös.
-{:.note}
-
 Vt ka: [logimise käsitlus TARA-Server repo vikis](https://github.com/e-gov/TARA-Server/wiki/Logimine). 
 
 ## Vajadus
