@@ -103,7 +103,7 @@ pre { margin-top: 1em; margin-bottom: 1em; }
 
 /* Määra üle Bootstrapi lingivärv */
 a, a:hover, a:active, a:visited {
-  tomato: tomato !important;
+  color: tomato !important;
   text-decoration: underline;
   text-decoration-style: dashed;
   text-decoration-color: tomato;
