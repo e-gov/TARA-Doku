@@ -43,8 +43,8 @@ TARA teenust pakub Riigi Infosüsteemi Amet.
 [TARA-Management](https://github.com/e-gov/TARA-Management), teenuse haldustööriist (koodirepo)<br>
 {: .pais}
 
-[1. arendusjärk](3JARK)<br>
-[2. arendusjärk](3JARK)<br>
+[1. arendusjärk](1JARK)<br>
+[2. arendusjärk](2JARK)<br>
 [3. arendusjärk](3JARK)
 {: .pais}
 
