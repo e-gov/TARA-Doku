@@ -19,7 +19,9 @@ ___2 eIDAS___
 
 <a href='#2-3'></a>[eIDAS SAML Attribute Profile] eIDAS SAML Attribute Profile v1.1_2, [https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/eIDAS+Profile](https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/eIDAS+Profile).
 
-<a href='#2-4'></a>[RUB-NDS] FutureTrust (2017) eIDAS SAML Detailed Analysis. [https://github.com/RUB-NDS/FutureTrust/wiki/eIDAS-SAML-Detailed-Analysis](https://github.com/RUB-NDS/FutureTrust/wiki/eIDAS-SAML-Detailed-Analysis).
+<a href='#2-4'></a>[eIDAS Software] [eIDAS-Node software releases](https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/eIDAS-Node+-+Current+release).
+
+<a href='#2-5'></a>[RUB-NDS] FutureTrust (2017) eIDAS SAML Detailed Analysis. [https://github.com/RUB-NDS/FutureTrust/wiki/eIDAS-SAML-Detailed-Analysis](https://github.com/RUB-NDS/FutureTrust/wiki/eIDAS-SAML-Detailed-Analysis).
 
 ___3 CAS___
 
