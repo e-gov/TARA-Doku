@@ -69,8 +69,7 @@ p { margin: 0 0 1em 0; }
 }
 
 /* ==== Tabelid ==== */
-table { table-layout: fixed;
-    width: 100%; margin: 0 4em 2em 0; }
+table { width: 100%; margin: 0 4em 2em 0; }
 table { border-collapse: collapse; }    
 table, th, td { border: 1px solid black; }
 th, td { padding: 2px; }

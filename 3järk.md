@@ -12,7 +12,10 @@ Märkus. Kasutame [sõnastiku](Sonastik) mõisteid.
 
 ## Eesmärk
 
-3\. arendusjärgu eesmärk on lisada TARA-teenusele eIDAS piiriülese autentimise võimekus. Tööde tulemusena peab  Eesti e-teenusel olema võimalik saata välismaalane TARA ja eIDAS piiriülese autentimise taristu kaudu autentimiseks välisriigi autentimisteenusesse, autentimiselt tagasisuunatud välismaalane vastu võtta ja saada kätte autentimist kinnitav eIDAS autentimistõend.
+3\. arendusjärgu eesmärk on lisada TARA-teenusele eIDAS piiriülese autentimise võimekus. Tööde tulemusena peab  Eesti e-teenusel olema võimalik:
+a) saata välismaalane TARA ja eIDAS piiriülese autentimise taristu kaudu autentimiseks välisriigi autentimisteenusesse
+b) autentimiselt tagasisuunatud välismaalane vastu võtta
+c) ja saada kätte autentimist kinnitav eIDAS autentimistõend.
 
 Arendusjärguga jätkame TARA-teenuse [1.](1JARK) ja [2.](2JARK) arendusjärguga tehtut.
 
@@ -30,9 +33,9 @@ Joonis 1. eIDAS-võimekusega TARA autentimisteenus
 
 ## Teostatav kasutusvoog
 
-3\. arendusjärgus teostatakse kasutusvoog `3a` ("Eesti e-teenust kasutava välismaalase autentimine TARA kaudu") (vt joonis 1). Kasutusvoog koosneb järgmistest sammudest:
+3\. arendusjärgus tuleb teostada kasutusvoog `3a` ("Eesti e-teenust kasutava välismaalase autentimine TARA kaudu") (vt joonis 1). Kasutusvoog koosneb järgmistest sammudest:
 
-1\. Välismaalane avaldab TARA-ga liidestatud Eesti-e teenuses soovi sisse logida.
+1\. Välismaalane avaldab soovi TARA-ga liidestatud Eesti-e teenuses sisse logida.
 
 2\. e-teenus (TARA suhtes klientrakendus) suunab välismaalase TARA teenusesse.<br>
 \- suunamine tehakse veebisirvija ümbersuunamiskorralduse abil, vastavalt OpenID Connect protokollile. Vt [Tehniline kirjeldus](TehnilineKirjeldus).
