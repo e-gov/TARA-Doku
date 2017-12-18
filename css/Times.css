@@ -103,10 +103,10 @@ pre { margin-top: 1em; margin-bottom: 1em; }
 
 /* Määra üle Bootstrapi lingivärv */
 a, a:hover, a:active, a:visited {
-  color: #292B2C !important;
+  tomato: tomato !important;
   text-decoration: underline;
   text-decoration-style: dashed;
-  text-decoration-color: DarkBlue;
+  text-decoration-color: tomato;
 }
 
 /* ======== Paneelid ======== */
