@@ -62,7 +62,7 @@ Vt ka:
 | 4.	| autentimismeetod	| `MobileID`, `ID_CARD` jne	| sõne	|
 | 5.  | toimingu alustamise kood |   | `START_AUTH` |
 
-- autentimistoimingu tulemuse kirje;
+- autentimistoimingu ebaõnnestumise kirje;
 
 | nr	| väli |	selgitus	| formaat	|
 |-----|------|------------|---------|
@@ -70,14 +70,14 @@ Vt ka:
 | 2.	| klientrakendus	| klientrakenduse nimi, `client id` OpenID Connecti mõistes.	| sõne	|
 | 4.	| autentimismeetod	| `MobileID`, `ID_CARD` jne	| sõne	|
 | 5.  | toimingu tulemus | õnnestumise puhul `SUCCESSFUL_AUTH`, ebaedu puhul `ERROR` |  |
-| 6.  | veateade | õnnestumise puhul tühi |  |
+| 6.  | veateade | |  |
  
 Logikirjed on ajalises järgnevuses, kuid mitte paariti - s.t autentimistoimingu tulemuse kirje ei tarvitse vahetult järgneda autentimistoimingu alustamise kirjele.
 
 10\.	Autentimistoiming<br>
-10\.1\.	Autentimistoimingu alguseks loeme hetke, kus TARA teenusesse saabunud kasutaja valib autentimismeetodi.<br>
+10\.1\.	Autentimistoimingu alguseks loeme hetke, kus TARA teenusesse saabunud kasutaja valib autentimismeetodi - s.t avab meetodi kastikese ja vajutab nupule `Sisenen` (nupu nimi võib vastavalt autentimismeetodile erineda).<br>
 10\.2\.	Autentimistoiming lõpeb kas edukalt või ebaedukalt.<br>
-10\.3\.	Autentimistoimingu loeme lõppenuks edukalt siis, kui klientrakendusele väljastatakse identsustõend.<br>
+10\.3\.	Autentimistoimingu loeme lõppenuks edukalt siis, kui klientrakendusele väljastatakse volituskood (_authorization code_).<br>
 10\.4\.	Kõigil muudel juhtudel loetakse autentimistoiming lõppenuks ebaedukalt.<br>
 
 11\.Kasutusstatistika logifailid asuvad kaustas `/etc/cas/logs/statistics`.
