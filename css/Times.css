@@ -1,4 +1,4 @@
-/* ---- Keha -------- */
+/*#region Paigutus */
 body {
   max-width: 60em;
   margin: 0 0; 
@@ -9,7 +9,7 @@ body {
   line-height: 1.25 !important;
   }
 
-/* Kursuse päis */
+/* Päis */
 .pais { font-family: 'Anonymous Pro', sans-serif;
   font-size: 13pt; margin-bottom: 8px; }
 
@@ -21,8 +21,9 @@ body {
   flex-grow: 1; margin-left: 2rem;
   max-width: 63rem; /* Teksti loetavuse huvides */
 }  
+/*#endregion */
 
-/* ==== Pealkirjad ==== */
+/*#region Pealkirjad */
 h1 {
   font-size: 16pt !important;
   font-weight: bold;
@@ -42,50 +43,48 @@ h3 {
   margin-bottom: 0.5rem;
   margin-bottom: 0.5rem;
 }
+/*#endregion */
 
-.vaike { font-size: 9pt; }
-
-/* Tekstiparagrahv */
+/*#region Tekst */
 p { margin: 0 0 1em 0; }
 
-/* ==== Loetelud ==== */
-#Tekst > ul {
-  list-style-type: none;
-  margin: 0 0 1em 0;
-  padding-left: 1em;
-}
-#Tekst > ol {
-  padding-left: 1em;
-}
-
-/* ==== TOC genereeritud === */
-#markdown-toc { padding-left: 0 !important; }
-#markdown-toc li:before {
-    content: none !important;
-    margin-left: 0 !important;
-}
-#markdown-toc > li {
-  list-style: none;
-}
-
-/* ==== Tabelid ==== */
-table { width: 100%; margin: 0 4em 2em 0; }
-table { border-collapse: collapse; }    
-table, th, td { border: 1px solid black; }
-th, td { padding: 2px; }
+.vaike { font-size: 9pt; }
 
 /* Allkriipsutus */
 .u { text-decoration: underline; }
 
-/* Plokktsitaat */
-blockquote { 
-  font-style: italic; 
-  font-family: 'Anonymous Pro', monospace;
-  font-size: 16px;
-  margin-left: 0;
-}
+/*#endregion */
 
-/* Kood; asciiflow joonised */
+/*#region Loetelud */
+#Tekst > ul {
+  list-style-type: none;
+  margin: 0 0 1em 0;
+  padding-left: 1em;
+}  
+#Tekst > ol {
+  padding-left: 1em;
+}  
+/*#endregion */
+
+/*#region TOC genereeritud === */
+#markdown-toc { padding-left: 0 !important; }
+#markdown-toc li:before {
+    content: none !important;
+    margin-left: 0 !important;
+}    
+#markdown-toc > li {
+  list-style: none;
+}  
+/*#endregion */
+
+/*#region Tabelid */
+table { width: 100%; margin: 0 4em 2em 0; }
+table { border-collapse: collapse; }    
+table, th, td { border: 1px solid black; }
+th, td { padding: 2px; }
+/*#endregion */
+
+/*#region Kood; asciiflow joonised */
 pre, code, samp {
   font-family: 'Anonymous Pro', monospace;
   font-size: 16px; color: black !important;
@@ -99,8 +98,9 @@ code code {
   font-size: 100%;
 }
 pre { margin-top: 1em; margin-bottom: 1em; }
+/*#endregion */
 
-/* ==== Lingid ==== */
+/*#region Lingid */
 a[href] {
   color: #607D8B;
   text-decoration: none;
@@ -119,19 +119,28 @@ a[href]:hover {
   border-bottom-width: 3px;
   margin-bottom: -2px;
 }
+/*#endregion */
 
-/* ======== Paneelid ======== */
+/*#region Paneelid */
 .note, .teade { border-radius: 8px; padding: 1rem; }
-
 /* Märkus */
 .note { 
   border: 1px solid coral;
   background-color: lavenderblush;
   color: coral;
 }
-
 .teade {
   border: 1px solid darkcyan;
   background-color: Azure;
 }
+
+/* Plokktsitaat */
+blockquote { 
+  font-style: italic; 
+  font-family: 'Anonymous Pro', monospace;
+  font-size: 16px;
+  margin-left: 0;
+}
+
+/*#endregion */
 
