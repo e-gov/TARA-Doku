@@ -10,7 +10,7 @@ permalink: 3JARK
 
 ## Mõisted
 
-- _eIDAS klient_, Java rakendus, millega proovime läbi siseriikliku liidestamise RIA eIDAS konnektorteenusega; seejärel lõimime TARA serverrakendusega. eIDAS klient on ühtlasi mudeliks ja näiteks teistele konnektorteenuse külge ühenduda soovivatele asutustele. 
+_eIDAS klient_, Java rakendus, millega proovime läbi siseriikliku liidestamise RIA eIDAS konnektorteenusega; seejärel lõimime eIDAS kliendi koodi TARA serverrakendusse. eIDAS klient on mõeldu ühtlasi mudeliks ja näiteks teistele konnektorteenuse külge ühenduda soovivatele asutustele. 
 
 Märkus. Kasutame ka [sõnastiku](Sonastik) mõisteid.
 
@@ -18,20 +18,24 @@ Märkus. Kasutame ka [sõnastiku](Sonastik) mõisteid.
 
 3\. arendusjärgu eesmärk on lisada TARA-teenusele eIDAS piiriülese autentimise võimekus.
 
-Tööde tulemusena peab  Eesti e-teenusel olema võimalik:<br>
+Arendusjärgu tulemusena peab  Eesti e-teenusel olema võimalik:<br>
 a) saata välismaalane TARA ja eIDAS piiriülese autentimise taristu kaudu autentimiseks välisriigi autentimisteenusesse<br>
 b) autentimiselt tagasisuunatud välismaalane vastu võtta<br>
 c) ja saada kätte autentimist kinnitav eIDAS autentimistõend.
 
-Arendusjärguga jätkame TARA-teenuse [1.](1JARK) ja [2.](2JARK) arendusjärguga tehtut.
+Arendusjärguga jätkame TARA-teenuse [1.](1JARK) ja [2.](2JARK) arendusjärguga (OpenID Connect põhine siseriiklik autentimisteenus ID-kaardi ja m-ID kasutajatele) tehtut.
 
 ## Arhitektuur
 
-TARA-teenuse üldistatud komponentmudel (arendusjärgu lõpus) on esitatud joonisel 1.
+TARA-teenuse üldistatud komponentmudel (arendusjärgu lõpus) on esitatud joonisel 1. Joonisel 2 on esitatud eIDAS kliendi üldistatud komponentmudel.
 
 <img src='img/3JARK.PNG' style='width: 600px;'>
 
 Joonis 1. eIDAS-võimekusega TARA autentimisteenus
+
+<img src='img/3-1.PNG' style='width: 600px;'>
+
+Joonis 2. eIDAS klient
 
 ## TARA serverrakendus
 
@@ -39,7 +43,7 @@ Joonis 1. eIDAS-võimekusega TARA autentimisteenus
 
 ## Teostatav kasutusvoog
 
-3\. arendusjärgus tuleb teostada kasutusvoog `3a` ("Eesti e-teenust kasutava välismaalase autentimine TARA kaudu") (vt joonis 1). Kasutusvoog koosneb järgmistest sammudest:
+3\. arendusjärgu lõpuks tuleb teostada kasutusvoog `3a` ("Eesti e-teenust kasutava välismaalase autentimine TARA kaudu") (vt joonis 1). Kasutusvoog koosneb järgmistest sammudest:
 
 1\. Välismaalane avaldab soovi TARA-ga liidestatud Eesti-e teenuses sisse logida.
 
@@ -74,15 +78,11 @@ Kasutusvoogu on kujutatud ka [RIA SSO autentimisteenuses kavandis](Viited#4-3) o
 
 ## Tööde koosseis
 
-Tööde järgnevus:
-1) kõigepealt loome RIA eIDAS konnektorteenusega liidest teostava „eIDAS-kliendi“ (vt joonis 2)
-2) ja siis lõimime selle CAS-i s.t TARA teenusesse.
+Tööde järgnevus:<br>
+1) kõigepealt loome RIA eIDAS konnektorteenusega liidest teostava „eIDAS-kliendi“ (vt joonis 2)<br>
+2) ja siis lõimime selle TARA teenusesse (CAS platvormil töötavasse TARA serverrakendusse).
 
-<img src='img/3-1.PNG' style='width: 600px;'>
-
-Joonis 2. eIDAS-võimekusega TARA autentimisteenus
-
-Tuleb teostada:
+Tuleb teostada järgmised tööd:
 
 | nr |       töö       |  tulemus    | töömahu orientiir |
 |----|-----------------|-------------|-------------------|
@@ -106,7 +106,7 @@ Arendustööd hõlmavad:
   - projektijuhtimist
 - programmeerimist, sh
   - koodi läbivaatust
-- testimist (vt Testistrateegia)
+- testimist, vt Testistrateegia (eraldi dokument)
 - dokumenteerimist.
 
 Ettevalmistavate ja kaasnevate töödena:
@@ -122,7 +122,4 @@ Ettevalmistavate ja kaasnevate töödena:
 | 3    | eIDAS Node tarkvara dokumentatsiooni puudulikkus | Komisjon on täiendanud eIDAS Node-i tehnilist dokumentatsiooni. Seda tehti meie soovi peale. Palgati professionaalne _technical writer_, kes on teinud head tööd. Siiski ei saa dokumentatsiooni lugeda perfektseks. | Ohtu meie töödele hindame keskmiseks. |
 | 4    | raskused valitud platvormi tõttu | Vt [TARA tarkvara jätkusuutlikkus](Jatkusuutlikkus) | Hetke parima teadmise põhjal peame eIDAS-võimekust valitud platvormil teostatavaks. |
 
-## Tööde planeerimine 
-
-Arendusjärgu eesmärk on suhteliselt konkreetne ja selge. Siiski on arendusjärgus mitu tegurit, mis raskendavad töömahtude ja edenemistempo ennustamist. Seetõttu jagame arendusetapi küll konkreetsete tulemitega ja konkreetsete tähtaegadega töödeks (vt ülal), kuid tegeliku edenemistempo alusel vajadusel korrigeerime nii mahtusid kui ka tähtaegu.
 

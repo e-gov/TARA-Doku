@@ -45,11 +45,8 @@ Repod ja keskkonnad:
 [TARA-Management](https://github.com/e-gov/TARA-Management), teenuse haldustööriist (koodirepo)<br>
 {: .pais}
 
-[Confluence-is](https://confluence.ria.ee/display/TARA) &#128274;<br>
-[JIRA-s](https://jira.ria.ee/browse/DD4J-88) &#128274;<br>
-Skype-is:<br>
-  "TARA arendus" &#128274;<br>
-  "TARA kasutajaliidese disain ja UI testimine" &#128274;<br>
+[Confluence-is](https://confluence.ria.ee/display/TARA) &#128273;<br>
+[JIRA-s](https://jira.ria.ee/browse/DD4J-88) &#128273;<br>
 {: .pais}
 
 Lähteülesanded:
@@ -62,8 +59,8 @@ Lähteülesanded:
 Mitmesugused dokumendid:
 
 [Kasutaja probleemi lahendamine](Kasutaja)<br>
-[Testistrateegia (1-2. arendusjärk)](https://confluence.ria.ee/display/TARA/TARA+testistrateegia) &#128274;<br>
-[Testiplaan](https://confluence.ria.ee/display/TARA/TARA+testplaan) &#128274;<br>
+[Testistrateegia (1-2. arendusjärk)](https://confluence.ria.ee/display/TARA/TARA+testistrateegia) &#128273;<br>
+[Testiplaan](https://confluence.ria.ee/display/TARA/TARA+testplaan) &#128273;<br>
 [Turvaanalüüs](Turvaanaluus)<br>
 [Vead ja tõrked. Ennetamine ja Käsitlemine](Veakasitlus)<br>
 [Autentimisteenuse turvauuring. Lähteülesanne](Uuring)<br>
