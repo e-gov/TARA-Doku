@@ -121,5 +121,6 @@ Ettevalmistavate ja kaasnevate töödena:
 | 2    | eIDAS "protokolli" muutumine | Praegu kehtib eIDAS tehniline spetsifikatsioon v1.1. Kavas on seda uuendada, kuid tähtaegu teada ei ole. | Ohtu hindame väikeseks. |
 | 3    | eIDAS Node tarkvara dokumentatsiooni puudulikkus | Komisjon on täiendanud eIDAS Node-i tehnilist dokumentatsiooni. Seda tehti meie soovi peale. Palgati professionaalne _technical writer_, kes on teinud head tööd. Siiski ei saa dokumentatsiooni lugeda perfektseks. | Ohtu meie töödele hindame keskmiseks. |
 | 4    | raskused valitud platvormi tõttu | Vt [TARA tarkvara jätkusuutlikkus](Jatkusuutlikkus) | Hetke parima teadmise põhjal peame eIDAS-võimekust valitud platvormil teostatavaks. |
+| 5    | testimine võib kujuneda ajamahukaks | Testimine hõlmab piiriüles end-to-end testimist. | |
 
 
