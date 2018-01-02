@@ -13,56 +13,70 @@ ___1 OpenID Connect___
 
 ___2 eIDAS___
 
-<a href='#2-1'></a><a href='#eIDAS'>[eIDAS] eIDAS Technical specification v.1.1, [https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/eIDAS+Profile](https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/eIDAS+Profile).
+Spetsifikatsioon ja tarkvara dokumentatsioon:
 
-<a href='#2-2'></a>[eIDAS autentimistasemed] (https://www.ria.ee/public/PKI/eIDAS-autentimistasemed.pdf) Riigi Infosüsteemi Amet. eIDAS autentimistasemed. v1.0, 15.03.2017.
+[eIDAS] eIDAS Technical specification v.1.1, [https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/eIDAS+Profile](https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/eIDAS+Profile),<br>
+koosseisus:
+- eIDAS Message Format v1.1-2
+- eIDAS Interoperability Architecture
+- eIDAS Crypto Requirements for the eIDAS Interoperability Framework v1.0
+- eIDAS SAML Attribute Profile v1.1-2
 
-<a href='#2-3'></a>[eIDAS SAML Attribute Profile] eIDAS SAML Attribute Profile v1.1_2, [https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/eIDAS+Profile](https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/eIDAS+Profile).
+[eIDAS Software] [eIDAS-Node software releases](https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/eIDAS-Node+-+Current+release),<br>
+sh:
+- eIDAS-Node Installation Configuration and Integration Quick Start Guide
+- eIDAS-Node Migration Guide
+- eIDAS-Node Installation and Configuration Guide
+- eIDAS-Node National IdP and SP Integration Guide
+- eIDAS-Node Demo Tools Installation and Configuration Guide
+- eIDAS-Node and SAML
+- eIDAS-Node Error and Event Logging
+- eIDAS-Node Error Codes
 
-<a href='#2-4'></a>[eIDAS Software] [eIDAS-Node software releases](https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/eIDAS-Node+-+Current+release).
+Muu:
 
-<a href='#2-5'></a>[RUB-NDS] FutureTrust (2017) eIDAS SAML Detailed Analysis. [https://github.com/RUB-NDS/FutureTrust/wiki/eIDAS-SAML-Detailed-Analysis](https://github.com/RUB-NDS/FutureTrust/wiki/eIDAS-SAML-Detailed-Analysis).
+[RUB-NDS] FutureTrust (2017) eIDAS SAML Detailed Analysis. [https://github.com/RUB-NDS/FutureTrust/wiki/eIDAS-SAML-Detailed-Analysis](https://github.com/RUB-NDS/FutureTrust/wiki/eIDAS-SAML-Detailed-Analysis).
 
 ___3 CAS___
 
-<a href='#3-1'></a>[CAS] [Apereo CAS - Enterprise Single Sign On](https://github.com/apereo/cas)
+[CAS] [Apereo CAS - Enterprise Single Sign On](https://github.com/apereo/cas)
 
-<a href='#3-2'></a>[CAS OpenID Connect] [CAS OpenID Connect Authentication](https://apereo.github.io/cas/5.1.x/installation/OIDC-Authentication.html).
+[CAS OpenID Connect] [CAS OpenID Connect Authentication](https://apereo.github.io/cas/5.1.x/installation/OIDC-Authentication.html).
 
-<a href='#3-3'></a>[CAS Service Management] [https://apereo.github.io/cas/4.2.x/installation/Service-Management.html](https://apereo.github.io/cas/4.2.x/installation/Service-Management.html).
+[CAS Service Management] [https://apereo.github.io/cas/4.2.x/installation/Service-Management.html](https://apereo.github.io/cas/4.2.x/installation/Service-Management.html).
 
 ___4 Eesti___
 
-<a href='#4-1'></a>[tasemed] Riigi Infosüsteemi Amet. eIDAS autentimistasemed. v1.0, 15.03.2017, [https://www.ria.ee/public/PKI/eIDAS-autentimistasemed.pdf](https://www.ria.ee/public/PKI/eIDAS-autentimistasemed.pdf).
+[tasemed] Riigi Infosüsteemi Amet. eIDAS autentimistasemed. v1.0, 15.03.2017, [https://www.ria.ee/public/PKI/eIDAS-autentimistasemed.pdf](https://www.ria.ee/public/PKI/eIDAS-autentimistasemed.pdf).
 
-<a href='#4-2'></a>[TP-192 RIA autentimisteenus] (https://jira.ria.ee/browse/TP-93). RIA teenuseportfelli kirje. &#128274;
+[TP-192 RIA autentimisteenus] (https://jira.ria.ee/browse/TP-93). RIA teenuseportfelli kirje. &#128274;
 
-<a href='#4-3'></a>[kavand] Riigi Infosüsteemi Amet. RIA SSO autentimisteenuse kavand. 18 lk. [https://github.com/ria-eidas/RIA-autentimisteenus/wiki/Teenuse-kontseptsioon](https://github.com/ria-eidas/RIA-autentimisteenus/wiki/Teenuse-kontseptsioon)
+[kavand] Riigi Infosüsteemi Amet. RIA SSO autentimisteenuse kavand. 18 lk. [https://github.com/ria-eidas/RIA-autentimisteenus/wiki/Teenuse-kontseptsioon](https://github.com/ria-eidas/RIA-autentimisteenus/wiki/Teenuse-kontseptsioon)
 
 ___5 Muud___
 
-<a href='#5-1'></a>[DDS] SK ID Solutions AS. DigiDocService. Tehniline lisainfo. [https://www.sk.ee/teenused/kehtivuskinnituse-teenus/digidoc-veebiteenus/](https://www.sk.ee/teenused/kehtivuskinnituse-teenus/digidoc-veebiteenus/).
+[DDS] SK ID Solutions AS. DigiDocService. Tehniline lisainfo. [https://www.sk.ee/teenused/kehtivuskinnituse-teenus/digidoc-veebiteenus/](https://www.sk.ee/teenused/kehtivuskinnituse-teenus/digidoc-veebiteenus/).
 
-<a href='#5-2'></a>[Krüpto] [Krüptograafiliste algoritmide elutsükli uuringud](https://www.ria.ee/ee/kruptograafiliste-algoritmide-elutsukli-uuringud.html), [Cryptographic Algorithms Lifecycle Report 2016](https://www.ria.ee/public/RIA/Cryptographic_Algorithms_Lifecycle_Report_2016.pdf) või uuem.
+[Krüpto] [Krüptograafiliste algoritmide elutsükli uuringud](https://www.ria.ee/ee/kruptograafiliste-algoritmide-elutsukli-uuringud.html), [Cryptographic Algorithms Lifecycle Report 2016](https://www.ria.ee/public/RIA/Cryptographic_Algorithms_Lifecycle_Report_2016.pdf) või uuem.
 
-<a href='#5-3'></a>[mID1] Sertifitseerimiskeskus. DigiDocService. Tehniline lisainfo. [https://www.sk.ee/teenused/kehtivuskinnituse-teenus/digidoc-veebiteenus/](https://www.sk.ee/teenused/kehtivuskinnituse-teenus/digidoc-veebiteenus/).
+[mID1] Sertifitseerimiskeskus. DigiDocService. Tehniline lisainfo. [https://www.sk.ee/teenused/kehtivuskinnituse-teenus/digidoc-veebiteenus/](https://www.sk.ee/teenused/kehtivuskinnituse-teenus/digidoc-veebiteenus/).
 
-<a href='#5-4'></a>[mID2] Sertifitseerimiskeskus. Mobiil-ID kasutamine veebis. Autentimine. [http://www.id.ee/index.php?id=36940](http://www.id.ee/index.php?id=36940).
+[mID2] Sertifitseerimiskeskus. Mobiil-ID kasutamine veebis. Autentimine. [http://www.id.ee/index.php?id=36940](http://www.id.ee/index.php?id=36940).
 
-<a href='#5-5'></a>[Mobile Signature Service] [ETSI TS 102 204](http://www.etsi.org/deliver/etsi_ts/102200_102299/102204/01.01.04_60/ts_102204v010104p.pdf).
+[Mobile Signature Service] [ETSI TS 102 204](http://www.etsi.org/deliver/etsi_ts/102200_102299/102204/01.01.04_60/ts_102204v010104p.pdf).
 
-<a href='#5-6'></a>[RFC8176] IETF (2017) RFC 8176. Authentication Method Reference Values. [https://tools.ietf.org/html/rfc8176](https://tools.ietf.org/html/rfc8176).
+[RFC8176] IETF (2017) RFC 8176. Authentication Method Reference Values. [https://tools.ietf.org/html/rfc8176](https://tools.ietf.org/html/rfc8176).
 
-<a href='#5-7'></a>[Semver] Semantic Versioning. [http://semver.org/](http://semver.org/)
+[Semver] Semantic Versioning. [http://semver.org/](http://semver.org/)
 
 ## 6 Teisi autentimisteenuseid
 
-<a href='#6-1'></a>[EU Login](https://ecas.ec.europa.eu/cas/about.html) - Euroopa Komisjoni autentimisteenus
+[EU Login](https://ecas.ec.europa.eu/cas/about.html) - Euroopa Komisjoni autentimisteenus
 
-<a href='#6-2'></a>[Suomi.fi tunnistus](https://tunnistaminen.suomi.fi/sivut/info/tietoapalvelusta/) - Soome avalike e-teenuste ühtne autentimisteenus;<br>
+[Suomi.fi tunnistus](https://tunnistaminen.suomi.fi/sivut/info/tietoapalvelusta/) - Soome avalike e-teenuste ühtne autentimisteenus;<br>
 [Suomi.fi e-Identification – Technical interface description](https://esuomi.fi/suomi-fi-services/suomi-fi-e-identification/technical-interface-description/?lang=en)<br>
 [kasutuselevõtu kirjeldus](https://esuomi.fi/suomi-fi-tunnistusta-kayttaa-jo-suuri-joukko-kansalaisia-julkishallinnon-organisaatioiden-otettava-palvelu-kayttoon-syyskuuhun-2017-mennessa/)
 
-<a href='#6-3'></a>[GOV.UK Verify](https://www.gov.uk/government/publications/introducing-govuk-verify/introducing-govuk-verify) 
+[GOV.UK Verify](https://www.gov.uk/government/publications/introducing-govuk-verify/introducing-govuk-verify) 
 
 
