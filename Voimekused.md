@@ -31,7 +31,7 @@ Projektiportfelli kirjed:<br>
 | 2    | __Eesti autentimisteenus__ | TP-93 |     |    |
 | 2.1  | teenus testkeskkonnas   | võimaldab autentida välisriigi e-teenust kasutavat eestlast | töös (APP-309) |    |
 | 2.2  | teenus toodangukeskkonnas |   |     |    |
-| 3    | __TARA teenus (RIA autentimisteenus)__ | TP-210 |  |    |
+| 3    | __TARA teenus (RIA autentimisteenus)__ | TP-192, TP-210 |  |    |
 | 3.1  | m-ID ja ID-kaardiga autentimine (testkeskkonnas) | OK  | APP-325 |    |
 | 3.2  | turvalisus kontrollitud (m-ID ja ID-kaart) | Turvatestimine teostatud | hankimisel (APP-333) |    |
 | 3.3  | m-ID ja ID-kaardiga autentimine (toodangukeskkonnas) |   | APP-325 |    |
