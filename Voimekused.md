@@ -6,11 +6,13 @@ permalink: Voimekused
 
 <img src='img/PLAAN-1.PNG' style='width: 800px;'>
 
+Teenuseportfelli kirjed:<br>
 [TP-95 RIA eIDAS konnektorteenus](https://jira.ria.ee/projects/TP/issues/TP-95) &#128273;<br>
 [TP-93 Eesti autentimisteenus](https://jira.ria.ee/projects/TP/issues/TP-93) &#128273;<br>
 [TP-192 RIA autentimisteenus](https://jira.ria.ee/projects/TP/issues/TP-192) &#128273;<br>
 [TP-210 TARA (RIA autentimisteenus) testkeskkond](https://jira.ria.ee/projects/TP/issues/TP-210) &#128273;<br>
 
+Projektiportfelli kirjed:<br>
 [APP-300 RIA eIDAS konnektorteenus](https://jira.ria.ee/browse/APP-300) &#128273;<br>
 [APP-237 RIA autentimisteenuse (TARA) lisaarendused](https://jira.ria.ee/browse/APP-237) &#128273;<br>
 [APP-330  Autentimisteenuse turvauuring](https://jira.ria.ee/browse/APP-330) &#128273;<br>
@@ -22,8 +24,8 @@ permalink: Voimekused
 |----|--------------------|----------|---------|
 | 1  | __RIA konnektorteenus__ | TP-95 |         |    |
 | 1.1  | teenus testkeskkonnas |       | OK |    |
-| 1.2  | liidestamisjuhend |           | OK  |    |
-| 1.3  | liides spetsifikatsioon |     | alustamisel (APP-237) |    |
+| 1.2  | liidestamisjuhend | üldine juhend liidestujatele  | OK  |    |
+| 1.3  | liidese spetsifikatsioon | täpne kirjeldus liidestujatele | alustamisel (APP-237) |    |
 | 1.4  | eIDAS klient            | näiterakendus, mis teostab liidese RIA eIDAS konnektorteenusega, vastavalt spetsifikatsioonile (vt p 1.2) | alustamisel (APP-237) |    |
 | 1.5  | teenus toodangukeskkonnas |     |    |    |
 | 2    | __Eesti autentimisteenus__ | TP-93 |     |    |
