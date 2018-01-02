@@ -36,6 +36,8 @@ TARA teenust pakub Riigi Infosüsteemi Amet.
 
 ## TARA teenuse arendajale
 
+Repod ja keskkonnad:
+
 [TARA-Server](https://github.com/e-gov/TARA-Server), teenuse server (koodirepo)<br>
 \- vt ka [dok-n vikis](https://github.com/e-gov/TARA-Server/wiki) (nt logimise käsitlus)<br> 
 [TARA-Client](https://github.com/e-gov/TARA-Client), makettrakendus teenuse testimiseks (koodirepo)<br>
@@ -43,13 +45,24 @@ TARA teenust pakub Riigi Infosüsteemi Amet.
 [TARA-Management](https://github.com/e-gov/TARA-Management), teenuse haldustööriist (koodirepo)<br>
 {: .pais}
 
-[1. arendusjärk](1JARK)<br>
-[2. arendusjärk](2JARK)<br>
-[3. arendusjärk](3JARK)
+[Confluence-is](https://confluence.ria.ee/display/TARA) &#128274;<br>
+[JIRA-s](https://jira.ria.ee/browse/DD4J-88) &#128274;<br>
+Skype-is:<br>
+  "TARA arendus" &#128274;<br>
+  "TARA kasutajaliidese disain ja UI testimine" &#128274;<br>
 {: .pais}
 
+Lähteülesanded:
+
+[1. arendusjärk](1JARK)<br>
+[2. arendusjärk](2JARK)<br>
+[3. arendusjärk](3JARK) "TARA-eIDAS"
+{: .pais}
+
+Mitmesugused dokumendid:
+
 [Kasutaja probleemi lahendamine](Kasutaja)<br>
-[Testistrateegia](https://confluence.ria.ee/display/TARA/TARA+testistrateegia) &#128274;<br>
+[Testistrateegia (1-2. arendusjärk)](https://confluence.ria.ee/display/TARA/TARA+testistrateegia) &#128274;<br>
 [Testiplaan](https://confluence.ria.ee/display/TARA/TARA+testplaan) &#128274;<br>
 [Turvaanalüüs](Turvaanaluus)<br>
 [Vead ja tõrked. Ennetamine ja Käsitlemine](Veakasitlus)<br>
@@ -57,12 +70,5 @@ TARA teenust pakub Riigi Infosüsteemi Amet.
 [TARA arhitektuurne jätkusuutlikkus](Jatkusuutlikkus)<br>
 [TARA statistika](Statistika)<br>
 [Võtmehaldus](Votmehaldus)<br>
-{: .pais}
-
-[Confluence-is](https://confluence.ria.ee/display/TARA) &#128274;<br>
-[JIRA-s](https://jira.ria.ee/browse/DD4J-88) &#128274;<br>
-Skype-is:<br>
-  "TARA arendus" &#128274;<br>
-  "TARA kasutajaliidese disain ja UI testimine" &#128274;<br>
 {: .pais}
 

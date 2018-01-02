@@ -8,13 +8,19 @@ permalink: 3JARK
 - TOC
 {:toc}
 
-Märkus. Kasutame [sõnastiku](Sonastik) mõisteid.
+## Mõisted
+
+- _eIDAS klient_, Java rakendus, millega proovime läbi siseriikliku liidestamise RIA eIDAS konnektorteenusega; seejärel lõimime TARA serverrakendusega. eIDAS klient on ühtlasi mudeliks ja näiteks teistele konnektorteenuse külge ühenduda soovivatele asutustele. 
+
+Märkus. Kasutame ka [sõnastiku](Sonastik) mõisteid.
 
 ## Eesmärk
 
-3\. arendusjärgu eesmärk on lisada TARA-teenusele eIDAS piiriülese autentimise võimekus. Tööde tulemusena peab  Eesti e-teenusel olema võimalik:
-a) saata välismaalane TARA ja eIDAS piiriülese autentimise taristu kaudu autentimiseks välisriigi autentimisteenusesse
-b) autentimiselt tagasisuunatud välismaalane vastu võtta
+3\. arendusjärgu eesmärk on lisada TARA-teenusele eIDAS piiriülese autentimise võimekus.
+
+Tööde tulemusena peab  Eesti e-teenusel olema võimalik:<br>
+a) saata välismaalane TARA ja eIDAS piiriülese autentimise taristu kaudu autentimiseks välisriigi autentimisteenusesse<br>
+b) autentimiselt tagasisuunatud välismaalane vastu võtta<br>
 c) ja saada kätte autentimist kinnitav eIDAS autentimistõend.
 
 Arendusjärguga jätkame TARA-teenuse [1.](1JARK) ja [2.](2JARK) arendusjärguga tehtut.
@@ -68,20 +74,31 @@ Kasutusvoogu on kujutatud ka [RIA SSO autentimisteenuses kavandis](Viited#4-3) o
 
 ## Tööde koosseis
 
+Tööde järgnevus:
+1) kõigepealt loome RIA eIDAS konnektorteenusega liidest teostava „eIDAS-kliendi“ (vt joonis 2)
+2) ja siis lõimime selle CAS-i s.t TARA teenusesse.
+
+<img src='img/3-1.PNG' style='width: 600px;'>
+
+Joonis 2. eIDAS-võimekusega TARA autentimisteenus
+
 Tuleb teostada:
 
 | nr |       töö       |  tulemus    | töömahu orientiir |
 |----|-----------------|-------------|-------------------|
-| 1  | autentimismeetodi valiku kuva täiendamine piiriülese autentimismeetodi valimisega | konfigureeritud ja ülalolevad välisriikide autentimismeetodid on kasutajale valitavad |  |
-| 2  | SAML autentimispäringu moodustamine | TARA serverrakendus suudab moodustada korrektse SAML autentimispäringu. NB! Autentimispäringu vorming on spetsifitseeritud |  |
-| 3  | välismaalase suunamine RIA eIDAS konnektorteenusesse | TARA serverrakendus suudab teha _browser redirect_-i RIA eIDAS konnektorteenusesse (SAML autentimispäring pannakse kaasa) |  |
-| 4  | välismaalase vastuvõtmine RIA eIDAS konnektorteenusest | TARA serverrakendus suudab välismaalase RIA eIDAS konnektorteenusest vastu võtta |  |
-| 5  | SAML autentimisvastuse dekrüpteerimine ja valideerimine | TARA serverrakendus suudab SAML autentimisvastuse dekrüpteerida ja valideerida |
-| 6  | välismaalase tagasisuunamine autentimisrakendusse | TARA serverrakendus suudab välismaalase OpenID Connect _redirect_-ga klientrakendusse tagasi saata | | 
-| 7  | identsustõendi moodustamine | TARA serverrakendus suudab moodustada korrektse OpenID Connect identsustõendi. Tõend jääb klientrakenduse järeletulemist ootama |
-| 8  | identsustõendi väljastamine klientrakendusele | TARA serverrakendus suudab identsustõendi klientrakendusele väljastada |
-| 9  | eIDAS nõuete kohased logimised (vrdl [eIDAS-Node Error and Event Logging](Viited#2-4)) | TARA-teenuse logimised vastavad nõuetele | |
-| 10 | SAML metaandmeotspunkti teostus | TARA-teenus on publitseerinud oma SAML metaandmed |  |
+| 1  | RIA eIDAS konnektorteenuse siseriikliku poole spetsifitseerimine | tehniline spetsifikatsioon, mille järgi saab konnektorteenusega liidestada nii eIDAS kliendi, seejärel TARA-teenuse, aga ka teiste asutuste eIDAS-st kasutavad süsteemid | |
+| 2  | RIA eIDAS konnektorteenuse seadistamine | konnektorteenus on valmis siseriiklike rakenduste liidestamiseks, vastavalt töös nr 1 koostatud spetsifikatsioonile | |
+| 3  | autentimismeetodi valiku kuva täiendamine piiriülese autentimismeetodi valimisega | konfigureeritud ja ülalolevad välisriikide autentimismeetodid on kasutajale valitavad |  |
+| 4  | SAML autentimispäringu moodustamine | TARA serverrakendus suudab moodustada korrektse SAML autentimispäringu. NB! Autentimispäringu vorming on spetsifitseeritud |  |
+| 5  | välismaalase suunamine RIA eIDAS konnektorteenusesse | TARA serverrakendus suudab teha _browser redirect_-i RIA eIDAS konnektorteenusesse (SAML autentimispäring pannakse kaasa) |  |
+| 6  | välismaalase vastuvõtmine RIA eIDAS konnektorteenusest | TARA serverrakendus suudab välismaalase RIA eIDAS konnektorteenusest vastu võtta |  |
+| 7  | SAML autentimisvastuse dekrüpteerimine ja valideerimine | TARA serverrakendus suudab SAML autentimisvastuse dekrüpteerida ja valideerida |
+| 8  | välismaalase tagasisuunamine autentimisrakendusse | TARA serverrakendus suudab välismaalase OpenID Connect _redirect_-ga klientrakendusse tagasi saata | | 
+| 9  | identsustõendi moodustamine | TARA serverrakendus suudab moodustada korrektse OpenID Connect identsustõendi. Tõend jääb klientrakenduse järeletulemist ootama |
+| 10  | identsustõendi väljastamine klientrakendusele | TARA serverrakendus suudab identsustõendi klientrakendusele väljastada |
+| 11  | eIDAS nõuete kohased logimised (vrdl [eIDAS-Node Error and Event Logging](Viited#2-4)) | TARA-teenuse logimised vastavad nõuetele | |
+| 12 | SAML metaandmeotspunkti teostus | TARA-teenus on publitseerinud oma SAML metaandmed |  |
+| 13 | eIDAS kliendi lõimimine TARA-teenusesse | Eelmistes töödes arendatud eIDAS-klientrakendus on lõimitud TARA serverrakendusse. | |
 
 Arendustööd hõlmavad:
 - kavandamist, sh
@@ -89,16 +106,12 @@ Arendustööd hõlmavad:
   - projektijuhtimist
 - programmeerimist, sh
   - koodi läbivaatust
-- testimist
+- testimist (vt Testistrateegia)
 - dokumenteerimist.
 
 Ettevalmistavate ja kaasnevate töödena:
-- tutvumine olemasoleva TARA-teenuse
-  - dokumentatsiooniga
-  - koodiga
-- tutvumine eIDAS Node tarkvara
-  - dokumentatsiooniga
-  - koodiga.
+- tutvumine olemasoleva TARA-teenuse dokumentatsiooniga ja koodiga
+- tutvumine eIDAS Node tarkvara dokumentatsiooniga koodiga.
 
 ## Riskid
 
