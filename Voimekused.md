@@ -24,9 +24,9 @@ Projektiportfellis: &#128273;<br>
 |----|--------------------|----------|
 | 1  | __RIA konnektorteenus__ | TP-95 |         |
 | 1.1  | teenus testkeskkonnas |       | OK |
-| 1.2  | liidestamisjuhend | üldine juhend liidestujatele  | OK  |
-| 1.3  | liidese spetsifikatsioon | täpne kirjeldus liidestujatele | alustamisel (APP-237) |
-| 1.4  | eIDAS klient            | näiterakendus, mis teostab liidese RIA eIDAS konnektorteenusega, vastavalt spetsifikatsioonile (vt p 1.2) | alustamisel (APP-237) |
+| 1.2  | [liidestamisjuhend](https://e-gov.github.io/eIDAS-Connector/Liidestamisjuhend) | üldine juhend liidestujatele  | OK  |
+| 1.3  | [liidese spetsifikatsioon](https://e-gov.github.io/eIDAS-Connector/Spetsifikatsioon) | täpne kirjeldus liidestujatele | alustamisel (APP-237) |
+| 1.4  | [eIDAS klient](https://github.com/e-gov/eIDAS-Client)            | näiterakendus, mis teostab liidese RIA eIDAS konnektorteenusega, vastavalt spetsifikatsioonile (vt p 1.2) | alustamisel (APP-237) |
 | 1.5  | teenus toodangukeskkonnas |     |    |
 | 2    | __Eesti autentimisteenus__ | TP-93 |     |
 | 2.1  | teenus testkeskkonnas   | võimaldab autentida välisriigi e-teenust kasutavat eestlast | töös (APP-309) |
