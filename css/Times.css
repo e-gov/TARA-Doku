@@ -57,7 +57,7 @@ p { margin: 0 0 1em 0; }
 
 /*#region Loetelud */
 #Tekst > ul {
-  list-style-type: none;
+  list-style-type: '-  ';
   margin: 0 0 1em 0;
   padding-left: 1em;
 }  
