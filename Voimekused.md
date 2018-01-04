@@ -20,6 +20,13 @@ Projektiportfellis: &#128273;<br>
 [APP-325 (ECDSA) DD4J muudatused kaardirakenduse ühilduvuseks e-teenustes ja keskse autentimisteenuse loomine](https://jira.ria.ee/browse/APP-325)<br>
 [APP-309 Eesti autentimisteenuse pisiarendused 36 kuud](https://jira.ria.ee/browse/APP-309)
 
+Repod:
+
+| teenus | dokumentatsioon | kood |
+|--------|-----------------|------|
+| RIA konnektorteenus | [eIDAS-Connector](https://e-gov.github.io/eIDAS-Connector/) | [eIDAS-Client](https://github.com/e-gov/eIDAS-Client) |
+| TARA teenus (RIA autentimisteenus) | [TARA-Doku](https://e-gov.github.io/TARA-Doku/) | [TARA-Server](https://github.com/e-gov/TARA-Server) [TARA-Client](https://github.com/e-gov/TARA-Client) [TARA-Management](https://github.com/e-gov/TARA-Management) |
+
 | nr | võimekus | selgitus | staatus |
 |----|--------------------|----------|
 | 1  | __RIA konnektorteenus__ | TP-95 |         |
