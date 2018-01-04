@@ -123,4 +123,26 @@ Ettevalmistavate ja kaasnevate töödena:
 | 4    | raskused valitud platvormi tõttu | Vt [TARA tarkvara jätkusuutlikkus](Jatkusuutlikkus) | Hetke parima teadmise põhjal peame eIDAS-võimekust valitud platvormil teostatavaks. |
 | 5    | testimine võib kujuneda ajamahukaks | Testimine hõlmab piiriüles end-to-end testimist. | |
 
+## Lisa 1 Esimesed tööd
+
+(sisendiks esimese sprindi planeerimisele)
+
+1 eIDAS-kliendi kavandamine
+- rakenduse arhitektuur
+- komponendid-teegid
+- UI lahendamise kava
+
+2 Demo-SP uurimine
+- selgitada välja, kuidas suhtleb konnektorteenusega
+- hinnata, kas ja mida Demo-SP-st saaks kasutada eIDAS-kliendi ehitamisel
+
+3 eIDAS tehnilise spetsifikatsiooni uurimine
+- kõik neli dokumenti 
+
+4 eIDAS-Node dokumentatsiooni uurimine
+- eriti dokumendid:
+  - eIDAS-Node National IdP and SP Integration Guide
+  - eIDAS-Node ja SAML
+
+5 konnektorteenuse siseriikliku liidese speki kavandamine
 
