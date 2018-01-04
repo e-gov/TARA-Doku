@@ -128,21 +128,21 @@ Ettevalmistavate ja kaasnevate töödena:
 (sisendiks esimese sprindi planeerimisele)
 
 1 eIDAS-kliendi kavandamine
-- rakenduse arhitektuur
-- komponendid-teegid
-- UI lahendamise kava
+- - rakenduse arhitektuur
+- - komponendid-teegid
+- - UI lahendamise kava
 
 2 Demo-SP uurimine
-- selgitada välja, kuidas suhtleb konnektorteenusega
-- hinnata, kas ja mida Demo-SP-st saaks kasutada eIDAS-kliendi ehitamisel
+- - selgitada välja, kuidas suhtleb konnektorteenusega
+- - hinnata, kas ja mida Demo-SP-st saaks kasutada eIDAS-kliendi ehitamisel
 
 3 eIDAS tehnilise spetsifikatsiooni uurimine
-- kõik neli dokumenti 
+- - kõik neli dokumenti 
 
 4 eIDAS-Node dokumentatsiooni uurimine
-- eriti dokumendid:
-  - eIDAS-Node National IdP and SP Integration Guide
-  - eIDAS-Node ja SAML
+- - eriti dokumendid:
+  - - eIDAS-Node National IdP and SP Integration Guide
+  - - eIDAS-Node ja SAML
 
 5 konnektorteenuse siseriikliku liidese speki kavandamine
 
