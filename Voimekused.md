@@ -18,17 +18,17 @@ Projektiportfellis: &#128273;<br>
 [APP-330  Autentimisteenuse turvauuring](https://jira.ria.ee/browse/APP-330)<br>
 [APP-333 Autentimisteenuse turvatestimine](https://jira.ria.ee/browse/APP-333)<br>
 [APP-325 (ECDSA) DD4J muudatused kaardirakenduse ühilduvuseks e-teenustes ja keskse autentimisteenuse loomine](https://jira.ria.ee/browse/APP-325)<br>
-[APP-309 Eesti autentimisteenuse pisiarendused 36 kuud](https://jira.ria.ee/browse/APP-309)
+[APP-309 Eesti autentimisteenuse pisiarendused](https://jira.ria.ee/browse/APP-309)
 
 Repod:
 
 | teenus | dokumentatsioon | kood |
 |--------|-----------------|------|
 | RIA konnektorteenus | [eIDAS-Connector](https://e-gov.github.io/eIDAS-Connector/) | [eIDAS-Client](https://github.com/e-gov/eIDAS-Client) |
-| TARA teenus (RIA autentimisteenus) | [TARA-Doku](https://e-gov.github.io/TARA-Doku/) | [TARA-Server](https://github.com/e-gov/TARA-Server) [TARA-Client](https://github.com/e-gov/TARA-Client) [TARA-Management](https://github.com/e-gov/TARA-Management) |
+| TARA teenus (RIA autentimisteenus) | [TARA-Doku](https://e-gov.github.io/TARA-Doku/) | [TARA-Server](https://github.com/e-gov/TARA-Server)<br> [TARA-Client](https://github.com/e-gov/TARA-Client)<br> [TARA-Management](https://github.com/e-gov/TARA-Management) |
 
 | nr | võimekus | selgitus | staatus |
-|----|--------------------|----------|
+|----|----------|----------|---------|
 | 1  | __RIA konnektorteenus__ | TP-95 |         |
 | 1.1  | teenus testkeskkonnas |       | OK |
 | 1.2  | [liidestamisjuhend](https://e-gov.github.io/eIDAS-Connector/Liidestamisjuhend) | üldine juhend liidestujatele  | OK  |
@@ -41,7 +41,7 @@ Repod:
 | 3    | __TARA teenus (RIA autentimisteenus)__ | TP-192, TP-210 |  |
 | 3.1  | m-ID ja ID-kaardiga autentimine (testkeskkonnas) | OK  | APP-325 |
 | 3.2  | turvalisus kontrollitud (m-ID ja ID-kaart) | Turvatestimine teostatud | hankimisel (APP-333) |
-| 3.3  | m-ID ja ID-kaardiga autentimine (toodangukeskkonnas) |   | APP-325 |    |
-| 3.4  | eIDAS autentimine (testkeskkonnas) | võimaldab autentida Eesti e-teenust kasutavat välismaalast | alustamisel (APP-325) |    |
-| 3.5  | eIDAS autentimine (toodangukeskkonnas) |   | alustamisel (APP-325) |    |
-| 3.6  | SSO suhtes selgus | Autentimisteenuse turvauuring läbi viidud | ettevalmistamisel (APP-330) |    |
+| 3.3  | m-ID ja ID-kaardiga autentimine (toodangukeskkonnas) |   | APP-325 |
+| 3.4  | eIDAS autentimine (testkeskkonnas) | võimaldab autentida Eesti e-teenust kasutavat välismaalast | alustamisel (APP-325) |
+| 3.5  | eIDAS autentimine (toodangukeskkonnas) |   | alustamisel (APP-325) |
+| 3.6  | SSO suhtes selgus | Autentimisteenuse turvauuring läbi viidud | ettevalmistamisel (APP-330) |
