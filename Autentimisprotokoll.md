@@ -24,7 +24,9 @@ K0 ("lihtne autentimine") - kasutaja logib sisse e-teenusesse, kasutab seda mõn
 K1a ("ühekordne sisselogimine") - kasutaja logib sisse e-teenuses E1. Mõne aja pärast, E1-st väljumata, soovib avada ja siseneda sama sirviku teises sirvimiskontekstis (teises sakis või aknas) e-teenuse E2. Kasutaja logitakse E2-te automaatselt sisse.<br>
 K1b ("sessiooni üleandmine") - kasutaja logib sisse e-teenuses E1. Mõne aja järel soovib (samas sirvimiskontekstis) liikuda e-teenusesse E2. Kasutaja logitakse E2-te automaatselt sisse.<br>
 K2a ("ühekordne väljalogimine") - kasutaja on sisse logitud mitmesse e-teenusesse. Kasutaja logib välja e-teenusest E1. Ühtlasi logitakse ta välja kõigist e-teenustest.<br>
-K2b ("seansi aegumine") - keskne seanss aegub. Kasutaja logitakse välja.
+K2b ("seansi aegumine") - keskne seanss aegub. Kasutaja logitakse välja.<br>
+K3a ("pidev kasutaja") - asutuse töötaja kasutab e-teenust kogu tööpäeva vältel. Ta ei pea ikka ja jälle sisse logima.<br>
+K3b ("mitme teenuse pidev kasutaja") - asutuse töötaja kasutab erinevaid e-teenuseid kogu tööpäeva vältel. Ta ei pea mitmeid kordi sisse logima.
 
 __Tehniline protokoll__. Autentimisprotokoll on rajatud OpenID Connect 1.0 protokollile (OIDC) [1]. Keskset autentimisteenust ("TARA") osutab RIA. 2017. a teostati lihtne autentimine (ilma keskse seansihalduseta ja ühekordse sisselogimiseta) [2]. Alanud on tööd piiriülese autentimise (eIDAS) lisamiseks. 
 
@@ -43,7 +45,7 @@ OpenID Connect pakub erinevaid võimalusi ja jätab mitmete valikute tegemise ra
 - kas oleks võimalik määratleda kriteeriume, mille abil piiritleda SSO autentimisprotokolli rakendamiseks sobivate e-teenuste ringi?
 - kas seansihalduseks tuleks kasutada postMessage API põhist lahendust, vt [3]?
 - kas ühekordne väljalogimine tuleks teostada OpenID Connect vastavate standardikavandite [4] järgi?
-- kas protseduurilised aspektid on piisavalt detailiseeritud, et lahendus oleks turvaline?
+- kas protseduurilised ja _policy_ aspektid on piisavalt detailiseeritud, et lahendus oleks turvaline? Nt kas back-channel logout-le tuleks kehtestada ühtsed, kohustuslikud sessiooniaegumisajad?
 
 Turvalisus hindamisel tuleks lisaks ründevõimalustele käsitleda ka riske veidi laiemalt: "keskne nuripunkt" ja kas kasutaja saab aru.
 
