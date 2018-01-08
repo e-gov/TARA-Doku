@@ -30,11 +30,14 @@ __Tehniline protokoll__. Autentimisprotokoll on rajatud OpenID Connect 1.0 proto
 
 __Uurimisküsimused__.
 OpenID Connect pakub erinevaid võimalusi ja jätab mitmete valikute tegemise rakendajale. Vajame kindlust ja kinnitust kolmes küsimuses:
+
 1) kas tehtud valikud on turvalised ja kokkuvõttes teostamist väärt?
 - volituskoodi voog (authorization flow)
 - klientrakenduste autentimine sümmeetrilise võtme (client secret) abil? (kas PKI oleks turvalisem?)
-- keskse e SSO seansi kehtivuse kontrollimiseks on klientrakendustele jäetud vabad käed? Kas see on turvalisuse seisukohast mõistlik valik? (alternatiiv on SSO seansi kehtivuse päring igal pöördumisel kasutaja sirvikust) 
+- keskse e SSO seansi kehtivuse kontrollimiseks on klientrakendustele jäetud vabad käed? Kas see on turvalisuse seisukohast mõistlik valik? (alternatiiv on SSO seansi kehtivuse päring igal pöördumisel kasutaja sirvikust)
+
 2) kas OpenID Connect tervikuna on asutuseülese SSO tegemiseks sobiv?
+
 3) kas protokoll on piisavalt detailiseeritud, et saaks alustada SSO-lahenduse arendusega?
 - ei ole käsitletud, kas SSO-ga liitumine peaks olema kohustuslik (vrdl Soomes on keskse autentimisteenuse kasutamine keskvalitsuse asutustele kohustuslik, kuid SSO-ga liitumine mitte)
 - kas oleks võimalik määratleda kriteeriume, mille abil piiritleda SSO autentimisprotokolli rakendamiseks sobivate e-teenuste ringi?
