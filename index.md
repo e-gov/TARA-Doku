@@ -19,7 +19,7 @@ TARA teenust pakub Riigi Infosüsteemi Amet.
 [Teekaart](Teekaart)<br>
 [eIDAS/TARA võimekuste ajaplaan](Voimekused)<br>
 <a href='https://e-gov.github.io/TARA-Doku/files/TARA-tutvustus.pdf' target='_new'>eIDAS autentimise lisamine e-teenusele</a>, esitlus eID infopäeval 31.10.2017<br>
-<a href='https://e-gov.github.io/TARA-Doku/PiiriyleneAutentimine.pdf' target='_new'>Piiriülene autentimine</a>, esitlus eID infopäeval 15.11.2017<br> 
+<a href='https://e-gov.github.io/TARA-Doku/files/PiiriyleneAutentimine.pdf' target='_new'>Piiriülene autentimine</a>, esitlus eID infopäeval 15.11.2017<br> 
 {: .pais}
 
 ## Klientrakenduse liidese arendajale
@@ -58,6 +58,8 @@ Lähteülesanded:
 {: .pais}
 
 Mitmesugused dokumendid:
+
+Dokumentatsiooni täiendamise juhend: [https://github.com/e-gov/TARA-Doku/blob/master/README.md](https://github.com/e-gov/TARA-Doku/blob/master/README.md).
 
 [TARA serverrakenduse sisearhitektuur](Sisearhitektuur)
 
