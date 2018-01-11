@@ -36,6 +36,8 @@ Tähtsamad paketid:
 
 __eIDAS kliendi Lõimimine__. Praegune CAS 5.1.4 versioon toetab SAML2 versiooni. Lähemalt saab lugeda siit: [https://apereo.github.io/cas/5.1.x/installation/Configuring-SAML2-Authentication.html](https://apereo.github.io/cas/5.1.x/installation/Configuring-SAML2-Authentication.html). Ka kõige hilisem CAS 5.3 versioon toetab SAML2 versiooni. Ilma eIDAS dokumentatsiooniga tutvumata on keeruline hinnata, millised takistused ja probleemid võivad tekkida kliendi lõimimisel TARA-Serveriga. Nii kaua, kui kasutatakse SAML2 protokolli ei tohiks lisakeerukusi lisanduda. Probleem võib suure tõenäosusega olla see, et CAS ei toeta üks-ühele kogu SAML2 standardit, mis tuli välja Open-ID Connect (OIDC) puhul. Tõenäoline on ka, et eIDAS-e funktsionaalsuse saab lisada ilma CAS-i enda SAML-i kasutamata, sest me ei vaja SAML autentimisprotokolli tervikuna, vaid SAML-sõnumivahetuse teostust TARA ja eIDAS konnektorteenuse vahel.
 
+__Muu kasulik teave__. OpenID Connect on CAS-i peale ehitatud ümbersuunamisi (redirect) kasutades.
+
 ---
 
 [TARA-143](https://jira.ria.ee/browse/TARA-143) &#128273;
