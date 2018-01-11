@@ -44,6 +44,7 @@ Repod ja keskkonnad:
 [TARA-Client](https://github.com/e-gov/TARA-Client), makettrakendus teenuse testimiseks (koodirepo)<br>
 [TARA-Doku](https://github.com/e-gov/TARA-Doku), teenuse dokumentatsioon (dok-nirepo)<br>
 [TARA-Management](https://github.com/e-gov/TARA-Management), teenuse haldustööriist (koodirepo)<br>
+[RIA eIDAS konnektorteenus](https://github.com/e-gov/eIDAS-Connector)
 {: .pais}
 
 [Confluence-is](https://confluence.ria.ee/display/TARA) &#128273;<br>
