@@ -59,6 +59,8 @@ Lähteülesanded:
 
 Mitmesugused dokumendid:
 
+[TARA serverrakenduse sisearhitektuur](Sisearhitektuur)
+
 [Kasutaja probleemi lahendamine](Kasutaja)<br>
 [Testistrateegia (1-2. arendusjärk)](https://confluence.ria.ee/display/TARA/TARA+testistrateegia) &#128273;<br>
 [Testiplaan](https://confluence.ria.ee/display/TARA/TARA+testplaan) &#128273;<br>
