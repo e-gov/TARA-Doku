@@ -37,7 +37,11 @@ Muu:
 
 [RUB-NDS] FutureTrust (2017) eIDAS SAML Detailed Analysis. [https://github.com/RUB-NDS/FutureTrust/wiki/eIDAS-SAML-Detailed-Analysis](https://github.com/RUB-NDS/FutureTrust/wiki/eIDAS-SAML-Detailed-Analysis).
 
-___3 CAS___
+___3 SAML___
+
+[SAML Bindings] Bindings for the OASIS Security Assertion Markup Language (SAML) V2.0. [https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf).
+
+___4 CAS___
 
 [CAS] [Apereo CAS - Enterprise Single Sign On](https://github.com/apereo/cas)
 
@@ -45,7 +49,7 @@ ___3 CAS___
 
 [CAS Service Management] [https://apereo.github.io/cas/4.2.x/installation/Service-Management.html](https://apereo.github.io/cas/4.2.x/installation/Service-Management.html).
 
-___4 Eesti___
+___5 Eesti___
 
 [tasemed] Riigi Infosüsteemi Amet. eIDAS autentimistasemed. v1.0, 15.03.2017, [https://www.ria.ee/public/PKI/eIDAS-autentimistasemed.pdf](https://www.ria.ee/public/PKI/eIDAS-autentimistasemed.pdf).
 
@@ -53,7 +57,7 @@ ___4 Eesti___
 
 [kavand] Riigi Infosüsteemi Amet. RIA SSO autentimisteenuse kavand. 18 lk. [https://github.com/ria-eidas/RIA-autentimisteenus/wiki/Teenuse-kontseptsioon](https://github.com/ria-eidas/RIA-autentimisteenus/wiki/Teenuse-kontseptsioon)
 
-___5 Muud___
+___6 Muud___
 
 [DDS] SK ID Solutions AS. DigiDocService. Tehniline lisainfo. [https://www.sk.ee/teenused/kehtivuskinnituse-teenus/digidoc-veebiteenus/](https://www.sk.ee/teenused/kehtivuskinnituse-teenus/digidoc-veebiteenus/).
 
@@ -69,7 +73,7 @@ ___5 Muud___
 
 [Semver] Semantic Versioning. [http://semver.org/](http://semver.org/)
 
-## 6 Teisi autentimisteenuseid
+## 7 Teisi autentimisteenuseid
 
 [EU Login](https://ecas.ec.europa.eu/cas/about.html) - Euroopa Komisjoni autentimisteenus
 
@@ -78,5 +82,3 @@ ___5 Muud___
 [kasutuselevõtu kirjeldus](https://esuomi.fi/suomi-fi-tunnistusta-kayttaa-jo-suuri-joukko-kansalaisia-julkishallinnon-organisaatioiden-otettava-palvelu-kayttoon-syyskuuhun-2017-mennessa/)
 
 [GOV.UK Verify](https://www.gov.uk/government/publications/introducing-govuk-verify/introducing-govuk-verify) 
-
-
