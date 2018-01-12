@@ -17,10 +17,10 @@ Spetsifikatsioon ja tarkvara dokumentatsioon:
 
 [eIDAS] eIDAS Technical specification v.1.1, [https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/eIDAS+Profile](https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/eIDAS+Profile),<br>
 koosseisus:
-- eIDAS Message Format v1.1-2
-- eIDAS Interoperability Architecture
-- eIDAS Crypto Requirements for the eIDAS Interoperability Framework v1.0
-- eIDAS SAML Attribute Profile v1.1-2
+- [eIDAS Message Format v1.1-2](https://ec.europa.eu/cefdigital/wiki/download/attachments/46992719/eIDAS%20Message%20Format_v1.1-2.pdf?version=1&modificationDate=1497252919575&api=v2)
+- [eIDAS Interoperability Architecture](https://ec.europa.eu/cefdigital/wiki/download/attachments/46992719/eIDAS%20Message%20Format_v1.1-2.pdf?version=1&modificationDate=1497252919575&api=v2)
+- [eIDAS Crypto Requirements for the eIDAS Interoperability Framework v1.0](https://ec.europa.eu/cefdigital/wiki/download/attachments/46992719/eidas_-_crypto_requirements_for_the_eidas_interoperability_framework_v1.0.pdf?version=1&modificationDate=1497252920224&api=v2)
+- [eIDAS SAML Attribute Profile v1.1-2](https://ec.europa.eu/cefdigital/wiki/download/attachments/46992719/eIDAS%20SAML%20Attribute%20Profile%20v1.1_2.pdf?version=1&modificationDate=1497252920100&api=v2)
 
 [eIDAS Software] [eIDAS-Node software releases](https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/eIDAS-Node+-+Current+release),<br>
 sh:

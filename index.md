@@ -48,7 +48,7 @@ Repod ja keskkonnad:
 {: .pais}
 
 [Confluence-is](https://confluence.ria.ee/display/TARA) &#128273;<br>
-[JIRA-s](https://jira.ria.ee/browse/DD4J-88) &#128273;<br>
+JIRA-s [1-2. arendusjärk](https://jira.ria.ee/browse/DD4J-88) [3. arendusjärk](https://jira.ria.ee/projects/TARAEI) &#128273;<br>
 {: .pais}
 
 Lähteülesanded:
