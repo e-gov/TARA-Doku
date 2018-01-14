@@ -14,10 +14,14 @@ TARA teenust pakub Riigi Infosüsteemi Amet.
 [Liitumisjuhend](Liitumisjuhend)<br>
 [Taotluse vorm](TaotluseVorm)<br>
 [Teenustase (Test)](SLATest)<br>
-[Teenustase (Toodang)]()<br>
+[Teenustase (Toodang)]()
+{: .pais}
+
 [Teenuse muudatused](Muutmine)<br>
 [Teekaart](Teekaart)<br>
-[eIDAS/TARA võimekuste ajaplaan](Voimekused)<br>
+[eIDAS/TARA võimekuste ajaplaan](Voimekused)
+{: .pais}
+
 <a href='https://e-gov.github.io/TARA-Doku/files/TARA-tutvustus.pdf' target='_new'>eIDAS autentimise lisamine e-teenusele</a>, esitlus eID infopäeval 31.10.2017<br>
 <a href='https://e-gov.github.io/TARA-Doku/files/PiiriyleneAutentimine.pdf' target='_new'>Piiriülene autentimine</a>, esitlus eID infopäeval 15.11.2017<br> 
 {: .pais}
@@ -43,15 +47,16 @@ Repod:
 \- vt ka [dok-n vikis](https://github.com/e-gov/TARA-Server/wiki) (nt logimise käsitlus)<br> 
 [TARA-Client](https://github.com/e-gov/TARA-Client), makettrakendus teenuse testimiseks (koodirepo)<br>
 [TARA-Doku](https://github.com/e-gov/TARA-Doku), teenuse dokumentatsioon (dok-nirepo)<br>
-[TARA-Management](https://github.com/e-gov/TARA-Management), teenuse haldustööriist (koodirepo)<br>
+[TARA-Management](https://github.com/e-gov/TARA-Management), teenuse haldustööriist (koodirepo)
 {: .pais}
 
 [RIA eIDAS konnektorteenus](https://github.com/e-gov/eIDAS-Connector)
+{: .pais}
 
 Keskkonnad:
 
 [Confluence-is](https://confluence.ria.ee/display/TARA) &#128273;<br>
-JIRA-s [1-2. arendusjärk](https://jira.ria.ee/browse/DD4J-88) [3. arendusjärk](https://jira.ria.ee/projects/TARAEI) &#128273;<br>
+JIRA-s: [1-2. arendusjärk](https://jira.ria.ee/browse/DD4J-88) [3. arendusjärk](https://jira.ria.ee/projects/TARAEI) &#128273;<br>
 {: .pais}
 
 Lähteülesanded:
@@ -77,4 +82,3 @@ Mitmesugused töödokumendid:
 [TARA statistika](Statistika)<br>
 [Võtmehaldus](Votmehaldus)<br>
 {: .pais}
-
