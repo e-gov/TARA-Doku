@@ -122,16 +122,16 @@ a[href]:hover {
 /*#endregion */
 
 /*#region Paneelid */
-.note, .teade { border-radius: 8px; padding: 1rem; }
-/* Märkus */
-.note { 
-  border: 1px solid coral;
+.kastigaTeade { 
+  border-radius: 8px; padding: 1rem;
+  border-color: Tomato;
   background-color: lavenderblush;
-  color: coral;
+  color: Tomato;
 }
 .teade {
-  border: 1px solid darkcyan;
-  background-color: Azure;
+  border-radius: 2px; padding: 0.1rem;
+  color: Cadetblue;
+  background-color: lightcyan;
 }
 
 /* Plokktsitaat */

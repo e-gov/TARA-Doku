@@ -4,6 +4,11 @@ permalink: /
 
 <img src='img/LOVID.png' style='width: 80px;'>
 
+[NB! Piiriülene eIDAS-autentimine. Liidestamismeetodi valik](Valik)
+{:.kastigaTeade}
+
+# Autentimisteenus TARA
+
 TARA on teenus, millega asutus saab oma e-teenuses  autentida ID-kaardi või mobiil-ID kasutaja.
 
 TARA teenust pakub Riigi Infosüsteemi Amet. 

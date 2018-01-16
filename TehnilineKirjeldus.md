@@ -2,8 +2,6 @@
 permalink: TehnilineKirjeldus
 ---
 
-{% include Issue.html %}
-
 # Tehniline kirjeldus
 {: .no_toc}
 
