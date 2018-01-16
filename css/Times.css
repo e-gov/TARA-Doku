@@ -3,17 +3,17 @@ body {
   max-width: 60em;
   margin: 0 0; 
   padding: 0.6em 1.5em 2em 2em; 
-  font-family: 'Times New Roman', serif;
-  font-size: 12pt; 
-  color: black !important;
-  line-height: 1.25 !important;
+  font-family: 'Segoe UI', Arial, serif;
+  font-size: 16px; 
+  color: #24292E !important;
+  line-height: 1.5 !important;
   }
 
 /* Päis */
 .pais { font-family: 'Anonymous Pro', sans-serif;
   font-size: 13pt; margin-bottom: 8px; }
 
-#Tekst { width: 40rem; }
+#Tekst { width: 55rem; }
 
 /* ---- Avalehe paigutus ---- */  
 #Container { display: flex; max-width: 60em; }
@@ -25,14 +25,14 @@ body {
 
 /*#region Pealkirjad */
 h1 {
-  font-size: 16pt !important;
-  font-weight: bold;
+  font-size: 32px !important;
+  font-family: 'Segoe UI Semibold', Arial, Helvetica, sans-serif;
   margin-top: 1em;
   margin-bottom: 1rem;
 }
 h2 {
-  font-size: 14pt !important;
-  font-weight: bold;
+  font-size: 24px !important;
+  font-family: 'Segoe UI Semibold', Arial, Helvetica, sans-serif;
   margin-bottom: 0.5rem;
   margin-bottom: 0.5rem;
 }
@@ -89,7 +89,7 @@ pre, code, samp {
   font-family: 'Anonymous Pro', monospace;
   font-size: 16px; color: black !important;
   background-color: lavender !important;
-  overflow-y: hidden; overflow-x: hidden;
+  overflow-y: hidden; overflow-x: scroll;
   page-break-inside: avoid; hyphens: none;
   text-transform: none;
 }
@@ -143,4 +143,3 @@ blockquote {
 }
 
 /*#endregion */
-
