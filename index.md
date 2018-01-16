@@ -75,6 +75,7 @@ Mitmesugused töödokumendid:
 {: .pais}
 
 [Kasutaja probleemi lahendamine](Kasutaja)<br>
+[QA Strateegia](QaStrateegia)<br>
 [Turvaanalüüs](Turvaanaluus)<br>
 [Vead ja tõrked. Ennetamine ja Käsitlemine](Veakasitlus)<br>
 [Autentimisteenuse turvauuring. Lähteülesanne](Uuring)<br>
