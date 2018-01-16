@@ -127,6 +127,7 @@ a[href]:hover {
   border-color: Tomato;
   background-color: lavenderblush;
   color: Tomato;
+  text-align: center;
 }
 .teade {
   border-radius: 2px; padding: 0.1rem;
