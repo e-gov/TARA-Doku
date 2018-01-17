@@ -2,6 +2,8 @@
 permalink: QaStrateegia
 ---
 
+# QA strateegia
+
 ## Sissejuhatus
 
 Selle dokumendi eesmärk on anda üldine ülevaade TARA projekti tarkvara arenduse kvaliteedi tagamise protsessist, tegevustest ja vahenditest.
@@ -19,6 +21,8 @@ Visioon on kasutada kahte erinevat keskkonda:<br>
 **Tsentraalne** - RIA taristusse paigaldatud eIDAS node, eIDAS klient ja TARA autentimisteenus. Tara autentimisteenus paigaldatakse automaatselt kasutades Jenkinsit. Peamine eesmärk on teostada süsteemitestimist RIA IT profiilile vastavas keskkonnas, läbides muuhulgas kõik automaattestid.<br>
 **Lokaalne** - arendaja arvutis üles seatav eIDAS node, eIDAS klient ja TARA autentimisteenus (kasutab Dockerit). Peamine eesmärk on hõlbustada arendust, probleemide uurimist ja koodi silumist.
 
+`Kogemus näitab, et arendaja masinas ja RIA sisevõrgus paigaldamine on kasulik, kuid eIDAS klient peab olema ka mujale kui RIA taristusse paigaldatav. Pakun, et lisame testi, kus Nortal paigaldab eIDAS kliendi (lisaks ülalnimetatutele) ka oma taristusse, ühendab RIA konnektorteenuse ja teeb selle paigalduse pealt mõned happy path-testid läbi. Saame kindlust, et rakenduse ei ole RIA-taristuspetsiifiline. -PriitP`
+
 ## Arendusprotsess
 Toodet arendatakse avatud koodiga arenduse põhimõtteid järgides kasutades GitHubi koodihoidlat. Kasutatakse kahte peamist haru:
 * Master - tootestusvalmis kood koos vastava dokumentatsiooniga
@@ -30,13 +34,18 @@ Joonis 1. Arendusprotsess
 Arendusprotsessiks kasutatakse SCRUM-il põhinevat iteratiivset protsessi. Protsessil on järgmised olulised elemendid:
 
   * Toote arendust hallatakse läbi töönimekirjade (product backlog)
+
+`Tarkvaraarendust küll. Toote backlogi ma hoiaks eraldi. (Pealegi, ülal mainitakse, et tootestamist siin ei käsitletagi.) Toote backlog nõuab hoopis strateegilisemat vaadet. eIDAS kliendi tooteomadused on praegu eIDAS-Client repo avalehel. Neid ma tahakski väikese hulgana hoida. TARA-ga on lugu keerulisem. -PriitP`
+
   * Kasutatakse kahe nädala pikkuseid sprinte
   * Toimuvad sprindi planeerimise ja lõpetamise koosolekud
   * Sprinte hallatakse läbi JIRA (sprint backlog)
   * Toimuvad hommikused meeskonna koosolekud
   * Toimuvad iganädalased projekti koosolekud lahtiste küsimuste arutamiseks ja sprintide planeerimiseks ning lõpetamiseks
   * Toimuvad retrospektiivid vähemalt korra kahe kuu jooksul
-  * Töö lõpetamise tingimus (Definition of done) - arendustöö on läbinud koodi ülevaatuse, omab piisavat ühiktestide kaetust, piisavat dokumentatsiooni ning on läbinud nii arenduse kui vastuvõtu testimise. Piisava dokumentatsiooni põhikriteerium on, et “master” harus paiknevat koodi on alati võimalik kaasasolevat ehitus- ja paigaldusjuhendit järgides edukalt paigaldada RIA süsteemiadministraatorite poolt (kontroll teostatakse iga kord, kui toode tarnitakse testkeskkonda). “Done” staatusesse võib töid tõsta üksnes RIA osapool. 
+  * Töö lõpetamise tingimus (_definition of done_) - arendustöö on läbinud koodi ülevaatuse, omab piisavat ühiktestide kaetust, piisavat dokumentatsiooni ning on läbinud nii arenduse kui vastuvõtu testimise. Piisava dokumentatsiooni põhikriteerium on, et “master” harus paiknevat koodi on alati võimalik kaasasolevat ehitus- ja paigaldusjuhendit järgides edukalt paigaldada RIA süsteemiadministraatorite poolt (kontroll teostatakse iga kord, kui toode tarnitakse testkeskkonda). “Done” staatusesse võib töid tõsta üksnes RIA osapool. 
+
+`See käib koodi toomise kohta. Peame silmas, et arendustöö sisaldab meil hoopis enamat, kui koodikirjutamist: speki koostamine, tarkvara kavandamine, tootestrateegia kujundamisel tellija nõustamine.`  
 
 ### Jira töövoog
 
@@ -55,11 +64,15 @@ Jira töövoo olekute kirjeldused:
 |-----|--------|
 |Toote töönimekiri (product backlog)|Toote töönimekirja võib sisestada tööülesandeid pealkirja tasemel mis kirjeldab ülesande peamist olemust. Enne sprindi planeerimist peab olema toote töönimekiri detailiseeritud tasemel mis võimaldab määrata tööde prioriteete ning anda ajahinnanguid.|
 |Sprindi töönimekiri (To Do - sprint backlog)|Sprindi töönimekirjas olevad tööülesanded peavad omama ajahinnangut ning piisavalt detailset kirjeldust võimaldamaks teostada ülesande analüüsi.|
-|Töös olevad ülesanded (In progress)|Töö käigus kirjeldatakse nõuded ning valitud lahendus. Kirjeldus peab olema piisavalt detailne võimaldamaks koodi ülevaatusel ja testimisel hinnata valminud töö vastavaust nõuetele.|
+|Töös olevad ülesanded (In progress)|Töö käigus kirjeldatakse nõuded ning valitud lahendus. Kirjeldus peab olema piisavalt detailne võimaldamaks koodi ülevaatusel ja testimisel hinnata valminud töö vastavust nõuetele.|
 |Ülevaatusel (In Review)|Ülevaatuse käigus parandatakse/täiendatakse ka tööülesande kirjeldust.|
 |Testimises (Test)|Testimise käigus kirjeldatakse mida ja kuidas testiti. Hinnatakse tööülesande kirjeldust vastuvõtutestimise teostamiseks.|
 |Vastuvõtu testimises (In Acceptance Test)|Märgitakse töö vastuvõetuks või tuuakse puuduste põhjendused|
 |Lõpetatud (Done)|Töö vastab nõuetele|
+
+`Meil on ka nn uuriva programmeerimise töid, kus kõik nõuded ei ole töö alustamisel teada. -PriitP`
+
+`Võiks lisada: kui töö mahtu või keerukust ei suudeta springi planeerimisel usaldusväärselt hinnata, võidakse sprinti võtta ettevalmistaa uurimise v analüüsi töö; võimalik on ka alustada tööd, aga teha seda timebox-põhimõttel (limiteeritud aeg uurimiseks). -PriitP`
 
 ## Kvaliteedi tagamise tegevused tarkvara arendusel
 
@@ -69,7 +82,7 @@ Arendusprotsessi jälgitakse pidevalt ning kohandatakse vastavalt muutunud oluko
 
 **Ühiktestid**
 
-Uus funktsionaalsus peab olema kaetud ühiktestidega, piisav kaetus on antud funktsionaalsuse arendaja vastutada. Kaetuse määraks on 75% olulistest koodiridadest. Kood peab kompileeruma ning kõik ühiktestid tuleb läbida vigadetta, enne kui koodi võib lisada repositooriumi. Ühiktestide koodi arendatakse ning hallatakse samadest tööpõhimõtetest lähtudes (koodi stiil, parimad praktikad, ...) nagu tootekoodi.
+Uus funktsionaalsus peab olema kaetud ühiktestidega, piisav kaetus on antud funktsionaalsuse arendaja vastutada. Kaetuse määraks on 75% olulistest koodiridadest. Kood peab kompileeruma ning kõik ühiktestid tuleb läbida vigadeta, enne kui koodi võib lisada repositooriumi. Ühiktestide koodi arendatakse ning hallatakse samadest tööpõhimõtetest lähtudes (koodi stiil, parimad praktikad, ...) nagu tootekoodi.
 
 **Staatiline testimine ja koodi ülevaatused**
 
@@ -134,7 +147,7 @@ Joonis 6. Süsteemitestid
 
 Eesmärk:  kontrollida toote või teenuse vastavust püstitatud nõuetele ja planeeritud otstarbele, st vastavust vastuvõtukriteeriumitele.
 
-**Regressiooni testimine**
+**Regressioonitestimine**
 
 Eesmärk: minimiseerida riski, et arendusega otseselt mitte seotud funktsionaalsustesse on  tekkinud tahtmatuid mõjutusi.
 

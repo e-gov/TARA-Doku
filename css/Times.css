@@ -139,17 +139,5 @@ a[href]:hover {
   color: Cadetblue;
   background-color: lightcyan;
 }
-.kommentaar {
-  background-color: Beige !important;
-  color: Black;
-  font-size: 14px;
-}
-/* Plokktsitaat */
-blockquote { 
-  font-style: italic; 
-  font-family: 'Anonymous Pro', monospace;
-  font-size: 16px;
-  margin-left: 0;
-}
 
 /*#endregion */
