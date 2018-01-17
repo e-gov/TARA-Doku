@@ -21,7 +21,7 @@ Visioon on kasutada kahte erinevat keskkonda:<br>
 **Tsentraalne** - RIA taristusse paigaldatud eIDAS node, eIDAS klient ja TARA autentimisteenus. Tara autentimisteenus paigaldatakse automaatselt kasutades Jenkinsit. Peamine eesmärk on teostada süsteemitestimist RIA IT profiilile vastavas keskkonnas, läbides muuhulgas kõik automaattestid.<br>
 **Lokaalne** - arendaja arvutis üles seatav eIDAS node, eIDAS klient ja TARA autentimisteenus (kasutab Dockerit). Peamine eesmärk on hõlbustada arendust, probleemide uurimist ja koodi silumist.
 
-`Kogemus näitab, et arendaja masinas ja RIA sisevõrgus paigaldamine on kasulik, kuid eIDAS klient peab olema ka mujale kui RIA taristusse paigaldatav. Pakun, et lisame testi, kus Nortal paigaldab eIDAS kliendi (lisaks ülalnimetatutele) ka oma taristusse, ühendab RIA konnektorteenuse ja teeb selle paigalduse pealt mõned happy path-testid läbi. Saame kindlust, et rakenduse ei ole RIA-taristuspetsiifiline. -PriitP`
+`Kogemus näitab, et arendaja masinas ja RIA sisevõrgus paigaldamine on kasulik, kuid eIDAS klient peab olema ka mujale kui RIA taristusse paigaldatav. Pakun, et lisame testi, kus Nortal paigaldab eIDAS kliendi (lisaks ülalnimetatutele) ka oma taristusse, ühendab RIA konnektorteenusega ja teeb selle paigalduse pealt mõned happy path-testid läbi. Saame kindlust, et rakendus ei ole RIA-taristuspetsiifiline. -PriitP`
 
 ## Arendusprotsess
 Toodet arendatakse avatud koodiga arenduse põhimõtteid järgides kasutades GitHubi koodihoidlat. Kasutatakse kahte peamist haru:
@@ -72,7 +72,7 @@ Jira töövoo olekute kirjeldused:
 
 `Meil on ka nn uuriva programmeerimise töid, kus kõik nõuded ei ole töö alustamisel teada. -PriitP`
 
-`Võiks lisada: kui töö mahtu või keerukust ei suudeta springi planeerimisel usaldusväärselt hinnata, võidakse sprinti võtta ettevalmistaa uurimise v analüüsi töö; võimalik on ka alustada tööd, aga teha seda timebox-põhimõttel (limiteeritud aeg uurimiseks). -PriitP`
+`Võiks lisada: kui töö mahtu või keerukust ei suudeta sprindi planeerimisel usaldusväärselt hinnata, võidakse sprinti võtta ettevalmistava uurimise v analüüsi töö; võimalik on ka alustada tööd, aga teha seda timebox-põhimõttel (limiteeritud aeg uurimiseks). -PriitP`
 
 ## Kvaliteedi tagamise tegevused tarkvara arendusel
 
