@@ -46,5 +46,5 @@ See on kommentaar.
 ```
 
 See on kommentaar.
-{:.teate}
+{:.kommentaar}
 
