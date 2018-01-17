@@ -34,6 +34,8 @@ TARA teenust pakub Riigi Infosüsteemi Amet.
 [Sõnastik](Sonastik)<br>
 [Viited](Viited)<br>
 
+----
+
 ## TARA teenuse käitajale
 
 [Paigaldusjuhend](https://confluence.ria.ee/display/TARA/TARA+paigaldusjuhend) &#128273;<br>
@@ -68,8 +70,9 @@ Mitmesugused töödokumendid:
 
 [TARA serverrakenduse sisearhitektuur](Sisearhitektuur)
 
+[QA Strateegia](QaStrateegia)
+
 [Kasutaja probleemi lahendamine](Kasutaja)<br>
-[QA Strateegia](QaStrateegia)<br>
 [Turvaanalüüs](Turvaanaluus)<br>
 [Vead ja tõrked. Ennetamine ja Käsitlemine](Veakasitlus)<br>
 [Autentimisteenuse turvauuring. Lähteülesanne](Uuring)<br>
