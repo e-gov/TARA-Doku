@@ -20,29 +20,24 @@ TARA teenust pakub Riigi Infosüsteemi Amet.
 [Taotluse vorm](TaotluseVorm)<br>
 [Teenustase (Test)](SLATest)<br>
 [Teenustase (Toodang)]()
-{: .pais}
 
 [Teenuse muudatused](Muutmine)<br>
 [Teekaart](Teekaart)<br>
 [eIDAS/TARA võimekuste ajaplaan](Voimekused)
-{: .pais}
 
 <a href='https://e-gov.github.io/TARA-Doku/files/TARA-tutvustus.pdf' target='_new'>eIDAS autentimise lisamine e-teenusele</a>, esitlus eID infopäeval 31.10.2017<br>
 <a href='https://e-gov.github.io/TARA-Doku/files/PiiriyleneAutentimine.pdf' target='_new'>Piiriülene autentimine</a>, esitlus eID infopäeval 15.11.2017<br> 
-{: .pais}
 
 ## Klientrakenduse liidese arendajale
 
 [Tehniline kirjeldus](TehnilineKirjeldus)<br>
 [Sõnastik](Sonastik)<br>
 [Viited](Viited)<br>
-{: .pais}
 
 ## TARA teenuse käitajale
 
 [Paigaldusjuhend](https://confluence.ria.ee/display/TARA/TARA+paigaldusjuhend) &#128273;<br>
 [Teenusehalduri juhend](https://confluence.ria.ee/display/TARA/Teenusehalduri+juhend) &#128273;
-{: .pais}
 
 ## TARA teenuse arendajale
 
@@ -53,31 +48,25 @@ Repod:
 [TARA-Client](https://github.com/e-gov/TARA-Client), makettrakendus teenuse testimiseks (koodirepo)<br>
 [TARA-Doku](https://github.com/e-gov/TARA-Doku), teenuse dokumentatsioon (dok-nirepo)<br>
 [TARA-Management](https://github.com/e-gov/TARA-Management), teenuse haldustööriist (koodirepo)
-{: .pais}
 
 [RIA eIDAS konnektorteenus](https://github.com/e-gov/eIDAS-Connector)
-{: .pais}
 
 Keskkonnad:
 
 [Confluence-is](https://confluence.ria.ee/display/TARA) &#128273;<br>
 JIRA-s: [1-2. arendusjärk](https://jira.ria.ee/browse/DD4J-88) [3. arendusjärk](https://jira.ria.ee/projects/TARAEI) &#128273;<br>
-{: .pais}
 
 Lähteülesanded:
 
 [1. arendusjärk](1JARK)<br>
 [2. arendusjärk](2JARK)<br>
 [3. arendusjärk](3JARK) "TARA-eIDAS"
-{: .pais}
 
-[Dokumentatsiooni täiendamise juhend](https://github.com/e-gov/TARA-Doku/blob/master/README.md)
-{: .pais}
+[Dokumentatsiooni täiendamise juhend](Dokujuhend)
 
 Mitmesugused töödokumendid:
 
 [TARA serverrakenduse sisearhitektuur](Sisearhitektuur)
-{: .pais}
 
 [Kasutaja probleemi lahendamine](Kasutaja)<br>
 [QA Strateegia](QaStrateegia)<br>
@@ -87,4 +76,3 @@ Mitmesugused töödokumendid:
 [TARA arhitektuurne jätkusuutlikkus](Jatkusuutlikkus)<br>
 [TARA statistika](Statistika)<br>
 [Võtmehaldus](Votmehaldus)<br>
-{: .pais}
