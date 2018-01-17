@@ -16,9 +16,35 @@ permalink: <URL-inimi>
 
 - `URL-inimi` vali arvestusega, et faili poole pöördumine saab olema URL-ga: 
 `https://e-gov.github.io/TARA-Doku/<URL-inimi>`.
-- Joonise- ja pildifailid pane need kausta `img`.
+- Joonise- ja pildifailid pane kausta `img`.
 - Muud failid (`.pdf` jms) pane kausta `files`.
 - Avalehele `index.md` lisa sobivasse jaotisse link dokumendile, kujul: `[Dokumendi nimetus](URL-inimi)`.
+- Avalehel on selgelt eristatud:
+    - teenuse ärikasutajale suunatud dok-n
+    - liidese arendajale suunatud, tehniline dok-n
+    - teenuse enda arendamise, sisemine dok-n
+    - järgi seda eristust. 
 - Konfidentsiaalset taristuteavet ära pane.
 - Asjakohastes kohtades pane lingid JIRA ja Confluence-i suletud ruumidele. Hea on markeerida need võtmesümboliga `&#128273;`.
 - Arvesta, et repo on avalik. Korrektne keel ja vormistus.
+
+- Teate lisamiseks:
+
+```
+NB! See on märkus.
+{:.teade}
+```
+
+NB! See on märkus.
+{:.teade}
+
+- Kommentaari lisamiseks:
+
+```
+See on kommentaar.
+{:.kommentaar}
+```
+
+See on kommentaar.
+{:.teate}
+

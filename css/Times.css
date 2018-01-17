@@ -139,7 +139,11 @@ a[href]:hover {
   color: Cadetblue;
   background-color: lightcyan;
 }
-
+.kommentaar {
+  background-color: Beige !important;
+  color: Black;
+  font-size: 14px;
+}
 /* Plokktsitaat */
 blockquote { 
   font-style: italic; 
