@@ -28,23 +28,14 @@ permalink: <URL-inimi>
 - Asjakohastes kohtades pane lingid JIRA ja Confluence-i suletud ruumidele. Hea on markeerida need võtmesümboliga `&#128273;`.
 - Arvesta, et repo on avalik. Korrektne keel ja vormistus.
 
-- Teate lisamiseks:
+- Teate lisamiseks pane tekstilõigu alla rida `{:.teade}`:
 
 ```
-NB! See on märkus.
+NB! See on teade.
 {:.teade}
 ```
 
-NB! See on märkus.
+NB! See on teade.
 {:.teade}
 
-- Kommentaari lisamiseks:
-
-```
-See on kommentaar.
-{:.kommentaar}
-```
-
-See on kommentaar.
-{:.kommentaar}
 
