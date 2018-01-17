@@ -79,3 +79,5 @@ Mitmesugused töödokumendid:
 [TARA arhitektuurne jätkusuutlikkus](Jatkusuutlikkus)<br>
 [TARA statistika](Statistika)<br>
 [Võtmehaldus](Votmehaldus)<br>
+
+[Dokumentatsiooniplaan](Dok-plaan)
