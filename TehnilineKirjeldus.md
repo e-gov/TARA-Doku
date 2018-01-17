@@ -100,7 +100,7 @@ Autentimispäringu elemendid (kõik elemendid on kohustuslikud):
 | URL-i element          | näide                       |  selgitus     |
 |------------------------|-----------------------------|---------------|
 | protokoll, host ja tee (_path_) | `https://tara.eesti.ee/authorize` |               |
-| tagasipöördumis-URL    | `https://et...ee/Callback` | tagasipöördumis-URL-i valib asutus ise |
+| tagasipöördumis-URL    | `https://et...ee/Callback` | tagasipöördumis-URL-i valib asutus ise. Tagasipöördumis-URL võib sisaldada _query_-osa. Tärgile `?` järgnevas osas omakorda `?` kasutamine ei ole lubatud. |
 | autentimise skoop `scope`; toetatud on väärtus `openid` | `scope=openid`               |        |
 | turvakood `state` | `state=hkMVY7vjuN7xyLl5`     | klientrakenduse serveripool peab genereerima ja päringus esitama turvakoodi, mis aitab tagada, et erinevate kasutajate autentimised sassi ei lähe ja ründaja ei saa protsessi vahele sekkuda. Turvakood peegeldatakse tagasi vastuses; klientrakendus peab kontrollima, et saab vastuses sama turvakoodi, mille saatis päringus.  |
 | autentimise tulemuse serverile edastamise viis `response_type`; toetatud on volituskoodi viis `code` | `response_type=code` |   |
@@ -139,8 +139,6 @@ Tagasisuunamispäringu elemendid:
 /Callback?` | ühtib autentimispäringus saadetuga |
 | volituskood `code` | `code=71ed579...`  | ingl _authorization code_. Volituskood on ühekordne “lubatäht” identsustõendi saamiseks |
 | turvakood `state`            | `state=OFfVLKu0kNbJ2EZk`     |  unikaalne identifikaator () |
-
-Märkus. Kasutatava alustarkvara (CAS) piirangu tõttu palume tagasisuunamis-URL-is küsimärki (`?`) mitte kasutada.
 
 ### 3.5 Identsustõendi küsimine
 
