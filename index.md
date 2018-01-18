@@ -75,9 +75,12 @@ Mitmesugused töödokumendid:
 [Kasutaja probleemi lahendamine](Kasutaja)<br>
 [Turvaanalüüs](Turvaanaluus)<br>
 [Vead ja tõrked. Ennetamine ja Käsitlemine](Veakasitlus)<br>
-[Autentimisteenuse turvauuring. Lähteülesanne](Uuring)<br>
 [TARA arhitektuurne jätkusuutlikkus](Jatkusuutlikkus)<br>
 [TARA statistika](Statistika)<br>
 [Võtmehaldus](Votmehaldus)<br>
 
 [Dokumentatsiooniplaan](Dok-plaan)
+
+Autentimisteenuse turvauuring. Lähteülesanne<br>
+[v 0.4](Autentimisprotokoll)<br>
+[v 0.3](Uuring)

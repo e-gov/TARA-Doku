@@ -1,4 +1,10 @@
+---
+permalink: Autentimisprotokoll
+---
+
 # Autentimisprotokolli turvauuring
+
+v 0.4
 
 __Autentimisprotokoll__ on tehniline ja organisatsiooniline reeglistik, mis võimaldab riigi e-teenustes kasutaja autentida:
 - keskse autentimisteenuse abil (asutus hoiab kokku arendus- ja käitluskulusid)
@@ -7,8 +13,6 @@ __Autentimisprotokoll__ on tehniline ja organisatsiooniline reeglistik, mis või
 - pakkudes ühtset kasutajakogemust (autentimisliideste ühtne välimus ja kasutusloogika)
 - perspektiivis ka kasutajale lisaväärtust pakkuvaid teenuseid (nt võimalus vaadata, millal ja millistelt seadmetelt on sisse logitud)
 - ja hoides kokku kodaniku aega, ühekordse sisselogimise näol.
-
-<img src='img/Autentimisprotokoll.PNG' style='width: 400px;'>
 
 Autentimisprotokolliga reguleeritakse autentimist ja sessioonihaldust e-teenuse, kasutaja ja keskse, RIA pakutava autentimisteenuse vahel.
 
@@ -36,7 +40,8 @@ __Kasutuslood__. Autentimisprotokoll toetab kasutuslugusid:
 
 __Tehniline protokoll__. Autentimisprotokoll on kavandatud ja osaliselt ka juba teostatud, TARA autentimisteenuse näol. Aluseks on võetud OpenID Connect 1.0 protokoll (OIDC) [1]. Keskset autentimisteenust ("TARA") osutab RIA. 2017. a teostati lihtne autentimine (ilma keskse seansihalduseta ja ühekordse sisselogimiseta) [2]. Alanud on tööd piiriülese autentimise (eIDAS) lisamiseks. 
 
-__Uurimisküsimused__.
+## Autentimisteenuse TARA edasiarendamise küsimused
+
 OpenID Connect pakub erinevaid võimalusi. Mitmete valikute tegemine on jäetud rakendajale. Vajame kindlust ja kinnitust kolmes küsimusterühmas:
 
 1\. kas tehtud valikud on turvalised ja kokkuvõttes teostamist väärt?
@@ -65,7 +70,20 @@ OpenID Connect pakub erinevaid võimalusi. Mitmete valikute tegemine on jäetud 
 
 3.5. kas protseduurilised ja _policy_ aspektid on piisavalt detailiseeritud, et lahendus oleks turvaline? Nt kas back-channel logout-le tuleks kehtestada ühtsed, kohustuslikud sessiooniaegumisajad?
 
-__Viited__<br>
+## Isikutuvastusteenuste ökosüsteemi kujundamise küsimused
+
+10.01.2018 kohtumisel lisandunud küsimused:
+
+1\. Autentimisteenuste, sh vahendusteenuste "ökosüsteemi" seisust ja suundadest on vaja süsteemset kirjeldust.
+
+2.\ TLS-põhise isikutuvastuse alternatiividest on vaja süsteemset käsitlust.
+
+3.\ Vaja on autentimise "rohelist raamatut". Selleks ettevalmistused.
+
+4.\ Vaja on teha ettevalmistustusi isikutuvastusteenuste standardimiseks. 
+
+### Viited
+
 [1] RIA SSO autentimisteenuse kavand, https://github.com/ria-eidas/RIA-autentimisteenus/wiki/Teenuse-kontseptsioon.<br>
 [2] TARA autentimisteenus, https://e-gov.github.io/TARA-Doku/.<br>
 [3] OpenID Connect Session Management, http://openid.net/specs/openid-connect-session-1_0.html.<br>
