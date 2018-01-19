@@ -21,7 +21,7 @@ TARA teenuse aluseks on OpenID Connect protokoll [Core], mis omakorda põhineb O
 1. teenus toetab ainult volituskoodi (_authorization code_) kasutusvoogu.
 2. kogu teave autenditud kasutaja kohta edastatakse rakendusele identsustõendis (_ID token_). Access token-it ja UserInfo otspunkti kaudu kasutaja atribuutide andmist ei toetata.
 3. rakendusele edastatakse ka eIDAS autentimistase, kui see on teada (`acr` väites).
-4. teenus toetab kasutajaliidese keeleeelistuse andmist autentimispäringus (`locale` parameetriga)
+4. teenus toetab kasutajaliidese keele-eelistuse andmist autentimispäringus (`locale` parameetriga)
 4. autentimismeetodi valib kasutaja autentimisteenuses.
 
 Joonis 1 esitab teenuse ülevaatelise skeemi
@@ -38,11 +38,11 @@ Joonis 2 esitab kasutaja liikumise kuvade kaupa.
 
 2 Vajutusega nupule "Logi sisse" suunatakse kasutaja TARA-teenusesse, autentimismeetodi valiku kuvale. Siin võib kasutaja valida: m-ID autentimise (3a); ID-kaardiga autentimise (4a); eIDAS-autentimise (8); tagasipöördumise klientrakendusse (1).
 
-3a Mobiilinumbri ja isikukoodi sisestamine. _Kas on võimalik katkestada?_
+3a Mobiilinumbri ja isikukoodi sisestamine.
 
-3b Kontrollkoodi kuvamine. _Kas on võimalik katkestada?_
+3b Kontrollkoodi kuvamine.
 
-3c Kinnituse ootamine. _Kas 3b ja 3c oleks otstarbekas ühitada?_
+3c Kinnituse ootamine.
 
 4a ID-kaardiga autentimine algab kasutajale teabe kuvamisega autentimisserdi kohta. Kasutaja kinnitab serdivaliku.
 
