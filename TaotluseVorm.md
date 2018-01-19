@@ -19,7 +19,7 @@ Palume meid registreerida TARA autentimisteenuse kasutajaks, väljastada meile k
 | 6) SLA | Kinnitame nõustumist teenuse SLA-ga _(testteenusele kehtib RIA standard-SLA: teenuse lubatud maasolek üks päev nädalas, kasutajatugi tööpäevadel 9-16)_ |
 | 7) Klientrakenduse identifikaatori ettepanek _(`client_id` OpenID Connect protokolli kohaselt)_ |  |
 | 8) Klientrakenduse tagasisuunamis-URL _(redirect-URL), OpenID Connect protokolli kohaselt)_. Märkus: kasutatava alustarkvara (CAS) piirangu tõttu ei tohi tagasisuunamis-URL sisaldada üle ühe küsimärgi (`?`) |  .............................. |
-| 9) Klientrakenduse testversiooni tagasisuunamis-URL juhuks, kuid kasutaja soovib autentimist katkestada |  .............................. |
+| 9) Klientrakenduse testversiooni tagasisuunamis-URL juhuks, kui kasutaja soovib autentimist katkestada |  .............................. |
 | 10) Autentimismeetod või meetodid, mida soovime kasutada | [ ] m-ID |
 | 11) Klientrakenduse haldaja kontaktandmed (nimi, e-post, telefon, isikukood) |  |
 
