@@ -25,7 +25,3 @@ Palume meid registreerida TARA autentimisteenuse kasutajaks, väljastada meile k
 
 (allkiri)<br>
 _toodanguteenusega liitumise taotluse puhul asutuse esindusõigusega isiku digitaalallkiri; testteenusega liitumise taotluse puhul piisab tavalisest e-kirjast_
-
-----
-
-_Viimati muudetud: 18.01.2018_
