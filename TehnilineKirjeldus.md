@@ -34,7 +34,7 @@ Joonis 1
 
 Joonis 2 esitab kasutaja liikumise kuvade kaupa.
 
-1 Tegevus algab klientrakenduses. Kasutajale esitatakse kuva, millel on nupp "Logi sisse".
+1 Tegevus algab kasutajale e-teenust osutavas klientrakenduses. Kasutajale esitatakse kuva, millel on nupp "Logi sisse" vms.
 
 2 Vajutusega nupule "Logi sisse" suunatakse kasutaja TARA-teenusesse, autentimismeetodi valiku kuvale. Siin võib kasutaja valida: m-ID autentimise (3a); ID-kaardiga autentimise (4a); eIDAS-autentimise (8); tagasipöördumise klientrakendusse (1).
 
@@ -83,7 +83,7 @@ Autentimisprotsess koosneb 5 sammust:
 
 Kasutaja vajutab nupule "Logi sisse" vms. Rakendus võib ka ise algatada autentimise.
 
-Rakendus moodustab OpenID Connect autentimispäringu ja saadab sirvijale korralduse kasutaja suunamiseks autentimisteenusesse (HTTP _redirect_). Autentimispäringu näide:
+Rakendus moodustab OpenID Connect autentimispäringu ja saadab sirvikule korralduse kasutaja suunamiseks autentimisteenusesse (HTTP _redirect_). Autentimispäringu näide:
 
 ````
 GET https://tara.eesti.ee/authorize?
@@ -95,23 +95,23 @@ response_type=code&
 client_id=58e7ba35aab5b4f1671a
 ````
 
-Autentimispäringu elemendid (kõik elemendid on kohustuslikud):
+Autentimispäringu kohustusliku elemendid:
 
 | URL-i element          | näide                       |  selgitus     |
 |------------------------|-----------------------------|---------------|
-| protokoll, host ja tee (_path_) | `https://tara.eesti.ee/authorize` |               |
-| tagasipöördumis-URL    | `https://et...ee/Callback` | tagasipöördumis-URL-i valib asutus ise. Tagasipöördumis-URL võib sisaldada _query_-osa. Tärgile `?` järgnevas osas omakorda `?` kasutamine ei ole lubatud. |
+| protokoll, host ja tee (_path_) | `https://tara.eesti.ee/authorize` | `/authorize` on TARA-teenuse OpenID Connect-kohane autentimisotspunkt (termin 'autoriseerimine' pärineb alusprotokollist OAuth 2.0).  |
+| tagasipöördumis-URL    | `https://eteenus.asutus.ee/tagasi` | tagasipöördumis-URL-i valib asutus ise. Tagasipöördumis-URL võib sisaldada _query_-osa. Tärgile `?` järgnevas osas omakorda `?` kasutamine ei ole lubatud. |
 | autentimise skoop `scope`; toetatud on väärtus `openid` | `scope=openid`               |        |
-| turvakood `state` | `state=hkMVY7vjuN7xyLl5`     | klientrakenduse serveripool peab genereerima ja päringus esitama turvakoodi, mis aitab tagada, et erinevate kasutajate autentimised sassi ei lähe ja ründaja ei saa protsessi vahele sekkuda. Turvakood peegeldatakse tagasi vastuses; klientrakendus peab kontrollima, et saab vastuses sama turvakoodi, mille saatis päringus.  |
-| autentimise tulemuse serverile edastamise viis `response_type`; toetatud on volituskoodi viis `code` | `response_type=code` |   |
+| turvakood `state` | `state=hkMVY7vjuN7xyLl5`     | klientrakenduse serveripool peab genereerima ja päringus esitama turvakoodi. Turvakood aitab tagada, et erinevate kasutajate autentimised ei lähe sassi ja ründaja ei saa protsessi vahele sekkuda. Turvakood peegeldatakse vastuses tagasi; klientrakendus peab kontrollima, et saab vastuses sama turvakoodi, mille saatis päringus.  |
+| `response_type` | `response_type=code` | autentimise tulemuse serverile edastamise viis. Toetatud on volituskoodi viis `code`. |
 | rakenduse identifikaator `client_id` | `client_id=58e7...` | rakenduse identifikaatori annab RIA asutusele klientrakenduse registreerimisel autentimisteenuse kasutajaks |
-| kasutajaliidese keele valik `locale` | `locale=et` | toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ka ise valida. |
+| kasutajaliidese keele valik `locale` | `locale=et` | toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida. |
 
-Autentimispäringus võib lisada ka taasesitusründeid vältida aitava parameetri `nonce`, vastavalt protokollile [Core], jaotis 3.1.2.1.  Authentication Request. Parameeter `nonce` ei ole kohustuslik.
+Autentimispäringus võib lisada taasesitusründeid vältida aitava parameetri `nonce`, vastavalt protokollile [Core], jaotis 3.1.2.1.  Authentication Request. Parameeter `nonce` ei ole kohustuslik.
 
 ### 3.2 Autentimismeetodi valik
 
-Kasutaja saabudes autentimisteenusesse avaneb talle leht "TARA isikutuvastusteenus". Lehel on toetatavad autentimismeetodid.
+Kasutaja saabudes autentimisteenusesse avaneb talle leht "TARA isikutuvastusteenus". Kasutajale esitatakse toetatavad autentimismeetodid.
 
 Teenuse I arendusjärgus toetatakse ühte autentimismeetodit - mobiil-ID-d.
 
@@ -126,7 +126,7 @@ Kasutaja läbib autentimisprotseduuri, vastavalt valitud autentimismeetodile.
 Autentimisteenus suunab kasutaja tagasi rakendusse (klientrakenduse poolt kaasa antud naasmisaadressile), andes kaasa volituskoodi (_authorization code_). Tehniliselt tehakse tagasisuunamine HTTP _redirect_-päringuga. Näide:
 
 ````
-HTTP GET https://eteenindus.asutus.ee/Callback?
+HTTP GET https://eteenus.asutus.ee/tagasi?
 code=71ed5797c3d957817d31&
 state=OFfVLKu0kNbJ2EZk
 ````
@@ -135,10 +135,12 @@ Tagasisuunamispäringu elemendid:
 
 | URL-i element          | näide                       |  selgitus     |
 |------------------------|-----------------------------|---------------|
-| tagasisuunamis-URL | `https://eteenindus.asutus.ee
-/Callback?` | ühtib autentimispäringus saadetuga |
+| tagasisuunamis-URL | `https://eteenus.asutus.ee
+/tagasi?` | ühtib autentimispäringus saadetuga |
 | volituskood `code` | `code=71ed579...`  | ingl _authorization code_. Volituskood on ühekordne “lubatäht” identsustõendi saamiseks |
-| turvakood `state`            | `state=OFfVLKu0kNbJ2EZk`     |  unikaalne identifikaator () |
+| turvakood `state`            | `state=OFfVLKu0kNbJ2EZk`     |  juhusõne |
+
+Märkus. Kasutaja võib e-teenusesse tagasi pöörduda ka ilma autentimismeetodit valimata ja autentimist läbi tegemata (link "Tagasi teenusepakkuja juurde").
 
 ### 3.5 Identsustõendi küsimine
 
@@ -152,7 +154,7 @@ Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW
 
 grant_type=authorization_code&
 code=SplxlOBeZQQYbYS6WxSbIA&
-redirect_uri=https%3A%2F%2eteenindus.asutus.ee%2FCallback
+redirect_uri=https%3A%2F%2eteenus.asutus.ee%2Ftagasi
 ````
 
 | POST päringu keha element | näide                    |  selgitus     |
@@ -163,9 +165,9 @@ redirect_uri=https%3A%2F%2eteenindus.asutus.ee%2FCallback
 | `redirect_uri` | `redirect_uri=https%3A%2F` | autentimispäringus saadetud ümbersuunamis-URI |
 | 
 
-Päringus tuleb anda `Authorization` päis, väärtusega, mis moodustatakse sõnast `Basic`, tühikust ja base64 kodeeringus stringist `<client_id>:<client_secret>` (vt RFC 2617 HTTP Authentication: Basic and Digest Access Authentication, jaotis 2 Basic Authentication Scheme).
+Päringus tuleb anda `Authorization` päis, väärtusega, mis moodustatakse sõnast `Basic`, tühikust ja Base64 kodeeringus stringist `<client_id>:<client_secret>` (vt RFC 2617 HTTP Authentication: Basic and Digest Access Authentication, jaotis 2 Basic Authentication Scheme).
 
-Autentimisteenus kontrollib, et identsustõendit küsib õige rakendus, koostab identsustõendi ning tagastab selle rakendusele. Näide:
+Autentimisteenus kontrollib, et identsustõendit küsib õige rakendus, seejärel koostab identsustõendi ning tagastab selle rakendusele. Näide:
 
 ````
 {  
@@ -189,12 +191,10 @@ Autentimisteenus kontrollib, et identsustõendit küsib õige rakendus, koostab 
 }
 ````
 
-Identsustõendis esitatakse järgmised väljad (_claims_). Identsustõend võib sisaldada muid OpenID Connect protokolli kohaseid välju, kuid neid teenuses ei kasutata. 
-JWT väljade tähenduse kohta vt vajadusel [https://www.iana.org/assignments/jwt/jwt.xhtml](https://www.iana.org/assignments/jwt/jwt.xhtml).
+Identsustõendis esitatakse järgmised väljad (_claims_).
 
-|-----|-------------------------------------------|
 | Identsustõendi element | näide, selgitus     |
-|-----|-------------------------------------------|
+|:-----:|-------------------------------------------|
 | `aud`                  | `"aud":"openIdDemo"` - autentimist küsinud infosüsteemi ID (kasutaja autentimisele suunamisel määratud `client_id` välja väärtus)|
 | `sub`                  | `"sub":"EE11412090004"` - autenditud kasutaja identifikaator (isikukood või eIDAS identifikaator). Isikukood antakse eesliitega `EE`  |
 | `nbf`                  | `"nbf":"Wed Sep 27 11:47:22 EEST 2017"` - tõendi kehtivuse algusaeg (_Not Before_) |
@@ -211,22 +211,24 @@ JWT väljade tähenduse kohta vt vajadusel [https://www.iana.org/assignments/jwt
 | `acr`              | `"acr": "http://eidas.europa.eu/LoA/low"` - autentimistase, vastavalt eIDAS tasemetele (_Authentication Context Class Reference_). Elementi ei kasutata, kui autentimistase ei kohaldu või pole teada |
 | `jti`              | `"jti":"0e12bf29-2a3b-4a81-a85e-973d0a2303d1"` - identsustõendi identifikaator |
 
-Kui identsustõendit ei pärita 5 minuti jooksul, siis identsustõend aegub ja autentimisprotsessi tuleb korrata.
+Identsustõend võib sisaldada muid OpenID Connect protokolli kohaseid välju, kuid neid teenuses ei kasutata. 
+JWT väljade tähenduse kohta vt vajadusel [https://www.iana.org/assignments/jwt/jwt.xhtml](https://www.iana.org/assignments/jwt/jwt.xhtml).
+Kui identsustõendit ei pärita `5` minuti jooksul, siis identsustõend aegub ja autentimisprotsessi tuleb korrata.
 
 Rakendus loob saadud identsustõendi alusel kasutajaga seansi. Seansi loomine ja pidamine on rakenduse kohustus. Kuidas seda teha, ei ole autentimisteenuse skoobis.
 
 ## 4 Autentimistasemed
 
-Klientrakendusele väljastatakse identiteeditõendis (_ID token_) ka usaldustase, millega autentimine läbi viidi (autentimistase), kui kasutatud autentimismeetodile on usaldustase määratud. 
+Klientrakendusele väljastatakse identsustõendis ka usaldustase, millega autentimine läbi viidi (autentimistase) - juhul, kui kasutatud autentimismeetodile on usaldustase määratud. 
 
 eIDAS autentimistasemed [tasemed], ingl _level of assurance_ esitatakse tehniliselt URI-dega, vastavalt eIDAS spetsifikatsioonile [eIDAS]:
 - madal - `http://eidas.europa.eu/LoA/low`
 - märkimisväärne - `http://eidas.europa.eu/LoA/substantial`
-- kõrge - `http://eidas.europa.eu/LoA/high`
+- kõrge - `http://eidas.europa.eu/LoA/high`.
 
 Autentimistase esitatakse JWT väites (_claim_) `acr` (_Authentication Context Class Reference_). Näiteks:
 
-`"acr": "http://eidas.europa.eu/LoA/low"`
+`"acr": "http://eidas.europa.eu/LoA/low"`.
 
 Kui autentimistase ei ole teada, siis väidet ei esitata.
 
@@ -316,10 +318,3 @@ Toodanguteenus
 
 Märkus. Otspunktide kohta lähemalt vt [CAS OpenID Connect].
 
------
-
-[Kasutaja liikumistee lähtejoonis](https://docs.google.com/drawings/d/1i4vHGa02SsfVmJWNblI3IEUehRzcA95UwpZHbzI936o/edit)
-
-----
-
-_Viimati muudetud: 28.11.2017_
