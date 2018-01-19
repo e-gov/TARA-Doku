@@ -42,8 +42,9 @@ Asutus esitab taotluse testteenusega liitumiseks. Taotluse võib esitada juba en
 6) nõustumus teenustasemega (SLA-ga); kui on vajadus kõrgema SLA järele, siis rääkida RIA-ga läbi - vt [TARA testkeskkonna teenustase (SLA)](SLATest)<br>
 7) klientrakenduse identifikaatori ettepanek -`client_id` OpenID Connect protokolli kohaselt<br>
 8) klientrakenduse testversiooni tagasisuunamis-URL (_redirect-URL_), OpenID Connect protokolli kohaselt<br>
-9) autentimismeetod või meetodid, mida soovitakse kasutada<br>
-10) klientrakenduse haldaja kontaktandmed (e-post, telefon, isikukood).
+9) klientrakenduse testversiooni tagasisuunamis-URL juhuks, kuid kasutaja soovib autentimist katkestada<br>
+10) autentimismeetod või meetodid, mida soovitakse kasutada<br>
+11) klientrakenduse haldaja kontaktandmed (e-post, telefon, isikukood).
 
 Taotlus esitatakse ja edasine suhtlus teenuse haldamisel käib läbi RIA kasutajatoe, `help@ria.ee`.
 
