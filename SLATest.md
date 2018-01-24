@@ -2,7 +2,7 @@
 permalink: SLATest
 ---
 
-ARHIVEERITUD. Dokumenti ei ajakohastata. Palun siinsele teabele mitte tugineda.
+&#9888; ARHIVEERITUD. Dokumenti ei ajakohastata. Palun siinsele teabele mitte tugineda.
 {:.kastigaTeade}
 
 ## Autentimisteenuse TARA testkeskkonna teenustase (SLA)                          
