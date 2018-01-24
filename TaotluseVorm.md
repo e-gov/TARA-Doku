@@ -3,7 +3,7 @@ permalink: TaotluseVorm
 ---
 
 ARHIVEERITUD. Dokumenti ei ajakohastada. Palun siinsele teabele mitte tugineda.
-{:.kastigateade}
+{:.kastigaTeade}
 
 # Taotlus liitumiseks TARA autentimisteenusega
 
