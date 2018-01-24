@@ -129,7 +129,7 @@ a[href]:hover {
 /*#region Paneelid */
 .kastigaTeade { 
   border-radius: 8px; padding: 1rem;
-  border-color: Tomato;
+  border-color: #a94442;
   background-color: lavenderblush;
   color: Tomato;
   text-align: center;
