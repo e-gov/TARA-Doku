@@ -2,7 +2,7 @@
 permalink: TaotluseVorm
 ---
 
-ARHIVEERITUD. Dokumenti ei ajakohastada. Palun siinsele teabele mitte tugineda.
+ARHIVEERITUD. Dokumenti ei ajakohastata. Palun siinsele teabele mitte tugineda.
 {:.kastigaTeade}
 
 # Taotlus liitumiseks TARA autentimisteenusega
