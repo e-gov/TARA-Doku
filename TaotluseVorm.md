@@ -2,6 +2,9 @@
 permalink: TaotluseVorm
 ---
 
+ARHIVEERITUD. Dokumenti ei ajakohastada. Palun siinsele teabele mitte tugineda.
+{:.kastigateade}
+
 # Taotlus liitumiseks TARA autentimisteenusega
 
 kuupäev: ............<br>
