@@ -12,7 +12,11 @@ permalink: Dok-plaan
 
 - Ärikirjeldus
 - Liitumisjuhend
-    - Taotluse vorm
+- Liitumisdokumendid
+    - Koostöökokkulepe (aluseks vorm)
+    - Teenuse tüüptingimused
+    - Teenuse ekspluatatsiooninõuded
+    - Liitumistaotlus (vorm)
 
 ## Tehnilisele kasutajale
 
