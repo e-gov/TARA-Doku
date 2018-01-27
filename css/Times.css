@@ -91,9 +91,8 @@ th, td { padding: 2px; }
 /*#region Kood; asciiflow joonised */
 pre, code, samp {
   font-family: 'Source Code Pro', monospace;
-  font-size: 16px; color: black !important;
-  color: Black !important;
-  background-color: LightGray !important;
+  font-size: 15px;
+  color: Red !important;
   overflow-y: hidden; overflow-x: scroll;
   page-break-inside: avoid; hyphens: none;
   text-transform: none;
