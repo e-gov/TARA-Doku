@@ -9,7 +9,7 @@ permalink: QaStrateegia
 Selle dokumendi eesmärk on anda üldine ülevaade TARA projekti tarkvara arenduse kvaliteedi tagamise protsessist, tegevustest ja vahenditest.
 Tegemist on "elusa" dokumendiga mida uuendatakse vastavalt projekti edenemisele. 
 
-### Selles dokumendis ei käsitleta järgnevat
+**Selles dokumendis ei käsitleta järgnevat:**
 * Turvatestimist
 * Jõudlustestimist
 * Paigalduse testimist
@@ -29,7 +29,7 @@ Toodet arendatakse avatud koodiga arenduse põhimõtteid järgides kasutades Git
 * Master - tootestusvalmis kood koos vastava dokumentatsiooniga
 * Develop - Arendatav kood
 
-<img src='img/ArendusProtsess.png' style='width: 600px;'>
+<img src='img/ArendusProtsess.png' style='width: 600px;'><br>
 Joonis 1. Arendusprotsess
 
 Arendusprotsessiks kasutatakse SCRUM-il põhinevat iteratiivset protsessi. Protsessil on järgmised olulised elemendid:
@@ -68,15 +68,15 @@ Jira töövoo olekute kirjeldused:
 
 ## Kvaliteedi tagamise tegevused tarkvara arendusel
 
-**Arendusprotsessi parendamine**
+###Arendusprotsessi parendamine
 
 Arendusprotsessi jälgitakse pidevalt ning kohandatakse vastavalt muutunud olukorrale. Oluliseks tagasisidestamiseks on retrospektiivid, kuid probleemidest tuleb teavitada koheselt.
 
-**Ühiktestid**
+###Ühiktestid
 
 Uus funktsionaalsus peab olema kaetud ühiktestidega, piisav kaetus on antud funktsionaalsuse arendaja vastutada. Kaetuse määraks on 75% olulistest koodiridadest. Kood peab kompileeruma ning kõik ühiktestid tuleb läbida vigadeta, enne kui koodi võib lisada repositooriumi. Ühiktestide koodi arendatakse ning hallatakse samadest tööpõhimõtetest lähtudes (koodi stiil, parimad praktikad, ...) nagu tootekoodi.
 
-**Staatiline testimine ja koodi ülevaatused**
+###Staatiline testimine ja koodi ülevaatused
 
 Staatilise analüüsi vahendina kasutatakse tsentraalses testkeskonnas SonarCube-i mis on liidestatud Jenkinsini töövooga. Lokaalselt kasutavad arendajad SonarLinti.
 
@@ -91,7 +91,7 @@ Eesmärk on automatiseerida testimise funktsionaalsust määral mis annab parima
 ### Testimise protsess
 Testiplaani loomisel tuleb analüüsida testide jaotust ühik-, integratsiooni-, ning süsteemitestide vahel. Kuna tegu on keeruka süsteemiga mis koosneb mitmest välisest liidestusest mis ei ole meie kontrolli all, siis võib olla kiirem osad testid realiseerida ühiktestide tasemel.
 
-<img src='img/AutomaatneTestiprotsess.png' style='width: 600px;'>
+<img src='img/AutomaatneTestiprotsess.png' style='width: 600px;'><br>
 Joonis 2. Automaatsete kontrollide protsess tsentraalses testkeskkonnas.
 
 **Märkus:** Automaatsete kontrollide käivitamine lokaalselt täpsustub hiljem.
@@ -104,12 +104,12 @@ Testitakse kliendi liidestatust Eesti eIDAS node-iga. SAML liidestuse peamine te
 **2.etapp - OpenID Connect testid**
 Testitakse TARA võimekust konverteerida SAML liidesest tulevat infot OpenID Connect liidesesse. Eeldab SAML liidestuse korrektsust, mida testitakse esimeses etapis.
 
-<img src='img/TestimiseEtapid.png' style='width: 600px;'>
+<img src='img/TestimiseEtapid.png' style='width: 600px;'><br>
 Joonis 3. eIDAS autentimise automaatsete testide etapid tsentraalses testkeskkonnas.
 
-<img src='img/SiseriiklikudAutentimisvahendid.png' style='width: 600px;'>
+<img src='img/SiseriiklikudAutentimisvahendid.png' style='width: 600px;'><br>
 Joonis 4. TARA autentimisteenusele pangalinkide ning Smart-ID toe lisamise testimine.
- 
+
 ### Veahaldus
 Leitud vead raporteeritakse Jira veahaldussüsteemis ja nad läbivad sama elutsükli mis tööülesanded. Vead mis leitakse konkreetse tööülesande testimisel raporteeritakse kommentaarina tööülesande juures ning suunatakse tagasi arenduse etappi.
 
@@ -121,13 +121,12 @@ Vea raporteerimisel peavad olema kirjeldatud vähemalt järgmised elemendid:
 
 Tähelepanu tuleb juhtida asjaolule, et avatud lähtekoodiga arenduse korral võidakse vigu raporteerida ka läbi GitHubi ning nendele tuleb reageerida.
 
-### Testimise tasemed
 
-####Integratsiooni testimine
+###Integratsiooni testimine
 
 Eesmärk:  testida erinevate komponentide liidestamist/koostööd.
 
-<img src='img/Integratsioonitestid.png' style='width: 600px;'>
+<img src='img/Integratsioonitestid.png' style='width: 600px;'><br>
 Joonis 5. Integrarsioonitestid
 
 **1.etapp eIDAS kliendi testimine**
@@ -141,7 +140,7 @@ eIDAS kliendil on järgnevad olulised funktsionaalsused mille testimine on esmat
 * Autentimise alustamine
 * Autentimisvastuse saamine
 
-<img src='img/MetadataIT.png' style='width: 600px;'>
+<img src='img/MetadataIT.png' style='width: 600px;'><br>
 Joonis 6. Metaandmete publitseerimise testimine
 
 1) RestAssured raamistikus koostatakse metaandmete küsimise päring.
@@ -149,14 +148,14 @@ Joonis 6. Metaandmete publitseerimise testimine
 
 **Lahtine küsimus**: Kuidas testime metaandmete lugemist (kas tulevad failist või tehakse päring)? "happy path" juhu saaks testida selliselt, et kui autentimise alustamine õnnestub siis on kõik ok? Metaandmete lugemisel tekkivad vead, timeoutid jms tuleks siiski testida. See oleks mõtekas teha unit testi tasemel?
 
-<img src='img/eidasParingIT.png' style='width: 600px;'>
+<img src='img/eidasParingIT.PNG' style='width: 600px;'><br>
 Joonis 7. Autentimise alustamise testimine
 
 1) RestAssured raamistikus koostatakse testandmetega päring. Reaalses rakenduses on kasutaja poolt valitud andmete hulk piiratud. Testimise eesmärgil võib vajalik olla eIDAS kliendi test režiimi loomine mis võimaldaks kõiki SAML parameetreid seadistada.
 2) eIDAS kliendi poolt saadetud SAML päring valideeritakse RestAssured raamistikus. Valideerimise õnnestumisel saadetakse päring lokaalsesse eIDAS nodei.
 3) eIDAS nodei vastus valideeritakse üldisel tasemel (uus SAML päring või veakood).
 
-<img src='img/AutentimiseVastusIT.png' style='width: 600px;'>
+<img src='img/AutentimiseVastusIT.png' style='width: 600px;'><br>
 Joonis 8. Autentimisvastuse saamise testimine
 
 1) Teostatakse "happy path" valideerimise alustuse voog.
@@ -171,11 +170,11 @@ Lisaks liidestuse automaatsele kontrollimisele tuleb käsitsi testida eIDAS klie
 
 Täpsustub hiljem.
 
-####Süsteemi testimine
+###Süsteemi testimine
 
 Eesmärk: kasutuslugudes ja end-to-end stsenaariumite toimimises vigade leidmine.
 
-<img src='img/Systeemitestid.png' style='width: 600px;'>
+<img src='img/Systeemitestid.png' style='width: 600px;'><br>
 Joonis 9. Süsteemitestid
 
 **1.etapp eIDAS kliendi testimine**
@@ -186,11 +185,11 @@ Testitakse käsitsi, kaaluda võib "happy path" juhtude automatiseerimist. Peami
 
 Täpsustub hiljem.
 
-####Vastuvõtu testimine
+###Vastuvõtu testimine
 
 Eesmärk:  kontrollida toote või teenuse vastavust püstitatud nõuetele ja planeeritud otstarbele, st vastavust vastuvõtukriteeriumitele.
 
-####Regressioonitestimine
+###Regressioonitestimine
 
 Eesmärk: minimiseerida riski, et arendusega otseselt mitte seotud funktsionaalsustesse on  tekkinud tahtmatuid mõjutusi.
 
