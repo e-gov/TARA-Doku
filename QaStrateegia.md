@@ -144,6 +144,7 @@ eIDAS kliendil on järgnevad olulised funktsionaalsused mille testimine on esmat
 Joonis 6. Metaandmete publitseerimise testimine
 
 1) RestAssured raamistikus koostatakse metaandmete küsimise päring.
+
 2) Vastusena saadud metaandmed valideeritakse.
 
 **Lahtine küsimus**: Kuidas testime metaandmete lugemist (kas tulevad failist või tehakse päring)? "happy path" juhu saaks testida selliselt, et kui autentimise alustamine õnnestub siis on kõik ok? Metaandmete lugemisel tekkivad vead, timeoutid jms tuleks siiski testida. See oleks mõtekas teha unit testi tasemel?
@@ -152,14 +153,18 @@ Joonis 6. Metaandmete publitseerimise testimine
 Joonis 7. Autentimise alustamise testimine
 
 1) RestAssured raamistikus koostatakse testandmetega päring. Reaalses rakenduses on kasutaja poolt valitud andmete hulk piiratud. Testimise eesmärgil võib vajalik olla eIDAS kliendi test režiimi loomine mis võimaldaks kõiki SAML parameetreid seadistada.
+
 2) eIDAS kliendi poolt saadetud SAML päring valideeritakse RestAssured raamistikus. Valideerimise õnnestumisel saadetakse päring lokaalsesse eIDAS nodei.
+
 3) eIDAS nodei vastus valideeritakse üldisel tasemel (uus SAML päring või veakood).
 
 <img src='img/AutentimiseVastusIT.png' style='width: 600px;'><br>
 Joonis 8. Autentimisvastuse saamise testimine
 
 1) Teostatakse "happy path" valideerimise alustuse voog.
+
 2) Tagastatavad andmed saadetakse kas muutmatul kujul ("happy path" test) või modifitseeritud kujul (erijuhud) eIDAS klienti.
+
 3) Kuvatavad isikuandmed või veakoodid valideeritakse.
 
 Lisaks liidestuse automaatsele kontrollimisele tuleb käsitsi testida eIDAS kliendi näidis veebilehte:
