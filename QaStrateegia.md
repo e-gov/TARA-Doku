@@ -68,15 +68,15 @@ Jira töövoo olekute kirjeldused:
 
 ## Kvaliteedi tagamise tegevused tarkvara arendusel
 
-###Arendusprotsessi parendamine
+### Arendusprotsessi parendamine
 
 Arendusprotsessi jälgitakse pidevalt ning kohandatakse vastavalt muutunud olukorrale. Oluliseks tagasisidestamiseks on retrospektiivid, kuid probleemidest tuleb teavitada koheselt.
 
-###Ühiktestid
+### Ühiktestid
 
 Uus funktsionaalsus peab olema kaetud ühiktestidega, piisav kaetus on antud funktsionaalsuse arendaja vastutada. Kaetuse määraks on 75% olulistest koodiridadest. Kood peab kompileeruma ning kõik ühiktestid tuleb läbida vigadeta, enne kui koodi võib lisada repositooriumi. Ühiktestide koodi arendatakse ning hallatakse samadest tööpõhimõtetest lähtudes (koodi stiil, parimad praktikad, ...) nagu tootekoodi.
 
-###Staatiline testimine ja koodi ülevaatused
+### Staatiline testimine ja koodi ülevaatused
 
 Staatilise analüüsi vahendina kasutatakse tsentraalses testkeskonnas SonarCube-i mis on liidestatud Jenkinsini töövooga. Lokaalselt kasutavad arendajad SonarLinti.
 
@@ -122,7 +122,7 @@ Vea raporteerimisel peavad olema kirjeldatud vähemalt järgmised elemendid:
 Tähelepanu tuleb juhtida asjaolule, et avatud lähtekoodiga arenduse korral võidakse vigu raporteerida ka läbi GitHubi ning nendele tuleb reageerida.
 
 
-###Integratsiooni testimine
+### Integratsiooni testimine
 
 Eesmärk:  testida erinevate komponentide liidestamist/koostööd.
 
@@ -170,7 +170,7 @@ Lisaks liidestuse automaatsele kontrollimisele tuleb käsitsi testida eIDAS klie
 
 Täpsustub hiljem.
 
-###Süsteemi testimine
+### Süsteemi testimine
 
 Eesmärk: kasutuslugudes ja end-to-end stsenaariumite toimimises vigade leidmine.
 
@@ -185,11 +185,11 @@ Testitakse käsitsi, kaaluda võib "happy path" juhtude automatiseerimist. Peami
 
 Täpsustub hiljem.
 
-###Vastuvõtu testimine
+### Vastuvõtu testimine
 
 Eesmärk:  kontrollida toote või teenuse vastavust püstitatud nõuetele ja planeeritud otstarbele, st vastavust vastuvõtukriteeriumitele.
 
-###Regressioonitestimine
+### Regressioonitestimine
 
 Eesmärk: minimiseerida riski, et arendusega otseselt mitte seotud funktsionaalsustesse on  tekkinud tahtmatuid mõjutusi.
 
