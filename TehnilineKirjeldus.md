@@ -2,7 +2,7 @@
 permalink: TehnilineKirjeldus
 ---
 
-Märkus. Piiriülese autentimise (eIDAS) tugi lisatakse teenuse 3. arendusjärgu lõppedes. Töösolevad võimalused on tähistatud &\#128679; // // &\#128679;.
+Märkus. Piiriülese autentimise (eIDAS) tugi lisatakse teenuse 3. arendusjärgu lõppedes. Arenduses olevad võimalused on tähistatud &\#128679; // // &\#128679;.
 
 # Tehniline kirjeldus
 {: .no_toc}
@@ -17,9 +17,9 @@ Vt ka: [Sonastik](Sonastik), [Viited](Viited)
 
 Käesolev dokument esitab teenuse tehnilised omadused. Fookus on OpenID Connect protokolli rakendamisel tehtud valikutel, erinevustel ja täiendustel OpenID Connect protokolliga võrreldes. Esitatakse päringute näited. Liidestuja peab kindlasti tutvuma ka OpenID Connect protokolliga [Core]. Liidestuja peab erilist tähelepanu pöörama, et kõik protokollikohased kontrollid saaksid tehtud - turvaelemendi `state` ja kui kasutatakse, siis ka `nonce` kontroll, identsustõendi kontroll jm. 
 
-Autentimisteenus on Riigi Infosüsteemi Ameti uus pakutav teenus, millega asutus saab oma e-teenusesse lisada mobiil-ID ja ID-kaardi kasutaja autentimise toe. Järgmistes arendusjärkudes lisatakse teiste autentimismeetodite, eelkõige piiriülese eIDAS-autentimise tugi.
+Autentimisteenus on Riigi Infosüsteemi Ameti uus pakutav teenus, millega asutus saab oma e-teenusesse lisada mobiil-ID ja ID-kaardi kasutaja autentimise toe. &\#128679; // Arenduses on piiriülene (eIDAS-)autentimine. // &\#128679; Järgmistes arendusjärkudes lisatakse teiste autentimismeetodite (pangalingid, Smart-ID) tugi.
 
-TARA teenuse aluseks on OpenID Connect protokoll [Core], mis omakorda põhineb OAuth 2.0 protokollil. Võrreldes OpenID Connect protokolliga on tehtud järgmised valikud, erisused ja täiendused:
+TARA teenuse aluseks on OpenID Connect protokoll ([Viited](Viited), [Core]), mis omakorda põhineb OAuth 2.0 protokollil. Võrreldes OpenID Connect protokolliga on tehtud järgmised valikud, erisused ja täiendused:
 
 1. teenus toetab ainult volituskoodi (_authorization code_) kasutusvoogu.
 2. kogu teave autenditud kasutaja kohta edastatakse rakendusele identsustõendis (_ID token_). Access token-it ja UserInfo otspunkti kaudu kasutaja atribuutide andmist ei toetata.
@@ -32,8 +32,6 @@ TARA pakub nii siseriiklikku kui ka (3. arendusjärgu lõppedes) piiriülest aut
 <img src='img/SUURPILT.PNG' style='width:700px'>
 
 Joonis 1. eIDAS taristu
-
-Vt lähemalt [eIDAS autentimise lisamine e-teenusele](https://e-gov.github.io/TARA-Doku/files/TARA-tutvustus.pdf).
 
 ## 2 Autentimisprotsess
 
@@ -105,7 +103,7 @@ Autentimispäringu elemendid:
 | `response_type` | `response_type=code` | jah | autentimise tulemuse serverile edastamise viis. Toetatud on volituskoodi viis `code`. |
 | rakenduse identifikaator `client_id` | jah | `client_id=58e7...` | rakenduse identifikaatori annab RIA asutusele klientrakenduse registreerimisel autentimisteenuse kasutajaks |
 | kasutajaliidese keele valik `locale` | ei | `locale=et` | toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida. |
-| `nonce` | ei | `fsdsfwrerhtry3qeewq` | taasesitusründeid vältida aitav parameeter, vastavalt protokollile [Core], jaotis 3.1.2.1. Authentication Request. Parameeter `nonce` ei ole kohustuslik. |
+| `nonce` | ei | `fsdsfwrerhtry3qeewq` | taasesitusründeid vältida aitav parameeter, vastavalt protokollile ([Viited](Viited), [Core], jaotis 3.1.2.1. Authentication Request). Parameeter `nonce` ei ole kohustuslik. |
 | &\#128679; // `attrs` // &\#128679; | ei | `attrs=FirstName-FamilyName` | eIDAS-atribuudid, vt allpool. |
 | &\#128679; // `loa` // &\#128679; | ei | `loa=high` | minimaalne tagatistase. Võimalikud väärtused: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). |
 
