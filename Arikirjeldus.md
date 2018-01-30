@@ -44,8 +44,3 @@ Ootame asutusi, kes sooviksid olla teenuse pilootkasutajad. Kontakt: `help@ria.e
 
 <img src='img/KUVA-04.png' width='500'>
 
-----
-
-Riigi Infosüsteemi Amet, help@ria.ee, [www.ria.ee](www.ria.ee)
-
-_Viimati muudetud: 06.11.2017_
