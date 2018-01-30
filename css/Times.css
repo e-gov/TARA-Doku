@@ -128,7 +128,7 @@ a[href]:hover {
 /*#region Paneelid */
 .silt { 
   border-radius: 4px; padding: 0.2rem 0.3rem;
-  border-color: #DarkCyan;
+  border-color: DarkCyan;
   background-color: Azure;
   color: Teal;
   text-align: center;
