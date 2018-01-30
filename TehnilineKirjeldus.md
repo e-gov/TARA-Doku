@@ -2,15 +2,18 @@
 permalink: TehnilineKirjeldus
 ---
 
+Märkus. Piiriülese autentimise (eIDAS) tugi lisatakse teenuse 3. arendusjärgu lõppedes. Mittevalmis võimalused on tähistatud <span class='silt'>eIDAS</span>.
+
 # Tehniline kirjeldus
 {: .no_toc}
+v 0.3
 
 - TOC
 {:toc}
 
 Vt ka: [Sonastik](Sonastik), [Viited](Viited)
 
-## Ülevaade
+## 1 Ülevaade
 
 Käesolev dokument esitab teenuse tehnilised omadused. Fookus on OpenID Connect protokolli rakendamisel tehtud valikutel, erinevustel ja täiendustel OpenID Connect protokolliga võrreldes. Esitatakse päringute näited. Liidestuja peab kindlasti tutvuma ka OpenID Connect protokolliga [Core]. Liidestuja peab erilist tähelepanu pöörama, et kõik protokollikohased kontrollid saaksid tehtud - turvaelemendi `state` ja kui kasutatakse, siis ka `nonce` kontroll, identsustõendi kontroll jm. 
 
@@ -32,13 +35,15 @@ Joonis 1. eIDAS taristu
 
 Vt lähemalt [eIDAS autentimise lisamine e-teenusele](https://e-gov.github.io/TARA-Doku/files/TARA-tutvustus.pdf).
 
-## Autentimisprotsess
+## 2 Autentimisprotsess
 
 1. Kasutaja on e-teenust osutavas klientrakenduses.
     - kasutaja võib olla nii eestlane kui ka välismaalane
     - kasutajale esitatakse kuva, millel on nupp "Logi sisse" vms
     - kasutaja vajutab "Logi sisse".
-2. Klientrakendus suunab kasutaja TARA-teenusesse (sirviku ümbersuunamiskorralduse abil).
+2. Klientrakendus suunab kasutaja TARA-teenusesse (sirviku ümbersuunamiskorralduse abil)
+    - ümbersuunamis-URL-is on autentimispäring
+        - autentimispäringu koostamise kohta vt jaotis [Autentimispäring](#autentimisparing)
     - kasutajale avaneb autentimismeetodi valiku kuva. Siin võib kasutaja:
         - valida mobiil-ID-ga autentimise (samm 3)
         - valida ID-kaardiga autentimise (samm 4)
@@ -53,36 +58,27 @@ Vt lähemalt [eIDAS autentimise lisamine e-teenusele](https://e-gov.github.io/TA
 4. ID-kaardiga autentimine
     - algab kasutajale teabe kuvamisega autentimisserdi kohta
     - kasutaja kinnitab serdivaliku
-    - kasutaja sisestab PIN1-koodi (ID-kaart).
-    - tulemuseks on autenditult suunamine tagasi klientrakendusse või veateate lehele.
+    - kasutaja sisestab PIN1-koodi.
+    - eduka autentimise korral edasi samm 6, vea korral - samm 7
 5. Piiriülene (eIDAS-) autentimine
 6. Autenditud kasutaja
-    - suunatakse tagasi klientrakendusse
+    - suunatakse tagasi klientrakendusse (vt jaotis [Tagasisuunamine](#tagasisuunamine))
+    - klientrakendus pärib TARA serverilt identsustõendi (vt jaotis [Identsustõend](#identsustoend)).
+        - identsustõend (_identity token_) on allkirjastatud tõend eduka autentimise kohta
+            - identsustõendis sisalduvad autentimisel tuvastatud, kasutaja andmed (atribuudid)
     - klientrakendus annab kasutajale asjakohasel viisil teada, et sisselogimine õnnestus.
 7. Veateate lehelt
     - saab kasutaja minna tagasi autentimismeetodi valikusse ja seal kas üritada uuesti, võimalik, et teise autentimismeetodiga
     - või katkestada autentimise ja minna tagasi klientrakendusse.
 
-Kasutaja saab anda tagasisidet teenuse kohta. Selleks on eraldi sakil avatav vorm, kuhu pääseb autentimismeetodi valiku kuval oleva lingi abil.
+Kasutaja on võimalik:
+- anda tagasisidet teenuse kohta. Selleks on eraldi sakil avatav vorm, kuhu pääseb autentimismeetodi valiku kuval oleva lingi abil.
 
 Kasutajal on võimalik esitada vearaportit. Selleks on eraldi sakil avatav vorm. Enne vormi on soovitused tüüpvigade iseseisvaks lahendamiseks.
 
 Kasutajal on võimalik saada täiendavat teavet TARA-teenuse kohta. Teave kuvatakse eraldi sakil, sinna saab liikuda autentimismeetodi valiku kuval oleva lingi abil.
 
-## Autentimisprotsess
-
-<img src='img/VOOG.PNG' style='width: 480px;'>
-
-Joonis 3
-
-Autentimisprotsess koosneb 5 sammust:
-1. Autentimispäringu saatmine
-2. Autentimismeetodi valik
-3. Autentimine
-4. Tagasisuunamine
-5. Identsustõendi küsimine.
-
-### Siseriiklik autentimispäring
+### 3 Autentimispäring
 
 Kasutaja vajutab nupule "Logi sisse" vms. Rakendus võib ka ise algatada autentimise.
 
@@ -101,7 +97,6 @@ client_id=58e7ba35aab5b4f1671a
 Autentimispäringu elemendid:
 
 | URL-i element          | kohustuslik | näide                       |  selgitus     |
-|------------------------|:-----------:|-----------------------------|---------------|
 | protokoll, host ja tee (_path_) | jah | `https://tara.eesti.ee/authorize` | `/authorize` on TARA-teenuse OpenID Connect-kohane autentimisotspunkt (termin 'autoriseerimine' pärineb alusprotokollist OAuth 2.0).  |
 | tagasipöördumis-URL | jah | `https://eteenus.asutus.ee/tagasi` | tagasipöördumis-URL-i valib asutus ise. Tagasipöördumis-URL võib sisaldada _query_-osa. Tärgile `?` järgnevas osas omakorda `?` kasutamine ei ole lubatud. |
 | autentimise skoop `scope`; toetatud on väärtus `openid` | jah | `scope=openid`               |        |
@@ -111,12 +106,9 @@ Autentimispäringu elemendid:
 | kasutajaliidese keele valik `locale` | ei | `locale=et` | toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida. |
 | `nonce` | ei | `fsdsfwrerhtry3qeewq` | taasesitusründeid vältida aitav parameeter, vastavalt protokollile [Core], jaotis 3.1.2.1. Authentication Request. Parameeter `nonce` ei ole kohustuslik. |
 
-### Piiriülene autentimispäring
-
 Välismaalase e eIDAS-autentimisel tuleb lisada:
 
 | inimloetav nimi | väljastamine kohustuslik | tehniline nimi |
-|-------------|:------------:|----------------|
 | `FamilyName` | jah | `http://eidas.europa.eu/attributes/naturalperson/CurrentFamilyName` |
 | `FirstName` | jah | `http://eidas.europa.eu/attributes/naturalperson/CurrentGivenName` |
 | `DateOfBirth` | jah | `http://eidas.europa.eu/attributes/naturalperson/DateOfBirth` |
@@ -128,12 +120,10 @@ Välismaalase e eIDAS-autentimisel tuleb lisada:
 | `Gender` | ei | `http://eidas.europa.eu/attributes/naturalperson/Gender` |
 
 | inimloetav nimi | väljastamine kohustuslik | tehniline nimi |
-|-------------|:------------:|----------------|
 | `LegalPersonIdentifier`   | jah | `http://eidas.europa.eu/attributes/legalperson/LegalPersonIdentifier` |
 | `LegalName` | jah         | `http://eidas.europa.eu/attributes/legalperson/LegalName` |
 
 | inimloetav nimi | väljastamine kohustuslik | tehniline nimi |
-|-------------|:------------:|----------------|
 | `LegalAddress` | ei | `http://eidas.europa.eu/attributes/legalperson/LegalPersonAddress` |
 | `VATRegistration` | `http://eidas.europa.eu/attributes/legalperson/VATRegistrationNumber` |
 | `TaxReference` | ei |  `http://eidas.europa.eu/attributes/legalperson/TaxReference` |
@@ -143,7 +133,7 @@ Välismaalase e eIDAS-autentimisel tuleb lisada:
 | `SIC` | ei |  `http://eidas.europa.eu/attributes/legalperson/SIC` |
 | `D-2012-17-EUIdentifier` | `http://eidas.europa.eu/attributes/legalperson/D-2012-17-EUIdentifier` |
 
-### 8 Tagasisuunamine
+### 4 Tagasisuunamine
 
 OpenID Connect protokolli kohaselt autentimisteenus suunab kasutaja tagasi rakendusse (klientrakenduse poolt kaasa antud naasmisaadressile), andes kaasa volituskoodi (_authorization code_). Tehniliselt tehakse tagasisuunamine HTTP _redirect_-päringuga. Näide:
 
@@ -156,7 +146,6 @@ state=OFfVLKu0kNbJ2EZk
 Tagasisuunamispäringu elemendid:
 
 | URL-i element          | näide                       |  selgitus     |
-|------------------------|-----------------------------|---------------|
 | tagasisuunamis-URL | `https://eteenus.asutus.ee
 /tagasi?` | ühtib autentimispäringus saadetuga |
 | volituskood `code` | `code=71ed579...`  | ingl _authorization code_. Volituskood on ühekordne “lubatäht” identsustõendi saamiseks |
@@ -164,7 +153,7 @@ Tagasisuunamispäringu elemendid:
 
 Märkus. Kasutaja võib e-teenusesse tagasi pöörduda ka ilma autentimismeetodit valimata ja autentimist läbi tegemata (link "Tagasi teenusepakkuja juurde"). See võimalus on mõeldud juhuks, kui kasutaja vajutas klientrakenduses "Logi sisse", kuid tegelikult ei soovi sisse logida. Teenusega liitumise taotluses peab asutus RIA-le teada andma URL-i, kuhu kasutaja "Tagasi teenuspakkuja juurde" vajutamisel suunatakse. NB! OpenID Connect protokolli kohane tagasisuunamis-URL ja siin nimetatud URL on erineva tähendusega.
 
-### 9 Identsustõendi küsimine
+### 5 Identsustõendi küsimine
 
 Rakendus küsib autentimisteenuselt, volituskoodi esitades,  identsustõendi (_ID token_). Tõendiküsimispäringu näide:
 

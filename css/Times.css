@@ -91,8 +91,8 @@ th, td { padding: 2px; }
 /*#region Kood; asciiflow joonised */
 pre, code, samp {
   font-family: 'Source Code Pro', monospace;
-  font-size: 15px;
-  color: Red !important;
+  font-size: 16px;
+  color: darkslategray !important;
   overflow-y: hidden; overflow-x: scroll;
   page-break-inside: avoid; hyphens: none;
   text-transform: none;
@@ -126,11 +126,11 @@ a[href]:hover {
 /*#endregion */
 
 /*#region Paneelid */
-.kastigaTeade { 
-  border-radius: 8px; padding: 1rem;
-  border-color: #a94442;
-  background-color: lavenderblush;
-  color: Tomato;
+.silt { 
+  border-radius: 4px; padding: 0.2rem 0.3rem;
+  border-color: #DarkCyan;
+  background-color: Azure;
+  color: Teal;
   text-align: center;
 }
 .teade {
