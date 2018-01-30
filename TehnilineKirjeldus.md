@@ -2,7 +2,7 @@
 permalink: TehnilineKirjeldus
 ---
 
-Märkus. Piiriülese autentimise (eIDAS) tugi lisatakse teenuse 3. arendusjärgu lõppedes. Mittevalmis võimalused on tähistatud <span class='silt'>eIDAS</span>.
+Märkus. Piiriülese autentimise (eIDAS) tugi lisatakse teenuse 3. arendusjärgu lõppedes. Mittevalmis võimalused on tähistatud &#128679;.
 
 # Tehniline kirjeldus
 {: .no_toc}
@@ -106,24 +106,37 @@ Autentimispäringu elemendid:
 | kasutajaliidese keele valik `locale` | ei | `locale=et` | toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida. |
 | `nonce` | ei | `fsdsfwrerhtry3qeewq` | taasesitusründeid vältida aitav parameeter, vastavalt protokollile [Core], jaotis 3.1.2.1. Authentication Request. Parameeter `nonce` ei ole kohustuslik. |
 
-Välismaalase e eIDAS-autentimisel tuleb lisada:
+&#128679;
+
+Välismaalase suunamisel TARA-sse autentimisele tuleb arvestada, et TARA suunab välismaalase edasi, tema koduriigi autentimisteenusesse. Sealt tulev vastus sisaldab suuremat või väiksemat hulka atribuute kasutaja kohta (nt perekonnanimi, aadress, sugu jne). Atribuudid ei tule iseenesest, vaid klientrakendus peab neid küsima.
+
+Samuti peab arvestama, et kasutaja koduriigi autentimisteenus ja eIDAS-taristu vahepealsed sõlmed ei tarvitse toetada kõigi atribuutide edastamist. Riigid on kokku leppinud, et alati saab küsida ja teise riigi autentimisteenus on kohustatud väljastama füüsilise isiku kohta 4 atribuuti - ees- ja perekonnanimi, sünniaeg, isikukood vm identifikaator. Juriidilise isiku kohta väljastatakse alati 2 atribuuti - registrikood vm identifikaator, juriidiline nimi. Need on nn kohustuslikud atribuudid. Lisaks on kokku lepitud rida mittekohustuslikke atribuute. Need on järgmised:
+
+Füüsiline isik
 
 | inimloetav nimi | väljastamine kohustuslik | tehniline nimi |
+|-----------------|:------------------------:|----------------|
 | `FamilyName` | jah | `http://eidas.europa.eu/attributes/naturalperson/CurrentFamilyName` |
 | `FirstName` | jah | `http://eidas.europa.eu/attributes/naturalperson/CurrentGivenName` |
 | `DateOfBirth` | jah | `http://eidas.europa.eu/attributes/naturalperson/DateOfBirth` |
 | `PersonIdentifier` | jah | `http://eidas.europa.eu/attributes/naturalperson/PersonIdentifier` |
 
-| `BirthName` | ei | `http://eidas.europa.eu/attributes/naturalperson/BirthName` |in
+| inimloetav nimi | väljastamine kohustuslik | tehniline nimi |
+|-----------------|:------------------------:|----------------|
+| `BirthName` | ei | `http://eidas.europa.eu/attributes/naturalperson/BirthName` |
 | `PlaceOfBirth` | ei | `http://eidas.europa.eu/attributes/naturalperson/PlaceOfBirth` |
 | `CurrentAddress` | ei | `http://eidas.europa.eu/attributes/naturalperson/CurrentAddress` |
 | `Gender` | ei | `http://eidas.europa.eu/attributes/naturalperson/Gender` |
 
+Juriidiline isik
+
 | inimloetav nimi | väljastamine kohustuslik | tehniline nimi |
+|-----------------|:------------------------:|----------------|
 | `LegalPersonIdentifier`   | jah | `http://eidas.europa.eu/attributes/legalperson/LegalPersonIdentifier` |
 | `LegalName` | jah         | `http://eidas.europa.eu/attributes/legalperson/LegalName` |
 
 | inimloetav nimi | väljastamine kohustuslik | tehniline nimi |
+|-----------------|:------------------------:|----------------|
 | `LegalAddress` | ei | `http://eidas.europa.eu/attributes/legalperson/LegalPersonAddress` |
 | `VATRegistration` | `http://eidas.europa.eu/attributes/legalperson/VATRegistrationNumber` |
 | `TaxReference` | ei |  `http://eidas.europa.eu/attributes/legalperson/TaxReference` |
@@ -132,6 +145,14 @@ Välismaalase e eIDAS-autentimisel tuleb lisada:
 | `SEED` | ei |  `http://eidas.europa.eu/attributes/legalperson/SEED` |
 | `SIC` | ei |  `http://eidas.europa.eu/attributes/legalperson/SIC` |
 | `D-2012-17-EUIdentifier` | `http://eidas.europa.eu/attributes/legalperson/D-2012-17-EUIdentifier` |
+
+Atribuutide küsimiseks tuleb TARA-sse suunamise URL-le lisada parameeter soovitavate atribuutide nimekirjaga:
+
+`attrs=PersonIdentifier-FirstName-FamilyName-CurrentAddress`
+
+Kui atribuute URL-is määratud ei ole, hoolitseb TARA ise selle eest, et välismaa autentimisteenusest küsitakse füüsilise isiku 4 kohustuslikku atribuuti (ees- ja perekonnanimi, sünniaeg, isikukood vm identifikaator).
+
+Küsida ei ole mõtet rohkem atribuute kui e-teenuse osutamiseks vaja läheb. eIDAS-taristus autentimisel küsitakse kasutajalt nõusolekut isikuandmete saatmiseks teise riigi e-teenusele.
 
 ### 4 Tagasisuunamine
 
