@@ -2,8 +2,6 @@
 permalink: Turvaanaluus
 ---
 
-{% include Issue.html %}
-
 # Turvaanalüüs
 {: .no_toc}
 

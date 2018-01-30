@@ -2,8 +2,6 @@
 permalink: Veakasitlus
 ---
 
-{% include Issue.html %}
-
 # Vead ja tõrked. Ennetamine ja käsitlemine
 
 Käesoleva dokumendi eesmärk on aidata kavandada ja rakendada tehnilised ja korralduslikud meetmed vigade ja tõrgete vältimiseks, sh kommunikatsiooniteed tõrke- või veaolukordade esinemisel. 

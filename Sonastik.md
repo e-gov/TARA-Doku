@@ -2,8 +2,6 @@
 permalink: Sonastik
 ---
 
-{% include Issue.html %}
-
 # Sõnastik
 
 Käesolev dokument määratleb TARA-teenuse kasutamise, haldamise ja arendamise seisukohalt olulisemad mõisted.
