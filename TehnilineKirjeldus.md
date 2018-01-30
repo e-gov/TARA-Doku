@@ -14,7 +14,7 @@ Vt ka: [Sonastik](Sonastik), [Viited](Viited)
 
 Käesolev dokument esitab teenuse tehnilised omadused. Fookus on OpenID Connect protokolli rakendamisel tehtud valikutel, erinevustel ja täiendustel OpenID Connect protokolliga võrreldes. Esitatakse päringute näited. Liidestuja peab kindlasti tutvuma ka OpenID Connect protokolliga [Core]. Liidestuja peab erilist tähelepanu pöörama, et kõik protokollikohased kontrollid saaksid tehtud - turvaelemendi `state` ja kui kasutatakse, siis ka `nonce` kontroll, identsustõendi kontroll jm. 
 
-Autentimisteenus on Riigi Infosüsteemi Ameti uus pakutav teenus, millega asutus saab oma e-teenusesse lisada mobiil-ID ja ID-kaardi kasutaja autentimise toe. Järgmistes arendusjärkudes lisatakse teiste autentimismeetodite, sh piiriülese eIDAS-autentimise tugi.
+Autentimisteenus on Riigi Infosüsteemi Ameti uus pakutav teenus, millega asutus saab oma e-teenusesse lisada mobiil-ID ja ID-kaardi kasutaja autentimise toe. Järgmistes arendusjärkudes lisatakse teiste autentimismeetodite, eelkõige piiriülese eIDAS-autentimise tugi.
 
 TARA teenuse aluseks on OpenID Connect protokoll [Core], mis omakorda põhineb OAuth 2.0 protokollil. Võrreldes OpenID Connect protokolliga on tehtud järgmised valikud, erisused ja täiendused:
 
@@ -24,15 +24,15 @@ TARA teenuse aluseks on OpenID Connect protokoll [Core], mis omakorda põhineb O
 4. teenus toetab kasutajaliidese keele-eelistuse andmist autentimispäringus (`locale` parameetriga)
 4. autentimismeetodi valib kasutaja autentimisteenuses.
 
-Joonis 1 esitab teenuse ülevaatelise skeemi
+TARA pakub nii siseriiklikku kui ka (3. arendusjärgu lõppedes) piiriülest autentimist.
 
-<img src='img/KuvaVoog.PNG' style='width: 600px;'>
+<img src='img/SUURPILT.PNG' style='width:700px'>
 
-Joonis 1
+Joonis 1. eIDAS taristu
+
+Vt lähemalt [eIDAS autentimise lisamine e-teenusele](https://e-gov.github.io/TARA-Doku/files/TARA-tutvustus.pdf).
 
 ## 2 Kasutaja liikumistee
-
-Joonis 2 esitab kasutaja liikumise kuvade kaupa.
 
 1 Tegevus algab kasutajale e-teenust osutavas klientrakenduses. Kasutajale esitatakse kuva, millel on nupp "Logi sisse" vms.
 
@@ -60,17 +60,13 @@ Joonis 2 esitab kasutaja liikumise kuvade kaupa.
 
 8 eIDAS autentimine toimub välisriigi süsteemis. 
 
-<img src='img/KasutajaVoog.PNG' style='width: 600px;'>
-
-Joonis 2. Kasutaja liikumistee kuvade kaupa
-
 _Märkus. Võrdluseks Suomi.fi [autentimisteenus](https://www.suomi.fi/etusivu/) ("Kirjaudu sisään")._
 
 ## 3 Autentimisprotsess
 
 <img src='img/VOOG.PNG' style='width: 480px;'>
 
-Joonis 3. Tehniline ülevaade
+Joonis 3
 
 Autentimisprotsess koosneb 5 sammust:
 1. Autentimispäringu saatmine
@@ -79,7 +75,7 @@ Autentimisprotsess koosneb 5 sammust:
 4. Tagasisuunamine
 5. Identsustõendi küsimine.
 
-### 3.1 Autentimispäringu saatmine
+### 3.1 Autentimispäring
 
 Kasutaja vajutab nupule "Logi sisse" vms. Rakendus võib ka ise algatada autentimise.
 
@@ -90,24 +86,53 @@ GET https://tara.eesti.ee/authorize?
 
 redirect_uri=https%3A%2F%2eteenindus.asutus.ee%2FCallback&
 scope=openid&
-state=hkMVY7vjuN7xyLl5&
+state=hkMVY7vjuN7xyLl5&|
 response_type=code&
 client_id=58e7ba35aab5b4f1671a
 ````
 
-Autentimispäringu kohustusliku elemendid:
+Autentimispäringu elemendid (siseriiklik autentimine):
 
-| URL-i element          | näide                       |  selgitus     |
-|------------------------|-----------------------------|---------------|
-| protokoll, host ja tee (_path_) | `https://tara.eesti.ee/authorize` | `/authorize` on TARA-teenuse OpenID Connect-kohane autentimisotspunkt (termin 'autoriseerimine' pärineb alusprotokollist OAuth 2.0).  |
-| tagasipöördumis-URL    | `https://eteenus.asutus.ee/tagasi` | tagasipöördumis-URL-i valib asutus ise. Tagasipöördumis-URL võib sisaldada _query_-osa. Tärgile `?` järgnevas osas omakorda `?` kasutamine ei ole lubatud. |
-| autentimise skoop `scope`; toetatud on väärtus `openid` | `scope=openid`               |        |
-| turvakood `state` | `state=hkMVY7vjuN7xyLl5`     | klientrakenduse serveripool peab genereerima ja päringus esitama turvakoodi. Turvakood aitab tagada, et erinevate kasutajate autentimised ei lähe sassi ja ründaja ei saa protsessi vahele sekkuda. Turvakood peegeldatakse vastuses tagasi; klientrakendus peab kontrollima, et saab vastuses sama turvakoodi, mille saatis päringus.  |
-| `response_type` | `response_type=code` | autentimise tulemuse serverile edastamise viis. Toetatud on volituskoodi viis `code`. |
-| rakenduse identifikaator `client_id` | `client_id=58e7...` | rakenduse identifikaatori annab RIA asutusele klientrakenduse registreerimisel autentimisteenuse kasutajaks |
-| kasutajaliidese keele valik `locale` | `locale=et` | toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida. |
+| URL-i element          | kohustuslik | näide                       |  selgitus     |
+|------------------------|:-----------:|-----------------------------|---------------|
+| protokoll, host ja tee (_path_) | jah | `https://tara.eesti.ee/authorize` | `/authorize` on TARA-teenuse OpenID Connect-kohane autentimisotspunkt (termin 'autoriseerimine' pärineb alusprotokollist OAuth 2.0).  |
+| tagasipöördumis-URL | jah | `https://eteenus.asutus.ee/tagasi` | tagasipöördumis-URL-i valib asutus ise. Tagasipöördumis-URL võib sisaldada _query_-osa. Tärgile `?` järgnevas osas omakorda `?` kasutamine ei ole lubatud. |
+| autentimise skoop `scope`; toetatud on väärtus `openid` | jah | `scope=openid`               |        |
+| turvakood `state` | `state=hkMVY7vjuN7xyLl5` | jah | klientrakenduse serveripool peab genereerima ja päringus esitama turvakoodi. Turvakood aitab tagada, et erinevate kasutajate autentimised ei lähe sassi ja ründaja ei saa protsessi vahele sekkuda. Turvakood peegeldatakse vastuses tagasi; klientrakendus peab kontrollima, et saab vastuses sama turvakoodi, mille saatis päringus.  |
+| `response_type` | `response_type=code` | jah | autentimise tulemuse serverile edastamise viis. Toetatud on volituskoodi viis `code`. |
+| rakenduse identifikaator `client_id` | jah | `client_id=58e7...` | rakenduse identifikaatori annab RIA asutusele klientrakenduse registreerimisel autentimisteenuse kasutajaks |
+| kasutajaliidese keele valik `locale` | ei | `locale=et` | toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida. |
+| `nonce` | ei | `fsdsfwrerhtry3qeewq` | taasesitusründeid vältida aitav parameeter, vastavalt protokollile [Core], jaotis 3.1.2.1. Authentication Request. Parameeter `nonce` ei ole kohustuslik. |
 
-Autentimispäringus võib lisada taasesitusründeid vältida aitava parameetri `nonce`, vastavalt protokollile [Core], jaotis 3.1.2.1.  Authentication Request. Parameeter `nonce` ei ole kohustuslik.
+Välismaalase e eIDAS-autentimisel tuleb lisada:
+
+| inimloetav nimi | väljastamine kohustuslik | tehniline nimi |
+|-------------|:------------:|----------------|
+| `FamilyName` | jah | `http://eidas.europa.eu/attributes/naturalperson/CurrentFamilyName` |
+| `FirstName` | jah | `http://eidas.europa.eu/attributes/naturalperson/CurrentGivenName` |
+| `DateOfBirth` | jah | `http://eidas.europa.eu/attributes/naturalperson/DateOfBirth` |
+| `PersonIdentifier` | jah | `http://eidas.europa.eu/attributes/naturalperson/PersonIdentifier` |
+
+| `BirthName` | ei | `http://eidas.europa.eu/attributes/naturalperson/BirthName` |in
+| `PlaceOfBirth` | ei | `http://eidas.europa.eu/attributes/naturalperson/PlaceOfBirth` |
+| `CurrentAddress` | ei | `http://eidas.europa.eu/attributes/naturalperson/CurrentAddress` |
+| `Gender` | ei | `http://eidas.europa.eu/attributes/naturalperson/Gender` |
+
+| inimloetav nimi | väljastamine kohustuslik | tehniline nimi |
+|-------------|:------------:|----------------|
+| `LegalPersonIdentifier`   | jah | `http://eidas.europa.eu/attributes/legalperson/LegalPersonIdentifier` |
+| `LegalName` | jah         | `http://eidas.europa.eu/attributes/legalperson/LegalName` |
+
+| inimloetav nimi | väljastamine kohustuslik | tehniline nimi |
+|-------------|:------------:|----------------|
+| `LegalAddress` | ei | `http://eidas.europa.eu/attributes/legalperson/LegalPersonAddress` |
+| `VATRegistration` | `http://eidas.europa.eu/attributes/legalperson/VATRegistrationNumber` |
+| `TaxReference` | ei |  `http://eidas.europa.eu/attributes/legalperson/TaxReference` |
+| `LEI` | ei |  `http://eidas.europa.eu/attributes/legalperson/LEI` |
+| `EORI` | ei |  `http://eidas.europa.eu/attributes/legalperson/EORI` |
+| `SEED` | ei |  `http://eidas.europa.eu/attributes/legalperson/SEED` |
+| `SIC` | ei |  `http://eidas.europa.eu/attributes/legalperson/SIC` |
+| `D-2012-17-EUIdentifier` | `http://eidas.europa.eu/attributes/legalperson/D-2012-17-EUIdentifier` |
 
 ### 3.2 Autentimismeetodi valik
 
