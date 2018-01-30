@@ -241,7 +241,7 @@ Identsustõendis esitatakse järgmised väljad (_claims_).
 | `nbf` (_Not Before_)   | `"nbf":"Wed Sep 27 11:47:22 EEST 2017"` - tõendi kehtivuse algusaeg |
 | `amr` (_Authentication Method Reference_) | `"amr":["mID"]` - kasutaja autentimiseks kasutatud autentimismeetod. Võimalikud väärtused: `mID` - mobiil-ID, `idcard` - Eesti ID-kaart, `eIDAS` - piiriülene |
 | `iss`              | `"iss":"https://tara.ria.ee"` - tõendi väljastaja (TARA-teenus); testteenuse puhul `"iss":"https://tara-test.ria.ee"` |
-| `profile_attributes`   | `"profile_attributes": {"given_name":"MARY ÄNN", "family_name":"O’CONNEŽ-ŠUSLIK", "mobile_number":"+37200000766"}` - autenditud isikut kirjeldavad andmed &#128679; eIDAS => sh eIDAS atribuudid &#128679;|
+| `profile_attributes`   | `"profile_attributes": {"given_name":"MARY ÄNN", "family_name":"O’CONNEŽ-ŠUSLIK", "mobile_number":"+37200000766"}` - autenditud isikut kirjeldavad andmed &#128679; eIDAS => sh eIDAS atribuudid (vt ka allpool esindamise kohta) &#128679;|
 | `given_name`              | `"given_name":"MARY ÄNN"` - autenditud kasutaja eesnimi (testnimi, valitud täpitähtede sisalduvuse pärast) |
 | `family_name`              | `"family_name":"O’CONNEŽ-ŠUSLIK"` - autenditud kasutaja perekonnanimi (testnimi, valitud täpitähtede jm eritärkide sisalduvuse pärast) |
 | `mobile_number`          | `"mobile_number":"+37200000766"` - m-ID kasutaja autentimisel kasutatud telefoninumber |
@@ -251,6 +251,40 @@ Identsustõendis esitatakse järgmised väljad (_claims_).
 | `nonce`                 | `"nonce":"qrstuvwxyzabcdef"` - turvaelement |
 | `acr` Authentication Context Class Reference) | `"acr": "low"` - autentimistase, vastavalt eIDAS tasemetele. Võimalikud väärtused: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Elementi ei kasutata, kui autentimistase ei kohaldu või pole teada |
 | `jti`              | `"jti":"0e12bf29... "` - identsustõendi identifikaator |
+
+Esindaja andmed eIDAS-autentimisel
+
+Küsida ei saa, kui võidakse väljastada:
+
+Füüsilise isiku esindaja
+
+| inimloetav nimi | tehniline nimi |
+|---------------------------|-----------------------------------|
+| `RepresentativeBirthName` | `http://eidas.europa.eu/attributes/naturalperson/representative/BirthName` |
+| `RepresentativeCurrentAddress` | `http://eidas.europa.eu/attributes/naturalperson/representative/CurrentAddress` |
+| `RepresentativeFamilyName` | `http://eidas.europa.eu/attributes/naturalperson/representative/CurrentFamilyName` |
+| `RepresentativeFirstName` | `http://eidas.europa.eu/attributes/naturalperson/representative/CurrentGivenName` |
+| `RepresentativeDateOfBirth` | `http://eidas.europa.eu/attributes/naturalperson/representative/DateOfBirth` |
+| `RepresentativeGender` | `http://eidas.europa.eu/attributes/naturalperson/representative/Gender` |
+| `RepresentativePersonIdentifier` | `http://eidas.europa.eu/attributes/naturalperson/representative/PersonIdentifier` |
+| `RepresentativePlaceOfBirth` | `http://eidas.europa.eu/attributes/naturalperson/representative/PlaceOfBirth` |
+
+Juriidilise isiku esindaja
+
+| inimloetav nimi | tehniline nimi |
+|---------------------------|-----------------------------------|
+| `RepresentativeD-2012-17-EUIdentifier` | `http://eidas.europa.eu/attributes/legalperson/representative/D-2012-17-EUIdentifier` |
+| `RepresentativeEORI` | `http://eidas.europa.eu/attributes/legalperson/representative/EORI` |
+| `RepresentativeLEI` | `http://eidas.europa.eu/attributes/legalperson/representative/LEI` |
+| `RepresentativeLegalAddress` | `http://eidas.europa.eu/attributes/legalperson/representative/LegalAddress` |
+| `RepresentativeLegalName` | `http://eidas.europa.eu/attributes/legalperson/representative/LegalName` |
+| `RepresentativeLegalAddress` | `http://eidas.europa.eu/attributes/legalperson/representative/LegalPersonAddress` |
+| `RepresentativeLegalPersonIdentifier` | `http://eidas.europa.eu/attributes/legalperson/representative/LegalPersonIdentifier` |
+| `RepresentativeSEED` | `http://eidas.europa.eu/attributes/legalperson/representative/SEED` |
+| `RepresentativeSIC` | `http://eidas.europa.eu/attributes/legalperson/representative/SIC` |
+| `RepresentativeTaxReference` | `http://eidas.europa.eu/attributes/legalperson/representative/TaxReference` |
+| `RepresentativeVATRegistration` | `http://eidas.europa.eu/attributes/legalperson/representative/VATRegistration` |
+| `RepresentativeVATRegistration` | `http://eidas.europa.eu/attributes/legalperson/representative/VATRegistrationNumber` |
 
 Identsustõend võib sisaldada muid OpenID Connect protokolli kohaseid välju, kuid neid teenuses ei kasutata. 
 JWT väljade tähenduse kohta vt vajadusel [https://www.iana.org/assignments/jwt/jwt.xhtml](https://www.iana.org/assignments/jwt/jwt.xhtml).
