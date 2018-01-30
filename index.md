@@ -35,6 +35,8 @@ TARA teenust pakub Riigi Infosüsteemi Amet.
 [Paigaldusjuhend](https://confluence.ria.ee/display/TARA/TARA+paigaldusjuhend) &#128273;<br>
 [Teenusehalduri juhend](https://confluence.ria.ee/display/TARA/Teenusehalduri+juhend) &#128273;
 
+----
+
 ## TARA teenuse arendajale
 
 Repod:

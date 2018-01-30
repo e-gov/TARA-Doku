@@ -2,8 +2,6 @@
 permalink: Liitumisjuhend
 ---
 
-{% include Issue.html %}
-
 # Liitumisjuhend
 {: .no_toc}
 
@@ -83,7 +81,3 @@ Toodanguteenuse URL-id:
 | teenuse avalik allkirjastamisvõti | `https://tara.ria.ee/oidc/jwks` |
 | autentimine (_authorization_) | `https://tara.ria.ee/authorize` | 
 | tõendiväljastus (_token_) | `https://tara.ria.ee/token` | 
-
-----
-
-_Viimati muudetud: 21.11.2017_
