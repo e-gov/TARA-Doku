@@ -2,7 +2,7 @@
 permalink: TehnilineKirjeldus
 ---
 
-Märkus. Piiriülese autentimise (eIDAS) tugi lisatakse teenuse 3. arendusjärgu lõppedes. Mittevalmis võimalused on tähistatud &#128679; => <= &#128679;.
+Märkus. Piiriülese autentimise (eIDAS) tugi lisatakse teenuse 3. arendusjärgu lõppedes. Töösolevad võimalused on tähistatud &\#128679; // // &\#128679;.
 
 # Tehniline kirjeldus
 {: .no_toc}
@@ -106,10 +106,10 @@ Autentimispäringu elemendid:
 | rakenduse identifikaator `client_id` | jah | `client_id=58e7...` | rakenduse identifikaatori annab RIA asutusele klientrakenduse registreerimisel autentimisteenuse kasutajaks |
 | kasutajaliidese keele valik `locale` | ei | `locale=et` | toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida. |
 | `nonce` | ei | `fsdsfwrerhtry3qeewq` | taasesitusründeid vältida aitav parameeter, vastavalt protokollile [Core], jaotis 3.1.2.1. Authentication Request. Parameeter `nonce` ei ole kohustuslik. |
-| &#128679; => `attrs` <= &#128679; | ei | `attrs=FirstName-FamilyName` | eIDAS-atribuudid, vt allpool. |
-| &#128679; => `loa` <= &#128679; | ei | `loa=high` | minimaalne tagatistase. Võimalikud väärtused: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). |
+| &\#128679; // `attrs` // &\#128679; | ei | `attrs=FirstName-FamilyName` | eIDAS-atribuudid, vt allpool. |
+| &\#128679; // `loa` // &\#128679; | ei | `loa=high` | minimaalne tagatistase. Võimalikud väärtused: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). |
 
-&#128679; =>
+&\#128679; //
 
 Välismaalase suunamisel TARA-sse autentimisele tuleb arvestada, et TARA suunab välismaalase edasi, tema koduriigi autentimisteenusesse. Sealt tulev vastus sisaldab suuremat või väiksemat hulka atribuute kasutaja kohta (nt perekonnanimi, aadress, sugu jne). Atribuudid ei tule iseenesest, vaid klientrakendus peab neid küsima.
 
@@ -157,7 +157,7 @@ Kui atribuute URL-is määratud ei ole, hoolitseb TARA ise selle eest, et välis
 
 Küsida ei ole mõtet rohkem atribuute kui e-teenuse osutamiseks vaja läheb. eIDAS-taristus autentimisel küsitakse kasutajalt nõusolekut isikuandmete saatmiseks teise riigi e-teenusele.
 
-<= &#128679;
+// &\#128679;
 
 ## 4 Tagasisuunamine
 
@@ -241,7 +241,7 @@ Identsustõendis esitatakse järgmised väljad (_claims_).
 | `nbf` (_Not Before_)   | `"nbf":"Wed Sep 27 11:47:22 EEST 2017"` - tõendi kehtivuse algusaeg |
 | `amr` (_Authentication Method Reference_) | `"amr":["mID"]` - kasutaja autentimiseks kasutatud autentimismeetod. Võimalikud väärtused: `mID` - mobiil-ID, `idcard` - Eesti ID-kaart, `eIDAS` - piiriülene |
 | `iss`              | `"iss":"https://tara.ria.ee"` - tõendi väljastaja (TARA-teenus); testteenuse puhul `"iss":"https://tara-test.ria.ee"` |
-| `profile_attributes`   | `"profile_attributes": {"given_name":"MARY ÄNN", "family_name":"O’CONNEŽ-ŠUSLIK", "mobile_number":"+37200000766"}` - autenditud isikut kirjeldavad andmed &#128679; => sh eIDAS atribuudid (vt ka allpool esindamise kohta) <= &#128679; |
+| `profile_attributes`   | `"profile_attributes": {"given_name":"MARY ÄNN", "family_name":"O’CONNEŽ-ŠUSLIK", "mobile_number":"+37200000766"}` - autenditud isikut kirjeldavad andmed &\#128679; // sh eIDAS atribuudid (vt ka allpool esindamise kohta) // &\#128679; |
 | `given_name`              | `"given_name":"MARY ÄNN"` - autenditud kasutaja eesnimi (testnimi, valitud täpitähtede sisalduvuse pärast) |
 | `family_name`              | `"family_name":"O’CONNEŽ-ŠUSLIK"` - autenditud kasutaja perekonnanimi (testnimi, valitud täpitähtede jm eritärkide sisalduvuse pärast) |
 | `mobile_number`          | `"mobile_number":"+37200000766"` - m-ID kasutaja autentimisel kasutatud telefoninumber |
@@ -252,7 +252,7 @@ Identsustõendis esitatakse järgmised väljad (_claims_).
 | `acr` Authentication Context Class Reference) | `"acr": "low"` - autentimistase, vastavalt eIDAS tasemetele. Võimalikud väärtused: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Elementi ei kasutata, kui autentimistase ei kohaldu või pole teada |
 | `jti`              | `"jti":"0e12bf29... "` - identsustõendi identifikaator |
 
-&#128679; => Esindaja andmed eIDAS-autentimisel
+&\#128679; // Esindaja andmed eIDAS-autentimisel
 
 Küsida ei saa, kuid võidakse väljastada:
 
@@ -286,7 +286,7 @@ juriidilise isiku esindaja atribuudid
 | `RepresentativeVATRegistration` | `http://eidas.europa.eu/attributes/legalperson/representative/VATRegistration` |
 | `RepresentativeVATRegistration` | `http://eidas.europa.eu/attributes/legalperson/representative/VATRegistrationNumber` |
 
-<= &#128679;
+// &\#128679;
 
 Identsustõend võib sisaldada muid OpenID Connect protokolli kohaseid välju, kuid neid teenuses ei kasutata. 
 JWT väljade tähenduse kohta vt vajadusel [https://www.iana.org/assignments/jwt/jwt.xhtml](https://www.iana.org/assignments/jwt/jwt.xhtml).
