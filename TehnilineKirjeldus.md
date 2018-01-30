@@ -43,7 +43,7 @@ Vt lähemalt [eIDAS autentimise lisamine e-teenusele](https://e-gov.github.io/TA
     - kasutaja vajutab "Logi sisse".
 2. Klientrakendus suunab kasutaja TARA-teenusesse (sirviku ümbersuunamiskorralduse abil)
     - ümbersuunamis-URL-is on autentimispäring
-        - autentimispäringu koostamise kohta vt jaotis [Autentimispäring](#autentimisparing)
+        - autentimispäringu koostamise kohta vt jaotis [Autentimispäring](#3-autentimisparing)
     - kasutajale avaneb autentimismeetodi valiku kuva. Siin võib kasutaja:
         - valida mobiil-ID-ga autentimise (samm 3)
         - valida ID-kaardiga autentimise (samm 4)
@@ -62,8 +62,8 @@ Vt lähemalt [eIDAS autentimise lisamine e-teenusele](https://e-gov.github.io/TA
     - eduka autentimise korral edasi samm 6, vea korral - samm 7
 5. Piiriülene (eIDAS-) autentimine
 6. Autenditud kasutaja
-    - suunatakse tagasi klientrakendusse (vt jaotis [Tagasisuunamine](#tagasisuunamine))
-    - klientrakendus pärib TARA serverilt identsustõendi (vt jaotis [Identsustõend](#identsustoend)).
+    - suunatakse tagasi klientrakendusse (vt jaotis [Tagasisuunamine](#4-tagasisuunamine))
+    - klientrakendus pärib TARA serverilt identsustõendi (vt jaotis [Identsustõend](#5-identsustoend)).
         - identsustõend (_identity token_) on allkirjastatud tõend eduka autentimise kohta
             - identsustõendis sisalduvad autentimisel tuvastatud, kasutaja andmed (atribuudid)
     - klientrakendus annab kasutajale asjakohasel viisil teada, et sisselogimine õnnestus.
@@ -71,12 +71,12 @@ Vt lähemalt [eIDAS autentimise lisamine e-teenusele](https://e-gov.github.io/TA
     - saab kasutaja minna tagasi autentimismeetodi valikusse ja seal kas üritada uuesti, võimalik, et teise autentimismeetodiga
     - või katkestada autentimise ja minna tagasi klientrakendusse.
 
-Kasutaja on võimalik:
-- anda tagasisidet teenuse kohta. Selleks on eraldi sakil avatav vorm, kuhu pääseb autentimismeetodi valiku kuval oleva lingi abil.
-
-Kasutajal on võimalik esitada vearaportit. Selleks on eraldi sakil avatav vorm. Enne vormi on soovitused tüüpvigade iseseisvaks lahendamiseks.
-
-Kasutajal on võimalik saada täiendavat teavet TARA-teenuse kohta. Teave kuvatakse eraldi sakil, sinna saab liikuda autentimismeetodi valiku kuval oleva lingi abil.
+Kasutajal on võimalik:
+- anda tagasisidet teenuse kohta
+    - selleks on eraldi sakil avatav vorm, kuhu pääseb autentimismeetodi valiku kuval oleva lingi abil
+- esitada vearaportit
+    - selleks on eraldi avatav vorm. Enne vormi on soovitused tüüpvigade iseseisvaks lahendamiseks
+- saada täiendavat teavet TARA-teenuse kohta.
 
 ## 3 Autentimispäring
 
@@ -179,7 +179,7 @@ Tagasisuunamispäringu elemendid:
 
 Kasutaja võib e-teenusesse tagasi pöörduda ka ilma autentimismeetodit valimata ja autentimist läbi tegemata (link "Tagasi teenusepakkuja juurde"). See võimalus on mõeldud juhuks, kui kasutaja vajutas klientrakenduses "Logi sisse", kuid tegelikult ei soovi sisse logida. Teenusega liitumise taotluses peab asutus RIA-le teada andma URL-i, kuhu kasutaja "Tagasi teenuspakkuja juurde" vajutamisel suunatakse. NB! OpenID Connect protokolli kohane tagasisuunamis-URL ja siin nimetatud URL on erineva tähendusega.
 
-## 5 Identsustõendi küsimine
+## 5 Identsustõend
 
 Tagasisuunamise (vt eelmine jaotis) järel küsib klientrakendus küsib TARA serverilt identsustõendi (_ID token_).
 
