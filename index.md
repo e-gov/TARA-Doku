@@ -30,13 +30,6 @@ TARA teenust pakub Riigi Infosüsteemi Amet.
 
 ----
 
-## TARA teenuse käitajale
-
-[Paigaldusjuhend](https://confluence.ria.ee/display/TARA/TARA+paigaldusjuhend) &#128273;<br>
-[Teenusehalduri juhend](https://confluence.ria.ee/display/TARA/Teenusehalduri+juhend) &#128273;
-
-----
-
 ## TARA teenuse arendajale
 
 Repod:
@@ -50,9 +43,6 @@ Repod:
 [RIA eIDAS konnektorteenus](https://github.com/e-gov/eIDAS-Connector)
 
 Keskkonnad:
-
-[Confluence-is](https://confluence.ria.ee/display/TARA) &#128273;<br>
-JIRA-s: [1-2. arendusjärk](https://jira.ria.ee/browse/DD4J-88) [3. arendusjärk](https://jira.ria.ee/projects/TARAEI) &#128273;<br>
 
 Lähteülesanded:
 
