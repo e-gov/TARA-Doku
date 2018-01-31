@@ -59,8 +59,6 @@ ___5 Eesti___
 
 [tasemed] Riigi Infosüsteemi Amet. eIDAS autentimistasemed. v1.0, 15.03.2017, [https://www.ria.ee/public/PKI/eIDAS-autentimistasemed.pdf](https://www.ria.ee/public/PKI/eIDAS-autentimistasemed.pdf).
 
-[TP-192 RIA autentimisteenus] (https://jira.ria.ee/browse/TP-93). RIA teenuseportfelli kirje. &#128274;
-
 [kavand] Riigi Infosüsteemi Amet. RIA SSO autentimisteenuse kavand. 18 lk. [https://github.com/ria-eidas/RIA-autentimisteenus/wiki/Teenuse-kontseptsioon](https://github.com/ria-eidas/RIA-autentimisteenus/wiki/Teenuse-kontseptsioon)
 
 ___6 Muud___

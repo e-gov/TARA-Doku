@@ -7,18 +7,18 @@ permalink: Voimekused
 <img src='img/PLAAN-1.PNG' style='width: 800px;'>
 
 Teenuseportfellis: &#128273;<br>
-[TP-95 RIA eIDAS konnektorteenus](https://jira.ria.ee/projects/TP/issues/TP-95)<br>
-[TP-93 Eesti autentimisteenus](https://jira.ria.ee/projects/TP/issues/TP-93)<br>
-[TP-192 RIA autentimisteenus](https://jira.ria.ee/projects/TP/issues/TP-192)<br>
-[TP-210 TARA (RIA autentimisteenus) testkeskkond](https://jira.ria.ee/projects/TP/issues/TP-210)<br>
+TP-95 RIA eIDAS konnektorteenus<br>
+TP-93 Eesti autentimisteenus<br>
+TP-192 RIA autentimisteenus<br>
+TP-210 TARA (RIA autentimisteenus) testkeskkond<br>
 
 Projektiportfellis: &#128273;<br>
-[APP-300 RIA eIDAS konnektorteenus](https://jira.ria.ee/browse/APP-300)<br>
-[APP-237 RIA autentimisteenuse (TARA) lisaarendused](https://jira.ria.ee/browse/APP-237)<br>
-[APP-330  Autentimisteenuse turvauuring](https://jira.ria.ee/browse/APP-330)<br>
-[APP-333 Autentimisteenuse turvatestimine](https://jira.ria.ee/browse/APP-333)<br>
-[APP-325 (ECDSA) DD4J muudatused kaardirakenduse ühilduvuseks e-teenustes ja keskse autentimisteenuse loomine](https://jira.ria.ee/browse/APP-325)<br>
-[APP-309 Eesti autentimisteenuse pisiarendused](https://jira.ria.ee/browse/APP-309)
+APP-300 RIA eIDAS konnektorteenus<br>
+APP-237 RIA autentimisteenuse (TARA) lisaarendused<br>
+APP-330  Autentimisteenuse turvauuring<br>
+APP-333 Autentimisteenuse turvatestimine<br>
+APP-325 (ECDSA) DD4J muudatused kaardirakenduse ühilduvuseks e-teenustes ja keskse autentimisteenuse loomine<br>
+APP-309 Eesti autentimisteenuse pisiarendused
 
 Repod:
 
