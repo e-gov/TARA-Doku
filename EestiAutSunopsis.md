@@ -1,5 +1,5 @@
 ---
-EestiAut
+permalink: EestiAut
 ---
 
 # Eesti autentimisteenus. Tarkvara ülevaade ja hinnang
