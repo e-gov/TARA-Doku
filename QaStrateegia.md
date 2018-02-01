@@ -89,7 +89,7 @@ Kõik muudatused (kaasa arvatud ühiktestide muudatused) vaadatakse üle teise a
 Eesmärk on automatiseerida testimise funktsionaalsust määral mis annab parimat kasu ajalises ning korduvkasutatavuse mõttes. Ühekordsed tegevused testitakse käsitsi, v.a kui nende automatiseerimine ei ole võimalik samaväärse ajakuluga.
 
 ### Testimise protsess
-Testiplaani loomisel tuleb analüüsida testide jaotust ühik-, integratsiooni-, ning süsteemitestide vahel. Kuna tegu on keeruka süsteemiga mis koosneb mitmest välisest liidestusest mis ei ole meie kontrolli all, siis võib olla kiirem osad testid realiseerida ühiktestide tasemel.
+Testiplaani loomisel tuleb analüüsida testide jaotust ühik-, integratsiooni-, ning süsteemitestide vahel. Kuna tegu on keeruka süsteemiga mis koosneb mitmest välisest liidestusest mis ei ole meie kontrolli all, siis võib olla kiirem osad testid realiseerida ühiktestide tasemel. Vastav seos testijuhtude ning testitasemete vahel tuleb kajastada testijuhtude kirjelduses.
 
 <img src='img/AutomaatneTestiprotsess.png' style='width: 600px;'><br>
 Joonis 2. Automaatsete kontrollide protsess tsentraalses testkeskkonnas.
@@ -147,7 +147,7 @@ Joonis 6. Metaandmete publitseerimise testimine
 
 2) Vastusena saadud metaandmed valideeritakse.
 
-**Lahtine küsimus**: Kuidas testime metaandmete lugemist (kas tulevad failist või tehakse päring)? "happy path" juhu saaks testida selliselt, et kui autentimise alustamine õnnestub siis on kõik ok? Metaandmete lugemisel tekkivad vead, timeoutid jms tuleks siiski testida. See oleks mõtekas teha unit testi tasemel?
+Metaandmete lugemist testitakse ühiktesti tasemel, kuna integratsioonitesti tasemel ei ole võimalik seda valideerida.
 
 <img src='img/eidasParingIT.PNG' style='width: 600px;'><br>
 Joonis 7. Autentimise alustamise testimine
@@ -161,9 +161,9 @@ Joonis 7. Autentimise alustamise testimine
 <img src='img/AutentimiseVastusIT.png' style='width: 600px;'><br>
 Joonis 8. Autentimisvastuse saamise testimine
 
-1) Teostatakse "happy path" valideerimise alustuse voog.
+1) Teostatakse ideaaljuhu valideerimise alustuse voog.
 
-2) Tagastatavad andmed saadetakse kas muutmatul kujul ("happy path" test) või modifitseeritud kujul (erijuhud) eIDAS klienti.
+2) Tagastatavad andmed saadetakse kas muutmatul kujul (ideaaljuhu voo test) või modifitseeritud kujul (erijuhud) eIDAS klienti.
 
 3) Kuvatavad isikuandmed või veakoodid valideeritakse.
 
@@ -177,14 +177,14 @@ Täpsustub hiljem.
 
 ### Süsteemi testimine
 
-Eesmärk: kasutuslugudes ja end-to-end stsenaariumite toimimises vigade leidmine.
+Eesmärk: kasutuslugudes ja täisvoo stsenaariumite toimimises vigade leidmine.
 
 <img src='img/Systeemitestid.png' style='width: 600px;'><br>
 Joonis 9. Süsteemitestid
 
 **1.etapp eIDAS kliendi testimine**
 
-Testitakse käsitsi, kaaluda võib "happy path" juhtude automatiseerimist. Peamine liidestumine testitakse kasutades eIDAS validaatorteenust. Andmete olemasolul tuleks kasutada ka teiste riikide eIDAS node testteenuseid. Oluline on tähelepanu pöörata võimalikele erinevustele isiku andmetes mida partnerriigid pakuvad.
+Testitakse käsitsi, kaaluda võib ideaaljuhu voogude automatiseerimist. Peamine liidestumine testitakse kasutades eIDAS validaatorteenust. Andmete olemasolul tuleks kasutada ka teiste riikide eIDAS node testteenuseid. Oluline on tähelepanu pöörata võimalikele erinevustele isiku andmetes mida partnerriigid pakuvad.
 
 **2.etapp TARA autentimisteenuse testimine**
 
@@ -200,3 +200,7 @@ Eesmärk: minimiseerida riski, et arendusega otseselt mitte seotud funktsionaals
 
 Regressioonitestimine viiakse läbi vastavalt regressiooninimekirjale.
 
+## Mõistete seletused
+
+ideaaljuhu voog - testjuht kus kasutatakse valiidset sisendit ning kasutusvoog läbitakse ilma vigadeta.
+täisvoog - kasutusvoog kus läbitakse kõik süsteemi komponendid. Hõlmab nii positiivseid kui negatiivseid juhte.
