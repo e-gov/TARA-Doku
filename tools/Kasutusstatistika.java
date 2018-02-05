@@ -51,10 +51,7 @@ import java.util.Scanner;
 
 public class Script {
 	
-
-	public static void main(String[] args) throws IOException {
-		
-		
+	public static void main(String[] args) throws IOException {		
 		// Initilazing parameters and contants
 		String configText = "";
 		int aq = 0;
@@ -76,13 +73,8 @@ public class Script {
 		String totalLog = "";
 		ArrayList <String> fileNames = new ArrayList <String>();
 		
-		
-		
-		
-		// Reader for the config file
-		
-		BufferedReader we = new BufferedReader(new FileReader("config.txt"));
-		
+		// Reader for the config file		
+		BufferedReader we = new BufferedReader(new FileReader("config.txt"));		
 		
 		try {
 		    StringBuilder am = new StringBuilder();
@@ -99,161 +91,131 @@ public class Script {
 			aq = everything2.indexOf("\n");
 			String endDateEX = everything2.substring((everything2.indexOf(":", aq)+1) , (everything2.indexOf("\n", aq+1) ));
 
-			
+			startDate = startDateEX; 
+			endDate = endDateEX;
+			System.out.println("START: " + startDate);
+			System.out.println("END: " + endDate);
 		
+			//Getting all file names that are in the same directory as the script
+		
+			String directory = System.getProperty("user.dir");
+			directory = directory.replace('\\', '/');
+			File folder = new File(directory);
+			File[] listOfFiles;
+			listOfFiles = folder.listFiles();
+			int nullpoint = listOfFiles.length;
 
-		
-		startDate = startDateEX; 
-		endDate = endDateEX;
-		System.out.println("START: " + startDate);
-		System.out.println("END: " + endDate);
-		
-		
-		//Getting all file names that are in the same directory as the script
-		
-		String directory = System.getProperty("user.dir");
-		directory = directory.replace('\\', '/');
-		File folder = new File(directory);
-		File[] listOfFiles;
-		listOfFiles = folder.listFiles();
-		int nullpoint = listOfFiles.length;
-
-	    for (int i = 0; i < nullpoint; i++) {
-	      if (listOfFiles[i].isFile()) {
-		        String nameFile = listOfFiles[i].getName();
-		        if( nameFile.compareTo(startDate) >= 0 && nameFile.compareTo(endDate)<=0 ) {
-		        	
-		        	fileNames.add(listOfFiles[i].getName());
-		        	System.out.println("In time range: " + listOfFiles[i].getName());
-		        }
-	      } else if (listOfFiles[i].isDirectory()) {
-	        System.out.println("Directory " + listOfFiles[i].getName());
-	      }
-	    }
-
-	    
-	    for(int w = 0; w<fileNames.size(); w++) {
-		try(BufferedReader br = new BufferedReader(new FileReader(""+ fileNames.get(w) ))) {
-		    StringBuilder sb = new StringBuilder();
-		    String line = br.readLine();
-
-		    while (line != null) {
-		        sb.append(line);
-		        sb.append(System.lineSeparator());
-		        line = br.readLine();
-		        numberOfLines++;
-		    }
-		    totalLog = sb.toString() + totalLog;
-		    
-		   
-		}
-	    
-		
-		
-	}
-		
-		
-		outString=totalLog;
-		System.out.println(outString);
-		
-		//Sorting out the successful authentication and errors
-		
-		
-		for(int u = 0; u < numberOfLines;u++) {	
-			int line = outString.indexOf("\n", newLineIndex);
-			String oneLine = outString.substring(newLineIndex, line);
-			clientIdIndex1 = oneLine.indexOf(";", 0);
-			clientIdIndex2 = oneLine.indexOf(";",clientIdIndex1+1 );
-			clientId = oneLine.substring(clientIdIndex1 + 1, clientIdIndex2);
-			newLineIndex = line + 1 ;
-			String upperLine = oneLine.toUpperCase();
-
-			if(clientIdList.contains(clientId) == true) {
-				
-				if(upperLine.contains("ERROR") || upperLine.contains("error")) {
-					unsuccesfulAuth++;
-			}
-				
-			if(upperLine.contains("SUCCESSFUL_AUTH")) {
-
-				int ex = clientIdList.indexOf(clientId);
-				if(upperLine.contains("ID_CARD")|| upperLine.contains("IDCARD")) {
-					int er = (int) idCard.get(ex);
-					idCard.set(ex, er+1);	
-				}
-				
-				if(upperLine.contains("MOBILE_ID") || upperLine.contains("MOBILEID")) {
-					int br = (int) mobileId.get(ex);
-					mobileId.set(ex,  br+1);
-				}
-
-			}
-
-		}
-		
-		if(clientIdList.contains(clientId) == false) {
-			if(upperLine.contains("ERROR") || upperLine.contains("error")) {
-				unsuccesfulAuth++;
-			}
-			clientIdList.add(clientId);
-			if(upperLine.contains("SUCCESSFUL_AUTH")) {
-				if(upperLine.contains("ID_CARD")|| upperLine.contains("IDCARD")) {
-					idCard.add(1);
-					mobileId.add(0);
-				}
-				if(upperLine.contains("MOBILE_ID")|| upperLine.contains("MOBILEID")) {
-					mobileId.add(1);
-					idCard.add(0);
+			for (int i = 0; i < nullpoint; i++) {
+				if (listOfFiles[i].isFile()) {
+					String nameFile = listOfFiles[i].getName();
+					if( nameFile.compareTo(startDate) >= 0 && nameFile.compareTo(endDate)<=0 ) {
+						fileNames.add(listOfFiles[i].getName());
+						System.out.println("In time range: " + listOfFiles[i].getName());
+					}
+				} else if (listOfFiles[i].isDirectory()) {
+					System.out.println("Directory " + listOfFiles[i].getName());
 				}
 			}
-			else {
-				idCard.add(0);
-				mobileId.add(0);
+  
+			for(int w = 0; w<fileNames.size(); w++) {
+				try(BufferedReader br = new BufferedReader(new FileReader(""+ fileNames.get(w) ))) {
+					StringBuilder sb = new StringBuilder();
+					String line = br.readLine();
+					
+					while (line != null) {
+						sb.append(line);
+						sb.append(System.lineSeparator());
+						line = br.readLine();
+						numberOfLines++;
+					}
+					totalLog = sb.toString() + totalLog;		   
 				}
-			
-			
 			}
+		
+		
+			outString=totalLog;
+			System.out.println(outString);
+		
+			//Sorting out the successful authentication and errors
+		
+			for(int u = 0; u < numberOfLines;u++) {	
+				int line = outString.indexOf("\n", newLineIndex);
+				String oneLine = outString.substring(newLineIndex, line);
+				clientIdIndex1 = oneLine.indexOf(";", 0);
+				clientIdIndex2 = oneLine.indexOf(";",clientIdIndex1+1 );
+				clientId = oneLine.substring(clientIdIndex1 + 1, clientIdIndex2);
+				newLineIndex = line + 1 ;
+				String upperLine = oneLine.toUpperCase();
 
-		}
-
-		//Printing out results(client id, succesful auths and unsuccesful)
-		 int sizeList = clientIdList.size();
+				if(clientIdList.contains(clientId) == true) {				
+					if(upperLine.contains("ERROR") || upperLine.contains("error")) {
+						unsuccesfulAuth++;
+					}
+					if(upperLine.contains("SUCCESSFUL_AUTH")) {
+						int ex = clientIdList.indexOf(clientId);
+						if(upperLine.contains("ID_CARD")|| upperLine.contains("IDCARD")) {
+							int er = (int) idCard.get(ex);
+							idCard.set(ex, er+1);	
+						}				
+						if(upperLine.contains("MOBILE_ID") || upperLine.contains("MOBILEID")) {
+							int br = (int) mobileId.get(ex);
+							mobileId.set(ex,  br+1);
+						}
+					}
+				}
+		
+				if(clientIdList.contains(clientId) == false) {
+					if(upperLine.contains("ERROR") || upperLine.contains("error")) {
+						unsuccesfulAuth++;
+					}
+					clientIdList.add(clientId);
+					if(upperLine.contains("SUCCESSFUL_AUTH")) {
+						if(upperLine.contains("ID_CARD")|| upperLine.contains("IDCARD")) {
+							idCard.add(1);
+							mobileId.add(0);
+						}
+						if(upperLine.contains("MOBILE_ID")|| upperLine.contains("MOBILEID")) {
+							mobileId.add(1);
+							idCard.add(0);
+						}
+					}
+					else {
+						idCard.add(0);
+						mobileId.add(0);
+					}			
+				}
+			}
+			//Printing out results(client id, succesful auths and unsuccesful)
+			int sizeList = clientIdList.size();
 		 
-		 for(int q = 0; q<sizeList; q++) {
-			 total =(int) mobileId.get(q) + (int)idCard.get(q);
+			for(int q = 0; q<sizeList; q++) {
+				total =(int) mobileId.get(q) + (int)idCard.get(q);
 			
-			 stats=("KlientID: "+ clientIdList.get(q) + "\n" + "Edukaid ID-kaardiga: " + idCard.get(q) +  "\n" + "Edukaid mobiili-ID-ga: " + mobileId.get(q) + "\n" + "| Kokku: " + total +  "\n" + "\n") + stats ;
+				stats=("KlientID: "+ clientIdList.get(q) + "\n" + "Edukaid ID-kaardiga: " + idCard.get(q) +  "\n" + "Edukaid mobiili-ID-ga: " + mobileId.get(q) + "\n" + "| Kokku: " + total +  "\n" + "\n") + stats ;
 
-			 System.out.println("Klient: "+ clientIdList.get(q) + "| Edukaid ID-kaardiga: " + idCard.get(q) + " |Edukaid mobiili-ID-ga: " + mobileId.get(q) + "| Kokku: " + total);
-		 }
-		 
-		
-		
-		
-		System.out.println("Ebaedukaid autentimisi kokku: " + String.valueOf(unsuccesfulAuth));
-		System.out.println("Date and time of write: ");
-		String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(Calendar.getInstance().getTime());
-		System.out.println(timeStamp);
-		Calendar cal = Calendar.getInstance();
-	    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-		stats = stats +  "\n" + "Ebaedukaid kokku: "+ String.valueOf(unsuccesfulAuth) + "\n" + "Date and time of write: " + timeStamp;
-		String content = outString;
-		
-		
-		//Write results to txt file
-		
-		String path = "stats_uusim.txt";
-		Files.write( Paths.get(path), stats.getBytes(), StandardOpenOption.CREATE);
+				System.out.println("Klient: "+ clientIdList.get(q) + "| Edukaid ID-kaardiga: " + idCard.get(q) + " |Edukaid mobiili-ID-ga: " + mobileId.get(q) + "| Kokku: " + total);
+			}
+	
+			System.out.println("Ebaedukaid autentimisi kokku: " + String.valueOf(unsuccesfulAuth));
+			System.out.println("Date and time of write: ");
+			String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(Calendar.getInstance().getTime());
+			System.out.println(timeStamp);
+			Calendar cal = Calendar.getInstance();
+			SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+			stats = stats +  "\n" + "Ebaedukaid kokku: "+ String.valueOf(unsuccesfulAuth) + "\n" + "Date and time of write: " + timeStamp;
+			String content = outString;
+					
+			//Write results to txt file			
+			String path = "stats_uusim.txt";
+			Files.write( Paths.get(path), stats.getBytes(), StandardOpenOption.CREATE);
 		}
 		
 		finally {
 			we.close();
-		}
-		
-	}
-	
-		// Method for reading files
-	
+		}		
+	}	
+
+	// Method for reading files
 	public static String reader() throws IOException {
 		String example = "s";
 		String totalLog = "";
@@ -262,40 +224,26 @@ public class Script {
 		File[] listOfFiles = folder.listFiles();
 
 	    for (int i = 0; i < listOfFiles.length; i++) {
-	      if (listOfFiles[i].isFile()) {
-	        System.out.println("File " + listOfFiles[i].getName());
-	        fileNames.add(listOfFiles[i].getName());
-	      } else if (listOfFiles[i].isDirectory()) {
-	        System.out.println("Directory " + listOfFiles[i].getName());
-	      }
-	    }
-
-	    
+			if (listOfFiles[i].isFile()) {
+				System.out.println("File " + listOfFiles[i].getName());
+				fileNames.add(listOfFiles[i].getName());
+			} else if (listOfFiles[i].isDirectory()) {
+				System.out.println("Directory " + listOfFiles[i].getName());
+			}
+	    }	    
 	    for(int w = 0; w<fileNames.size(); w++) {
-		try(BufferedReader br = new BufferedReader(new FileReader(""+ fileNames.get(w) ))) {
-		    StringBuilder sb = new StringBuilder();
-		    String line = br.readLine();
+			try(BufferedReader br = new BufferedReader(new FileReader(""+ fileNames.get(w) ))) {
+				StringBuilder sb = new StringBuilder();
+				String line = br.readLine();
 
-		    while (line != null) {
-		        sb.append(line);
-		        sb.append(System.lineSeparator());
-		        line = br.readLine();
-		    }
-		    totalLog = sb.toString() + totalLog;
-		    
-		   
+				while (line != null) {
+					sb.append(line);
+					sb.append(System.lineSeparator());
+					line = br.readLine();
+				}
+				totalLog = sb.toString() + totalLog;		   
+			}			
 		}
-	    
-		
-		
-	}
-	    return totalLog;
-	
-	
-	
-	
-	
-	
-	
+	    return totalLog;	
 	}
 }
