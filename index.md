@@ -45,21 +45,17 @@ Repod:
 [TARA-Doku](https://github.com/e-gov/TARA-Doku), teenuse dokumentatsioon (dok-nirepo)<br>
 [TARA-Management](https://github.com/e-gov/TARA-Management), teenuse haldustööriist (koodirepo)
 
-[RIA eIDAS konnektorteenus](https://github.com/e-gov/eIDAS-Connector)
-
-Keskkonnad:
-
 Lähteülesanded:
 
 [1. arendusjärk](1JARK)<br>
 [2. arendusjärk](2JARK)<br>
 [3. arendusjärk](3JARK) "TARA-eIDAS"
 
-[Dokumentatsiooni täiendamise juhend](Dokujuhend)
-
 [eIDAS/TARA võimekuste ajaplaan](Voimekused)
 
 Mitmesugused töödokumendid:
+
+[Dokumentatsiooni täiendamise juhend](Dokujuhend)
 
 [TARA serverrakenduse sisearhitektuur](Sisearhitektuur)
 
