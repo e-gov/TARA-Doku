@@ -1,5 +1,3 @@
-<img src='img/ee_cef_0.png' style='width:400px'>
-
 # TARA autentimisteenus
 
 RIA autentimisteenuse "TARA" dokumentatsioon
