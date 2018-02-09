@@ -2,6 +2,8 @@
 permalink: /
 ---
 
+<img src='img/ee_cef_0.png' style='width:400px'>
+
 <img src='img/LOVID.png' style='width: 80px;'>
 
 <span style='color:Tomato;'>Vali õige meetod:</span> [Piiriülene eIDAS-autentimine. Liidestamismeetodi valik](https://e-gov.github.io/eIDAS-Connector/Valik)
