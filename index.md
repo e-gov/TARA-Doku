@@ -30,11 +30,12 @@ TARA teenust pakub Riigi Infosüsteemi Amet.
 
 ----
 
-## TARA teenuse haldurile
+## TARA teenuse arendajale
+
+Töödokumentatsioon, mille ajakohasus ega muutumatus ei ole tagatud.
+{:.teade}
 
 [Kasutusstatistika.java](https://e-gov.github.io/TARA-Doku/tools/Kasutusstatistika.java) - teenuse kasutusstatistika aruande programm 
-
-## TARA teenuse arendajale
 
 Repod:
 
