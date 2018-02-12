@@ -72,8 +72,4 @@ Mitmesugused töödokumendid:
 
 [Dokumentatsiooniplaan](Dok-plaan)
 
-Autentimisteenuse turvauuring. Lähteülesanne<br>
-[v 0.4](Autentimisprotokoll)<br>
-[v 0.3](Uuring)
-
 [Teenuse muudatused](Muutmine)<br>
