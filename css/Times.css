@@ -139,10 +139,19 @@ a[href]:hover {
   color: Cadetblue;
   background-color: lightcyan;
 }
-.nupp {
-  border-radius: 4px; padding: 0.1rem 2rem;
-  border-color: Cadetblue;
-
+a.nupp {
+  display: inline-block;
+  border-radius: 8px; padding: 0.5rem 1rem !important; margin: 1rem !important;
+  color: Black;
+  border: 1px solid CadetBlue;
+  text-decoration: none !important;
+}
+a.nupp:focus,
+a.nupp:hover {
+  border-bottom-width: 1px;
+  margin-bottom: 1rem;
+  border: 1px solid Black !important;
+  text-decoration: none !important;
 }
 
 
