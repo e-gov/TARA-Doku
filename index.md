@@ -18,7 +18,7 @@ TARA teenust pakub Riigi Infosüsteemi Amet.
 
 [Ärikirjeldus](Arikirjeldus)<br>
 
-**[Liitumine](https://www.ria.ee/ee/autentimisteenused.html)**
+<p><a href='https://www.ria.ee/ee/autentimisteenused.html' class='nupp'>Liitumine</a></p>
 
 <a href='https://e-gov.github.io/TARA-Doku/files/TARA-tutvustus.pdf' target='_new'>eIDAS autentimise lisamine e-teenusele</a>, esitlus eID infopäeval 31.10.2017<br>
 <a href='https://e-gov.github.io/TARA-Doku/files/PiiriyleneAutentimine.pdf' target='_new'>Piiriülene autentimine</a>, esitlus eID infopäeval 15.11.2017<br> 
