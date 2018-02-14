@@ -2,6 +2,9 @@
 permalink: Liitumisjuhend
 ---
 
+KEHTETU. Dokument on arhiveeritud. 
+{:.teade}
+
 # Liitumisjuhend
 {: .no_toc}
 
