@@ -93,8 +93,10 @@ th { font-weight: normal; font-style: italic; text-align: center; }
 pre, code, samp {
   font-family: 'Source Code Pro', monospace;
   font-size: 16px;
-  color: darkslategray !important;
-  overflow-y: hidden; overflow-x: scroll;
+  color: black !important;
+  background-color: honeydew;
+  white-space:pre-wrap;
+  overflow-y: hidden; overflow-x: hidden;
   page-break-inside: avoid; hyphens: none;
   text-transform: none;
 }
