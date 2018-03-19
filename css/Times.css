@@ -4,7 +4,7 @@
 
 /*#region Paigutus */
 body {
-  max-width: 60em;
+  max-width: 55em;
   margin: 0 0; 
   padding: 0.6em 1.5em 2em 2em; 
   font-family: 'Segoe UI', Arial, serif;
@@ -17,7 +17,7 @@ body {
 .pais { font-family: 'Anonymous Pro', sans-serif;
   font-size: 13pt; margin-bottom: 8px; }
 
-#Tekst { width: 55rem; }
+#Tekst { width: 50rem; }
 
 /* ---- Avalehe paigutus ---- */  
 #Container { display: flex; max-width: 60em; }

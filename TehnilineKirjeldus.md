@@ -112,7 +112,7 @@ Autentimispäringu elemendid:
 | `client_id` | jah | `client_id=58e7...` | rakenduse identifikaator. Rakenduse identifikaatori annab RIA asutusele klientrakenduse registreerimisel autentimisteenuse kasutajaks. |
 | `locale` | ei | `locale=et` | kasutajaliidese keele valik. Toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida. |
 | `nonce` | ei | `fsdsfwrerhtry3qeewq` | taasesitusründeid vältida aitav unikaalne parameeter, vastavalt protokollile ([Viited](Viited), [Core], jaotis 3.1.2.1. Authentication Request). Parameeter `nonce` ei ole kohustuslik. |
-| `acr_values` | ei | `acr_values=substantial` | minimaalne nõutav autentimistase vastavalt eIDAS tasemetele. Lubatud määrata üks väärtus järgmisest loetelust: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Kui määramata, siis vaikimisi high. |
+| `acr_values` | ei | `acr_values=substantial` | minimaalne nõutav autentimistase vastavalt eIDAS tasemetele. Lubatud määrata üks väärtus järgmisest loetelust: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Kui määramata, siis vaikimisi `substantial` (märkimisväärne). |
 
 ### Lisainformatsiooni küsimine välisriigi kodaniku puhul
 
@@ -210,7 +210,7 @@ Identsustõendis esitatakse järgmised väljad (_claims_).
 | `nbf` (_Not Before_)   | jah |`"nbf":"Wed Sep 27 11:47:22 EEST 2017"` - tõendi kehtivuse algusaeg |
 | `amr` (_Authentication Method Reference_) | jah | `"amr":["mID"]` - kasutaja autentimiseks kasutatud autentimismeetod. Võimalikud väärtused: `mID` - mobiil-ID, `idcard` - Eesti ID-kaart, `eIDAS` - piiriülene |
 | `iss` (_Issuer_)       | jah | `"iss":"https://tara.ria.ee"` - tõendi väljastaja (TARA-teenus); testteenuse puhul `"iss":"https://tara-test.ria.ee"` |
-| `profile_attributes`   | jah | `"profile_attributes": {"given_name":"MARY ÄNN", "family_name":"O’CONNEŽ-ŠUSLIK", "mobile_number":"+37200000766"}` - autenditud isikut kirjeldavad andmed &\#128679; // sh eIDAS atribuudid (vt ka allpool täiendavate andmete küsimise ja isiku esindamise kohta) // &\#128679; |
+| `profile_attributes`   | jah | `"profile_attributes": {"given_name":"MARY ÄNN", "family_name":"O’CONNEŽ-ŠUSLIK", "mobile_number":"+37200000766"}` - autenditud isikut kirjeldavad andmed, sh eIDAS atribuudid (vt ka allpool täiendavate andmete küsimise ja isiku esindamise kohta)  |
 | `profile_attributes.given_name`              | jah | `"given_name":"MARY ÄNN"` - autenditud kasutaja eesnimi (testnimi, valitud täpitähtede sisalduvuse pärast) |
 | `profile_attributes.family_name`              | jah | `"family_name":"O’CONNEŽ-ŠUSLIK"` - autenditud kasutaja perekonnanimi (testnimi, valitud täpitähtede jm eritärkide sisalduvuse pärast) |
 | `profile_attributes.mobile_number`          | ei | `"mobile_number":"+37200000766"` - m-ID kasutaja autentimisel kasutatud telefoninumber |
@@ -241,19 +241,19 @@ Juriidiline isik
 | identsustõendi element | scope väärtus | väljastamine kohustuslik |  eIDAS atribuut |
 |-----------------|-----------------|:------------------------:|----------------|
 | `eidas:legal_person_identifier` | `profile_attributes.` `legal_person_identifier` | jah | `LegalPersonIdentifier` |
-| `eidas:legal_name` | `profile_attributes.legal_name` | jah         | `LegalName` |
+| `eidas:legal_name` | `profile_attributes.` `legal_name` | jah         | `LegalName` |
 
 | identsustõendi element | scope väärtus | väljastamine kohustuslik | eIDAS atribuut |
 |-----------------|-----------------|:------------------------:|----------------|
-| `profile_attributes.legal_address` | `eidas:legal_address` | ei | `LegalAddress` |
-| `profile_attributes.legal_person_address` | `eidas:legal_person_address` | ei | `LegalPersonAddress` |
-| `profile_attributes.vat_registration` | `eidas:vat_registration` | ei | `VATRegistrationNumber` |
-| `profile_attributes.tax_reference` | `eidas:tax_reference`  | ei |  `TaxReference` |
+| `profile_attributes.` `legal_address` | `eidas:legal_address` | ei | `LegalAddress` |
+| `profile_attributes.` `legal_person_address` | `eidas:legal_person_address` | ei | `LegalPersonAddress` |
+| `profile_attributes.` `vat_registration` | `eidas:vat_registration` | ei | `VATRegistrationNumber` |
+| `profile_attributes.` `tax_reference` | `eidas:tax_reference`  | ei |  `TaxReference` |
 | `profile_attributes.LEI` | `eidas:lei`  | ei |  `LEI` |
 | `profile_attributes.EORI` | `eidas:eori`  | ei |  `EORI` |
 | `profile_attributes.SEED` | `eidas:seed`  | ei |  `SEED` |
 | `profile_attributes.SIC` | `eidas:sic` | ei |  `SIC` |
-| `profile_attributes.D-2012-17-EUIdentifier` | `eidas:d-2012-17-eu_identifier`  | ei | `D-2012-17-EUIdentifier ` |
+| `profile_attributes.` `D-2012-17-EUIdentifier` | `eidas:d-2012-17-eu_identifier`  | ei | `D-2012-17-EUIdentifier ` |
 
 Küsida ei saa, kuid võidakse väljastada:
 
@@ -282,9 +282,7 @@ juriidilise isiku esindaja atribuudid (väli identsustõendis - eIDAS atribuut)
 - `profile_attributes.representative_tax_reference` - `RepresentativeTaxReference`
 - `profile_attributes.representative_vat_registration` - `RepresentativeVATRegistration`
 
-Translitereerimine:
-
-NB! Kõigi eelpool toodud eIDAS spetsiifilistele identsustõendi väärtused peavad olema esitatud ladinapärasel kujul, kuid sellele lisaks võivad sihtriigid soovi korral esitada nimekuju ka originaalsel kujul. Juhul kui välisriik otsustab saata ka algse, mitteladinakeelse kuju, esitatakse antud atribuudi nime ja väärtuse paarid ka `profile_attributes_nonlatin` blokis.
+__Translitereerimine.__ Kõigi eelpool toodud eIDAS spetsiifilistele identsustõendi väärtused peavad olema esitatud ladinapärasel kujul, kuid sellele lisaks võivad sihtriigid soovi korral esitada nimekuju ka originaalsel kujul. Juhul kui välisriik otsustab saata ka algse, mitteladinakeelse kuju, esitatakse antud atribuudi nime ja väärtuse paarid ka `profile_attributes_nonlatin` blokis.
 
 Näide identsustõendis profiilielementide translitereerimisest (isiku eesnimi ja perenimi on esitatud ladina ja kreekakeelsel kujul):
 ````json
@@ -305,13 +303,11 @@ Näide identsustõendis profiilielementide translitereerimisest (isiku eesnimi j
 }
 ````
 
-// &\#128679;
-
 Identsustõend võib sisaldada muid OpenID Connect protokolli kohaseid välju, kuid neid teenuses ei kasutata. 
-JWT väljade tähenduse kohta vt vajadusel [https://www.iana.org/assignments/jwt/jwt.xhtml](https://www.iana.org/assignments/jwt/jwt.xhtml).
+
 Kui identsustõendit ei pärita `5` minuti jooksul, siis identsustõend aegub ja autentimisprotsessi tuleb korrata.
 
-Rakendus loob saadud identsustõendi alusel kasutajaga seansi. Seansi loomine ja pidamine on rakenduse kohustus. Kuidas seda teha, ei ole autentimisteenuse skoobis.
+Rakendus loob saadud identsustõendi alusel kasutajaga seansi. Seansi loomine ja pidamine on rakenduse kohustus. Kuidas seda teha, ei ole autentimisteenuse TARA skoobis.
 
 ## 6 Otspunktid
 
@@ -321,7 +317,7 @@ Testteenus
 |---------------|---------------------------------|
 | teenuseteave (_server discovery_) |  [https://tara-test.ria.ee/oidc/.well-known/openid-configuration](https://tara-test.ria.ee/oidc/.well-known/openid-configuration) |
 | teenuse avalik allkirjastamisvõti | [https://tara-test.ria.ee/oidc/jwks](https://tara-test.ria.ee/oidc/jwks) |
-| kliendi registreerimine | dünaamilist registreerimist ei toetata, registreerimine staatiliselt, `help@ria.ee` kaudu |
+| klientrakenduse registreerimine | dünaamilist registreerimist ei toetata, registreerimine staatiliselt, `help@ria.ee` kaudu |
 | autentimine (_authorization_) | `https://tara-test.ria.ee/oidc/authorize` | 
 | tõendiväljastus (_token_) | `https://tara-test.ria.ee/oidc/token` | 
 
@@ -331,7 +327,7 @@ Toodanguteenus
 |---------------|---------------------------------|
 | teenuseteave (_server discovery_) | `https://tara.ria.ee/oidc/.well-known/openid-configuration` |
 | teenuse avalik allkirjastamisvõti | `https://tara.ria.ee/oidc/jwks` |
-| kliendi registreerimine | dünaamilist registreerimist ei toetata, registreerimine staatiliselt, `help@ria.ee` kaudu |
+| klientrakenduse registreerimine | dünaamilist registreerimist ei toetata, registreerimine staatiliselt, `help@ria.ee` kaudu |
 | autentimine (_authorization_) | `https://tara.ria.ee/oidc/authorize` | 
 | tõendiväljastus (_token_) | `https://tara.ria.ee/oidc/token` | 
 
