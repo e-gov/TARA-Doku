@@ -2,7 +2,7 @@
 permalink: TehnilineKirjeldus
 ---
 
-Märkus. Piiriülese autentimise (eIDAS) tugi lisatakse teenuse 3. arendusjärgu lõppedes. Arenduses olevad võimalused on tähistatud &\#128679; // // &\#128679;.
+Märkus. Piiriülese autentimise (eIDAS) tugi on arenduses. Arenduse käigus võib eIDAS-e osas tulla muudatusi.
 
 # Tehniline kirjeldus
 {: .no_toc}
@@ -19,7 +19,7 @@ Käesolev dokument esitab teenuse tehnilised omadused, samuti annab soovitusi e-
 
 Fookus on OpenID Connect protokolli rakendamisel tehtud valikutel, erinevustel ja täiendustel OpenID Connect protokolliga võrreldes. Esitatakse päringute näited. Liidestuja peab kindlasti tutvuma ka OpenID Connect protokolliga [Core]. Liidestuja peab erilist tähelepanu pöörama, et kõik protokollikohased kontrollid saaksid tehtud - turvaelemendi `state` ja kui kasutatakse, siis ka `nonce` kontroll, identsustõendi kontroll jm. 
 
-Autentimisteenus on Riigi Infosüsteemi Ameti uus pakutav teenus, millega asutus saab oma e-teenusesse lisada mobiil-ID ja ID-kaardi kasutaja autentimise toe. &\#128679; // Arenduses on piiriülene (eIDAS-)autentimine. // &\#128679; Järgmistes arendusjärkudes lisatakse teiste autentimismeetodite (pangalingid, Smart-ID) tugi.
+Autentimisteenus on Riigi Infosüsteemi Ameti uus pakutav teenus, millega asutus saab oma e-teenusesse lisada mobiil-ID ja ID-kaardi kasutaja autentimise toe. Arenduses on piiriülene (eIDAS-)autentimine. Järgmistes arendusjärkudes lisatakse teiste autentimismeetodite (pangalingid, Smart-ID) tugi.
 
 TARA teenuse aluseks on OpenID Connect protokoll ([Viited](Viited), [Core]), mis omakorda põhineb OAuth 2.0 protokollil. Võrreldes OpenID Connect protokolliga on tehtud järgmised valikud, erisused ja täiendused:
 
@@ -64,7 +64,8 @@ Joonis 1. eIDAS taristu
     - kasutaja valib sihtriigi
     - kasutaja suunatakse läbi eIDAS Node võrgu sihtriigi autentimissüsteemi
     - kasutaja autendib ennast sihtriigi autentimisvahendiga
-    - eduka autentimise korral (ning kui sihtriigi autentimisvahendi tase on piisav) edasi samm 6, vea korral - samm 7
+    - eduka autentimise korral (ning kui sihtriigi autentimisvahendi tase on piisav) edasi samm 6
+    - vea korral - samm 7
 6. Autenditud kasutaja
     - suunatakse tagasi klientrakendusse (vt jaotis [Tagasisuunamine](#4-tagasisuunamine))
     - klientrakendus pärib TARA serverilt identsustõendi (vt jaotis [Identsustõend](#5-identsustoend)).
@@ -72,7 +73,8 @@ Joonis 1. eIDAS taristu
             - identsustõendis sisalduvad autentimisel tuvastatud, kasutaja andmed (atribuudid)
     - klientrakendus annab kasutajale asjakohasel viisil teada, et sisselogimine õnnestus.
 7. Veateate lehelt
-    - saab kasutaja minna tagasi autentimismeetodi valikusse ja seal kas üritada uuesti, võimalik, et teise autentimismeetodiga
+    - saab kasutaja minna tagasi autentimismeetodi valikusse
+      - ja seal kas üritada uuesti, võimalik, et teise autentimismeetodiga
     - või katkestada autentimise ja minna tagasi klientrakendusse.
 
 Kasutajal on võimalik:
@@ -102,18 +104,15 @@ Autentimispäringu elemendid:
 
 | URL-i element          | kohustuslik | näide                       |  selgitus     |
 |------------------------|:---------- :|-----------------------------|---------------|
-| protokoll, host ja tee (_path_) | jah | `https://tara.ria.ee/oidc/authorize` | `/authorize` on TARA-teenuse OpenID Connect-kohane autentimisotspunkt (termin 'autoriseerimine' pärineb alusprotokollist OAuth 2.0).  |
-| tagasi-pöördumis-URL `redirect_uri` | jah | `redirect_uri=https%3A%2F%2Feteenus.asutus.ee/tagasi` | tagasipöördumis-URL-i valib asutus ise. Tagasipöördumis-URL võib sisaldada _query_-osa. Tärgile `?` järgnevas osas omakorda `?` kasutamine ei ole lubatud. Vajadusel kasutada [URLi kodeerimist](https://en.wikipedia.org/wiki/Percent-encoding) |
-| autentimise skoop `scope` | jah | `scope=openid` | kohustuslik on väärtus `openid`; <br><br>ülepiirilise autentimise korral on võimalik lisada täpsustavaid lisaväärtusi täiendavate isikuandmete pärimiseks. Lisaväärtused tuleb eraldada tühikuga. Tühikud esitada kasutades URL kodeeringut (RFC 3986). Näide: `scope=openid%20eidas:place_of_birth%20eidas:gender`        |
-| turvakood `state` | jah | `state=hkMVY7vjuN7xyLl5` | klientrakenduse serveripool peab genereerima ja päringus esitama turvakoodi. Turvakood on igas päringus erinev, sobiva pikkusega - nt 16 sümbolit - juhusõne, mis aitab tagada, et erinevate kasutajate autentimised ei lähe sassi ja ründaja ei saa protsessi vahele sekkuda. Turvakood peegeldatakse vastuses tagasi; klientrakendus peab kontrollima, et saab vastuses sama turvakoodi, mille saatis päringus.  |
+| protokoll, host ja tee (_path_) | jah | `https://tara.ria.ee/oidc/authorize` | `/authorize` on TARA-teenuse OpenID Connect-kohane autentimisotspunkt (termin 'autoriseerimine' pärineb alusprotokollist OAuth 2.0). |
+| `redirect_uri` | jah | `redirect_uri=https%3A%2F%2F` `eteenus.asutus.ee%2Ftagasi` | tagasipöördumis-URL. Tagasipöördumis-URL-i valib asutus ise. Tagasipöördumis-URL võib sisaldada _query_-osa. Tärgile `?` järgnevas osas omakorda `?` kasutamine ei ole lubatud. Vajadusel kasutada [URLi kodeerimist](https://en.wikipedia.org/wiki/Percent-encoding). |
+| `scope` | jah | `scope=openid` | autentimise skoop. Kohustuslik on väärtus `openid`; <br><br>ülepiirilise autentimise korral on võimalik lisada täpsustavaid lisaväärtusi täiendavate isikuandmete pärimiseks. Lisaväärtused tuleb eraldada tühikuga. Tühikud esitada kasutades URL kodeeringut ([RFC 3986](https://www.ietf.org/rfc/rfc3986.txt)). |
+| `state` | jah | `state=hkMVY7vjuN7xyLl5` | turvakood. Klientrakenduse serveripool peab genereerima ja päringus esitama turvakoodi. Turvakood on igas päringus erinev, sobiva pikkusega - nt 16 sümbolit - juhusõne, mis aitab tagada, et erinevate kasutajate autentimised ei lähe sassi ja ründaja ei saa protsessi vahele sekkuda. Turvakood peegeldatakse vastuses tagasi; klientrakendus peab kontrollima, et saab vastuses sama turvakoodi, mille saatis päringus.  |
 | `response_type` | jah | `response_type=code` | määrab autentimise tulemuse serverile edastamise viisi. Toetatud on volituskoodi viis (OpenID Connect protokolli _authorization flow_), selle tähiseks on väärtus `code`. |
-| rakenduse identifikaator `client_id` | jah | `client_id=58e7...` | rakenduse identifikaatori annab RIA asutusele klientrakenduse registreerimisel autentimisteenuse kasutajaks |
-| kasutajaliidese keele valik `locale` | ei | `locale=et` | toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida. |
+| `client_id` | jah | `client_id=58e7...` | rakenduse identifikaator. Rakenduse identifikaatori annab RIA asutusele klientrakenduse registreerimisel autentimisteenuse kasutajaks. |
+| `locale` | ei | `locale=et` | kasutajaliidese keele valik. Toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida. |
 | `nonce` | ei | `fsdsfwrerhtry3qeewq` | taasesitusründeid vältida aitav unikaalne parameeter, vastavalt protokollile ([Viited](Viited), [Core], jaotis 3.1.2.1. Authentication Request). Parameeter `nonce` ei ole kohustuslik. |
 | `acr_values` | ei | `acr_values=substantial` | minimaalne nõutav autentimistase vastavalt eIDAS tasemetele. Lubatud määrata üks väärtus järgmisest loetelust: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Kui määramata, siis vaikimisi high. |
-
-
-&\#128679; //
 
 ### Lisainformatsiooni küsimine välisriigi kodaniku puhul
 
@@ -129,8 +128,6 @@ Küsida ei ole mõtet rohkem atribuute kui e-teenuse osutamiseks vaja läheb. eI
 
 Näide scope parameetri kasutusest:
 `scope=openid%20eidas:legal_person_identifier%20eidas:legal_address%20eidas:lei`
-
-&\#128679; //
 
 ## 4 Tagasisuunamine
 
@@ -208,11 +205,11 @@ Identsustõendis esitatakse järgmised väljad (_claims_).
 
 | identsustõendi element | kohustuslik | näide, selgitus     |
 |:-----------------------|:-----------:|---------------------|
-| `aud`                  | jah |`"aud":"openIdDemo"` - autentimist küsinud infosüsteemi ID (kasutaja autentimisele suunamisel määratud `client_id` välja väärtus)|
-| `sub`                  | jah | `"sub":"EE11412090004"` - autenditud kasutaja identifikaator (isikukood või eIDAS identifikaator) koos kodaniku riigikoodi eesliitega (riigikoodid vastavalt ISO 3166-1 alpha-2 standardile). |
+| `aud` (_Audience_)     | jah |`"aud":"openIdDemo"` - autentimist küsinud infosüsteemi ID (kasutaja autentimisele suunamisel määratud `client_id` välja väärtus)|
+| `sub` (_Subject_)      | jah | `"sub":"EE11412090004"` - autenditud kasutaja identifikaator (isikukood või eIDAS identifikaator) koos kodaniku riigikoodi eesliitega (riigikoodid vastavalt ISO 3166-1 alpha-2 standardile). |
 | `nbf` (_Not Before_)   | jah |`"nbf":"Wed Sep 27 11:47:22 EEST 2017"` - tõendi kehtivuse algusaeg |
 | `amr` (_Authentication Method Reference_) | jah | `"amr":["mID"]` - kasutaja autentimiseks kasutatud autentimismeetod. Võimalikud väärtused: `mID` - mobiil-ID, `idcard` - Eesti ID-kaart, `eIDAS` - piiriülene |
-| `iss`              | jah | `"iss":"https://tara.ria.ee"` - tõendi väljastaja (TARA-teenus); testteenuse puhul `"iss":"https://tara-test.ria.ee"` |
+| `iss` (_Issuer_)       | jah | `"iss":"https://tara.ria.ee"` - tõendi väljastaja (TARA-teenus); testteenuse puhul `"iss":"https://tara-test.ria.ee"` |
 | `profile_attributes`   | jah | `"profile_attributes": {"given_name":"MARY ÄNN", "family_name":"O’CONNEŽ-ŠUSLIK", "mobile_number":"+37200000766"}` - autenditud isikut kirjeldavad andmed &\#128679; // sh eIDAS atribuudid (vt ka allpool täiendavate andmete küsimise ja isiku esindamise kohta) // &\#128679; |
 | `profile_attributes.given_name`              | jah | `"given_name":"MARY ÄNN"` - autenditud kasutaja eesnimi (testnimi, valitud täpitähtede sisalduvuse pärast) |
 | `profile_attributes.family_name`              | jah | `"family_name":"O’CONNEŽ-ŠUSLIK"` - autenditud kasutaja perekonnanimi (testnimi, valitud täpitähtede jm eritärkide sisalduvuse pärast) |
@@ -220,12 +217,11 @@ Identsustõendis esitatakse järgmised väljad (_claims_).
 | `profile_attributes.date_of_birth`          | ei | Isiku sünnikuupäev ISO_8601 formaadis. Tagastatakse ainult eIDAS autentimisel. |
 | `profile_attributes_nonlatin` | ei | Sisaldab JSON objekti mitteladinakeelsetest profiiliatribuutidest (vt allpool translitereerimine.). Väärtustatud ainult eIDAS autentimisel. |
 | `state`            | jah | `"state":"abcdefghijklmnop"` - turvaelement  |
-| `exp`              | jah | `"exp":1505847597` - tõendi aegumisaeg |
-| `iat`              | jah | `"iat":1505818797` - tõendi väljaandmisaeg |
+| `exp` (_Expires_)     | jah | `"exp":1505847597` - tõendi aegumisaeg |
+| `iat` (_Issued At_)   | jah | `"iat":1505818797` - tõendi väljaandmisaeg |
 | `nonce`                 | ei | `"nonce":"qrstuvwxyzabcdef"` - turvaelement |
-| `acr` Authentication Context Class Reference) | ei | `"acr": "low"` - autentimistase, vastavalt eIDAS tasemetele. Võimalikud väärtused: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Elementi ei kasutata, kui autentimistase ei kohaldu või pole teada |
-| `jti`              | jah | `"jti":"0e12bf29... "` - identsustõendi identifikaator |
-
+| `acr` (_Authentication Context Class Reference_) | ei | `"acr": "low"` - autentimistase, vastavalt eIDAS tasemetele. Võimalikud väärtused: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Elementi ei kasutata, kui autentimistase ei kohaldu või pole teada |
+| `jti` (_JSON Token Identifier_)              | jah | `"jti":"0e12bf29... "` - identsustõendi identifikaator |
 
 NB! Järgnevad identsustõendi väärtused esitatakse ainult juhul kui on tegemist ülepiirilise autentimisega ning kasutaja on nende väljade esitamist identsustõendis ise taotlenud läbi spetsiifilise `scope` parameetri väärtuse autentimispäringus.
 
@@ -244,7 +240,7 @@ Juriidiline isik
 
 | identsustõendi element | scope väärtus | väljastamine kohustuslik |  eIDAS atribuut |
 |-----------------|-----------------|:------------------------:|----------------|
-| `eidas:legal_person_identifier` | `profile_attributes.legal_person_identifier` | jah | `LegalPersonIdentifier` |
+| `eidas:legal_person_identifier` | `profile_attributes.` `legal_person_identifier` | jah | `LegalPersonIdentifier` |
 | `eidas:legal_name` | `profile_attributes.legal_name` | jah         | `LegalName` |
 
 | identsustõendi element | scope väärtus | väljastamine kohustuslik | eIDAS atribuut |
