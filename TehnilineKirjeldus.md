@@ -89,7 +89,7 @@ Kasutaja vajutab nupule "Logi sisse" vms. Rakendus võib ka ise algatada autenti
 Rakendus moodustab OpenID Connect autentimispäringu ja saadab sirvikule korralduse kasutaja suunamiseks autentimisteenusesse (HTTP _redirect_). Autentimispäringu näide:
 
 ````
-GET https://tara.eesti.ee/authorize?
+GET https://tara.ria.ee/oidc/authorize?
 
 redirect_uri=https%3A%2F%2eteenindus.asutus.ee%2FCallback&
 scope=openid&
@@ -102,7 +102,7 @@ Autentimispäringu elemendid:
 
 | URL-i element          | kohustuslik | näide                       |  selgitus     |
 |------------------------|:---------- :|-----------------------------|---------------|
-| protokoll, host ja tee (_path_) | jah | `https://tara.eesti.ee/authorize` | `/authorize` on TARA-teenuse OpenID Connect-kohane autentimisotspunkt (termin 'autoriseerimine' pärineb alusprotokollist OAuth 2.0).  |
+| protokoll, host ja tee (_path_) | jah | `https://tara.ria.ee/oidc/authorize` | `/authorize` on TARA-teenuse OpenID Connect-kohane autentimisotspunkt (termin 'autoriseerimine' pärineb alusprotokollist OAuth 2.0).  |
 | tagasipöördumis-URL | jah | `https://eteenus.asutus.ee/tagasi` | tagasipöördumis-URL-i valib asutus ise. Tagasipöördumis-URL võib sisaldada _query_-osa. Tärgile `?` järgnevas osas omakorda `?` kasutamine ei ole lubatud. |
 | autentimise skoop `scope` | jah | `scope=openid`               | kohustuslik on väärtus `openid`; <br><br>ülepiirilise autentimise korral on võimalik lisada täpsustavaid lisaväärtusi täiendavate isikuandmete pärimiseks. Lisaväärtused tuleb eraldada tühikuga. Tühikud esitada kasutades URL kodeeringut (RFC 3986). Näide: `scope=openid%20eidas:place_of_birth%20eidas:gender`        |
 | turvakood `state` | `state=hkMVY7vjuN7xyLl5` | jah | klientrakenduse serveripool peab genereerima ja päringus esitama turvakoodi. Turvakood aitab tagada, et erinevate kasutajate autentimised ei lähe sassi ja ründaja ei saa protsessi vahele sekkuda. Turvakood peegeldatakse vastuses tagasi; klientrakendus peab kontrollima, et saab vastuses sama turvakoodi, mille saatis päringus.  |
@@ -129,8 +129,6 @@ Küsida ei ole mõtet rohkem atribuute kui e-teenuse osutamiseks vaja läheb. eI
 
 Näide scope parameetri kasutusest:
 `scope=openid%20eidas:legal_person_identifier%20eidas:legal_address%20eidas:lei`
-
-
 
 &\#128679; //
 
@@ -164,7 +162,7 @@ Päringu kehas tuleb esitada:
 
 | POST päringu keha element | näide                    |  selgitus     |
 |------------------------|-----------------------------|---------------|
-| protokoll, host ja tee | `https://tara.ria.ee/token` |   |
+| protokoll, host ja tee | `https://tara.ria.ee/oidc/token` |   |
 | `grant_type`  | `grant_type=authorization_code` | nõutav väärtus `authorization_code` |
 | `code` | `code=Splx...` | autentimisteenuselt saadud volituskood | 
 | `redirect_uri` | `redirect_uri=https%3A%2F` | autentimispäringus saadetud ümbersuunamis-URI |
@@ -174,7 +172,7 @@ Näide:
 
 ````
 POST /token HTTP/1.1
-Host: tara.ria.ee/token
+Host: tara.ria.ee/oidc/token
 Content-Type: application/x-www-form-urlencoded
 Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW
 
@@ -293,7 +291,6 @@ juriidilise isiku esindaja atribuudid
 |`profile_attributes.representative_tax_reference` | `RepresentativeTaxReference` |
 |`profile_attributes.representative_vat_registration` | `RepresentativeVATRegistration` |
 
-
 Translitereerimine:
 
 NB! Kõigi eelpool toodud eIDAS spetsiifilistele identsustõendi väärtused peavad olema esitatud ladinapärasel kujul, kuid sellele lisaks võivad sihtriigid soovi korral esitada nimekuju ka originaalsel kujul. Juhul kui välisriik otsustab saata ka algse, mitteladinakeelse kuju, esitatakse antud atribuudi nime ja väärtuse paarid ka `profile_attributes_nonlatin` blokis.
@@ -316,7 +313,6 @@ Näide identsustõendis profiilielementide translitereerimisest (isiku eesnimi j
    ...
 }
 ````
-
 
 // &\#128679;
 
