@@ -85,7 +85,7 @@ p { margin: 0 0 1em 0; }
 table { width: 100%; margin: 0 4em 2em 0; }
 table { border-collapse: collapse; }    
 table, th, td { border: 1px solid black; }
-th, td { padding: 2px; }
+th, td { padding: 8px; }
 th { font-weight: normal; font-style: italic; text-align: center; }
 /*#endregion */
 

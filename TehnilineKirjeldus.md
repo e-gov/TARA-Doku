@@ -145,10 +145,9 @@ state=OFfVLKu0kNbJ2EZk
 Tagasisuunamispäringu elemendid:
 
 | URL-i element          | näide                       |  selgitus     |
-| tagasisuunamis-URL | `https://eteenus.asutus.ee
-/tagasi?` | ühtib autentimispäringus saadetuga |
-| volituskood `code` | `code=71ed579...`  | ingl _authorization code_. Volituskood on ühekordne “lubatäht” identsustõendi saamiseks |
-| turvakood `state`            | `state=OFfVLKu0kNbJ2EZk`     |  juhusõne |
+| protokoll, host ja tee (_path_) | `https://eteenus.asutus.ee/tagasi` | ühtib autentimispäringus saadetud `redirect_uri` väärtusega |
+| `code` | `code=71ed579...`  | volituskood (_authorization code_) on ühekordne “lubatäht” identsustõendi saamiseks |
+| `state`            | `state=OFfVLKu0kNbJ2EZk`     | turvakood. Autentimispäringus saadetud turvakood peegeldatakse tagasi |
 
 Kasutaja võib e-teenusesse tagasi pöörduda ka ilma autentimismeetodit valimata ja autentimist läbi tegemata (link "Tagasi teenusepakkuja juurde"). See võimalus on mõeldud juhuks, kui kasutaja vajutas klientrakenduses "Logi sisse", kuid tegelikult ei soovi sisse logida. Teenusega liitumise taotluses peab asutus RIA-le teada andma URL-i, kuhu kasutaja "Tagasi teenuspakkuja juurde" vajutamisel suunatakse. NB! OpenID Connect protokolli kohane tagasisuunamis-URL ja siin nimetatud URL on erineva tähendusega.
 
@@ -208,7 +207,7 @@ TARA server kontrollib, et identsustõendit küsib õige rakendus, seejärel koo
 Identsustõendis esitatakse järgmised väljad (_claims_).
 
 | identsustõendi element | kohustuslik | näide, selgitus     |
-|:-----------------------|---------------|---------------------|
+|:-----------------------|:-----------:|---------------------|
 | `aud`                  | jah |`"aud":"openIdDemo"` - autentimist küsinud infosüsteemi ID (kasutaja autentimisele suunamisel määratud `client_id` välja väärtus)|
 | `sub`                  | jah | `"sub":"EE11412090004"` - autenditud kasutaja identifikaator (isikukood või eIDAS identifikaator) koos kodaniku riigikoodi eesliitega (riigikoodid vastavalt ISO 3166-1 alpha-2 standardile). |
 | `nbf` (_Not Before_)   | jah |`"nbf":"Wed Sep 27 11:47:22 EEST 2017"` - tõendi kehtivuse algusaeg |
@@ -248,7 +247,7 @@ Juriidiline isik
 | `eidas:legal_person_identifier` | `profile_attributes.legal_person_identifier` | jah | `LegalPersonIdentifier` |
 | `eidas:legal_name` | `profile_attributes.legal_name` | jah         | `LegalName` |
 
-| identsustõendi elemen | scope väärtus | väljastamine kohustuslik | eIDAS atribuut |
+| identsustõendi element | scope väärtus | väljastamine kohustuslik | eIDAS atribuut |
 |-----------------|-----------------|:------------------------:|----------------|
 | `profile_attributes.legal_address` | `eidas:legal_address` | ei | `LegalAddress` |
 | `profile_attributes.legal_person_address` | `eidas:legal_person_address` | ei | `LegalPersonAddress` |
@@ -262,34 +261,30 @@ Juriidiline isik
 
 Küsida ei saa, kuid võidakse väljastada:
 
-füüsilise isiku esindaja atribuudid
+füüsilise isiku esindaja atribuudid (väli identsustõendis - eIDAS atribuut)
 
-| väli identsustõendis | eIDAS atribuut |
-|---------------------------|---------------------------|
-| `profile_attributes.representative_birth_name` | `RepresentativeBirthName` |
-| `profile_attributes.representative_current_address`| `RepresentativeCurrentAddress` |
-| `profile_attributes.representative_family_name` | `RepresentativeFamilyName` |
-| `profile_attributes.representative_first_name` | `RepresentativeFirstName` |
-| `profile_attributes.representative_date_of_birth` | `RepresentativeDateOfBirth` |
-| `profile_attributes.representative_gender` | `RepresentativeGender` |
-| `profile_attributes.representative_person_identifier` | `RepresentativePersonIdentifier` |
-| `profile_attributes.representative_place_of_birth` | `RepresentativePlaceOfBirth` |
+- `profile_attributes.representative_birth_name` - `RepresentativeBirthName`
+- `profile_attributes.representative_current_address` - `RepresentativeCurrentAddress`
+- `profile_attributes.representative_family_name` - `RepresentativeFamilyName`
+- `profile_attributes.representative_first_name` - `RepresentativeFirstName`
+- `profile_attributes.representative_date_of_birth` - `RepresentativeDateOfBirth`
+- `profile_attributes.representative_gender` - `RepresentativeGender`
+- `profile_attributes.representative_person_identifier` - `RepresentativePersonIdentifier`
+- `profile_attributes.representative_place_of_birth` - `RepresentativePlaceOfBirth`
 
-juriidilise isiku esindaja atribuudid
+juriidilise isiku esindaja atribuudid (väli identsustõendis - eIDAS atribuut)
 
-| väli identsustõendis | eIDAS atribuut |
-|---------------------------|---------------------------|
-| `profile_attributes.representative_d-2012-17-eu_identifier` | `RepresentativeD-2012-17-EUIdentifier` |
-| `profile_attributes.representative_eori` | `RepresentativeEORI` |
-| `profile_attributes.representative_lei` | `RepresentativeLEI` |
-|`profile_attributes.representative_legal_address` | `RepresentativeLegalAddress` |
-|`profile_attributes.representative_legal_name` | `RepresentativeLegalName` |
-|`profile_attributes.representative_legal_address` | `RepresentativeLegalAddress` |
-|`profile_attributes.representative_legal_person_identifier` | `RepresentativeLegalPersonIdentifier` |
-|`profile_attributes.representative_seed` | `RepresentativeSEED` |
-|`profile_attributes.representative_sic` | `RepresentativeSIC` |
-|`profile_attributes.representative_tax_reference` | `RepresentativeTaxReference` |
-|`profile_attributes.representative_vat_registration` | `RepresentativeVATRegistration` |
+- `profile_attributes.representative_d-2012-17-eu_identifier` - `RepresentativeD-2012-17-EUIdentifier`
+- `profile_attributes.representative_eori` - `RepresentativeEORI`
+- `profile_attributes.representative_lei` - `RepresentativeLEI`
+- `profile_attributes.representative_legal_address` - `RepresentativeLegalAddress`
+- `profile_attributes.representative_legal_name` - `RepresentativeLegalName`
+- `profile_attributes.representative_legal_address` - `RepresentativeLegalAddress`
+- `profile_attributes.representative_legal_person_identifier` - `RepresentativeLegalPersonIdentifier`
+- `profile_attributes.representative_seed` - `RepresentativeSEED`
+- `profile_attributes.representative_sic` - `RepresentativeSIC`
+- `profile_attributes.representative_tax_reference` - `RepresentativeTaxReference`
+- `profile_attributes.representative_vat_registration` - `RepresentativeVATRegistration`
 
 Translitereerimine:
 
@@ -328,8 +323,8 @@ Testteenus
 
 | otspunkt      |                        URL      |
 |---------------|---------------------------------|
-| teenuseteave (_server discovery_) |  [https://tara-test.ria.ee/oidc/.well-known/openid-configuration](https://tara-test.ria.ee/oidc/.well-known/openid-configuration) &#9989; |
-| teenuse avalik allkirjastamisvõti | [https://tara-test.ria.ee/oidc/jwks](https://tara-test.ria.ee/oidc/jwks) &#9989; |
+| teenuseteave (_server discovery_) |  [https://tara-test.ria.ee/oidc/.well-known/openid-configuration](https://tara-test.ria.ee/oidc/.well-known/openid-configuration) |
+| teenuse avalik allkirjastamisvõti | [https://tara-test.ria.ee/oidc/jwks](https://tara-test.ria.ee/oidc/jwks) |
 | kliendi registreerimine | dünaamilist registreerimist ei toetata, registreerimine staatiliselt, `help@ria.ee` kaudu |
 | autentimine (_authorization_) | `https://tara-test.ria.ee/oidc/authorize` | 
 | tõendiväljastus (_token_) | `https://tara-test.ria.ee/oidc/token` | 
