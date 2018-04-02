@@ -12,7 +12,7 @@ Käesolevas dokumendis kehtestatakse RIA autentimisteenustes [1], edaspidi "teen
 
 1. RIA eIDAS konnektorteenusele
 2. RIA autentimisteenusele
-3. TARA autentimisteenuses TARA
+3. TARA autentimisteenusele TARA
 4. EL piiriülese autentimistaristu Eesti sõlmele ("eIDAS Node").
 
 ### 2 Mõisted
@@ -27,8 +27,7 @@ _kasutaja_, füüsiline isik, kes suunatakse Eesti või välismaa e-teenusest RI
   - kasutaja isikukood vm isiku identifikaator
   - kasutaja ees- ja perekonnanimi
   - kasutaja riik
-  - muud kasutaja isikuandmed, eIDASE terminoloogias "atribuudid", vastavalt eIDAS määruse alusel väljatöötatud eIDAS tehnilisele spetsifikatsioonile [2].
-    - _Eestikeelne nimekiri eIDAS atribuutidest on kättesaadav TARA tehnilises kirjelduses [3]._
+  - muud kasutaja isikuandmed, eIDASE terminoloogias "atribuudid", vastavalt eIDAS määruse alusel väljatöötatud eIDAS tehnilisele spetsifikatsioonile [2]. _Eestikeelne nimekiri eIDAS atribuutidest on kättesaadav TARA tehnilises kirjelduses [3]._
 
 2. autentimistoimingu andmed
   - kuupäev ja kellaaeg
@@ -36,15 +35,17 @@ _kasutaja_, füüsiline isik, kes suunatakse Eesti või välismaa e-teenusest RI
   - autentimismeetod
   - autentimise tulemus (autenditud või mitte).
 
+3\.2 Teenuste haldamise eesmärgil kogutakse ka liidestatud asutuste kontaktsisikute andmeid.
+
 ### 4 Andmete väljastamine
 
 4\.1 Ülalnimetatud isikuandmeid väljastatakse teenustega liidestatud e-teenustele. Siseriiklikult on nendeks asutuste e-teenuseid pakkuvad infosüsteemid. Piiriüleselt - EL teiste liikmesriikide eIDAS sõlmed.
 
 4\.2 Kasutajale on autentimise tulemus (sisse logitud või mitte) nähtav sirvikus.
 
-4\.3 Kasutajale ei ole praegu loodud elektroonilist võimalust tutvuda (iseteeninduse põhimõttel) oma autentimisajalooga. Vajadusel saab vastavatele kasutaja päringutele vastata teenusehaldur käsitsi.
+4\.3 Kasutajale ei ole praegu loodud iseteeninduse põhimõttel toimivat elektroonilist võimalust tutvuda oma autentimisajalooga. Vajadusel saab vastavatele kasutaja päringutele vastata teenusehaldur käsitsi.
 
-4\.4 Eesti eID kasutaja andmete saatmisel välisriiki küsitakse kasutaja nõusolekut (Eesti autentimisteenus). 
+4\.4 Eesti eID kasutaja andmete saatmisel EL teise riiki küsitakse kasutaja nõusolekut (Eesti autentimisteenuses). 
 
 ### 5 Turvalogi
 
@@ -56,7 +57,7 @@ _kasutaja_, füüsiline isik, kes suunatakse Eesti või välismaa e-teenusest RI
 
 5\.2 Turvalogis logitakse autentimistoimingute andmed, sh autenditud kasutajate andmed.
 
-5\.3 Turvalogile on juurdepääs vajaduspõhine, ainult teenuse käitamisega otseselt seotud süsteemi- ja teenusehalduritele.
+5\.3 Turvalogile juurdepääs on rangelt vajaduspõhine. Ligi pääsevad ainult teenuse käitamisega otseselt seotud süsteemi- ja teenusehaldurid.
 
 5\.4 Turvalogide andmeid ei edastata teistesse süsteemidesse ega kasutata muudel eesmärkidel, kui kasutaja isikusamasuse tuvastamine konkreetse e-teenuse pöördumise kontekstis (välja arvatud kuriteo tõkestamise või uurimise vajaduse korral, vastavalt õigusele).
 
@@ -64,7 +65,7 @@ _kasutaja_, füüsiline isik, kes suunatakse Eesti või välismaa e-teenusest RI
 
 ### 6 Statistikalogi
 
-6\.1 vStatistikalogi eesmärk on teenuste kasutamise kohta statistika tootmine, teenuse juhtimise ja edasiarendamise eesmärgil.
+6\.1 Statistikalogi eesmärk on teenuste kasutamise kohta statistika tootmine, teenuse juhtimise ja edasiarendamise eesmärgil.
 
 6\.2 Statistikalogisse kogutakse andmed autentimistoimingute kohta, kuid ei koguta isikut identifitseerivate andmeid. S.t kogutakse autentimistoimingu kuupäev ja kellaaeg, autentimismeetod, autentimise tulemus (autenditud või mitte), e-teenus, kus kasutaja autentimisele suunati; kasutaja enda kohta aga ainult kasutaja riik; kasutaja nime ega muid atribuute ei koguta.
 
@@ -74,6 +75,6 @@ _kasutaja_, füüsiline isik, kes suunatakse Eesti või välismaa e-teenusest RI
 
 [1] RIA autentimisteenused, [https:\\www.ria.ee\ee\autentimisteenused.html](https:\\www.ria.ee\ee\autentimisteenused.html).
 
-[2] eIDAS Technical specification, [https:\\ec.europa.eu\cefdigital\wiki\display\CEFDIGITAL\eIDAS+Profile](https:\\ec.europa.eu\cefdigital\wiki\display\CEFDIGITAL\eIDAS+Profile)
+[2] eIDAS Technical specification, [https:\\ec.europa.eu\cefdigital\wiki\display\CEFDIGITAL\eIDAS+Profile](https:\\ec.europa.eu\cefdigital\wiki\display\CEFDIGITAL\eIDAS+Profile).
 
 [3] Autentimisteenus TARA. Tehniline kirjeldus [https:\\e-gov.github.io\TARA-Doku\TehnilineKirjeldus#3-autentimisp%C3%A4ring](https:\\e-gov.github.io\TARA-Doku\TehnilineKirjeldus#3-autentimisp%C3%A4ring).
