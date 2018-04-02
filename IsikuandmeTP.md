@@ -77,4 +77,4 @@ _kasutaja_, füüsiline isik, kes suunatakse Eesti või välismaa e-teenusest RI
 
 [2] eIDAS Technical specification, [https:\\ec.europa.eu\cefdigital\wiki\display\CEFDIGITAL\eIDAS+Profile](https:\\ec.europa.eu\cefdigital\wiki\display\CEFDIGITAL\eIDAS+Profile).
 
-[3] Autentimisteenus TARA. Tehniline kirjeldus [https:\\e-gov.github.io\TARA-Doku\TehnilineKirjeldus#3-autentimisp%C3%A4ring](https:\\e-gov.github.io\TARA-Doku\TehnilineKirjeldus#3-autentimisp%C3%A4ring).
+[3] Autentimisteenus TARA. Tehniline kirjeldus,  [https:\\e-gov.github.io\TARA-Doku\TehnilineKirjeldus#3-autentimisp%C3%A4ring](https:\\e-gov.github.io\TARA-Doku\TehnilineKirjeldus#3-autentimisp%C3%A4ring).
