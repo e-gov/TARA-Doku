@@ -333,25 +333,21 @@ Toodanguteenus
 
 ## 7 Võltspäringuründe vastane kaitse
 
-Klientrakenduses tuleb rakendada võltspäringuründe (_cross-site request forgery_, CSRF) vastased kaitsemeetmeid. Seda tehakse turvakoodide `state` ja `nonce` abil. `state` kasutamine on kohustuslik; `nonce` kasutamine on vabatahtlik.
+Klientrakenduses tuleb rakendada võltspäringuründe (_cross-site request forgery_, CSRF) vastaseid kaitsemeetmeid. Seda tehakse turvakoodide `state` ja `nonce` abil. `state` kasutamine on kohustuslik; `nonce` kasutamine on vabatahtlik. Kirjeldame `state` kasutamise protseduuri.
 
-`state` kasutatakse autentimispäringule järgneva tagasipöördumispäringu võltsimise vastu. Klientrakendus peab teostama järgmised sammud:
+Turva `state` kasutatakse autentimispäringule järgneva tagasipöördumispäringu võltsimise vastu. Klientrakenduses tuleb teostada järgmised sammud:
 
-1.\ Genereerib juhusõne `R`, näiteks pikkusega 16 tärki:
+1\. Genereerida juhusõne, näiteks pikkusega 16 tärki: `XoD2LIie4KZRgmyc` (tähistame `R`).
 
-`XoD2LIie4KZRgmyc`
+2\. Arvutada juhusõnest `R` räsi `H = hash(R)`, näiteks SHA256 räsialgoritmiga ja teisendades tulemuse Base64 vormingusse: `vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`
 
-2.\ Arvutab juhusõnest R räsi H = HASH(R), näiteks SHA256 räsialgoritmiga ja teisendades tulemuse Base64 vormingusse:
+3\. Lisada autentimispäringule küpsise panemise korraldus, näiteks:
 
-`vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`
-
-3.\ Lisab autentimispäringule küpsise panemise korralduse, näiteks:
-
-`Set-Cookie ETEENUS=XoD2LIie4KZRgmyc; HttpOnly`
+`Set-Cookie ETEENUS=XoD2LIie4KZRgmyc; HttpOnly`,
 
 kus `ETEENUS` on vabalt valitud küpsisenimi. Küpsisele tuleb rakendada atribuuti `HttpOnly`.
 
-4.\ Seab p 2 arvutatud räsi parameetri `state` väärtuseks:
+4\. Seada p 2 arvutatud räsi parameetri `state` väärtuseks:
 
 `GET ... state=vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`
 
@@ -359,15 +355,17 @@ Niisiis, autentimispäringuga saadetakse kaks asja: juhusõne küpsisesse panemi
 
 Tagasipöördumispäringu töötlemisel peab klientrakendus tegema järgmist:
 
-5.\ Võtab päringuga kaastuleva küpsise `ETEENUS`
+5\. Võtab päringuga kaastuleva küpsise `ETEENUS` väärtuse
 
-6.\ arvutab sellest räsi
+6\. Arvutab küpsise väärtusest räsi
 
-7.\ ja kontrollib, et räsi ühtib tagasipöördumispäringus parameetri `state` väärtusega.
+7\. Kontrollib, et räsi ühtib tagasipöördumispäringus tagasipeegeldatava `state` väärtusega.
 
-Tagasipöördumispäringut tohib tunnistada ehtsaks ainult siis, kui see kontroll õnnestub.
+Tagasipöördumispäringut tohib aktsepteerida ainult ülalkirjeldatud kontrolli õnnestumisel.
 
-Märkus. Kirjeldatud protseduuris on võtmetähtsusega `state` sidumine sessiooniga (küpsise abil). (Autentimise ajutise sessiooniga; töösessiooni moodustab klientrakendus pärast autentimise edukat lõpuleviimist). OpenID Connect protokollis kahjuks ei ole see teema selgelt esitatud. Mõningast teavet saab mitteametlikust dokumendist [OpenID Connect Basic Client Implementer's Guide 1.0](https://openid.net/specs/openid-connect-basic-1_0.html), jaotis "2.1.1.1 Request Parameters".  
+Märkus. Kirjeldatud protseduuris on võtmetähtsusega väärtuse `state` sidumine sessiooniga. Seda tehakse küpsise abil. (See on autentimise ajutine sessioon.  Töösessiooni moodustab klientrakendus pärast autentimise edukat lõpuleviimist).
+
+Täiendav teave: OpenID Connect protokollis kahjuks ei ole see teema selgelt esitatud. Mõningast teavet saab mitteametlikust dokumendist [OpenID Connect Basic Client Implementer's Guide 1.0](https://openid.net/specs/openid-connect-basic-1_0.html), jaotis "2.1.1.1 Request Parameters".  
 
 ## 8 Soovitusi liidestajale
 
