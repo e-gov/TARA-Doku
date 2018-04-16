@@ -6,7 +6,7 @@ Märkus. Piiriülese autentimise (eIDAS) tugi on arenduses. Arenduse käigus võ
 
 # Tehniline kirjeldus
 {: .no_toc}
-v 0.3, 30.01.2018
+v 0.4, 16.04.2018
 
 - TOC
 {:toc}
@@ -240,8 +240,8 @@ Juriidiline isik
 
 | identsustõendi element | scope väärtus | väljastamine kohustuslik |  eIDAS atribuut |
 |-----------------|-----------------|:------------------------:|----------------|
-| `eidas:legal_person_identifier` | `profile_attributes.` `legal_person_identifier` | jah | `LegalPersonIdentifier` |
-| `eidas:legal_name` | `profile_attributes.` `legal_name` | jah         | `LegalName` |
+| `profile_attributes.legal_person_identifier` | `eidas:legal_person_identifier` | jah | `LegalPersonIdentifier` |
+| `profile_attributes.legal_name` | `eidas:legal_name` | jah         | `LegalName` |
 
 | identsustõendi element | scope väärtus | väljastamine kohustuslik | eIDAS atribuut |
 |-----------------|-----------------|:------------------------:|----------------|
@@ -282,7 +282,7 @@ juriidilise isiku esindaja atribuudid (väli identsustõendis - eIDAS atribuut)
 - `profile_attributes.representative_tax_reference` - `RepresentativeTaxReference`
 - `profile_attributes.representative_vat_registration` - `RepresentativeVATRegistration`
 
-__Translitereerimine.__ Kõigi eelpool toodud eIDAS spetsiifilistele identsustõendi väärtused peavad olema esitatud ladinapärasel kujul, kuid sellele lisaks võivad sihtriigid soovi korral esitada nimekuju ka originaalsel kujul. Juhul kui välisriik otsustab saata ka algse, mitteladinakeelse kuju, esitatakse antud atribuudi nime ja väärtuse paarid ka `profile_attributes_nonlatin` blokis.
+__Translitereerimine.__ Kõik eelpool toodud eIDAS spetsiifilised identsustõendi väärtused peavad olema esitatud originaalkujul, kuid sellele lisaks võivad sihtriigid soovi korral esitada väärtusi ka translitereeritud kujul. Juhul kui välisriik otsustab saata ka ladina keelde teisendatud kuju, esitatakse antud atribuudi nime ja väärtuse paarid ka `profile_attributes_translit` blokis.
 
 Näide identsustõendis profiilielementide translitereerimisest (isiku eesnimi ja perenimi on esitatud ladina ja kreekakeelsel kujul):
 ````json
@@ -290,13 +290,13 @@ Näide identsustõendis profiilielementide translitereerimisest (isiku eesnimi j
    ...
    
    "profile_attributes":{
-      "given_name":"Alexander",
-      "family_name":"Onassis",
+      "given_name":"Αλέξανδρος",
+      "family_name":"Ωνάσης",      
       "date_of_birth":"1981-01-12"
    },
-   "profile_attributes_nonlatin":{
-      "given_name":"Αλέξανδρος",
-      "family_name":"Ωνάσης"}
+   "profile_attributes_translit":{
+      "given_name":"Alexander",
+      "family_name":"Onassis"
    }
    
    ...
@@ -375,6 +375,7 @@ RIA, rahuldades taotluse, väljastab asutusele klientrakenduse toodanguversiooni
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
+| 0.4, 30.01.2018   | Translitereerimise täiendused piiriülese autentimise korral (eIDAS) |
 | 0.3, 30.01.2018   | Lisatud piiriülene autentimine (eIDAS) |
 | 0.2, 28.11.2017   | Lisatud ID-kaardiga autentimine |
 | 0.1, 10.10.2017   | Mobiil-ID-ga autentimine. |
