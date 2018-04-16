@@ -107,7 +107,7 @@ Autentimispäringu elemendid:
 | protokoll, host ja tee (_path_) | jah | `https://tara.ria.ee/oidc/authorize` | `/authorize` on TARA-teenuse OpenID Connect-kohane autentimisotspunkt (termin 'autoriseerimine' pärineb alusprotokollist OAuth 2.0). |
 | `redirect_uri` | jah | `redirect_uri=https%3A%2F%2F` `eteenus.asutus.ee%2Ftagasi` | tagasipöördumis-URL. Tagasipöördumis-URL-i valib asutus ise. Tagasipöördumis-URL võib sisaldada _query_-osa. Tärgile `?` järgnevas osas omakorda `?` kasutamine ei ole lubatud. Vajadusel kasutada [URLi kodeerimist](https://en.wikipedia.org/wiki/Percent-encoding). |
 | `scope` | jah | `scope=openid` | autentimise skoop. Kohustuslik on väärtus `openid`; <br><br>ülepiirilise autentimise korral on võimalik lisada täpsustavaid lisaväärtusi täiendavate isikuandmete pärimiseks. Lisaväärtused tuleb eraldada tühikuga. Tühikud esitada kasutades URL kodeeringut ([RFC 3986](https://www.ietf.org/rfc/rfc3986.txt)). |
-| `state` | jah | `state=hkMVY7vjuN7xyLl5` | turvakood. Klientrakenduse serveripool peab genereerima ja päringus esitama turvakoodi. Turvakood on igas päringus erinev, sobiva pikkusega - nt 16 sümbolit - juhusõne, mis aitab tagada, et erinevate kasutajate autentimised ei lähe sassi ja ründaja ei saa protsessi vahele sekkuda. Turvakood peegeldatakse vastuses tagasi; klientrakendus peab kontrollima, et saab vastuses sama turvakoodi, mille saatis päringus.  |
+| `state` | jah | `state=hkMVY7vjuN7xyLl5` | võltspäringuründe (_cross-site request forgery_, CSRF) vastane turvakood. `state` moodustamise ja kontrollimise kohta vt lähemalt jaotis "Võltspäringuründe vastane kaitse". |
 | `response_type` | jah | `response_type=code` | määrab autentimise tulemuse serverile edastamise viisi. Toetatud on volituskoodi viis (OpenID Connect protokolli _authorization flow_), selle tähiseks on väärtus `code`. |
 | `client_id` | jah | `client_id=58e7...` | rakenduse identifikaator. Rakenduse identifikaatori annab RIA asutusele klientrakenduse registreerimisel autentimisteenuse kasutajaks. |
 | `locale` | ei | `locale=et` | kasutajaliidese keele valik. Toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida. |
@@ -144,7 +144,7 @@ Tagasisuunamispäringu elemendid:
 | URL-i element          | näide                       |  selgitus     |
 | protokoll, host ja tee (_path_) | `https://eteenus.asutus.ee/tagasi` | ühtib autentimispäringus saadetud `redirect_uri` väärtusega |
 | `code` | `code=71ed579...`  | volituskood (_authorization code_) on ühekordne “lubatäht” identsustõendi saamiseks |
-| `state`            | `state=OFfVLKu0kNbJ2EZk`     | turvakood. Autentimispäringus saadetud turvakood peegeldatakse tagasi |
+| `state`            | `state=OFfVLKu0kNbJ2EZk`     | võltspäringuründe vastane turvakood. Autentimispäringus saadetud turvakood peegeldatakse tagasi. `state` moodustamise ja kontrollimise kohta vt lähemalt jaotis "Võltspäringuründe vastane kaitse". |
 
 Kasutaja võib e-teenusesse tagasi pöörduda ka ilma autentimismeetodit valimata ja autentimist läbi tegemata (link "Tagasi teenusepakkuja juurde"). See võimalus on mõeldud juhuks, kui kasutaja vajutas klientrakenduses "Logi sisse", kuid tegelikult ei soovi sisse logida. Teenusega liitumise taotluses peab asutus RIA-le teada andma URL-i, kuhu kasutaja "Tagasi teenuspakkuja juurde" vajutamisel suunatakse. NB! OpenID Connect protokolli kohane tagasisuunamis-URL ja siin nimetatud URL on erineva tähendusega.
 
@@ -331,7 +331,45 @@ Toodanguteenus
 | autentimine (_authorization_) | `https://tara.ria.ee/oidc/authorize` | 
 | tõendiväljastus (_token_) | `https://tara.ria.ee/oidc/token` | 
 
-## 7 Soovitusi liidestajale
+## 7 Võltspäringuründe vastane kaitse
+
+Klientrakenduses tuleb rakendada võltspäringuründe (_cross-site request forgery_, CSRF) vastased kaitsemeetmeid. Seda tehakse turvakoodide `state` ja `nonce` abil. `state` kasutamine on kohustuslik; `nonce` kasutamine on vabatahtlik.
+
+`state` kasutatakse autentimispäringule järgneva tagasipöördumispäringu võltsimise vastu. Klientrakendus peab teostama järgmised sammud:
+
+1.\ Genereerib juhusõne `R`, näiteks pikkusega 16 tärki:
+
+`XoD2LIie4KZRgmyc`
+
+2.\ Arvutab juhusõnest R räsi H = HASH(R), näiteks SHA256 räsialgoritmiga ja teisendades tulemuse Base64 vormingusse:
+
+`vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`
+
+3.\ Lisab autentimispäringule küpsise panemise korralduse, näiteks:
+
+`Set-Cookie ETEENUS=XoD2LIie4KZRgmyc; HttpOnly`
+
+kus `ETEENUS` on vabalt valitud küpsisenimi. Küpsisele tuleb rakendada atribuuti `HttpOnly`.
+
+4.\ Seab p 2 arvutatud räsi parameetri `state` väärtuseks:
+
+`GET ... state=vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`
+
+Niisiis, autentimispäringuga saadetakse kaks asja: juhusõne küpsisesse panemiseks ja juhusõnest arvutatud räsiväärtus `state` parameetris. Klientrakendus ei pea juhusõne ega räsiväärtust meeles pidama.
+
+Tagasipöördumispäringu töötlemisel peab klientrakendus tegema järgmist:
+
+5.\ Võtab päringuga kaastuleva küpsise `ETEENUS`
+
+6.\ arvutab sellest räsi
+
+7.\ ja kontrollib, et räsi ühtib tagasipöördumispäringus parameetri `state` väärtusega.
+
+Tagasipöördumispäringut tohib tunnistada ehtsaks ainult siis, kui see kontroll õnnestub.
+
+Märkus. Kirjeldatud protseduuris on võtmetähtsusega `state` sidumine sessiooniga (küpsise abil). (Autentimise ajutise sessiooniga; töösessiooni moodustab klientrakendus pärast autentimise edukat lõpuleviimist). OpenID Connect protokollis kahjuks ei ole see teema selgelt esitatud. Mõningast teavet saab mitteametlikust dokumendist [OpenID Connect Basic Client Implementer's Guide 1.0](https://openid.net/specs/openid-connect-basic-1_0.html), jaotis "2.1.1.1 Request Parameters".  
+
+## 8 Soovitusi liidestajale
 
 TARA-ga liidestamine on lihtne. Siiski on vaja töid kavandada ja hoolikalt teostada. Liidestamise protsess näeb välja järgmine. Asutus peaks välja selgitama, kas ja millistes oma e-teenustes soovib TARA kasutada. Selleks tuleks tutvuda TARA [ärikirjeldusega](Arikirjeldus), teenustaseme leppega (SLA-ga), käesoleva [tehnilise kirjeldusega](TehnilineKirjeldus). Võib heita pilgu teenuse [teekaardile](https://e-gov.github.io/TARA-Doku/#teekaart). Vajadusel pidada nõu RIA-ga, `help@ria.ee`.
 
@@ -343,7 +381,6 @@ Seejärel kavandada ja teostada teenuse kasutamiseks vajalikud arendustööd.
 
 Eriti tähele panna:<br>
 1) identsustõendit tuleb nõuetekohaselt kontrollida, vt [ID token validation](http://openid.net/specs/openid-connect-core-1_0.html#ImplicitIDTValidation) [Core]<br>
-2) parameeter `state` tuleb siduda sessiooniga, vt [OpenID Connect Basic Client Implementer's Guide 1.0](https://openid.net/specs/openid-connect-basic-1_0.html), jaotis "2.1.1.1 Request Parameters".  
 
 Arenduse valmides tuleb liidest testida. Selleks kasutatakse TARA testteenust. Asutus esitab taotluse testteenusega liitumiseks. Taotluse võib esitada juba enne arenduse algust. Taotluses teata asutus:<br>
 1) teenuse, millega soovitakse liituda (test- või toodanguteenus)<br>
@@ -370,11 +407,11 @@ Liitumine TARA toodanguteenusega. Eduka testimise järel asutus esitab taotluse 
 
 RIA, rahuldades taotluse, väljastab asutusele klientrakenduse toodanguversiooni salasõna `client_secret` ja avab asutuse klientrakenduse toodanguversioonile juurdepääsu toodanguteenusele.
 
-
 ## Muutelugu
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
+| 0.5, 16.04.2018   | Translitereerimise täpsustused; võltspäringu vastane kaitse üksikasjalikumalt kirjeldatud |
 | 0.4, 30.01.2018   | Translitereerimise täiendused piiriülese autentimise korral (eIDAS) |
 | 0.3, 30.01.2018   | Lisatud piiriülene autentimine (eIDAS) |
 | 0.2, 28.11.2017   | Lisatud ID-kaardiga autentimine |
