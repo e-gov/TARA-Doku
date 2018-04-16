@@ -15,19 +15,20 @@ Vt ka: [Sonastik](Sonastik), [Viited](Viited)
 
 ## 1 Ülevaade
 
-Käesolev dokument esitab teenuse tehnilised omadused, samuti annab soovitusi e-teenuse liidestamiseks.
+Käesolev dokument määratleb autentimisteenuse TARA tehnilised omadused ja annab soovitusi klientrakenduse e-teenusega liidestamiseks.
 
-Fookus on OpenID Connect protokolli rakendamisel tehtud valikutel, erinevustel ja täiendustel OpenID Connect protokolliga võrreldes. Esitatakse päringute näited. Liidestuja peab kindlasti tutvuma ka OpenID Connect protokolliga [Core]. Liidestuja peab erilist tähelepanu pöörama, et kõik protokollikohased kontrollid saaksid tehtud - turvaelemendi `state` ja kui kasutatakse, siis ka `nonce` kontroll, identsustõendi kontroll jm. 
+Lugejalt ootame protokolli OpenID Connect tundmist või vähemalt valmisolekut protokolli originaaltekstiga tutvuda [Core].
 
 Autentimisteenus on Riigi Infosüsteemi Ameti uus pakutav teenus, millega asutus saab oma e-teenusesse lisada mobiil-ID ja ID-kaardi kasutaja autentimise toe. Arenduses on piiriülene (eIDAS-)autentimine. Järgmistes arendusjärkudes lisatakse teiste autentimismeetodite (pangalingid, Smart-ID) tugi.
 
-TARA teenuse aluseks on OpenID Connect protokoll ([Viited](Viited), [Core]), mis omakorda põhineb OAuth 2.0 protokollil. Võrreldes OpenID Connect protokolliga on tehtud järgmised valikud, erisused ja täiendused:
+Autentimisteenus TARA kasutab OpenID Connect kohandatud protokolli ([Viited](Viited), [Core]). OpenID Connect omakorda põhineb OAuth 2.0 protokollil. OpenID Connect protokolli peamised kohandused on järgmised:
 
 1. teenus toetab ainult volituskoodi (_authorization code_) kasutusvoogu.
 2. kogu teave autenditud kasutaja kohta edastatakse rakendusele identsustõendis (_ID token_). Access token-it ja UserInfo otspunkti kaudu kasutaja atribuutide andmist ei toetata.
 3. rakendusele edastatakse ka eIDAS autentimistase, kui see on teada (`acr` väites).
 4. teenus toetab kasutajaliidese keele-eelistuse andmist autentimispäringus (`locale` parameetriga)
-4. autentimismeetodi valib kasutaja autentimisteenuses.
+4. autentimismeetodi valib kasutaja autentimisteenuses
+5. piiriülene autentimine, vastavalt eIDAS tehnilisele spetsifikatsioonile.
 
 TARA pakub nii siseriiklikku kui ka (3. arendusjärgu lõppedes) piiriülest autentimist. eIDASe kontekstis (vt joonis 1) teostab TARA kasutusvood "Eestlase autentimine Eesti e-teenuses" (joonisel - 1) ja "Eesti e-teenust kasutava välismaalase autentimine" (joonisel 3a).
 
@@ -44,7 +45,7 @@ Joonis 1. eIDAS taristu
 
 2\. Klientrakendus suunab kasutaja TARA-teenusesse (sirviku ümbersuunamiskorralduse abil)
     - ümbersuunamis-URL-is on autentimispäring
-        - autentimispäringu koostamise kohta vt jaotis [Autentimispäring](#3-autentimisparing)
+        - autentimispäringu koostamise kohta vt jaotis [Autentimispäring](#3-autentimisp%C3%A4ring)
     - kasutajale avaneb autentimismeetodi valiku kuva. Siin võib kasutaja:
         - valida mobiil-ID-ga autentimise (samm 3)
         - valida ID-kaardiga autentimise (samm 4)
@@ -73,7 +74,7 @@ Joonis 1. eIDAS taristu
 
 6\. Autenditud kasutaja
     - suunatakse tagasi klientrakendusse (vt jaotis [Tagasisuunamine](#4-tagasisuunamine))
-    - klientrakendus pärib TARA serverilt identsustõendi (vt jaotis [Identsustõend](#5-identsustoend)).
+    - klientrakendus pärib TARA serverilt identsustõendi (vt jaotis [Identsustõend](#5-identsust%C3%B5end)).
         - identsustõend (_identity token_) on allkirjastatud tõend eduka autentimise kohta
             - identsustõendis sisalduvad autentimisel tuvastatud, kasutaja andmed (atribuudid)
     - klientrakendus annab kasutajale asjakohasel viisil teada, et sisselogimine õnnestus.
@@ -395,18 +396,17 @@ Täiendav teave: OpenID Connect protokollis kahjuks ei ole teema selgelt esitatu
 
 ## 9 Soovitusi liidestajale
 
-TARA-ga liidestamine on lihtne. Siiski on vaja töid kavandada ja hoolikalt teostada. Liidestamise protsess näeb välja järgmine. Asutus peaks välja selgitama, kas ja millistes oma e-teenustes soovib TARA kasutada. Selleks tuleks tutvuda TARA [ärikirjeldusega](Arikirjeldus), teenustaseme leppega (SLA-ga), käesoleva [tehnilise kirjeldusega](TehnilineKirjeldus). Võib heita pilgu teenuse [teekaardile](https://e-gov.github.io/TARA-Doku/#teekaart). Vajadusel pidada nõu RIA-ga, `help@ria.ee`.
+TARA-ga liidestamine on lihtne. Siiski on vaja töid kavandada ja hoolikalt teostada.
 
-Seejärel kavandada ja teostada teenuse kasutamiseks vajalikud arendustööd. 
-  - klientrakenduse täiendamine OpenID Connect protokolli kohase klientkomponendiga
-  - hinnanguline töömaht: kogenud arendajal u 2 päeva; kui OpenID Connect-i pole varem teinud, siis 2 nädalat
-  - aluseks käesolev [tehniline kirjeldus](TehnilineKirjeldus)
-  - kasulikku võib leida [makettrakendusest](https://github.com/e-gov/TARA-Client).
+Liidestuja peab erilist tähelepanu pöörama, et kõik protokollikohased kontrollid saaksid tehtud - turvaelemendi `state` ja kui kasutatakse, siis ka `nonce` kontroll, identsustõendi kontroll jm. Vt [ID token validation](http://openid.net/specs/openid-connect-core-1_0.html#ImplicitIDTValidation) [Core].
 
-Eriti tähele panna:<br>
-1) identsustõendit tuleb nõuetekohaselt kontrollida, vt [ID token validation](http://openid.net/specs/openid-connect-core-1_0.html#ImplicitIDTValidation) [Core]<br>
+Liidestamise protsess näeb välja järgmine.
 
-Arenduse valmides tuleb liidest testida. Selleks kasutatakse TARA testteenust. Asutus esitab taotluse testteenusega liitumiseks. Taotluse võib esitada juba enne arenduse algust. Taotluses teata asutus:<br>
+Asutus peaks välja selgitama, kas ja millistes oma e-teenustes soovib TARA kasutada. Selleks tuleks tutvuda TARA [ärikirjeldusega](Arikirjeldus), teenustaseme leppega (SLA-ga), käesoleva [tehnilise kirjeldusega](TehnilineKirjeldus). Võib heita pilgu teenuse [teekaardile](Teekaart). Vajadusel pidada nõu RIA-ga, `help@ria.ee`.
+
+Seejärel kavandada ja teostada teenuse kasutamiseks vajalik arendustöö - klientrakenduse täiendamine OpenID Connect protokolli kohase klientkomponendiga, sh testimine. Hinnanguline töömaht: kogenud arendajal u 2 päeva; kui OpenID Connect-i pole varem teinud, siis 2 nädalat. Aluseks käesolev [tehniline kirjeldus](TehnilineKirjeldus)
+
+Arenduse valmides tuleb liidest testida. Selleks kasutatakse TARA testteenust. Asutus esitab taotluse testteenusega liitumiseks. Taotluse võib esitada juba enne arenduse algust. Taotluses teatab asutus:<br>
 1) teenuse, millega soovitakse liituda (test- või toodanguteenus)<br>
 2) kinnituse, et liituja on välja arendanud omapoolse liidese ja seda TARA testteenuse vastu testinud (toodanguteenusega liitumise puhul)<br>
 3) e-teenuse või -teenused, mille kasutajaid soovitakse TARA abil autentida<br>
