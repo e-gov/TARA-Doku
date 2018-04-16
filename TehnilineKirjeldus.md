@@ -150,7 +150,7 @@ Kasutaja võib e-teenusesse tagasi pöörduda ka ilma autentimismeetodit valimat
 
 ## 5 Identsustõend
 
-Tagasisuunamise (vt eelmine jaotis) järel küsib klientrakendus küsib TARA serverilt identsustõendi (_ID token_).
+Tagasisuunamise (vt eelmine jaotis) järel küsib klientrakendus POST päringuga TARA serverilt identsustõendi (_ID token_).
 
 Päringus tuleb anda `Authorization` päis, väärtusega, mis moodustatakse sõnast `Basic`, tühikust ja Base64 kodeeringus stringist `<client_id>:<client_secret>` (vt RFC 2617 HTTP Authentication: Basic and Digest Access Authentication, jaotis 2 Basic Authentication Scheme).
 
@@ -177,7 +177,7 @@ code=SplxlOBeZQQYbYS6WxSbIA&
 redirect_uri=https%3A%2F%2eteenus.asutus.ee%2Ftagasi
 ````
 
-TARA server kontrollib, et identsustõendit küsib õige rakendus, seejärel koostab identsustõendi ning tagastab selle klientrakendusele. Näide:
+TARA server kontrollib, et identsustõendit küsib õige rakendus, seejärel väljastab päringu vastuses identsustõendi. Näide:
 
 ````json
 {  
@@ -307,9 +307,29 @@ Identsustõend võib sisaldada muid OpenID Connect protokolli kohaseid välju, k
 
 Kui identsustõendit ei pärita `5` minuti jooksul, siis identsustõend aegub ja autentimisprotsessi tuleb korrata.
 
-Rakendus loob saadud identsustõendi alusel kasutajaga seansi. Seansi loomine ja pidamine on rakenduse kohustus. Kuidas seda teha, ei ole autentimisteenuse TARA skoobis.
+## 6 Identsustõendi kontrollimine
 
-## 6 Otspunktid
+Klientrakendus peab identsustõendit kontrollima.
+
+1\. Allkirja kontrollimine. Identsustõend on autentimisteenuse TARA poolt allkirjastatud. Allkiri JWT standardile. Allkirjaalgoritmina kasutab TARA `RS256`. Klientrakendus peab suutma vähemalt selle algoritmiga antud allkirja kontrollida. (Märkus. Teostada on otstarbekas standardse JWT teegiga, mis toetaks kõiki JWT algoritme. TARA allkirjaalgoritmi vajadus on põhimõtteliselt võimalik - kui `RS256`-s peaks avastatama turvanõrkus)
+
+2\. Tõendi väljaandja kontrollimine. Identsustõendi elemendi `iss` väärtus peab olema `https://tara-test.ria.ee` (TARA testkeskkonna puhul) või `https://tara.ria.ee` (TARA toodangukeskkonna puhul).
+
+3\. Tõendi adressaadi kontrollimine. Klientrakendus peab kontrollima, et saadud tõend on välja antud just temale. Selleks veenduda, et identsustõendi elemendi `aud` väärtus ühtib klientrakendusele registreerimisel väljaantud kliendinimega (_Client ID_).
+
+4\. Tõendi ajalise kehtivuse kontrollimine. Kontrollitakse kolme identsustõendis sisalduva elemendi abil - `iat`, `nbf`, `exp`. Klientrakendus kasutab kontrollimisel oma kellaaega. Kontrollida tuleks kahte asja: 
+
+`nbf < jooksev_aeg + kellade_lubatud_erinevus`
+
+`exp < jooksev_aeg + kellade_lubatud_erinevus`.
+
+`kellade_lubatud_erinevus` väärtus valida ise. Need kontrollid on vajaliku rünnete ja sassiminekute vältimiseks.
+
+TARA põhimõte on, et identsustõendile tuleb järgi tulla kohe, 5 minuti jooksul. Selle aja ületamisel identsustõendit ei väljastatagi.
+
+Idensustõendi eduka kontrollimise järel loob klientrakendus kasutajaga seansi ("logib kasutaja sisse"). Seansi loomine ja pidamine on klientrakenduse kohustus. Kuidas seda teha, ei ole enam autentimisteenuse TARA skoobis.
+
+## 7 Otspunktid
 
 Testteenus
 
@@ -331,7 +351,7 @@ Toodanguteenus
 | autentimine (_authorization_) | `https://tara.ria.ee/oidc/authorize` | 
 | tõendiväljastus (_token_) | `https://tara.ria.ee/oidc/token` | 
 
-## 7 Võltspäringuründe vastane kaitse
+## 8 Võltspäringuründe vastane kaitse
 
 Klientrakenduses tuleb rakendada võltspäringuründe (_cross-site request forgery_, CSRF) vastaseid kaitsemeetmeid. Seda tehakse turvakoodide `state` ja `nonce` abil. `state` kasutamine on kohustuslik; `nonce` kasutamine on vabatahtlik. Kirjeldame `state` kasutamise protseduuri.
 
@@ -365,9 +385,9 @@ Tagasipöördumispäringut tohib aktsepteerida ainult ülalkirjeldatud kontrolli
 
 Kirjeldatud protseduuris on võtmetähtsusega väärtuse `state` sidumine sessiooniga. Seda tehakse küpsise abil. (See on autentimise ajutine sessioon.  Töösessiooni moodustab klientrakendus pärast autentimise edukat lõpuleviimist).
 
-Täiendav teave: OpenID Connect protokollis kahjuks ei ole teema selgelt esitatud. Mõningast teavet saab soovi korral mitteametlikust dokumendist [OpenID Connect Basic Client Implementer's Guide 1.0](https://openid.net/specs/openid-connect-basic-1_0.html), jaotis "2.1.1.1 Request Parameters".  
+Täiendav teave: OpenID Connect protokollis kahjuks ei ole teema selgelt esitatud. Mõningast teavet saab soovi korralmitteametlikust dokumendist [OpenID Connect Basic Client Implementer's Guide 1.0](https://openid.net/specs/openid-connect-basic-1_0.html), jaotis "2.1.1.1 Request Parameters".  
 
-## 8 Soovitusi liidestajale
+## 9 Soovitusi liidestajale
 
 TARA-ga liidestamine on lihtne. Siiski on vaja töid kavandada ja hoolikalt teostada. Liidestamise protsess näeb välja järgmine. Asutus peaks välja selgitama, kas ja millistes oma e-teenustes soovib TARA kasutada. Selleks tuleks tutvuda TARA [ärikirjeldusega](Arikirjeldus), teenustaseme leppega (SLA-ga), käesoleva [tehnilise kirjeldusega](TehnilineKirjeldus). Võib heita pilgu teenuse [teekaardile](https://e-gov.github.io/TARA-Doku/#teekaart). Vajadusel pidada nõu RIA-ga, `help@ria.ee`.
 
@@ -409,7 +429,7 @@ RIA, rahuldades taotluse, väljastab asutusele klientrakenduse toodanguversiooni
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
-| 0.5, 16.04.2018   | Translitereerimise täpsustused; võltspäringu vastane kaitse üksikasjalikumalt kirjeldatud |
+| 0.5, 16.04.2018   | Translitereerimise täpsustused; võltspäringu vastane kaitse üksikasjalikumalt kirjeldatud; täpsemalt kirjeldatud identsustõendi kontrollimine |
 | 0.4, 30.01.2018   | Translitereerimise täiendused piiriülese autentimise korral (eIDAS) |
 | 0.3, 30.01.2018   | Lisatud piiriülene autentimine (eIDAS) |
 | 0.2, 28.11.2017   | Lisatud ID-kaardiga autentimine |
