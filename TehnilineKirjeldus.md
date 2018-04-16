@@ -335,11 +335,11 @@ Toodanguteenus
 
 Klientrakenduses tuleb rakendada võltspäringuründe (_cross-site request forgery_, CSRF) vastaseid kaitsemeetmeid. Seda tehakse turvakoodide `state` ja `nonce` abil. `state` kasutamine on kohustuslik; `nonce` kasutamine on vabatahtlik. Kirjeldame `state` kasutamise protseduuri.
 
-Turva `state` kasutatakse autentimispäringule järgneva tagasipöördumispäringu võltsimise vastu. Klientrakenduses tuleb teostada järgmised sammud:
+Turvakoodi `state` kasutatakse autentimispäringule järgneva tagasipöördumispäringu võltsimise vastu. Klientrakenduses tuleb teostada järgmised sammud:
 
 1\. Genereerida juhusõne, näiteks pikkusega 16 tärki: `XoD2LIie4KZRgmyc` (tähistame `R`).
 
-2\. Arvutada juhusõnest `R` räsi `H = hash(R)`, näiteks SHA256 räsialgoritmiga ja teisendades tulemuse Base64 vormingusse: `vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`
+2\. Arvutada juhusõnest `R` räsi `H = hash(R)`, näiteks SHA256 räsialgoritmiga ja teisendades tulemuse Base64 vormingusse: `vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`.
 
 3\. Lisada autentimispäringule küpsise panemise korraldus, näiteks:
 
@@ -355,7 +355,7 @@ Niisiis, autentimispäringuga saadetakse kaks asja: juhusõne küpsisesse panemi
 
 Tagasipöördumispäringu töötlemisel peab klientrakendus tegema järgmist:
 
-5\. Võtab päringuga kaastuleva küpsise `ETEENUS` väärtuse
+5\. Võtab päringuga tuleva küpsise `ETEENUS` väärtuse
 
 6\. Arvutab küpsise väärtusest räsi
 
@@ -363,9 +363,9 @@ Tagasipöördumispäringu töötlemisel peab klientrakendus tegema järgmist:
 
 Tagasipöördumispäringut tohib aktsepteerida ainult ülalkirjeldatud kontrolli õnnestumisel.
 
-Märkus. Kirjeldatud protseduuris on võtmetähtsusega väärtuse `state` sidumine sessiooniga. Seda tehakse küpsise abil. (See on autentimise ajutine sessioon.  Töösessiooni moodustab klientrakendus pärast autentimise edukat lõpuleviimist).
+Kirjeldatud protseduuris on võtmetähtsusega väärtuse `state` sidumine sessiooniga. Seda tehakse küpsise abil. (See on autentimise ajutine sessioon.  Töösessiooni moodustab klientrakendus pärast autentimise edukat lõpuleviimist).
 
-Täiendav teave: OpenID Connect protokollis kahjuks ei ole see teema selgelt esitatud. Mõningast teavet saab mitteametlikust dokumendist [OpenID Connect Basic Client Implementer's Guide 1.0](https://openid.net/specs/openid-connect-basic-1_0.html), jaotis "2.1.1.1 Request Parameters".  
+Täiendav teave: OpenID Connect protokollis kahjuks ei ole teema selgelt esitatud. Mõningast teavet saab soovi korral mitteametlikust dokumendist [OpenID Connect Basic Client Implementer's Guide 1.0](https://openid.net/specs/openid-connect-basic-1_0.html), jaotis "2.1.1.1 Request Parameters".  
 
 ## 8 Soovitusi liidestajale
 
