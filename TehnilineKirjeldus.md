@@ -6,7 +6,7 @@ Märkus. Piiriülese autentimise (eIDAS) tugi on arenduses. Arenduse käigus võ
 
 # Tehniline kirjeldus
 {: .no_toc}
-v 0.4, 16.04.2018
+v 0.5, 16.04.2018
 
 - TOC
 {:toc}
@@ -37,11 +37,12 @@ Joonis 1. eIDAS taristu
 
 ## 2 Autentimisprotsess
 
-1. Kasutaja on e-teenust osutavas klientrakenduses.
+1\. Kasutaja on e-teenust osutavas klientrakenduses.
     - kasutaja võib olla nii eestlane kui ka välismaalane
     - kasutajale esitatakse kuva, millel on nupp "Logi sisse" vms
     - kasutaja vajutab "Logi sisse".
-2. Klientrakendus suunab kasutaja TARA-teenusesse (sirviku ümbersuunamiskorralduse abil)
+
+2\. Klientrakendus suunab kasutaja TARA-teenusesse (sirviku ümbersuunamiskorralduse abil)
     - ümbersuunamis-URL-is on autentimispäring
         - autentimispäringu koostamise kohta vt jaotis [Autentimispäring](#3-autentimisparing)
     - kasutajale avaneb autentimismeetodi valiku kuva. Siin võib kasutaja:
@@ -50,34 +51,39 @@ Joonis 1. eIDAS taristu
         - valida piiriülese (eIDAS-) autentimise (samm 5)
             - sh riigi, mille eID-d ta kasutab (valib õige "lipukese")
         - pöörduda tagasi klientrakendusse.
-3. Mobiil-ID-ga autentimine
+
+3\. Mobiil-ID-ga autentimine
     - kasutaja sisestab mobiilinumbri ja isikukoodi
     - kasutaja mobiilseadmele kuvatakse kontrollkood
     - kinnituse ootamine
     - eduka autentimise korral edasi samm 6, vea korral - samm 7 
-4. ID-kaardiga autentimine
+
+4\. ID-kaardiga autentimine
     - algab kasutajale teabe kuvamisega autentimisserdi kohta
     - kasutaja kinnitab serdivaliku
     - kasutaja sisestab PIN1-koodi.
     - eduka autentimise korral edasi samm 6, vea korral - samm 7
-5. Piiriülene (eIDAS-) autentimine
+
+5\. Piiriülene (eIDAS-) autentimine
     - kasutaja valib sihtriigi
     - kasutaja suunatakse läbi eIDAS Node võrgu sihtriigi autentimissüsteemi
     - kasutaja autendib ennast sihtriigi autentimisvahendiga
     - eduka autentimise korral (ning kui sihtriigi autentimisvahendi tase on piisav) edasi samm 6
     - vea korral - samm 7
-6. Autenditud kasutaja
+
+6\. Autenditud kasutaja
     - suunatakse tagasi klientrakendusse (vt jaotis [Tagasisuunamine](#4-tagasisuunamine))
     - klientrakendus pärib TARA serverilt identsustõendi (vt jaotis [Identsustõend](#5-identsustoend)).
         - identsustõend (_identity token_) on allkirjastatud tõend eduka autentimise kohta
             - identsustõendis sisalduvad autentimisel tuvastatud, kasutaja andmed (atribuudid)
     - klientrakendus annab kasutajale asjakohasel viisil teada, et sisselogimine õnnestus.
-7. Veateate lehelt
+
+7\. Veateate lehelt
     - saab kasutaja minna tagasi autentimismeetodi valikusse
       - ja seal kas üritada uuesti, võimalik, et teise autentimismeetodiga
     - või katkestada autentimise ja minna tagasi klientrakendusse.
 
-Kasutajal on võimalik:
+8\. Lisaks on kasutajal võimalik:
 - anda tagasisidet teenuse kohta
     - selleks on eraldi sakil avatav vorm, kuhu pääseb autentimismeetodi valiku kuval oleva lingi abil
 - esitada vearaportit
@@ -106,7 +112,7 @@ Autentimispäringu elemendid:
 |------------------------|:---------- :|-----------------------------|---------------|
 | protokoll, host ja tee (_path_) | jah | `https://tara.ria.ee/oidc/authorize` | `/authorize` on TARA-teenuse OpenID Connect-kohane autentimisotspunkt (termin 'autoriseerimine' pärineb alusprotokollist OAuth 2.0). |
 | `redirect_uri` | jah | `redirect_uri=https%3A%2F%2F` `eteenus.asutus.ee%2Ftagasi` | tagasipöördumis-URL. Tagasipöördumis-URL-i valib asutus ise. Tagasipöördumis-URL võib sisaldada _query_-osa. Tärgile `?` järgnevas osas omakorda `?` kasutamine ei ole lubatud. Vajadusel kasutada [URLi kodeerimist](https://en.wikipedia.org/wiki/Percent-encoding). |
-| `scope` | jah | `scope=openid` | autentimise skoop. Kohustuslik on väärtus `openid`; <br><br>ülepiirilise autentimise korral on võimalik lisada täpsustavaid lisaväärtusi täiendavate isikuandmete pärimiseks. Lisaväärtused tuleb eraldada tühikuga. Tühikud esitada kasutades URL kodeeringut ([RFC 3986](https://www.ietf.org/rfc/rfc3986.txt)). |
+| `scope` | jah | `scope=openid`<br><br>`scope=openid%20eidasonly` | autentimise skoop. `openid` on kohustuslik (seda nõuab OpenID Connect protokoll).<br><br>Skoobiga `eidasonly` saab nõuda, et kasutajale näidatakse ainult välisriikide autentimismeetodid.<br><br>Piiriülesel autentimisel saab kasutada lisaskoope täiendavate isikuandmete pärimiseks.<br><br>.Mitme skoobi kasutamisel tuleb skoobid eraldada tühikutega, URL kodeeringus (s.t tühik esitatakse GET-päringu URL-is kujul `%20`) ([RFC 3986](https://www.ietf.org/rfc/rfc3986.txt)). |
 | `state` | jah | `state=hkMVY7vjuN7xyLl5` | võltspäringuründe (_cross-site request forgery_, CSRF) vastane turvakood. `state` moodustamise ja kontrollimise kohta vt lähemalt jaotis "Võltspäringuründe vastane kaitse". |
 | `response_type` | jah | `response_type=code` | määrab autentimise tulemuse serverile edastamise viisi. Toetatud on volituskoodi viis (OpenID Connect protokolli _authorization flow_), selle tähiseks on väärtus `code`. |
 | `client_id` | jah | `client_id=58e7...` | rakenduse identifikaator. Rakenduse identifikaatori annab RIA asutusele klientrakenduse registreerimisel autentimisteenuse kasutajaks. |
@@ -429,7 +435,7 @@ RIA, rahuldades taotluse, väljastab asutusele klientrakenduse toodanguversiooni
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
-| 0.5, 16.04.2018   | Translitereerimise täpsustused; võltspäringu vastane kaitse üksikasjalikumalt kirjeldatud; täpsemalt kirjeldatud identsustõendi kontrollimine |
+| 0.5, 16.04.2018   | Translitereerimise täpsustused; võltspäringu vastane kaitse üksikasjalikumalt kirjeldatud; täpsemalt kirjeldatud identsustõendi kontrollimine; lisatud skoop `eidasonly` |
 | 0.4, 30.01.2018   | Translitereerimise täiendused piiriülese autentimise korral (eIDAS) |
 | 0.3, 30.01.2018   | Lisatud piiriülene autentimine (eIDAS) |
 | 0.2, 28.11.2017   | Lisatud ID-kaardiga autentimine |
