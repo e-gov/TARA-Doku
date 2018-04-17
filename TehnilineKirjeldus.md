@@ -324,11 +324,15 @@ Klientrakendus peab identsustõendit kontrollima.
 
 3\. Tõendi adressaadi kontrollimine. Klientrakendus peab kontrollima, et saadud tõend on välja antud just temale. Selleks veenduda, et identsustõendi elemendi `aud` väärtus ühtib klientrakendusele registreerimisel väljaantud kliendinimega (_Client ID_).
 
-4\. Tõendi ajalise kehtivuse kontrollimine. Kontrollitakse kolme identsustõendis sisalduva elemendi abil - `iat`, `nbf`, `exp`. Klientrakendus kasutab kontrollimisel oma kellaaega. Kontrollida tuleks kahte asja: 
+4\. Tõendi ajalise kehtivuse kontrollimine. Kontrollitakse kolme identsustõendis sisalduva elemendi abil - `iat`, `nbf`, `exp`. Klientrakendus kasutab kontrollimisel oma kellaaega. Kontrollida tuleks, et: 
 
-`nbf < jooksev_aeg + kellade_lubatud_erinevus`
+1) "not before" ajamoment on kätte jõudnud:
 
-`exp < jooksev_aeg + kellade_lubatud_erinevus`.
+`nbf < jooksev_aeg - kellade_lubatud_erinevus` 
+
+2) "expired" ajamoment ei ole kätte jõudnud:
+
+`exp > jooksev_aeg + kellade_lubatud_erinevus`.
 
 `kellade_lubatud_erinevus` väärtus valida ise. Need kontrollid on vajaliku rünnete ja sassiminekute vältimiseks.
 
