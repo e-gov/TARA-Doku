@@ -4,7 +4,7 @@ permalink: Naited
 
 ## Klientrakenduste näited
 
-Märkus. Rakendused on mõeldud õppeotstarbeliseks uurimiseks, neid ei saa _out of the box_ lahendustena toodangus kasutamiseks.  
+Märkus. Rakendused on mõeldud õppeotstarbeliseks uurimiseks, neid ei saa _out of the box_ toodangus kasutamiseks. 
 
   nimetus | keel    | lähtekood avalik?   | töötav paigaldus?       
   --------|---------|---------------------|---------------
