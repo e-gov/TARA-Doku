@@ -33,6 +33,8 @@ TARA teenust pakub Riigi Infosüsteemi Amet.
 [Sõnastik](Sonastik)<br>
 [Viited](Viited)<br>
 
+[Näiterakendused](Naited)
+
 ## TARA teenuse arendajale
 
 [Kood ja arendaja dokumentatsioon](Arendajale)
