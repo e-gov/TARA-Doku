@@ -253,7 +253,6 @@ Juriidiline isik
 | identsustõendi element | scope väärtus | väljastamine kohustuslik | eIDAS atribuut |
 |-----------------|-----------------|:------------------------:|----------------|
 | `profile_attributes.` `legal_address` | `eidas:legal_address` | ei | `LegalAddress` |
-| `profile_attributes.` `legal_person_address` | `eidas:legal_person_address` | ei | `LegalPersonAddress` |
 | `profile_attributes.` `vat_registration` | `eidas:vat_registration` | ei | `VATRegistrationNumber` |
 | `profile_attributes.` `tax_reference` | `eidas:tax_reference`  | ei |  `TaxReference` |
 | `profile_attributes.LEI` | `eidas:lei`  | ei |  `LEI` |
