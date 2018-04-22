@@ -29,15 +29,15 @@ Autentimisteenus TARA põhineb OpenID Connect protokollil ([Viited](Viited), [Co
 
 TARA-s on nimetatud protokollidest valitud TARA kasutusjuhtudele vajalikud kasutusvood ja omadused ning tehtud mõned kohandused. Peamised valikud ja kohandused OpenID Connect täisprotokolliga võrreldes on järgmised:
 
-1. Teenus toetab volituskoodi voogu(_authorization code flow_). Volituskoodi voogu peetakse kõige turvalisemaks ja sellisena on avalike teenuste jaoks sobiv.
-2. Kogu teave autenditud kasutaja kohta edastatakse rakendusele identsustõendis (_ID token_). OAuth 2.0 ligipääsutõendit (_access token_) ja UserInfo otspunkti kaudu kasutaja atribuutide andmist ei toetata.
-3. Rakendusele edastatakse ka eIDAS autentimistase, kui see on teada (`acr` väites).
-4. Teenus toetab kasutajaliidese keele-eelistuse andmist autentimispäringus (`locale` parameetriga)
-5. Autentimismeetodi valib kasutaja autentimisteenuses
-6. Piiriülene autentimine, vastavalt eIDAS tehnilisele spetsifikatsioonile.
-7. Allkirjavõtme otspunktis esitatakse üksainus võti. Dünaamilist võtmevahetust (_key rollover_) praegu ei toetata.
-8. Klientrakenduse dünaamilist registreerimist ei toetata. Klientrakenduse registreerimine toimub RIA-s eraldi protseduuriga.
-9. Ühekordset sisselogimist (SSO) ja seansihaldust (_session management_) praegu ei toetata.
+- Teenus toetab volituskoodi voogu(_authorization code flow_). Volituskoodi voogu peetakse kõige turvalisemaks ja sellisena on avalike teenuste jaoks sobiv.
+- Kogu teave autenditud kasutaja kohta edastatakse rakendusele identsustõendis (_ID token_). OAuth 2.0 ligipääsutõendit (_access token_) ja UserInfo otspunkti kaudu kasutaja atribuutide andmist ei toetata.
+- Rakendusele edastatakse ka eIDAS autentimistase, kui see on teada (`acr` väites).
+- Teenus toetab kasutajaliidese keele-eelistuse andmist autentimispäringus (`locale` parameetriga).
+- Autentimismeetodi valib kasutaja autentimisteenuses.
+- Piiriülene autentimine, vastavalt eIDAS tehnilisele spetsifikatsioonile.
+- Allkirjavõtme otspunktis esitatakse üksainus võti. Dünaamilist võtmevahetust (_key rollover_) praegu ei toetata.
+- Klientrakenduse dünaamilist registreerimist ei toetata. Klientrakenduse registreerimine toimub RIA-s eraldi protseduuriga.
+- Ühekordset sisselogimist (SSO) ja seansihaldust (_session management_) praegu ei toetata.
 
 TARA edasiarendamisel - mis toimub lähtudes TARA kasutajate vajadustest ja võimalustest neid kvaliteetselt rahuldada, hoides teenuse lihtsa ja fokusseerituna - ei ole võimatu, et võimalused laienevad.
 
