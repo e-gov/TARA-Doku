@@ -29,20 +29,19 @@ body {
 
 /*#region Pealkirjad */
 h1 {
-  font-size: 32px !important;
+  font-size: 24px !important;
   font-family: 'Segoe UI Semibold', Arial, Helvetica, sans-serif;
   margin-top: 1em;
   margin-bottom: 1rem;
 }
 h2 {
-  font-size: 24px !important;
-  font-family: 'Segoe UI Semibold', Arial, Helvetica, sans-serif;
+  font-size: 12px !important;
   margin-bottom: 0.5rem;
   margin-bottom: 0.5rem;
 }
 h3 {
-  font-size: 13pt !important;
-  font-weight: bold;
+  font-size: 12pt !important;
+  font-weight: normal;
   margin-bottom: 0.5rem;
   margin-bottom: 0.5rem;
 }
