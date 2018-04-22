@@ -7,6 +7,8 @@ permalink: Arendajale
 Töödokumentatsioon, mille ajakohasus ega muutumatus ei ole tagatud.
 {:.teade}
 
+<a href='https://e-gov.github.io/eIDAS-Connector/'>eIDAS konnektorteenus</a>
+
 [Kasutusstatistika.java](https://e-gov.github.io/TARA-Doku/tools/Kasutusstatistika.java) - teenuse kasutusstatistika aruande programm 
 
 Repod:
