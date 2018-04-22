@@ -6,13 +6,17 @@ permalink: /
 
 <img src='img/LOVID.png' style='width: 80px;'>
 
-<span style='color:Tomato;'>Vali õige meetod:</span> [Piiriülene eIDAS-autentimine. Liidestamismeetodi valik](https://e-gov.github.io/eIDAS-Connector/Valik)
-
 # Autentimisteenus TARA
 
 TARA on teenus, millega asutus saab oma e-teenuses autentida ID-kaardi või mobiil-ID kasutaja ning alates kevadest 2018 ka välisriigi kasutaja.
 
+TARA on [eelistatud viis](https://e-gov.github.io/eIDAS-Connector/Valik) piiriülese eIDAS-autentimise lisamiseks asutuse e-teenustele.
+
 TARA teenust pakub Riigi Infosüsteemi Amet. 
+
+Ametlikku teavet TARA ja RIA muude teenuste kohta vt [RIA autentimisteenuste lehelt](https://www.ria.ee/ee/autentimisteenused.html). 
+
+Käesoleva lehe teave on mõeldud kolmele sihtrühmale. Asutuse äriüksuse juht saab siinse teabe alusel hinnata TARA sobivust, liidestustööde mahtu ja teha otsuse TARA kasutuselevõtuks. Liidese arendaja leiab siit kogu vajaliku tehnilise teabe asutuse e-teenuste liidestamiseks TARA-ga. Lehel on (eraldatult) ka teavet, mis on seotud TARA edasiarendamisega.
 
 ## Ärikasutajale
 
@@ -27,7 +31,7 @@ TARA teenust pakub Riigi Infosüsteemi Amet.
 
 [Teekaart](Teekaart)<br>
 
-## Klientrakenduse liidese arendajale
+## Liidese arendajale
 
 [Tehniline kirjeldus](TehnilineKirjeldus)<br>
 [Sõnastik](Sonastik)<br>
