@@ -230,7 +230,7 @@ Klientrakendus ei tohi küsida rohkem atribuute kui e-teenuse osutamiseks vaja l
 
 Klientrakendus peab ka arvestama, et eIDAS-taristus autentimisel küsitakse kasutajalt nõusolekut isikuandmete saatmiseks teise riigi e-teenusele.
 
-### 4.2. Tagasisuunamispäring
+### 4.2 Tagasisuunamispäring
 
 Tagasisuunamispäring on HTTP GET päring, millega kasutaja suunatakse autentimise järel TARA-st tagasi klientrakendusse.
 
