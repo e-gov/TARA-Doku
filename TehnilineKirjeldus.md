@@ -45,11 +45,11 @@ TARA edasiarendamisel - mis toimub lähtudes TARA kasutajate vajadustest ja või
 
 TARA võimaldab nii siseriiklikku kui ka piiriülest autentimist. See tähendab, et autentida saab nii eestlase (Eesti e-identimissüsteemi - ID-kaardi, mobiil-ID jms kasutaja) kui ka välismaalase (EL teise liikmesriigi e-identimissüsteemi kasutaja).
 
-eIDASe kontekstis teostab TARA kasutusvood "Eestlase autentimine Eesti e-teenuses" ja "Eesti e-teenust kasutava välismaalase autentimine" (joonisel 1 kasutusvood 1 ja 3a).
+eIDASe kontekstis teostab TARA kasutusvood "Eestlase autentimine Eesti e-teenuses" ja "Eesti e-teenust kasutava välismaalase autentimine" (joonis 1).
 
-<img src='img/SUURPILT.PNG' style='width:700px'>
+<img src='img/YLEVAADE.PNG' style='width:700px'>
 
-Joonis 1. Siseriikliku ja piiriülese autentimise kasutusvood 
+Joonis 1. Siseriiklik ja piiriülene autentimine 
 
 ## 2 Autentimisprotsess kasutaja vaatest
 
@@ -225,7 +225,7 @@ Klientrakendus ei tohi küsida rohkem atribuute kui e-teenuse osutamiseks vaja l
 
 Klientrakendus peab ka arvestama, et eIDAS-taristus autentimisel küsitakse kasutajalt nõusolekut isikuandmete saatmiseks teise riigi e-teenusele.
 
-### 42. Tagasisuunamispäring
+### 4.2. Tagasisuunamispäring
 
 Tagasisuunamispäring on HTTP GET päring, millega kasutaja suunatakse autentimise järel TARA-st tagasi klientrakendusse.
 
