@@ -493,21 +493,21 @@ Testteenus
 
 | otspunkt      |                        URL      |
 |---------------|---------------------------------|
-| teenuseteave (_server discovery_) |  [https://tara-test.ria.ee/oidc/.well-known/openid-configuration](https://tara-test.ria.ee/oidc/.well-known/openid-configuration) |
-| teenuse avalik allkirjastamisvõti | [https://tara-test.ria.ee/oidc/jwks](https://tara-test.ria.ee/oidc/jwks) |
+| teenuseteave (_server discovery_) |  `[https://tara-test.ria.ee/oidc/.well-known/openid-configuration](https://tara-test.ria.ee/oidc/.well-known/openid-configuration)` |
+| teenuse avalik allkirjastamisvõti | `[https://tara-test.ria.ee/oidc/jwks](https://tara-test.ria.ee/oidc/jwks)` |
 | klientrakenduse registreerimine | dünaamilist registreerimist ei toetata, registreerimine staatiliselt, `help@ria.ee` kaudu |
-| autentimine (_authorization_) | `https://tara-test.ria.ee/oidc/authorize` | 
-| tõendiväljastus (_token_) | `https://tara-test.ria.ee/oidc/token` | 
+| autentimine (_authorization_) | `[https://tara-test.ria.ee/oidc/authorize](https://tara-test.ria.ee/oidc/authorize)` | 
+| tõendiväljastus (_token_) | `[https://tara-test.ria.ee/oidc/token](https://tara-test.ria.ee/oidc/token)` | 
 
 Toodanguteenus
 
 | otspunkt      |                        URL      |
 |---------------|---------------------------------|
-| teenuseteave (_server discovery_) | `https://tara.ria.ee/oidc/.well-known/openid-configuration` |
-| teenuse avalik allkirjastamisvõti | `https://tara.ria.ee/oidc/jwks` |
+| teenuseteave (_server discovery_) | `[https://tara.ria.ee/oidc/.well-known/openid-configuration](https://tara.ria.ee/oidc/.well-known/openid-configuration)` |
+| teenuse avalik allkirjastamisvõti | `[https://tara.ria.ee/oidc/jwks](https://tara.ria.ee/oidc/jwks)` |
 | klientrakenduse registreerimine | dünaamilist registreerimist ei toetata, registreerimine staatiliselt, `help@ria.ee` kaudu |
-| autentimine (_authorization_) | `https://tara.ria.ee/oidc/authorize` | 
-| tõendiväljastus (_token_) | `https://tara.ria.ee/oidc/token` | 
+| autentimine (_authorization_) | `[https://tara.ria.ee/oidc/authorize](https://tara.ria.ee/oidc/authorize)` | 
+| tõendiväljastus (_token_) | `[https://tara.ria.ee/oidc/token](https://tara.ria.ee/oidc/token)` | 
 
 ## 7 Soovitusi liidestajale
 
