@@ -21,7 +21,7 @@ Arenduses on piiriülese (eIDAS-)autentimise tugi. Järgmistes arendusjärkudes 
 
 Käesolev tehniline kirjeldus on suunatud TARA liidestajatele (arendajatele). Lugejalt eeldame HTTP protokolli tundmist. Kasulik, kuid mitte vajalik on  OpenID Connect või OAuth 2.0 kogemus. Lugeja peab olema valmis vajadusel hankima lisateavet OpenID Connect protokolli originaaltekstist [Core].
 
-Tehnilises kirjelduses on püütud järgida ühtset terminoloogiat. Sõnaseletusi leiab [sonastikus](Sonastik) ja [viidatud](Viited) materjalides. Arvestama peab, et OpenID Connect, OAuth 2.0 jm mõistesüsteemid ei ole ideaalselt ühtlustatud. Näiteks, TARAga liidestuvat, e-teenust pakkuvat asutuse infosüsteemi nimetame siin "klientrakenduseks". OAuth ja mõneski muus kontekstis on klientrakendus aga "teenusepakkuja" (_service provider_). 
+Tehnilises kirjelduses on püütud järgida ühtset terminoloogiat. Sõnaseletusi leiab [sonastikust](Sonastik) ja [viidatud](Viited) materjalides. Arvestama peab, et OpenID Connect, OAuth 2.0 jm mõistesüsteemid ei ole ideaalselt ühtlustatud. Näiteks, TARAga liidestuvat, e-teenust pakkuvat asutuse infosüsteemi nimetame siin "klientrakenduseks". OAuth ja mõneski muus kontekstis on klientrakendus aga "teenusepakkuja" (_service provider_). 
 
 ### 1.1 OpenID Connect
 
@@ -80,7 +80,7 @@ Joonis 1. Siseriikliku ja piiriülese autentimise kasutusvood
 5\. ID-kaardiga autentimine
 - algab kasutajale teabe kuvamisega autentimisserdi kohta
 - kasutaja kinnitab serdivaliku
-- kasutaja sisestab PIN1-koodi.
+- kasutaja sisestab PIN1-koodi
 - eduka autentimise korral edasi samm 7, vea korral samm 8.
 
 6\. Piiriülene (eIDAS-) autentimine
@@ -114,7 +114,7 @@ Joonis 1. Siseriikliku ja piiriülese autentimise kasutusvood
 
 Kirjeldame detailselt suhtluse sirviku, klientrakenduse serverikomponendi ja TARA serverikomponendi vahel.
 
-Need kolm osapoolt suhtlevad HTTP päringute ja vastuste kaudu.
+Need kolm osapoolt suhtlevad HTTP päringute ja vastuste abil.
 
 Käime läbi peamised päringud ja nende vastused (joonis 2).
 
@@ -175,7 +175,7 @@ Klientrakendus saadab sirvikusse HTTP vastuse **4b**, näiteks lehe "Sisse logit
 
 ### 4.1 Autentimispäring
 
-Autentimispäring on HTTP GET päring, millega kasutaja suunatakse klientrakendusest TARA-sse autentimma.
+Autentimispäring on HTTP GET päring, millega kasutaja suunatakse klientrakendusest TARA-sse autentima.
 
 Autentimispäringu näide (URL-i _query_-osa on loetavuse huvides jagatud mitmele reale):
 
