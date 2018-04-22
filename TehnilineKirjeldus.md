@@ -208,7 +208,7 @@ Autentimispäringu elemendid:
 | `nonce` | ei | `fsdsfwrerhtry3qeewq` | Taasesitusründeid vältida aitav unikaalne parameeter, vastavalt protokollile ([Viited](Viited), [Core], jaotis 3.1.2.1. Authentication Request). Parameeter `nonce` ei ole kohustuslik. |
 | `acr_values` | ei | `acr_values=substantial` | Minimaalne nõutav autentimistase vastavalt eIDAS tasemetele. Lubatud määrata üks väärtus järgmisest loetelust: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Kui määramata, siis vaikimisi `substantial` (märkimisväärne). |
 
-#### 4.1.1 Atribuutide küsimine välisriigi kodaniku kohta
+#### 4.1.1 Atribuutide küsimine välismaalase kohta
 
 Välismaalase autentimisel suunab TARA välismaalase tema koduriigi autentimisteenusesse. Sealt tulev vastus sisaldab suuremat või väiksemat hulka atribuute kasutaja kohta (nt perekonnanimi, aadress, sugu jne).
 
