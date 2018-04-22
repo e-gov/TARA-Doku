@@ -53,17 +53,17 @@ Joonis 1. Siseriiklik ja piiriülene autentimine
 
 ## 2 Autentimisprotsess kasutaja vaatest
 
-1\. Kasutaja on e-teenust osutavas klientrakenduses.
+1 Kasutaja on e-teenust osutavas klientrakenduses.
 
 - kasutaja võib olla nii eestlane kui ka välismaalane
 - kasutajale esitatakse kuva, millel on nupp "Logi sisse" vms
 - kasutaja vajutab "Logi sisse".
 
-2\. Klientrakendus suunab kasutaja TARA-teenusesse (sirviku ümbersuunamiskorralduse abil)
+2 Klientrakendus suunab kasutaja TARA-teenusesse (sirviku ümbersuunamiskorralduse abil)
 
 - ümbersuunamis-URL-is on autentimispäring.
 
-3\. Kasutajale avaneb autentimismeetodi valiku kuva.  Siin võib kasutaja:
+3 Kasutajale avaneb autentimismeetodi valiku kuva.  Siin võib kasutaja:
 
 - valida mobiil-ID-ga autentimise (samm 4)
 - valida ID-kaardiga autentimise (samm 5)
@@ -71,39 +71,44 @@ Joonis 1. Siseriiklik ja piiriülene autentimine
   - sh riigi, mille eID-d ta kasutab (valib õige "lipukese")
 - pöörduda tagasi klientrakendusse.
 
-4\. Mobiil-ID-ga autentimine
+4 Mobiil-ID-ga autentimine
+
 - kasutaja sisestab mobiilinumbri ja isikukoodi
 - kasutaja mobiilseadmele kuvatakse kontrollkood
 - kinnituse ootamine
 - eduka autentimise korral edasi samm 7, vea korral samm 8.
 
-5\. ID-kaardiga autentimine
+5 ID-kaardiga autentimine
+
 - algab kasutajale teabe kuvamisega autentimisserdi kohta
 - kasutaja kinnitab serdivaliku
 - kasutaja sisestab PIN1-koodi
 - eduka autentimise korral edasi samm 7, vea korral samm 8.
 
-6\. Piiriülene (eIDAS-) autentimine
+6 Piiriülene (eIDAS-) autentimine
+
 - kasutaja valib sihtriigi
 - kasutaja suunatakse läbi eIDAS taristu välisriigi autentimisteenusesse
 - kasutaja autendib end välisriigi autentimisvahendiga
 - eduka autentimise korral (ning kui välisriigi autentimisvahendi tase on piisav) edasi samm 7
 - vea korral samm 8.
 
-7\. Autenditud kasutaja
+7 Autenditud kasutaja
+
 - suunatakse tagasi klientrakendusse
 - klientrakendus pärib TARA serverilt identsustõendi
 - identsustõend (_identity token_) on allkirjastatud tõend eduka autentimise kohta
 - identsustõendis sisalduvad autentimisel tuvastatud kasutaja andmed (atribuudid)
 - klientrakendus annab kasutajale asjakohasel viisil teada, et sisselogimine õnnestus.
 
-8\. Veateate lehelt
+8 Veateate lehelt
 
 - saab kasutaja minna tagasi autentimismeetodi valikusse
 - ja seal kas üritada uuesti, võimalik, et teise autentimismeetodiga
 - või katkestada autentimise ja minna tagasi klientrakendusse.
 
-9\. Lisaks on kasutajal võimalik:
+9 Lisaks on kasutajal võimalik:
+
 - anda tagasisidet teenuse kohta
   - selleks on eraldi sakil avatav vorm, kuhu pääseb autentimismeetodi valiku kuval oleva lingi abil
 - esitada vearaportit
