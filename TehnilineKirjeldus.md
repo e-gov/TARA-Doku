@@ -455,17 +455,17 @@ Klientrakenduses tuleb rakendada võltspäringuründe (_cross-site request forge
 
 Turvakoodi `state` kasutatakse autentimispäringule järgneva tagasipöördumispäringu võltsimise vastu. Klientrakenduses tuleb teostada järgmised sammud:
 
-1\. Genereerida juhusõne, näiteks pikkusega 16 tärki: `XoD2LIie4KZRgmyc` (tähistame `R`).
+1 Genereerida juhusõne, näiteks pikkusega 16 tärki: `XoD2LIie4KZRgmyc` (tähistame `R`).
 
-2\. Arvutada juhusõnest `R` räsi `H = hash(R)`, näiteks SHA256 räsialgoritmiga ja teisendades tulemuse Base64 vormingusse: `vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`.
+2 Arvutada juhusõnest `R` räsi `H = hash(R)`, näiteks SHA256 räsialgoritmiga ja teisendades tulemuse Base64 vormingusse: `vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`.
 
-3\. Lisada autentimispäringule küpsise panemise korraldus, näiteks:
+3 Lisada autentimispäringule küpsise panemise korraldus, näiteks:
 
 `Set-Cookie ETEENUS=XoD2LIie4KZRgmyc; HttpOnly`,
 
 kus `ETEENUS` on vabalt valitud küpsisenimi. Küpsisele tuleb rakendada atribuuti `HttpOnly`.
 
-4\. Seada p 2 arvutatud räsi parameetri `state` väärtuseks:
+4 Seada p 2 arvutatud räsi parameetri `state` väärtuseks:
 
 `GET ... state=vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`
 
@@ -473,11 +473,11 @@ Niisiis, autentimispäringuga saadetakse kaks asja: juhusõne küpsisesse panemi
 
 Tagasipöördumispäringu töötlemisel peab klientrakendus tegema järgmist:
 
-5\. Võtab päringuga tuleva küpsise `ETEENUS` väärtuse
+5 Võtab päringuga tuleva küpsise `ETEENUS` väärtuse
 
-6\. Arvutab küpsise väärtusest räsi
+6 Arvutab küpsise väärtusest räsi
 
-7\. Kontrollib, et räsi ühtib tagasipöördumispäringus tagasipeegeldatava `state` väärtusega.
+7 Kontrollib, et räsi ühtib tagasipöördumispäringus tagasipeegeldatava `state` väärtusega.
 
 Tagasipöördumispäringut tohib aktsepteerida ainult ülalkirjeldatud kontrolli õnnestumisel.
 
@@ -521,18 +521,19 @@ Asutus peaks välja selgitama, kas ja millistes oma e-teenustes soovib TARA kasu
 
 Seejärel kavandada ja teostada teenuse kasutamiseks vajalik arendustöö - klientrakenduse täiendamine OpenID Connect protokolli kohase klientkomponendiga, sh testimine. Hinnanguline töömaht: kogenud arendajal u 2 päeva; kui OpenID Connect-i pole varem teinud, siis 2 nädalat. Aluseks käesolev [tehniline kirjeldus](TehnilineKirjeldus)
 
-Arenduse valmides tuleb liidest testida. Selleks kasutatakse TARA testteenust. Asutus esitab taotluse testteenusega liitumiseks. Taotluse võib esitada juba enne arenduse algust. Taotluses teatab asutus:<br>
-1) teenuse, millega soovitakse liituda (test- või toodanguteenus)<br>
-2) kinnituse, et liituja on välja arendanud omapoolse liidese ja seda TARA testteenuse vastu testinud (toodanguteenusega liitumise puhul)<br>
-3) e-teenuse või -teenused, mille kasutajaid soovitakse TARA abil autentida<br>
-4) kasutajate arvu prognoosi<br>
-5) kohustumuse kasutada teenust eesmärgipäraselt. Sh testteenust kasutada ainult testimiseks, mitte toodangus autentimiseks<br>
-6) nõustumuse teenustasemega (SLA-ga)<br>
-7) klientrakenduse identifikaatori ettepanek -`client_id` OpenID Connect protokolli kohaselt<br>
-8) klientrakenduse testversiooni tagasisuunamis-URL (_redirect-URL_), OpenID Connect protokolli kohaselt<br>
-9) klientrakenduse testversiooni tagasisuunamis-URL juhuks, kui kasutaja soovib autentimist katkestada<br>
-10) autentimismeetod või meetodid, mida soovitakse kasutada<br>
-11) klientrakenduse haldaja kontaktandmed (e-post, telefon, isikukood).
+Arenduse valmides tuleb liidest testida. Selleks kasutatakse TARA testteenust. Asutus esitab taotluse testteenusega liitumiseks. Taotluse võib esitada juba enne arenduse algust. Taotluses teatab asutus:
+
+- teenuse, millega soovitakse liituda (test- või toodanguteenus)
+- kinnituse, et liituja on välja arendanud omapoolse liidese ja seda TARA testteenuse vastu testinud (toodanguteenusega liitumise puhul)
+- e-teenuse või -teenused, mille kasutajaid soovitakse TARA abil autentida
+- kasutajate arvu prognoosi
+- kohustumuse kasutada teenust eesmärgipäraselt. Sh testteenust kasutada ainult testimiseks, mitte toodangus autentimiseks
+- nõustumuse teenustasemega (SLA-ga)
+- klientrakenduse identifikaatori ettepanek -`client_id`, OpenID Connect protokolli kohaselt
+- klientrakenduse testversiooni tagasisuunamis-URL (_redirect-URL_), OpenID Connect protokolli kohaselt
+- klientrakenduse testversiooni tagasisuunamis-URL juhuks, kui kasutaja soovib autentimist katkestada
+- autentimismeetod või meetodid, mida soovitakse kasutada
+- klientrakenduse haldaja kontaktandmed (e-post, telefon, isikukood).
 
 Taotlus esitatakse ja edasine suhtlus teenuse haldamisel käib läbi RIA kasutajatoe, `help@ria.ee`. Vt lähemalt [RIA autentimisteenuste lehel](https://www.ria.ee/ee/autentimisteenused.html).
 
