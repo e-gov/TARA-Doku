@@ -91,7 +91,7 @@ th { font-weight: normal; font-style: italic; text-align: center; }
 
 /*#region Kood; asciiflow joonised */
 pre, code, samp {
-  font-family: 'Source Code Pro', monospace;
+  font-family: monospace;
   font-size: 15px;
   color: black !important;
   background-color: #f6f8fa; /* nagu GitHubis */
