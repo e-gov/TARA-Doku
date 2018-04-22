@@ -47,7 +47,7 @@ TARA võimaldab nii siseriiklikku kui ka piiriülest autentimist. See tähendab,
 
 eIDASe kontekstis teostab TARA kasutusvood "Eestlase autentimine Eesti e-teenuses" ja "Eesti e-teenust kasutava välismaalase autentimine" (joonis 1).
 
-<img src='img/YLEVAADE.PNG' style='width:700px'>
+<img src='img/YLEVAADE.PNG' style='width:600px'>
 
 Joonis 1. Siseriiklik ja piiriülene autentimine 
 
