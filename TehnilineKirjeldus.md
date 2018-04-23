@@ -322,7 +322,7 @@ Identsustõendis esitatakse järgmised väited (_claims_).
 | `profile_attributes`<br>`.family_name`              | jah | `"family_name":"O’CONNEŽ-ŠUSLIK"` - autenditud kasutaja perekonnanimi (testnimi, valitud täpitähtede jm eritärkide sisalduvuse pärast) |
 | `profile_attributes`<br>`.mobile_number`          | ei | `"mobile_number":"+37200000766"` - m-ID kasutaja autentimisel kasutatud telefoninumber |
 | `profile_attributes`<br>`.date_of_birth`          | ei | Isiku sünnikuupäev ISO_8601 formaadis. Tagastatakse ainult eIDAS autentimisel. |
-| `profile_attributes`<br>`_nonlatin` | ei | Sisaldab JSON objekti mitteladinakeelsetest profiiliatribuutidest (vt allpool translitereerimine.). Väärtustatud ainult eIDAS autentimisel. |
+| `profile_attributes`<br>`_translit` | ei | Sisaldab JSON objekti ladina tähestikus profiiliatribuutidest (vt allpool translitereerimine.). Väärtustatud ainult eIDAS autentimisel. |
 | `state`            | jah | `"state":"abcdefghijklmnop"` - turvaelement  |
 | `exp` (_Expires_)     | jah | `"exp":1505847597` - tõendi aegumisaeg |
 | `iat` (_Issued At_)   | jah | `"iat":1505818797` - tõendi väljaandmisaeg |
@@ -396,9 +396,9 @@ eIDAS atribuudi nimele vastava täpsema kirjelduse leiab eIDAS  atribuutide prof
 
 #### 4.3.3 Translitereerimine
 
-Kõik eelpool toodud eIDAS spetsiifilised identsustõendi väärtused peavad olema esitatud originaalkujul, kuid sellele lisaks võivad sihtriigid soovi korral esitada väärtusi ka translitereeritud kujul. Juhul kui välisriik otsustab saata ka ladina keelde teisendatud kuju, esitatakse antud atribuudi nime ja väärtuse paarid ka `profile_attributes_translit` blokis.
+Kõik eelpool toodud eIDAS spetsiifilised identsustõendi väärtused peavad olema esitatud originaalkujul, kuid sellele lisaks võivad sihtriigid soovi korral esitada väärtusi ka translitereeritud kujul. Juhul kui välisriik otsustab saata ka ladina tähestikku teisendatud kuju, esitatakse antud atribuudi nime ja väärtuse paarid ka `profile_attributes_translit` blokis.
 
-Näide identsustõendis profiilielementide translitereerimisest (isiku eesnimi ja perenimi on esitatud ladina ja kreekakeelsel kujul):
+Näide identsustõendis profiilielementide translitereerimisest (isiku eesnimi ja perenimi on esitatud kreeka ja ladina tähestikus):
 ````json
 {
    ...
