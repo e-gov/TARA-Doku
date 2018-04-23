@@ -75,8 +75,8 @@ p { margin: 0 0 1em 0; }
     content: none !important;
     margin-left: 0 !important;
 }    
-#markdown-toc > li {
-  list-style: none;
+#markdown-toc li {
+  list-style-type: '   ' !important;
 }  
 /*#endregion */
 
