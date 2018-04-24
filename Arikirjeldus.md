@@ -18,7 +18,7 @@ Autentimisteenus TARA on Riigi Infosüsteemi Ameti poolt pakutav teenus, millega
 
 - E-teenus liidestatakse autentimisteenusega OpenID Connect protokolli kohaselt.
 - Autentimismeetodina toetame mobiil-ID-d ja ID-kaarti.
-- Teenuse esimese järgu valmides on kavas lisada teisi autentimismeetodeid, sh eIDAS e välismaa eID kasutaja autentimine.
+- Teenuse esimese järgu valmides on kavas lisada teisi autentimismeetodeid, sh eIDAS-e välismaa eID kasutaja autentimine.
 
 ## Kuidas liituda?
 
