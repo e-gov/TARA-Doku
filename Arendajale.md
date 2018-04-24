@@ -7,7 +7,7 @@ permalink: Arendajale
 Töödokumentatsioon, mille ajakohasus ega muutumatus ei ole tagatud.
 {:.teade}
 
-[Migration to eIDAS Node 2.0 – Technical Analysis](/Migration)
+[Migration to eIDAS Node 2.0 – Technical Analysis](Migration)
 
 <a href='https://e-gov.github.io/eIDAS-Connector/'>eIDAS konnektorteenus</a>
 
