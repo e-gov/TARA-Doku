@@ -100,7 +100,7 @@ Peame arvesse võtma ka Euroopa Komisjoni tarkvara. Euroopa Komisjon on välja t
 
 Komponendid 1 ja 2 (konnektorteenus ja vahendusteenus) koos kannavad nime eIDAS-Node.
 
-Lisaks avaldas Komisjon ktoobris 2017 konnektorteenuste ja eIDAS siseriiklike autentimisteenuste ehitajatele suunatud juhendi "eIDAS Node National IdP and SP Integration Guide" [2]. Juhendis antakse nõu, kuidas konnektorteenuse tarkvarale siseriiklikku otsa ehitada, sh kuidas ülalnimetatud demorakenduste osi soovi korral ära kasutada.
+Lisaks avaldas Komisjon oktoobris 2017 konnektorteenuste ja eIDAS siseriiklike autentimisteenuste ehitajatele suunatud juhendi "eIDAS Node National IdP and SP Integration Guide" [2]. Juhendis antakse nõu, kuidas konnektorteenuse tarkvarale siseriiklikku otsa ehitada, sh kuidas ülalnimetatud demorakenduste osi soovi korral ära kasutada.
 
 Liikmesriik ei ole kohustatud Komisjoni tarkvara kasutama. Tähtis on teostada eIDAS tehnilisele spetsifikatsioonile [3] vastav liides.
 
