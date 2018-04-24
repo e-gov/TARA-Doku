@@ -22,7 +22,7 @@ Käesoleva lehe teave on mõeldud kolmele sihtrühmale. Asutuse äriüksuse juht
 
 [Ärikirjeldus](Arikirjeldus)<br>
 
-<p><a href='https://www.ria.ee/ee/autentimisteenused.html' class='nupp'>Liitumine</a></p>
+<p>&gt; <a href='https://www.ria.ee/ee/autentimisteenused.html'>Liitumine</a></p>
 
 [Isikuandmete töötluse poliitika](Isikuandmed)
 
