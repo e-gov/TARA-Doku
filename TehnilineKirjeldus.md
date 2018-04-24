@@ -332,7 +332,7 @@ Identsustõendis esitatakse järgmised väited (_claims_).
 
 #### 4.3.2 Mittekohustuslikud atribuudid (välismaalase autentimisel)
 
-Järgnevad atribuudid esitatakse identsustõendis ainult siis, kui  autenditud isik on välismaalanae ja klientrakendus on atribuute  autentimispäringu `scope` parameetris taotlenud.
+Järgnevad atribuudid esitatakse identsustõendis ainult siis, kui  autenditud isik on välismaalane ja klientrakendus on atribuute  autentimispäringu `scope` parameetris taotlenud.
 
 Füüsiline isik
 
@@ -483,7 +483,7 @@ Tagasipöördumispäringut tohib aktsepteerida ainult ülalkirjeldatud kontrolli
 
 Kirjeldatud protseduuris on võtmetähtsusega väärtuse `state` sidumine sessiooniga. Seda tehakse küpsise abil. (See on autentimise ajutine sessioon.  Töösessiooni moodustab klientrakendus pärast autentimise edukat lõpuleviimist).
 
-Täiendav teave: OpenID Connect protokollis kahjuks ei ole teema selgelt esitatud. Mõningast teavet saab soovi korralmitteametlikust dokumendist [OpenID Connect Basic Client Implementer's Guide 1.0](https://openid.net/specs/openid-connect-basic-1_0.html), jaotis "2.1.1.1 Request Parameters".
+Täiendav teave: OpenID Connect protokollis kahjuks ei ole teema selgelt esitatud. Mõningast teavet saab soovi korral mitteametlikust dokumendist [OpenID Connect Basic Client Implementer's Guide 1.0](https://openid.net/specs/openid-connect-basic-1_0.html), jaotis "2.1.1.1 Request Parameters".
 
 Soovi korral võite veel tutvuda ründe (ja kaitse) detailse seletusega: [Võltspäringurünne ja kaitse selle vastu](Volts).  
 
