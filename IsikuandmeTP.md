@@ -27,7 +27,7 @@ _kasutaja_, füüsiline isik, kes suunatakse Eesti või välismaa e-teenusest RI
   - kasutaja isikukood vm isiku identifikaator
   - kasutaja ees- ja perekonnanimi
   - kasutaja riik
-  - muud kasutaja isikuandmed, eIDASE terminoloogias "atribuudid", vastavalt eIDAS määruse alusel väljatöötatud eIDAS tehnilisele spetsifikatsioonile [2]. _Eestikeelne nimekiri eIDAS atribuutidest on kättesaadav TARA tehnilises kirjelduses [3]._
+  - muud kasutaja isikuandmed, eIDAS-e terminoloogias "atribuudid", vastavalt eIDAS määruse alusel väljatöötatud eIDAS tehnilisele spetsifikatsioonile [2]. _Eestikeelne nimekiri eIDAS atribuutidest on kättesaadav TARA tehnilises kirjelduses [3]._
 
 2. autentimistoimingu andmed
   - kuupäev ja kellaaeg
