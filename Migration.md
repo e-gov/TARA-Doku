@@ -38,7 +38,7 @@ The following questions need to be addressed:
 
 New services should be developed using eIDAS-Node 2.0 sample components as a baseline. eIDAS specific SAML protocol should be used as in the 1.4 version.
 
-<img src='img/MIGRATION-01.PNG' style='width: 400px;'>
+<img src='img/MIGRATION-01.PNG' style='width: 600px;'>
 
 Positive:
 -	SAML allows more granular security if needed, which makes it possible to secure personal information at eIDAS protocol level (compared to more recent protocols like OIDC, OAuth, etc.).
@@ -54,7 +54,7 @@ Negative:
 
 TARA takes the responsibility for interfacing with the eIDAS-Node 2.0 (uses OpenID Connect as a security protocol). Integration can be done in several stages by introducing the TARA as a connector service first hand and replacing the SAML IdP service with TARA in later stages. 
 
-<img src='img/MIGRATION-02.PNG' style='width: 400px;'>
+<img src='img/MIGRATION-02.PNG' style='width: 600px;'>
 
 Positive:
 -	One central facade and access point for national clients creates a simpler system architecture. 
@@ -70,7 +70,7 @@ Negative:
 
 Continue with 1.4 for now. Let the 2.0 release stabilize before adoption as the new architecture has introduced breaking changes to existing clients in multiple member states.
 
-<img src='img/MIGRATION-03.PNG' style='width: 400px;'>
+<img src='img/MIGRATION-03.PNG' style='width: 600px;'>
 
 Positive:
 -	eIDAS-Node 1.4 is a matured release. Lots of time and effort has been invested to test it and integration is almost complete. There are some known issues, but they are not critical.
@@ -86,7 +86,7 @@ Negative:
 
 A mix of previous options. An alternative would be to use eIDAS-Node 1.4 only for the identity provider and to migrate the connector service to 2.0 (or vice versa – start with the national identity provider). 
 
-<img src='img/MIGRATION-04.PNG' style='width: 400px;'>
+<img src='img/MIGRATION-04.PNG' style='width: 600px;'>
 
 Positive:
 -	Gradual migration allows dealing with the migration problems step-by-step.
@@ -99,7 +99,7 @@ Negative:
 
 Drop all sample implementations and build a custom implementation upon CEF specifications.
 
-<img src='img/MIGRATION-05.PNG' style='width: 400px;'>
+<img src='img/MIGRATION-05.PNG' style='width: 600px;'>
  
 Positive:
 -	Protocol is well-defined and specific. 
