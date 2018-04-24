@@ -234,7 +234,7 @@ Klientrakendus peab ka arvestama, et eIDAS-taristus autentimisel küsitakse kasu
 
 Tagasisuunamispäring on HTTP GET päring, millega kasutaja suunatakse autentimise järel TARA-st tagasi klientrakendusse.
 
-Tagasisuunamine tehakse klientrakenduse poolt autentimispäringus kaasa antud naasmisaadressile. Tagasisuunamispäringus edastab TARA klientrakendusele volituskoodi (_authorization code_), mille alusel klientrakendus pärib (eraldi päringuga) TARA-lt autennditu isiku isikukoodi, nime jm atribuudid. Tehniliselt tehakse tagasisuunamine HTTP _redirect_-päringuga.
+Tagasisuunamine tehakse klientrakenduse poolt autentimispäringus kaasa antud naasmisaadressile. Tagasisuunamispäringus edastab TARA klientrakendusele volituskoodi (_authorization code_), mille alusel klientrakendus pärib (eraldi päringuga) TARA-lt autenditud isiku isikukoodi, nime jm atribuudid. Tehniliselt tehakse tagasisuunamine HTTP _redirect_-päringuga.
 
 Tagasisuunamispäringu näide:
 
