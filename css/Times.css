@@ -7,9 +7,10 @@ body {
   max-width: 55em;
   margin: 0 0; 
   padding: 0.6em 1.5em 2em 2em; 
-  font-family: 'Segoe UI', Arial, serif;
-  font-size: 16px; 
-  color: #24292E !important;
+  /* font-family: 'Segoe UI', Arial, serif; */
+  font-family: Arial, sans-serif;
+  font-size: 18px; 
+  color: #222325 !important;
   line-height: 1.5 !important;
   }
 
@@ -35,7 +36,9 @@ h1 {
   margin-bottom: 1rem;
 }
 h2 {
-  font-size: 13pt !important;
+  /* font-size: 13pt !important; */
+  font-size: 1.17em;
+  font-weight: bold;
   margin-bottom: 0.5rem;
   margin-bottom: 0.5rem;
 }
