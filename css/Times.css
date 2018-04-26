@@ -6,7 +6,7 @@
 body {
   max-width: 55em;
   margin: 0 0; 
-  padding: 0 1.5em 2em 2em; 
+  padding: 0 0 2em 0; 
   /* font-family: 'Segoe UI', Arial, serif; */
   font-family: Arial, sans-serif;
   font-size: 18px; 
@@ -21,7 +21,7 @@ body {
   padding: 1em;
 }
 
-#Tekst { width: 50rem; }
+#Tekst { width: 50rem; margin-left: 2em; }
 
 /* ---- Avalehe paigutus ---- */  
 #Container { display: flex; max-width: 60em; }
