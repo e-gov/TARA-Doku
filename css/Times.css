@@ -16,9 +16,9 @@ body {
 
 /* Päis */
 .pais { font-family: 'Arial', sans-serif;
-  font-size: 16px; margin-bottom: 8px;
+  margin-bottom: 8px;
   background-color: #F6F9F8;
-  padding: 1em;
+  padding: 1em 2em;
 }
 
 #Tekst { width: 50rem; margin-left: 2em; }
