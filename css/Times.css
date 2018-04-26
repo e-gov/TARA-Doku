@@ -9,9 +9,9 @@ body {
   padding: 0 0 2em 0; 
   /* font-family: 'Segoe UI', Arial, serif; */
   font-family: Arial, sans-serif;
-  font-size: 18px; 
+  font-size: 17px; 
   color: #222325 !important;
-  line-height: 1.5 !important;
+  line-height: 1.4 !important;
   }
 
 /* Päis */
@@ -19,6 +19,7 @@ body {
   margin-bottom: 8px;
   background-color: #F6F9F8;
   padding: 1em 2em;
+  max-width: 40rem;
 }
 
 #Tekst { width: 50rem; margin-left: 2em; }
