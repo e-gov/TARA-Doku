@@ -22,7 +22,7 @@ body {
   max-width: 45rem;
 }
 
-#Tekst { width: 50rem; margin-left: 2em; }
+#Tekst { width: 45rem; margin-left: 2em; }
 
 /* ---- Avalehe paigutus ---- */  
 #Container { display: flex; max-width: 60em; }
