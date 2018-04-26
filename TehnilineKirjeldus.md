@@ -47,7 +47,7 @@ TARA võimaldab nii siseriiklikku kui ka piiriülest autentimist. See tähendab,
 
 eIDASe kontekstis teostab TARA kasutusvood "Eestlase autentimine Eesti e-teenuses" ja "Eesti e-teenust kasutava välismaalase autentimine" (joonis 1).
 
-<img src='img/YLEVAADE.PNG' style='width:600px'>
+<p style='text-align:center;'><img src='img/YLEVAADE.PNG' style='width:600px'></p>
 
 Joonis 1. Siseriiklik ja piiriülene autentimine 
 
@@ -123,7 +123,7 @@ Need kolm osapoolt suhtlevad HTTP päringute ja vastuste abil.
 
 Käime läbi peamised päringud ja nende vastused (joonis 2).
 
-<img src='img/VOOG-01.PNG' style='width:400px'>
+<p style='text-align:center;'><img src='img/VOOG-01.PNG' style='width:400px'></p>
 
 Joonis 2. Autentimispäring
 
@@ -139,7 +139,7 @@ TARA serverikomponent, saades autentimispäringu **2a**, koostab autentimismeeto
 
 Kasutajale kuvatakse autentimismeetodite valiku leht. Jätkame voo kirjeldamisega joonisel 3.
 
-<img src='img/VOOG-02.PNG' style='width:400px'>
+<p style='text-align:center;'><img src='img/VOOG-02.PNG' style='width:400px'></p>
 
 Joonis 3. Tagasipöördumispäring
 
@@ -160,7 +160,7 @@ TARA roll võiks sellega lõppeda. OpenID Connect otsevoo (_implicit flow_) puhu
 
 Volituskood lunastatakse autenditud isiku isikukoodi, nime jm isikuandmete vastu eraldi päringu tegemisega TARA serverikomponendi poole (joonis 4).   
 
-<img src='img/VOOG-03.PNG' style='width:400px'>
+<p style='text-align:center;'><img src='img/VOOG-03.PNG' style='width:400px'></p>
 
 Joonis 4. Identsustõendipäring
 
