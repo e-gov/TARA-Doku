@@ -3,7 +3,7 @@ permalink: Liitumisjuhend
 ---
 
 KEHTETU. Dokument on arhiveeritud. 
-{:.teade}
+{:.note}
 
 # Liitumisjuhend
 {: .no_toc}

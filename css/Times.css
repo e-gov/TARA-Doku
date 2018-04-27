@@ -162,5 +162,24 @@ a.nupp:hover {
   text-decoration: none !important;
 }
 
-
 /*#endregion */
+
+.note, .advisement {
+  padding: .5em;
+  border: .5em;
+  border-left-style: solid;
+  page-break-inside: avoid;
+  margin: 1em auto;
+}
+
+.note {
+  border-color: #52E052;
+  background: #E9FBE9;
+  overflow: auto;
+}
+
+.advisement {
+  border-color: orange;
+  border-style: none solid;
+  background: #FFEECC;
+}

@@ -5,7 +5,7 @@ permalink: Arendajale
 ## TARA teenuse arendajale
 
 Töödokumentatsioon, mille ajakohasus ega muutumatus ei ole tagatud.
-{:.teade}
+{:.note}
 
 [Migration to eIDAS Node 2.0 – Technical Analysis](Migration)
 

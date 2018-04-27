@@ -32,10 +32,10 @@ permalink: <URL-inimi>
 
 ```
 NB! See on teade.
-{:.teade}
+{:.note}
 ```
 
 NB! See on teade.
-{:.teade}
+{:.note}
 
 
