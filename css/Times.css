@@ -142,11 +142,6 @@ a[href]:hover {
   color: Teal;
   text-align: center;
 }
-.teade {
-  border-radius: 2px; padding: 0.1rem;
-  color: Cadetblue;
-  background-color: lightcyan;
-}
 a.nupp {
   display: inline-block;
   border-radius: 8px; padding: 0.5rem 1rem !important; margin: 1rem !important;
@@ -162,15 +157,13 @@ a.nupp:hover {
   text-decoration: none !important;
 }
 
-/*#endregion */
-
 .note, .advisement {
   padding: .5em;
   border: .5em;
   border-left-style: solid;
   page-break-inside: avoid;
   margin: 1em auto;
-}
+}  
 
 .note {
   border-color: #52E052;
@@ -183,3 +176,5 @@ a.nupp:hover {
   border-style: none solid;
   background: #FFEECC;
 }
+
+/*#endregion */
