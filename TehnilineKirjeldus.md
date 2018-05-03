@@ -427,7 +427,7 @@ Kui identsustõendit ei pärita `5` minuti jooksul, siis identsustõend aegub ja
 ### 5.1 Identsustõendi kontrollimine
 
 Klientrakendus peab identsustõendit kontrollima.
-{: .advisement}
+{: .adv}
 
 1\. Allkirja kontrollimine. Identsustõend on autentimisteenuse TARA poolt allkirjastatud. Allkiri JWT standardile. Allkirjaalgoritmina kasutab TARA `RS256`. Klientrakendus peab suutma vähemalt selle algoritmiga antud allkirja kontrollida. (Märkus. Teostada on otstarbekas standardse JWT teegiga, mis toetaks kõiki JWT algoritme. TARA allkirjaalgoritmi vajadus on põhimõtteliselt võimalik - kui `RS256`-s peaks avastatama turvanõrkus)
 

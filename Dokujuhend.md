@@ -1,8 +1,8 @@
 ---
-permalink: Dokujuhend
+permalink: Dokuabi
 ---
 
-# Dokumentatsiooni täiendamise juhend
+# Abiks dokumenteerijale
 
 - Kasuta Markdown-i; dokumentatsioon publitseeritakse `github.io` mehhanismiga.
 - Dokumendi lisamiseks lisa uus `.md`-fail repo peakausta.
@@ -25,17 +25,23 @@ permalink: <URL-inimi>
     - teenuse enda arendamise, sisemine dok-n
     - järgi seda eristust. 
 - Konfidentsiaalset taristuteavet ära pane.
-- Asjakohastes kohtades pane lingid JIRA ja Confluence-i suletud ruumidele. Hea on markeerida need võtmesümboliga `&#128273;`.
 - Arvesta, et repo on avalik. Korrektne keel ja vormistus.
 
-- Teate lisamiseks pane tekstilõigu alla rida `{:.teade}`:
+- Esiletõsteid saab lisada nii:
 
 ```
-NB! See on teade.
+NB! See on roheline teade.
 {:.note}
 ```
 
-NB! See on teade.
+NB! See on roheline teade.
 {:.note}
 
+```
+NB! See on punane teade.
+{:.adv}
+```
+
+NB! See on punane teade.
+{:.adv}
 

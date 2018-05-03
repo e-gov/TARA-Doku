@@ -157,7 +157,7 @@ a.nupp:hover {
   text-decoration: none !important;
 }
 
-.note, .advisement {
+.note, .adv {
   padding: .5em;
   border: .5em;
   border-left-style: solid;
@@ -171,7 +171,7 @@ a.nupp:hover {
   overflow: auto;
 }
 
-.advisement {
+.adv {
   border-color: orange;
   border-style: none solid;
   background: #FFEECC;
