@@ -31,7 +31,7 @@ Lähteülesanded:
 
 Mitmesugused töödokumendid:
 
-[Abiks dokumenteerijale](Dokujuhend)
+[Abiks dokumenteerijale](Dokuabi)
 
 [TARA serverrakenduse sisearhitektuur](Sisearhitektuur)
 

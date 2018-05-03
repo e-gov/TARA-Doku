@@ -30,18 +30,18 @@ permalink: <URL-inimi>
 - Esiletõsteid saab lisada nii:
 
 ```
-NB! See on roheline teade.
+NB! See on rahulik esiletõst.
 {:.note}
 ```
 
-NB! See on roheline teade.
+NB! See on rahulik esiletõst.
 {:.note}
 
 ```
-NB! See on punane teade.
+NB! See on silmatorkav esiletõst.
 {:.adv}
 ```
 
-NB! See on punane teade.
+NB! See on silmatorkav esiletõst.
 {:.adv}
 
