@@ -15,7 +15,7 @@ Liitumise järel on võimalik teenust koheselt testida, kasutades liitumise jär
 ## Testplaan
 
 Testplaani täitmiseks on tarvilik eelnevalt tutvuda päringu moodustamise spetsifikatsiooniga: https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus. 
-Päringute katsetamiseks ja ka *debugimiseks* saab kasutada cURL-i töövahendi näidispäringuid (vt peatükk "cURL näidispäringud").
+Päringute katsetamiseks ja ka *debugimiseks* saab kasutada **cURL-i** töövahendi näidispäringuid (vt peatükk "cURL näidispäringud").
 Mobiil-ID ja ID-kaardiga autentimisel tuleb lähtuda siin väljatoodud juhendist: https://www.id.ee/index.php?id=30303, lühidalt on juhend resümeeritud peatükis "Testimine testnumbrite ja ID-kaardiga"
 
 
