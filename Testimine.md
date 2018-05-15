@@ -50,7 +50,7 @@ TARA testkeskkond on suunatud vastu test-OCSP ja test-DigiDocService teenust. Se
 
 ## Täiendavad soovitused
 Põhivoo töölesaamine on ainult üks osa TARA teenusega liidestumisel. Erilist tähelepanu tuleb pöörata turvatoimingute kontrollimisele (vt [https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus#5-turvatoimingud](https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus#5-turvatoimingud)).
-Peale identsustõendi kättesaamist on vaja täiendavalt testida funktsionaalsuseid, mis rakendavad seda identsustõendit. TARA liidestuse järel on vaja veenduda, et identsustõend tagastatakse Teie klientrakendusele kõikides brauserite ja nende versioonide kombinatsioonides, mida soovite rakendada. 
+Peale identsustõendi kättesaamist on vaja täiendavalt testida funktsionaalsuseid, mis rakendavad seda identsustõendit. TARA liidestuse järel on vaja veenduda, et identsustõend tagastatakse Teie klientrakendusele kõikide brauserite ja nende versioonide kombinatsioonides, mida soovite rakendada. 
 Nõu küsimiseks ja võimaliku TARA vea raporteerimiseks palun pöörduda meilitsi [help@ria.ee](help@ria.ee) poole.
 
 ## Muutelugu
