@@ -28,7 +28,7 @@ Mobiil-ID ja ID-kaardiga autentimisel tuleb lähtuda siin väljatoodud juhendist
 | ------------- |:-------------:|
 | 1. Tee autentimispäring (HTTP GET päring) otspunkti `https://tara-test.ria.ee/oidc/authorize` vastu |  Brauseris avaneb TARA testkeskkonna sisselogimise lehekülg |     
 | 2. Alusta autentimist m-ID-ga. Kasuta selleks test-mobiilinumbreid või enda üleslaaditud mobiiliandmeid | Autentimine viiakse läbi ning brauser suunatakse liitumistaotluses väljatoodud naasmisaadressile (*redirect* URL-ile). Päringuga antakse kaasa väärtustatud *code* parameeter |
-| 3. Moodusta identsustõendipäring (HTTP POST päring) otspunkti `https://tara-test.ria.ee/oidc/token vastu`| Päringule tagastatakse base64 kodeeritud identsustõend |
+| 3. Moodusta identsustõendipäring (HTTP POST päring) otspunkti `https://tara-test.ria.ee/oidc/token` vastu| Päringule tagastatakse base64 kodeeritud identsustõend |
 
 ## Näidispäringud (testimiseks)
 TARA liidestumise põhivoog seisneb autoriseerimiskoodi küsimises, selle tagastamises klientrakendusele ja seejärel identsustõendi küsimises. Juhul kui on paigaldatud proksiserver (klientrakenduse rollis), mis on avalikult kättesaadav ja registreeritud TARAs tagasisuunamisaadressina, on võimalik teenust testida ka käepäraste vahenditega.
