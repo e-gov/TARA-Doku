@@ -34,10 +34,12 @@ Käesoleva lehe teave on mõeldud kolmele sihtrühmale. Asutuse äriüksuse juht
 ## Liidese arendajale
 
 [Tehniline kirjeldus](TehnilineKirjeldus)<br>
-[Sõnastik](Sonastik)<br>
-[Viited](Viited)<br>
+[Testimine](Testimine)<br>
 
-[Näiterakendused](Naited)
+[Näiterakendused](Naited)<br>
+
+[Sõnastik](Sonastik)<br>
+[Viited](Viited)
 
 ## TARA teenuse arendajale
 
