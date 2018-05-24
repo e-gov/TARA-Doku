@@ -43,4 +43,5 @@ Käesoleva lehe teave on mõeldud kolmele sihtrühmale. Asutuse äriüksuse juht
 
 ## TARA teenuse arendajale
 
-[Kood ja arendaja dokumentatsioon](Arendajale)
+[Arhitektuurikirjeldus](Arhitektuurikirjeldus)<br>
+[Kood jm arendaja dokumentatsioon](Arendajale)
