@@ -2,12 +2,12 @@
 permalink: TehnilineKirjeldus
 ---
 
-Märkus. Piiriülese autentimise (eIDAS) tugi on arenduses.
+Märkus. Piiriülese autentimise (eIDAS) ja pangalinkide tugi on arenduses.
 {: .note}
 
 # Tehniline kirjeldus
 {: .no_toc}
-v 0.6, 22.04.2018
+v 0.7, 24.05.2018
 
 - TOC
 {:toc}
@@ -22,7 +22,7 @@ Arenduses on piiriülese (eIDAS-)autentimise tugi. Järgmistes arendusjärkudes 
 
 Käesolev tehniline kirjeldus on suunatud TARA liidestajatele (arendajatele). Lugejalt eeldame HTTP protokolli tundmist. Kasulik, kuid mitte vajalik on  OpenID Connect või OAuth 2.0 kogemus. Lugeja peab olema valmis vajadusel hankima lisateavet OpenID Connect protokolli originaaltekstist [Core].
 
-Tehnilises kirjelduses on püütud järgida ühtset terminoloogiat. Sõnaseletusi leiab [sonastikust](Sonastik) ja [viidatud](Viited) materjalides. Arvestama peab, et OpenID Connect, OAuth 2.0 jm mõistesüsteemid ei ole ideaalselt ühtlustatud. Näiteks, TARAga liidestuvat, e-teenust pakkuvat asutuse infosüsteemi nimetame siin "klientrakenduseks". OAuth ja mõneski muus kontekstis on klientrakendus aga "teenusepakkuja" (_service provider_). 
+Tehnilises kirjelduses on püütud järgida ühtset terminoloogiat. Sõnaseletusi leiab [sonastikust](Sonastik) ja [viidatud](Viited) materjalides. Arvestama peab, et OpenID Connect, OAuth 2.0 jm mõistesüsteemid ei ole ideaalselt ühtlustatud. Näiteks, TARAga liidestuvat, e-teenust pakkuvat asutuse infosüsteemi nimetame siin "klientrakenduseks". OAuth ja mõneski muus kontekstis on klientrakendus aga "teenusepakkuja" (_service provider_).
 
 ### 1.1 OpenID Connect
 
@@ -70,6 +70,7 @@ Joonis 1. Siseriiklik ja piiriülene autentimine
 - valida ID-kaardiga autentimise (samm 5)
 - valida piiriülese (eIDAS-) autentimise (samm 6)
   - sh riigi, mille eID-d ta kasutab (valib õige "lipukese")
+- valida pangalingiga autentimise (samm 7)
 - pöörduda tagasi klientrakendusse.
 
 4 Mobiil-ID-ga autentimine
@@ -77,24 +78,32 @@ Joonis 1. Siseriiklik ja piiriülene autentimine
 - kasutaja sisestab mobiilinumbri ja isikukoodi
 - kasutaja mobiilseadmele kuvatakse kontrollkood
 - kinnituse ootamine
-- eduka autentimise korral edasi samm 7, vea korral samm 8.
+- eduka autentimise korral edasi samm 8, vea korral samm 9.
 
 5 ID-kaardiga autentimine
 
 - algab kasutajale teabe kuvamisega autentimisserdi kohta
 - kasutaja kinnitab serdivaliku
 - kasutaja sisestab PIN1-koodi
-- eduka autentimise korral edasi samm 7, vea korral samm 8.
+- eduka autentimise korral edasi samm 8, vea korral samm 9.
 
 6 Piiriülene (eIDAS-) autentimine
 
 - kasutaja valib sihtriigi
 - kasutaja suunatakse läbi eIDAS taristu välisriigi autentimisteenusesse
 - kasutaja autendib end välisriigi autentimisvahendiga
-- eduka autentimise korral (ning kui välisriigi autentimisvahendi tase on piisav) edasi samm 7
-- vea korral samm 8.
+- eduka autentimise korral (ning kui välisriigi autentimisvahendi tase on piisav) edasi samm 8
+- vea korral samm 9.
 
-7 Autenditud kasutaja
+7 Pangalingiga autentimine
+
+- kasutaja valib panga
+- kasutaja suunatakse panga autentimisteenusesse
+- kasutaja autendib end valitud autentimisvahendiga
+- eduka autentimise korral edasi samm 8
+- vea korral samm 9.
+
+8 Autenditud kasutaja
 
 - suunatakse tagasi klientrakendusse
 - klientrakendus pärib TARA serverilt identsustõendi
@@ -102,13 +111,13 @@ Joonis 1. Siseriiklik ja piiriülene autentimine
 - identsustõendis sisalduvad autentimisel tuvastatud kasutaja andmed (atribuudid)
 - klientrakendus annab kasutajale asjakohasel viisil teada, et sisselogimine õnnestus.
 
-8 Veateate lehelt
+9 Veateate lehelt
 
 - saab kasutaja minna tagasi autentimismeetodi valikusse
 - ja seal kas üritada uuesti, võimalik, et teise autentimismeetodiga
 - või katkestada autentimise ja minna tagasi klientrakendusse.
 
-9 Lisaks on kasutajal võimalik:
+10 Lisaks on kasutajal võimalik:
 
 - anda tagasisidet teenuse kohta
   - selleks on eraldi sakil avatav vorm, kuhu pääseb autentimismeetodi valiku kuval oleva lingi abil
@@ -316,7 +325,7 @@ Identsustõendis esitatakse järgmised väited (_claims_).
 | `aud` (_Audience_)     | jah |`"aud":"openIdDemo"` - autentimist küsinud infosüsteemi ID (kasutaja autentimisele suunamisel määratud `client_id` välja väärtus)|
 | `sub` (_Subject_)      | jah | `"sub":"EE11412090004"` - autenditud kasutaja identifikaator (isikukood või eIDAS identifikaator) koos kodaniku riigikoodi eesliitega (riigikoodid vastavalt ISO 3166-1 alpha-2 standardile). |
 | `nbf` (_Not Before_)   | jah |`"nbf":"Wed Sep 27 11:47:22 EEST 2017"` - tõendi kehtivuse algusaeg |
-| `amr` (_Authentication Method Reference_) | jah | `"amr":["mID"]` - kasutaja autentimiseks kasutatud autentimismeetod. Võimalikud väärtused: `mID` - mobiil-ID, `idcard` - Eesti ID-kaart, `eIDAS` - piiriülene |
+| `amr` (_Authentication Method Reference_) | jah | `"amr":["mID"]` - kasutaja autentimiseks kasutatud autentimismeetod. Võimalikud väärtused: `mID` - mobiil-ID, `idcard` - Eesti ID-kaart, `eIDAS` - piiriülene, `banklink` - pangalink  |
 | `iss` (_Issuer_)       | jah | `"iss":"https://tara.ria.ee"` - tõendi väljastaja (TARA-teenus); testteenuse puhul `"iss":"https://tara-test.ria.ee"` |
 | `profile_attributes`   | jah | `"profile_attributes": {"given_name":"MARY ÄNN", "family_name":"O’CONNEŽ-ŠUSLIK", "mobile_number":"+37200000766"}` - autenditud isikut kirjeldavad andmed, sh eIDAS atribuudid (vt ka allpool täiendavate andmete küsimise ja isiku esindamise kohta)  |
 | `profile_attributes`<br>`.given_name`              | jah | `"given_name":"MARY ÄNN"` - autenditud kasutaja eesnimi (testnimi, valitud täpitähtede sisalduvuse pärast) |
@@ -354,7 +363,7 @@ Juriidiline isik
 | identsustõendi element (`profile_attributes.` + ) | scope väärtus | väljastamine kohustuslik | eIDAS atribuut |
 |-----------------|-----------------|:------------------------:|----------------|
 | `legal_address` | `eidas:legal_address` | ei | `LegalAddress` |
-| `vat_registration` | `eidas:vat_registration` | ei | `VATRegistrationNumber` |
+| `vat_registration` | `eidas:vat_registration` | ei | `VATRegistration` |
 | `tax_reference` | `eidas:tax_reference`  | ei |  `TaxReference` |
 | `LEI` | `eidas:lei`  | ei |  `LEI` |
 | `EORI` | `eidas:eori`  | ei |  `EORI` |
@@ -553,6 +562,7 @@ RIA, rahuldades taotluse, väljastab asutusele klientrakenduse toodanguversiooni
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
+| 0.7, 24.05.2018   | Täiendused seoses pangalinkide toega. |
 | 0.6, 22.04.2018   | Täiendatud autentimisvoo tehnilist kirjeldust. Struktuuri parendusi |
 | 0.5, 16.04.2018   | Translitereerimise täpsustused; võltspäringu vastane kaitse üksikasjalikumalt kirjeldatud; täpsemalt kirjeldatud identsustõendi kontrollimine; lisatud skoop `eidasonly` |
 | 0.4, 30.01.2018   | Translitereerimise täiendused piiriülese autentimise korral (eIDAS) |
