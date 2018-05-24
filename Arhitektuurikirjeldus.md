@@ -13,7 +13,7 @@ permalink: Arhitektuurikirjeldus
 Käesolev dokument kirjeldab autentimisteenuse TARA ja selle vahetu ümbruse:
 - osapooled ja komponendid
 - teenused ja liidesed
-- peamised sõltuvused.
+- olulisemad sõltuvused.
 
 Ülevaate osapooltest, komponentidest ja liidestest esitab järgnev joonis. (Teenused on esitatud numbritega.) Täpsemad kirjeldused vt allpool.
 
@@ -94,11 +94,7 @@ komponent v osapool  | funktsioon | repo vm detailsem kirjeldus
 RIA eIDAS konnektorteenus | piiriülese autentimise vahendamine | [https://github.com/e-gov/eIDAS-Connector](https://github.com/e-gov/eIDAS-Connector)
 klientrakendus | TARA teenust kasutav, asutuse registreeritud infosüsteem | -
 kasutaja | autenditav füüsiline isik | -
-DigiDocService | SK ID Solutions AS mobiil-ID autentimisteenus | 
-[Technical information](https://sk.ee/en/services/validity-confirmation-services/digidoc-service/)
-
-komponent v osapool  | funktsioon | repo vm detailsem kirjeldus 
------------|------------|----------------------------
+DigiDocService | SK ID Solutions AS mobiil-ID autentimisteenus | [Technical information](https://sk.ee/en/services/validity-confirmation-services/digidoc-service/)
 OCSP | SK ID Solutions ID-kaardi kehtivuskinnitusteenus | 
 Panga infosüsteem | panga autentimisteenuse osutamine | 
 Äriregister (perspektiivne) |  esindusõigusteabe pakkumine | [kirjeldus RIHAs](https://www.riha.ee/Infos%C3%BCsteemid/Vaata/arireg)
