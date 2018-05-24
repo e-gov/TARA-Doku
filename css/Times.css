@@ -90,7 +90,7 @@ p { margin: 0 0 1em 0; }
 /*#region Tabelid */
 table { width: 100%; margin: 0 4em 2em 0; }
 table { border-collapse: collapse; }    
-table, th, td { border: 1px solid black; }
+table, th, td { border: 1px solid lightgray; }
 th, td { padding: 8px; }
 th { font-weight: normal; font-style: italic; text-align: center; }
 /*#endregion */
