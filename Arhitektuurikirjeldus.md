@@ -21,7 +21,7 @@ Käesolev dokument kirjeldab autentimisteenuse TARA ja selle vahetu ümbruse:
 
 ## Teenused
 
-_Teenusena mõistame siin ühe komponendi v osapoole poolt teisele pakutavat andmeteenust või kasutajaliidest._
+_Teenus on ühe komponendi v osapoole poolt teisele pakutav andmeteenus või kasutajaliides Esitame autentimisteenuse TARA ja selle vahetu ümbruse poolt osutatavad ja tarbitavad teenused osapoolte ja komponentide kaupa. Andmeteenused võimalusel otspunkti täpsusega._
 
 RIA eIDAS konnektorteenus
 
@@ -64,6 +64,8 @@ nr | teenus    | kasutaja(d)
 
 Panga infosüsteem
 
+nr | teenus    | kasutaja(d)
+---|-----------|-----------------------
 13 | panga autentimisteenus ("pangalink") | TARA server
 
 TARA haldusvahend
@@ -94,7 +96,10 @@ klientrakendus | TARA teenust kasutav, asutuse registreeritud infosüsteem | -
 kasutaja | autenditav füüsiline isik | -
 DigiDocService | SK ID Solutions AS mobiil-ID autentimisteenus | 
 [Technical information](https://sk.ee/en/services/validity-confirmation-services/digidoc-service/)
-OCSP | SK ID Solutions ID-kaardi kehtivuskinnitusteenus |
+
+komponent v osapool  | funktsioon | repo vm detailsem kirjeldus 
+-----------|------------|----------------------------
+OCSP | SK ID Solutions ID-kaardi kehtivuskinnitusteenus | 
 Panga infosüsteem | panga autentimisteenuse osutamine | 
 Äriregister (perspektiivne) |  esindusõigusteabe pakkumine | [kirjeldus RIHAs](https://www.riha.ee/Infos%C3%BCsteemid/Vaata/arireg)
 Rahvastikuregister (perspektiivne) | füüsilise isiku aadressi pakkumine | [kirjeldus RIHAs](https://www.riha.ee/Infos%C3%BCsteemid/Vaata/rr)
