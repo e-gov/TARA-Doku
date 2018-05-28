@@ -216,7 +216,7 @@ Autentimispäringu elemendid:
 | `client_id` | jah | `client_id=58e7...` | Rakenduse identifikaator. Rakenduse identifikaatori annab RIA asutusele klientrakenduse registreerimisel autentimisteenuse kasutajaks. |
 | `locale` | ei | `locale=et` | Kasutajaliidese keele valik. Toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida. |
 | `nonce` | ei | `fsdsfwrerhtry3qeewq` | Taasesitusründeid vältida aitav unikaalne parameeter, vastavalt protokollile ([Viited](Viited), [Core], jaotis 3.1.2.1. Authentication Request). Parameeter `nonce` ei ole kohustuslik. |
-| `acr_values` | ei | `acr_values=substantial` | Minimaalne nõutav autentimistase vastavalt eIDAS tasemetele. Parameeter rakendub ainult juhul kui kasutatakse piiriülest autentimist. Teiste autentmismeetodite korral parameetrit ignoreeritakse. Lubatud määrata üks väärtus järgmisest loetelust: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Kui määramata, siis vaikimisi `substantial` (märkimisväärne). |
+| `acr_values` | ei | `acr_values=substantial` | Minimaalne nõutav autentimistase vastavalt eIDAS tasemetele. Parameeter rakendub ainult juhul kui kasutatakse piiriülest autentimist. Teiste autentimismeetodite korral parameetrit ignoreeritakse. Lubatud määrata üks väärtus järgmisest loetelust: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Kui määramata, siis vaikimisi `substantial` (märkimisväärne). |
 
 #### 4.1.1 Atribuutide küsimine välismaalase kohta
 
