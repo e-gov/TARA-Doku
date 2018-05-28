@@ -16,15 +16,15 @@ body {
 
 /* Päis ja jalus */
 .pais, .jalus {
-  background-color: #F6F9F8;
+  background-color: whitesmoke;
   max-width: 45rem;
   padding-left: 2em;
 }
 .pais { 
   margin-bottom: 8px;
   padding-top: 1em;
-  padding-bottom: 1em;
-  margin-bottom: 2em;
+  padding-bottom: 0.6em;
+  margin-bottom: 4em;
 }
 .jalus {
   padding-top: 4em;
@@ -176,7 +176,7 @@ a.nupp:hover {
 
 .note {
   border-color: #52E052;
-  background: #E9FBE9;
+  background: #F6F9F8;
   overflow: auto;
 }
 
