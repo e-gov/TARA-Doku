@@ -78,6 +78,22 @@ nr | teenus    | kasutaja(d)
 
 ## Komponendid ja osapooled
 
+### Organisatsioonid
+
+organisatsioon | roll
+---------------|-------
+Riigi Infosüsteemi Amet (RIA) | pakub TARA teenust
+asutus (OpenID Connect mõistes - teenusepakkuja) | kasutab TARA 
+autentimisteenuse pakkuja | ettevõte (pank, AS SK ID Solutions), kelle teenust RIA kasutab TARA pakkumisel
+
+### Inimesed
+
+inimene       | roll
+--------------|----------
+kasutaja      | füüsiline isik, kes TARA abil ära autenditakse; võib olla välismaalane  
+kontaktisik   | asutuse töötaja, kellega RIA suhtleb klientrakenduse käitamisel ettetulevates küsimustes
+teenusehaldur | RIA töötaja, kes suhtleb asutustega ja teeb teisi TARA osutamisega seotud toiminguid 
+
 ### TARA tuumkomponendid
 
 komponent v osapool  | funktsioon | repo vm detailsem kirjeldus 
