@@ -14,12 +14,21 @@ body {
   line-height: 1.4 !important;
   }
 
-/* Päis */
-.pais { font-family: 'Arial', sans-serif;
-  margin-bottom: 8px;
+/* Päis ja jalus */
+.pais, .jalus {
   background-color: #F6F9F8;
-  padding: 1em 2em;
   max-width: 45rem;
+  padding-left: 2em;
+}
+.pais { 
+  margin-bottom: 8px;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  margin-bottom: 2em;
+}
+.jalus {
+  padding-top: 4em;
+  padding-bottom: 2em;
 }
 
 #Tekst { width: 45rem; margin-left: 2em; }
