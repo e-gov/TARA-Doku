@@ -16,19 +16,20 @@ body {
 
 /* Päis ja jalus */
 .pais, .jalus {
-  background-color: whitesmoke;
   max-width: 45rem;
+  padding-top: 1em;
   padding-left: 2em;
 }
 .pais { 
+  background-color: whitesmoke;
   margin-bottom: 8px;
-  padding-top: 1em;
   padding-bottom: 0.6em;
   margin-bottom: 4em;
 }
 .jalus {
-  padding-top: 4em;
-  padding-bottom: 2em;
+  border-top: 1px solid #607D8B;
+  margin-top: 4em;
+  padding-bottom: 4em;
 }
 
 #Tekst { width: 45rem; margin-left: 2em; }
