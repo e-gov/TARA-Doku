@@ -22,7 +22,7 @@ Käesoleva lehe teave on mõeldud kolmele sihtrühmale. Asutuse äriüksuse juht
 
 [Ärikirjeldus](Arikirjeldus)<br>
 
-<p>&gt; <a href='https://www.ria.ee/ee/autentimisteenused.html'>Liitumine</a></p>
+<p><a href='https://www.ria.ee/ee/autentimisteenused.html'>Liitumine</a></p>
 
 [Isikuandmete töötluse poliitika](Isikuandmed)
 
@@ -44,4 +44,5 @@ Käesoleva lehe teave on mõeldud kolmele sihtrühmale. Asutuse äriüksuse juht
 ## TARA teenuse arendajale
 
 [Arhitektuurikirjeldus](Arhitektuurikirjeldus)<br>
+[QA Strateegia](QaStrateegia)
 [Kood jm arendaja dokumentatsioon](Arendajale)
