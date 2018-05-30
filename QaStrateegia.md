@@ -131,12 +131,9 @@ Tähelepanu tuleb juhtida asjaolule, et avatud lähtekoodiga arenduse korral võ
 
 Eesmärk:  testida erinevate komponentide liidestamist/koostööd.
 
-<img src='img/Integratsioonitestid.png' style='width: 600px;'><br>
-Joonis 5. Integrarsioonitestid
-
 1.etapp eIDAS kliendi testimine
 
-eIDAS kliendi integratsiooni testimiseks kasutatakse RestAssured raamistikku, teste hoitakse koos eIDAS klient tootekoodiga vastavas repositooriumis. Teste käivitatakse automaatselt vastavalt Joonisel 2. näidatule.
+eIDAS kliendi integratsiooni testimiseks kasutatakse RestAssured raamistikku. Teste käivitatakse automaatselt vastavalt Joonisel 2. näidatule.
 RestAssured raamistikku kasutades asendatakse eIDAS kliendiga suhtlev veebilehitseja ning testitakse eIDAS kliendi SAML sõnumivahetust. Eelduseks on, et kasutatav pac4j teek on vastav SAML 2.0 protokollile ning testimisel keskendutakse eIDASest tingitud eripäradele.
 
 eIDAS kliendil on järgnevad olulised funktsionaalsused mille testimine on esmatähtis ning mille automatiseerimine tundub mõtekas:
@@ -146,7 +143,7 @@ eIDAS kliendil on järgnevad olulised funktsionaalsused mille testimine on esmat
 * Autentimisvastuse saamine
 
 <img src='img/MetadataIT.png' style='width: 600px;'><br>
-Joonis 6. Metaandmete publitseerimise testimine
+Joonis 5. Metaandmete publitseerimise testimine
 
 1) RestAssured raamistikus koostatakse metaandmete küsimise päring.
 
@@ -155,14 +152,14 @@ Joonis 6. Metaandmete publitseerimise testimine
 Metaandmete lugemist testitakse ühiktesti tasemel, kuna integratsioonitesti tasemel ei ole võimalik seda valideerida.
 
 <img src='img/AutentimiseParingIT.PNG' style='width: 600px;'><br>
-Joonis 7. Autentimise alustamise testimine
+Joonis 6. Autentimise alustamise testimine
 
 1) RestAssured raamistikus koostatakse testandmetega päring. Reaalses rakenduses on kasutaja poolt valitud andmete hulk piiratud. Testimise eesmärgil võib vajalik olla eIDAS kliendi test režiimi loomine mis võimaldaks kõiki SAML parameetreid seadistada.
 
 2) eIDAS kliendi poolt saadetud SAML päring valideeritakse RestAssured raamistikus.
 
 <img src='img/AutentimiseVastusIT.png' style='width: 600px;'><br>
-Joonis 8. Autentimisvastuse saamise testimine
+Joonis 7. Autentimisvastuse saamise testimine
 
 1) Teostatakse ideaaljuhu valideerimise alustuse voog eIDAS kliendis nagu kirjeldatud autentimise alustamise punktis.
 
@@ -170,24 +167,66 @@ Joonis 8. Autentimisvastuse saamise testimine
 
 3) eIDAS kliendi JSON vastus valideeritakse RestAssured raamistikus.
 
-2. etapp - TARA autentimisteenuse testimine
+2.etapp - TARA autentimisteenuse testimine
 
-Täpsustub hiljem.
+TARA autentimisteenus koosneb erinevatest autentimisviisidest mis põhinevad kõik erinevatel tehnilistel autentimislahendustel.
+
+* ID kaardiga autentimine - varasemalt arendatud ning testitud, ei kuulu integratsioonitestide skoopi.
+* Mobiil ID autentimine - varasemalt arendatud ning testitud, ei kuulu integratsioonitestide skoopi.
+* eIDAS autentimine - uus arendus, integratsioonitestide skoobis.
+* Pangalinkide autentimine - uus arendus, integratsioonitestide skoobis.
+* SmartID autentimine - uus arendus, integratsioonitestide skoobis.
+
+Testimiseks kasutatakse RestAssured raamistikku. Teste käivitatakse automaatselt vastavalt Joonisel 2. näidatule. RestAssured raamistikku kasutades asendatakse TARA-ga liidestuv infosüsteem ning 
+veebilehitseja ning simuleeritakse kasutajapoolseid päringuid.
+
+eIDAS autentimise testimine
+
+Testitakse TARA, eIDAS kliendi ning Eesti eIDAS nodei koostööd.
+
+<img src='img/EidasIT.png' style='width: 600px;'><br>
+Joonis 8. eIDAS autentimise integratsioonitestid
+
+Testitakse järgmised funktsionaalsused:
+
+* eIDAS autentimise positiivne ja negatiivne voog
+* eIDAS spetsiifiliste parameetrite toimimine 
+* OpenID connect autentimisvastuse korrektsus
+
+Pangalinkide testimine
+
+Testitakse TARA ning panga autentimisteenuse koostööd. Arvestama peab asjaoluga, et igal pangal võib olla liidestumisel eripärasid.
+
+<img src='img/PangalingidIT.png' style='width: 600px;'><br>
+Joonis 9. Pangalingi autentimise integratsioonitestid
+
+Testitakse järgmised funktsionaalsused:
+
+* Pangalingi autentimise positiivne ja negatiivne voog
+* OpenID connect autentimisvastuse korrektsus
+
+SmartID testimine
+
+Testitakse TARA ning SmartID autentimisteenuse koostööd.
+
+<img src='img/SmartidIT.png' style='width: 600px;'><br>
+Joonis 10. SmartID autentimise integratsioonitestid
+
+Testitakse järgmised funktsionaalsused:
+
+* SmartID autentimise positiivne ja negatiivne voog
+* OpenID connect autentimisvastuse korrektsus
 
 **Süsteemi testimine**
 
 Eesmärk: kasutuslugudes ja täisvoo stsenaariumite toimimises vigade leidmine.
 
 <img src='img/Systeemitestid.png' style='width: 600px;'><br>
-Joonis 9. Süsteemitestid
-
-TARA autentimisteenuse testimine
-
-Täpsustub hiljem.
+Joonis 11. Süsteemitestid
 
 **Vastuvõtu testimine**
 
-Eesmärk:  kontrollida toote või teenuse vastavust püstitatud nõuetele ja planeeritud otstarbele, st vastavust vastuvõtukriteeriumitele.
+Eesmärk: kontrollida toote või teenuse vastavust püstitatud nõuetele ja planeeritud otstarbele, st vastavust vastuvõtukriteeriumitele.
 
 **Regressioonitestimine**
 
@@ -204,4 +243,4 @@ täisvoog - kasutusvoog kus läbitakse kõik süsteemi komponendid. Hõlmab nii 
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
-| 1.1, 30.05.2018   | Struktuurilised parandused |
+| 1.1, 30.05.2018   | Struktuurilised parandused, autentimisvahendite testimine. |
