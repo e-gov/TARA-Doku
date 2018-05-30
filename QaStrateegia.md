@@ -101,9 +101,7 @@ Testiplaani loomisel tuleb analüüsida testide jaotust ühik-, integratsiooni-,
 <img src='img/AutomaatneTestiprotsess.png' style='width: 600px;'><br>
 Joonis 2. Automaatsete kontrollide protsess tsentraalses testkeskkonnas.
 
-Märkus: Automaatsete kontrollide käivitamine lokaalselt täpsustub hiljem.
-
-eIDAS autentimise automaatsed testid arendatakse kahes etapis:
+eIDAS TARA autentimise automaatsed testid arendatakse kahes etapis:
 
 1.etapp - eIDAS kliendi testid
 Testitakse kliendi liidestatust Eesti eIDAS node-iga. SAML liidestuse peamine testimise etapp. Antud testid peavad tagama kasutatavate SAML komponentide õige toimimise. Testid peavad olema pidevalt kaasajastatud ka järgnevates etappides, kuna tagavad SAML liidese korrektse töö ning antud teste teistes etappides ei dubleerita.
@@ -114,6 +112,7 @@ Testitakse TARA võimekust konverteerida SAML liidesest tulevat infot OpenID Con
 <img src='img/TestimiseEtapid.png' style='width: 600px;'><br>
 Joonis 3. eIDAS autentimise automaatsete testide etapid tsentraalses testkeskkonnas.
 
+Peale eIDAS võimekuse loomist testitakse siseriikle autentimisvahendeid. 
 <img src='img/SiseriiklikudAutentimisvahendid.png' style='width: 600px;'><br>
 Joonis 4. TARA autentimisteenusele pangalinkide ning Smart-ID toe lisamise testimine.
 
@@ -124,10 +123,9 @@ Vea raporteerimisel peavad olema kirjeldatud vähemalt järgmised elemendid:
 * Sammud vea kordamiseks** - Eeltingimused, sammud, ajalised piirangud, kui võimalik siis viide testijuhule või autotestile, 
 * Eeldatav tulemus - Viide spetsifikatsioonile, standardile, ...
 * Tegelik tulemus - Tulemuse kirjeldus
-* Lisad - Vearaportile tuleb kaasata võimalikud abimaterjalid, logid, päringud, vastused, pildid, ...
+* Lisad - Vearaportile tuleb kaasata võimalikud abimaterjalid, logid, päringud, pildid, ...
 
 Tähelepanu tuleb juhtida asjaolule, et avatud lähtekoodiga arenduse korral võidakse vigu raporteerida ka läbi GitHubi ning nendele tuleb reageerida.
-
 
 **Integratsiooni testimine**
 
@@ -156,27 +154,21 @@ Joonis 6. Metaandmete publitseerimise testimine
 
 Metaandmete lugemist testitakse ühiktesti tasemel, kuna integratsioonitesti tasemel ei ole võimalik seda valideerida.
 
-<img src='img/eidasParingIT.PNG' style='width: 600px;'><br>
+<img src='img/AutentimiseParingIT.PNG' style='width: 600px;'><br>
 Joonis 7. Autentimise alustamise testimine
 
 1) RestAssured raamistikus koostatakse testandmetega päring. Reaalses rakenduses on kasutaja poolt valitud andmete hulk piiratud. Testimise eesmärgil võib vajalik olla eIDAS kliendi test režiimi loomine mis võimaldaks kõiki SAML parameetreid seadistada.
 
-2) eIDAS kliendi poolt saadetud SAML päring valideeritakse RestAssured raamistikus. Valideerimise õnnestumisel saadetakse päring lokaalsesse eIDAS nodei.
-
-3) eIDAS nodei vastus valideeritakse üldisel tasemel (uus SAML päring või veakood).
+2) eIDAS kliendi poolt saadetud SAML päring valideeritakse RestAssured raamistikus.
 
 <img src='img/AutentimiseVastusIT.png' style='width: 600px;'><br>
 Joonis 8. Autentimisvastuse saamise testimine
 
-1) Teostatakse ideaaljuhu valideerimise alustuse voog.
+1) Teostatakse ideaaljuhu valideerimise alustuse voog eIDAS kliendis nagu kirjeldatud autentimise alustamise punktis.
 
-2) Tagastatavad andmed saadetakse kas muutmatul kujul (ideaaljuhu voo test) või modifitseeritud kujul (erijuhud) eIDAS klienti.
+2) RestAssured raamistikus koostatakse SAML vastus mis saadetakse eIDAS kliendile.
 
-3) Kuvatavad isikuandmed või veakoodid valideeritakse.
-
-Lisaks liidestuse automaatsele kontrollimisele tuleb käsitsi testida eIDAS kliendi näidis veebilehte:
-* POST päringute korrektset tööd (kasutaja sekkumise vajadus/mittevajadus).
-* Veebilehel info kuvamine ning kujundus.
+3) eIDAS kliendi JSON vastus valideeritakse RestAssured raamistikus.
 
 2. etapp - TARA autentimisteenuse testimine
 
@@ -189,11 +181,7 @@ Eesmärk: kasutuslugudes ja täisvoo stsenaariumite toimimises vigade leidmine.
 <img src='img/Systeemitestid.png' style='width: 600px;'><br>
 Joonis 9. Süsteemitestid
 
-1.etapp eIDAS kliendi testimine
-
-Testitakse käsitsi, kaaluda võib ideaaljuhu voogude automatiseerimist. Peamine liidestumine testitakse kasutades eIDAS validaatorteenust. Andmete olemasolul tuleks kasutada ka teiste riikide eIDAS node testteenuseid. Oluline on tähelepanu pöörata võimalikele erinevustele isiku andmetes mida partnerriigid pakuvad.
-
-2.etapp TARA autentimisteenuse testimine
+TARA autentimisteenuse testimine
 
 Täpsustub hiljem.
 
@@ -216,4 +204,4 @@ täisvoog - kasutusvoog kus läbitakse kõik süsteemi komponendid. Hõlmab nii 
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
-| 1.1, 29.05.2018   | Struktuurilised parandused |
+| 1.1, 30.05.2018   | Struktuurilised parandused |
