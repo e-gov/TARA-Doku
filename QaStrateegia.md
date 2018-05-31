@@ -193,12 +193,27 @@ Testitakse järgmised funktsionaalsused:
 * eIDAS spetsiifiliste parameetrite toimimine 
 * OpenID connect autentimisvastuse korrektsus
 
+<img src='img/EidasNodeFlow.png' style='width: 600px;'><br>
+Joonis 9. eIDAS autentimise flow
+
+Joonisel 9. kujutatud voog on lihtsustatud ning ei kajasta kõiki tegelikke päringuid. Eesmärk on anda ettekujutust testsüsteemi põhimõttest. Kogu liikumine erinevate osapoolte vahel toimub läbi HTTP redirect või POST käskude.
+
+1) RestAssured raamistikus koostatakse OpenID Connect autentimise alustamise päring ning saadetakse TARA-le. Toimub mitu ümbersuunamist ning kuvatakse autentimisvahendite leht.
+
+2) Valitakse eIDAS autentimise vahend. Toimub mitmeid ümbersuunamisi kuni Eesti eIDAS konnektorteenuseni.
+
+3) RestAssured raamistik simuleerib välisriigi eIDAS node-i ja vastab Eesti eIDAS node-le SAML vastusega. Toimub mitmeid ümbersuunamisi ning test raamistikule tagastatakse autoriseerimiskood.
+
+4) RestAssured raamistik küsib autoriseerimiskoodi kasutades identsustõendi. 
+
+5) Toimub identsustõendi valideerimine.
+
 Pangalinkide testimine
 
 Testitakse TARA ning panga autentimisteenuse koostööd. Arvestama peab asjaoluga, et igal pangal võib olla liidestumisel eripärasid.
 
 <img src='img/PangalingidIT.png' style='width: 600px;'><br>
-Joonis 9. Pangalingi autentimise integratsioonitestid
+Joonis 10. Pangalingi autentimise integratsioonitestid
 
 Testitakse järgmised funktsionaalsused:
 
@@ -210,7 +225,7 @@ SmartID testimine
 Testitakse TARA ning SmartID autentimisteenuse koostööd.
 
 <img src='img/SmartidIT.png' style='width: 600px;'><br>
-Joonis 10. SmartID autentimise integratsioonitestid
+Joonis 11. SmartID autentimise integratsioonitestid
 
 Testitakse järgmised funktsionaalsused:
 
@@ -222,7 +237,7 @@ Testitakse järgmised funktsionaalsused:
 Eesmärk: kasutuslugudes ja täisvoo stsenaariumite toimimises vigade leidmine.
 
 <img src='img/Systeemitestid.png' style='width: 600px;'><br>
-Joonis 11. Süsteemitestid
+Joonis 12. Süsteemitestid
 
 **Vastuvõtu testimine**
 
@@ -243,4 +258,4 @@ täisvoog - kasutusvoog kus läbitakse kõik süsteemi komponendid. Hõlmab nii 
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
-| 1.1, 30.05.2018   | Struktuurilised parandused, autentimisvahendite testimine. |
+| 1.1, 31.05.2018   | Struktuurilised parandused, autentimisvahendite testimine. |
