@@ -74,6 +74,11 @@ Koodiga töötamieks kasutatakse GitHubi harusid.
 * Develop - arendatav kood
 * Release - ajutine haru muudatuste testimiseks enne koodi masterisse mestimist.
 
+Koodi versioneeritakse kasutades semantilist versioneerimist.
+
+<img src='img/Versioning.png' style='width: 600px;'><br>
+Joonis 2. Versioneerimine GitHubi harudes
+
 ## Kvaliteedi tagamise tegevused tarkvara arendusel
 
 **Arendusprotsessi parendamine**
@@ -101,7 +106,7 @@ Eesmärk on automatiseerida testimise funktsionaalsust määral mis annab parima
 Testiplaani loomisel tuleb analüüsida testide jaotust ühik-, integratsiooni-, ning süsteemitestide vahel. Kuna tegu on keeruka süsteemiga mis koosneb mitmest välisest liidestusest mis ei ole meie kontrolli all, siis võib olla kiirem osad testid realiseerida ühiktestide tasemel. Vastav seos testijuhtude ning testitasemete vahel tuleb kajastada testijuhtude kirjelduses.
 
 <img src='img/AutomaatneTestiprotsess.png' style='width: 600px;'><br>
-Joonis 2. Automaatsete kontrollide protsess tsentraalses testkeskkonnas.
+Joonis 3. Automaatsete kontrollide protsess tsentraalses testkeskkonnas.
 
 eIDAS TARA autentimise automaatsed testid arendatakse kahes etapis:
 
@@ -112,11 +117,11 @@ Testitakse kliendi liidestatust Eesti eIDAS node-iga. SAML liidestuse peamine te
 Testitakse TARA võimekust konverteerida SAML liidesest tulevat infot OpenID Connect liidesesse. Eeldab SAML liidestuse korrektsust, mida testitakse esimeses etapis.
 
 <img src='img/TestimiseEtapid.png' style='width: 600px;'><br>
-Joonis 3. eIDAS autentimise automaatsete testide etapid tsentraalses testkeskkonnas.
+Joonis 4. eIDAS autentimise automaatsete testide etapid tsentraalses testkeskkonnas.
 
 Peale eIDAS võimekuse loomist testitakse siseriikle autentimisvahendeid. 
 <img src='img/SiseriiklikudAutentimisvahendid.png' style='width: 600px;'><br>
-Joonis 4. TARA autentimisteenusele pangalinkide ning Smart-ID toe lisamise testimine.
+Joonis 5. TARA autentimisteenusele pangalinkide ning Smart-ID toe lisamise testimine.
 
 **Veahaldus**
 Leitud vead raporteeritakse Jira veahaldussüsteemis ja nad läbivad sama elutsükli mis tööülesanded. Vead mis leitakse konkreetse tööülesande testimisel raporteeritakse kommentaarina tööülesande juures ning suunatakse tagasi arenduse etappi.
@@ -145,7 +150,7 @@ eIDAS kliendil on järgnevad olulised funktsionaalsused mille testimine on esmat
 * Autentimisvastuse saamine
 
 <img src='img/MetadataIT.png' style='width: 600px;'><br>
-Joonis 5. Metaandmete publitseerimise testimine
+Joonis 6. Metaandmete publitseerimise testimine
 
 1) RestAssured raamistikus koostatakse metaandmete küsimise päring.
 
@@ -154,14 +159,14 @@ Joonis 5. Metaandmete publitseerimise testimine
 Metaandmete lugemist testitakse ühiktesti tasemel, kuna integratsioonitesti tasemel ei ole võimalik seda valideerida.
 
 <img src='img/AutentimiseParingIT.PNG' style='width: 600px;'><br>
-Joonis 6. Autentimise alustamise testimine
+Joonis 7. Autentimise alustamise testimine
 
 1) RestAssured raamistikus koostatakse testandmetega päring. Reaalses rakenduses on kasutaja poolt valitud andmete hulk piiratud. Testimise eesmärgil võib vajalik olla eIDAS kliendi test režiimi loomine mis võimaldaks kõiki SAML parameetreid seadistada.
 
 2) eIDAS kliendi poolt saadetud SAML päring valideeritakse RestAssured raamistikus.
 
 <img src='img/AutentimiseVastusIT.png' style='width: 600px;'><br>
-Joonis 7. Autentimisvastuse saamise testimine
+Joonis 8. Autentimisvastuse saamise testimine
 
 1) Teostatakse ideaaljuhu valideerimise alustuse voog eIDAS kliendis nagu kirjeldatud autentimise alustamise punktis.
 
@@ -187,7 +192,7 @@ eIDAS autentimise testimine
 Testitakse TARA, eIDAS kliendi ning Eesti eIDAS nodei koostööd.
 
 <img src='img/EidasIT.png' style='width: 600px;'><br>
-Joonis 8. eIDAS autentimise integratsioonitestid
+Joonis 9. eIDAS autentimise integratsioonitestid
 
 Testitakse järgmised funktsionaalsused:
 
@@ -196,9 +201,9 @@ Testitakse järgmised funktsionaalsused:
 * OpenID connect autentimisvastuse korrektsus
 
 <img src='img/EidasNodeFlow.png' style='width: 600px;'><br>
-Joonis 9. eIDAS autentimise flow
+Joonis 10. eIDAS autentimise flow
 
-Joonisel 9. kujutatud voog on lihtsustatud ning ei kajasta kõiki tegelikke päringuid. Eesmärk on anda ettekujutust testsüsteemi põhimõttest. Kogu liikumine erinevate osapoolte vahel toimub läbi HTTP redirect või POST käskude.
+Joonisel 10. kujutatud voog on lihtsustatud ning ei kajasta kõiki tegelikke päringuid. Eesmärk on anda ettekujutust testsüsteemi põhimõttest. Kogu liikumine erinevate osapoolte vahel toimub läbi HTTP redirect või POST käskude.
 
 1) RestAssured raamistikus koostatakse OpenID Connect autentimise alustamise päring ning saadetakse TARA-le. Toimub mitu ümbersuunamist ning kuvatakse autentimisvahendite leht.
 
@@ -212,10 +217,10 @@ Joonisel 9. kujutatud voog on lihtsustatud ning ei kajasta kõiki tegelikke pär
 
 Pangalinkide testimine
 
-Testitakse TARA ning panga autentimisteenuse koostööd. Arvestama peab asjaoluga, et igal pangal võib olla liidestumisel eripärasid.
+Testitakse TARA ning panga autentimisteenuse koostööd. Arvestama peab asjaoluga, et igal pangal võib olla liidestumisel eripärasid. Testimiseks luuakse juhitavad mockid. 
 
 <img src='img/PangalingidIT.png' style='width: 600px;'><br>
-Joonis 10. Pangalingi autentimise integratsioonitestid
+Joonis 11. Pangalingi autentimise integratsioonitestid
 
 Testitakse järgmised funktsionaalsused:
 
@@ -227,7 +232,7 @@ SmartID testimine
 Testitakse TARA ning SmartID autentimisteenuse koostööd.
 
 <img src='img/SmartidIT.png' style='width: 600px;'><br>
-Joonis 11. SmartID autentimise integratsioonitestid
+Joonis 12. SmartID autentimise integratsioonitestid
 
 Testitakse järgmised funktsionaalsused:
 
@@ -239,7 +244,7 @@ Testitakse järgmised funktsionaalsused:
 Eesmärk: kasutuslugudes ja täisvoo stsenaariumite toimimises vigade leidmine.
 
 <img src='img/Systeemitestid.png' style='width: 600px;'><br>
-Joonis 12. Süsteemitestid
+Joonis 13. Süsteemitestid
 
 **Vastuvõtu testimine**
 
