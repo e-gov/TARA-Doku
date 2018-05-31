@@ -18,6 +18,8 @@ Tegemist on "elusa" dokumendiga mida uuendatakse vastavalt projekti edenemisele.
 * Paigalduse testimist
 * Tootestamist
 
+NB! Antud dokumendis olevad joonised ei kajasta tegelikku TARA autentimisteenuse arhitektuuri, vaid on abstraktsioonid ilmestamaks kvaliteedi tagamisega seotud tegevusi.
+
 ## Keskkonnad ja infrastruktuur
 
 Visioon on peamiselt kasutada kahte erinevat keskkonda:<br>
