@@ -45,6 +45,8 @@ Joonis 1. Autentimisteenuse TARA ja "Legacy" autentimise ühitamine eesti.ee-s.
 6   | Infosüsteem kontrollib, kas saabunud URL on see, mida ta on väljastanud, loob kasutajale sessiooni ja saadab veebisirvijasse rakenduse avalehe.
     | Kasutaja alustab (sisselogitult) tööd infosüsteemis.
 
+Märkus. Sammud 1a "Logi sisse" ja 4a "Mine infosüsteemi" saab ühitada. S.t infosüsteemi siseneda sooviv autentimata kasutaja saadatakse enne autentima.
+
 ## Turvahinnang
 
 eesti.ee ja infosüsteem suhtlevad X-teel, seega omavad usaldusväärseid identiteete. Vahetatavad sõnumid (2a ja 2b) on allkirjastatud. URL-is sisalduv juhuslik URL, sisuliselt nonss, toimib taasesitus- ja päringuvõltsimisrünnete tõkkena. Skeem on turvaline.
