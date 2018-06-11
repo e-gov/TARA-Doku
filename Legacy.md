@@ -27,7 +27,7 @@ Joonis 1. Autentimisteenuse TARA ja "Legacy" autentimise ühitamine eesti.ee-s.
 
  nr | toiming
 ----|---------
-    | __ETAPP 1. Autentimine TARA abil__
+    | _Etapp 1. Autentimine TARA abil_
     | Lähteseis. Kasutaja on saabunud eesti.ee-sse.
 1a  | Kasutaja vajutab nupule "Logi sisse" vms.
 2a  | eesti.ee (serveripool) suunab kasutaja TARA-sse (autentimispäring).
@@ -36,7 +36,7 @@ Joonis 1. Autentimisteenuse TARA ja "Legacy" autentimise ühitamine eesti.ee-s.
 3a  | eesti.ee pärib TARA-st identsustõendi.
 3b  | eesti.ee saab TARA-st identsustõendi.
     | Sellega on kasutaja autenditud.
-    | __ETAPP 2. "Sessiooni üleandmine"__
+    | _Etapp 2. "Sessiooni üleandmine"_
     | Lähteseis. Kasutaja on eesti.ee-sse sisse loginud (s.t autenditud).
 4a  | Kasutaja vajutab nupule "Mine infosüsteemi" vms. Veebisirvijast läheb päring eesti.ee serverikomponendile.
 5a  | eesti.ee serverikomponent saadab X-tee päringu infosüsteemi serverikomponendile. Päringus saadetakse kasutaja isikukood ja küsitakse luba infosüsteemi siseneda. Infosüsteemi saadetav isikukood on pärit TARA-st saadud identsustõendist. Identsustõendis on veel muid andmeid - isiku ees- ja perekonnanimi, kasutatud autentimismeetod jm. Nende edasisaatmine infosüsteemi ei oma mõtet - kui eesmärk on hoida voog infosüsteemile senisega võrreldes muutumatu.
