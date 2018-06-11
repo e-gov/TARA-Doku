@@ -41,6 +41,10 @@ Käesoleva lehe teave on mõeldud kolmele sihtrühmale. Asutuse äriüksuse juht
 [Sõnastik](Sonastik)<br>
 [Viited](Viited)
 
+## Praktilisi küsimusi
+
+[TARA + "Legacy"](Legacy)
+
 ## TARA teenuse arendajale
 
 [Arhitektuurikirjeldus](Arhitektuurikirjeldus)<br>
