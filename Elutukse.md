@@ -8,23 +8,25 @@ Elutukse (heartbeat) otspunkt on liides, mille kaudu TARA rakendus annab reaalaj
 
 ## Sisene elutukseteenus
 
+MFN https://e-gov.github.io/MFN/#17.3:
+
+"Süsteemi iga eraldi paigaldatav osa peab logimisel (näiteks aadressilt heartbeat.json) väljastama masinloetaval kujul oma nime ja versiooninumbri, oluliste väliste süsteemide oleku, viimase käivitamise aja, pakendamise aja ning serveriaja."
+
 Nõuded:
 
-- REST otspunkt, mille poole saab pöörduda HTTP GET päringuga
-- URL-il https://tara.ria.ee/status (p.o konf-tav)
+- REST otspunkt, mille poole saab pöörduda HTTP `GET` päringuga
+- URL-il `https://tara.ria.ee/status` (p.o konf-tav)
 - Elutukse otspunkti peab pakkuma iga eraldipaigaldatav komponent (s.t ka TARA-Client)
 - Elutukse otspunkti poole hakkab pöörduma RIA monitooringurakendus
 - Elutukse otspunkti hakkab kasutama ka TARA teenusehaldur
   - teenusehaldur tegutseb rakendusehalduri rollis
   - teenusehaldur pöördub otspunkti veebisirvija aadressirealt URL-iga
     - ja loeb JSON-vastust
-- Taustateabena on oluline, et TARA rakendust seiratakse ka kahel teisel tasandil:
-  - serverite seire (Zabbix); infra on selle ise paigaldanud; ei nõua arendust meie tarkvaras
-  - veebirakenduse ülevaloleku seire - tehakse lihtsa pöördumisega Zabbix-ist TARA UI poole. Kontrollitakse HTTP vastuskoodi
+
 - Otspunkt peab minimaalselt tagastama JSON-struktuuri:
   - rakenduse seisund (OK või NOK)
   - rakenduse käivitamise aeg (DateTime)
-  - kaua rakendus on üleval olnud (ISO 8601 kestus, vt nt https://www.digi.com/resources/documentation/digidocs/90001437-13/reference/r_iso_8601_duration_format.htm)
+  - kaua rakendus on üleval olnud (ISO 8601 kestus, vt [nt](https://www.digi.com/resources/documentation/digidocs/90001437-13/reference/r_iso_8601_duration_format.htm)).
 - Lisaks võiks elutukse pakkuda teatud määral jooksvat statistikat, lähtudes rakenduse halduse vajadustest (teostada mitmes järgus?):
   - teenuse poole pöördumiste arv
     - nt jooksva päeva, eelmise päeva jooksul
