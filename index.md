@@ -44,6 +44,7 @@ Käesoleva lehe teave on mõeldud kolmele sihtrühmale. Asutuse äriüksuse juht
 ## Praktilisi küsimusi
 
 [TARA + "Legacy"](Legacy)
+[eesti.ee autentimislahendus](EE-Auth)
 
 ## TARA teenuse arendajale
 
