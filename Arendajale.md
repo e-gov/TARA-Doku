@@ -27,6 +27,7 @@ Mitmesugused töödokumendid:
 
 [TARA serverrakenduse sisearhitektuur](Sisearhitektuur)
 
+[TARA elutukseteenus](Elutukse), spetsifikatsioon<br>
 [Kasutaja probleemi lahendamine](Kasutaja)<br>
 [Turvaanalüüs](Turvaanaluus)<br>
 [Vead ja tõrked. Ennetamine ja Käsitlemine](Veakasitlus)<br>
