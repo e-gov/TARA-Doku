@@ -12,7 +12,11 @@ täiendatud 19.06.2018
 
 Käesolev dokument kirjeldab elutukse (_heartbeat_, _health check_) lahenduse TARA komponentides.
 
-eIDAS-Client elutukse on kirjeldatud [siin](https://github.com/e-gov/eIDAS-Client/blob/develop/doc/Service-API.md#heartbeat).
+
+komponent | elutukse lahenduse kirjeldus
+----------|-----------------------------
+eIDAS-Client | vt [komponendi repo](https://github.com/e-gov/eIDAS-Client/blob/develop/doc/Service-API.md#heartbeat)
+TARA-Demo | vt [töötavas rakenduses](https://tarawelcome.herokuapp.com/heartbeat) (lihtne kuju: `{"name":"TARA-Demo","description":"TARA autentimisteenuse demo","status":"UP"}`)
 
 Vt ka standardikavandit [Elutukse](https://e-gov.github.io/Proto/Elutukse).
 
