@@ -4,6 +4,18 @@ permalink: Elutukse
 
 # TARA elutukseteenus
 
+_spetsifikatsioon_
+
+täiendatud 19.06.2018
+
+## Ülevaade
+
+Käesolev dokument kirjeldab elutukse (_heartbeat_, _health check_) lahenduse TARA komponentides.
+
+eIDAS-Client elutukse on kirjeldatud [siin](https://github.com/e-gov/eIDAS-Client/blob/develop/doc/Service-API.md#heartbeat).
+
+Vt ka standardikavandit [Elutukse](https://e-gov.github.io/Proto/Elutukse).
+
 Elutukse (heartbeat) otspunkt on liides, mille kaudu TARA rakendus annab reaalajas teavet rakenduse seisundi kohta.
 
 ## Sisene elutukseteenus
@@ -24,7 +36,7 @@ Nõuded:
     - ja loeb JSON-vastust
 
 - Otspunkt peab minimaalselt tagastama JSON-struktuuri:
-  - rakenduse seisund (OK või NOK)
+  - rakenduse seisund (`UP` või `DOWN`)
   - rakenduse käivitamise aeg (DateTime)
   - kaua rakendus on üleval olnud (ISO 8601 kestus, vt [nt](https://www.digi.com/resources/documentation/digidocs/90001437-13/reference/r_iso_8601_duration_format.htm)).
 - Lisaks võiks elutukse pakkuda teatud määral jooksvat statistikat, lähtudes rakenduse halduse vajadustest (teostada mitmes järgus?):
@@ -40,20 +52,22 @@ Elutuksepäringu vastuse näide:
 
 ```json
 {
-  "status": "OK",
-  "started": "2018-06-10 10:08:02",
+  "status": "UP",
+  "name": "TARA-Server",
+  "version": "1.1.0",
+  "startTime": "2018-06-10 10:08:02",
   "uptime: "P0Y0M3DT8H24M07S",
   "serviceRequests": {
     "currentDay": 10500,
     "lastDay": 670000,
     "lastWeek": 100333000
   },
-  "externalServices": {
-    "eIDAS Node": "OK",
-    "DigiDocService": "OK",
-    "Luminor": "OK",
-    "SEB": "OK"
-  }
+  "dependencies": [
+    {
+      "status": "UP",
+      "name": "eIDAS-Node"
+    }
+  ]
 }
 ```
 
@@ -67,13 +81,14 @@ Nt:
 
 ```json
 {
-  "status": "OK",
-  "externalServices": {
-    "eIDAS Node": "OK",
-    "DigiDocService": "OK",
-    "Luminor": "OK",
-    "SEB": "OK"
-  }
+  "status": "UP",
+  "name": "TARA-Server",
+  "dependencies": [
+    {
+      "status": "UP",
+      "name": "eIDAS-Node"
+    }
+  ]
 }
 ```
 
