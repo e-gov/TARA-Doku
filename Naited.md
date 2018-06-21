@@ -12,5 +12,5 @@ Näiterakendused on paigaldatud Heroku free tier pilve. Kui soovite neid proovid
   --------|---------|---------------------|---------------
 TARA-Demo | Node.js | [https://github.com/e-gov/TARA-Demo](https://github.com/e-gov/TARA-Demo) | [töötav rakendus](https://tarademo.herokuapp.com)
 TARA-Client | Java | [https://github.com/e-gov/TARA-Client](https://github.com/e-gov/TARA-Client) |
-TARA-Java | Java | [https://github.com/e-gov/TARA-Java](https://github.com/e-gov/TARA-Java) | [töötav rakendus](https://tarawelcome.herokuapp.com)
+TARA-Java | Java | [https://github.com/e-gov/TARA-Java](https://github.com/e-gov/TARA-Java) | [töötav rakendus](https://tara-java.herokuapp.com)
 
