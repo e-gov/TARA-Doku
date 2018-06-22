@@ -39,6 +39,9 @@ Käesoleva lehe teave on mõeldud kolmele sihtrühmale. Asutuse äriüksuse juht
 [Näiterakendused](Naited)<br>
 
 [Sõnastik](Sonastik)<br>
+
+[FAQ](FAQ)
+
 [Viited](Viited)
 
 ## Praktilisi küsimusi
