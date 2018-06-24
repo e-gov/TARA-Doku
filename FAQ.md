@@ -15,3 +15,6 @@ Teenuse avaliku allkirjastamisvõtme otspunkt ([https://tara.ria.ee/oidc/jwks](h
 3 _Mida tähendab sõna "TARA"?_
 
 Vt: Joh. V. Veski, [Sõna "tara" tähenduse asjus](https://dea.digar.ee/cgi-bin/dea?a=d&d=uuseesti19361028.2.57), "Uus Eesti", 1936 (Rahvusarhiivi Digar-kogu)
+
+Kui küsimustest ei saanud abi, siis pöördu kasutajatoe poole: help@ria.ee.
+{: .adv}
