@@ -275,7 +275,8 @@ Tagasisuunamispäringu elemendid:
 ````
 HTTP GET https://eteenus.asutus.ee/tagasi?
 error=invalid_scope&
-error_description=Required+scope+%3Copenid%3E+not+provided.+TARA+do+not+allow+this+request+to+be+processed&
+error_description=Required+scope+%3Copenid%3E+not+provided.+
+TARA+do+not+allow+this+request+to+be+processed&
 state=qnYY56Ra8QF7IUzqvw+PPLzMKoHtQkuUWbV/wcrkvdU=
 ````
 
