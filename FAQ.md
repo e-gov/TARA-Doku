@@ -12,7 +12,11 @@ Kontrolli, et klientrakendus kasutab TARA poole pöördumisel õiget `client_id`
 
 Teenuse avaliku allkirjastamisvõtme otspunkt ([https://tara.ria.ee/oidc/jwks](https://tara.ria.ee/oidc/jwks)) pakub praegu ühtainust võtit. See tuleb võtta ja kasutada. TARA edasiarendamisel (2018 lõpp - 2019 algus) lisame dünaamilise võtmevahetuse (_key rollover_). Siis saab võtit pärida võtmeidentifikaatoriga.
 
-3 _Mida tähendab sõna "TARA"?_
+3 _TARA ütleb, et Required+scope+&lt;openid&gt;+not+provided._
+
+Põhjus - nagu ka teiste päringuparameetrite probleemide puhul - võib olla URL-kodeerimises. Skoobi `eidasonly` kasutamisel tuleb see saata koos skoobiga `openid`. Skoobid tuleb eraldada tühikuga (URL-encoded kujul: `openid%20eidasonly`). Saatmisel jälgida, et tühik URL-kodeeritakse, aga mitte rohkem, kui üks kord. 
+
+4 _Mida tähendab sõna "TARA"?_
 
 Vt: Joh. V. Veski, [Sõna "tara" tähenduse asjus](https://dea.digar.ee/cgi-bin/dea?a=d&d=uuseesti19361028.2.57), "Uus Eesti", 1936 (Rahvusarhiivi Digar-kogu)
 
