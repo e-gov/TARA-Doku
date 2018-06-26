@@ -21,9 +21,7 @@ Autentimisteenus TARA on Riigi Infosüsteemi Ameti poolt pakutav teenus, millega
 - mobiil-ID
 - ID-kaart
 
-<p>&nbsp;</p>
-
-- piiriülese (eIDAS-)autentimise tugi.
+\- piiriülese (eIDAS-)autentimise tugi.
 {:.test}
 
 - Smart-ID

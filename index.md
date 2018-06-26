@@ -8,7 +8,7 @@ permalink: /
 
 # Autentimisteenus TARA
 
-TARA on teenus, millega asutus saab oma e-teenuses autentida ID-kaardi või mobiil-ID kasutaja ning alates kevadest 2018 ka välisriigi kasutaja.
+TARA on teenus, millega asutus saab oma e-teenuses autentida ID-kaardi või mobiil-ID kasutaja ning alates kevadest 2018 ka välisriigi kasutaja. Suvel 2018 lisanduvad kuus panga autentimisteenused ja Smart-ID.
 
 TARA on [eelistatud viis](https://e-gov.github.io/eIDAS-Connector/Valik) piiriülese eIDAS-autentimise lisamiseks asutuse e-teenustele.
 
