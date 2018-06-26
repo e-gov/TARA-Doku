@@ -16,9 +16,24 @@ v 0.8, 18.06.2018
 
 Käesolev dokument määratleb autentimisteenuse TARA tehnilised omadused ja annab soovitusi klientrakenduse e-teenusega liidestamiseks.
 
-Autentimisteenus TARA on Riigi Infosüsteemi Ameti poolt pakutav teenus, millega asutus saab oma e-teenusesse lisada mobiil-ID ja ID-kaardi kasutaja autentimise toe.
+Autentimisteenus TARA on Riigi Infosüsteemi Ameti poolt pakutav teenus, millega asutus saab oma e-teenusesse lisada erinevate autentimismeetodite toe:
 
-Arenduses on piiriülese (eIDAS-)autentimise tugi. Järgmistes arendusjärkudes lisatakse täiendavate autentimismeetodite (pangalingid, Smart-ID) tugi.
+- mobiil-ID
+- ID-kaart
+
+<p>&nbsp;</p>
+
+- piiriülese (eIDAS-)autentimise tugi.
+{:.test}
+
+- Smart-ID
+- Coop pank
+- Danske pank
+- LHV pank
+- Luminor pank
+- SEB pank
+- Swedbank
+{:.future}
 
 Käesolev tehniline kirjeldus on suunatud TARA liidestajatele (arendajatele). Lugejalt eeldame HTTP protokolli tundmist. Kasulik, kuid mitte vajalik on  OpenID Connect või OAuth 2.0 kogemus. Lugeja peab olema valmis vajadusel hankima lisateavet OpenID Connect protokolli originaaltekstist [Core].
 
@@ -233,6 +248,7 @@ Välismaalase autentimisel suunab TARA välismaalase tema koduriigi autentimiste
 Euroopa Komisjoni määrusega on riigid kokku leppinud, et teise riigi autentimisteenus on alati kohustatud väljastama füüsilise isiku kohta neli atribuuti: 1) eesnimi; 2)  perekonnanimi; 3) sünniaeg; 4) isikukood vm identifikaator. Juriidilise isiku kohta väljastatakse alati kaks atribuuti: 1) registrikood vm identifikaator; 2)  juriidilise isiku nimi. Need on nn **kohustuslikud atribuudid**.
 
 Lisaks võib klientrakendus pärida täiendavaid atribuute (nn **mittekohustuslikud atribuudid**). Selleks tuleb autentimispäringut (TARA-sse suunamise URL-i) täiendada parameetri `scope` väärtust soovitud atribuutide nimedega.
+{:.future}
 
 Näide atribuutide küsimisest autentimispäringus:
 
@@ -363,6 +379,7 @@ Identsustõendis esitatakse järgmised väited (_claims_).
 #### 4.3.2 Mittekohustuslikud atribuudid (välismaalase autentimisel)
 
 Järgnevad atribuudid esitatakse identsustõendis ainult siis, kui  autenditud isik on välismaalane ja klientrakendus on atribuute  autentimispäringu `scope` parameetris taotlenud.
+{:.future}
 
 Füüsiline isik
 
@@ -572,9 +589,9 @@ RIA, rahuldades taotluse:
 - väljastab asutusele klientrakenduse salasõna `client_secret`. Salasõna on ette nähtud identsustõendi päringute allkirjastamiseks
 - avab asutuse klientrakenduse testversioonile juurdepääsu testteenusele.
 
-Järgneb liidestuse testimine. RIA abistab siin võimalike probleemide lahendamisel.
+Järgneb liidestuse testimine. RIA abistab siin võimalike probleemide lahendamisel. Testimise kohta vt lähemalt: [Testimine](https://e-gov.github.io/TARA-Doku/Testimine).
 
-Liitumine TARA toodanguteenusega. Eduka testimise järel asutus esitab taotluse toodanguteenuse avamiseks klientrakendusele. Taotluses näidatakse klientrakenduse toodanguversiooni tagasisuunamis-URL (_redirect-URL_), OpenID Connect protokolli kohaselt jm andmed
+Liitumine TARA toodanguteenusega. Eduka testimise järel asutus esitab taotluse toodanguteenuse avamiseks klientrakendusele. Taotluses näidatakse klientrakenduse toodanguversiooni tagasisuunamis-URL (`redirect_uri`), OpenID Connect protokolli kohaselt jm andmed
 
 RIA, rahuldades taotluse, väljastab asutusele klientrakenduse toodanguversiooni salasõna `client_secret` ja avab asutuse klientrakenduse toodanguversioonile juurdepääsu toodanguteenusele.
 
