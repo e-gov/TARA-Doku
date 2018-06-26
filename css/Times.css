@@ -5,7 +5,7 @@
 /*#region Paigutus */
 body {
   max-width: 55em;
-  margin: 0 0; 
+  margin: 0 0 0 2rem; 
   padding: 0 0 2em 0; 
   /* font-family: 'Segoe UI', Arial, serif; */
   font-family: Arial, sans-serif;
@@ -16,9 +16,7 @@ body {
 
 /* Päis ja jalus */
 .pais, .jalus {
-  max-width: 45rem;
   padding-top: 1em;
-  padding-left: 2em;
 }
 .pais { 
   background-color: whitesmoke;
