@@ -167,7 +167,7 @@ a.nupp:hover {
   text-decoration: none !important;
 }
 
-.note, .adv, .future {
+.note, .adv, .future, .test {
   padding: .5em;
   border: .5em;
   border-left-style: solid;
@@ -187,24 +187,32 @@ a.nupp:hover {
   background: #FFEECC;
 }
 
-.test {
-  border-color: cornflowerblue;
-  background: powderblue;
-  overflow: auto;
-}
-.test:before {
-  content: 'Praegu ainult testkeskkonnas ';
-  display: block;
-}
-
-.future {
+.test, .future {
   border-color: Gray;
   background: lightgrey;
   overflow: auto;
+
+}
+
+.test:before, .future:before {
+  font-style: italic;
+  display: block;
+  background: lightgray;
+  margin-bottom: 1rem;
+}
+
+.test {
+  color: black;
+}
+.test:before {
+  content: 'Praegu ainult testkeskkonnas: ';
+}
+
+.future {
+  color: gray;
 }
 .future:before {
-  content: 'Arenduses ';
-  display: block;
+  content: 'Arenduses: ';
 }
 
 /*#endregion */
