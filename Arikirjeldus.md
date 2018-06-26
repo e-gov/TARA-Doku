@@ -4,22 +4,32 @@ permalink: Arikirjeldus
 
 # Autentimisteenus TARA
 
-Autentimisteenus TARA on Riigi Infosüsteemi Ameti poolt pakutav teenus, millega asutus saab oma e-teenusesse lisada mobiil-ID ja ID-kaardiga autentimise toe.
+Autentimisteenus TARA on Riigi Infosüsteemi Ameti poolt pakutav teenus, millega asutus saab oma e-teenusesse lisada järgmiste autentimismeetodite toe:
 
-2018\. a esimesel poolel lisandub eIDAS autentimine.
-{: .note}
+- mobiil-ID
+- ID-kaart
+
+- välismaalase autentimine, eIDAS piiriülese autentimise skeemiga
+{:.test}
+
+- Smart-ID
+- Coop pank
+- Danske pank
+- LHV pank
+- Luminor pank
+- SEB pank
+- Swedbank
+{:.future}
 
 ## Kellele?
 
  Avaliku sektori asutustele, kes soovivad:
-- oma e-teenustes mobiil-ID ja ID-kaardi kasutajaid autentida, ise seda tegemata.
+- oma e-teenustes pakkuda kasutajatele laia valikut autentimismeetodeid, ise neid meetodeid teostamata.
 - lisada oma e-teenusele piiriülese autentimise toe.
 
 ## Tehnilised tingimused?
 
 - E-teenus liidestatakse autentimisteenusega OpenID Connect protokolli kohaselt.
-- Autentimismeetodina toetame mobiil-ID-d ja ID-kaarti.
-- Teenuse esimese järgu valmides on kavas lisada teisi autentimismeetodeid, sh eIDAS-e välismaa eID kasutaja autentimine.
 
 ## Kuidas liituda?
 

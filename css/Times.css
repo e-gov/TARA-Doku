@@ -167,7 +167,7 @@ a.nupp:hover {
   text-decoration: none !important;
 }
 
-.note, .adv {
+.note, .adv, .future {
   padding: .5em;
   border: .5em;
   border-left-style: solid;
@@ -185,6 +185,26 @@ a.nupp:hover {
   border-color: orange;
   border-style: none solid;
   background: #FFEECC;
+}
+
+.test {
+  border-color: cornflowerblue;
+  background: powderblue;
+  overflow: auto;
+}
+.test:before {
+  content: 'Praegu ainult testkeskkonnas ';
+  display: block;
+}
+
+.future {
+  border-color: Gray;
+  background: lightgrey;
+  overflow: auto;
+}
+.future:before {
+  content: 'Arenduses ';
+  display: block;
 }
 
 /*#endregion */
