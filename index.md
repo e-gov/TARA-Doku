@@ -11,7 +11,7 @@ Teenuse seisund:
 autentimis-<br>meetod | test-<br>keskkond | toodangu-<br>keskkond
 --------|:--------:|:--------
 ID-kaart | <i class="ikoon material-icons">done</i> | <i class="ikoon material-icons">done</i>
-m-I>D | <i class="ikoon material-icons">done</i> | <i class="ikoon material-icons">done</i>
+m-ID | <i class="ikoon material-icons">done</i> | <i class="ikoon material-icons">done</i>
 eIDAS | <i class="ikoon material-icons">done</i> | 
 Smart-ID | <i class="ikoon material-icons">done</i> | 
 Coop pank | | 

@@ -216,3 +216,9 @@ a.nupp:hover {
 }
 
 /*#endregion */
+
+
+.ikoon {
+  font-family: 'Material Icons';
+  font-size: 48px; color: #757575;
+}
