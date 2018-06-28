@@ -6,6 +6,21 @@ permalink: /
 
 <img src='img/LOVID.png' style='width: 80px;'>
 
+Teenuse seisund:
+
+autentimis-<br>meetod | test-<br>keskkond | toodangu-<br>keskkond
+--------|:--------:|:--------
+ID-kaart | <i class="ikoon material-icons">done</i> | <i class="ikoon material-icons">done</i>
+m-I>D | <i class="ikoon material-icons">done</i> | <i class="ikoon material-icons">done</i>
+eIDAS | <i class="ikoon material-icons">done</i> | 
+Smart-ID | <i class="ikoon material-icons">done</i> | 
+Coop pank | | 
+Danske pank | | 
+LHV pank | | 
+Luminor pank | 
+SEB pank | <i class="ikoon material-icons">done</i> | 
+Swedbank |  | 
+
 # Autentimisteenus TARA
 
 TARA on teenus, millega asutus saab oma e-teenuses autentida ID-kaardi või mobiil-ID kasutaja ning alates kevadest 2018 ka välisriigi kasutaja. Suvel 2018 lisanduvad kuus panga autentimisteenused ja Smart-ID.
