@@ -49,6 +49,12 @@ Vt ka:
 2017-12-15 11:48:22;openIdDemo;MobileID;START_AUTH;
 2017-12-15 11:48:38;openIdDemo;MobileID;SUCCESSFUL_AUTH;
 2017-12-15 11:59:10;openIdDemo;MobileID;START_AUTH;
+2018.06.28 08:05:52;openIdDemo;eIDAS;START_AUTH;
+2018.06.28 08:06:21;openIdDemo;eIDAS;SUCCESSFUL_AUTH;
+2018.06.27 11:23:14;openIdDemo;BankLink;START_AUTH;
+2018.06.27 11:23:15;openIdDemo;BankLink;SUCCESSFUL_AUTH;
+2018.06.27 10:38:27;openIdDemo;SmartID;START_AUTH;
+2018.06.27 10:38:28;openIdDemo;SmartID;SUCCESSFUL_AUTH;
 ````
 
 9\.	Logikirje formaat. Logikirjeid on kahte tüüpi:
