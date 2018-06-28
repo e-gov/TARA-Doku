@@ -42,11 +42,33 @@ Identsustõendit tuleb küsida vahetult peale autentimispäringu lõpetamist (s.
 `curl -H "Authorization: Basic b3BlbklkRGVtbzI6c2VjcmV0" -d "grant_type=authorization_code&code=OC-19-5RYWZQpN2HN5dNx4uckK0KI6oKXUZpIoO1D&redirect_uri=https%3A%2F%2Feteenindus.asutus.ee%2FCallback" -X POST https://tara-test.ria.ee/oidc/token`
 
 ## Testimine testnumbrite ja ID-kaardiga
+### Kasutajad edukaks autentimiseks
+1. Mobiil-ID telefoninumber: 00000766, isikukood: 60001019906
+2. eIDAS riik Tšehhi, vali profiil `Testovací profily`
+3. Luminor pangalink kasutajatunnus: 111111, digivõtme kood: 9999
+4. Smart-ID isikukood: 10101010005
+
+### ID-kaart ja Mobiil-ID
 TARA testkeskkond on suunatud vastu test-OCSP ja test-DigiDocService teenust. See tähendab, et TARAs tuleb autentimise läbiviimiseks rakendada testnumbreid ja test ID-kaarte või teha oma Mobiil-ID ja/või ID-kaardi sertifikaadid kättesaadavaks testteenuse andmebaasis. Lähemalt võimalustest:
 1. Testnumbrid on kättesaadavad siit: [https://github.com/SK-EID/dds-documentation/wiki/Test-number-for-automated-testing-in-DEMO](https://github.com/SK-EID/dds-documentation/wiki/Test-number-for-automated-testing-in-DEMO). Rakendada ainult Eesti (EE) testnumbreid ja isikukoode.
 2. Test ID-kaardi peab tellima SK-lt: [https://www.sk.ee/teenused/testkaardid/](https://www.sk.ee/teenused/testkaardid/). Juhul kui on võimalus enda ID-kaarti kasutada, ei ole test-kaardi tellimine vajalik.
 3. Isikliku mobiilinumbri ja sellega seotud sertifikaadid saab laadida üles siin: [https://demo.sk.ee/MIDCertsReg/](https://demo.sk.ee/MIDCertsReg/). Selleks järgida lehel paiknevat juhendit. Peale isikliku numbri üleslaadimist on võimalik TARA testkeskkonda siseneda oma mobiilinumbri ja isikukoodiga.
 4. Isikliku ID-kaardi sertifikaadid saab laadida üles siin: [https://demo.sk.ee/upload_cert/](https://demo.sk.ee/upload_cert/). Selleks järgida lehel paiknevat juhendit. Peale sertifikaadi üleslaadimist test andmebaasi saab isikliku ID-kaardiga siseneda TARAsse.
+
+### eIDAS
+TARA testkeskkond on suunatud eIDAS testkeskkonna vastu. Igal riigil on testimiseks oma lahendus, kas parool või kaheastmeline autentimine. Kõik riigid ei ole veel liidestusega valmis, täpsema info saamiseks `help@ria.ee`. Testimiseks saab kasutada:  
+1. Tšehhi - parooli ei ole vaja, vali profiil `Testovací profily`
+
+### Pangalink
+TARA testkeskkond on suunatud vastu pankade test pangalingi teenust. Testimiseks on kahel pangal selline keskkond:  
+1. Luminor, kasutajatunnus: 111111, digivõtme kood: 9999 Rohkem infot: [https://www.luminor.ee/sites/default/files/documents/files/common/pangalingi-test-versioon.pdf](https://www.luminor.ee/sites/default/files/documents/files/common/pangalingi-test-versioon.pdf)
+2. SEB, kasutaja ja koodikaardi info on SEB testkeskkonna juhendis: [https://www.seb.ee/files/upos/manused.zip](https://www.seb.ee/files/upos/manused.zip)
+
+### Smart-ID
+TARA testkeskkond on suunatud vastu Smart-ID demo keskkonda. Kasutamiseks on kaks varianti:
+1. Paigaldada oma seadmesse Smart-ID demo rakendus ja registreeri demo konto: [https://github.com/SK-EID/smart-id-documentation/wiki/Smart-ID-demo#getting-started](https://github.com/SK-EID/smart-id-documentation/wiki/Smart-ID-demo#getting-started)
+2. Kasutada testisikut: [https://github.com/SK-EID/smart-id-documentation/wiki/Environment-technical-parameters#test-accounts-for-automated-testing](https://github.com/SK-EID/smart-id-documentation/wiki/Environment-technical-parameters#test-accounts-for-automated-testing)
+ 
 
 ## Täiendavad soovitused
 Põhivoo töölesaamine on ainult üks osa TARA teenusega liidestumisel. Erilist tähelepanu tuleb pöörata turvatoimingute kontrollimisele (vt [https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus#5-turvatoimingud](https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus#5-turvatoimingud)).
@@ -58,3 +80,5 @@ Nõu küsimiseks ja võimaliku TARA vea raporteerimiseks palun pöörduda meilit
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
 | 0.1, 15.05.2018   | Esimene versioon |
+| 0.2, 28.06.2018   | Pangalinkide ja Smart-ID info |
+
