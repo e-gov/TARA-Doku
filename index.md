@@ -35,37 +35,27 @@ Käesoleva lehe teave on mõeldud kolmele sihtrühmale. Asutuse äriüksuse juht
 
 ## Ärikasutajale
 
-[Ärikirjeldus](Arikirjeldus)<br>
+[Ärikirjeldus](Arikirjeldus) · <a href='https://www.ria.ee/ee/autentimisteenused.html'>Liitumine</a>
 
-<p><a href='https://www.ria.ee/ee/autentimisteenused.html'>Liitumine</a></p>
-
-[Isikuandmete töötluse poliitika](Isikuandmed)
+[Andmekaitsetingimused](Isikuandmed)
 
 <a href='https://e-gov.github.io/TARA-Doku/files/TARA-tutvustus.pdf' target='_new'>eIDAS autentimise lisamine e-teenusele</a>, esitlus eID infopäeval 31.10.2017<br>
 <a href='https://e-gov.github.io/TARA-Doku/files/PiiriyleneAutentimine.pdf' target='_new'>Piiriülene autentimine</a>, esitlus eID infopäeval 15.11.2017<br> 
 
-[Teekaart](Teekaart)<br>
+[Teekaart](Teekaart)
 
 ## Liidese arendajale
 
-[Tehniline kirjeldus](TehnilineKirjeldus)<br>
-[Testimine](Testimine)<br>
+[Tehniline kirjeldus](TehnilineKirjeldus)
 
-[Näiterakendused](Naited)<br>
+[Testimine](Testimine)
 
-[Sõnastik](Sonastik)<br>
+[Näiterakendused](Naited)
 
-[FAQ](FAQ)
-
-[Viited](Viited)
-
-## Praktilisi küsimusi
-
-[TARA + "Legacy"](Legacy)<br>
-[eesti.ee autentimislahendus](EE-Auth)
+[Sõnastik](Sonastik) · [Viited](Viited) · [FAQ](FAQ)
 
 ## TARA teenuse arendajale
 
-[Arhitektuurikirjeldus](Arhitektuurikirjeldus)<br>
-[QA Strateegia](QaStrateegia)<br>
-[Kood jm arendaja dokumentatsioon](Arendajale)
+[Arhitektuurikirjeldus](Arhitektuurikirjeldus) · [QA strateegia](QaStrateegia)
+
+[Kood ja arendaja dokumentatsioon](Arendajale)
