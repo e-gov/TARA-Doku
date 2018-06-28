@@ -17,7 +17,7 @@ Smart-ID | ok |
 Coop pank | | 
 Danske pank | | 
 LHV pank | | 
-Luminor pank | 
+Luminor pank | ok |
 SEB pank | ok | 
 Swedbank |  | 
 
