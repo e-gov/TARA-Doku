@@ -9,7 +9,7 @@ permalink: /
 Teenuse seisund:
 
 autentimis-<br>meetod | test-<br>keskkond | toodangu-<br>keskkond
---------|:--------:|:--------
+--------|:--------:|:-------:
 ID-kaart | ok | ok
 m-ID | ok | ok
 eIDAS | ok | 
