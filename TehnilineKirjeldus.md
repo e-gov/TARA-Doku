@@ -2,7 +2,7 @@
 permalink: TehnilineKirjeldus
 ---
 
-Märkus. Piiriülese autentimise (eIDAS), pangalinkide ja Smart-ID tugi on arenduses.
+Mõned autentimismeetodid võivad olla veel arenduses või kasutatavad ainult testkeskkonnas. Vt [teenuse seisund](/)
 {: .note}
 
 # Tehniline kirjeldus
@@ -20,10 +20,7 @@ Autentimisteenus TARA on Riigi Infosüsteemi Ameti poolt pakutav teenus, millega
 
 - mobiil-ID
 - ID-kaart
-
-\- piiriülese (eIDAS-)autentimise tugi.
-{:.test}
-
+- piiriülese (eIDAS-)autentimise tugi
 - Smart-ID
 - Coop pank
 - Danske pank
@@ -31,7 +28,6 @@ Autentimisteenus TARA on Riigi Infosüsteemi Ameti poolt pakutav teenus, millega
 - Luminor pank
 - SEB pank
 - Swedbank
-{:.future}
 
 Käesolev tehniline kirjeldus on suunatud TARA liidestajatele (arendajatele). Lugejalt eeldame HTTP protokolli tundmist. Kasulik, kuid mitte vajalik on  OpenID Connect või OAuth 2.0 kogemus. Lugeja peab olema valmis vajadusel hankima lisateavet OpenID Connect protokolli originaaltekstist [Core].
 
