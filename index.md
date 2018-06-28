@@ -10,15 +10,15 @@ Teenuse seisund:
 
 autentimis-<br>meetod | test-<br>keskkond | toodangu-<br>keskkond
 --------|:--------:|:--------
-ID-kaart | <i class="ikoon material-icons">done</i> | <i class="ikoon material-icons">done</i>
-m-ID | <i class="ikoon material-icons">done</i> | <i class="ikoon material-icons">done</i>
-eIDAS | <i class="ikoon material-icons">done</i> | 
-Smart-ID | <i class="ikoon material-icons">done</i> | 
+ID-kaart | ok | ok
+m-ID | ok | ok
+eIDAS | ok | 
+Smart-ID | ok | 
 Coop pank | | 
 Danske pank | | 
 LHV pank | | 
 Luminor pank | 
-SEB pank | <i class="ikoon material-icons">done</i> | 
+SEB pank | ok | 
 Swedbank |  | 
 
 # Autentimisteenus TARA
