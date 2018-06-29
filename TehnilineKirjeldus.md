@@ -324,51 +324,67 @@ Päringu kehas tuleb esitada:
 
 #### 4.3.1 Identsustõend
 
-TARA server kontrollib, et identsustõendit küsib õige rakendus, seejärel väljastab päringu vastuses identsustõendi. Näide:
+TARA server kontrollib, et identsustõendit küsib õige rakendus, seejärel väljastab päringu vastuses (_HTTP response body_) identsustõendi.
+
+Päringu vastus on JSON-struktuur, milles on neli elementi (vt järgnev tabel). 
+
+| element | selgitus |
+|:-------:|----------|
+| `access_token` | OAuth 2.0 pääsutõend. Pääsutõendit TARA-s ei kasutata (kuna kõik autenditud isikut kirjeldavad andmed väljastatakse identsustõendis; `userinfo` otspunkti TARA ei toeta) |
+| `token_type` | Väärtusega `bearer`. OAuth 2.0 pääsutõendi tüüp. TARA-s ei kasutata |
+| `expires_in` | OAut´h 2.0 pääsutõendi aegumiskestus. TARA-s ei kasutata |
+| `id_token` | identsustõend, Base64 vormingus | 
+
+TARA-s kasutatakse neist neljast elemendist viimast - identsustõendit. Identsustõend on TARA poolt väljastatav tõend autentimise fakti kohta.
+
+Näide:
 
 ````json
-{  
-   "aud": "openIdDemo",
-   "sub": "EE11412090004",
-   "nbf": 1505818497,
-   "amr":[  
-      "mID"
-   ],
-   "iss":"https://tara.ria.ee",
-   "profile_attributes":{  
-      "given_name":"MARY ÄNN",
-      "family_name":"O’CONNEŽ-ŠUSLIK",
-      "mobile_Number":"+37200000766"
-   },
-   "state":"abcdefghijklmnop",
-   "exp":1505847597,
-   "iat":1505818797,
-   "nonce":"qrstuvwxyzabcdef",
-   "jti":"0e12bf29-2a3b-4a81-a85e-973d0a2303d1"
+{
+  "jti": "0c597356-3771-4315-a129-c7bc1f02a1b2",
+  "iss": "https://tara-test.ria.ee",
+  "aud": "TARA-Demo",
+  "exp": 1530295852,
+  "iat": 1530267052,
+  "nbf": 1530266752,
+  "sub": "EE60001019906",
+  "profile_attributes": {
+    "date_of_birth": "2000-01-01",
+    "family_name": "O’CONNEŽ-ŠUSLIK TESTNUMBER",
+    "given_name": "MARY ÄNN",
+    "mobile_number": "+37200000766"
+  },
+  "amr": [
+    "mID"
+  ],
+  "state": "1OnH3qwltWy81fKqcmjYTqnco9yVQ2gGZXws/DBLNvQ=",
+  "nonce": "",
+  "at_hash": "X0MVjwrmMQs/IBzfU2osvw=="
 }
 ````
 
 Identsustõendis esitatakse järgmised väited (_claims_).
 
-| identsustõendi element (väide) | kohustuslik | näide, selgitus     |
-|:-----------------------|:-----------:|---------------------|
-| `aud` (_Audience_)     | jah |`"aud":"openIdDemo"` - autentimist küsinud infosüsteemi ID (kasutaja autentimisele suunamisel määratud `client_id` välja väärtus)|
-| `sub` (_Subject_)      | jah | `"sub":"EE11412090004"` - autenditud kasutaja identifikaator (isikukood või eIDAS identifikaator) koos kodaniku riigikoodi eesliitega (riigikoodid vastavalt ISO 3166-1 alpha-2 standardile). |
-| `nbf` (_Not Before_)   | jah |`"nbf":"Wed Sep 27 11:47:22 EEST 2017"` - tõendi kehtivuse algusaeg |
-| `amr` (_Authentication Method Reference_) | jah | `"amr":["mID"]` - kasutaja autentimiseks kasutatud autentimismeetod. Võimalikud väärtused: `mID` - mobiil-ID, `idcard` - Eesti ID-kaart, `eIDAS` - piiriülene, `banklink` - pangalink, `smartid` - Smart-ID.  |
-| `iss` (_Issuer_)       | jah | `"iss":"https://tara.ria.ee"` - tõendi väljastaja (TARA-teenus); testteenuse puhul `"iss":"https://tara-test.ria.ee"` |
-| `profile_attributes`   | jah | `"profile_attributes": {"given_name":"MARY ÄNN", "family_name":"O’CONNEŽ-ŠUSLIK", "mobile_number":"+37200000766"}` - autenditud isikut kirjeldavad andmed, sh eIDAS atribuudid (vt ka allpool täiendavate andmete küsimise ja isiku esindamise kohta)  |
-| `profile_attributes`<br>`.given_name`              | jah | `"given_name":"MARY ÄNN"` - autenditud kasutaja eesnimi (testnimi, valitud täpitähtede sisalduvuse pärast) |
-| `profile_attributes`<br>`.family_name`              | jah | `"family_name":"O’CONNEŽ-ŠUSLIK"` - autenditud kasutaja perekonnanimi (testnimi, valitud täpitähtede jm eritärkide sisalduvuse pärast) |
-| `profile_attributes`<br>`.mobile_number`          | ei | `"mobile_number":"+37200000766"` - m-ID kasutaja autentimisel kasutatud telefoninumber |
-| `profile_attributes`<br>`.date_of_birth`          | ei | Isiku sünnikuupäev ISO_8601 formaadis. Tagastatakse ainult eIDAS autentimisel. |
-| `profile_attributes`<br>`_translit` | ei | Sisaldab JSON objekti ladina tähestikus profiiliatribuutidest (vt allpool translitereerimine.). Väärtustatud ainult eIDAS autentimisel. |
-| `state`            | jah | `"state":"abcdefghijklmnop"` - turvaelement  |
-| `exp` (_Expires_)     | jah | `"exp":1505847597` - tõendi aegumisaeg |
-| `iat` (_Issued At_)   | jah | `"iat":1505818797` - tõendi väljaandmisaeg |
-| `nonce`                 | ei | `"nonce":"qrstuvwxyzabcdef"` - turvaelement |
-| `acr` (_Authentication Context Class Reference_) | ei | `"acr": "low"` - autentimistase, vastavalt eIDAS tasemetele. Võimalikud väärtused: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Elementi ei kasutata, kui autentimistase ei kohaldu või pole teada |
-| `jti` (_JSON Token Identifier_)              | jah | `"jti":"0e12bf29... "` - identsustõendi identifikaator |
+| identsustõendi element (väide) | näiteväärtus, selgitus     |
+|:-----------------------|---------------------|
+| `jti` (_JSON Token Identifier_) | `0c597356... ` - identsustõendi identifikaator |
+| `iss` (_Issuer_)       | `https://tara.ria.ee` - tõendi väljastaja (TARA-teenus); testteenuse puhul `https://tara-test.ria.ee` |
+| `aud` (_Audience_)     | `TARA-Demo` - autentimist küsinud infosüsteemi ID (kasutaja autentimisele suunamisel määratud `client_id` välja väärtus)|
+| `exp` (_Expires_) | `1530295852` - tõendi aegumisaeg, Unix _epoch_ vormingus |
+| `iat` (_Issued At_) | `1530267052` - tõendi väljaandmisaeg, Unix _epoch_ vormingus |
+| `nbf` (_Not Before_)   | `1530266752` - tõendi kehtivuse algusaeg, Unix _epoch_ vormingus |
+| `sub` (_Subject_)      | `EE60001019906` - autenditud kasutaja identifikaator (isikukood või eIDAS identifikaator) koos kodaniku riigikoodi eesliitega (riigikoodid vastavalt ISO 3166-1 alpha-2 standardile) |
+| `profile_attributes`   | autenditud isikut kirjeldavad andmed, sh eIDAS atribuudid (vt ka allpool täiendavate andmete küsimise ja isiku esindamise kohta) |
+| `profile_attributes`<br>`.date_of_birth` | `2000-01-01` - autenditud kasutaja sünnikuupäev ISO_8601 formaadis. Tagastatakse ainult eIDAS autentimisel |
+| `profile_attributes`<br>`.given_name` | `MARY ÄNN` - autenditud kasutaja eesnimi (testnimi, valitud täpitähtede sisalduvuse pärast) |
+| `profile_attributes`<br>`.family_name` | `O’CONNEŽ-ŠUSLIK` - autenditud kasutaja perekonnanimi (testnimi, valitud täpitähtede jm eritärkide sisalduvuse pärast) |
+| `profile_attributes`<br>`.mobile_number` | `+37200000766` - m-ID autentimisel kasutatud telefoninumber |
+| `profile_attributes`<br>`_translit` | Sisaldab JSON objekti ladina tähestikus profiiliatribuutidest (vt allpool translitereerimine.). Väärtustatud ainult eIDAS autentimisel |
+| `amr` (_Authentication Method Reference_) | `mID` - kasutaja autentimiseks kasutatud autentimismeetod. Võimalikud väärtused: `mID` - mobiil-ID, `idcard` - Eesti ID-kaart, `eIDAS` - piiriülene, `banklink` - pangalink, `smartid` - Smart-ID  |
+| `state` | `abcdefghijklmnop` - turvaelement  |
+| `nonce` | `qrstuvwxyzabcdef` - turvaelement |
+| `acr` (_Authentication Context Class Reference_) | `high` - autentimistase, vastavalt eIDAS tasemetele. Võimalikud väärtused: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Elementi ei kasutata, kui autentimistase ei kohaldu või pole teada |
+| `at_hash` | `X0MVjwrmMQs/IBzfU2osvw==` - pääsutõendi räsi. TARA-s ei kasutata |
 
 #### 4.3.2 Mittekohustuslikud atribuudid (välismaalase autentimisel)
 
