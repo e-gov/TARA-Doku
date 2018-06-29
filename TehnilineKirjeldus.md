@@ -332,7 +332,7 @@ Päringu vastus on JSON-struktuur, milles on neli elementi (vt järgnev tabel).
 |:-------:|----------|
 | `access_token` | OAuth 2.0 pääsutõend. Pääsutõendit TARA-s ei kasutata (kuna kõik autenditud isikut kirjeldavad andmed väljastatakse identsustõendis; `userinfo` otspunkti TARA ei toeta) |
 | `token_type` | Väärtusega `bearer`. OAuth 2.0 pääsutõendi tüüp. TARA-s ei kasutata |
-| `expires_in` | OAut´h 2.0 pääsutõendi aegumiskestus. TARA-s ei kasutata |
+| `expires_in` | OAuth 2.0 pääsutõendi aegumiskestus. TARA-s ei kasutata |
 | `id_token` | identsustõend, Base64 vormingus | 
 
 TARA-s kasutatakse neist neljast elemendist viimast - identsustõendit. Identsustõend on TARA poolt väljastatav tõend autentimise fakti kohta.
