@@ -2,13 +2,13 @@
 permalink: Isikuandmed
 ---
 
-# Isikuandmete töötluse poliitika
+# Andmekaitsetingimused
 
 Käesolevas dokumendis kehtestatakse RIA autentimisteenustes [1], edaspidi "teenused", rakendatavad isikuandmete töötluse konkreetsed meetmed. 
 
 ### 1 Rakendusala
 
-2\.1 Poliitika rakendub:
+2\.1 Tingimused rakenduvad:
 
 1. RIA eIDAS konnektorteenusele
 2. RIA autentimisteenusele
