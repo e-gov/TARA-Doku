@@ -56,6 +56,6 @@ Käesoleva lehe teave on mõeldud kolmele sihtrühmale. Asutuse äriüksuse juht
 
 ## TARA teenuse arendajale
 
-[Arhitektuurikirjeldus](Arhitektuurikirjeldus) · [QA strateegia](QaStrateegia)
+[QA strateegia](QaStrateegia)
 
 [Kood ja arendaja dokumentatsioon](Arendajale)
