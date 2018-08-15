@@ -11,6 +11,7 @@ permalink: Statistika
 Vt ka:
 - [TARA-107](https://jira.ria.ee/browse/TARA-107) (JIRA)
 - [logimise käsitlus TARA-Server repo vikis](https://github.com/e-gov/TARA-Server/wiki/Logimine). 
+- [Tara-Stat mikroteenus kasutusstatistika kogumiseks ja vaatamiseks](https://e-gov.github.io/TARA-Stat/Dokumentatsioon). 
 
 ## TARA statistikalogi. Spetsifikatsioon
 
