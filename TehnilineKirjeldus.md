@@ -545,6 +545,10 @@ Täiendav teave: OpenID Connect protokollis kahjuks ei ole teema selgelt esitatu
 
 Soovi korral võite veel tutvuda ründe (ja kaitse) detailse seletusega: [Võltspäringurünne ja kaitse selle vastu](Volts).  
 
+### 5.3 Logimine
+
+Logimine peab võimaldama rekonstrueerida TARA ja klientrakenduse suhtluse käigu TARA iga kasutuse jaoks. Selleks tuleb nii TARA kui ka klientrakenduse poolel logida kõik päringud ja päringute vastused: [autentimispäring](#41-autentimisp%C3%A4ring), [tagasisuunamispäring](#42-tagasisuunamisp%C3%A4ring) ja [identsustõendipäring](#43-identsust%C3%B5endip%C3%A4ring). Kuna edastatavad andmemahud ei ole suured, siis tuleb logida nii URL kui ka identsustõend täielikul kujul. Logide säilitamistähtaja määramisel arvestada klientrakenduse olulisust. Orientiiriks pakume 1..7 aastat. Probleemide lahendamiseks pöördumisel palume esitada väljavõte logist (mis päringud TARA poole saadeti? mis saadi vastuseks?).
+
 ## 6 Otspunktid
 
 Testteenus
