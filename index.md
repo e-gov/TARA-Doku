@@ -8,20 +8,11 @@ permalink: /
 
 # Autentimisteenus TARA
 
-Teenuse seisund:
+Teenuse seisund ja olulised teated:
+{: .note}
 
-autentimis-<br>meetod | test-<br>keskkond | toodangu-<br>keskkond
---------|:--------:|:-------:
-ID-kaart | ok | ok
-m-ID | ok | ok
-eIDAS | ok | 
-Smart-ID | ok | 
-Coop pank | | 
-Danske pank | | 
-LHV pank | | 
-Luminor pank | ok |
-SEB pank | ok | 
-Swedbank |  | 
+30.08.2018 Täiendasime liitumistaotluse vormi. Taotluses palume anda kasutajate arvu prognoos ja autentimismeetodid, mida soovite kasutada.
+{: .note}
 
 TARA on teenus, millega asutus saab oma e-teenuses autentida ID-kaardi või mobiil-ID kasutaja ning alates kevadest 2018 ka välisriigi kasutaja. Suvel 2018 lisanduvad kuus panga autentimisteenused ja Smart-ID.
 
