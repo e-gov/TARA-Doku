@@ -2,6 +2,10 @@
 permalink: /
 ---
 
+<img src='img/ee_cef_0.png' style='width:400px'>
+
+<img src='img/LOVID.png' style='width: 80px;'>
+
 ***OLULISED TEATED***
 
 30.08.2018 Täiendasime liitumistaotluse vormi: palume anda ka kasutajate arvu prognoos ja autentimismeetodid, mida soovite kasutada.
@@ -9,10 +13,6 @@ permalink: /
 
 29.08.2018 Lisame teenusele uue ID-kaardi toe. Uusi ID-kaarte hakatakse väljastama 2019. a ja need nõuavad ID-kaardiga autentimise erinevat seadistust. TARA kasutajatele ei muutu midagi.
 {: .adv}
-
-<img src='img/ee_cef_0.png' style='width:400px'>
-
-<img src='img/LOVID.png' style='width: 80px;'>
 
 # Autentimisteenus TARA
 
