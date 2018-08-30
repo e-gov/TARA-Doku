@@ -2,17 +2,19 @@
 permalink: /
 ---
 
+***OLULISED TEATED***
+
+30.08.2018 Täiendasime liitumistaotluse vormi: palume anda ka kasutajate arvu prognoos ja autentimismeetodid, mida soovite kasutada.
+{: .adv}
+
+29.08.2018 Lisame teenusele uue ID-kaardi toe. Uusi ID-kaarte hakatakse väljastama 2019. a ja need nõuavad ID-kaardiga autentimise erinevat seadistust. TARA kasutajatele ei muutu midagi.
+{: .adv}
+
 <img src='img/ee_cef_0.png' style='width:400px'>
 
 <img src='img/LOVID.png' style='width: 80px;'>
 
 # Autentimisteenus TARA
-
-Teenuse seisund ja olulised teated:
-{: .note}
-
-30.08.2018 Täiendasime liitumistaotluse vormi. Taotluses palume anda kasutajate arvu prognoos ja autentimismeetodid, mida soovite kasutada.
-{: .note}
 
 TARA on teenus, millega asutus saab oma e-teenuses autentida ID-kaardi või mobiil-ID kasutaja ning alates kevadest 2018 ka välisriigi kasutaja. Suvel 2018 lisanduvad kuus panga autentimisteenused ja Smart-ID.
 
