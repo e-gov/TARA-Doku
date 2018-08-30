@@ -6,8 +6,6 @@ permalink: /
 
 <img src='img/LOVID.png' style='width: 80px;'>
 
-***OLULISED TEATED***
-
 30.08.2018 Täiendasime liitumistaotluse vormi: palume anda ka kasutajate arvu prognoos ja autentimismeetodid, mida soovite kasutada.
 {: .adv}
 
