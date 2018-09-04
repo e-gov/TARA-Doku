@@ -6,6 +6,9 @@ permalink: /
 
 <img src='img/LOVID.png' style='width: 80px;'>
 
+31.08.2018 TARA toodangukeskkonda paigaldatakse uus versioon 04.09.2018. Uue versiooni käigus lisatakse pangalinkidega autentimise võimekus. Esialgselt plaanitud skoobist jääb välja Danske bank. Lisatakse järgnevate pankade pangalingid: Swedbank, SEB, LHV ja Luminor.
+{: .adv}
+
 30.08.2018 Täiendasime liitumistaotluse vormi: palume anda ka kasutajate arvu prognoos ja autentimismeetodid, mida soovite kasutada.
 {: .adv}
 
