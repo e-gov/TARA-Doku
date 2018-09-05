@@ -58,6 +58,7 @@ TARA testkeskkond on suunatud vastu test-OCSP ja test-DigiDocService teenust. Se
 ### eIDAS
 TARA testkeskkond on suunatud eIDAS testkeskkonna vastu. Igal riigil on testimiseks oma lahendus, kas parool või kaheastmeline autentimine. Kõik riigid ei ole veel liidestusega valmis, täpsema info saamiseks `help@ria.ee`. Testimiseks saab kasutada:  
 1. Tšehhi - parooli ei ole vaja, vali profiil `Testovací profily`
+2. Norra - vali autentimiseks MINID, personal id number: 05068907693, password: password01, PIN: 12345. Vajuta "Continue".
 
 ### Pangalink
 TARA testkeskkond on suunatud vastu pankade test pangalingi teenust. Testimiseks on kahel pangal selline keskkond:  
