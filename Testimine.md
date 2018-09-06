@@ -82,4 +82,4 @@ Nõu küsimiseks ja võimaliku TARA vea raporteerimiseks palun pöörduda meilit
 |-----------------|--------------|
 | 0.1, 15.05.2018   | Esimene versioon |
 | 0.2, 28.06.2018   | Pangalinkide ja Smart-ID info |
-
+| 0.3, 05.09.2018   | Norra testandmed |
