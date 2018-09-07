@@ -6,6 +6,9 @@ permalink: /
 
 <img src='img/LOVID.png' style='width: 80px;'>
 
+07.09.2018 TARA toodangukeskkonda paigaldati täna Coop pangalink. Testkeskkonda jäid testimiseks alles SEB ja Luminori pangalingid.
+{: .adv}
+
 31.08.2018 TARA toodangukeskkonda paigaldatakse uus versioon 04.09.2018. Uue versiooni käigus lisatakse pangalinkidega autentimise võimekus. Esialgselt plaanitud skoobist jääb välja Danske bank. Lisatakse järgnevate pankade pangalingid: Swedbank, SEB, LHV ja Luminor.
 {: .adv}
 
