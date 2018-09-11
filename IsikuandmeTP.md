@@ -73,7 +73,7 @@ _kasutaja_, füüsiline isik, kes suunatakse Eesti või välismaa e-teenusest RI
 
 ### Viited
 
-[1] RIA autentimisteenused, [https:\\www.ria.ee\ee\autentimisteenused.html](https:\\www.ria.ee\ee\autentimisteenused.html).
+[1] RIA autentimisteenused, [https://www.ria.ee/et/riigi-infosusteem/eid/partnerile.html#tara](https://www.ria.ee/et/riigi-infosusteem/eid/partnerile.html#tara).
 
 [2] eIDAS Technical specification, [https:\\ec.europa.eu\cefdigital\wiki\display\CEFDIGITAL\eIDAS+Profile](https:\\ec.europa.eu\cefdigital\wiki\display\CEFDIGITAL\eIDAS+Profile).
 
