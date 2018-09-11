@@ -12,7 +12,7 @@ TARA testkeskkond asub aadressil: [https://tara-test.ria.ee/](https://tara-test.
 
 ## Sissejuhatus
 
-TARA teenuse testimise eelduseks on TARA testkeskkonnaga liitumine (vt [https://www.ria.ee/ee/autentimisteenused.html](https://www.ria.ee/ee/autentimisteenused.html)).
+TARA teenuse testimise eelduseks on TARA testkeskkonnaga liitumine (vt [https://www.ria.ee/et/riigi-infosusteem/eid/partnerile.html#tara](https://www.ria.ee/et/riigi-infosusteem/eid/partnerile.html#tara)).
 Liitumise järel on võimalik teenust koheselt testida, kasutades liitumise järel saadetud kredentsiaale.
 
 ## Põhivoo testplaan
