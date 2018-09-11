@@ -26,13 +26,13 @@ TARA on [eelistatud viis](https://e-gov.github.io/eIDAS-Connector/Valik) piiriü
 
 TARA teenust pakub Riigi Infosüsteemi Amet. 
 
-Ametlikku teavet TARA ja RIA muude teenuste kohta vt [RIA autentimisteenuste lehelt](https://www.ria.ee/ee/autentimisteenused.html). 
+Ametlikku teavet TARA ja RIA muude teenuste kohta vt [RIA autentimisteenuste lehelt](https://www.ria.ee/et/riigi-infosusteem/eid/partnerile.html#tara). 
 
 Käesoleva lehe teave on mõeldud kolmele sihtrühmale. Asutuse äriüksuse juht saab siinse teabe alusel hinnata TARA sobivust, liidestustööde mahtu ja teha otsuse TARA kasutuselevõtuks. Liidese arendaja leiab siit kogu vajaliku tehnilise teabe asutuse e-teenuste liidestamiseks TARA-ga. Lehel on (eraldatult) ka teavet, mis on seotud TARA edasiarendamisega.
 
 ## Ärikasutajale
 
-[Ärikirjeldus](Arikirjeldus) · <a href='https://www.ria.ee/ee/autentimisteenused.html'>Liitumine</a>
+[Ärikirjeldus](Arikirjeldus) · <a href='https://www.ria.ee/et/riigi-infosusteem/eid/partnerile.html#tara'>Liitumine</a>
 
 [Andmekaitsetingimused](Isikuandmed)
 
