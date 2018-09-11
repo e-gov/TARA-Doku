@@ -57,9 +57,9 @@ ___4 CAS___
 
 ___5 Eesti___
 
-[tasemed] Riigi Infosüsteemi Amet. eIDAS autentimistasemed. v1.0, 15.03.2017, [https://www.ria.ee/public/PKI/eIDAS-autentimistasemed.pdf](https://www.ria.ee/public/PKI/eIDAS-autentimistasemed.pdf).
+[tasemed] Riigi Infosüsteemi Amet. eIDAS autentimistasemed. v1.0, 15.03.2017, [https://www.ria.ee/sites/default/files/content-editors/EID/eidas-autentimistasemed.pdf](https://www.ria.ee/sites/default/files/content-editors/EID/eidas-autentimistasemed.pdf).
 
-[Autentimisnormatiiv] [Autentimislahendustele kehtestatud nõuded Eesti Vabariigi infosüsteemis](https://www.ria.ee/public/PKI/Autentimislahendustele-kehtivad-nouded.pdf), versioon 1.0, 31.3.2017, täiendatud 5.4.2017
+[Autentimisnormatiiv] [Autentimislahendustele kehtestatud nõuded Eesti Vabariigi infosüsteemis](https://www.ria.ee/sites/default/files/content-editors/EID/autentimislahendustele-kehtivad-nouded.pdf), versioon 1.0, 31.3.2017, täiendatud 5.4.2017
 
 ___6 Muud___
 
