@@ -53,7 +53,7 @@ Teisi mõisteid vt [sõnastikust](https://e-gov.github.io/TARA-Doku/Sonastik).
 
 4\.6 Andmeid võidakse väljastada õigustatud asutustele turvaintsidentide uurimiseks või kohtuliku uurimise tarbeks, seaduses ettenähtud korras.  
 
-### 5 Logimine
+### 5 Turvalogimine
 
 5\.1 Turvalogi eesmärk on:
 
@@ -63,7 +63,7 @@ Teisi mõisteid vt [sõnastikust](https://e-gov.github.io/TARA-Doku/Sonastik).
 
 1. teenuse väärkasutamise, sh identiteedivarguste ja nende katsete, samuti küberrünnakute avastamise ja uurimise jaoks andmete säilitamine. _Identiteedivargus on näiteks see, kui keegi saab oma valdusse kodaniku ID-kaardi ja PIN-koodid ja kasutab e-teenuseid, esinedes kodanikuna. Identiteedivargus on kuritegu; selle avastamiseks ja lahendamiseks võib teenustesse sisselogimiste logist olla suur kasu._ 
 2. tehniliste tõrgete avastamiseks ja kõrvaldamiseks andmete kogumine ja säilitamine. _Tehniline tõrge võib olla nii riist- kui ka tarkvara viga, võrguühenduse viga jms._
-3. teenustega liidestatud e-teenuste omanike s.t asutuste poolt raporteeritud tehniliste probleemide põhjuste väljaselgitamine
+3. teenustega liidestatud e-teenuste omanike s.t asutuste poolt raporteeritud tehniliste probleemide põhjuste väljaselgitamine.
 4. kasutajate võimalike pöördumiste (teated võimalike turvaprobleemide või tehniliste rikete kohta) menetlemine.
 
 5\.3 Logile juurdepääs on rangelt vajaduspõhine. Ligi pääsevad ainult teenuse käitamisega otseselt seotud süsteemi- ja teenusehaldurid, vajadusel ka turvaintsidentide ja/või kohtuliku uurimisega tegelevad ametiisikud. Ka kodanikul on õigus pöörduda tema autentimiste logiga tutvumiseks, kuid palume arvestada, et praegu ei ole veel võimalust väljavõtte automaatseks väljastamiseks.
