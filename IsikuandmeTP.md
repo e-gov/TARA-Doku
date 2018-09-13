@@ -8,16 +8,18 @@ Käesolevas dokumendis kirjeldame milliseid isikuandmeid ja mis eesmärgil RIA a
 
 ### 1 Rakendusala
 
-2\.1 Tingimused rakenduvad:
+Tingimused rakenduvad:
 
-1. RIA eIDAS konnektorteenusele
+1. TARA autentimisteenusele TARA
 2. RIA autentimisteenusele
-3. TARA autentimisteenusele TARA
+3. RIA eIDAS konnektorteenusele
 4. EL piiriülese autentimistaristu Eesti sõlmele ("eIDAS Node").
 
 ### 2 Mõisted
 
 _kasutaja_, füüsiline isik, kes suunatakse Eesti või välismaa e-teenusest RIA autentimisteenusesse isikusamasuse tuvastamisele.
+
+Teisi mõisteid vt [sõnastikust](https://e-gov.github.io/TARA-Doku/Sonastik).
 
 ### 3 Autentimisandmed
 
@@ -32,22 +34,24 @@ _kasutaja_, füüsiline isik, kes suunatakse Eesti või välismaa e-teenusest RI
 2. autentimistoimingu andmed
   - kuupäev ja kellaaeg
   - klientrakendus, kust kasutaja autentimisele suunati
-  - autentimismeetod
+  - autentimismeetod, sh pangalinki puhul ka pank; mobiil-ID puhul mobiilinumber
   - autentimise tulemus (autenditud või mitte).
 
 3\.2 Teenuste haldamise eesmärgil kogutakse sisemiseks tarbeks ka liidestatud asutuste kontaktsisikute andmeid.
 
 ### 4 Andmete väljastamine
 
-4\.1 Ülalnimetatud isikuandmeid väljastatakse teenustega liidestatud e-teenustele. Siseriiklikult on nendeks asutuste e-teenuseid pakkuvad infosüsteemid. Piiriüleselt - EL teiste liikmesriikide eIDAS sõlmed. Andmete väljastamisel lähtutakse isikuandmete töötlemise minimaalsuse põhimõttest. Näiteks, mobiil-ID-ga autentimisel ei väljastata e-teenusele kasutaja mobiilinumbrit. sest e-teenuse osutamiseks on otseselt vajalik ainult autentimise fakt, mitte millist mobiilinumbrit isik kasutab.
+4\.1 Autentimisandmeid väljastatakse teenustega liidestatud e-teenusele. Siseriiklikult on nendeks asutuste e-teenuseid pakkuvad infosüsteemid; piiriüleselt - EL teiste liikmesriikide eIDAS sõlmed.
 
-4\.2 Kasutajale on autentimise tulemus (sisse logitud või mitte) nähtav sirvikus.
+4\.2 Andmete väljastamisel lähtutakse isikuandmete töötlemise minimaalsuse põhimõttest. Väljastatakse minimaalsed autentimise fakti ja tuvastatud isikut identifitseerivad andmed. Näiteks, mobiil-ID-ga autentimisel ei väljastata e-teenusele kasutaja mobiilinumbrit, sest e-teenuse osutamiseks on otseselt vajalik ainult autentimise fakt, mitte millist mobiilinumbrit isik kasutab.
 
-4\.3 Kasutajale ei ole praegu loodud iseteeninduse põhimõttel toimivat elektroonilist võimalust tutvuda oma autentimisajalooga. Vajadusel saab vastavatele kasutaja päringutele vastata teenusehaldur käsitsi.
+4\.3 Kasutajale on autentimise tulemus (sisse logitud või mitte) nähtav sirvikus.
 
-4\.4 Eesti eID kasutaja autentimisandmete saatmisel piiriülese eIDAS autentimistaristuga liitunud teise riiki küsitakse kasutaja nõusolekut (Eesti autentimisteenuses). 
+4\.4 Kasutajale ei ole praegu loodud iseteeninduse põhimõttel toimivat elektroonilist võimalust tutvuda oma autentimisajalooga. Vajadusel saab vastavatele kasutaja päringutele vastata teenusehaldur käsitsi.
 
-4\.5 Andmeid võidakse väljastada õigustatud asutustele turvaintsidentide uurimiseks või kohtuliku uurimise tarbeks, seaduses ettenähtud korras.  
+4\.5 Eesti eID kasutaja autentimisandmete saatmisel piiriülese eIDAS autentimistaristuga liitunud teise riiki küsitakse kasutaja nõusolekut (Eesti autentimisteenuses). 
+
+4\.6 Andmeid võidakse väljastada õigustatud asutustele turvaintsidentide uurimiseks või kohtuliku uurimise tarbeks, seaduses ettenähtud korras.  
 
 ### 5 Logimine
 
@@ -68,7 +72,7 @@ _kasutaja_, füüsiline isik, kes suunatakse Eesti või välismaa e-teenusest RI
 
 5\.5 Logisid säilitatakse üks aasta.
 
-5\.6 Autentimisi soovitame logida ka klientrakenduste poolel. See on vajalik nii tehniliste tõrgete kui ka teenuse väärkasutuse tuvastamisel ja uurimisel.
+5\.6 Autentimisi soovitame logida ka klientrakenduse poolel. See on vajalik nii tehniliste tõrgete kui ka teenuse väärkasutuse tuvastamisel ja uurimisel.
 
 ### 6 Statistikalogi
 
