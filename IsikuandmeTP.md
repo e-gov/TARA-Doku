@@ -53,9 +53,7 @@ Teisi mõisteid vt [sõnastikust](https://e-gov.github.io/TARA-Doku/Sonastik).
 
 4\.6 Andmeid võidakse väljastada õigustatud asutustele turvaintsidentide uurimiseks või kohtuliku uurimise tarbeks, seaduses ettenähtud korras.  
 
-### 5 Turvalogimine
-
-5\.1 Turvalogi eesmärk on:
+### 5 Turvalogi
 
 5\.1 Teenuses logitakse autentimistoimingute andmed, sh autenditud kasutajate andmed.
 
