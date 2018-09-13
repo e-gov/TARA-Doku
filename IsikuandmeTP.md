@@ -4,7 +4,7 @@ permalink: Isikuandmed
 
 # Andmekaitsetingimused
 
-Käesolevas dokumendis kehtestatakse RIA autentimisteenustes [1], edaspidi "teenused", rakendatavad isikuandmete töötluse konkreetsed meetmed. 
+Käesolevas dokumendis kirjeldame milliseid isikuandmeid ja mis eesmärgil RIA autentimisteenustes ([1], edaspidi "teenused") töötlema. Samuti anname teavet mis meetmeid kasutaja eraelu privaatsuse kaitseks rakendame. 
 
 ### 1 Rakendusala
 
@@ -19,9 +19,9 @@ Käesolevas dokumendis kehtestatakse RIA autentimisteenustes [1], edaspidi "teen
 
 _kasutaja_, füüsiline isik, kes suunatakse Eesti või välismaa e-teenusest RIA autentimisteenusesse isikusamasuse tuvastamisele.
 
-### 3 Töödeldavad isikuandmed
+### 3 Autentimisandmed
 
-3\.1 Teenustes töödeldakse kasutajate (autenditavate isikute) kohta järgmisi andmeid:
+3\.1 Teenustes töödeldakse kasutajate (autenditavate isikute) kohta järgmisi andmeid ("autentimisandmed"):
 
 1. kasutajat identifitseerivad andmed
   - kasutaja isikukood vm isiku identifikaator
@@ -35,33 +35,40 @@ _kasutaja_, füüsiline isik, kes suunatakse Eesti või välismaa e-teenusest RI
   - autentimismeetod
   - autentimise tulemus (autenditud või mitte).
 
-3\.2 Teenuste haldamise eesmärgil kogutakse ka liidestatud asutuste kontaktsisikute andmeid.
+3\.2 Teenuste haldamise eesmärgil kogutakse sisemiseks tarbeks ka liidestatud asutuste kontaktsisikute andmeid.
 
 ### 4 Andmete väljastamine
 
-4\.1 Ülalnimetatud isikuandmeid väljastatakse teenustega liidestatud e-teenustele. Siseriiklikult on nendeks asutuste e-teenuseid pakkuvad infosüsteemid. Piiriüleselt - EL teiste liikmesriikide eIDAS sõlmed.
+4\.1 Ülalnimetatud isikuandmeid väljastatakse teenustega liidestatud e-teenustele. Siseriiklikult on nendeks asutuste e-teenuseid pakkuvad infosüsteemid. Piiriüleselt - EL teiste liikmesriikide eIDAS sõlmed. Andmete väljastamisel lähtutakse isikuandmete töötlemise minimaalsuse põhimõttest. Näiteks, mobiil-ID-ga autentimisel ei väljastata e-teenusele kasutaja mobiilinumbrit. sest e-teenuse osutamiseks on otseselt vajalik ainult autentimise fakt, mitte millist mobiilinumbrit isik kasutab.
 
 4\.2 Kasutajale on autentimise tulemus (sisse logitud või mitte) nähtav sirvikus.
 
 4\.3 Kasutajale ei ole praegu loodud iseteeninduse põhimõttel toimivat elektroonilist võimalust tutvuda oma autentimisajalooga. Vajadusel saab vastavatele kasutaja päringutele vastata teenusehaldur käsitsi.
 
-4\.4 Eesti eID kasutaja andmete saatmisel EL teise riiki küsitakse kasutaja nõusolekut (Eesti autentimisteenuses). 
+4\.4 Eesti eID kasutaja autentimisandmete saatmisel piiriülese eIDAS autentimistaristuga liitunud teise riiki küsitakse kasutaja nõusolekut (Eesti autentimisteenuses). 
 
-### 5 Turvalogi
+4\.5 Andmeid võidakse väljastada õigustatud asutustele turvaintsidentide uurimiseks või kohtuliku uurimise tarbeks, seaduses ettenähtud korras.  
+
+### 5 Logimine
 
 5\.1 Turvalogi eesmärk on:
 
-1. rakenduste väärkasutamise ärahoidmine ja turvaintsidentide uurimise jaoks andmete kogumine
-2. teenustega liidestatud e-teenuste omanike s.t asutuste poolt raporteeritud tehniliste probleemide põhjuste väljaselgitamine
-3. kasutajate võimalike pöördumiste (teated võimalike turvaprobleemide või tehniliste rikete) menetlemine.
+5\.1 Teenuses logitakse autentimistoimingute andmed, sh autenditud kasutajate andmed.
 
-5\.2 Turvalogis logitakse autentimistoimingute andmed, sh autenditud kasutajate andmed.
+5\.2 Logimise eesmärk on:
 
-5\.3 Turvalogile juurdepääs on rangelt vajaduspõhine. Ligi pääsevad ainult teenuse käitamisega otseselt seotud süsteemi- ja teenusehaldurid.
+1. teenuse väärkasutamise, sh identiteedivarguste ja nende katsete, samuti küberrünnakute avastamise ja uurimise jaoks andmete säilitamine. _Identiteedivargus on näiteks see, kui keegi saab oma valdusse kodaniku ID-kaardi ja PIN-koodid ja kasutab e-teenuseid, esinedes kodanikuna. Identiteedivargus on kuritegu; selle avastamiseks ja lahendamiseks võib teenustesse sisselogimiste logist olla suur kasu._ 
+2. tehniliste tõrgete avastamiseks ja kõrvaldamiseks andmete kogumine ja säilitamine. _Tehniline tõrge võib olla nii riist- kui ka tarkvara viga, võrguühenduse viga jms._
+3. teenustega liidestatud e-teenuste omanike s.t asutuste poolt raporteeritud tehniliste probleemide põhjuste väljaselgitamine
+4. kasutajate võimalike pöördumiste (teated võimalike turvaprobleemide või tehniliste rikete kohta) menetlemine.
 
-5\.4 Turvalogide andmeid ei edastata teistesse süsteemidesse ega kasutata muudel eesmärkidel, kui kasutaja isikusamasuse tuvastamine konkreetse e-teenuse pöördumise kontekstis (välja arvatud kuriteo tõkestamise või uurimise vajaduse korral, vastavalt õigusele).
+5\.3 Logile juurdepääs on rangelt vajaduspõhine. Ligi pääsevad ainult teenuse käitamisega otseselt seotud süsteemi- ja teenusehaldurid, vajadusel ka turvaintsidentide ja/või kohtuliku uurimisega tegelevad ametiisikud. Ka kodanikul on õigus pöörduda tema autentimiste logiga tutvumiseks, kuid palume arvestada, et praegu ei ole veel võimalust väljavõtte automaatseks väljastamiseks.
 
-5\.5 Turvalogisid säilitatakse üks aasta.
+5\.4 Logi andmeid ei edastata teistesse süsteemidesse ega kasutata muudel eesmärkidel, kui kasutaja isikusamasuse tuvastamine konkreetse e-teenuse pöördumise kontekstis (välja arvatud kuriteo tõkestamise või uurimise vajaduse korral, vastavalt õigusele).
+
+5\.5 Logisid säilitatakse üks aasta.
+
+5\.6 Autentimisi soovitame logida ka klientrakenduste poolel. See on vajalik nii tehniliste tõrgete kui ka teenuse väärkasutuse tuvastamisel ja uurimisel.
 
 ### 6 Statistikalogi
 
