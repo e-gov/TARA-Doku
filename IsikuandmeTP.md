@@ -49,11 +49,9 @@ Teisi mõisteid vt [sõnastikust](https://e-gov.github.io/TARA-Doku/Sonastik).
 
 4\.3 Kasutajale on autentimise tulemus (sisse logitud või mitte) nähtav sirvikus.
 
-4\.4 Kasutajale ei ole praegu loodud iseteeninduse põhimõttel toimivat elektroonilist võimalust tutvuda oma autentimisajalooga. Vajadusel saab vastavatele kasutaja päringutele vastata teenusehaldur käsitsi.
+4\.4 Eesti eID kasutaja autentimisandmete saatmisel piiriülese eIDAS autentimistaristuga liitunud teise riiki küsitakse kasutaja nõusolekut (Eesti autentimisteenuses). 
 
-4\.5 Eesti eID kasutaja autentimisandmete saatmisel piiriülese eIDAS autentimistaristuga liitunud teise riiki küsitakse kasutaja nõusolekut (Eesti autentimisteenuses). 
-
-4\.6 Andmeid võidakse väljastada õigustatud asutustele turvaintsidentide uurimiseks või kohtuliku uurimise tarbeks, seaduses ettenähtud korras.  
+4\.5 Andmeid võidakse väljastada õigustatud asutustele turvaintsidentide uurimiseks või kohtuliku uurimise tarbeks, seaduses ettenähtud korras.  
 
 ### 5 Turvalogi
 
@@ -66,7 +64,7 @@ Teisi mõisteid vt [sõnastikust](https://e-gov.github.io/TARA-Doku/Sonastik).
 3. teenustega liidestatud e-teenuste omanike s.t asutuste poolt raporteeritud tehniliste probleemide põhjuste väljaselgitamine.
 4. kasutajate võimalike pöördumiste (teated võimalike turvaprobleemide või tehniliste rikete kohta) menetlemine.
 
-5\.3 Logile juurdepääs on rangelt vajaduspõhine. Ligi pääsevad ainult teenuse käitamisega otseselt seotud süsteemi- ja teenusehaldurid, vajadusel ka turvaintsidentide ja/või kohtuliku uurimisega tegelevad ametiisikud. Ka kodanikul on õigus pöörduda tema autentimiste logiga tutvumiseks, kuid palume arvestada, et praegu ei ole veel võimalust väljavõtte automaatseks väljastamiseks.
+5\.3 Logile juurdepääs on rangelt vajaduspõhine. Ligi pääsevad ainult teenuse käitamisega otseselt seotud süsteemi- ja teenusehaldurid, vajadusel ka turvaintsidentide ja/või kohtuliku uurimisega tegelevad ametiisikud.
 
 5\.4 Logi andmeid ei edastata teistesse süsteemidesse ega kasutata muudel eesmärkidel, kui kasutaja isikusamasuse tuvastamine konkreetse e-teenuse pöördumise kontekstis (välja arvatud kuriteo tõkestamise või uurimise vajaduse korral, vastavalt õigusele).
 
