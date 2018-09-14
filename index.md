@@ -6,6 +6,9 @@ permalink: /
 
 <img src='img/LOVID.png' style='width: 80px;'>
 
+14.09.2018 Täpsustasime [andmekaitsetingimusi](Isikuandmed). Eraelu paremaks kaitseks loobume mobiilinumbri väljastamisest identsustõendis.
+{: .adv}
+
 07.09.2018 TARA toodangukeskkonda paigaldati täna Coop pangalink. Testkeskkonda jäid testimiseks alles SEB ja Luminori pangalingid.
 {: .adv}
 
