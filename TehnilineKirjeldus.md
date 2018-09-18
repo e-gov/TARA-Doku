@@ -351,8 +351,7 @@ Näide:
   "profile_attributes": {
     "date_of_birth": "2000-01-01",
     "family_name": "O’CONNEŽ-ŠUSLIK TESTNUMBER",
-    "given_name": "MARY ÄNN",
-    "mobile_number": "+37200000766"
+    "given_name": "MARY ÄNN"
   },
   "amr": [
     "mID"
@@ -378,7 +377,6 @@ Identsustõendis esitatakse järgmised väited (_claims_).
 | `profile_attributes`<br>`.date_of_birth` | `2000-01-01` - autenditud kasutaja sünnikuupäev ISO_8601 formaadis. Tagastatakse ainult eIDAS autentimisel |
 | `profile_attributes`<br>`.given_name` | `MARY ÄNN` - autenditud kasutaja eesnimi (testnimi, valitud täpitähtede sisalduvuse pärast) |
 | `profile_attributes`<br>`.family_name` | `O’CONNEŽ-ŠUSLIK` - autenditud kasutaja perekonnanimi (testnimi, valitud täpitähtede jm eritärkide sisalduvuse pärast) |
-| `profile_attributes`<br>`.mobile_number` | `+37200000766` - m-ID autentimisel kasutatud telefoninumber |
 | `profile_attributes`<br>`_translit` | Sisaldab JSON objekti ladina tähestikus profiiliatribuutidest (vt allpool translitereerimine.). Väärtustatud ainult eIDAS autentimisel |
 | `amr` (_Authentication Method Reference_) | `mID` - kasutaja autentimiseks kasutatud autentimismeetod. Võimalikud väärtused: `mID` - mobiil-ID, `idcard` - Eesti ID-kaart, `eIDAS` - piiriülene, `banklink` - pangalink, `smartid` - Smart-ID  |
 | `state` | `abcdefghijklmnop` - turvaelement  |
@@ -613,6 +611,7 @@ RIA, rahuldades taotluse, väljastab asutusele klientrakenduse toodanguversiooni
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
+| 0.9, 18.09.2018   | Eemaldatud mobiilinumber identsustõendi koosseisust |
 | 0.8, 18.06.2018   | Täiendused seoses Smart-ID toega. |
 | 0.7, 24.05.2018   | Täiendused seoses pangalinkide toega. |
 | 0.6, 22.04.2018   | Täiendatud autentimisvoo tehnilist kirjeldust. Struktuuri parendusi |
