@@ -6,7 +6,7 @@ permalink: Isikuandmed
 
 _viimati uuendatud 13.09.2018_
 
-Käesolevas dokumendis kirjeldame milliseid isikuandmeid ja mis eesmärgil RIA autentimisteenustes ([1], edaspidi "teenused") töötlema. Samuti anname teavet mis meetmeid kasutaja eraelu privaatsuse kaitseks rakendame. 
+Käesolevas dokumendis kirjeldame milliseid isikuandmeid ja mis eesmärgil RIA autentimisteenustes ([1], edaspidi "teenused") töötleme. Samuti anname teavet mis meetmeid kasutaja eraelu privaatsuse kaitseks rakendame. 
 
 ### 1 Rakendusala
 
@@ -36,7 +36,7 @@ Teisi mõisteid vt [sõnastikust](https://e-gov.github.io/TARA-Doku/Sonastik).
 2. autentimistoimingu andmed
   - kuupäev ja kellaaeg
   - klientrakendus, kust kasutaja autentimisele suunati
-  - autentimismeetod, sh pangalinki puhul ka pank; mobiil-ID puhul mobiilinumber
+  - autentimismeetod, sh pangalingi puhul ka pank; mobiil-ID puhul mobiilinumber
   - autentimise tulemus (autenditud või mitte).
 
 3\.2 Teenuste haldamise eesmärgil kogutakse sisemiseks tarbeks ka liidestatud asutuste kontaktsisikute andmeid.
@@ -66,7 +66,7 @@ Teisi mõisteid vt [sõnastikust](https://e-gov.github.io/TARA-Doku/Sonastik).
 
 5\.3 Logile juurdepääs on rangelt vajaduspõhine. Ligi pääsevad ainult teenuse käitamisega otseselt seotud süsteemi- ja teenusehaldurid, vajadusel ka turvaintsidentide ja/või kohtuliku uurimisega tegelevad ametiisikud.
 
-5\.4 Logi andmeid ei edastata teistesse süsteemidesse ega kasutata muudel eesmärkidel, kui kasutaja isikusamasuse tuvastamine konkreetse e-teenuse pöördumise kontekstis (välja arvatud kuriteo tõkestamise või uurimise vajaduse korral, vastavalt õigusele).
+5\.4 Logi andmeid ei edastata teistesse süsteemidesse ega kasutata muudel eesmärkidel kui kasutaja isikusamasuse tuvastamine konkreetse e-teenuse pöördumise kontekstis (välja arvatud kuriteo tõkestamise või uurimise vajaduse korral, vastavalt õigusele).
 
 5\.5 Logisid säilitatakse üks aasta.
 
@@ -76,7 +76,7 @@ Teisi mõisteid vt [sõnastikust](https://e-gov.github.io/TARA-Doku/Sonastik).
 
 6\.1 Statistikalogi eesmärk on teenuste kasutamise kohta statistika tootmine, teenuse juhtimise ja edasiarendamise eesmärgil.
 
-6\.2 Statistikalogisse kogutakse andmed autentimistoimingute kohta, kuid ei koguta isikut identifitseerivate andmeid. S.t kogutakse autentimistoimingu kuupäev ja kellaaeg, autentimismeetod, autentimise tulemus (autenditud või mitte), e-teenus, kus kasutaja autentimisele suunati; kasutaja enda kohta aga ainult kasutaja riik; kasutaja nime ega muid atribuute ei koguta.
+6\.2 Statistikalogisse kogutakse andmed autentimistoimingute kohta, kuid ei koguta isikut identifitseerivaid andmeid. S.t kogutakse autentimistoimingu kuupäev ja kellaaeg, autentimismeetod, autentimise tulemus (autenditud või mitte), e-teenus, kust kasutaja autentimisele suunati; kasutaja enda kohta aga ainult kasutaja riik; kasutaja nime ega muid atribuute ei koguta.
 
 6\.3 Statistikalogi põhjal koostatakse ja avalikustatakse statistilisi aruandeid, milles isikuandmed on agregeeritud ja konkreetseid isikuid ei ole võimalik tuvastada.  
 
