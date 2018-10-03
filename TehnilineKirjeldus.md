@@ -23,7 +23,6 @@ Autentimisteenus TARA on Riigi Infosüsteemi Ameti poolt pakutav teenus, millega
 - piiriülese (eIDAS-)autentimise tugi
 - Smart-ID
 - Coop pank
-- Danske pank
 - LHV pank
 - Luminor pank
 - SEB pank
@@ -611,6 +610,7 @@ RIA, rahuldades taotluse, väljastab asutusele klientrakenduse toodanguversiooni
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
+| 1.0, 03.10.2018   | Eemaldatud Danske pank autentimismeetodite toe koosseisust |
 | 0.9, 18.09.2018   | Eemaldatud mobiilinumber identsustõendi koosseisust |
 | 0.8, 18.06.2018   | Täiendused seoses Smart-ID toega. |
 | 0.7, 24.05.2018   | Täiendused seoses pangalinkide toega. |
