@@ -262,8 +262,8 @@ Klientrakendus peab ka arvestama, et eIDAS-taristus autentimisel küsitakse kasu
 
 ```
 "sub": "EE60001019906",
-„email“: “60001019906@eesti.ee“,
-„email_verified“: “true“
+"email": "60001019906@eesti.ee",
+"email_verified": "true"
 ```
 
 Väite `email` väärtus genereeritakse kasutaja isikukoodist, lisades sellele domeeninime `@eesti.ee`. E-postiaadress väljastatakse ainult juhul, kui kasutaja autenditakse Eesti isikukoodiga. Klientrakenduses tuleb arvestada, et kasutaja ei tarvitse olla oma e-posti suunanud - s.t sellel aadressil saadetud kiri ei tarvitse kasutajani jõuda. Väite `email_verified` väärtus on alati `true`.
