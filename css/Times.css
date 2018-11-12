@@ -214,5 +214,11 @@ a.nupp:hover {
   content: 'Arenduses: ';
 }
 
+
+.arenduses {
+  color: tomato;
+  text-transform: uppercase;
+}
+
 /*#endregion */
 
