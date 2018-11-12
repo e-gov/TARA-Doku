@@ -217,7 +217,7 @@ a.nupp:hover {
 
 .arenduses {
   color: tomato;
-  text-transform: uppercase;
+  font-style: italic
 }
 
 /*#endregion */
