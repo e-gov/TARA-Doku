@@ -120,7 +120,7 @@ Siin peame silmas sotsiaalvõrkude poolt laialt kasutatud praktikat, kus seanssi
 
 Seansi üleandmise all mõistetakse autentimise tulemuse edasiandmist teisele rakendusele. Nt kasutaja logib sisse teabeväravasse eesti.ee, logib seal sisse ja suunatakse teise e-teenusesse. Hea oleks, kui teises teenuses ei peaks uuesti sisse logima. Seansi "üleandmine" on võimalik, kuid seda ei tohi teha seansitõendit lihtsalt kasutajale kaasa pannes. Tuleb läbi teha nonssi sisaldav voog.
 
-### Seansihalduse skeemi valik
+## Seansihalduse skeemi valik
 
 Seansihalduse lahendamiseks on u 4-5 levinud skeemi.
 
