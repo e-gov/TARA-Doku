@@ -263,11 +263,12 @@ Klientrakendus peab ka arvestama, et eIDAS-taristus autentimisel küsitakse kasu
 ```
 "sub": "EE60001019906",
 "email": "60001019906@eesti.ee",
-"email_verified": "true"
+"email_verified": "false"
 ```
 
-Väite `email` väärtus genereeritakse kasutaja isikukoodist, lisades sellele domeeninime `@eesti.ee`. E-postiaadress väljastatakse ainult juhul, kui kasutaja autenditakse Eesti isikukoodiga. Klientrakenduses tuleb arvestada, et kasutaja ei tarvitse olla oma e-posti suunanud - s.t sellel aadressil saadetud kiri ei tarvitse kasutajani jõuda. Väite `email_verified` väärtus on alati `true`.
+Väite `email` väärtus genereeritakse kasutaja isikukoodist, lisades sellele domeeninime `@eesti.ee`. E-postiaadress väljastatakse ainult juhul, kui kasutaja autenditakse Eesti isikukoodiga. Klientrakenduses tuleb kindlasti arvestada, et kasutaja ei tarvitse olla oma e-posti suunanud - s.t sellel aadressil saadetud kiri ei tarvitse kasutajani jõuda.
 
+Väite `email_verified` väärtus on alati `false`. See tähendab, et TARA ei kontrolli ega väljasta teavet, kas kasutaja on oma eesti.ee e-postiaadressi suunanud või mitte. (Vastav funktsionaalsus võib lisanduda tulevikus).
 
 ### 4.2 Tagasisuunamispäring
 
@@ -395,7 +396,7 @@ Identsustõendis esitatakse järgmised väited (_claims_).
 | `acr` (_Authentication Context Class Reference_) | `high` - autentimistase, vastavalt eIDAS tasemetele. Võimalikud väärtused: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Elementi ei kasutata, kui autentimistase ei kohaldu või pole teada |
 | `at_hash` | `X0MVjwrmMQs/IBzfU2osvw==` - pääsutõendi räsi. TARA-s ei kasutata |
 | `email` | `60001019906@eesti.ee` - <span class='arenduses'>(arenduses)</span> kasutaja e-postiaadress. Genereeritakse isikukoodist, lisades sellele domeeninime `eesti.ee`. Väljastatakse ainult  Eesti isikukoodiga kasutaja autentimisel. |
-| `email_verified` | `true` - <span class='arenduses'>(arenduses)</span> tähendab, et e-postiaadressi kuulumine kasutajale on tuvastatud. TARA väljastab alati väärtuse `true` |
+| `email_verified` | `false` - <span class='arenduses'>(arenduses)</span> tähendab, et e-postiaadressi kuulumine kasutajale on tuvastatud. TARA väljastab alati väärtuse `false`. See tähendab, et TARA ei kontrolli ega väljasta teavet, kas kasutaja on oma eesti.ee e-postiaadressi suunanud või mitte. |
 
 #### 4.3.2 Mittekohustuslikud atribuudid (välismaalase autentimisel)
 
