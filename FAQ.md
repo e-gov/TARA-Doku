@@ -8,16 +8,21 @@ permalink: FAQ
 
 ID-kaardiga autentimisel küsitakse kasutajalt alati PIN1 koodi.
 
-Kasutajamugavuse suurendamiseks kasutatakse sirvikutes PIN1 puhverdamist. See tähendab, et kasutajalt töö käigus PIN1-te enam ei küsita. Oht on selles, et kui kasutaja lahkub ja tuleb uus kasutaja, siis uus kasutaja võib ilma PIN1-te teadmata (puhverdamise tõttu seda temalt ei küsitagi) eelmise kasutaja nime all e-teenusesse sisse. See on väga tõsine oht. PIN1 küsimine toimub kasutaja arvutis. TARA poolelt ei saa sirviku käitumist täielikult juhtida. Ohu vältimiseks tuleb alati järgida soovitusi:
+Kasutajamugavuse suurendamiseks sirvikud puhverdavad PIN1 koodi. See tähendab, et kasutajalt küsitakse PIN1-te üks korda, edaspidi töö käigus aga enam ei küsita (kasutajale mugav). Oht on aga selles, et kui kasutaja lahkub ilma sirvikut sulgemata ja arvutile pääseb ligi teine kasutaja, siis uus kasutaja võib ilma PIN1-te teadmata- puhverdamise tõttu seda temalt ei küsita - eelmise kasutaja nime all e-teenusesse sisse.
 
-"Veebilehitsejad võivad puhverdada (ajutiselt salvestada) aktiivse ID-kaardi sessiooni käigus sisestatud PIN1 ehk isikutuvastamise koodi. Selle tulemusel võib õnnestuda erinevatesse e-teenustesse sisselogimine ilma PIN1-koodi korduvalt sisestamata. PIN1-koodi „puhverdamist“ saab vältida, kui järgida järgmist kolme põhimõtet:  
+See on tõsine oht. PIN1 küsimine toimub kasutaja arvutis. TARA poolelt ei saa sirviku käitumist täielikult juhtida. Ohu vältimiseks peab kasutaja turvaliselt tegutsema:
+
+"Veebilehitsejad võivad puhverdada (ajutiselt salvestada) aktiivse ID-kaardi sessiooni käigus sisestatud PIN1 ehk isikutuvastamise koodi. Selle tulemusel võib õnnestuda erinevatesse e-teenustesse sisselogimine ilma PIN1-koodi korduvalt sisestamata. PIN1-koodi „puhverdamist“ saab vältida, kui järgida järgmist kolme põhimõtet:
+
 •	kui kasutasid ID-kaarti internetis mõnes e-teenuses, siis teenuse kasutamise lõppemisel vajuta kindlasti „Välju“, „Logi  välja“ või „Sulge“ nupule;
 •	pärast ID-kaardi elektroonilise kasutamise lõppu võta ID-kaart alati kaardilugejast välja;
-•	sulge kindlasti kõik veebilehitseja (Internet Explorer, Mozilla Firefox, Chrome, Safari) aknad kui eelnev on tehtud. 
-"
+•	sulge kindlasti kõik veebilehitseja (Internet Explorer, Mozilla Firefox, Chrome, Safari) aknad kui eelnev on tehtud."
+
 Allikas: www.id.ee, "Olulised turvanõuded ID-kaardi kasutamiseks".
 
-Täiendava meetmena on hea võõrast inimest oma isiklikku arvutisse üldse mitte lubada. Samuti pakuvad sirvikud privaatsirvimise võimalust (_private browsing_). ID-kaardi kasutamisel sirviku privaatsirvimisaknas on suurem kindlus, et puhvrid ja kasutusajalugu tühjendatakse.
+Täiendava meetmena on hea võõrast inimest oma isiklikku arvutisse üldse mitte lubada.
+
+Samuti pakuvad sirvikud privaatsirvimise võimalust (_private browsing_). ID-kaardi kasutamisel sirviku privaatsirvimisaknas on suurem kindlus, et puhvrid ja kasutusajalugu tühjendatakse.
 
 2 _Millised on nõuded client_id-le?_
 
