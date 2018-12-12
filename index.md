@@ -6,6 +6,9 @@ permalink: /
 
 <img src='img/LOVID.png' style='width: 80px;'>
 
+12.12.2018 Protokollimuudatus. TARA kasutajaliideses keele määramiseks tuleb praegu autentimispäringus kasutada parameetrit `locale` (vt TehnilineKirjeldus#41-autentimisp%C3%A4ring). OpenID Connect protokolliga vastavuse tagamiseks teeme muudatuse: keelt hakkab määrama parameeter `ui_locales` (vt [OpenID Connect spetsifikatsioon](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest). Muudatuse üleminekuperiood on kuus kuud: `ui_locales` saab kasutatavaks jaanuari 2019 lõpus;  `locale` kasutuse lülitame välja juuli 2019 lõpus. Üleminekuperioodil on paralleelselt kasutatavad mõlemad parameetrid.
+{: .adv}
+
 14.09.2018 Täpsustasime [andmekaitsetingimusi](Isikuandmed). Eraelu paremaks kaitseks loobume mobiilinumbri väljastamisest identsustõendis.
 {: .adv}
 

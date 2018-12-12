@@ -41,7 +41,7 @@ TARA-s on nimetatud protokollidest valitud TARA kasutusjuhtudele vajalikud kasut
 - Teenus toetab volituskoodi voogu(_authorization code flow_). Volituskoodi voogu peetakse kõige turvalisemaks ja sellisena on avalike teenuste jaoks sobiv.
 - Kogu teave autenditud kasutaja kohta edastatakse rakendusele identsustõendis (_ID token_). OAuth 2.0 ligipääsutõendit (_access token_) ja UserInfo otspunkti kaudu kasutaja atribuutide andmist ei toetata.
 - Rakendusele edastatakse ka eIDAS autentimistase, kui see on teada (`acr` väites).
-- Teenus toetab kasutajaliidese keele-eelistuse andmist autentimispäringus (`locale` parameetriga).
+- Teenus toetab kasutajaliidese keele-eelistuse andmist autentimispäringus (`locale` parameetriga (kuni juuli 2019 lõpp) või `ui_locales` (alates jaan 2019 lõpp)).
 - Autentimismeetodi valib kasutaja autentimisteenuses.
 - Piiriülene autentimine, vastavalt eIDAS tehnilisele spetsifikatsioonile.
 - Allkirjavõtme otspunktis esitatakse üksainus võti. Dünaamilist võtmevahetust (_key rollover_) praegu ei toetata.
@@ -230,7 +230,8 @@ Autentimispäringu elemendid:
 | `state` | jah | `state=hkMVY7vjuN7xyLl5` | Võltspäringuründe (_cross-site request forgery_, CSRF) vastane turvakood. `state` moodustamise ja kontrollimise kohta vt lähemalt jaotis "Võltspäringuründe vastane kaitse". |
 | `response_type` | jah | `response_type=code` | Määrab autentimise tulemuse serverile edastamise viisi. Toetatud on volituskoodi viis (OpenID Connect protokolli _authorization flow_), selle tähiseks on väärtus `code`. |
 | `client_id` | jah | `client_id=58e7...` | Rakenduse identifikaator. Rakenduse identifikaatori annab RIA asutusele klientrakenduse registreerimisel autentimisteenuse kasutajaks. |
-| `locale` | ei | `locale=et` | Kasutajaliidese keele valik. Toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida. |
+| `locale` | ei | `locale=et` | Kasutajaliidese keele valik. Toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida. <span class='arenduses'>Märkus. Parameetrit toetatakse kuni juuli 2019 lõpuni.</span> |
+| `ui_locales` | ei | `ui_locales=et` | Kasutajaliidese keele valik. Toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida. <span class='arenduses'>Märkus. Parameetrit toetatakse alates jaan 2019 lõpust.</span> |
 | `nonce` | ei | `fsdsfwrerhtry3qeewq` | Taasesitusründeid vältida aitav unikaalne parameeter, vastavalt protokollile ([Viited](Viited), [Core], jaotis 3.1.2.1. Authentication Request). Parameeter `nonce` ei ole kohustuslik. |
 | `acr_values` | ei | `acr_values=substantial` | Minimaalne nõutav autentimistase vastavalt eIDAS tasemetele. Parameeter rakendub ainult juhul kui kasutatakse piiriülest autentimist. Teiste autentimismeetodite korral parameetrit ignoreeritakse. Lubatud määrata üks väärtus järgmisest loetelust: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Kui määramata, siis vaikimisi `substantial` (märkimisväärne). |
 
