@@ -135,10 +135,6 @@ Joonis 1. Siseriiklik ja piiriülene autentimine
 
 11 Lisaks on kasutajal võimalik:
 
-- anda tagasisidet teenuse kohta <span class='arenduses'>(arenduses)</span>
-  - selleks on eraldi sakil avatav vorm, kuhu pääseb autentimismeetodi valiku kuval oleva lingi abil
-- esitada vearaportit
-  - selleks on eraldi avatav vorm. Enne vormi on soovitused tüüpvigade iseseisvaks lahendamiseks
 - saada täiendavat teavet TARA-teenuse kohta.
 
 ## 3 Autentimisvoog tehnilises vaates
