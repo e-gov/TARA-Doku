@@ -307,7 +307,7 @@ Klientrakenduses tuleks kontrollida, kas saadeti veateade.
 
 Identsustõendipäring on HTTP POST päring, millega klientrakendus pärib TARA serverilt identsustõendi (_ID token_).
 
-Identsustõendipäringu näide:
+Identsustõendipäringu näide (päring keha on loetavuse huvides jagatud mitmele reale):
 
 ````
 POST /token HTTP/1.1
@@ -315,7 +315,9 @@ Host: tara.ria.ee/oidc/token
 Content-Type: application/x-www-form-urlencoded
 Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW
 
-grant_type=authorization_code&code=SplxlOBeZQQYbYS6WxSbIA&redirect_uri=https%3A%2F%2eteenus.asutus.ee%2Ftagasi
+grant_type=authorization_code&
+code=SplxlOBeZQQYbYS6WxSbIA&
+redirect_uri=https%3A%2F%2eteenus.asutus.ee%2Ftagasi
 ````
 
 Identsustõendipäringus tuleb esitada salasõna. Selleks tuleb päringusse lisada `Authorization` päis (_request header_), väärtusega, mis moodustatakse sõnast `Basic`, tühikust ja Base64 kodeeringus stringist `<client_id>:<client_secret>` (vt _RFC 2617 HTTP Authentication: Basic and Digest Access Authentication_, jaotis 2 _Basic Authentication Scheme_).
