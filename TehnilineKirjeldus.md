@@ -307,7 +307,7 @@ Klientrakenduses tuleks kontrollida, kas saadeti veateade.
 
 Identsustõendipäring on HTTP POST päring, millega klientrakendus pärib TARA serverilt identsustõendi (_ID token_).
 
-Identsustõendipäringu näide (päring keha on loetavuse huvides jagatud mitmele reale):
+Identsustõendipäringu näide (HTTP POST päringu keha on loetavuse huvides jagatud mitmele reale):
 
 ````
 POST /token HTTP/1.1
