@@ -394,7 +394,7 @@ Identsustõendis esitatakse järgmised väited (_claims_).
 | `nonce` | `qrstuvwxyzabcdef` - turvaelement |
 | `acr` (_Authentication Context Class Reference_) | `high` - autentimistase, vastavalt eIDAS tasemetele. Võimalikud väärtused: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Elementi ei kasutata, kui autentimistase ei kohaldu või pole teada |
 | `at_hash` | `X0MVjwrmMQs/IBzfU2osvw==` - pääsutõendi räsi. TARA-s ei kasutata |
-| `email` | `60001019906@eesti.ee` - <span class='arenduses'>(arenduses)</span> kasutaja e-postiaadress. Genereeritakse isikukoodist, lisades sellele domeeninime `eesti.ee`. Väljastatakse ainult  Eesti isikukoodiga kasutaja autentimisel. |
+| `email` | `60001019906@eesti.ee` - <span class='arenduses'>(arenduses)</span> kasutaja e-postiaadress. Väljastatakse ainult  Eesti ID-kaardiga kasutaja autentimisel. Loetakse kasutaja autentimissertifikaadi SAN laiendist (RFC822 tüüpi `Subject Alternative Name` väljast) |
 | `email_verified` | `false` - <span class='arenduses'>(arenduses)</span> tähendab, et e-postiaadressi kuulumine kasutajale on tuvastatud. TARA väljastab alati väärtuse `false`. See tähendab, et TARA ei kontrolli ega väljasta teavet, kas kasutaja on oma eesti.ee e-postiaadressi suunanud või mitte. |
 
 #### 4.3.2 Mittekohustuslikud atribuudid (välismaalase autentimisel)
