@@ -263,7 +263,7 @@ Klientrakendus peab ka arvestama, et eIDAS-taristus autentimisel küsitakse kasu
 "email_verified": false
 ```
 
-Väite `email` väärtus genereeritakse kasutaja isikukoodist, lisades sellele domeeninime `@eesti.ee`. E-postiaadress väljastatakse ainult juhul, kui kasutaja autenditakse Eesti isikukoodiga. Klientrakenduses tuleb kindlasti arvestada, et kasutaja ei tarvitse olla oma e-posti suunanud - s.t sellel aadressil saadetud kiri ei tarvitse kasutajani jõuda.
+Väite `email` väärtus loetakse kasutaja autentimissertifikaadi SAN laiendist (RFC822 tüüpi Subject Alternative Name väljast). E-postiaadress väljastatakse ainult juhul, kui kasutaja autenditakse Eesti ID-kaardiga. Klientrakenduses tuleb kindlasti arvestada, et kasutaja ei tarvitse olla oma e-posti suunanud - s.t sellel aadressil saadetud kiri ei tarvitse kasutajani jõuda.
 
 Väite `email_verified` väärtus on alati `false`. See tähendab, et TARA ei kontrolli ega väljasta teavet, kas kasutaja on oma eesti.ee e-postiaadressi suunanud või mitte. (Vastav funktsionaalsus võib lisanduda tulevikus).
 
