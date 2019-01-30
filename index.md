@@ -35,6 +35,10 @@ TARA teenust pakub Riigi Infosüsteemi Amet.
 Ametlikku teavet TARA ja RIA muude teenuste kohta vt [RIA autentimisteenuste lehelt](https://www.ria.ee/et/riigi-infosusteem/eid/partnerile.html#tara). 
 
 Käesoleva lehe teave on mõeldud kolmele sihtrühmale. Asutuse äriüksuse juht saab siinse teabe alusel hinnata TARA sobivust, liidestustööde mahtu ja teha otsuse TARA kasutuselevõtuks. Liidese arendaja leiab siit kogu vajaliku tehnilise teabe asutuse e-teenuste liidestamiseks TARA-ga. Lehel on (eraldatult) ka teavet, mis on seotud TARA edasiarendamisega.
+Kui plaanite võtta enda autentimisteenuses kasutusele ainult välisriikide autentimismeetodid, siis soovitame TARA autentimisteenusele suunamiseks kasutada sõnastust „EL kodanik“/“EU citizen“.
+
+Soovi korral võite kasutusele võtta ka EU citizen nupu näidise. <img src='img/eu_citizen_login_btn_190x50_rgb.png' style='width: 80px;'>
+
 
 ## Ärikasutajale
 
