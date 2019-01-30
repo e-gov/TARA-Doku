@@ -4,22 +4,23 @@ permalink: Arikirjeldus
 
 # Autentimisteenus TARA
 
-Autentimisteenus TARA on Riigi Infosüsteemi Ameti poolt pakutav teenus, millega asutus saab oma e-teenusesse lisada järgmiste autentimismeetodite toe:
+Autentimisteenus TARA on Riigi Infosüsteemi Ameti poolt pakutav teenus, millega asutus saab oma e-teenusesse lisada nii siseriiklike kui ka Euroopa Liidu piiriüleste autentimismeetodite toe.
+
+Siseriiklikest autentimismeetoditest pakume autentimist riikliku identiteedisüsteemiga:
 
 - mobiil-ID
 - ID-kaart
 
-\- välismaalase autentimine, eIDAS piiriülese autentimise skeemiga
-{:.test}
+ja vahendame erasektori autentimismeetodeid: 
 
 - Smart-ID
 - Coop pank
-- Danske pank
 - LHV pank
 - Luminor pank
 - SEB pank
 - Swedbank
-{:.future}
+
+Samuti pakume välismaalase autentimist, eIDAS piiriülese autentimise skeemiga.
 
 ## Kellele?
 

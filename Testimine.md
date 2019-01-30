@@ -12,7 +12,7 @@ TARA testkeskkond asub aadressil: [https://tara-test.ria.ee/](https://tara-test.
 
 ## Sissejuhatus
 
-TARA teenuse testimise eelduseks on TARA testkeskkonnaga liitumine (vt [https://www.ria.ee/ee/autentimisteenused.html](https://www.ria.ee/ee/autentimisteenused.html)).
+TARA teenuse testimise eelduseks on TARA testkeskkonnaga liitumine (vt [https://www.ria.ee/et/riigi-infosusteem/eid/partnerile.html#tara](https://www.ria.ee/et/riigi-infosusteem/eid/partnerile.html#tara)).
 Liitumise järel on võimalik teenust koheselt testida, kasutades liitumise järel saadetud kredentsiaale.
 
 ## Põhivoo testplaan
@@ -58,6 +58,7 @@ TARA testkeskkond on suunatud vastu test-OCSP ja test-DigiDocService teenust. Se
 ### eIDAS
 TARA testkeskkond on suunatud eIDAS testkeskkonna vastu. Igal riigil on testimiseks oma lahendus, kas parool või kaheastmeline autentimine. Kõik riigid ei ole veel liidestusega valmis, täpsema info saamiseks `help@ria.ee`. Testimiseks saab kasutada:  
 1. Tšehhi - parooli ei ole vaja, vali profiil `Testovací profily`
+2. Norra - vali autentimiseks MINID, personal id number: 05068907693, password: password01, PIN: 12345. Vajuta "Continue".
 
 ### Pangalink
 TARA testkeskkond on suunatud vastu pankade test pangalingi teenust. Testimiseks on kahel pangal selline keskkond:  
@@ -81,4 +82,4 @@ Nõu küsimiseks ja võimaliku TARA vea raporteerimiseks palun pöörduda meilit
 |-----------------|--------------|
 | 0.1, 15.05.2018   | Esimene versioon |
 | 0.2, 28.06.2018   | Pangalinkide ja Smart-ID info |
-
+| 0.3, 05.09.2018   | Norra testandmed |

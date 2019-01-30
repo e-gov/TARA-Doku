@@ -11,6 +11,7 @@ permalink: Statistika
 Vt ka:
 - [TARA-107](https://jira.ria.ee/browse/TARA-107) (JIRA)
 - [logimise käsitlus TARA-Server repo vikis](https://github.com/e-gov/TARA-Server/wiki/Logimine). 
+- [Tara-Stat mikroteenus kasutusstatistika kogumiseks ja vaatamiseks](https://e-gov.github.io/TARA-Stat/Dokumentatsioon). 
 
 ## TARA statistikalogi. Spetsifikatsioon
 
@@ -26,10 +27,10 @@ Vt ka:
 8\.	Logifaili näide:
 
 ````
-2017-12-08 12:03:42;openIdDemo;MOBILE_ID;START_AUTH;
-2017-12-08 12:03:42;openIdDemo;MOBILE_ID;ERROR;NOT_ACTIVATED
-2017-12-08 12:05:19;openIdDemo;ID_CARD;START_AUTH;
-2017-12-08 12:05:19;openIdDemo;ID_CARD;SUCCESSFUL_AUTH;
+2017-12-08 12:03:42;openIdDemo;MobileID;START_AUTH;
+2017-12-08 12:03:42;openIdDemo;MobileID;ERROR;NOT_ACTIVATED
+2017-12-08 12:05:19;openIdDemo;IDCard;START_AUTH;
+2017-12-08 12:05:19;openIdDemo;IDCard;SUCCESSFUL_AUTH;
 2017-12-15 11:37:15;openIdDemo;MobileID;START_AUTH;
 2017-12-15 11:37:15;openIdDemo;MobileID;ERROR;USER_CANCEL
 2017-12-15 11:37:16;openIdDemo;MobileID;START_AUTH;
@@ -51,8 +52,16 @@ Vt ka:
 2017-12-15 11:59:10;openIdDemo;MobileID;START_AUTH;
 2018.06.28 08:05:52;openIdDemo;eIDAS;START_AUTH;
 2018.06.28 08:06:21;openIdDemo;eIDAS;SUCCESSFUL_AUTH;
-2018.06.27 11:23:14;openIdDemo;BankLink;START_AUTH;
-2018.06.27 11:23:15;openIdDemo;BankLink;SUCCESSFUL_AUTH;
+2018.06.27 11:23:14;openIdDemo;BankLink/SEB;START_AUTH;
+2018.06.27 11:23:15;openIdDemo;BankLink/SEB;SUCCESSFUL_AUTH;
+2018.06.27 11:23:14;openIdDemo;BankLink/LUMINOR;START_AUTH;
+2018.06.27 11:23:15;openIdDemo;BankLink/LUMINOR;SUCCESSFUL_AUTH;
+2018.06.27 11:23:14;openIdDemo;BankLink/SWEDBANK;START_AUTH;
+2018.06.27 11:23:15;openIdDemo;BankLink/SWEDBANK;SUCCESSFUL_AUTH;
+2018.06.27 11:23:14;openIdDemo;BankLink/COOP;START_AUTH;
+2018.06.27 11:23:15;openIdDemo;BankLink/COOP;SUCCESSFUL_AUTH;
+2018.06.27 11:23:14;openIdDemo;BankLink/LHV;START_AUTH;
+2018.06.27 11:23:15;openIdDemo;BankLink/LHV;SUCCESSFUL_AUTH;
 2018.06.27 10:38:27;openIdDemo;SmartID;START_AUTH;
 2018.06.27 10:38:28;openIdDemo;SmartID;SUCCESSFUL_AUTH;
 ````
@@ -65,7 +74,7 @@ Vt ka:
 |-----|------|------------|---------|
 | 1.	| toimingu aeg	| autentimistoimingu alustamise aeg.	| ISO 8601, `YYYY-MM-DD hh:mm:ssTZD` |
 | 2.	| klientrakendus	| klientrakenduse nimi, `client id` OpenID Connecti mõistes.	| sõne	|
-| 4.	| autentimismeetod	| `MobileID`, `ID_CARD` jne	| sõne	|
+| 4.	| autentimismeetod	| `MobileID`, `IDCard` jne	| sõne	|
 | 5.  | toimingu alustamise kood |   | `START_AUTH` |
 
 - autentimistoimingu ebaõnnestumise kirje;
@@ -74,7 +83,7 @@ Vt ka:
 |-----|------|------------|---------|
 | 1.	| toimingu aeg	| autentimistoimingu alustamise aeg.	| ISO 8601, `YYYY-MM-DD hh:mm:ss` |
 | 2.	| klientrakendus	| klientrakenduse nimi, `client id` OpenID Connecti mõistes.	| sõne	|
-| 4.	| autentimismeetod	| `MobileID`, `ID_CARD` jne	| sõne	|
+| 4.	| autentimismeetod	| `IDCard`, `MobileID`, `eIDAS`, `BankLink/{panga kood}`, `SmartID`	| sõne	|
 | 5.  | toimingu tulemus | õnnestumise puhul `SUCCESSFUL_AUTH`, ebaedu puhul `ERROR` |  |
 | 6.  | veateade | |  |
  

@@ -23,7 +23,6 @@ Autentimisteenus TARA on Riigi Infosüsteemi Ameti poolt pakutav teenus, millega
 - piiriülese (eIDAS-)autentimise tugi
 - Smart-ID
 - Coop pank
-- Danske pank
 - LHV pank
 - Luminor pank
 - SEB pank
@@ -42,7 +41,7 @@ TARA-s on nimetatud protokollidest valitud TARA kasutusjuhtudele vajalikud kasut
 - Teenus toetab volituskoodi voogu(_authorization code flow_). Volituskoodi voogu peetakse kõige turvalisemaks ja sellisena on avalike teenuste jaoks sobiv.
 - Kogu teave autenditud kasutaja kohta edastatakse rakendusele identsustõendis (_ID token_). OAuth 2.0 ligipääsutõendit (_access token_) ja UserInfo otspunkti kaudu kasutaja atribuutide andmist ei toetata.
 - Rakendusele edastatakse ka eIDAS autentimistase, kui see on teada (`acr` väites).
-- Teenus toetab kasutajaliidese keele-eelistuse andmist autentimispäringus (`locale` parameetriga).
+- Teenus toetab kasutajaliidese keele-eelistuse andmist autentimispäringus (`locale` parameetriga (kuni juuli 2019 lõpp) või `ui_locales` (alates jaan 2019 lõpp)).
 - Autentimismeetodi valib kasutaja autentimisteenuses.
 - Piiriülene autentimine, vastavalt eIDAS tehnilisele spetsifikatsioonile.
 - Allkirjavõtme otspunktis esitatakse üksainus võti. Dünaamilist võtmevahetust (_key rollover_) praegu ei toetata.
@@ -136,10 +135,6 @@ Joonis 1. Siseriiklik ja piiriülene autentimine
 
 11 Lisaks on kasutajal võimalik:
 
-- anda tagasisidet teenuse kohta
-  - selleks on eraldi sakil avatav vorm, kuhu pääseb autentimismeetodi valiku kuval oleva lingi abil
-- esitada vearaportit
-  - selleks on eraldi avatav vorm. Enne vormi on soovitused tüüpvigade iseseisvaks lahendamiseks
 - saada täiendavat teavet TARA-teenuse kohta.
 
 ## 3 Autentimisvoog tehnilises vaates
@@ -226,12 +221,13 @@ Autentimispäringu elemendid:
 | URL-i element          | kohustuslik | näide                       |  selgitus     |
 |------------------------|:---------- :|-----------------------------|---------------|
 | protokoll, host ja tee (_path_) | jah | `https://tara.ria.ee/oidc/authorize` | `/authorize` on TARA-teenuse OpenID Connect-kohane autentimisotspunkt (termin 'autoriseerimine' pärineb alusprotokollist OAuth 2.0). |
-| `redirect_uri` | jah | `redirect_uri=https%3A%2F%2F` `eteenus.asutus.ee%2Ftagasi` | Tagasipöördumis-URL. Tagasipöördumis-URL-i valib asutus ise. Tagasipöördumis-URL võib sisaldada _query_-osa. Märgile `?` järgnevas osas omakorda `?` kasutamine ei ole lubatud. Vajadusel kasutada [URLi kodeerimist](https://en.wikipedia.org/wiki/Percent-encoding). |
-| `scope` | jah | `scope=openid`<br><br>`scope=openid%20eidasonly` | Autentimise skoop.<br><br>`openid` on kohustuslik (seda nõuab OpenID Connect protokoll).<br><br>Skoobiga `eidasonly` saab nõuda, et kasutajale näidatakse ainult välisriikide autentimismeetodeid.<br><br>Piiriülesel autentimisel saab kasutada lisaskoope täiendavate isikuandmete pärimiseks (vt allpool).<br><br>Mitme skoobi kasutamisel tuleb skoobid eraldada tühikutega. Tühik esitatakse seejuures URL-kodeeringus (`%20`) ([RFC 3986](https://www.ietf.org/rfc/rfc3986.txt)). |
+| `redirect_uri` | jah | `redirect_uri=https%3A%2F%2F` `eteenus.asutus.ee%2Ftagasi` | Tagasipöördumis-URL. Tagasipöördumis-URL-i valib asutus ise. Tagasipöördumis-URL võib sisaldada _query_-osa. <br><br>Vajadusel kasutada [URLi kodeerimist](https://en.wikipedia.org/wiki/Percent-encoding). <br><br>URI-i [fragmendi osa](https://tools.ietf.org/html/rfc3986#section-3.5) (`#` märk ja sellele järgnev osa) kasutamine [ei ole lubatud](https://tools.ietf.org/html/rfc6749#section-3.1.2). |
+| `scope` | jah | `scope=openid`<br><br>`scope=openid%20eidasonly` | Autentimise skoop.<br><br>`openid` on kohustuslik (seda nõuab OpenID Connect protokoll).<br><br>Skoobiga `eidasonly` saab nõuda, et kasutajale näidatakse ainult välisriikide autentimismeetodeid.<br><br><span class='arenduses'>(arenduses)</span> Skoobiga `email` saab nõuda, et identsustõendis väljastatakse kasutaja e-postiaadress. Vt jaotis 4.1.2 E-postiaadressi küsimine.<br><br>Piiriülesel autentimisel saab kasutada lisaskoope täiendavate isikuandmete pärimiseks (vt allpool).<br><br>Mitme skoobi kasutamisel tuleb skoobid eraldada tühikutega. Tühik esitatakse seejuures URL-kodeeringus (`%20`) ([RFC 3986](https://www.ietf.org/rfc/rfc3986.txt)). |
 | `state` | jah | `state=hkMVY7vjuN7xyLl5` | Võltspäringuründe (_cross-site request forgery_, CSRF) vastane turvakood. `state` moodustamise ja kontrollimise kohta vt lähemalt jaotis "Võltspäringuründe vastane kaitse". |
 | `response_type` | jah | `response_type=code` | Määrab autentimise tulemuse serverile edastamise viisi. Toetatud on volituskoodi viis (OpenID Connect protokolli _authorization flow_), selle tähiseks on väärtus `code`. |
 | `client_id` | jah | `client_id=58e7...` | Rakenduse identifikaator. Rakenduse identifikaatori annab RIA asutusele klientrakenduse registreerimisel autentimisteenuse kasutajaks. |
-| `locale` | ei | `locale=et` | Kasutajaliidese keele valik. Toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida. |
+| `locale` | ei | `locale=et` | Kasutajaliidese keele valik. Toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida. <span class='arenduses'>Märkus. Parameetrit toetatakse kuni juuli 2019 lõpuni.</span> |
+| `ui_locales` | ei | `ui_locales=et` | Kasutajaliidese keele valik. Toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida. <span class='arenduses'>Märkus. Parameetrit toetatakse alates jaan 2019 lõpust.</span> |
 | `nonce` | ei | `fsdsfwrerhtry3qeewq` | Taasesitusründeid vältida aitav unikaalne parameeter, vastavalt protokollile ([Viited](Viited), [Core], jaotis 3.1.2.1. Authentication Request). Parameeter `nonce` ei ole kohustuslik. |
 | `acr_values` | ei | `acr_values=substantial` | Minimaalne nõutav autentimistase vastavalt eIDAS tasemetele. Parameeter rakendub ainult juhul kui kasutatakse piiriülest autentimist. Teiste autentimismeetodite korral parameetrit ignoreeritakse. Lubatud määrata üks väärtus järgmisest loetelust: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Kui määramata, siis vaikimisi `substantial` (märkimisväärne). |
 
@@ -241,8 +237,7 @@ Välismaalase autentimisel suunab TARA välismaalase tema koduriigi autentimiste
 
 Euroopa Komisjoni määrusega on riigid kokku leppinud, et teise riigi autentimisteenus on alati kohustatud väljastama füüsilise isiku kohta neli atribuuti: 1) eesnimi; 2)  perekonnanimi; 3) sünniaeg; 4) isikukood vm identifikaator. Juriidilise isiku kohta väljastatakse alati kaks atribuuti: 1) registrikood vm identifikaator; 2)  juriidilise isiku nimi. Need on nn **kohustuslikud atribuudid**.
 
-Lisaks võib klientrakendus pärida täiendavaid atribuute (nn **mittekohustuslikud atribuudid**). Selleks tuleb autentimispäringut (TARA-sse suunamise URL-i) täiendada parameetri `scope` väärtust soovitud atribuutide nimedega.
-{:.future}
+<span class='arenduses'>(arenduses)</span> Lisaks võib klientrakendus pärida täiendavaid atribuute (nn **mittekohustuslikud atribuudid**). Selleks tuleb autentimispäringut (TARA-sse suunamise URL-i) täiendada parameetri `scope` väärtust soovitud atribuutide nimedega.
 
 Näide atribuutide küsimisest autentimispäringus:
 
@@ -257,6 +252,20 @@ Loetelu võimalikest atribuutidest on identsustõendit käsitlevas jaotises.
 Klientrakendus ei tohi küsida rohkem atribuute kui e-teenuse osutamiseks vaja läheb. See nõue tuleneb isikuandmete kaitse seadusest (isikuandmete töötlemise minimaalsuse põhimõte). 
 
 Klientrakendus peab ka arvestama, et eIDAS-taristus autentimisel küsitakse kasutajalt nõusolekut isikuandmete saatmiseks teise riigi e-teenusele.
+
+#### 4.1.2 E-postiaadressi küsimine
+
+<span class='arenduses'>(arenduses)</span> Skoobiga `email` saab nõuda, et identsustõendis väljastatakse kasutaja e-postiaadress. See võimalus on suunatud asutustele, kelle klientrakendus nõuab kasutaja autentimisel e-postiaadressi kindlakstegemist. Skoop `email` tuleb lisada põhiskoobile `openid`. Identsustõendis väljastatakse väited (_claims_) `email` ja `email_verified`. Näiteks:
+
+```
+"sub": "EE60001019906",
+"email": "60001019906@eesti.ee",
+"email_verified": false
+```
+
+Väite `email` väärtus loetakse kasutaja autentimissertifikaadi SAN laiendist (RFC822 tüüpi Subject Alternative Name väljast). E-postiaadress väljastatakse ainult juhul, kui kasutaja autenditakse Eesti ID-kaardiga. Klientrakenduses tuleb kindlasti arvestada, et kasutaja ei tarvitse olla oma e-posti suunanud - s.t sellel aadressil saadetud kiri ei tarvitse kasutajani jõuda.
+
+Väite `email_verified` väärtus on alati `false`. See tähendab, et TARA ei kontrolli ega väljasta teavet, kas kasutaja on oma eesti.ee e-postiaadressi suunanud või mitte. (Vastav funktsionaalsus võib lisanduda tulevikus).
 
 ### 4.2 Tagasisuunamispäring
 
@@ -298,7 +307,7 @@ Klientrakenduses tuleks kontrollida, kas saadeti veateade.
 
 Identsustõendipäring on HTTP POST päring, millega klientrakendus pärib TARA serverilt identsustõendi (_ID token_).
 
-Identsustõendipäringu näide:
+Identsustõendipäringu näide (HTTP POST päringu keha on loetavuse huvides jagatud mitmele reale):
 
 ````
 POST /token HTTP/1.1
@@ -313,7 +322,9 @@ redirect_uri=https%3A%2F%2eteenus.asutus.ee%2Ftagasi
 
 Identsustõendipäringus tuleb esitada salasõna. Selleks tuleb päringusse lisada `Authorization` päis (_request header_), väärtusega, mis moodustatakse sõnast `Basic`, tühikust ja Base64 kodeeringus stringist `<client_id>:<client_secret>` (vt _RFC 2617 HTTP Authentication: Basic and Digest Access Authentication_, jaotis 2 _Basic Authentication Scheme_).
 
-Päringu kehas tuleb esitada:
+HTTP POST päringu keha peab olema esitatud OpenID Connect protokolli kohaselt serialiseeritud [kujul](https://openid.net/specs/openid-connect-core-1_0.html#FormSerialization).
+
+Päringu kehas tuleb esitada järgnevad parameetrid:
 
 | POST päringu keha element | näide                    |  selgitus     |
 |------------------------|-----------------------------|---------------|
@@ -351,8 +362,7 @@ Näide:
   "profile_attributes": {
     "date_of_birth": "2000-01-01",
     "family_name": "O’CONNEŽ-ŠUSLIK TESTNUMBER",
-    "given_name": "MARY ÄNN",
-    "mobile_number": "+37200000766"
+    "given_name": "MARY ÄNN"
   },
   "amr": [
     "mID"
@@ -378,18 +388,18 @@ Identsustõendis esitatakse järgmised väited (_claims_).
 | `profile_attributes`<br>`.date_of_birth` | `2000-01-01` - autenditud kasutaja sünnikuupäev ISO_8601 formaadis. Tagastatakse ainult eIDAS autentimisel |
 | `profile_attributes`<br>`.given_name` | `MARY ÄNN` - autenditud kasutaja eesnimi (testnimi, valitud täpitähtede sisalduvuse pärast) |
 | `profile_attributes`<br>`.family_name` | `O’CONNEŽ-ŠUSLIK` - autenditud kasutaja perekonnanimi (testnimi, valitud täpitähtede jm eritärkide sisalduvuse pärast) |
-| `profile_attributes`<br>`.mobile_number` | `+37200000766` - m-ID autentimisel kasutatud telefoninumber |
 | `profile_attributes`<br>`_translit` | Sisaldab JSON objekti ladina tähestikus profiiliatribuutidest (vt allpool translitereerimine.). Väärtustatud ainult eIDAS autentimisel |
 | `amr` (_Authentication Method Reference_) | `mID` - kasutaja autentimiseks kasutatud autentimismeetod. Võimalikud väärtused: `mID` - mobiil-ID, `idcard` - Eesti ID-kaart, `eIDAS` - piiriülene, `banklink` - pangalink, `smartid` - Smart-ID  |
 | `state` | `abcdefghijklmnop` - turvaelement  |
 | `nonce` | `qrstuvwxyzabcdef` - turvaelement |
 | `acr` (_Authentication Context Class Reference_) | `high` - autentimistase, vastavalt eIDAS tasemetele. Võimalikud väärtused: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Elementi ei kasutata, kui autentimistase ei kohaldu või pole teada |
 | `at_hash` | `X0MVjwrmMQs/IBzfU2osvw==` - pääsutõendi räsi. TARA-s ei kasutata |
+| `email` | `60001019906@eesti.ee` - <span class='arenduses'>(arenduses)</span> kasutaja e-postiaadress. Väljastatakse ainult  Eesti ID-kaardiga kasutaja autentimisel. Loetakse kasutaja autentimissertifikaadi SAN laiendist (RFC822 tüüpi `Subject Alternative Name` väljast) |
+| `email_verified` | `false` - <span class='arenduses'>(arenduses)</span> tähendab, et e-postiaadressi kuulumine kasutajale on tuvastatud. TARA väljastab alati väärtuse `false`. See tähendab, et TARA ei kontrolli ega väljasta teavet, kas kasutaja on oma eesti.ee e-postiaadressi suunanud või mitte. |
 
 #### 4.3.2 Mittekohustuslikud atribuudid (välismaalase autentimisel)
 
-Järgnevad atribuudid esitatakse identsustõendis ainult siis, kui  autenditud isik on välismaalane ja klientrakendus on atribuute  autentimispäringu `scope` parameetris taotlenud.
-{:.future}
+<span style=arenduses>Arenduses</span> Järgnevad atribuudid esitatakse identsustõendis ainult siis, kui  autenditud isik on välismaalane ja klientrakendus on atribuute  autentimispäringu `scope` parameetris taotlenud.
 
 Füüsiline isik
 
@@ -545,6 +555,10 @@ Täiendav teave: OpenID Connect protokollis kahjuks ei ole teema selgelt esitatu
 
 Soovi korral võite veel tutvuda ründe (ja kaitse) detailse seletusega: [Võltspäringurünne ja kaitse selle vastu](Volts).  
 
+### 5.3 Logimine
+
+Logimine peab võimaldama rekonstrueerida TARA ja klientrakenduse suhtluse käigu TARA iga kasutuse jaoks. Selleks tuleb nii TARA kui ka klientrakenduse poolel logida kõik päringud ja päringute vastused: [autentimispäring](#41-autentimisp%C3%A4ring), [tagasisuunamispäring](#42-tagasisuunamisp%C3%A4ring) ja [identsustõendipäring](#43-identsust%C3%B5endip%C3%A4ring). Kuna edastatavad andmemahud ei ole suured, siis tuleb logida nii URL kui ka identsustõend täielikul kujul. Logide säilitamistähtaja määramisel arvestada klientrakenduse olulisust. Orientiiriks pakume 1..7 aastat. Probleemide lahendamiseks pöördumisel palume esitada väljavõte logist (mis päringud TARA poole saadeti? mis saadi vastuseks?).
+
 ## 6 Otspunktid
 
 Testteenus
@@ -593,7 +607,7 @@ Arenduse valmides tuleb liidest testida. Selleks kasutatakse TARA testteenust. A
 - autentimismeetod või meetodid, mida soovitakse kasutada
 - klientrakenduse haldaja kontaktandmed (e-post, telefon, isikukood).
 
-Taotlus esitatakse ja edasine suhtlus teenuse haldamisel käib läbi RIA kasutajatoe, `help@ria.ee`. Vt lähemalt [RIA autentimisteenuste lehel](https://www.ria.ee/ee/autentimisteenused.html).
+Taotlus esitatakse ja edasine suhtlus teenuse haldamisel käib läbi RIA kasutajatoe, `help@ria.ee`. Vt lähemalt [RIA autentimisteenuste lehel](https://www.ria.ee/et/riigi-infosusteem/eid/partnerile.html#tara).
 
 RIA, rahuldades taotluse:
 - väljastab asutusele klientrakenduse salasõna `client_secret`. Salasõna on ette nähtud identsustõendi päringute allkirjastamiseks
@@ -609,6 +623,9 @@ RIA, rahuldades taotluse, väljastab asutusele klientrakenduse toodanguversiooni
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
+| 1.1, 29.11.2018   | Täpsustused autentimispäringu parameetri osas (`redirect_uri`). |
+| 1.0, 03.10.2018   | Eemaldatud Danske pank autentimismeetodite toe koosseisust |
+| 0.9, 18.09.2018   | Eemaldatud mobiilinumber identsustõendi koosseisust |
 | 0.8, 18.06.2018   | Täiendused seoses Smart-ID toega. |
 | 0.7, 24.05.2018   | Täiendused seoses pangalinkide toega. |
 | 0.6, 22.04.2018   | Täiendatud autentimisvoo tehnilist kirjeldust. Struktuuri parendusi |

@@ -40,14 +40,14 @@ Asutus esitab taotluse testteenusega liitumiseks. Taotluse võib esitada juba en
 3) e-teenus või -teenused, mille kasutajaid soovitakse TARA abil autentida<br>
 4) kasutajate arvu prognoos<br>
 5) kohustumus kasutada teenust eesmärgipäraselt. Sh testteenust kasutada ainult testimiseks, mitte toodangus autentimiseks<br>
-6) nõustumus teenustasemega (SLA-ga); kui on vajadus kõrgema SLA järele, siis rääkida RIA-ga läbi - vt [TARA testkeskkonna teenustase (SLA)](https://www.ria.ee/public/PKI/test_TARA_SLA.pdf)<br>
+6) nõustumus teenustasemega (SLA-ga); kui on vajadus kõrgema SLA järele, siis rääkida RIA-ga läbi - vt [TARA testkeskkonna teenustase (SLA)](https://www.ria.ee/sites/default/files/content-editors/EID/test_tara_sla.pdf)<br>
 7) klientrakenduse identifikaatori ettepanek -`client_id` OpenID Connect protokolli kohaselt<br>
 8) klientrakenduse testversiooni tagasisuunamis-URL (_redirect-URL_), OpenID Connect protokolli kohaselt<br>
 9) klientrakenduse testversiooni tagasisuunamis-URL juhuks, kui kasutaja soovib autentimist katkestada<br>
 10) autentimismeetod või meetodid, mida soovitakse kasutada<br>
 11) klientrakenduse haldaja kontaktandmed (e-post, telefon, isikukood).
 
-Taotlus esitatakse ja edasine suhtlus teenuse haldamisel käib läbi RIA kasutajatoe, `help@ria.ee`. Vt lähemalt [RIA autentimisteenuste lehel](https://www.ria.ee/ee/autentimisteenused.html).
+Taotlus esitatakse ja edasine suhtlus teenuse haldamisel käib läbi RIA kasutajatoe, `help@ria.ee`. Vt lähemalt [RIA autentimisteenuste lehel](https://www.ria.ee/et/riigi-infosusteem/eid/partnerile.html#tara).
 
 RIA, rahuldades taotluse:
 - väljastab asutusele klientrakenduse salasõna `client_secret`. Salasõna on ette nähtud identsustõendi päringute allkirjastamiseks
