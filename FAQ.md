@@ -4,6 +4,10 @@ permalink: FAQ
 
 # FAQ
 
+1 _Kas autentimist saab teisele rakendusele edasi anda?_
+
+Vt [siit](Legacy).
+
 1 _Teatud juhtudel saab võõra ID-kaardiga sisse logida. See ei ole soovitav käitumine._
 
 ID-kaardiga autentimisel küsitakse kasutajalt alati PIN1 koodi.

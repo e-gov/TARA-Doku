@@ -2,13 +2,27 @@
 permalink: Legacy
 ---
 
-# TARA + "Legacy"
+# Autentimise edasiandmine
 {: .no_toc}
 
 - TOC
 {:toc}
 
-## Ülevaade
+## Mida silmas pidada autentimise edasiandmisel
+
+TARA ei toeta praegu ühekordset sisselogimist (SSO-d). Igasse TARA kasutavasse rakendussse tuleb autentida eraldi. Võib tekkida tahtmine autentimist edasi anda või jagada s.t teha nii, et kasutaja autenditakse ühes rakenduses, sealt edasiliikumisel teise rakendusse antakse "autenditud olek" kaasa. 
+
+Kas autentimise edasiandmine on tehniliselt võimalik ja kuidas seda teha?
+{: .note}
+
+Autentimise edasiandmine on tehniliselt võimalik - TARA ei saa kätt ette panna - kuid peab hoolikalt jälgima, et seda tehakse turvaliselt. Autentimise edasiandmisel astub klientrakendus praktiliselt ise autentimisteenuse rolli. Autentimist ei tohi teha nii, et teise rakendusse viivale lingile paneme URL-i parameetrisse või ka HTTP päringu kehasse autenditusele viitava tõendi vms.
+
+Kui autentimist soovitakse edasi anda, siis tuleb tagada võltspäringuründe (CSRF) vastane kaitse.
+{: .note}
+
+Võltspäringurünne on OWASP Top 10 oht. Just seesama, millepärast hoiatatakse kahtlastele linkidele vajutamise eest. Kuidas võltspäringukaitset rakendada vt [TARA eeskuju]( https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus#52-v%C3%B5ltsp%C3%A4ringur%C3%BCnde-vastane-kaitse).
+
+## NN "Legacy" mustri kasutamine
 
 Kas TARA kasutuselevõtmisel eesti.ee-s saab jätkata nn "legacy" autentimise kasutamist?
 {: .note}
