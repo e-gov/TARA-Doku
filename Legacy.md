@@ -37,7 +37,7 @@ Joonis 1. Autentimisteenuse TARA ja "Legacy" autentimise ühitamine eesti.ee-s.
 
 <img src='img/LEGACY.PNG' width='700'>
 
-## Detailne kasutusvoog
+### Detailne kasutusvoog
 
  nr | toiming
 ----|---------
@@ -61,6 +61,6 @@ Joonis 1. Autentimisteenuse TARA ja "Legacy" autentimise ühitamine eesti.ee-s.
 
 Märkus. Sammud 1a "Logi sisse" ja 4a "Mine infosüsteemi" saab ühitada. S.t infosüsteemi siseneda sooviv autentimata kasutaja saadatakse enne autentima.
 
-## Turvahinnang
+### Turvahinnang
 
 eesti.ee ja infosüsteem suhtlevad X-teel, seega omavad usaldusväärseid identiteete. Vahetatavad sõnumid (2a ja 2b) on allkirjastatud. URL-is sisalduv juhuslik URL, sisuliselt nonss, toimib taasesitusründe tõkendina. Skeemi ei saa siiski pidada turvaliseks, sest puudub võltspäringu (CSRF) vastane kaitse. Võrdluseks vt kuidas [võltspäringukaitset rakendatakse TARAs]( https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus#52-v%C3%B5ltsp%C3%A4ringur%C3%BCnde-vastane-kaitse).
