@@ -22,7 +22,7 @@ Kui autentimist soovitakse edasi anda, siis tuleb tagada võltspäringuründe (C
 
 Võltspäringurünne on OWASP Top 10 oht. Just seesama, millepärast hoiatatakse kahtlastele linkidele vajutamise eest. Kuidas võltspäringukaitset rakendada vt [TARA eeskuju]( https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus#52-v%C3%B5ltsp%C3%A4ringur%C3%BCnde-vastane-kaitse).
 
-## NN "Legacy" mustri kasutamine
+## Nn "Legacy" mustri kasutamine
 
 Kas TARA kasutuselevõtmisel eesti.ee-s saab jätkata nn "legacy" autentimise kasutamist?
 {: .note}
