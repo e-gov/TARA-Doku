@@ -11,7 +11,7 @@ permalink: Legacy
 ## Ülevaade
 
 Kas TARA kasutuselevõtmisel eesti.ee-s saab jätkata nn "legacy" autentimise kasutamist?
-{: .adv}
+{: .note}
 
 ("Legacy" nime all tuntakse autentimismustrit, millega "sessioon antakse üle" ühelt infosüsteemilt teisele X-tee vahendusel. "Legacy" on kasutusel eesti.ee-s 3-4 infosüsteemi teenindamisel.) 
 
