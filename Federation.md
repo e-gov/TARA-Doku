@@ -21,9 +21,9 @@ Käesolev dokument annab soovitusi seansi üleandmise koosvõimeliseks ja turval
 
 ## Mõisted
 
-Seanss (ingl _session_) on kasutaja autentimise järel loodav, ajas piiritleltud suhe veebirakenduse kasutaja, sirviku ja veebirakenduse vahel.
+Seanss (ingl _session_) on kasutaja autentimise järel loodav, ajas piiritletud suhe veebirakenduse kasutaja, sirviku ja veebirakenduse vahel.
 
-Seansi üleandmine on autenditud ja veebirakenduses sisselogitud kasutaja suunamine teise veebirakendusse ilma autentimist uuesti läbi tegemata.
+Seansi üleandmine on autenditud, veebirakenduses sisselogitud kasutaja suunamine teise veebirakendusse ilma autentimist uuesti läbi tegemata.
 
 ## Vajadus
 
@@ -31,17 +31,17 @@ Seansi üleandmise vajadus ei ole universaalne. Paljude e-teenuste puhul on turv
 
 Selle kõrval on siiski kasutusjuhte, kus seansi üleandmist soovitakse. Näiteks eesti.ee-s sisselogitud kasutaja võiks autenditult liikuda rahvastikuregistri portaali.
 
-Seansi üleandmise lahendaks keskne ühekordne sisselogimine (_single sign-on, SSO_). Kuid keskne autentimisteenus TARA praegu ei paku SSO-d. SSO lisamine on TARA teekaardil, kuid võib eeldada, et paljud asutused, eriti suuremad, soovivad säilitada oma autentimislahendused. Samuti ei ole selge üleüldise SSO kasutajale arusaadavus ja turvalisus.
+Seansi üleandmise lahendaks keskne ühekordne sisselogimine (_single sign-on, SSO_). Kuid keskne autentimisteenus TARA praegu ei paku SSO-d. SSO lisamine on TARA teekaardil, kuid võib eeldada, et ka kesk-SSO valmides paljud asutused, eriti suuremad, soovivad säilitada oma autentimislahendused. Samuti vajab veel eraldi väljaselgitamist üleüldise SSO kasutajale arusaadavus ja turvalisus.
 
-Seansi üleandmisel on oluline turvalisus ja jätkusuutlikkus. Järgnevas analüüsime kahte võimalust seansi üleandmiseks.
+Seansi üleandmisel on oluline turvalisus ja jätkusuutlikkus. Järgnevas analüüsime võimalusi seansi üleandmise tehniliseks lahendamiseks.
 
 ## Seansi üleandmine OpenID Connect meetodiga
 
 Voog on järgmine:
 
-1  Kasutaja logib eesti.ee-s sisse.
+1  Kasutaja logib eesti.ee-s (edaspidi EE) sisse.
 
-2  Kasutaja vajutab RRKP-sse viivale lingile, nt https://rrkp.smit.ee/sisene.
+2  Kasutaja vajutab rahavastikuregistri kodanikuportaali (edaspidi RRKP) viivale lingile, nt https://rrkp.smit.ee/sisene.
 
 3  RRKP serveripool, saades päringu, vastab ümbersuunamiskorraldusega (re-direct) eesti.ee autentimise jagamise otspunkti (https://eesti.ee/jaga).
 Redirect-URL moodustatakse OpenID Connect eeskujul. Olulise elemendina on URL-is nonss (parameeter `state`). _Redirect_-i saates annab server ka korralduse nonssi salvestamiseks sirviku turvaküpsisesse.
@@ -52,7 +52,7 @@ Redirect-URL moodustatakse OpenID Connect eeskujul. Olulise elemendina on URL-is
 
 6  EE vastab päringule redirect-ga RRKP tagasisuunamisaadressile, nt https://rrkp.smit.ee/tagasi. _Redirect_-s paneb EE kaasa volituskoodi ja peegeldab tagasi nonssi (parameeter `state`).
 
-7 RRKP, saades tagasipöördumise, kontrollib, kas tagasitulnud nonss (parameeter `state`) ühtib turvaküpsisest tulevad väärtusega. (Mitteühtimine loetakse päringuvõltsimise katseks).
+7 RRKP, saades tagasipöördumise, kontrollib, kas tagasitulnud nonss (parameeter `state`) ühtib turvaküpsisest tulevad väärtusega. Mitteühtimine loetakse päringuvõltsimise katseks.
 
 8  RRKP võtab tagasipöördumispäringust volituskoodi ja teeb sellega backend-päringu EE tõendiväljastusotspunkti vastu (nt https://eesti.ee/valjasta).
 
@@ -64,19 +64,19 @@ c) teha päring X-tee kaudu.
 
 10 EE tõendiväljastuspunkt leiab volituskoodile vastava identsustõendi ja saadab selle päringu vastuses RRKP-le.
 
-11  RRKP. saades identsustõendi, kontrollib seda (EE antud allkirja õigsus, tõendi kehtivusaeg). Sellega on kasutaja RRKP-s autenditud.
+11 RRKP. saades identsustõendi, kontrollib seda (EE antud allkirja õigsus, tõendi kehtivusaeg). Sellega on kasutaja RRKP-s autenditud.
 
-12  RRKP loob kasutajaga seansi. RRKP seansi ja EE seansi vahel seost ei ole.
+12 RRKP loob kasutajaga seansi. RRKP seansi ja EE seansi vahel seost ei ole.
 
-Skeem on OpenID Connect volituskoodi voo (authorization flow) kohandus.
+Skeem on OpenID Connect volituskoodi voo (_authorization flow_) kohandus.
 Olulised momendid:
-- peab olema päringuvõltsimise kaitse. See luuakse nonssi (parameeter state) läbiva kasutuse ja turvaküpsise sisuga võrdlemise teel
+- peab olema päringuvõltsimise kaitse. See luuakse nonssi (parameeter `state`) läbiva kasutuse ja turvaküpsise sisuga võrdlemise teel
 - oluline on rakendada ka kõik teised OAuth 2.0/OpenID Connect ettenähtud kontrollid (nende kohta eeskujuna: vt nt https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus#5-turvatoimingud)
 - märgime, et nn legacy mustrit ei saa pidada turvaliseks (vt https://e-gov.github.io/TARA-Doku/Legacy)
 
 _Backend_-päringu tegemiseks on, nagu ülal nimetatud, kolm võimalust. Sümmeetrilise salasõna puuduseks loeme seda, et RRKP autentimiseks salasõna teaks ka EE.
 
-Soovitame kaitsta EE-RRKP backend-ühendus vähemalt omavalmistatud sertidega.
+Soovitame kaitsta EE-RRKP _backend_-ühendus vähemalt omavalmistatud sertidega.
 
 Mõlemad osapooled peavad kindlasti kõik toimingud logima.
 
@@ -84,7 +84,7 @@ X-tee meie hinnangul ei ole tingimata vajalik.
 
 ## Seansi üleandmine pangalingi meetodiga
 
-Veel üks võimalus "seansi üleandmiseks" on Pangalingi laadne protokoll.
+Veel üks võimalus "seansi üleandmiseks" on pangalingi laadne protokoll.
 
 Peame silmas mitte koodikaarte (pangalinki kui autentimismeetodit) ega maksekorralduste edastamist, vaid panga poolt ettevõttele osutatavat autentimisteenust. Vt https://partners.lhv.ee/et/banklink/.
 
