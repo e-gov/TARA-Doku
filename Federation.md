@@ -82,20 +82,20 @@ Mõlemad osapooled peavad kindlasti kõik toimingud logima.
 
 X-tee meie hinnangul ei ole tingimata vajalik.
 
-## Seansi üleandmine pangalingi meetodiga
+## Seansi üleandmine "pangalingi" meetodiga
 
 Veel üks võimalus "seansi üleandmiseks" on pangalingi laadne protokoll.
 
-Peame silmas mitte koodikaarte (pangalinki kui autentimismeetodit) ega maksekorralduste edastamist, vaid panga poolt ettevõttele osutatavat autentimisteenust. Vt https://partners.lhv.ee/et/banklink/.
+Peame silmas mitte koodikaarte (pangalinki kui autentimismeetodit) ega maksekorralduste edastamist, vaid panga poolt ettevõttele osutatava autentimisteenuse meetodit. Vt https://partners.lhv.ee/et/banklink/.
 
-Pangalingi  kui autentimisteenuse olulised jooned:
+"Pangalingi"  kui autentimismeetodi olulised jooned:
 - kogu suhtlus käib läbi sirviku (_redirect_-dega). _Back-end_ päringut ei tehta. On inimesi, kes peavad seda puuduseks. Samas, eIDAS piiriülene autentimine käib samamoodi, ainult sirvikus. Pangalingi autentimismeetod on sarnane SAML Web flow protokolliga. Ka SAML Web flow-s liiguvad kõik sõnumid läbi sirviku ja kasutatakse PKI allkirjastamist. SAML Web flow protokolli kohta on tehtud põhjalikke turvaanalüüse ja leitud, et protokoll on turvaline. Siiski ei saa ka kõige põhjalikumat uuringut pidada lõplikuks tõeks. Ohumudeleid on erinevaid. Asutuse otsust valida _backend_-meetod tuleb austada.
 - pangalink ei ole täieliku protokolliga vormistatud. Muu hulgas ei ole pangalingi tehnilises spetsifikatsioonis nimetatud, et kaupmees peab rakendama CSFR kaitset (ega ole selgitatud, kuidas seda teha).
 - pangalingi meetodil puudub turvamudel (_security considerations_) vms käsitlus. Turvamudelit peetakse turvaprotokolli puhul elementaarseks.
 - suhtlus kaitstakse sertidega.
 - X-tee kasutamine pole vajalik. Seda võib võtta positiivsena. Kuid sertide haldamise vajadus ikka jääb.
 
-Kokkuvõttes: pangalingi meetodit saaks aluseks võtta seansi edasiandmise mustrile. Kui seda teha, siis ma soovitame fikseeritud pikkusega väljadega sõnumivorming välja vahetada tänapäevase JWT vastu. Meetod tuleks korralikult kirjeldada, muuhulgas lisada turvasoovitused.
+Kokkuvõttes: "pangalingi" meetodit saaks aluseks võtta seansi edasiandmise mustrile. Kui seda teha, siis ma soovitame fikseeritud pikkusega väljadega sõnumivorming välja vahetada tänapäevase JWT vastu. Meetod tuleks korralikult kirjeldada, muuhulgas lisada turvasoovitused.
 
 ## Seansi üleandmine ID-kaardi PIN1 puhverdamise kaudu
 
