@@ -41,20 +41,20 @@ Voog on järgmine:
 
 1  Kasutaja logib eesti.ee-s (edaspidi EE) sisse.
 
-2  Kasutaja vajutab rahvastikuregistri kodanikuportaali (edaspidi RRKP) viivale lingile, nt https://rrkp.smit.ee/sisene.
+2  Kasutaja vajutab rahvastikuregistri kodanikuportaali (edaspidi RRKP) viivale lingile, nt `https://rrkp.smit.ee/sisene`.
 
-3  RRKP serveripool, saades päringu, vastab ümbersuunamiskorraldusega (re-direct) eesti.ee autentimise jagamise otspunkti (https://eesti.ee/jaga).
+3  RRKP serveripool, saades päringu, vastab ümbersuunamiskorraldusega (re-direct) eesti.ee autentimise jagamise otspunkti (nt `https://eesti.ee/jaga`).
 Redirect-URL moodustatakse OpenID Connect eeskujul. Olulise elemendina on URL-is nonss (parameeter `state`). _Redirect_-i saates annab server ka korralduse nonssi salvestamiseks sirviku turvaküpsisesse.
 
-4  eesti.ee (EE), saades autentimise  üleandmise päringu, kontrollib, kas kasutajal on eesti.ee-st kehtiv seanss. Seda tehakse turvaküpsisesse salvestatud eesti.ee seansitõendi (_JWT token_) kehtivuse kontrollimisega.
+4  `eesti.ee/jaga` (EE), saades autentimise  üleandmise päringu, kontrollib, kas kasutajal on eesti.ee-s kehtiv seanss. Seda tehakse turvaküpsisesse salvestatud eesti.ee seansitõendi (_JWT token_) kehtivuse kontrollimisega.
 
 5  Kui kasutajal on kehtiv seanss, siis EE genereerib volituskoodi (_authorization code_) ja identsustõendi (_identity token_). Identsustõendis on kasutaja isikukood, nimi, vajadusel kontekstiteavet (mida kasutaja EE-s tegi). Identsustõendis on OAuth 2.0/OpenID Connect kohased turvaelemendid (väljaandja, adressaat, kehtivusaeg, allkiri). Identsustõendid jäävad lunastamist ootama (vt allpool).
 
-6  EE vastab päringule redirect-ga RRKP tagasisuunamisaadressile, nt https://rrkp.smit.ee/tagasi. _Redirect_-s paneb EE kaasa volituskoodi ja peegeldab tagasi nonssi (parameeter `state`).
+6  EE vastab päringule redirect-ga RRKP tagasisuunamisaadressile, nt `https://rrkp.smit.ee/tagasi`. _Redirect_-s paneb EE kaasa volituskoodi ja peegeldab tagasi nonssi (parameeter `state`).
 
 7 RRKP, saades tagasipöördumise, kontrollib, kas tagasitulnud nonss (parameeter `state`) ühtib turvaküpsisest tulevad väärtusega. Mitteühtimine loetakse päringuvõltsimise katseks.
 
-8  RRKP võtab tagasipöördumispäringust volituskoodi ja teeb sellega backend-päringu EE tõendiväljastusotspunkti vastu (nt https://eesti.ee/valjasta).
+8  RRKP võtab tagasipöördumispäringust volituskoodi ja teeb sellega backend-päringu EE tõendiväljastusotspunkti vastu (nt `https://eesti.ee/valjasta`).
 
 9  EE tõendiväljastuspunkt kontrollib RRKP serveri identiteeti.
 Selle lahendamiseks on mitu võimalust:
@@ -72,7 +72,7 @@ Skeem on OpenID Connect volituskoodi voo (_authorization flow_) kohandus.
 Olulised momendid:
 - peab olema päringuvõltsimise kaitse. See luuakse nonssi (parameeter `state`) läbiva kasutuse ja turvaküpsise sisuga võrdlemise teel
 - oluline on rakendada ka kõik teised OAuth 2.0/OpenID Connect ettenähtud kontrollid (nende kohta eeskujuna: vt nt https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus#5-turvatoimingud)
-- märgime, et nn legacy mustrit ei saa pidada turvaliseks (vt https://e-gov.github.io/TARA-Doku/Legacy)
+- märgime, et nn "legacy" mustrit ei saa pidada turvaliseks (vt https://e-gov.github.io/TARA-Doku/Legacy)
 
 _Backend_-päringu tegemiseks on, nagu ülal nimetatud, kolm võimalust. Sümmeetrilise salasõna puuduseks loeme seda, et RRKP autentimiseks salasõna teaks ka EE.
 
