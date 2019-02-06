@@ -7,6 +7,9 @@ permalink: Feder
 
 kavand
 
+Märkus. Kavandis esitatud seisukohad on mõeldud diskussiooniks. Enne kavandi kinnitamist ei saa neile (ilma omapoolse kriitilise analüüsita) toodangulahendustes tugineda. 
+{: .note}
+
 06.02.2019  v0.1
 
 - TOC
