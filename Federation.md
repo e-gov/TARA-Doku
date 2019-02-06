@@ -41,7 +41,7 @@ Voog on järgmine:
 
 1  Kasutaja logib eesti.ee-s (edaspidi EE) sisse.
 
-2  Kasutaja vajutab rahavastikuregistri kodanikuportaali (edaspidi RRKP) viivale lingile, nt https://rrkp.smit.ee/sisene.
+2  Kasutaja vajutab rahvastikuregistri kodanikuportaali (edaspidi RRKP) viivale lingile, nt https://rrkp.smit.ee/sisene.
 
 3  RRKP serveripool, saades päringu, vastab ümbersuunamiskorraldusega (re-direct) eesti.ee autentimise jagamise otspunkti (https://eesti.ee/jaga).
 Redirect-URL moodustatakse OpenID Connect eeskujul. Olulise elemendina on URL-is nonss (parameeter `state`). _Redirect_-i saates annab server ka korralduse nonssi salvestamiseks sirviku turvaküpsisesse.
