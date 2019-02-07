@@ -7,22 +7,22 @@ permalink: /
 <img src='img/LOVID.png' style='width: 80px;'>
 
 12.12.2018 Protokollimuudatus. TARA kasutajaliideses keele määramiseks tuleb praegu autentimispäringus kasutada parameetrit `locale` (vt [Tehniline kirjeldus](TehnilineKirjeldus#41-autentimisp%C3%A4ring)). OpenID Connect protokolliga parema vastavuse tagamiseks teeme muudatuse: keelt hakkab määrama parameeter `ui_locales` (vt [OpenID Connect spetsifikatsioon](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest)). Muudatuse üleminekuperiood on kuus kuud: `ui_locales` saab kasutatavaks jaanuari 2019 lõpus;  `locale` kasutuse lülitame välja juuli 2019 lõpus. Üleminekuperioodil on paralleelselt kasutatavad mõlemad parameetrid.
-{: .adv}
+{: .note}
 
 14.09.2018 Täpsustasime [andmekaitsetingimusi](Isikuandmed). Eraelu paremaks kaitseks loobume mobiilinumbri väljastamisest identsustõendis.
-{: .adv}
+{: .note}
 
 07.09.2018 TARA toodangukeskkonda paigaldati täna Coop pangalink. Testkeskkonda jäid testimiseks alles SEB ja Luminori pangalingid.
-{: .adv}
+{: .note}
 
 31.08.2018 TARA toodangukeskkonda paigaldatakse uus versioon 04.09.2018. Uue versiooni käigus lisatakse pangalinkidega autentimise võimekus. Esialgselt plaanitud skoobist jääb välja Danske bank. Lisatakse järgnevate pankade pangalingid: Swedbank, SEB, LHV ja Luminor.
-{: .adv}
+{: .note}
 
 30.08.2018 Täiendasime liitumistaotluse vormi: palume anda ka kasutajate arvu prognoos ja autentimismeetodid, mida soovite kasutada.
-{: .adv}
+{: .note}
 
 29.08.2018 Lisame teenusele uue ID-kaardi toe. Uusi ID-kaarte hakatakse väljastama 2019. a ja need nõuavad ID-kaardiga autentimise erinevat seadistust. TARA kasutajatele ei muutu midagi.
-{: .adv}
+{: .note}
 
 # Autentimisteenus TARA
 
