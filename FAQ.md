@@ -3,7 +3,7 @@ permalink: FAQ
 ---
 
 # FAQ
-{: .notoc}
+{: .no_toc}
 
 - TOC
 {:toc}

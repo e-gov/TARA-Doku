@@ -75,24 +75,16 @@ p { margin: 0 0 1em 0; }
 /*#endregion */
 
 /*#region Loetelud */
-#Tekst ul {
-  list-style-type: '-  ';
-  margin: 0 0 1em 0;
-  padding-left: 1em;
-}  
-
-#Tekst > ol {
-  padding-left: 1em;
-}  
-
-#markdown-toc ul {
-  list-style-type: '   ';
-  margin: 0 0 1em 0;
-  padding-left: 1em;
-}  
-
-#markdown-toc > ol {
-  padding-left: 1em;
+#markdown-toc { padding-left: 0 !important; }
+#markdown-toc li:before {
+    content: none !important;
+    margin-left: 0 !important;
+}
+#markdown-toc > ul {
+  list-style-type: none;
+}
+#markdown-toc > li {
+  list-style: none;
 }  
 
 /*#endregion */
