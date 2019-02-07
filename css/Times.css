@@ -75,6 +75,18 @@ p { margin: 0 0 1em 0; }
 /*#endregion */
 
 /*#region Loetelud */
+ul {
+  list-style-type: none;
+  margin: 0 0 1em 0;
+  padding-left: 1em;
+}
+ol {
+  padding-left: 1em;
+}
+
+/*#endregion */
+
+/*#region TOC genereeritud === */
 #markdown-toc { padding-left: 0 !important; }
 #markdown-toc li:before {
     content: none !important;
@@ -85,18 +97,6 @@ p { margin: 0 0 1em 0; }
 }
 #markdown-toc > li {
   list-style: none;
-}  
-
-/*#endregion */
-
-/*#region TOC genereeritud === */
-#markdown-toc { padding-left: 0 !important; }
-#markdown-toc li:before {
-    content: none !important;
-    margin-left: 0 !important;
-}    
-#markdown-toc li {
-  list-style-type: '   ' !important;
 }  
 /*#endregion */
 
