@@ -86,3 +86,5 @@ ___6 Muud___
 [kasutuselevõtu kirjeldus](https://esuomi.fi/suomi-fi-tunnistusta-kayttaa-jo-suuri-joukko-kansalaisia-julkishallinnon-organisaatioiden-otettava-palvelu-kayttoon-syyskuuhun-2017-mennessa/)
 
 [GOV.UK Verify](https://www.gov.uk/government/publications/introducing-govuk-verify/introducing-govuk-verify) 
+
+[Eesti haridus- ja teadusasutuste autentimis- ja autoriseerimistaristu](https://taat.edu.ee/main/)
