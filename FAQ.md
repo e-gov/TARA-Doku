@@ -12,6 +12,8 @@ permalink: FAQ
 
 Tagasipöördumisaadress (redirect-URL) määratakse klientrakenduse registreerimisel. TARA põhineb OpenID Connect protokollil, mis näeb ette võimalust, et klientrakendusega seotakse mitu tagasipöördumisaadressi. Autentimispäringus peab klientrakendus TARA-le teatama, millisele registreeritud aadressidest soovib, et autenditud kasutaja tagasi suunatakse. Märgime, et kasutatava platvormi tehnilise piirangu tõttu TARA praegu ei toeta mitut tagasipöördumisaadressi. Klientrakendusega seome ühe tagasipöördumisaadressi ja see tuleb ka autentimispäringus näidata. Tagasipöördumisaadressi registreerimine aga on vajalik rünnete vältimiseks.
 
+Lihtsamas keeles: Redirect-URL on selleks, et ise ka ikka meeles peaksite, mis URL-i te registreerimisel meile andsite. Muidu suuname teie kasutaja veel ei tea kuhu!
+
 ## Kas on kavas pakkuda ka `userinfo` otspunkti?
 
 Userinfo otspunkt on mõeldud autenditud kasutaja kohta andmete väljastamiseks pääsutõendi (_access token_) alusel. TARAs väljastame autenditud kasutajate kohta minimaalse andmekomplekti (isikukood, ees- ja perekonnanimi). Selle väljastame kohe identsustõendis, sest nii on kõige lihtsam. Mööname, et "karbitarkvaradega" liidestujatele pakub huvi userinfo toetus. Hakkame seda pakkuma TARA uues versioonis, kuid tähtaega ei saa veel öelda, sest projekt on ettevalmistamise järgus.
