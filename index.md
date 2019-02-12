@@ -51,7 +51,7 @@ Käesoleva lehe teave on mõeldud kolmele sihtrühmale. Asutuse äriüksuse juht
 
 [Testimine](Testimine)
 
-[Näiterakendused](Naited)
+[Näiterakendused/Liidestuja tarkvara](Naited)
 
 [Sõnastik](Sonastik) · [Viited](Viited) · [FAQ](FAQ)
 
