@@ -530,11 +530,11 @@ Klientrakendus peab identsustõendit kontrollima.
 
 1) "not before" ajamoment on kätte jõudnud:
 
-`nbf < jooksev_aeg - kellade_lubatud_erinevus` 
+`nbf <= jooksev_aeg + kellade_lubatud_erinevus` 
 
 2) "expired" ajamoment ei ole kätte jõudnud:
 
-`exp > jooksev_aeg + kellade_lubatud_erinevus`.
+`exp > jooksev_aeg - kellade_lubatud_erinevus`.
 
 `kellade_lubatud_erinevus` väärtus valida ise. Need kontrollid on vajaliku rünnete ja sassiminekute vältimiseks.
 
