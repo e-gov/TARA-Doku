@@ -522,14 +522,14 @@ Kasutajainfopäring võimaldab kehtiva  `OAuth 2.0` pääsutõendi alusel küsid
 Pääsutõend tuleb esitada kasutajainfot väljastavale otspunktile [Bearer Token meetodil](https://tools.ietf.org/html/rfc6750#section-2.1) HTTP päises (soovituslik) või [URLi parameetrina](https://tools.ietf.org/html/rfc6750#section-2.3).
 
 Näide 1 - pääsutõendi edastamine `Authorization` päises:
-````json
+````
 GET /oidc/profile HTTP/1.1
 Host: tara.ria.ee
 Authorization: Bearer AT-20-qWuioSEtFhYVdW89JJ4yWvtI5SaNWep0
 ````
 
 Näide 2 - pääsutõendi edasamine `access_token` parameetrina :
-````json
+````
 GET /oidc/profile?access_token=AT-20-qWuioSEtFhYVdW89JJ4yWvtI5SaNWep0 HTTP/1.1
 Host: tara.ria.ee
 ````
@@ -568,7 +568,7 @@ Vastuses esitatavad väited väljastatakse identsustõendi alusel.
  <sup>1</sup> Väljastatakse ainult juhul, kui antud väide on esitatud ka identsustõendis.
 
 
-** Vigade käsitlemine**
+**Vigade käsitlemine**
 
 Juhul kui kasutajainfo otspunktile esitatav pääsutõend puudub või on aegunud tagastatakse veakood ja lühikirjeldus `WWW-Authenticate` päises vastavalt [OpenID Connect Core 1.0 spetsifikatsioonile](https://openid.net/specs/openid-connect-core-1_0.html#UserInfoError)
 
