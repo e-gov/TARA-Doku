@@ -575,9 +575,7 @@ Juhul kui kasutajainfo otspunktile esitatav pääsutõend puudub või on aegunud
 Näide:
 ````
 HTTP/1.1 401 Unauthorized
-Date: Thu, 21 Feb 2019 08:55:33 GMT
 WWW-Authenticate: Bearer error="invalid_token",error_description="The access token has expired"
-Content-Type: application/json;charset=UTF-8
 ````
 
 
