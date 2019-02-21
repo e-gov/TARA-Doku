@@ -7,7 +7,7 @@ Mõned autentimismeetodid võivad olla veel arenduses või kasutatavad ainult te
 
 # Tehniline kirjeldus
 {: .no_toc}
-v 1.2, 01.02.2019
+v 1.3, 21.02.2019
 
 - TOC
 {:toc}
@@ -410,7 +410,7 @@ Identsustõendis esitatakse järgmised väited (_claims_).
 | `nbf` (_Not Before_)   | `1530266752` - tõendi kehtivuse algusaeg, Unix _epoch_ vormingus |
 | `sub` (_Subject_)      | `EE60001019906` - autenditud kasutaja identifikaator (isikukood või eIDAS identifikaator) koos kodaniku riigikoodi eesliitega (riigikoodid vastavalt ISO 3166-1 alpha-2 standardile) |
 | `profile_attributes`   | autenditud isikut kirjeldavad andmed, sh eIDAS atribuudid (vt ka allpool täiendavate andmete küsimise ja isiku esindamise kohta) |
-| `profile_attributes`<br>`.date_of_birth` | `2000-01-01` - autenditud kasutaja sünnikuupäev ISO_8601 formaadis. Tagastatakse ainult eIDAS autentimisel |
+| `profile_attributes`<br>`.date_of_birth` | `2000-01-01` - autenditud kasutaja sünnikuupäev ISO_8601 formaadis. Tagastatakse ainult Eesti isikukoodiga isikute puhul ning eIDAS autentimisel |
 | `profile_attributes`<br>`.given_name` | `MARY ÄNN` - autenditud kasutaja eesnimi (testnimi, valitud täpitähtede sisalduvuse pärast) |
 | `profile_attributes`<br>`.family_name` | `O’CONNEŽ-ŠUSLIK` - autenditud kasutaja perekonnanimi (testnimi, valitud täpitähtede jm eritärkide sisalduvuse pärast) |
 | `profile_attributes`<br>`_translit` | Sisaldab JSON objekti ladina tähestikus profiiliatribuutidest (vt allpool translitereerimine.). Väärtustatud ainult eIDAS autentimisel |
@@ -512,6 +512,74 @@ Näide identsustõendis profiilielementide translitereerimisest (isiku eesnimi j
 Identsustõend võib sisaldada muid OpenID Connect protokolli kohaseid välju, kuid neid teenuses ei kasutata. 
 
 Kui identsustõendit ei pärita `5` minuti jooksul, siis identsustõend aegub ja autentimisprotsessi tuleb korrata.
+
+### 4.4 Kasutajainfopäring
+
+<span class='arenduses'>(arenduses)</span> 
+
+Kasutajainfopäring võimaldab kehtiva  `OAuth 2.0` pääsutõendi alusel küsida infot autenditud kasutaja kohta. Päring peab olema esitatud HTTP GET meetodil. Kehtiva pääsutõendi korral väljastatakse JSON vormingus vastus.
+
+Pääsutõend tuleb esitada kasutajainfot väljastavale otspunktile [Bearer Token meetodil](https://tools.ietf.org/html/rfc6750#section-2.1) HTTP päises (soovituslik) või [URLi parameetrina](https://tools.ietf.org/html/rfc6750#section-2.3).
+
+Näide 1 - pääsutõendi edastamine `Authorization` päises:
+````json
+GET /oidc/profile HTTP/1.1
+Host: tara.ria.ee
+Authorization: Bearer AT-20-qWuioSEtFhYVdW89JJ4yWvtI5SaNWep0
+````
+
+Näide 2 - pääsutõendi edasamine `access_token` parameetrina :
+````json
+GET /oidc/profile?access_token=AT-20-qWuioSEtFhYVdW89JJ4yWvtI5SaNWep0 HTTP/1.1
+Host: tara.ria.ee
+````
+
+Kehtiva pääsutõendi korral väljastatakse JSON vormingus vastus.
+
+Näide:
+
+````json
+{
+  "amr": [
+    "mID"
+  ],
+  "date_of_birth": "2000-01-01",
+  "family_name": "O’CONNEŽ-ŠUSLIK TESTNUMBER",
+  "given_name": "MARY ÄNN",
+  "sub": "EE60001019906",
+  "auth_time": 1550735597
+}
+```` 
+
+Vastuses esitatavad väited väljastatakse identsustõendi alusel. 
+
+| json element (väide) | väljastamine kohustuslik | selgitus | 
+|:-----------------------|---------------------|-------------------|
+| `auth_time` | jah | Kasutaja eduka autentimise ajahetk. Unix *epoch* vormingus |
+| `sub` (_Subject_) | jah | Vormingult ja tähenduselt sama, mis `profile_attributes.given_name` identsustõendis |
+| `given_name` | jah | Vormingult ja tähenduselt sama, mis `profile_attributes.given_name` identsustõendis |
+| `family_name` | jah | Vormingult ja tähenduselt sama, mis `profile_attributes.given_name` identsustõendis |
+| `amr` | jah | Vormingult ja tähenduselt sama, mis `amr` identsustõendis |
+| `date_of_birth` |  ei <sup>1</sup> | Vormingult ja tähenduselt sama, mis `profile_attributes.date_of_birth` identsustõendis |
+| `email` | ei  <sup>1</sup> | Vormingult ja tähenduselt sama, mis `email` identsustõendis |
+| `email_verified` | ei  <sup>1</sup> | Vormingult ja tähenduselt sama, mis `email_verified` identsustõendis |
+| `acr` | ei  <sup>1</sup> | Vormingult ja tähenduselt sama, mis `acr` identsustõendis |
+
+ <sup>1</sup> Väljastatakse ainult juhul, kui antud väide on esitatud ka identsustõendis.
+
+
+** Vigade käsitlemine**
+
+Juhul kui kasutajainfo otspunktile esitatav pääsutõend puudub või on aegunud tagastatakse veakood ja lühikirjeldus `WWW-Authenticate` päises vastavalt [OpenID Connect Core 1.0 spetsifikatsioonile](https://openid.net/specs/openid-connect-core-1_0.html#UserInfoError)
+
+Näide:
+````
+HTTP/1.1 401 Unauthorized
+Date: Thu, 21 Feb 2019 08:55:33 GMT
+WWW-Authenticate: Bearer error="invalid_token",error_description="The access token has expired"
+Content-Type: application/json;charset=UTF-8
+````
+
 
 ## 5 Turvatoimingud
 
@@ -648,6 +716,7 @@ RIA, rahuldades taotluse, väljastab asutusele klientrakenduse toodanguversiooni
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
+| 1.3, 21.02.2019   | Lisatud kasutajainfopäringu kirjeldus. |
 | 1.2, 01.02.2019   | Autentimisvahendite valikuline kasutus `scope` parameetri abil. |
 | 1.1, 29.11.2018   | Täpsustused autentimispäringu parameetri osas (`redirect_uri`). |
 | 1.0, 03.10.2018   | Eemaldatud Danske pank autentimismeetodite toe koosseisust |
