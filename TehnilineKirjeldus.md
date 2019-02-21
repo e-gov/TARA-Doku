@@ -366,7 +366,7 @@ Päringu vastus on JSON-struktuur, milles on neli elementi (vt järgnev tabel).
 
 | element | selgitus |
 |:-------:|----------|
-| `access_token` | OAuth 2.0 pääsutõend. Pääsutõendit TARA-s ei kasutata (kuna kõik autenditud isikut kirjeldavad andmed väljastatakse identsustõendis; `userinfo` otspunkti TARA ei toeta) |
+| `access_token` | <span class='arenduses'>(arenduses)</span> OAuth 2.0 pääsutõend. TARA väljastab küll pääsutõendi, kuid soovitame seda kasutada (autenditud isikut kirjeldavate andmiseks saamiseks `userinfo` otspunktist) ainult siis, kui nn "karbitoote" liidestamisel ei ole võimalust kasutada identsustõendit (vt allpool). Kõik autenditud isikut kirjeldavad andmed väljastatakse juba identsustõendis. Identsustõendi kasutamine on eelistatud ja ka teoreetiliselt turvalisem (identsustõend on allkirjastatud, `userinfo` otspunkti väljund aga mitte) |
 | `token_type` | Väärtusega `bearer`. OAuth 2.0 pääsutõendi tüüp. TARA-s ei kasutata |
 | `expires_in` | OAuth 2.0 pääsutõendi aegumiskestus. TARA-s ei kasutata |
 | `id_token` | identsustõend, Base64 vormingus | 
@@ -424,7 +424,7 @@ Identsustõendis esitatakse järgmised väited (_claims_).
 
 #### 4.3.2 Mittekohustuslikud atribuudid (välismaalase autentimisel)
 
-<span style=arenduses>Arenduses</span> Järgnevad atribuudid esitatakse identsustõendis ainult siis, kui  autenditud isik on välismaalane ja klientrakendus on atribuute  autentimispäringu `scope` parameetris taotlenud.
+<span class='arenduses'>(arenduses)</span> Järgnevad atribuudid esitatakse identsustõendis ainult siis, kui  autenditud isik on välismaalane ja klientrakendus on atribuute  autentimispäringu `scope` parameetris taotlenud.
 
 Füüsiline isik
 
@@ -528,7 +528,7 @@ Host: tara.ria.ee
 Authorization: Bearer AT-20-qWuioSEtFhYVdW89JJ4yWvtI5SaNWep0
 ````
 
-Näide 2 - pääsutõendi edasamine `access_token` parameetrina :
+Näide 2 - pääsutõendi edastamine `access_token` parameetrina :
 ````
 GET /oidc/profile?access_token=AT-20-qWuioSEtFhYVdW89JJ4yWvtI5SaNWep0 HTTP/1.1
 Host: tara.ria.ee
