@@ -556,9 +556,9 @@ Vastuses esitatavad väited väljastatakse identsustõendi alusel.
 | json element (väide) | väljastamine kohustuslik | selgitus | 
 |:-----------------------|---------------------|-------------------|
 | `auth_time` | jah | Kasutaja eduka autentimise ajahetk. Unix *epoch* vormingus |
-| `sub` (_Subject_) | jah | Vormingult ja tähenduselt sama, mis `profile_attributes.given_name` identsustõendis |
+| `sub` (_Subject_) | jah | Vormingult ja tähenduselt sama, mis `sub` identsustõendis |
 | `given_name` | jah | Vormingult ja tähenduselt sama, mis `profile_attributes.given_name` identsustõendis |
-| `family_name` | jah | Vormingult ja tähenduselt sama, mis `profile_attributes.given_name` identsustõendis |
+| `family_name` | jah | Vormingult ja tähenduselt sama, mis `profile_attributes.family_name` identsustõendis |
 | `amr` | jah | Vormingult ja tähenduselt sama, mis `amr` identsustõendis |
 | `date_of_birth` |  ei <sup>1</sup> | Vormingult ja tähenduselt sama, mis `profile_attributes.date_of_birth` identsustõendis |
 | `email` | ei  <sup>1</sup> | Vormingult ja tähenduselt sama, mis `email` identsustõendis |
