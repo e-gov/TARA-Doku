@@ -66,7 +66,7 @@ Testkeskkonnas võib tagasipöördumis-URL-ks valida ka `localhost`-i sisaldava 
 
 Jah, tegu on turvaprotokolliga, millest mittevajalik on juba eemaldatud. Kõik nõuded tuleb täita, sh testimisse puutuv. Mittekohustuslikud asjad, nt `nonce` kasutamine on, on selgelt markeeritud.
 
-## Kas veebilehitsejas küpsiste salvestamine peab olema lubatud?
+## Kas veebilehitsejas küpsiste (cookies) salvestamine peab olema lubatud?
 
 Jah, TARA kasutamiseks peab olema küpsiste salvestamine lubatud. Vastasel juhul võib tekkida veateade "Teie sessiooni ei leitud! Sessioon aegus või on küpsiste kasutamine Teie brauseris piiratud".
 
