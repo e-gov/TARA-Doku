@@ -608,7 +608,7 @@ TARA põhimõte on, et identsustõendile tuleb järgi tulla kohe, 5 minuti jooks
 
 Identsustõendi eduka kontrollimise järel loob klientrakendus kasutajaga seansi ("logib kasutaja sisse"). Seansi loomine ja pidamine on klientrakenduse kohustus. Kuidas seda teha, ei ole enam autentimisteenuse TARA skoobis.
 
-Märkus. Tavaliselt peetakse veebirakendusega seanssi küpsises hoitava seansitõendi (session token) abil. Seansitõend võib olla juhusõneline (opaque) või veebitõend (JWT). Vt lähemalt [Seansihaldus](Seansihaldus). Identsustõend ei sobi otseselt seansitõendiks, sest identsustõendi kehtivusaeg väljendab tõendi väljastamise perioodi, mitte seansi kehtivusperioodi. Küll aga saab klientranekdus seansitõendi koostada identsustõendi põhjal, valides seansi sobiva kehtivusaja. 
+Märkus. Tavaliselt peetakse veebirakendusega seanssi küpsises hoitava seansitõendi (_session token_) abil. Seansitõend võib olla juhusõneline (_opaque_) või veebitõend (JWT). Vt lähemalt [Seansihaldus](Seansihaldus). Identsustõend ei sobi otseselt seansitõendiks, sest identsustõendi kehtivusaeg väljendab tõendi väljastamise perioodi, mitte seansi kehtivusperioodi. Küll aga saab klientrakendus seansitõendi koostada identsustõendi põhjal, valides seansi sobiva kehtivusaja. 
 
 ### 5.2 Võltspäringuründe vastane kaitse
 
