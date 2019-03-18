@@ -163,7 +163,7 @@ Kasutajale kuvatakse autentimismeetodite valiku leht. Jätkame voo kirjeldamiseg
 
 <p style='text-align:center;'><img src='img/VOOG-02.PNG' style='width:400px'></p>
 
-Joonis 3. Tagasipöördumispäring
+Joonis 3. Tagasisuunamispäring
 
 Kasutaja valib autentimismeetodi. Valik edastatakse TARA serverikomponendile HTTP päringuga **3a**.
 
@@ -174,11 +174,11 @@ Autentimisdialoog jõuab lõpule ja kasutaja on vaja suunata tagasi klientrakend
 
 TARA serverikomponent saadab sirvikusse HTTP päringuvastuse **3b**, milles on ümbersuunamiskorraldus kasutaja tagasisuunamiseks klientrakendusse. 
 
-Sirvik täidab ümbersuunamiskorralduse **3b**, saates klientrakenduse serverikomponendile HTTP päringu **4a** (tagasipöördumispäringu). 
+Sirvik täidab ümbersuunamiskorralduse **3b**, saates klientrakenduse serverikomponendile HTTP päringu **4a** (tagasisuunamispäringu). 
 
-Tagasipöördumispäringus sisaldub autentimise tulemus (isik tuvastati või mitte). Tagasipöördumispäring on täpsemalt kirjeldatud eraldi jaotises allpool.
+Tagasisuunamispäringus sisaldub autentimise tulemus (isik tuvastati või mitte). Tagasisuunamispäring on täpsemalt kirjeldatud eraldi jaotises allpool.
 
-TARA roll võiks sellega lõppeda. OpenID Connect otsevoo (_implicit flow_) puhul lõpebki. Kuid TARA-s on kasutusel otsevoost mõneti turvalisemaks peetav volituskoodi voog (_authorization flow_). Volituskoodi voo korral ei saada autentimisteenus tagasipöördumispäringus autentimise tulemust täielikult, vaid ainult volituskoodi (_authorization token_).
+TARA roll võiks sellega lõppeda. OpenID Connect otsevoo (_implicit flow_) puhul lõpebki. Kuid TARA-s on kasutusel otsevoost mõneti turvalisemaks peetav volituskoodi voog (_authorization flow_). Volituskoodi voo korral ei saada autentimisteenus tagasisuunamispäringus autentimise tulemust täielikult, vaid ainult volituskoodi (_authorization token_).
 
 Volituskood lunastatakse autenditud isiku isikukoodi, nime jm isikuandmete vastu eraldi päringu tegemisega TARA serverikomponendi poole (joonis 4).   
 
@@ -186,7 +186,7 @@ Volituskood lunastatakse autenditud isiku isikukoodi, nime jm isikuandmete vastu
 
 Joonis 4. Identsustõendipäring
 
-Klientrakenduse serverikomponent saadab TARA serverikomponendile identsustõendipäringu **5a**. Identsustõendipäringus esitab klientrakendus tagasipöördumispäringus saadud volituskoodi. Klientrakendus tõendab oma ehtsust, lisades päringusse salasõna (_client secret_). Identsustõendipäring on nn _backend_-päring - see ei käi läbi sirviku.
+Klientrakenduse serverikomponent saadab TARA serverikomponendile identsustõendipäringu **5a**. Identsustõendipäringus esitab klientrakendus tagasisuunamispäringus saadud volituskoodi. Klientrakendus tõendab oma ehtsust, lisades päringusse salasõna (_client secret_). Identsustõendipäring on nn _backend_-päring - see ei käi läbi sirviku.
 
 TARA serverikomponent, saades identsustõendipäringu **5a**, kontrollib salasõna ja väljastab vastuses **5b** identsustõendi. Identsustõend sisaldab andmeid autentimise fakti (autentimise ajamoment, autentimismeetod) ja tuvastatud isiku kohta (isikukood, ees- ja perekonnanimi, piiriülese autentimise korral ka eraldi sünniaeg jm andmed). TARA serverikomponent allkirjastab identsustõendi. Identsustõend on täpsemalt kirjeldatud eraldi jaotises allpool.
 
@@ -221,7 +221,7 @@ Autentimispäringu elemendid:
 | URL-i element          | kohustuslik | näide                       |  selgitus     |
 |------------------------|:---------- :|-----------------------------|---------------|
 | protokoll, host ja tee (_path_) | jah | `https://tara.ria.ee/oidc/authorize` | `/authorize` on TARA-teenuse OpenID Connect-kohane autentimisotspunkt (termin 'autoriseerimine' pärineb alusprotokollist OAuth 2.0). |
-| `redirect_uri` | jah | `redirect_uri=https%3A%2F%2F` `eteenus.asutus.ee%2Ftagasi` | Tagasipöördumis-URL. Tagasipöördumis-URL-i valib asutus ise. Tagasipöördumis-URL võib sisaldada _query_-osa. <br><br>Vajadusel kasutada [URLi kodeerimist](https://en.wikipedia.org/wiki/Percent-encoding). <br><br>URI-i [fragmendi osa](https://tools.ietf.org/html/rfc3986#section-3.5) (`#` märk ja sellele järgnev osa) kasutamine [ei ole lubatud](https://tools.ietf.org/html/rfc6749#section-3.1.2). |
+| `redirect_uri` | jah | `redirect_uri=https%3A%2F%2F` `eteenus.asutus.ee%2Ftagasi` | Tagasisuunamis-URL. Tagasisuunamis-URL-i valib asutus ise. Tagasisuunamis-URL võib sisaldada _query_-osa. <br><br>Vajadusel kasutada [URLi kodeerimist](https://en.wikipedia.org/wiki/Percent-encoding). <br><br>URI-i [fragmendi osa](https://tools.ietf.org/html/rfc3986#section-3.5) (`#` märk ja sellele järgnev osa) kasutamine [ei ole lubatud](https://tools.ietf.org/html/rfc6749#section-3.1.2). |
 | `scope` | jah | `scope=openid`<br><br>`scope=openid%20eidas` <br><br>`scope=openid%20idcard%20mid` | Autentimise skoop.<br><br>`openid` on kohustuslik (seda nõuab OpenID Connect protokoll).<br><br> Skoopidega `idcard`, `mid`, `banklink`, `smartid`, `eidas` (ja `eidasonly`) saab nõuda, et kasutajale näidatakse ainult soovitud autentimismeetodeid. Vt jaotis 4.1.3 Autentimisvahendite valikuline kasutus.<br><br><span class='arenduses'></span> Skoobiga `email` saab nõuda, et identsustõendis väljastatakse kasutaja e-postiaadress. Vt jaotis 4.1.2 E-postiaadressi küsimine.<br><br>Piiriülesel autentimisel saab kasutada lisaskoope täiendavate isikuandmete pärimiseks (vt allpool).<br><br>Mitme skoobi kasutamisel tuleb skoobid eraldada tühikutega. Tühik esitatakse seejuures URL-kodeeringus (`%20`) ([RFC 3986](https://www.ietf.org/rfc/rfc3986.txt)). Skoobi väärtused on tõstutundlikud. Tundmatuid väärtuseid ignoreeritakse. |
 | `state` | jah | `state=hkMVY7vjuN7xyLl5` | Võltspäringuründe (_cross-site request forgery_, CSRF) vastane turvakood. `state` moodustamise ja kontrollimise kohta vt lähemalt jaotis "Võltspäringuründe vastane kaitse". |
 | `response_type` | jah | `response_type=code` | Määrab autentimise tulemuse serverile edastamise viisi. Toetatud on volituskoodi viis (OpenID Connect protokolli _authorization flow_), selle tähiseks on väärtus `code`. |
@@ -612,7 +612,7 @@ Idensustõendi eduka kontrollimise järel loob klientrakendus kasutajaga seansi 
 
 Klientrakenduses tuleb rakendada võltspäringuründe (_cross-site request forgery_, CSRF) vastaseid kaitsemeetmeid. Seda tehakse turvakoodide `state` ja `nonce` abil. `state` kasutamine on kohustuslik; `nonce` kasutamine on vabatahtlik. Kirjeldame `state` kasutamise protseduuri.
 
-Turvakoodi `state` kasutatakse autentimispäringule järgneva tagasipöördumispäringu võltsimise vastu. Klientrakenduses tuleb teostada järgmised sammud:
+Turvakoodi `state` kasutatakse autentimispäringule järgneva tagasisuunamispäringu võltsimise vastu. Klientrakenduses tuleb teostada järgmised sammud:
 
 1 Genereerida juhusõne, näiteks pikkusega 16 tärki: `XoD2LIie4KZRgmyc` (tähistame `R`).
 
@@ -630,15 +630,15 @@ kus `ETEENUS` on vabalt valitud küpsisenimi. Küpsisele tuleb rakendada atribuu
 
 Niisiis, autentimispäringuga saadetakse kaks asja: juhusõne küpsisesse panemiseks ja juhusõnest arvutatud räsiväärtus `state` parameetris. Klientrakendus ei pea juhusõne ega räsiväärtust meeles pidama.
 
-Tagasipöördumispäringu töötlemisel peab klientrakendus tegema järgmist:
+Tagasisuunamispäringu töötlemisel peab klientrakendus tegema järgmist:
 
 5 Võtab päringuga tuleva küpsise `ETEENUS` väärtuse
 
 6 Arvutab küpsise väärtusest räsi
 
-7 Kontrollib, et räsi ühtib tagasipöördumispäringus tagasipeegeldatava `state` väärtusega.
+7 Kontrollib, et räsi ühtib tagasisuunamispäringus tagasipeegeldatava `state` väärtusega.
 
-Tagasipöördumispäringut tohib aktsepteerida ainult ülalkirjeldatud kontrolli õnnestumisel.
+Tagasisuunamispäringut tohib aktsepteerida ainult ülalkirjeldatud kontrolli õnnestumisel.
 
 Kirjeldatud protseduuris on võtmetähtsusega väärtuse `state` sidumine sessiooniga. Seda tehakse küpsise abil. (See on autentimise ajutine sessioon.  Töösessiooni moodustab klientrakendus pärast autentimise edukat lõpuleviimist).
 
