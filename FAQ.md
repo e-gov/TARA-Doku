@@ -3,12 +3,26 @@ permalink: FAQ
 ---
 
 # FAQ
+{: .no_toc}
 
-1 _Kas autentimist saab teisele rakendusele edasi anda?_
+- TOC
+{:toc}
 
-Vt [siit](Legacy).
+## Miks on autentimispäringus üldse vaja redirect-URL-i näidata?
 
-2 _Teatud juhtudel saab võõra ID-kaardiga sisse logida. See ei ole soovitav käitumine._
+Tagasipöördumisaadress (redirect-URL) määratakse klientrakenduse registreerimisel. TARA põhineb OpenID Connect protokollil, mis näeb ette võimalust, et klientrakendusega seotakse mitu tagasipöördumisaadressi. Autentimispäringus peab klientrakendus TARA-le teatama, millisele registreeritud aadressidest soovib, et autenditud kasutaja tagasi suunatakse. Märgime, et kasutatava platvormi tehnilise piirangu tõttu TARA praegu ei toeta mitut tagasipöördumisaadressi. Klientrakendusega seome ühe tagasipöördumisaadressi ja see tuleb ka autentimispäringus näidata. Tagasipöördumisaadressi registreerimine aga on vajalik rünnete vältimiseks.
+
+Lihtsamas keeles: Redirect-URL on selleks, et ise ka ikka meeles peaksite, mis URL-i te registreerimisel meile andsite. Muidu suuname teie kasutaja veel ei tea kuhu!
+
+## Kas on kavas pakkuda ka `userinfo` otspunkti?
+
+Userinfo otspunkt on mõeldud autenditud kasutaja kohta andmete väljastamiseks pääsutõendi (_access token_) alusel. TARAs väljastame autenditud kasutajate kohta minimaalse andmekomplekti (isikukood, ees- ja perekonnanimi). Selle väljastame kohe identsustõendis, sest nii on kõige lihtsam. Mööname, et "karbitarkvaradega" liidestujatele pakub huvi userinfo toetus. Hakkame seda pakkuma TARA uues versioonis, kuid tähtaega ei saa veel öelda, sest projekt on ettevalmistamise järgus.
+
+## Kas autentimist saab teisele rakendusele edasi anda?
+
+Vt [siit](Feder).
+
+## Teatud juhtudel saab võõra ID-kaardiga sisse logida. See ei ole soovitav käitumine.
 
 ID-kaardiga autentimisel küsitakse kasutajalt alati PIN1 koodi.
 
@@ -26,33 +40,37 @@ Allikas: www.id.ee, "Olulised turvanõuded ID-kaardi kasutamiseks".
 
 Täiendava meetmena on hea võõrast inimest oma isiklikku arvutisse üldse mitte lubada.
 
-Samuti pakuvad sirvikud privaatsirvimise võimalust (_private browsing_). ID-kaardi kasutamisel sirviku privaatsirvimisaknas on suurem kindlus, et puhvrid ja kasutusajalugu tühjendatakse.
+Samuti pakuvad sirvikud privaatsirvimise võimalust (private browsing). ID-kaardi kasutamisel sirviku privaatsirvimisaknas on suurem kindlus, et puhvrid ja kasutusajalugu tühjendatakse.
 
-3 _Millised on nõuded client_id-le?_
+## Millised on nõuded `clientid`-le?
 
-`client_id` on autentimisteenust TARA kasutava rakenduse avalik identifikaator. Internetis on küll [soovitusi](https://www.oauth.com/oauth2-servers/client-registration/client-id-secret/) valida `client_id` juhuslikult - siis on seda raskem ära arvata ja ründeid konstrueerida. Avalikus e-teenuses ei ole `client_id` peitmine siiski võimalik. Seetõttu soovitame `client_id` valida sisukana, s.t `client_id` peaks andma aimu rakendusest ja asutusest, samuti kas kasutatakse test- või toodangukeskkonda. Teenuse kasutajale on `client_id` nähtamatu. Kuna `client_id` edastatakse autentimispäringus, URL-i koosseisus, siis on lihtsam piirduda ladina tähtedega. Täpitähed on lubatud, kuid arvestada, et autentimispäringu URL-is edastatakse need [URL encoded](https://www.url-encode-decode.com/) kujul. Miinus, punkt ja allkriips on lubatud. Kaldkriipsu korral arvestada, et _URL encoded_ kujul on see `%2F`. `client_id` on tõstutundlik.
+`clientid` on autentimisteenust TARA kasutava rakenduse avalik identifikaator. Internetis on küll [soovitusi](https://www.oauth.com/oauth2-servers/client-registration/client-id-secret/) valida `clientid` juhuslikult - siis on seda raskem ära arvata ja ründeid konstrueerida. Avalikus e-teenuses ei ole `clientid` peitmine siiski võimalik. Seetõttu soovitame `clientid` valida sisukana, s.t `clientid` peaks andma aimu rakendusest ja asutusest, samuti kas kasutatakse test- või toodangukeskkonda. Teenuse kasutajale on `clientid` nähtamatu. Kuna `clientid` edastatakse autentimispäringus, URL-i koosseisus, siis on lihtsam piirduda ladina tähtedega. Täpitähed on lubatud, kuid arvestada, et autentimispäringu URL-is edastatakse need [URL encoded](https://www.url-encode-decode.com/) kujul. Miinus, punkt ja allkriips on lubatud. Kaldkriipsu korral arvestada, et URL encoded kujul on see `%2F`. `clientid` on tõstutundlik.
 
-4 _Autentimisdialoog avaneb, teen autentimise läbi, aga siis tuleb veateade `Teenusele ligipääs suletud`._
+## Autentimisdialoog avaneb, teen autentimise läbi, aga siis tuleb veateade `Teenusele ligipääs suletud`.
 
-Kontrolli, et klientrakendus kasutab TARA poole pöördumisel õiget `client_id`-d ja tagasuunamis-URL-i (`redirect_uri`). `client_id` tuleb anda autentimispäringus. Tagasisuunamis-URL tuleb anda nii autentimis- kui ka identsustõendi küsimise päringus. Need väärtused peavad täpselt vastama RIA-s registreeritutele. Kas oled neid väärtusi muutnud? Kas sul on mitu klientrakendust? Võib-olla nende väärtused on segamini läinud? Ülekontrollimiseks, milline `client_id` ja `redirect_uri` on registreeritud, võib pöörduda RIA teenusehalduri poole.
+Kontrolli, et klientrakendus kasutab TARA poole pöördumisel õiget `clientid`-d ja tagasuunamis-URL-i (`redirecturi`). `clientid` tuleb anda autentimispäringus. Tagasisuunamis-URL tuleb anda nii autentimis- kui ka identsustõendi küsimise päringus. Need väärtused peavad täpselt vastama RIA-s registreeritutele. Kas oled neid väärtusi muutnud? Kas sul on mitu klientrakendust? Võib-olla nende väärtused on segamini läinud? Ülekontrollimiseks, milline `clientid` ja `redirecturi` on registreeritud, võib pöörduda RIA teenusehalduri poole.
 
-5 _OAuth2 teek üritab jwks otspunktist võtme võtmeidentifikaatori abil kätte saada, kuid see ei õnnestu._
+## OAuth2 teek üritab `jwks` otspunktist võtme võtmeidentifikaatori abil kätte saada, kuid see ei õnnestu.
 
-Teenuse avaliku allkirjastamisvõtme otspunkt ([https://tara.ria.ee/oidc/jwks](https://tara.ria.ee/oidc/jwks)) pakub praegu ühtainust võtit. See tuleb võtta ja kasutada. TARA edasiarendamisel (2018 lõpp - 2019 algus) lisame dünaamilise võtmevahetuse (_key rollover_). Siis saab võtit pärida võtmeidentifikaatoriga.
+Teenuse avaliku allkirjastamisvõtme otspunkt ([https://tara.ria.ee/oidc/jwks](https://tara.ria.ee/oidc/jwks)) pakub praegu ühtainust võtit. See tuleb võtta ja kasutada. TARA edasiarendamisel (2018 lõpp - 2019 algus) lisame dünaamilise võtmevahetuse (key rollover). Siis saab võtit pärida võtmeidentifikaatoriga.
 
-6 _TARA ütleb, et Required+scope+&lt;openid&gt;+not+provided._
+## TARA ütleb, et `Required+scope+&lt;openid&gt;+not+provided`.
 
 Põhjus - nagu ka teiste päringuparameetrite probleemide puhul - võib olla URL-kodeerimises. Skoobi `eidasonly` kasutamisel tuleb see saata koos skoobiga `openid`. Skoobid tuleb eraldada tühikuga (URL-encoded kujul: `openid%20eidasonly`). Saatmisel jälgida, et tühik URL-kodeeritakse, aga mitte rohkem, kui üks kord. 
 
-7 _Mul ei ole tagasipöördumis-URL-is nõutud domeeni? Kas on lihtsam viis TARA testimiseks?_
+## Mul ei ole tagasipöördumis-URL-is nõutud domeeni? Kas on lihtsam viis TARA testimiseks?
 
 Testkeskkonnas võib tagasipöördumis-URL-ks valida ka `localhost`-i sisaldava URL-i. Sellisel juhul suunab TARA kasutaja pärast autentimist tagasi kasutaja masinas töötavale rakendusele. Toodangus `localhost`-i kasutada ei tohi.
 
-8 _Kas kõik spetsifikatsioonis nõutu tuleb teostada?_
+## Kas kõik spetsifikatsioonis nõutu tuleb teostada?
 
 Jah, tegu on turvaprotokolliga, millest mittevajalik on juba eemaldatud. Kõik nõuded tuleb täita, sh testimisse puutuv. Mittekohustuslikud asjad, nt `nonce` kasutamine on, on selgelt markeeritud.
 
-9 _Mida tähendab sõna "TARA"?_
+## Kas veebilehitsejas küpsiste (cookies) salvestamine peab olema lubatud?
+
+Jah, TARA kasutamiseks peab olema küpsiste salvestamine lubatud. Vastasel juhul võib tekkida veateade "Teie sessiooni ei leitud! Sessioon aegus või on küpsiste kasutamine Teie brauseris piiratud".
+
+## Mida tähendab sõna "TARA"?
 
 Vt: Joh. V. Veski, [Sõna "tara" tähenduse asjus](https://dea.digar.ee/cgi-bin/dea?a=d&d=uuseesti19361028.2.57), "Uus Eesti", 1936 (Rahvusarhiivi Digar-kogu)
 

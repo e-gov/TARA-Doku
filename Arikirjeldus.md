@@ -62,15 +62,34 @@ Asutusel tuleb:
 
 Testteenus on avatud 2017. a sügisest.
 
-Tootmisteenus on avatud 2018. a märtsist.
+Teenus on toodangus avatud 2018. a märtsist.
 
 ## Kuidas teenus välja näeb?
 
 <img src='img/KUVA-04.png' width='500'>
 
+## Soovitused Riigi autentimisteenuse integreerimiseks kliendi teenuses
+
+- kui teenuses on kasutuses üksnes Riigi autentimisteenus (TARA), on soovituslik kasutada viidet “Sisene” koos paigutusega veebilehe paremal üleval servas
+
+<img src='img/eesti_ee.png' width='500'>
+
+- ainult eIDAS-liidestuse korral on soovituslik Riigi autentimisteenusele (TARA) suunamiseks kasutada viidet “EL kodanik” / “EU citizen” või kasutada [logo](https://github.com/e-gov/TARA-Server/blob/master/disain/assets/eu_citizen_login_btn_190x50.svg)
+
+  <img src='img/eu_citizen_login_btn_190x50_rgb.png' width='150'> 
+
+- kui teenuses on kasutusel Riigi autentimisteenuse (TARA) kõrval ka teisi autentimisvahendeid, on soovituslik kasutada viitena RIA autentimisteenuse [logo](https://github.com/e-gov/TARA-Server/blob/master/disain/assets/tara_logo.svg) koos selgitusega “Sisene Riigi autentimisteenuse kaudu” või “Sisene läbi Riigi autentimisteenuse”.
+
+  <img src='img/tara-logo-et.png' width='150'>
+
+
 ## Rohkem teavet?
 
 Kontakt: `help@ria.ee`.
+
+Kui pöördute liidestamisel või liidestatud klientrakenduses TARA kasutamise tehnilise probleemiga, siis palume valmis panna väljavõte klientrakenduse logist. Tõrkepõhjuse väljaselgitamiseks vajame teavet, mis päring(ud) TARAsse saadeti ja mis vastuseks saadi.
+
+Samuti tasub heita pilk [korduvatele küsimustele](FAQ).
 
 [Tehniline kirjeldus](TehnilineKirjeldus) (liidese arendajale).
 

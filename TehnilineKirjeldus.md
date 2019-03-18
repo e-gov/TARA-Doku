@@ -7,7 +7,7 @@ Mõned autentimismeetodid võivad olla veel arenduses või kasutatavad ainult te
 
 # Tehniline kirjeldus
 {: .no_toc}
-v 0.8, 18.06.2018
+v 1.4, 18.03.2019
 
 - TOC
 {:toc}
@@ -163,7 +163,7 @@ Kasutajale kuvatakse autentimismeetodite valiku leht. Jätkame voo kirjeldamiseg
 
 <p style='text-align:center;'><img src='img/VOOG-02.PNG' style='width:400px'></p>
 
-Joonis 3. Tagasipöördumispäring
+Joonis 3. Tagasisuunamispäring
 
 Kasutaja valib autentimismeetodi. Valik edastatakse TARA serverikomponendile HTTP päringuga **3a**.
 
@@ -174,11 +174,11 @@ Autentimisdialoog jõuab lõpule ja kasutaja on vaja suunata tagasi klientrakend
 
 TARA serverikomponent saadab sirvikusse HTTP päringuvastuse **3b**, milles on ümbersuunamiskorraldus kasutaja tagasisuunamiseks klientrakendusse. 
 
-Sirvik täidab ümbersuunamiskorralduse **3b**, saates klientrakenduse serverikomponendile HTTP päringu **4a** (tagasipöördumispäringu). 
+Sirvik täidab ümbersuunamiskorralduse **3b**, saates klientrakenduse serverikomponendile HTTP päringu **4a** (tagasisuunamispäringu). 
 
-Tagasipöördumispäringus sisaldub autentimise tulemus (isik tuvastati või mitte). Tagasipöördumispäring on täpsemalt kirjeldatud eraldi jaotises allpool.
+Tagasisuunamispäringus sisaldub autentimise tulemus (isik tuvastati või mitte). Tagasisuunamispäring on täpsemalt kirjeldatud eraldi jaotises allpool.
 
-TARA roll võiks sellega lõppeda. OpenID Connect otsevoo (_implicit flow_) puhul lõpebki. Kuid TARA-s on kasutusel otsevoost mõneti turvalisemaks peetav volituskoodi voog (_authorization flow_). Volituskoodi voo korral ei saada autentimisteenus tagasipöördumispäringus autentimise tulemust täielikult, vaid ainult volituskoodi (_authorization token_).
+TARA roll võiks sellega lõppeda. OpenID Connect otsevoo (_implicit flow_) puhul lõpebki. Kuid TARA-s on kasutusel otsevoost mõneti turvalisemaks peetav volituskoodi voog (_authorization flow_). Volituskoodi voo korral ei saada autentimisteenus tagasisuunamispäringus autentimise tulemust täielikult, vaid ainult volituskoodi (_authorization token_).
 
 Volituskood lunastatakse autenditud isiku isikukoodi, nime jm isikuandmete vastu eraldi päringu tegemisega TARA serverikomponendi poole (joonis 4).   
 
@@ -186,7 +186,7 @@ Volituskood lunastatakse autenditud isiku isikukoodi, nime jm isikuandmete vastu
 
 Joonis 4. Identsustõendipäring
 
-Klientrakenduse serverikomponent saadab TARA serverikomponendile identsustõendipäringu **5a**. Identsustõendipäringus esitab klientrakendus tagasipöördumispäringus saadud volituskoodi. Klientrakendus tõendab oma ehtsust, lisades päringusse salasõna (_client secret_). Identsustõendipäring on nn _backend_-päring - see ei käi läbi sirviku.
+Klientrakenduse serverikomponent saadab TARA serverikomponendile identsustõendipäringu **5a**. Identsustõendipäringus esitab klientrakendus tagasisuunamispäringus saadud volituskoodi. Klientrakendus tõendab oma ehtsust, lisades päringusse salasõna (_client secret_). Identsustõendipäring on nn _backend_-päring - see ei käi läbi sirviku.
 
 TARA serverikomponent, saades identsustõendipäringu **5a**, kontrollib salasõna ja väljastab vastuses **5b** identsustõendi. Identsustõend sisaldab andmeid autentimise fakti (autentimise ajamoment, autentimismeetod) ja tuvastatud isiku kohta (isikukood, ees- ja perekonnanimi, piiriülese autentimise korral ka eraldi sünniaeg jm andmed). TARA serverikomponent allkirjastab identsustõendi. Identsustõend on täpsemalt kirjeldatud eraldi jaotises allpool.
 
@@ -221,8 +221,8 @@ Autentimispäringu elemendid:
 | URL-i element          | kohustuslik | näide                       |  selgitus     |
 |------------------------|:---------- :|-----------------------------|---------------|
 | protokoll, host ja tee (_path_) | jah | `https://tara.ria.ee/oidc/authorize` | `/authorize` on TARA-teenuse OpenID Connect-kohane autentimisotspunkt (termin 'autoriseerimine' pärineb alusprotokollist OAuth 2.0). |
-| `redirect_uri` | jah | `redirect_uri=https%3A%2F%2F` `eteenus.asutus.ee%2Ftagasi` | Tagasipöördumis-URL. Tagasipöördumis-URL-i valib asutus ise. Tagasipöördumis-URL võib sisaldada _query_-osa. <br><br>Vajadusel kasutada [URLi kodeerimist](https://en.wikipedia.org/wiki/Percent-encoding). <br><br>URI-i [fragmendi osa](https://tools.ietf.org/html/rfc3986#section-3.5) (`#` märk ja sellele järgnev osa) kasutamine [ei ole lubatud](https://tools.ietf.org/html/rfc6749#section-3.1.2). |
-| `scope` | jah | `scope=openid`<br><br>`scope=openid%20eidasonly` | Autentimise skoop.<br><br>`openid` on kohustuslik (seda nõuab OpenID Connect protokoll).<br><br>Skoobiga `eidasonly` saab nõuda, et kasutajale näidatakse ainult välisriikide autentimismeetodeid.<br><br><span class='arenduses'>(arenduses)</span> Skoobiga `email` saab nõuda, et identsustõendis väljastatakse kasutaja e-postiaadress. Vt jaotis 4.1.2 E-postiaadressi küsimine.<br><br>Piiriülesel autentimisel saab kasutada lisaskoope täiendavate isikuandmete pärimiseks (vt allpool).<br><br>Mitme skoobi kasutamisel tuleb skoobid eraldada tühikutega. Tühik esitatakse seejuures URL-kodeeringus (`%20`) ([RFC 3986](https://www.ietf.org/rfc/rfc3986.txt)). |
+| `redirect_uri` | jah | `redirect_uri=https%3A%2F%2F` `eteenus.asutus.ee%2Ftagasi` | Tagasisuunamis-URL. Tagasisuunamis-URL-i valib asutus ise. Tagasisuunamis-URL võib sisaldada _query_-osa. <br><br>Vajadusel kasutada [URLi kodeerimist](https://en.wikipedia.org/wiki/Percent-encoding). <br><br>URI-i [fragmendi osa](https://tools.ietf.org/html/rfc3986#section-3.5) (`#` märk ja sellele järgnev osa) kasutamine [ei ole lubatud](https://tools.ietf.org/html/rfc6749#section-3.1.2). |
+| `scope` | jah | `scope=openid`<br><br>`scope=openid%20eidas` <br><br>`scope=openid%20idcard%20mid` | Autentimise skoop.<br><br>`openid` on kohustuslik (seda nõuab OpenID Connect protokoll).<br><br> Skoopidega `idcard`, `mid`, `banklink`, `smartid`, `eidas` (ja `eidasonly`) saab nõuda, et kasutajale näidatakse ainult soovitud autentimismeetodeid. Vt jaotis 4.1.3 Autentimisvahendite valikuline kasutus.<br><br><span class='arenduses'></span> Skoobiga `email` saab nõuda, et identsustõendis väljastatakse kasutaja e-postiaadress. Vt jaotis 4.1.2 E-postiaadressi küsimine.<br><br>Piiriülesel autentimisel saab kasutada lisaskoope täiendavate isikuandmete pärimiseks (vt allpool).<br><br>Mitme skoobi kasutamisel tuleb skoobid eraldada tühikutega. Tühik esitatakse seejuures URL-kodeeringus (`%20`) ([RFC 3986](https://www.ietf.org/rfc/rfc3986.txt)). Skoobi väärtused on tõstutundlikud. Tundmatuid väärtuseid ignoreeritakse. |
 | `state` | jah | `state=hkMVY7vjuN7xyLl5` | Võltspäringuründe (_cross-site request forgery_, CSRF) vastane turvakood. `state` moodustamise ja kontrollimise kohta vt lähemalt jaotis "Võltspäringuründe vastane kaitse". |
 | `response_type` | jah | `response_type=code` | Määrab autentimise tulemuse serverile edastamise viisi. Toetatud on volituskoodi viis (OpenID Connect protokolli _authorization flow_), selle tähiseks on väärtus `code`. |
 | `client_id` | jah | `client_id=58e7...` | Rakenduse identifikaator. Rakenduse identifikaatori annab RIA asutusele klientrakenduse registreerimisel autentimisteenuse kasutajaks. |
@@ -267,6 +267,30 @@ Väite `email` väärtus loetakse kasutaja autentimissertifikaadi SAN laiendist 
 
 Väite `email_verified` väärtus on alati `false`. See tähendab, et TARA ei kontrolli ega väljasta teavet, kas kasutaja on oma eesti.ee e-postiaadressi suunanud või mitte. (Vastav funktsionaalsus võib lisanduda tulevikus).
 
+#### 4.1.3 Autentimisvahendite valikuline kasutus
+
+<span class='arenduses'>(arenduses)</span> Vaikimisi kuvatakse kasutajale kõik toetatud autentimismeetodid. Soovi korral on kuvatavaid autentimisvalikuid võimalik juhtida `scope` parameetri väärtuste abil. Sobivaid vahendeid on võimalik kombineerida, koostades loetelu soovitud autentimismeetoditest (lubatud väärtuste nimekiri on toodud tabelis 1).
+
+Tabel 1 - autentimisvalikute kuvamine
+
+| Parameetri scope väärtus | Selgitus                       |
+|--------------------------|--------------------------------|
+| `idcard` | Eesti ID-kaardiga autentimise lubamine |
+| `mid` | Mobiil-ID autentimise lubamine |
+| `banklink` | Pangalinkide valiku lubamine |
+| `smartid` | Smart-ID autentimise lubamine |
+| `eidas` | Piiriülese autentimise valiku lubamine |
+| `eidasonly` | Ainult piiriülese autentimise valiku lubamine. <br><br>NB! `eidasonly` kasutuse korral ignoreeritakse alati kõiki ülejäänud autentimisvalikute eelistusi. |
+
+Näide 1: Kõik autentimisvahendid
+`scope=openid`
+
+Näide 2: Ainult ID-kaardi ja Mobiil-ID kasutus
+`scope=openid%20idcard%20mid`
+
+Näide 3: Ainult piiriülene autentimine
+`scope=openid%20eidas`
+
 ### 4.2 Tagasisuunamispäring
 
 Tagasisuunamispäring on HTTP GET päring, millega kasutaja suunatakse autentimise järel TARA-st tagasi klientrakendusse.
@@ -281,6 +305,7 @@ code=71ed5797c3d957817d31&
 state=OFfVLKu0kNbJ2EZk
 ````
 
+
 Tagasisuunamispäringu elemendid:
 
 | URL-i element          | näide                       |  selgitus     |
@@ -289,7 +314,12 @@ Tagasisuunamispäringu elemendid:
 | `code` | `code=71ed579...`  | Volituskood (_authorization code_) on ühekordne “lubatäht” identsustõendi saamiseks. |
 | `state`            | `state=OFfVLKu0kNbJ2EZk`     | Võltspäringuründe vastane turvakood. Autentimispäringus saadetud turvakood peegeldatakse tagasi. `state` moodustamise ja kontrollimise kohta vt lähemalt jaotis "Võltspäringuründe vastane kaitse". |
 
-**Veateade tagasisuunamispäringus.** Kui TARA ei suutnud autentimispäringut töödelda - päring kas oli vigane või tekkis muu viga, siis saadab TARA tagasisuunamispäringus veateate (URL-i parameeter `error`) ja veakirjelduse (URL-i parameeter `error_description`). Tagastatakse ka `state`, kuid volituskoodi (`code`) ei saadeta. Nt:
+**Veateade tagasisuunamispäringus.** Kui TARA ei suutnud autentimispäringut töödelda - päring kas oli vigane või tekkis muu viga, siis saadab TARA tagasisuunamispäringus veakoodi (URL-i parameeter `error`) ja veakirjelduse (URL-i parameeter `error_description`). 
+
+TARA lähtub veakoodide tagastamisel OpenID Connect standardist (loe võimalike veakoodide kohta [siit](https://openid.net/specs/openid-connect-core-1_0.html#AuthError) ja [siit](https://tools.ietf.org/html/rfc6749#section-4.1.2.1)) ja veakirjelduse tekst esitatakse alati inglisekeelsena. 
+
+
+Tagastatakse ka `state`, kuid volituskoodi (`code`) ei saadeta. Nt:
 
 ````
 HTTP GET https://eteenus.asutus.ee/tagasi?
@@ -299,7 +329,10 @@ TARA+do+not+allow+this+request+to+be+processed&
 state=qnYY56Ra8QF7IUzqvw+PPLzMKoHtQkuUWbV/wcrkvdU=
 ````
 
-Klientrakenduses tuleks kontrollida, kas saadeti veateade.
+Tagasisuunamispäringu vigade korral on tavaliselt probleem liidestuses ja `error_description` parameetris esitatavat veakirjeldust ei ole vaja otse kasutajale kuvada. Klientrakenduses tuleks kontrollida, kas saadeti veakood. 
+
+
+
 
 **Autentimise katkestamine**. Kasutaja võib e-teenusesse tagasi pöörduda ka ilma autentimismeetodit valimata ja autentimist läbi tegemata (link "Tagasi teenusepakkuja juurde"). See võimalus on mõeldud juhuks, kui kasutaja vajutas klientrakenduses "Logi sisse", kuid tegelikult ei soovi sisse logida. Teenusega liitumise taotluses peab asutus RIA-le teada andma URL-i, kuhu kasutaja "Tagasi teenuspakkuja juurde" vajutamisel suunatakse. NB! OpenID Connect protokolli kohane tagasisuunamis-URL ja siin nimetatud URL on erineva tähendusega.
 
@@ -341,7 +374,7 @@ Päringu vastus on JSON-struktuur, milles on neli elementi (vt järgnev tabel).
 
 | element | selgitus |
 |:-------:|----------|
-| `access_token` | OAuth 2.0 pääsutõend. Pääsutõendit TARA-s ei kasutata (kuna kõik autenditud isikut kirjeldavad andmed väljastatakse identsustõendis; `userinfo` otspunkti TARA ei toeta) |
+| `access_token` | <span class='arenduses'>(arenduses)</span> OAuth 2.0 pääsutõend. TARA väljastab küll pääsutõendi, kuid soovitame seda kasutada (autenditud isikut kirjeldavate andmiseks saamiseks `userinfo` otspunktist) ainult siis, kui nn "karbitoote" liidestamisel ei ole võimalust kasutada identsustõendit (vt allpool). Kõik autenditud isikut kirjeldavad andmed väljastatakse juba identsustõendis. Identsustõendi kasutamine on eelistatud ja ka teoreetiliselt turvalisem (identsustõend on allkirjastatud, `userinfo` otspunkti väljund aga mitte) |
 | `token_type` | Väärtusega `bearer`. OAuth 2.0 pääsutõendi tüüp. TARA-s ei kasutata |
 | `expires_in` | OAuth 2.0 pääsutõendi aegumiskestus. TARA-s ei kasutata |
 | `id_token` | identsustõend, Base64 vormingus | 
@@ -385,7 +418,7 @@ Identsustõendis esitatakse järgmised väited (_claims_).
 | `nbf` (_Not Before_)   | `1530266752` - tõendi kehtivuse algusaeg, Unix _epoch_ vormingus |
 | `sub` (_Subject_)      | `EE60001019906` - autenditud kasutaja identifikaator (isikukood või eIDAS identifikaator) koos kodaniku riigikoodi eesliitega (riigikoodid vastavalt ISO 3166-1 alpha-2 standardile) |
 | `profile_attributes`   | autenditud isikut kirjeldavad andmed, sh eIDAS atribuudid (vt ka allpool täiendavate andmete küsimise ja isiku esindamise kohta) |
-| `profile_attributes`<br>`.date_of_birth` | `2000-01-01` - autenditud kasutaja sünnikuupäev ISO_8601 formaadis. Tagastatakse ainult eIDAS autentimisel |
+| `profile_attributes`<br>`.date_of_birth` | `2000-01-01` - autenditud kasutaja sünnikuupäev ISO_8601 formaadis. Tagastatakse ainult Eesti isikukoodiga isikute puhul ning eIDAS autentimisel |
 | `profile_attributes`<br>`.given_name` | `MARY ÄNN` - autenditud kasutaja eesnimi (testnimi, valitud täpitähtede sisalduvuse pärast) |
 | `profile_attributes`<br>`.family_name` | `O’CONNEŽ-ŠUSLIK` - autenditud kasutaja perekonnanimi (testnimi, valitud täpitähtede jm eritärkide sisalduvuse pärast) |
 | `profile_attributes`<br>`_translit` | Sisaldab JSON objekti ladina tähestikus profiiliatribuutidest (vt allpool translitereerimine.). Väärtustatud ainult eIDAS autentimisel |
@@ -399,7 +432,7 @@ Identsustõendis esitatakse järgmised väited (_claims_).
 
 #### 4.3.2 Mittekohustuslikud atribuudid (välismaalase autentimisel)
 
-<span style=arenduses>Arenduses</span> Järgnevad atribuudid esitatakse identsustõendis ainult siis, kui  autenditud isik on välismaalane ja klientrakendus on atribuute  autentimispäringu `scope` parameetris taotlenud.
+<span class='arenduses'>(arenduses)</span> Järgnevad atribuudid esitatakse identsustõendis ainult siis, kui  autenditud isik on välismaalane ja klientrakendus on atribuute  autentimispäringu `scope` parameetris taotlenud.
 
 Füüsiline isik
 
@@ -488,6 +521,72 @@ Identsustõend võib sisaldada muid OpenID Connect protokolli kohaseid välju, k
 
 Kui identsustõendit ei pärita `5` minuti jooksul, siis identsustõend aegub ja autentimisprotsessi tuleb korrata.
 
+### 4.4 Kasutajainfopäring
+
+<span class='arenduses'>(arenduses)</span> 
+
+Kasutajainfopäring võimaldab kehtiva  `OAuth 2.0` pääsutõendi alusel küsida infot autenditud kasutaja kohta. Päring peab olema esitatud HTTP GET meetodil. Kehtiva pääsutõendi korral väljastatakse JSON vormingus vastus.
+
+Pääsutõend tuleb esitada kasutajainfot väljastavale otspunktile [Bearer Token meetodil](https://tools.ietf.org/html/rfc6750#section-2.1) HTTP päises (soovituslik) või [URLi parameetrina](https://tools.ietf.org/html/rfc6750#section-2.3).
+
+Näide 1 - pääsutõendi edastamine `Authorization` päises:
+````
+GET /oidc/profile HTTP/1.1
+Host: tara.ria.ee
+Authorization: Bearer AT-20-qWuioSEtFhYVdW89JJ4yWvtI5SaNWep0
+````
+
+Näide 2 - pääsutõendi edastamine `access_token` parameetrina :
+````
+GET /oidc/profile?access_token=AT-20-qWuioSEtFhYVdW89JJ4yWvtI5SaNWep0 HTTP/1.1
+Host: tara.ria.ee
+````
+
+Kehtiva pääsutõendi korral väljastatakse JSON vormingus vastus.
+
+Näide:
+
+````json
+{
+  "amr": [
+    "mID"
+  ],
+  "date_of_birth": "2000-01-01",
+  "family_name": "O’CONNEŽ-ŠUSLIK TESTNUMBER",
+  "given_name": "MARY ÄNN",
+  "sub": "EE60001019906",
+  "auth_time": 1550735597
+}
+```` 
+
+Vastuses esitatavad väited väljastatakse identsustõendi alusel. 
+
+| json element (väide) | väljastamine kohustuslik | selgitus | 
+|:-----------------------|---------------------|-------------------|
+| `auth_time` | jah | Kasutaja eduka autentimise ajahetk. Unix *epoch* vormingus |
+| `sub` (_Subject_) | jah | Vormingult ja tähenduselt sama, mis `sub` identsustõendis |
+| `given_name` | jah | Vormingult ja tähenduselt sama, mis `profile_attributes.given_name` identsustõendis |
+| `family_name` | jah | Vormingult ja tähenduselt sama, mis `profile_attributes.family_name` identsustõendis |
+| `amr` | jah | Vormingult ja tähenduselt sama, mis `amr` identsustõendis |
+| `date_of_birth` |  ei <sup>1</sup> | Vormingult ja tähenduselt sama, mis `profile_attributes.date_of_birth` identsustõendis |
+| `email` | ei  <sup>1</sup> | Vormingult ja tähenduselt sama, mis `email` identsustõendis |
+| `email_verified` | ei  <sup>1</sup> | Vormingult ja tähenduselt sama, mis `email_verified` identsustõendis |
+| `acr` | ei  <sup>1</sup> | Vormingult ja tähenduselt sama, mis `acr` identsustõendis |
+
+ <sup>1</sup> Väljastatakse ainult juhul, kui antud väide on esitatud ka identsustõendis.
+
+
+**Vigade käsitlemine**
+
+Juhul kui kasutajainfo otspunktile esitatav pääsutõend puudub või on aegunud tagastatakse veakood ja lühikirjeldus `WWW-Authenticate` päises vastavalt [OpenID Connect Core 1.0 spetsifikatsioonile](https://openid.net/specs/openid-connect-core-1_0.html#UserInfoError)
+
+Näide:
+````
+HTTP/1.1 401 Unauthorized
+WWW-Authenticate: Bearer error="invalid_token",error_description="The access token has expired"
+````
+
+
 ## 5 Turvatoimingud
 
 ### 5.1 Identsustõendi kontrollimine
@@ -505,23 +604,25 @@ Klientrakendus peab identsustõendit kontrollima.
 
 1) "not before" ajamoment on kätte jõudnud:
 
-`nbf < jooksev_aeg - kellade_lubatud_erinevus` 
+`nbf <= jooksev_aeg + kellade_lubatud_erinevus` 
 
 2) "expired" ajamoment ei ole kätte jõudnud:
 
-`exp > jooksev_aeg + kellade_lubatud_erinevus`.
+`exp > jooksev_aeg - kellade_lubatud_erinevus`.
 
 `kellade_lubatud_erinevus` väärtus valida ise. Need kontrollid on vajaliku rünnete ja sassiminekute vältimiseks.
 
 TARA põhimõte on, et identsustõendile tuleb järgi tulla kohe, 5 minuti jooksul. Selle aja ületamisel identsustõendit ei väljastatagi.
 
-Idensustõendi eduka kontrollimise järel loob klientrakendus kasutajaga seansi ("logib kasutaja sisse"). Seansi loomine ja pidamine on klientrakenduse kohustus. Kuidas seda teha, ei ole enam autentimisteenuse TARA skoobis.
+Identsustõendi eduka kontrollimise järel loob klientrakendus kasutajaga seansi ("logib kasutaja sisse"). Seansi loomine ja pidamine on klientrakenduse kohustus. Kuidas seda teha, ei ole enam autentimisteenuse TARA skoobis.
+
+Märkus. Tavaliselt peetakse veebirakendusega seanssi küpsises hoitava seansitõendi (_session token_) abil. Seansitõend võib olla juhusõneline (_opaque_) või veebitõend (JWT). Vt lähemalt [Seansihaldus](Seansihaldus). Identsustõend ei sobi otseselt seansitõendiks, sest identsustõendi kehtivusaeg väljendab tõendi väljastamise perioodi, mitte seansi kehtivusperioodi. Küll aga saab klientrakendus seansitõendi koostada identsustõendi põhjal, valides seansi sobiva kehtivusaja. 
 
 ### 5.2 Võltspäringuründe vastane kaitse
 
 Klientrakenduses tuleb rakendada võltspäringuründe (_cross-site request forgery_, CSRF) vastaseid kaitsemeetmeid. Seda tehakse turvakoodide `state` ja `nonce` abil. `state` kasutamine on kohustuslik; `nonce` kasutamine on vabatahtlik. Kirjeldame `state` kasutamise protseduuri.
 
-Turvakoodi `state` kasutatakse autentimispäringule järgneva tagasipöördumispäringu võltsimise vastu. Klientrakenduses tuleb teostada järgmised sammud:
+Turvakoodi `state` kasutatakse autentimispäringule järgneva tagasisuunamispäringu võltsimise vastu. Klientrakenduses tuleb teostada järgmised sammud:
 
 1 Genereerida juhusõne, näiteks pikkusega 16 tärki: `XoD2LIie4KZRgmyc` (tähistame `R`).
 
@@ -539,15 +640,15 @@ kus `ETEENUS` on vabalt valitud küpsisenimi. Küpsisele tuleb rakendada atribuu
 
 Niisiis, autentimispäringuga saadetakse kaks asja: juhusõne küpsisesse panemiseks ja juhusõnest arvutatud räsiväärtus `state` parameetris. Klientrakendus ei pea juhusõne ega räsiväärtust meeles pidama.
 
-Tagasipöördumispäringu töötlemisel peab klientrakendus tegema järgmist:
+Tagasisuunamispäringu töötlemisel peab klientrakendus tegema järgmist:
 
 5 Võtab päringuga tuleva küpsise `ETEENUS` väärtuse
 
 6 Arvutab küpsise väärtusest räsi
 
-7 Kontrollib, et räsi ühtib tagasipöördumispäringus tagasipeegeldatava `state` väärtusega.
+7 Kontrollib, et räsi ühtib tagasisuunamispäringus tagasipeegeldatava `state` väärtusega.
 
-Tagasipöördumispäringut tohib aktsepteerida ainult ülalkirjeldatud kontrolli õnnestumisel.
+Tagasisuunamispäringut tohib aktsepteerida ainult ülalkirjeldatud kontrolli õnnestumisel.
 
 Kirjeldatud protseduuris on võtmetähtsusega väärtuse `state` sidumine sessiooniga. Seda tehakse küpsise abil. (See on autentimise ajutine sessioon.  Töösessiooni moodustab klientrakendus pärast autentimise edukat lõpuleviimist).
 
@@ -615,6 +716,8 @@ RIA, rahuldades taotluse:
 
 Järgneb liidestuse testimine. RIA abistab siin võimalike probleemide lahendamisel. Testimise kohta vt lähemalt: [Testimine](https://e-gov.github.io/TARA-Doku/Testimine).
 
+Tasub pilk heita [korduvatele küsimustele](FAQ).
+
 Liitumine TARA toodanguteenusega. Eduka testimise järel asutus esitab taotluse toodanguteenuse avamiseks klientrakendusele. Taotluses näidatakse klientrakenduse toodanguversiooni tagasisuunamis-URL (`redirect_uri`), OpenID Connect protokolli kohaselt jm andmed
 
 RIA, rahuldades taotluse, väljastab asutusele klientrakenduse toodanguversiooni salasõna `client_secret` ja avab asutuse klientrakenduse toodanguversioonile juurdepääsu toodanguteenusele.
@@ -623,6 +726,9 @@ RIA, rahuldades taotluse, väljastab asutusele klientrakenduse toodanguversiooni
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
+| 1.4, 18.03.2019   | Täpsustatud tagasisuunamispäringu kirjeldust vea korral. |
+| 1.3, 21.02.2019   | Lisatud kasutajainfopäringu kirjeldus. |
+| 1.2, 01.02.2019   | Autentimisvahendite valikuline kasutus `scope` parameetri abil. |
 | 1.1, 29.11.2018   | Täpsustused autentimispäringu parameetri osas (`redirect_uri`). |
 | 1.0, 03.10.2018   | Eemaldatud Danske pank autentimismeetodite toe koosseisust |
 | 0.9, 18.09.2018   | Eemaldatud mobiilinumber identsustõendi koosseisust |

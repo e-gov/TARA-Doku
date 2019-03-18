@@ -6,23 +6,12 @@ permalink: /
 
 <img src='img/LOVID.png' style='width: 80px;'>
 
+18.02.2019 Kliendi terava tähelepaneku põhjal täpsustasime identsustõendi kehtivuse arvutust (seda ei teosta TARA, vaid peab teostama klientrakendus: ). Tõend kehtib, kuid on täidetud tingimused: 
+`nbf <= jooksev_aeg + kellade_lubatud_erinevus` ja `exp > jooksev_aeg - kellade_lubatud_erinevus`. Vt [veebitõendi standard](https://tools.ietf.org/html/rfc7519), jaot 4.1.4-5.
+{: .note}
+
 12.12.2018 Protokollimuudatus. TARA kasutajaliideses keele määramiseks tuleb praegu autentimispäringus kasutada parameetrit `locale` (vt [Tehniline kirjeldus](TehnilineKirjeldus#41-autentimisp%C3%A4ring)). OpenID Connect protokolliga parema vastavuse tagamiseks teeme muudatuse: keelt hakkab määrama parameeter `ui_locales` (vt [OpenID Connect spetsifikatsioon](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest)). Muudatuse üleminekuperiood on kuus kuud: `ui_locales` saab kasutatavaks jaanuari 2019 lõpus;  `locale` kasutuse lülitame välja juuli 2019 lõpus. Üleminekuperioodil on paralleelselt kasutatavad mõlemad parameetrid.
-{: .adv}
-
-14.09.2018 Täpsustasime [andmekaitsetingimusi](Isikuandmed). Eraelu paremaks kaitseks loobume mobiilinumbri väljastamisest identsustõendis.
-{: .adv}
-
-07.09.2018 TARA toodangukeskkonda paigaldati täna Coop pangalink. Testkeskkonda jäid testimiseks alles SEB ja Luminori pangalingid.
-{: .adv}
-
-31.08.2018 TARA toodangukeskkonda paigaldatakse uus versioon 04.09.2018. Uue versiooni käigus lisatakse pangalinkidega autentimise võimekus. Esialgselt plaanitud skoobist jääb välja Danske bank. Lisatakse järgnevate pankade pangalingid: Swedbank, SEB, LHV ja Luminor.
-{: .adv}
-
-30.08.2018 Täiendasime liitumistaotluse vormi: palume anda ka kasutajate arvu prognoos ja autentimismeetodid, mida soovite kasutada.
-{: .adv}
-
-29.08.2018 Lisame teenusele uue ID-kaardi toe. Uusi ID-kaarte hakatakse väljastama 2019. a ja need nõuavad ID-kaardiga autentimise erinevat seadistust. TARA kasutajatele ei muutu midagi.
-{: .adv}
+{: .note}
 
 # Autentimisteenus TARA
 
@@ -35,10 +24,6 @@ TARA teenust pakub Riigi Infosüsteemi Amet.
 Ametlikku teavet TARA ja RIA muude teenuste kohta vt [RIA autentimisteenuste lehelt](https://www.ria.ee/et/riigi-infosusteem/eid/partnerile.html#tara). 
 
 Käesoleva lehe teave on mõeldud kolmele sihtrühmale. Asutuse äriüksuse juht saab siinse teabe alusel hinnata TARA sobivust, liidestustööde mahtu ja teha otsuse TARA kasutuselevõtuks. Liidese arendaja leiab siit kogu vajaliku tehnilise teabe asutuse e-teenuste liidestamiseks TARA-ga. Lehel on (eraldatult) ka teavet, mis on seotud TARA edasiarendamisega.
-Kui plaanite võtta enda autentimisteenuses kasutusele ainult välisriikide autentimismeetodid, siis soovitame TARA autentimisteenusele suunamiseks kasutada sõnastust „EL kodanik“/“EU citizen“.
-
-Soovi korral võite kasutusele võtta ka EU citizen nupu näidise. <img src='img/eu_citizen_login_btn_190x50_rgb.png' style='width: 80px;'>
-
 
 ## Ärikasutajale
 
@@ -55,7 +40,7 @@ Soovi korral võite kasutusele võtta ka EU citizen nupu näidise. <img src='img
 
 [Testimine](Testimine)
 
-[Näiterakendused](Naited)
+[Näiterakendused/Liidestuja tarkvara](Naited)
 
 [Sõnastik](Sonastik) · [Viited](Viited) · [FAQ](FAQ)
 

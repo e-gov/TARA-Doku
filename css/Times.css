@@ -11,7 +11,7 @@ body {
   font-family: 'Fira Sans', sans-serif;
   font-size: 16px; 
   color: #222325 !important;
-  line-height: 1.4 !important;
+  line-height: 1.5 !important;
   }
 
 /* Päis ja jalus */
@@ -75,25 +75,14 @@ p { margin: 0 0 1em 0; }
 /*#endregion */
 
 /*#region Loetelud */
-#Tekst ul {
-  list-style-type: '-  ';
+ul {
+  list-style-type: none;
   margin: 0 0 1em 0;
   padding-left: 1em;
-}  
-
-#Tekst > ol {
+}
+ol {
   padding-left: 1em;
-}  
-
-#markdown-toc ul {
-  list-style-type: '   ';
-  margin: 0 0 1em 0;
-  padding-left: 1em;
-}  
-
-#markdown-toc > ol {
-  padding-left: 1em;
-}  
+}
 
 /*#endregion */
 
@@ -102,9 +91,12 @@ p { margin: 0 0 1em 0; }
 #markdown-toc li:before {
     content: none !important;
     margin-left: 0 !important;
-}    
-#markdown-toc li {
-  list-style-type: '   ' !important;
+}
+#markdown-toc > ul {
+  list-style-type: none;
+}
+#markdown-toc > li {
+  list-style: none;
 }  
 /*#endregion */
 
