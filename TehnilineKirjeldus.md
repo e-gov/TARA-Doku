@@ -2,7 +2,7 @@
 permalink: TehnilineKirjeldus
 ---
 
-Mõned autentimismeetodid võivad olla veel arenduses või kasutatavad ainult testkeskkonnas. Vt [teenuse seisund](index).
+Mõned autentimismeetodid võivad olla veel arenduses või kasutatavad ainult testkeskkonnas. Vt [uudised](Uudised).
 {: .note}
 
 # Tehniline kirjeldus
