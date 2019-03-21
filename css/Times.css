@@ -92,7 +92,7 @@ ol {
     content: none !important;
     margin-left: 0 !important;
 }
-#markdown-toc > ul {
+#markdown-toc, #markdown-toc ul {
   list-style-type: none;
 }
 #markdown-toc > li {
@@ -114,13 +114,20 @@ pre, code, samp {
   font-size: 17px;
   color: black !important;
   background-color: #f6f8fa; /* nagu GitHubis */
+  border: 1px solid whitesmoke;
+  border-radius: 4px;
+  padding: 4px;
   white-space:pre-wrap;
   overflow-y: hidden; overflow-x: hidden;
   page-break-inside: avoid; hyphens: none;
   text-transform: none;
 }
+/* Mitmerealised kooditükid, nn "tarade" vahel esitatakse
+  <pre><code> ... kujul. Nendel ääris sea ainult pre elemendile
+*/
 pre code,
 code code {
+  border: none;
   font-size: 100%;
 }
 pre { margin-top: 1em; margin-bottom: 1em; }
