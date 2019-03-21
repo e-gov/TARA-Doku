@@ -2,7 +2,7 @@
 permalink: Feder
 ---
 
-# Seansi üleandmine
+# Autentimise e seansi üleandmine
 {: .no_toc}
 
 kavand

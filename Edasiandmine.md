@@ -1,5 +1,5 @@
 ---
-permalink: Legacy
+permalink: Edasiandmine
 ---
 
 # Autentimise edasiandmine

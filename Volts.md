@@ -8,7 +8,7 @@ Näitame autentimisteenuse [TARA](https://github.com/e-gov/TARA-Doku) näitel Op
 
 Joonisel on esitatud: 1) autentimisteenus TARA `tara.ria.ee`; 2) autententimisteenust TARA kasutav e-teenus (serveri osa); 3) ründaja sirvik (punane); 4) ohvri sirvik; 5) ründaja (punane); 6) ohver.
 
-![](img/Volts.PNG)
+<p style='text-align:center;'><img src='img/Volts.PNG' style='width:400px'></p>
 
 TL;DR Võltspäringutõke tuleb siduda sessiooniga, muidu pole sellest kasu.
 
