@@ -4,7 +4,15 @@ permalink: Arendajale
 
 ## Arendajale
 
-Siin on valik avalikke dokumente, mis käsitlevad TARA mitmesuguseid sisekülgi. Dokumendid võivad pakkuda huvi lugejale, kes soovib TARA edasiarendamises kaasa lüüa.
+TARA kood on avalik ja litsentseeritud avalitsentsiga.
+
+Kood asub GitHub organisatsioonis [https://github.com/e-gov](https://github.com/e-gov), repodes, mille nime eesliiteks on `TARA-`.
+
+Näiteks TARA serveri kood asub: [https://github.com/e-gov/TARA-Server](https://github.com/e-gov/TARA-Server).
+
+Siin on ka valik avalikke dokumente, mis käsitlevad TARA mitmesuguseid sisekülgi. Dokumendid võivad pakkuda huvi lugejale, kes soovib TARA edasiarendamises kaasa lüüa:
+
+[QA strateegia](QaStrateegia)
 
 [eesti.ee autentimislahendus](EE-Auth)
 

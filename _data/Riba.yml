@@ -1,5 +1,7 @@
-- title: "Ülevaade"
+- title: "Tutvustus"
   url: "/"
+- title: "Uudised"
+  url: "/Uudised"  
 - title: "Ärikirjeldus"
   url: "/Arikirjeldus"
 - title: "Tehniline kirjeldus"
