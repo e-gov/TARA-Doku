@@ -4,7 +4,9 @@
 
 /*#region Paigutus */
 body {
-  max-width: 55em;
+  display: flex;
+  height: 100vh;
+  /* max-width: 55em; */
   margin: 0 0; 
   padding: 0 0 2em 0; 
   /* font-family: 'Segoe UI', Arial, serif; */
@@ -13,6 +15,29 @@ body {
   color: #222325 !important;
   line-height: 1.5 !important;
   }
+
+  aside, article {
+    overflow-y: auto;
+    padding: 2em;
+  }
+   
+  aside {
+    flex: 1;
+  }
+   
+  article {
+    flex: 2;
+  }
+  
+  @media (max-width: 800px) {
+    body {
+      flex-direction: column;
+    }
+  }
+
+aside {
+
+}
 
 /* Päis ja jalus */
 .pais, .jalus {
@@ -32,7 +57,10 @@ body {
   padding-bottom: 4em;
 }
 
-#Tekst { width: 45rem; margin-left: 2em; }
+article {
+  width: 45rem;
+  margin-left: 2em;
+}
 
 /* ---- Avalehe paigutus ---- */  
 #Container { display: flex; max-width: 60em; }
