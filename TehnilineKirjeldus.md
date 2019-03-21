@@ -331,9 +331,6 @@ state=qnYY56Ra8QF7IUzqvw+PPLzMKoHtQkuUWbV/wcrkvdU=
 
 Tagasisuunamispäringu vigade korral on tavaliselt probleem liidestuses ja `error_description` parameetris esitatavat veakirjeldust ei ole vaja otse kasutajale kuvada. Klientrakenduses tuleks kontrollida, kas saadeti veakood. 
 
-
-
-
 **Autentimise katkestamine**. Kasutaja võib e-teenusesse tagasi pöörduda ka ilma autentimismeetodit valimata ja autentimist läbi tegemata (link "Tagasi teenusepakkuja juurde"). See võimalus on mõeldud juhuks, kui kasutaja vajutas klientrakenduses "Logi sisse", kuid tegelikult ei soovi sisse logida. Teenusega liitumise taotluses peab asutus RIA-le teada andma URL-i, kuhu kasutaja "Tagasi teenuspakkuja juurde" vajutamisel suunatakse. NB! OpenID Connect protokolli kohane tagasisuunamis-URL ja siin nimetatud URL on erineva tähendusega.
 
 ### 4.3 Identsustõendipäring
@@ -368,18 +365,18 @@ Päringu kehas tuleb esitada järgnevad parameetrid:
 
 #### 4.3.1 Identsustõend
 
-TARA server kontrollib, et identsustõendit küsib õige rakendus, seejärel väljastab päringu vastuses (_HTTP response body_) identsustõendi.
+TARA server kontrollib, et identsustõendit küsiv klientrakendus on TARAs registreeritud. Seejärel väljastab päringu vastuses (_HTTP response body_) identsustõendi.
 
 Päringu vastus on JSON-struktuur, milles on neli elementi (vt järgnev tabel). 
 
 | element | selgitus |
 |:-------:|----------|
-| `access_token` | <span class='arenduses'>(arenduses)</span> OAuth 2.0 pääsutõend. TARA väljastab küll pääsutõendi, kuid soovitame seda kasutada (autenditud isikut kirjeldavate andmiseks saamiseks `userinfo` otspunktist) ainult siis, kui nn "karbitoote" liidestamisel ei ole võimalust kasutada identsustõendit (vt allpool). Kõik autenditud isikut kirjeldavad andmed väljastatakse juba identsustõendis. Identsustõendi kasutamine on eelistatud ja ka teoreetiliselt turvalisem (identsustõend on allkirjastatud, `userinfo` otspunkti väljund aga mitte) |
-| `token_type` | Väärtusega `bearer`. OAuth 2.0 pääsutõendi tüüp. TARA-s ei kasutata |
-| `expires_in` | OAuth 2.0 pääsutõendi aegumiskestus. TARA-s ei kasutata |
+| `access_token` | <span class='arenduses'>(arenduses)</span> OAuth 2.0 pääsutõend. TARA väljastab küll pääsutõendi, kuid soovitame pääsutõendit kasutada ainult siis, kui nn "karbitoote" liidestamisel ei ole võimalust kasutada identsustõendit (vt allpool).<br><br>Pääsutõendiga saab klientrakendus pärida `userinfo` otspunktist autenditud isikut kirjeldavad andmed. Kõik autenditud isikut kirjeldavad andmed väljastatakse aga juba identsustõendis. Identsustõendi kasutamine on eelistatud ja ka teoreetiliselt turvalisem (identsustõend on allkirjastatud, `userinfo` otspunkti väljund aga mitte) |
+| `token_type` | Väärtusega `bearer`. OAuth 2.0 pääsutõendi tüüp |
+| `expires_in` | OAuth 2.0 pääsutõendi aegumiskestus |
 | `id_token` | identsustõend, Base64 vormingus | 
 
-TARA-s kasutatakse neist neljast elemendist viimast - identsustõendit. Identsustõend on TARA poolt väljastatav tõend autentimise fakti kohta.
+Identsustõend on TARA poolt väljastatav tõend autentimise fakti kohta. Identsustõend on [veebitõendi](https://jwt.io/) (JSON Web Token, JWT) vormingus.
 
 Näide:
 
@@ -519,7 +516,7 @@ Näide identsustõendis profiilielementide translitereerimisest (isiku eesnimi j
 
 Identsustõend võib sisaldada muid OpenID Connect protokolli kohaseid välju, kuid neid teenuses ei kasutata. 
 
-Kui identsustõendit ei pärita `5` minuti jooksul, siis identsustõend aegub ja autentimisprotsessi tuleb korrata.
+Klientrakendus peab identsustõendile järgi tulema kohe tagasisuunamispäringu saamisel. Kui identsustõendit ei pärita `5` minuti jooksul, siis identsustõend aegub ja autentimisprotsessi tuleb korrata.
 
 ### 4.4 Kasutajainfopäring
 
@@ -586,21 +583,53 @@ HTTP/1.1 401 Unauthorized
 WWW-Authenticate: Bearer error="invalid_token",error_description="The access token has expired"
 ````
 
-
 ## 5 Turvatoimingud
 
 ### 5.1 Identsustõendi kontrollimine
 
-Klientrakendus peab identsustõendit kontrollima.
+Klientrakendus peab identsustõendit kindlasti kontrollima. Teostada tuleb kõik protokollikohased (OpenID Connect ja selle alusprotokoll OAuth 2.0) kontrollid.
 {: .adv}
 
-1\. Allkirja kontrollimine. Identsustõend on autentimisteenuse TARA poolt allkirjastatud. Allkiri JWT standardile. Allkirjaalgoritmina kasutab TARA `RS256`. Klientrakendus peab suutma vähemalt selle algoritmiga antud allkirja kontrollida. (Märkus. Teostada on otstarbekas standardse JWT teegiga, mis toetaks kõiki JWT algoritme. TARA allkirjaalgoritmi vajadus on põhimõtteliselt võimalik - kui `RS256`-s peaks avastatama turvanõrkus)
+Kontrollida tuleb:
 
-2\. Tõendi väljaandja kontrollimine. Identsustõendi elemendi `iss` väärtus peab olema `https://tara-test.ria.ee` (TARA testkeskkonna puhul) või `https://tara.ria.ee` (TARA toodangukeskkonna puhul).
+- tõendi allkirja
+- tõendi väljaandjat
+- tõendi adressaati
+- tõendi ajalist kehtivust.
 
-3\. Tõendi adressaadi kontrollimine. Klientrakendus peab kontrollima, et saadud tõend on välja antud just temale. Selleks veenduda, et identsustõendi elemendi `aud` väärtus ühtib klientrakendusele registreerimisel väljaantud kliendinimega (_Client ID_).
+Lähemalt nendest kontrollidest allpool. Vajadusel saate täpsemat teavet OpenID Connect ja OAuth 2.0 protokollikirjeldustest.
 
-4\. Tõendi ajalise kehtivuse kontrollimine. Kontrollitakse kolme identsustõendis sisalduva elemendi abil - `iat`, `nbf`, `exp`. Klientrakendus kasutab kontrollimisel oma kellaaega. Kontrollida tuleks, et: 
+**Allkirja kontrollimine.** Identsustõend on autentimisteenuse TARA poolt allkirjastatud. Allkiri vastab JWT standardile.
+
+Allkirjaalgoritmina kasutab TARA `RS256`. Klientrakendus peab suutma vähemalt selle algoritmiga antud allkirja kontrollida. Allkirja kontrollimine on otstarbekas teostada standardse JWT teegiga, mis toetaks kõiki JWT algoritme. Seda vähetõenäoliseks, kuid siiski võimalikuks juhuks, kui `RS256`-s peaks avastatama turvanõrkus, mis tingib algoritmi vahetamise.
+
+Allkirja kontrollimisel tuleb kasutada TARA avalikku allkirjavõtit (edaspidi "võti"). Võtme saate võtmeväljastuse otspunktist (vt allpool jaotis "Otspunktid"). 
+
+Võti on stabiilne. Vahetame võtit vastavalt turvasoovitustele, mitte sagedamini kui 2-3 aasta tagant. Kuid ei ole välistatud erakorraline võtmevahetus võtme korrumpeerumise korral.
+
+Võtmel on identifikaator (`kid`). Võtmeidentifikaatorite osas järgime OpenID Connect ja OAuth 2.0 soovitatud praktikat, mis teeb võimalikuks teenuse katkestuseta võtmevahetuse. 
+
+See tähendab, et võtmevahetusel (väga harv ja erakordne sündmus) on lühikese perioodi (5-10 min) jooksul võtmeväljastuse otspunktist nähtavad kaks võtit, kumbki oma identifikaatoriga. Muul ajal on otspunktis üksainus võti.
+
+Praeguse võtme `kid`, kui vaatate võtmeväljastuse otspunktist [https://tara.ria.ee/oidc/jwks](https://tara.ria.ee/oidc/jwks), on `a8ff37`. Kui võtame kasutusele uue võtme, siis uuel võtmel saab olema teine `kid`.
+
+Identsustõendi päringu vastuses väljastab TARA klientrakendusele ka `kid`. See `kid` osutab võtmele, mida peate väljastatud tõendi allkirja kontrollimisel kasutama.
+
+Soovitame võtit puhverdada, kuna see vähendab TARA serveri poole tehtavate päringute arvu. Kuid aktsepteeritav on ka võtme pärimine igas autentimises.
+
+Otstarbekas on puhverdada `kid` koos võtmega (võti ise esitatakse väärtuste `n` ja `e` paarina).
+
+Identsustõendi saamisel peab teie klientrakendus kontrollima, kas saab kasutada puhverdatud võtit. Kui TARA saatis identsustõendis `kid` väärtuse, millele vastavat võtit puhvris ei ole, siis tuleb puhvrit uuendada, s.t pärida võtmeväljastuse otspunktist uus võti.
+
+Ülalesitatu teostamisel võib mängida rolli, kas liidestate TARA-ga "karbitoodet", üritate hakkama saada mõne OpenID Connect teegi seadistamisega või programmeerite liidestuse ise. Teegid ja karbitooted ei tarvitse puhverdamist toetada.
+
+**Võtmeväljastuse otspunkti usaldamine.** Klientrakendus teeb HTTPS päringuid TARA serversse, identsustõendi väljastamise ja võtmeväljastuse otspunktide vastu. Klientrakendus peab kontrollima TARA serveri sertifikaati (domeenid `tara.ria.ee` ja `tara-test.ria.ee`). Serdid nendele domeenidele on välja antud DigiCert poolt. Klientrakenduses tuleb seetõttu DigiCert juursert või TARA sert seada usaldusankruks. 
+
+**Tõendi väljaandja kontrollimine.** Identsustõendi elemendi `iss` väärtus peab olema `https://tara-test.ria.ee` (TARA testkeskkonna puhul) või `https://tara.ria.ee` (TARA toodangukeskkonna puhul).
+
+**Tõendi adressaadi kontrollimine.** Klientrakendus peab kontrollima, et saadud tõend on välja antud just temale. Selleks veenduda, et identsustõendi elemendi `aud` väärtus ühtib klientrakendusele registreerimisel väljaantud kliendinimega (_Client ID_).
+
+**Tõendi ajalise kehtivuse kontrollimine.** Kontrollitakse kolme identsustõendis sisalduva elemendi abil - `iat`, `nbf`, `exp`. Klientrakendus kasutab kontrollimisel oma kellaaega. Kontrollida tuleks, et: 
 
 1) "not before" ajamoment on kätte jõudnud:
 
@@ -614,7 +643,7 @@ Klientrakendus peab identsustõendit kontrollima.
 
 TARA põhimõte on, et identsustõendile tuleb järgi tulla kohe, 5 minuti jooksul. Selle aja ületamisel identsustõendit ei väljastatagi.
 
-Identsustõendi eduka kontrollimise järel loob klientrakendus kasutajaga seansi ("logib kasutaja sisse"). Seansi loomine ja pidamine on klientrakenduse kohustus. Kuidas seda teha, ei ole enam autentimisteenuse TARA skoobis.
+**Seansi loomine.** Identsustõendi eduka kontrollimise järel loob klientrakendus kasutajaga seansi ("logib kasutaja sisse"). Seansi loomine ja pidamine on klientrakenduse kohustus. Kuidas seda teha, ei ole enam autentimisteenuse TARA skoobis.
 
 Märkus. Tavaliselt peetakse veebirakendusega seanssi küpsises hoitava seansitõendi (_session token_) abil. Seansitõend võib olla juhusõneline (_opaque_) või veebitõend (JWT). Vt lähemalt [Seansihaldus](Seansihaldus). Identsustõend ei sobi otseselt seansitõendiks, sest identsustõendi kehtivusaeg väljendab tõendi väljastamise perioodi, mitte seansi kehtivusperioodi. Küll aga saab klientrakendus seansitõendi koostada identsustõendi põhjal, valides seansi sobiva kehtivusaja. 
 
