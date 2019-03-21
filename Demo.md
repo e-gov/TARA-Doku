@@ -2,6 +2,8 @@
 permalink: Demo
 ---
 
+# Demo
+
 TARA demo on Heroku pilveteenuses majutatud näiterakendus, millega saate proovida TARA abil autentimist.
 
 Näiterakendusse sisenemiseks [klõpsake siia](https://tara-demo.herokuapp.com/).

@@ -4,7 +4,7 @@ permalink: Arendajale
 
 ## Arendajale
 
-Siin on valik avalikke dokumente, mis käsitlevad TARA mitmesuguseid sisekülgi. Dokumendid võivad pakkuda huvi lugejale, kes tunneb huvi TARA edasiarendamises kaasalöömise vastu.
+Siin on valik avalikke dokumente, mis käsitlevad TARA mitmesuguseid sisekülgi. Dokumendid võivad pakkuda huvi lugejale, kes soovib TARA edasiarendamises kaasa lüüa.
 
 [eesti.ee autentimislahendus](EE-Auth)
 
