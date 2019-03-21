@@ -4,7 +4,7 @@ permalink: Laiem
 
 # Laiematest teemadest
 
-Siit leiate käsitlusi teemadest, mis on seotud TARA kasutamise laiema kontekstiga.
+Siin on käsitlused paarist teemast, mis on seotud TARA kasutamise kontekstiga.
 
 - [Seansihaldus](Seansihaldus)
 - [Autentimise e seansi edasiandmine](Feder)

@@ -6,11 +6,6 @@ permalink: Naited
 
 Siit leiate TARA kasutavaid näiterakendusi ja kogukonna arendatud, vaba litsentsiga liidestumistarkvara.
 
-Täiendused on teretulnud.
-
-You are welcome to submit a link to your TARA integration solution to be added to this list. Please contact: help@ria.ee.
-{: .note}
-
 ## Klientrakenduste näited
 
 Näiterakendused on mõeldud õppeotstarbeliseks uurimiseks, neid ei saa _out of the box_ toodangus kasutada. 
@@ -25,9 +20,11 @@ TARA-Java | Java | [https://github.com/e-gov/TARA-Java](https://github.com/e-gov
 
 ## Kogukonna arendatud
 
+Kui kasutate tasuta saadud tarkvara, siis andke ka kogukonnale midagi tagasi. Täiendused on teretulnud.
+
+You are welcome to submit a link to your TARA integration solution to be added to this list. Please contact: help@ria.ee.
+{: .note}
+
 nimetus | asukoht | keel | väljatöötaja
 --------|---------|------|--------------
 OmniAuth::Tara | [https://github.com/internetee/omniauth-tara](https://github.com/internetee/omniauth-tara) | Ruby | Estonian Internet Foundation |
-
- 
-
