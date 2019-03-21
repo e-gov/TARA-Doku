@@ -1,8 +1,8 @@
 ---
-permalink: Laiem
+permalink: Seonduv
 ---
 
-# Laiematest teemadest
+# Seonduvad teemad
 
 Siin on käsitlused paarist teemast, mis on seotud TARA kasutamise kontekstiga.
 
