@@ -39,7 +39,7 @@ Eraldi on lehel teavet TARA edasiarendajale.
 
 [Testimine](Testimine)
 
-[Näiterakendused/Liidestuja tarkvara](Naited)
+[Liidestuja tarkvara](Naited)
 
 [Sõnastik](Sonastik) · [Viited](Viited) · [FAQ](FAQ)
 
