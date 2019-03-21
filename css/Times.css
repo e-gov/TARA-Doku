@@ -76,7 +76,7 @@ p { margin: 0 0 1em 0; }
 
 /*#region Loetelud */
 ul {
-  list-style-type: none;
+  list-style-type: circle;
   margin: 0 0 1em 0;
   padding-left: 1em;
 }
