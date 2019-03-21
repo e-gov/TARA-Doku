@@ -26,7 +26,7 @@ Eraldi on lehel teavet TARA edasiarendajale.
 
 ## Ärikasutajale
 
-[Ärikirjeldus](Arikirjeldus) · <a href='https://www.ria.ee/et/riigi-infosusteem/eid/partnerile.html#tara'>Liitumine</a>
+[Ärikirjeldus](Arikirjeldus) · [Liitumine](Liitumine)
 
 [Andmekaitsetingimused](Isikuandmed)
 
