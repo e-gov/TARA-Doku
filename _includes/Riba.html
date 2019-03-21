@@ -1,55 +1,51 @@
-<div id="Riba">
-  
-  {% comment %} 
-    Toetab kuni kolme taset.
-  {% endcomment %} 
+{% comment %} 
+  Toetab kuni kolme taset.
+{% endcomment %} 
 
-  <aside>
-    <ol>
-      {% assign id_count = '' %}
-      {% for nav in site.data.Riba %}
-        {% if nav.categories != null %}
-          {% assign id_count = id_count | append: 'x' %}
-          <li{% if nav.title == page.title %} class="active"{% endif %}>
-            <a href="{{ site.baseurl }}{{ nav.url }}">{{ nav.title }}</a>
-            <!-- Alammenüü lüliti --> 
-            <span id="{{ id_count.size }}" class="lyliti"> ▼ </span>
-            <ol id="alammenyy{{ id_count.size }}" class='alammenyy'>
-            {% for subcategory in nav.categories %}
-              <li{% if subcategory.title == page.title %} class="active"{% endif %}>
-                <a href="{{ site.baseurl }}{{ subcategory.url }}">
-                  {{ subcategory.title }}
-                </a>
-                {% if subcategory.type == "Oluline" %}
-                    <span style='color: red;'>OLULINE!</span>
-                {% endif %}
-              </li>
-              {% if subcategory.categories != null %}
-                <ol class='alammenyy2'>
-                {% for subitem in subcategory.categories %}
-                  <li{% if subitem.title == page.title %} class="active"{% endif %}>
-                    <a href="{{ site.baseurl }}{{ subitem.url }}">
-                      {{ subitem.title }}
-                    </a>
-                    {% if subitem.type == "Oluline" %}
-                      <span style='color: red;'>OLULINE!</span>
-                    {% endif %}
-                  </li>
-                {% endfor %}
-                </ol>
+<aside>
+  <ol>
+    {% assign id_count = '' %}
+    {% for nav in site.data.Riba %}
+      {% if nav.categories != null %}
+        {% assign id_count = id_count | append: 'x' %}
+        <li{% if nav.title == page.title %} class="active"{% endif %}>
+          <a href="{{ site.baseurl }}{{ nav.url }}">{{ nav.title }}</a>
+          <!-- Alammenüü lüliti --> 
+          <span id="{{ id_count.size }}" class="lyliti"> ▼ </span>
+          <ol id="alammenyy{{ id_count.size }}" class='alammenyy'>
+          {% for subcategory in nav.categories %}
+            <li{% if subcategory.title == page.title %} class="active"{% endif %}>
+              <a href="{{ site.baseurl }}{{ subcategory.url }}">
+                {{ subcategory.title }}
+              </a>
+              {% if subcategory.type == "Oluline" %}
+                  <span style='color: red;'>OLULINE!</span>
               {% endif %}
-            {% endfor %}
-            </ol>
+            </li>
+            {% if subcategory.categories != null %}
+              <ol class='alammenyy2'>
+              {% for subitem in subcategory.categories %}
+                <li{% if subitem.title == page.title %} class="active"{% endif %}>
+                  <a href="{{ site.baseurl }}{{ subitem.url }}">
+                    {{ subitem.title }}
+                  </a>
+                  {% if subitem.type == "Oluline" %}
+                    <span style='color: red;'>OLULINE!</span>
+                  {% endif %}
+                </li>
+              {% endfor %}
+              </ol>
+            {% endif %}
+          {% endfor %}
+          </ol>
+        </li>
+      {% else %}
+          <li{% if subitem.title == page.title %} class="active"{% endif %}>
+          <a href="{{ site.baseurl }}{{ nav.url }}">
+            {{ nav.title }}
+          </a>
           </li>
-        {% else %}
-           <li{% if subitem.title == page.title %} class="active"{% endif %}>
-            <a href="{{ site.baseurl }}{{ nav.url }}">
-              {{ nav.title }}
-            </a>
-           </li>
-        {% endif %}
-      {% endfor %}
-    </ol>
-  </aside>
-
-</div>
+      {% endif %}
+    {% endfor %}
+  </ol>
+</aside>
