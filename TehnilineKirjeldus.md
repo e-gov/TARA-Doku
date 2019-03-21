@@ -28,7 +28,9 @@ Autentimisteenus TARA on Riigi Infosüsteemi Ameti poolt pakutav teenus, millega
 - SEB pank
 - Swedbank
 
-Käesolev tehniline kirjeldus on suunatud TARA liidestajatele (arendajatele). Lugejalt eeldame HTTP protokolli tundmist. Kasulik, kuid mitte vajalik on  OpenID Connect või OAuth 2.0 kogemus. Lugeja peab olema valmis vajadusel hankima lisateavet OpenID Connect protokolli originaaltekstist [Core].
+Tehniline kirjeldus on suunatud TARA liidestajatele (arendajatele). Lugejalt eeldame HTTP protokolli tundmist. Kasulik, kuid mitte vajalik on  OpenID Connect või OAuth 2.0 kogemus. Lugeja peab olema valmis vajadusel hankima lisateavet OpenID Connect protokolli originaaltekstist [Core].
+
+Kui leiate vea või soovite midagi küsida, siis palun pöörduge meie kasutajatoe poole: `help@ria.ee`.
 
 Tehnilises kirjelduses on püütud järgida ühtset terminoloogiat. Sõnaseletusi leiab [sonastikust](Sonastik) ja [viidatud](Viited) materjalides. Arvestama peab, et OpenID Connect, OAuth 2.0 jm mõistesüsteemid ei ole ideaalselt ühtlustatud. Näiteks, TARAga liidestuvat, e-teenust pakkuvat asutuse infosüsteemi nimetame siin "klientrakenduseks". OAuth ja mõneski muus kontekstis on klientrakendus aga "teenusepakkuja" (_service provider_).
 

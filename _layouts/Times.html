@@ -8,18 +8,26 @@
   <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
 
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery.min.js"></script>
+
+  <script src='{{ site.baseurl }}/js/Utils.js'></script>
+
   <link rel="stylesheet" href="{{ site.baseurl }}/css/Times.css">
   <link rel="stylesheet" href="{{ site.baseurl }}/css/Github.css">
 
 </head>
 
 <body>
-  {% include Pais.html %}
+
+  {% include Riba.html %}
   
-  <div id='Tekst'>      
+  {% include Pais.html %}
+
+  <div id='Tekst'>
     {{ content }}
   </div>
-  
+
   {% include Jalus.html %}
 </body>
 
