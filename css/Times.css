@@ -80,6 +80,9 @@ ul {
   margin: 0 0 1em 0;
   padding-left: 1em;
 }
+ul ul {
+  margin-bottom: 0;
+}
 ol {
   padding-left: 1em;
 }
@@ -95,8 +98,9 @@ ol {
 #markdown-toc, #markdown-toc ul {
   list-style-type: none;
 }
+/* Sisukorras ülemise taseme üksused eraldada tühiridadega */
 #markdown-toc > li {
-  list-style: none;
+  margin-top: 1rem;
 }  
 /*#endregion */
 
