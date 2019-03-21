@@ -3,7 +3,8 @@
 {% endcomment %} 
 
 <aside>
-  <ol>
+  <p id='pealkiri'>TARA</p>
+  <ul>
     {% assign id_count = '' %}
     {% for nav in site.data.Riba %}
       {% if nav.categories != null %}
@@ -47,5 +48,5 @@
           </li>
       {% endif %}
     {% endfor %}
-  </ol>
+  </ul>
 </aside>

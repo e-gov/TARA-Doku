@@ -16,42 +16,41 @@ body {
   line-height: 1.5 !important;
   }
 
-  aside, article {
-    overflow-y: auto;
-    padding: 2em;
-  }
-   
-  aside {
-    flex: 1;
-  }
-   
-  article {
-    flex: 2;
-  }
+aside, article {
+  overflow-y: auto;
+  padding: 2em;
+}
   
-  @media (max-width: 800px) {
-    body {
-      flex-direction: column;
-    }
-  }
-
 aside {
+  flex: 1;
+}
+  
+article {
+  flex: 4;
+}
+
+@media (max-width: 800px) {
+  body {
+    flex-direction: column;
+  }
+}
+
+/* Külgriba */
+aside {
+}
+aside li {
+  margin-bottom: 1rem;
+}
+
+#pealkiri {
 
 }
 
 /* Päis ja jalus */
-.pais, .jalus {
+.jalus {
   max-width: 45rem;
   padding-top: 1em;
   padding-left: 2em;
-}
-.pais { 
-  background-color: white;
-  margin-bottom: 8px;
-  padding-bottom: 0.6em;
-  margin-bottom: 4em;
-}
-.jalus {
   border-top: 1px solid #607D8B;
   margin-top: 4em;
   padding-bottom: 4em;
