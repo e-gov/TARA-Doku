@@ -41,7 +41,10 @@ Asutusel tuleb:
 2 kavandada ja tellida liidestamistöö
 
 - autentimiskomponendi täiendamine OpenID Connect-ga või väljavahetamine
-- hinnanguline töömaht: kogenud arendajal u 2 päeva, kui OpenID Connect-i pole varem teinud, siis 2 nädalat.
+- hinnanguline töömaht:
+  - kogenud arendajal u 2 päeva
+  - kui OpenID Connect-i pole varem teinud, siis 2 nädalat
+  - kui on vaja välja vahetada olemasolev (mitte OpenID Connect põhine) autentimislahendus (mis tõenäoliselt on tihedalt seotud seansi- ja pääsuhaldusega), siis tasub arvestada vähemalt 1 inimkuuga.
 
 3 teostada arendus<br>
 
