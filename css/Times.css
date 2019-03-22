@@ -6,11 +6,15 @@
 html, html[data-theme='light'] {
   --tavaline-tekst: #222325;
   --taust: white;
+  --note-taust: #F6F9F8;
+  --adv-taust: lavenderblush;
 }
 
 html[data-theme='dark'] {
   --tavaline-tekst: linen;
   --taust: black;
+  --note-taust: Darkgray;
+  --adv-taust: deeppink;
 }
 
 #valgus {
@@ -210,29 +214,7 @@ a[href]:hover {
 /*#endregion */
 
 /*#region Paneelid */
-.silt { 
-  border-radius: 4px; padding: 0.2rem 0.3rem;
-  border-color: DarkCyan;
-  background-color: Azure;
-  color: Teal;
-  text-align: center;
-}
-a.nupp {
-  display: inline-block;
-  border-radius: 8px; padding: 0.5rem 1rem !important; margin: 1rem !important;
-  color: Black;
-  border: 1px solid CadetBlue;
-  text-decoration: none !important;
-}
-a.nupp:focus,
-a.nupp:hover {
-  border-bottom-width: 1px;
-  margin-bottom: 1rem;
-  border: 1px solid Black !important;
-  text-decoration: none !important;
-}
-
-.note, .adv, .future, .test {
+.note, .adv {
   padding: .5em;
   border: .5em;
   border-left-style: solid;
@@ -242,41 +224,14 @@ a.nupp:hover {
 
 .note {
   border-color: Darkgray;
-  background: #F6F9F8;
+  background: var(--note-taust);
   overflow: auto;
 }
 
 .adv {
   border-color: tomato;
   border-style: none solid;
-  background: lavenderblush;
-}
-
-.test, .future {
-  border-color: Gray;
-  background: lightgrey;
-  overflow: auto;
-}
-
-.test:before, .future:before {
-  font-style: italic;
-  display: block;
-  background: lightgray;
-  margin-bottom: 1rem;
-}
-
-.test {
-  color: black;
-}
-.test:before {
-  content: 'Praegu ainult testkeskkonnas: ';
-}
-
-.future {
-  color: gray;
-}
-.future:before {
-  content: 'Arenduses: ';
+  background: var(--adv-taust);
 }
 
 .arenduses {
