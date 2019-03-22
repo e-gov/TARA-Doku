@@ -3,6 +3,7 @@ permalink: Testimine
 ---
 
 # Testimine
+{: .no_toc}
 
 TARA testkeskkond asub aadressil: [https://tara-test.ria.ee/](https://tara-test.ria.ee/). TARA testkeskkond on liidestatud vastu test-OCSP ja test-DigiDocService teenust.
 {: .note}
