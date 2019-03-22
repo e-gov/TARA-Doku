@@ -11,16 +11,18 @@ html, html[data-theme='light'] {
   --kood: #222325;
   --koodi-taust: #f6f8fa; /* nagu GitHubis */
   --koodi-serv: Whitesmoke;
+  --arenduses: Tomato;
 }
 
 html[data-theme='dark'] {
   --tavaline-tekst: Silver;
   --taust: Black;
   --note-taust: DimGray;
-  --adv-taust: Brown;
+  --adv-taust: DimGray;
   --kood: Silver;
-  --koodi-taust: DimGrey;
+  --koodi-taust: Black;
   --koodi-serv: DimGrey;
+  --arenduses: Gray;
 }
 
 #valgus {
@@ -241,7 +243,7 @@ a[href]:hover {
 }
 
 .arenduses {
-  color: tomato;
+  color: var(--arenduses);
   font-style: italic
 }
 
