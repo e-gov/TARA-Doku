@@ -14,6 +14,11 @@ function init() {
   var valgus = localStorage.getItem('valgus');
   if (valgus) {
     document.documentElement.setAttribute('data-theme', valgus);
+    // Sea ka lüliti positsioon
+    if (valgus == 'dark') {
+      $('#kuu').addClass('hidden');
+      $('#paike').removeClass('hidden');
+    }
   }
 
   // Sea valgustusrežiimi lüliti

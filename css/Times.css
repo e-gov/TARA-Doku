@@ -8,6 +8,7 @@ html, html[data-theme='light'] {
   --taust: white;
   --note-taust: #F6F9F8;
   --adv-taust: lavenderblush;
+  --koodi-taust: #f6f8fa; /* nagu GitHubis */
 }
 
 html[data-theme='dark'] {
@@ -15,6 +16,7 @@ html[data-theme='dark'] {
   --taust: black;
   --note-taust: Darkgray;
   --adv-taust: deeppink;
+  --koodi-taust: Darkgrey;
 }
 
 #valgus {
@@ -172,7 +174,7 @@ pre, code, samp {
   font-family: monospace;
   font-size: 17px;
   color: black !important;
-  background-color: #f6f8fa; /* nagu GitHubis */
+  background-color: var(--koodi-taust);
   border: 1px solid whitesmoke;
   border-radius: 4px;
   padding: 4px;
