@@ -2,6 +2,22 @@
    Standardne laadileht, kasutusel repodes: TARA-Doku, eIDAS-Connector
 */
 
+/*#region Valgustusrežiim */
+html, html[data-theme='light'] {
+  --tavaline-tekst: #222325;
+  --taust: white;
+}
+
+html[data-theme='dark'] {
+  --tavaline-tekst: whitesmoke;
+  --taust: black;
+}
+
+#paike, #kuu {
+  cursor: pointer;
+}
+/*#endregion */
+
 /*#region Paigutus */
 body {
   display: flex;
@@ -12,7 +28,8 @@ body {
   /* font-family: 'Segoe UI', Arial, serif; */
   font-family: 'Open Sans', sans-serif;
   font-size: 17px; 
-  color: #222325 !important;
+  color: var(--tavaline-tekst) !important;
+  background-color: var(--taust);
   line-height: 1.5 !important;
   }
 
@@ -263,5 +280,11 @@ a.nupp:hover {
   font-style: italic
 }
 
+/*#endregion */
+
+/*#region Abi */
+.hidden {
+  display: none;
+}
 /*#endregion */
 

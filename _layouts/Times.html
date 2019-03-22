@@ -9,17 +9,17 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
 
   <!-- JQuery, vajalik siis, kui külribas kasutada lüliteid -->
-  <!-- script src="https://code.jquery.com/jquery.min.js"></script -->
+  <script src="https://code.jquery.com/jquery.min.js"></script>
 
   <!-- Vajalik külgribas lülitite kasutamisel -->
-  <!-- script src='{{ site.baseurl }}/js/Utils.js'></script -->
+  <script src='{{ site.baseurl }}/js/Utils.js'></script>
 
   <link rel="stylesheet" href="{{ site.baseurl }}/css/Times.css">
   <link rel="stylesheet" href="{{ site.baseurl }}/css/Github.css">
 
 </head>
 
-<body>
+<body onload='init()'>
 
   {% include Riba.html %}
   
