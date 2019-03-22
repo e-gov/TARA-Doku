@@ -8,7 +8,9 @@ html, html[data-theme='light'] {
   --taust: White;
   --note-taust: #F6F9F8;
   --adv-taust: LavenderBlush;
+  --kood: #222325;
   --koodi-taust: #f6f8fa; /* nagu GitHubis */
+  --koodi-serv: Whitesmoke;
 }
 
 html[data-theme='dark'] {
@@ -16,7 +18,9 @@ html[data-theme='dark'] {
   --taust: Black;
   --note-taust: DimGray;
   --adv-taust: Brown;
-  --koodi-taust: DarkGrey;
+  --kood: Silver;
+  --koodi-taust: DimGrey;
+  --koodi-serv: DimGrey;
 }
 
 #valgus {
@@ -173,9 +177,9 @@ th { font-weight: normal; font-style: italic; text-align: center; }
 pre, code, samp {
   font-family: monospace;
   font-size: 17px;
-  color: black !important;
+  color: var(--kood) !important;
   background-color: var(--koodi-taust);
-  border: 1px solid whitesmoke;
+  border: 1px solid var(--koodi-serv);
   border-radius: 4px;
   padding: 4px;
   white-space:pre-wrap;
