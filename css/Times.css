@@ -5,18 +5,18 @@
 /*#region Valgustusrežiim */
 html, html[data-theme='light'] {
   --tavaline-tekst: #222325;
-  --taust: white;
+  --taust: White;
   --note-taust: #F6F9F8;
-  --adv-taust: lavenderblush;
+  --adv-taust: LavenderBlush;
   --koodi-taust: #f6f8fa; /* nagu GitHubis */
 }
 
 html[data-theme='dark'] {
-  --tavaline-tekst: linen;
-  --taust: black;
-  --note-taust: Darkgray;
-  --adv-taust: deeppink;
-  --koodi-taust: Darkgrey;
+  --tavaline-tekst: Silver;
+  --taust: Black;
+  --note-taust: DimGray;
+  --adv-taust: Brown;
+  --koodi-taust: DarkGrey;
 }
 
 #valgus {
