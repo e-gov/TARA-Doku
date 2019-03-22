@@ -9,10 +9,14 @@ html, html[data-theme='light'] {
 }
 
 html[data-theme='dark'] {
-  --tavaline-tekst: whitesmoke;
+  --tavaline-tekst: linen;
   --taust: black;
 }
 
+#valgus {
+  padding: 0 0 0.2rem 0.2rem;
+  font-size: 20px;
+}
 #paike, #kuu {
   cursor: pointer;
 }
