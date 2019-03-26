@@ -2,13 +2,13 @@
 permalink: Eneseabi
 ---
 
-# Liidestuja eneseabi
+# Eneseabi
 {: .no_toc}
+
+Hea TARA-ga liidestuja! Siit leiad valiku küsimusi, mis teistel on tekkinud - ja vastused.
 
 - TOC
 {:toc}
-
-Hea TARA-ga liidestuja! Siit leiad valiku küsimusi, mis teistel on tekkinud - ja vastused.
 
 ## Miks on autentimispäringus üldse vaja redirect-URL-i näidata?
 
