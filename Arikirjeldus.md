@@ -92,7 +92,7 @@ Kontakt: `help@ria.ee`.
 
 Kui pöördute liidestamisel või liidestatud klientrakenduses TARA kasutamise tehnilise probleemiga, siis palume valmis panna väljavõte klientrakenduse logist. Tõrkepõhjuse väljaselgitamiseks vajame teavet, mis päring(ud) TARAsse saadeti ja mis vastuseks saadi.
 
-Samuti tasub heita pilk [korduvatele küsimustele](FAQ).
+Samuti tasub heita pilk [eneseabile](Eneseabi).
 
 [Tehniline kirjeldus](TehnilineKirjeldus) (liidese arendajale).
 

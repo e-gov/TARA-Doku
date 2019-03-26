@@ -41,7 +41,7 @@ Eraldi on lehel teavet TARA edasiarendajale.
 
 [Liidestuja tarkvara](Naited)
 
-[Sõnastik](Sonastik) · [Viited](Viited) · [FAQ](FAQ)
+[Sõnastik](Sonastik) · [Viited](Viited) · [Eneseabi](Eneseabi)
 
 ## TARA arendajale
 
