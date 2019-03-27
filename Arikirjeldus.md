@@ -28,9 +28,15 @@ Samuti pakume välismaalase autentimist, eIDAS piiriülese autentimise skeemiga.
 - oma e-teenustes pakkuda kasutajatele laia valikut autentimismeetodeid, ise neid meetodeid teostamata.
 - lisada oma e-teenusele piiriülese autentimise toe.
 
+## Kes TARA kasutavad?
+
+Riigi autentimisteenusega on liitunud 8 riigiasutust 30
+infosüsteemiga, sh (riigiportaal eesti.ee, RIHA, ePRIA, Ehitisregister,
+Rahvastikuregister, eToetus, eSTAT jt) (märts 2019 seisuga).
+
 ## Tehnilised tingimused?
 
-- E-teenus liidestatakse autentimisteenusega OpenID Connect protokolli kohaselt.
+E-teenus liidestatakse autentimisteenusega OpenID Connect protokolli kohaselt. Vt lähemalt: [Tehniline kirjeldus](TehnilineKirjeldus).
 
 ## Kuidas liituda?
 
