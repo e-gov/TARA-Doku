@@ -7,7 +7,7 @@ Mõned autentimismeetodid võivad olla veel arenduses või kasutatavad ainult te
 
 # Tehniline kirjeldus
 {: .no_toc}
-v 1.5, 21.03.2019
+v 1.6, 02.04.2019
 
 - TOC
 {:toc}
@@ -41,12 +41,11 @@ Autentimisteenus TARA põhineb OpenID Connect protokollil ([Viited](Viited), [Co
 TARA-s on nimetatud protokollidest valitud TARA kasutusjuhtudele vajalikud kasutusvood ja omadused ning tehtud mõned kohandused. Peamised valikud ja kohandused OpenID Connect täisprotokolliga võrreldes on järgmised:
 
 - Teenus toetab volituskoodi voogu(_authorization code flow_). Volituskoodi voogu peetakse kõige turvalisemaks ja sellisena on avalike teenuste jaoks sobiv.
-- Kogu teave autenditud kasutaja kohta edastatakse rakendusele identsustõendis (_ID token_). OAuth 2.0 ligipääsutõendit (_access token_) ja UserInfo otspunkti kaudu kasutaja atribuutide andmist ei toetata.
+- Kogu teave autenditud kasutaja kohta edastatakse rakendusele identsustõendis (_ID token_).
 - Rakendusele edastatakse ka eIDAS autentimistase, kui see on teada (`acr` väites).
 - Teenus toetab kasutajaliidese keele-eelistuse andmist autentimispäringus (`locale` parameetriga (kuni juuli 2019 lõpp) või `ui_locales` (alates jaan 2019 lõpp)).
 - Autentimismeetodi valib kasutaja autentimisteenuses.
 - Piiriülene autentimine, vastavalt eIDAS tehnilisele spetsifikatsioonile.
-- Allkirjavõtme otspunktis esitatakse üksainus võti. Dünaamilist võtmevahetust (_key rollover_) praegu ei toetata.
 - Klientrakenduse dünaamilist registreerimist ei toetata. Klientrakenduse registreerimine toimub RIA-s eraldi protseduuriga.
 - Ühekordset sisselogimist (SSO) ja seansihaldust (_session management_) praegu ei toetata.
 
@@ -235,25 +234,9 @@ Autentimispäringu elemendid:
 
 #### 4.1.1 Atribuutide küsimine välismaalase kohta
 
-Välismaalase autentimisel suunab TARA välismaalase tema koduriigi autentimisteenusesse. Sealt tulev vastus sisaldab suuremat või väiksemat hulka atribuute kasutaja kohta (nt perekonnanimi, aadress, sugu jne).
+Välismaalase autentimisel suunab TARA välismaalase tema koduriigi autentimisteenusesse. Euroopa Komisjoni määrusega on riigid kokku leppinud, et teise riigi autentimisteenus on alati kohustatud väljastama füüsilise isiku kohta neli atribuuti: 1) eesnimi; 2)  perekonnanimi; 3) sünniaeg; 4) isikukood vm identifikaator.
 
-Euroopa Komisjoni määrusega on riigid kokku leppinud, et teise riigi autentimisteenus on alati kohustatud väljastama füüsilise isiku kohta neli atribuuti: 1) eesnimi; 2)  perekonnanimi; 3) sünniaeg; 4) isikukood vm identifikaator. Juriidilise isiku kohta väljastatakse alati kaks atribuuti: 1) registrikood vm identifikaator; 2)  juriidilise isiku nimi. Need on nn **kohustuslikud atribuudid**.
-
-<span class='arenduses'>(arenduses)</span> Lisaks võib klientrakendus pärida täiendavaid atribuute (nn **mittekohustuslikud atribuudid**). Selleks tuleb autentimispäringut (TARA-sse suunamise URL-i) täiendada parameetri `scope` väärtust soovitud atribuutide nimedega.
-
-Näide atribuutide küsimisest autentimispäringus:
-
-`scope=openid%20eidas:legal_person_identifier%20eidas:legal_address%20eidas:lei`
-
-Küsitakse atribuute `legal_person_identifier`, `legal_address` ja `lei`.
-
-Klientrakendus ei pea kohustuslikke atribuute pärima. TARA hoolitseb, et kohustuslike atribuutide päring läheb välismaalase välisriigi autentimisteenusesse suunamisel temaga kaasa.
-
-Loetelu võimalikest atribuutidest on identsustõendit käsitlevas jaotises.
-
-Klientrakendus ei tohi küsida rohkem atribuute kui e-teenuse osutamiseks vaja läheb. See nõue tuleneb isikuandmete kaitse seadusest (isikuandmete töötlemise minimaalsuse põhimõte). 
-
-Klientrakendus peab ka arvestama, et eIDAS-taristus autentimisel küsitakse kasutajalt nõusolekut isikuandmete saatmiseks teise riigi e-teenusele.
+Füüsilise isiku autentimise korral tagastatakse TARAs alati nn **kohustuslikud atribuudid** (eesnimi, perenimi, sünniaeg ja isiku identifikaator). Täiendavate lisaatribuutide pärimist ning juriidilise isiku autentimist läbi TARA hetkel ei toeta.
 
 #### 4.1.2 E-postiaadressi küsimine
 
@@ -418,105 +401,19 @@ Identsustõendis väljastatakse järgmised väited (_claims_).
 | `iat` (_Issued At_) | `1530267052` - tõendi väljaandmisaeg, Unix _epoch_ vormingus |
 | `nbf` (_Not Before_)   | `1530266752` - tõendi kehtivuse algusaeg, Unix _epoch_ vormingus |
 | `sub` (_Subject_)      | `EE60001019906` - autenditud kasutaja identifikaator (isikukood või eIDAS identifikaator) koos kodaniku riigikoodi eesliitega (riigikoodid vastavalt ISO 3166-1 alpha-2 standardile) |
-| `profile_attributes`   | autenditud isikut kirjeldavad andmed, sh eIDAS atribuudid (vt ka allpool täiendavate andmete küsimise ja isiku esindamise kohta) |
+| `profile_attributes`   | autenditud isikut kirjeldavad andmed |
 | `profile_attributes`<br>`.date_of_birth` | `2000-01-01` - autenditud kasutaja sünnikuupäev ISO_8601 formaadis. Tagastatakse ainult Eesti isikukoodiga isikute puhul ning eIDAS autentimisel |
 | `profile_attributes`<br>`.given_name` | `MARY ÄNN` - autenditud kasutaja eesnimi (testnimi, valitud täpitähtede sisalduvuse pärast) |
 | `profile_attributes`<br>`.family_name` | `O’CONNEŽ-ŠUSLIK` - autenditud kasutaja perekonnanimi (testnimi, valitud täpitähtede jm eritärkide sisalduvuse pärast) |
 | `profile_attributes`<br>`_translit` | Sisaldab JSON objekti ladina tähestikus profiiliatribuutidest (vt allpool translitereerimine.). Väärtustatud ainult eIDAS autentimisel |
 | `amr` (_Authentication Method Reference_) | `mID` - kasutaja autentimiseks kasutatud autentimismeetod. Võimalikud väärtused: `mID` - mobiil-ID, `idcard` - Eesti ID-kaart, `eIDAS` - piiriülene, `banklink` - pangalink, `smartid` - Smart-ID  |
-| `state` | `abcdefghijklmnop` - turvaelement  |
-| `nonce` | `qrstuvwxyzabcdef` - turvaelement |
+| `state` | `abcdefghijklmnop` - turvaelement. Autentimispäringu `state` parameetri väärtus.  |
+| `nonce` | `qrstuvwxyzabcdef` - turvaelement. Autentimispäringu `nonce` parameetri väärtus. Väärtustatud ainult juhul kui autentimispäringus saadeti `nonce` parameeter. |
 | `acr` (_Authentication Context Class Reference_) | `high` - autentimistase, vastavalt eIDAS tasemetele. Võimalikud väärtused: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Elementi ei kasutata, kui autentimistase ei kohaldu või pole teada |
 | `at_hash` | `X0MVjwrmMQs/IBzfU2osvw==` - pääsutõendi räsi. TARA-s ei kasutata |
 | `email` | `60001019906@eesti.ee` - kasutaja e-postiaadress. Väljastatakse ainult  Eesti ID-kaardiga kasutaja autentimisel. Loetakse kasutaja autentimissertifikaadi SAN laiendist (RFC822 tüüpi `Subject Alternative Name` väljast) |
 | `email_verified` | `false` - tähendab, et e-postiaadressi kuulumine kasutajale on tuvastatud. TARA väljastab alati väärtuse `false`. See tähendab, et TARA ei kontrolli ega väljasta teavet, kas kasutaja on oma eesti.ee e-postiaadressi suunanud või mitte. |
 
-#### 4.3.2 Mittekohustuslikud atribuudid (välismaalase autentimisel)
-
-<span class='arenduses'>(arenduses)</span> Järgnevad atribuudid esitatakse identsustõendis ainult siis, kui  autenditud isik on välismaalane ja klientrakendus on atribuute  autentimispäringu `scope` parameetris taotlenud.
-
-Füüsiline isik
-
-| identsustõendi element (`profile_attributes.` + ) | scope väärtus | väljastamine kohustuslik |  eIDAS atribuut |
-|-----------------|-----------------|:------------------------:|----------------|
-| `birth_name` | `eidas:birth_name`  | ei | `BirthName` |
-| `place_of_birth` | `eidas:place_of_birth` | ei | `PlaceOfBirth` |
-| `current_address` | `eidas:current_address` | ei | `CurrentAddress` |
-| `gender` | `eidas:gender` | ei | `Gender` |
-
-Juriidiline isik
-
-| identsustõendi element (`profile_attributes.` + ) | scope väärtus | väljastamine kohustuslik |  eIDAS atribuut |
-|-----------------|-----------------|:------------------------:|----------------|
-| `legal_person_identifier` | `eidas:legal_person_identifier` | jah | `LegalPersonIdentifier` |
-| `legal_name` | `eidas:legal_name` | jah         | `LegalName` |
-
-| identsustõendi element (`profile_attributes.` + ) | scope väärtus | väljastamine kohustuslik | eIDAS atribuut |
-|-----------------|-----------------|:------------------------:|----------------|
-| `legal_address` | `eidas:legal_address` | ei | `LegalAddress` |
-| `vat_registration` | `eidas:vat_registration` | ei | `VATRegistration` |
-| `tax_reference` | `eidas:tax_reference`  | ei |  `TaxReference` |
-| `LEI` | `eidas:lei`  | ei |  `LEI` |
-| `EORI` | `eidas:eori`  | ei |  `EORI` |
-| `SEED` | `eidas:seed`  | ei |  `SEED` |
-| `SIC` | `eidas:sic` | ei |  `SIC` |
-| `D-2012-17-EUIdentifier` | `eidas:d-2012-17-eu_identifier`  | ei | `D-2012-17-EUIdentifier ` |
-
-Küsida ei saa, kuid võidakse väljastada:
-
-Füüsilise isiku esindaja atribuudid
-
-väli identsustõendis | eIDAS atribuut
----------------------|----------------
-`representative_birth_name` | `RepresentativeBirthName`
-`representative_current_address` | `RepresentativeCurrentAddress`
-`representative_family_name` | `RepresentativeFamilyName`
-`representative_first_name` | `RepresentativeFirstName`
-`representative_date_of_birth` | `RepresentativeDateOfBirth`
-`representative_gender` | `RepresentativeGender`
-`representative_person_identifier` | `RepresentativePersonIdentifier`
-`representative_place_of_birth` | `RepresentativePlaceOfBirth`
-
-Juriidilise isiku esindaja atribuudid
-
-väli identsustõendis<br>(`profile_attributes` all) | eIDAS atribuut
----------------------|----------------
-`representative_d-2012-17-eu_identifier` | `RepresentativeD-2012-17-EUIdentifier`
-`representative_eori` | `RepresentativeEORI`
-`representative_lei` | `RepresentativeLEI`
-`representative_legal_address` | `RepresentativeLegalAddress`
-`representative_legal_name` | `RepresentativeLegalName`
-`representative_legal_address` | `RepresentativeLegalAddress`
-`representative_legal_person_identifier` | `RepresentativeLegalPersonIdentifier`
-`representative_seed` | `RepresentativeSEED`
-`representative_sic` | `RepresentativeSIC`
-`representative_tax_reference` | `RepresentativeTaxReference`
-`representative_vat_registration` | `RepresentativeVATRegistration`
-
-eIDAS atribuudi nimele vastava täpsema kirjelduse leiab eIDAS  atribuutide profiilist [Viited](Viited), [eIDAS SAML Attribute Profile v1.1-2].
-
-#### 4.3.3 Translitereerimine
-
-Kõik eelpool toodud eIDAS spetsiifilised identsustõendi väärtused peavad olema esitatud originaalkujul, kuid sellele lisaks võivad sihtriigid soovi korral esitada väärtusi ka translitereeritud kujul. Juhul kui välisriik otsustab saata ka ladina tähestikku teisendatud kuju, esitatakse antud atribuudi nime ja väärtuse paarid ka `profile_attributes_translit` blokis.
-
-Näide identsustõendis profiilielementide translitereerimisest (isiku eesnimi ja perenimi on esitatud kreeka ja ladina tähestikus):
-````json
-{
-   ...
-   
-   "profile_attributes":{
-      "given_name":"Αλέξανδρος",
-      "family_name":"Ωνάσης",      
-      "date_of_birth":"1981-01-12"
-   },
-   "profile_attributes_translit":{
-      "given_name":"Alexander",
-      "family_name":"Onassis"
-   }
-   
-   ...
-}
-````
 
 Identsustõend võib sisaldada muid OpenID Connect protokolli kohaseid välju, kuid neid teenuses ei kasutata. 
 
@@ -757,6 +654,7 @@ RIA, rahuldades taotluse, väljastab asutusele klientrakenduse toodanguversiooni
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
+| 1.6, 02.04.2019   | Täpsustatud atribuutide tagastamist ülepiirilise autentimise korral. Täpsustatud väidete `state` ja `nonce` kirjeldusi identsustõendis. |
 | 1.5, 21.03.2019   | Täpsemalt kirjeldatud identsustõendi allkirja kontrollimist |
 | 1.4, 18.03.2019   | Täpsustatud tagasisuunamispäringu kirjeldust vea korral. |
 | 1.3, 21.02.2019   | Lisatud kasutajainfopäringu kirjeldus. |

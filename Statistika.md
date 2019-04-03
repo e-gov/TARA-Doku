@@ -50,8 +50,8 @@ Vt ka:
 2017-12-15 11:48:22;openIdDemo;MobileID;START_AUTH;
 2017-12-15 11:48:38;openIdDemo;MobileID;SUCCESSFUL_AUTH;
 2017-12-15 11:59:10;openIdDemo;MobileID;START_AUTH;
-2018.06.28 08:05:52;openIdDemo;eIDAS;START_AUTH;
-2018.06.28 08:06:21;openIdDemo;eIDAS;SUCCESSFUL_AUTH;
+2018.06.28 08:05:52;openIdDemo;eIDAS/FI;START_AUTH;
+2018.06.28 08:06:21;openIdDemo;eIDAS/FI;SUCCESSFUL_AUTH;
 2018.06.27 11:23:14;openIdDemo;BankLink/SEB;START_AUTH;
 2018.06.27 11:23:15;openIdDemo;BankLink/SEB;SUCCESSFUL_AUTH;
 2018.06.27 11:23:14;openIdDemo;BankLink/LUMINOR;START_AUTH;
@@ -83,7 +83,7 @@ Vt ka:
 |-----|------|------------|---------|
 | 1.	| toimingu aeg	| autentimistoimingu alustamise aeg.	| ISO 8601, `YYYY-MM-DD hh:mm:ss` |
 | 2.	| klientrakendus	| klientrakenduse nimi, `client id` OpenID Connecti mõistes.	| sõne	|
-| 4.	| autentimismeetod	| `IDCard`, `MobileID`, `eIDAS`, `BankLink/{panga kood}`, `SmartID`	| sõne	|
+| 4.	| autentimismeetod	| `IDCard`, `MobileID`, `eIDAS/{riigi kood}`, `BankLink/{panga kood}`, `SmartID`	| sõne	|
 | 5.  | toimingu tulemus | õnnestumise puhul `SUCCESSFUL_AUTH`, ebaedu puhul `ERROR` |  |
 | 6.  | veateade | |  |
  
