@@ -3,11 +3,7 @@ permalink: Technical specification
 ---
 
 # Technical specification
-{: .no_toc}
-v 1.6, 02.04.2019
-
-- TOC
-{:toc}
+v 1.6, 04.04.2019
 
 ## 1 Overview
 
@@ -142,72 +138,71 @@ In the context of eIDAS, TARA is providing the ‘Authentication of an Estonian 
 
 ## 3 Authentication flow from the technical perspective
 
-Kirjeldame detailselt suhtluse sirviku, klientrakenduse serverikomponendi ja TARA serverikomponendi vahel.
+Detailed description of the communication between the browser, the server component of the client application, and the server component of TARA.
 
-Need kolm osapoolt suhtlevad HTTP päringute ja vastuste abil.
+These three parties communicate by HTTP requests and responses.
 
-Käime läbi peamised päringud ja nende vastused (joonis 2).
+The main requests and the responses thereto are discussed (Figure 2).
 
 <p style='text-align:center;'><img src='img/VOOG-01.PNG' style='width:400px'></p>
 
-Joonis 2. Autentimispäring
+Figure 2. Authentication request
 
-Voog algab sirvikust. Klientrakendusest on sirvikusse laetud leht, millel kasutaja saab vajutada "Logi sisse" või alustada autentimist muul viisil.
+The flow begins from the browser. A page is loaded from the client application to the browser, where the user choose click ‘Log in’ or start the authentication process in another manner.
 
-Kasutaja nupuvajutuse tulemusena saadab sirvik klientrakendusele (täpsemalt klientrakenduse serverikomponendile) HTTP päringu **1a**. Klientrakendus võib autentimist alustada ka ise, kasutaja muu toimingu peale.
+After the user selects ‘Log in’, the browser sends a HTTP request **1a** to the client application (to the server component of the client application). The client application may also launch the authentication process autonomously, as a result of some other operation performed by the user.
 
-Klientrakendus koostab autentimispäringu. Autentimispäringu koosseis on kirjeldatud eraldi jaotises allpool. Klientrakendus saadab sirvikusse päringuvastuse **1b**. Päringuvastus sisaldab HTTP ümbersuunamiskorraldust (_redirect_) ja autentimispäringut.
+The client application creates an authentication request. The composition of the authentication request is described in a separate section below. The client application sends a response body **1b** to the browser. The response body includes the HTTP redirection and the authentication request.
 
-Sirvik täidab ümbersuunamiskorralduse. See toimub nii, et sirvik võtab päringuvastusest **1b** autentimispäringu ja saadab  selle TARA serverikomponendile, päringuna **2a**. 
+The browser completes the redirection by excerpting the authentication request from response body **1b** and sending it to the server component of TARA as **2a** request.
 
-TARA serverikomponent, saades autentimispäringu **2a**, koostab autentimismeetodi valiku lehe ja saadab selle päringuvastusena **2b** sirvikusse.
+Having received an authentication request **2a**, the server component of TARA generates the page of authentication methods and transfers it to the browser as response body **2b**.
 
-Kasutajale kuvatakse autentimismeetodite valiku leht. Jätkame voo kirjeldamisega joonisel 3.
+The page of authentication methods is displayed to the user. The flow is described further in Figure 3.
 
 <p style='text-align:center;'><img src='img/VOOG-02.PNG' style='width:400px'></p>
 
-Joonis 3. Tagasisuunamispäring
+Figure 3. Redirect request
 
-Kasutaja valib autentimismeetodi. Valik edastatakse TARA serverikomponendile HTTP päringuga **3a**.
+The user chooses an authentication method. The selection is transferred to the server component of TARA by a HTTP request **3a**.
 
-Järgneb autentimisdialoog, vastavalt kasutaja poolt valitud autentimismeetodile. Autentimisdialoogis võidakse sirviku ja TARA serverikomponendi vahel vahetada mitmeid sõnumeid ja teha mitmeid ümbersuunamisi. Näiteks piiriülese autentimise korral saadetakse kasutaja mitmete ümbersuunamistega välisriigi autentimisteenusesse.
-Neid päringuid ja vastuseid tähistame joonisel "...".
+This is followed by an authentication dialogue based on the authentication method selected by the user. In the authentication dialogue, several messages may be exchanged between the browser and the server component of TARA and several redirections may be completed. For example, in the case of cross-border authentication, the user is redirected several times to reach an authentication service of a foreign country. These requests and responses are referred to as “…” in the Figure.
 
-Autentimisdialoog jõuab lõpule ja kasutaja on vaja suunata tagasi klientrakendusse.
+The authentication dialogue terminates and the user must be redirected back to the client application.
 
-TARA serverikomponent saadab sirvikusse HTTP päringuvastuse **3b**, milles on ümbersuunamiskorraldus kasutaja tagasisuunamiseks klientrakendusse. 
+The server component of TARA sends a HTTP response body **3b** to the browser which includes a redirection order for redirecting the user to the client application.
 
-Sirvik täidab ümbersuunamiskorralduse **3b**, saates klientrakenduse serverikomponendile HTTP päringu **4a** (tagasisuunamispäringu). 
+The browser completes the redirection order **3b** by sending a HTTP request **4a** to the server component of the client application (redirect request).
 
-Tagasisuunamispäringus sisaldub autentimise tulemus (isik tuvastati või mitte). Tagasisuunamispäring on täpsemalt kirjeldatud eraldi jaotises allpool.
+The redirect request includes the result of the authentication process (the person was or was not identified). The redirect request is described in detail in a separate section below.
 
-TARA roll võiks sellega lõppeda. OpenID Connect otsevoo (_implicit flow_) puhul lõpebki. Kuid TARA-s on kasutusel otsevoost mõneti turvalisemaks peetav volituskoodi voog (_authorization flow_). Volituskoodi voo korral ei saada autentimisteenus tagasisuunamispäringus autentimise tulemust täielikult, vaid ainult volituskoodi (_authorization token_).
+The role of TARA should be ending here. In the case of the OpenID Connect implicit flow, it does. However, TARA uses the authorisation code flow which is deemed somewhat more secure than the implicit flow. In the case of the authorisation code flow, the authorisation service does not transfer the entire authentication in the redirect request, but only the authorisation token.
 
-Volituskood lunastatakse autenditud isiku isikukoodi, nime jm isikuandmete vastu eraldi päringu tegemisega TARA serverikomponendi poole (joonis 4).   
+An authorisation code is issued against the personal identification code, name, and other personal data of the person identified by sending a separate request to the server component of TARA (Figure 4).
 
 <p style='text-align:center;'><img src='img/VOOG-03.PNG' style='width:400px'></p>
 
-Joonis 4. Identsustõendipäring
+Figure 4. Identity token request
 
-Klientrakenduse serverikomponent saadab TARA serverikomponendile identsustõendipäringu **5a**. Identsustõendipäringus esitab klientrakendus tagasisuunamispäringus saadud volituskoodi. Klientrakendus tõendab oma ehtsust, lisades päringusse salasõna (_client secret_). Identsustõendipäring on nn _backend_-päring - see ei käi läbi sirviku.
+The server component of the client application sends an identity token request **5a** to the server component of TARA. In the identity token request, the client application provides the authorisation code received in the redirect request. The client application proves its authenticity by adding a client secret code to the request. The identity token request is a backend request that is not sent through the browser.
 
-TARA serverikomponent, saades identsustõendipäringu **5a**, kontrollib salasõna ja väljastab vastuses **5b** identsustõendi. Identsustõend sisaldab andmeid autentimise fakti (autentimise ajamoment, autentimismeetod) ja tuvastatud isiku kohta (isikukood, ees- ja perekonnanimi, piiriülese autentimise korral ka eraldi sünniaeg jm andmed). TARA serverikomponent allkirjastab identsustõendi. Identsustõend on täpsemalt kirjeldatud eraldi jaotises allpool.
+Having received an identity token **5a**, the server component of TARA verifies the client secret code and issues the identity token **5b** in the response. The identity token includes information about the fact of authentication (time of authentication, authentication method) and about the person identified (personal identification code, first name and surname; in the case of cross-border authentication, also date of birth and other data). The server component of TARA signs the identity token. The identity token is described in detail in a separate section below.
 
-Klientrakendus saab identsustõendi (**5b**). Rünnete vältimiseks peab klientrakendus kontrollima, et identsustõend on tõesti TARA poolt välja antud, klientrakendusele suunatud ja ajaliselt kehtiv.
+The client application receives the identity token **5b**. In order to prevent attacks, the client application must verify whether the identity token was actually issued by TARA, intended for the client application, and not expired.
 
-Sellega on autentimine tehtud. Klientrakendus teab nüüd kasutaja isikut.
+Thereby, the authentication is completed. The user has now been identified in the client application.
 
-Tavaliselt loob klientrakendus seejärel kasutajaga seansi. Seansi loomine ei puutu enam TARA kompetentsi. 
+In most cases, the client application then launches a session with the user. Launching a session is not included in the scope of TARA.
 
-Klientrakendus saadab sirvikusse HTTP vastuse **4b**, näiteks lehe "Sisse logitud".
+The client application sends a HTTP response **4b** to the browser, such as the ‘Logged in’ page.
 
-## 4 Päringud
+## 4 Requests
 
-### 4.1 Autentimispäring
+### 4.1 Authentication request
 
-Autentimispäring on HTTP GET päring, millega kasutaja suunatakse klientrakendusest TARA-sse autentima.
+An authentication request is a HTTP GET request by which the user is redirected from the client application to TARA for authentication.
 
-Autentimispäringu näide (URL-i _query_-osa on loetavuse huvides jagatud mitmele reale):
+An example of an authentication request (for better readability, the query component of the URL was divided over several lines):
 
 ````
 GET https://tara.ria.ee/oidc/authorize?
@@ -219,12 +214,13 @@ response_type=code&
 client_id=58e7ba35aab5b4f1671a
 ````
 
-Autentimispäringu elemendid:
+Elements of an authentication request:
 
-| URL-i element          | kohustuslik | näide                       |  selgitus     |
+| URL element          | compulsory | example                      |  explanation     |
 |------------------------|:---------- :|-----------------------------|---------------|
-| protokoll, host ja tee (_path_) | jah | `https://tara.ria.ee/oidc/authorize` | `/authorize` on TARA-teenuse OpenID Connect-kohane autentimisotspunkt (termin 'autoriseerimine' pärineb alusprotokollist OAuth 2.0). |
-| `redirect_uri` | jah | `redirect_uri=https%3A%2F%2F` `eteenus.asutus.ee%2Ftagasi` | Tagasisuunamis-URL. Tagasisuunamis-URL-i valib asutus ise. Tagasisuunamis-URL võib sisaldada _query_-osa. <br><br>Vajadusel kasutada [URLi kodeerimist](https://en.wikipedia.org/wiki/Percent-encoding). <br><br>URI-i [fragmendi osa](https://tools.ietf.org/html/rfc3986#section-3.5) (`#` märk ja sellele järgnev osa) kasutamine [ei ole lubatud](https://tools.ietf.org/html/rfc6749#section-3.1.2). |
+| protocol, host ja patch | yes | `https://tara.ria.ee/oidc/authorize` | `/authorize` is the OpenID Connect-based authentication endpoint of the TARA service (the concept of ‘authorisation’ originates from the OAuth 2.0 standard protocol). |
+| `redirect_uri` | yes | `redirect_uri=https%3A%2F%2F` `eteenus.asutus.ee%2Ftagasi` | Redirect URL.
+The redirect URL is selected by the institution. The redirect URL may include the query component. <br><br>[URL encoding] (https://en.wikipedia.org/wiki/Percent-encoding) should be used, if necessary. <br><br> It is [not permitted](https://tools.ietf.org/html/rfc6749#section-3.1.2) to use the URI [fragment component](https://tools.ietf.org/html/rfc3986#section-3.5) (`#` and the following component). |
 | `scope` | jah | `scope=openid`<br><br>`scope=openid%20eidas` <br><br>`scope=openid%20idcard%20mid` | Autentimise skoop.<br><br>`openid` on kohustuslik (seda nõuab OpenID Connect protokoll).<br><br> Skoopidega `idcard`, `mid`, `banklink`, `smartid`, `eidas` (ja `eidasonly`) saab nõuda, et kasutajale näidatakse ainult soovitud autentimismeetodeid. Vt jaotis 4.1.3 Autentimisvahendite valikuline kasutus.<br><br>Skoobiga `email` saab nõuda, et identsustõendis väljastatakse kasutaja e-postiaadress. Vt jaotis 4.1.2 E-postiaadressi küsimine.<br><br>Piiriülesel autentimisel saab kasutada lisaskoope täiendavate isikuandmete pärimiseks (vt allpool).<br><br>Mitme skoobi kasutamisel tuleb skoobid eraldada tühikutega. Tühik esitatakse seejuures URL-kodeeringus (`%20`) ([RFC 3986](https://www.ietf.org/rfc/rfc3986.txt)). Skoobi väärtused on tõstutundlikud. Tundmatuid väärtuseid ignoreeritakse. |
 | `state` | jah | `state=hkMVY7vjuN7xyLl5` | Võltspäringuründe (_cross-site request forgery_, CSRF) vastane turvakood. `state` moodustamise ja kontrollimise kohta vt lähemalt jaotis "Võltspäringuründe vastane kaitse". |
 | `response_type` | jah | `response_type=code` | Määrab autentimise tulemuse serverile edastamise viisi. Toetatud on volituskoodi viis (OpenID Connect protokolli _authorization flow_), selle tähiseks on väärtus `code`. |
