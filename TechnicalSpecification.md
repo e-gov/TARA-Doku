@@ -42,19 +42,26 @@ For TARA, the application flows and features necessary for the applications of T
 - The authentication method is selected by the user in the authentication service.
 - Cross-border authentication based on the technical specification of eIDAS.
 - Dynamic registration of the client application is not supported. The client application is registered in RIA by a separate procedure.
-- Single sign-on (SSO) and (_session management_) are currently not supported.
+- Single sign-on (SSO) and _session management_ are currently not supported.
 
 It is not ruled out that the scope of possibilities will be expanded as TARA is being developed further – based on the needs of the users of TARA and the opportunities for satisfying the needs at a high-quality level, while keeping the service simple and focussed.
 
-### 1.2 Siseriiklik ja piiriülene autentimine
+### 1.2 National and cross-border authentication
 
-TARA võimaldab nii siseriiklikku kui ka piiriülest autentimist. See tähendab, et autentida saab nii eestlase (Eesti e-identimissüsteemi - ID-kaardi, mobiil-ID jms kasutaja) kui ka välismaalase (EL teise liikmesriigi e-identimissüsteemi kasutaja).
+TARA enables national as well as cross-border authentication. This means that Estonians (users of the Estonian e-identification system – ID card, mobile ID, etc.) as well as foreigners (users of the e-identification systems of other EU member states) can be authenticated.
 
-eIDASe kontekstis teostab TARA kasutusvood "Eestlase autentimine Eesti e-teenuses" ja "Eesti e-teenust kasutava välismaalase autentimine" (joonis 1).
+In the context of eIDAS, TARA is providing the ‘Authentication of an Estonian in an Estonian e-service’ and the ‘Authentication of a foreigner using an Estonian e-service’ application flows (Figure 1).
 
 <p style='text-align:center;'><img src='img/YLEVAADE.PNG' style='width:600px'></p>
 
-Joonis 1. Siseriiklik ja piiriülene autentimine 
+Klientrakendus – customer’s application
+välismaa e-identimissüsteemi kasutaja – user of a foreign e-identification service
+Eesti e-identimissüsteemi kasutaja – user of the Estonian e-identification service
+eIDAS piiriülene autentimine – eIDAS cross-border authentication
+ID-kaardiga autentimine – authentication by ID card
+Mobiil-ID-ga autentimine – authentication by mobile ID
+Pangalingid, Smart-ID jm – Bank links, Smart-ID, etc.
+#### Figure 1. National and cross-border authentication
 
 ## 2 Autentimisprotsess kasutaja vaatest
 
