@@ -54,93 +54,93 @@ In the context of eIDAS, TARA is providing the ‘Authentication of an Estonian 
 
 <p style='text-align:center;'><img src='img/YLEVAADE.PNG' style='width:600px'></p>
 
-Klientrakendus – customer’s application
-välismaa e-identimissüsteemi kasutaja – user of a foreign e-identification service
-Eesti e-identimissüsteemi kasutaja – user of the Estonian e-identification service
-eIDAS piiriülene autentimine – eIDAS cross-border authentication
-ID-kaardiga autentimine – authentication by ID card
-Mobiil-ID-ga autentimine – authentication by mobile ID
-Pangalingid, Smart-ID jm – Bank links, Smart-ID, etc.
+- Klientrakendus – customer’s application
+- välismaa e-identimissüsteemi kasutaja – user of a foreign e-identification service
+- Eesti e-identimissüsteemi kasutaja – user of the Estonian e-identification service
+- eIDAS piiriülene autentimine – eIDAS cross-border authentication
+- ID-kaardiga autentimine – authentication by ID card
+- Mobiil-ID-ga autentimine – authentication by mobile ID
+- Pangalingid, Smart-ID jm – Bank links, Smart-ID, etc.
 #### Figure 1. National and cross-border authentication
 
-## 2 Autentimisprotsess kasutaja vaatest
+## 2 Authentication process from the user’s perspective
 
-1 Kasutaja on e-teenust osutavas klientrakenduses.
+1 The user uses a client application providing an e-service
 
-- kasutaja võib olla nii eestlane kui ka välismaalane
-- kasutajale esitatakse kuva, millel on nupp "Logi sisse" vms
-- kasutaja vajutab "Logi sisse".
+- the user may be Estonian or a foreigner;
+- a screen with a ‘Log in’ etc. button is displayed to the user;
+- the user clicks ‘Log in’.
 
-2 Klientrakendus suunab kasutaja TARA-teenusesse (sirviku ümbersuunamiskorralduse abil)
+2 The client application redirects the user to the TARA service (by browser redirection)
 
-- ümbersuunamis-URL-is on autentimispäring.
+- authentication request in the redirection URL.
 
-3 Kasutajale avaneb autentimismeetodi valiku kuva.  Siin võib kasutaja:
+3 The authentication method selection screen is displayed to the user. Here, the user can:
 
-- valida mobiil-ID-ga autentimise (samm 4)
-- valida ID-kaardiga autentimise (samm 5)
-- valida piiriülese (eIDAS-) autentimise (samm 6)
-  - sh riigi, mille eID-d ta kasutab (valib õige "lipukese")
-- valida pangalingiga autentimise (samm 7)
-- valida Smart-ID'ga autentimise (samm 8)
-- pöörduda tagasi klientrakendusse.
+- choose authentication by mobile ID (step 4)
+-	choose authentication by ID card (step 5)
+-	choose cross-border (eIDAS-) authentication (step 6)
+  - incl. the country the eID of which they use (select the correct ‘flag’)
+-	choose authentication by bank link (step 7)
+-	choose authentication by smart ID (step 8)
+-	return to the client application.
 
-4 Mobiil-ID-ga autentimine
+4 Mobiil-ID-ga authentication
 
-- kasutaja sisestab mobiilinumbri ja isikukoodi
-- kasutaja mobiilseadmele kuvatakse kontrollkood
-- kinnituse ootamine
-- eduka autentimise korral edasi samm 9, vea korral samm 10.
+- the user enters their mobile phone number and personal identification code
+-	a verification code is displayed on the user’s mobile device
+-	waiting for confirmation
+-	in the case of successful authentication, moving on to step 9; in the case of an error, to step 10.
 
-5 ID-kaardiga autentimine
+5 ID- card authentication
 
-- algab kasutajale teabe kuvamisega autentimisserdi kohta
-- kasutaja kinnitab serdivaliku
-- kasutaja sisestab PIN1-koodi
-- eduka autentimise korral edasi samm 9, vea korral samm 10.
+-	first, information about the authentication certificate is displayed to the user
+-	the user confirms selection of the certificate
+-	the user enters PIN1
+-	in the case of successful authentication, moving on to step 9; in the case of an error, to step 10.
 
-6 Piiriülene (eIDAS-) autentimine
+6 Cross-border (eIDAS-) authentication
 
-- kasutaja valib sihtriigi
-- kasutaja suunatakse läbi eIDAS taristu välisriigi autentimisteenusesse
-- kasutaja autendib end välisriigi autentimisvahendiga
-- eduka autentimise korral (ning kui välisriigi autentimisvahendi tase on piisav) edasi samm 9
-- vea korral samm 10.
+-	the user selects the target country
+-	the user is redirected to the authentication service of the foreign country through the eIDAS infrastructure
+-	the user authenticates themselves by using the means of authentication of the foreign country
+-	in the case of successful authentication (and if the level of the means of authentication of the foreign country is sufficient), moving on to step 9
+-	in the case of an error, to step 10.
 
-7 Pangalingiga autentimine
+7 Bank authentication
 
-- kasutaja valib panga
-- kasutaja suunatakse panga autentimisteenusesse
-- kasutaja autendib end valitud autentimisvahendiga
-- eduka autentimise korral edasi samm 9
-- vea korral samm 10.
+-	the user selects the bank
+-	the user is redirected to the bank’s authentication service
+-	the user authenticates themselves by using the selected means of authentication
+-	in the case of successful authentication, moving on to step 9
+-	in the case of an error, to step 10.
 
-8 Smart-ID'ga autentimine
+8 Smart-ID authentication
 
-- kasutaja sisestab Eesti isikukoodi
-- kasutaja mobiilseadmele kuvatakse kontrollkood
-- kinnituse ootamine
-- eduka autentimise korral edasi samm 9, vea korral samm 10.
+-	the user enters an Estonian personal identification code
+-	a verification code is displayed on the user’s mobile device
+-	waiting for confirmation
+-	in the case of successful authentication, moving on to step 9; in the case of an error, to step 10.
 
-9 Autenditud kasutaja
+9 Authenticated user
 
-- suunatakse tagasi klientrakendusse
-- klientrakendus pärib TARA serverilt identsustõendi
-- identsustõend (_identity token_) on allkirjastatud tõend eduka autentimise kohta
-- identsustõendis sisalduvad autentimisel tuvastatud kasutaja andmed (atribuudid)
-- klientrakendus annab kasutajale asjakohasel viisil teada, et sisselogimine õnnestus.
+-	is redirected back to the client application
+-	the client application requests the identity token from the TARA server
+-	the _identity token_ is a signed certificate confirming successful authentication
+-	the identity token includes the user’s data (attributes) which were identified in the course of authentication
+-	the client application notifies the user of successful log in in an appropriate manner.
 
-10 Veateate lehelt
+10 From the error message screen:
 
-- saab kasutaja minna tagasi autentimismeetodi valikusse
-- ja seal kas üritada uuesti, võimalik, et teise autentimismeetodiga
-- või katkestada autentimise ja minna tagasi klientrakendusse.
+-	the user can return to the selection of the authentication method
+-	and try again, by using a different authentication method, if desired
+-	or terminate the authentication process and return to the client application.
 
-11 Lisaks on kasutajal võimalik:
+11 The user can also:
 
-- saada täiendavat teavet TARA-teenuse kohta.
+- obtain further information about the service of TARA.
 
-## 3 Autentimisvoog tehnilises vaates
+## 3 Authentication flow from the technical perspective
 
 Kirjeldame detailselt suhtluse sirviku, klientrakenduse serverikomponendi ja TARA serverikomponendi vahel.
 
