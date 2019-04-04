@@ -81,14 +81,14 @@ In the context of eIDAS, TARA is providing the ‘Authentication of an Estonian 
 -	choose authentication by smart ID (step 8)
 -	return to the client application.
 
-4 Mobiil-ID-ga authentication
+4 Mobiil-ID authentication
 
 - the user enters their mobile phone number and personal identification code
 -	a verification code is displayed on the user’s mobile device
 -	waiting for confirmation
 -	in the case of successful authentication, moving on to step 9; in the case of an error, to step 10.
 
-5 ID- card authentication
+5 ID card authentication
 
 -	first, information about the authentication certificate is displayed to the user
 -	the user confirms selection of the certificate
@@ -216,9 +216,12 @@ client_id=58e7ba35aab5b4f1671a
 
 Elements of an authentication request:
 
-| URL element          | compulsory | example                      |  explanation     |
+| URL element            | compulsory  | example                     | explanation   |
 |------------------------|:---------- :|-----------------------------|---------------|
 | protocol, host ja patch | yes | `https://tara.ria.ee/oidc/authorize` | `/authorize` is the OpenID Connect-based authentication endpoint of the TARA service (the concept of ‘authorisation’ originates from the OAuth 2.0 standard protocol). |
+
+
+
 | `redirect_uri` | yes | `redirect_uri=https%3A%2F%2F` `eteenus.asutus.ee%2Ftagasi` | Redirect URL.
 The redirect URL is selected by the institution. The redirect URL may include the query component. <br><br>[URL encoding] (https://en.wikipedia.org/wiki/Percent-encoding) should be used, if necessary. <br><br> It is [not permitted](https://tools.ietf.org/html/rfc6749#section-3.1.2) to use the URI [fragment component](https://tools.ietf.org/html/rfc3986#section-3.5) (`#` and the following component). |
 | `scope` | jah | `scope=openid`<br><br>`scope=openid%20eidas` <br><br>`scope=openid%20idcard%20mid` | Autentimise skoop.<br><br>`openid` on kohustuslik (seda nõuab OpenID Connect protokoll).<br><br> Skoopidega `idcard`, `mid`, `banklink`, `smartid`, `eidas` (ja `eidasonly`) saab nõuda, et kasutajale näidatakse ainult soovitud autentimismeetodeid. Vt jaotis 4.1.3 Autentimisvahendite valikuline kasutus.<br><br>Skoobiga `email` saab nõuda, et identsustõendis väljastatakse kasutaja e-postiaadress. Vt jaotis 4.1.2 E-postiaadressi küsimine.<br><br>Piiriülesel autentimisel saab kasutada lisaskoope täiendavate isikuandmete pärimiseks (vt allpool).<br><br>Mitme skoobi kasutamisel tuleb skoobid eraldada tühikutega. Tühik esitatakse seejuures URL-kodeeringus (`%20`) ([RFC 3986](https://www.ietf.org/rfc/rfc3986.txt)). Skoobi väärtused on tõstutundlikud. Tundmatuid väärtuseid ignoreeritakse. |
