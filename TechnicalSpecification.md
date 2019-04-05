@@ -275,11 +275,11 @@ Example 3: Only cross-border authentication
 
 ### 4.2 Redirect request
 
-Tagasisuunamispäring on HTTP GET päring, millega kasutaja suunatakse autentimise järel TARA-st tagasi klientrakendusse.
+The redirect request is a HTTP GET request which is used to redirect the user back from TARA to the client application.
 
-Tagasisuunamine tehakse klientrakenduse poolt autentimispäringus kaasa antud naasmisaadressile. Tagasisuunamispäringus edastab TARA klientrakendusele volituskoodi (_authorization code_), mille alusel klientrakendus pärib (eraldi päringuga) TARA-lt autenditud isiku isikukoodi, nime jm atribuudid. Tehniliselt tehakse tagasisuunamine HTTP _redirect_-päringuga.
+The user is redirected to the return address included in the authentication request sent by the client application. In the redirect request, an authorization code is sent to the client application by TARA, based on which the client application will (by a separate request) request from TARA the personal identification code, name, and other attributes of the authenticated person. Technically, a HTTP redirect request is used for redirecting.
 
-Tagasisuunamispäringu näide:
+An example of a redirect request:
 
 ````
 HTTP GET https://eteenus.asutus.ee/tagasi?
@@ -287,21 +287,19 @@ code=71ed5797c3d957817d31&
 state=OFfVLKu0kNbJ2EZk
 ````
 
+Elements of a redirect request:
 
-Tagasisuunamispäringu elemendid:
+| URL element | example | selgitus |
+|-------------|---------|----------|
+| protocol, host, and path | `https://eteenus.asutus.ee/tagasi` | Matches the `redirect_uri` value sent in the authentication request. |
+| `code` | `code=71ed579...`  | The authorisation code is a single ‘permission note’ to receive the identity token. |
+| `state` | `state=OFfVLKu0kNbJ2EZk` | Security code against false request attacks. The security code received in the authentication request is mirrored back. Read more about forming and verifying `state` from ‘Protection against false request attacks’. |
 
-| URL-i element          | näide                       |  selgitus     |
-|------------------------|-----------------------------|---------------|
-| protokoll, host ja tee (_path_) | `https://eteenus.asutus.ee/tagasi` | Ühtib autentimispäringus saadetud `redirect_uri` väärtusega. |
-| `code` | `code=71ed579...`  | Volituskood (_authorization code_) on ühekordne “lubatäht” identsustõendi saamiseks. |
-| `state`            | `state=OFfVLKu0kNbJ2EZk`     | Võltspäringuründe vastane turvakood. Autentimispäringus saadetud turvakood peegeldatakse tagasi. `state` moodustamise ja kontrollimise kohta vt lähemalt jaotis "Võltspäringuründe vastane kaitse". |
+**Error message in the redirect request.** If TARA is unable to process an authentication request – there is an error in the request, or another error has occurred – TARA transfers an error message (URL parameter `error`) and the description of the error (URL parameter `error_description`) in the redirect request. 
 
-**Veateade tagasisuunamispäringus.** Kui TARA ei suutnud autentimispäringut töödelda - päring kas oli vigane või tekkis muu viga, siis saadab TARA tagasisuunamispäringus veakoodi (URL-i parameeter `error`) ja veakirjelduse (URL-i parameeter `error_description`). 
+TARA relies on the OpenID Connect standard on error messages (more information regarding the error messages can be found from https://openid.net/specs/openid-connect-core-1_0.html#AuthError and https://tools.ietf.org/html/rfc6749#section-4.1.2.1). The error messages are always displayed in English.
 
-TARA lähtub veakoodide tagastamisel OpenID Connect standardist (loe võimalike veakoodide kohta [siit](https://openid.net/specs/openid-connect-core-1_0.html#AuthError) ja [siit](https://tools.ietf.org/html/rfc6749#section-4.1.2.1)) ja veakirjelduse tekst esitatakse alati inglisekeelsena. 
-
-
-Tagastatakse ka `state`, kuid volituskoodi (`code`) ei saadeta. Nt:
+`state` is also redirected but no authorisation code (`code`) is sent. E.g.:
 
 ````
 HTTP GET https://eteenus.asutus.ee/tagasi?
@@ -311,11 +309,11 @@ TARA+do+not+allow+this+request+to+be+processed&
 state=qnYY56Ra8QF7IUzqvw+PPLzMKoHtQkuUWbV/wcrkvdU=
 ````
 
-Tagasisuunamispäringu vigade korral on tavaliselt probleem liidestuses ja `error_description` parameetris esitatavat veakirjeldust ei ole vaja otse kasutajale kuvada. Klientrakenduses tuleks kontrollida, kas saadeti veakood. 
+The redirect request errors are normally resulted by a misconfiguration; therefore the error description in parameter `error_description` is not needed to be displayed for the user directly. The client application should check whether or not an error message has been sent.
 
-**Autentimise katkestamine**. Kasutaja võib e-teenusesse tagasi pöörduda ka ilma autentimismeetodit valimata ja autentimist läbi tegemata (link "Tagasi teenusepakkuja juurde"). See võimalus on mõeldud juhuks, kui kasutaja vajutas klientrakenduses "Logi sisse", kuid tegelikult ei soovi sisse logida. Teenusega liitumise taotluses peab asutus RIA-le teada andma URL-i, kuhu kasutaja "Tagasi teenuspakkuja juurde" vajutamisel suunatakse. NB! OpenID Connect protokolli kohane tagasisuunamis-URL ja siin nimetatud URL on erineva tähendusega.
+**Termination of the authentication process.** The user may also return to the e-service without choosing an authentication method and completing the authentication process (via ‘Back to the service provider’ link). This option is provided for the cases in which the user has clicked ‘Log in’ in the client application but does not actually wish to log in. In the application for subscribing to the service, the institution must notify RIA of the URL to which the user should be redirected in the case of clicking ‘Back to the service provider’. NB! The OpenID Connect protocol-based redirect URL and the URL described here have different meanings.
 
-### 4.3 Identsustõendipäring
+### 4.3 Identity token request
 
 Identsustõendipäring on HTTP POST päring, millega klientrakendus pärib TARA serverilt identsustõendi (_ID token_).
 
