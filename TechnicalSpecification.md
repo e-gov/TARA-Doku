@@ -219,7 +219,7 @@ Elements of an authentication request:
 | URL element | compulsory | example | explanation |
 | ----------- | ---------- | ------- | ----------- |
 | protocol, host, and patch | yes | `https://tara.ria.ee/oidc/authorize` | `/authorize` is the OpenID Connect-based authentication endpoint of the TARA service (the concept of ‘authorisation’ originates from the OAuth 2.0 standard protocol). 
-| `redirect_uri` | yes | `redirect_uri=https%3A%2F%2F eteenus.asutus.ee%2Ftagasi` | Redirect URL. The redirect URL is selected by the institution. The redirect URL may include the query component. <br><br>URL encoding should be used, if necessary.<br><br>It is [not permitted](https://tools.ietf.org/html/rfc6749#section-3.1.2) to use the URI [fragment component](https://tools.ietf.org/html/rfc3986#section-3.5) (`#` and the following component). |
+| `redirect_uri` | yes | `redirect_uri=https%3A%2F%2F eteenus.asutus.ee%2Ftagasi` | Redirect URL. The redirect URL is selected by the institution. The redirect URL may include the query component. <br><br> [URL encoding](https://en.wikipedia.org/wiki/Percent-encoding) should be used, if necessary.<br><br>It is [not permitted](https://tools.ietf.org/html/rfc6749#section-3.1.2) to use the URI [fragment component](https://tools.ietf.org/html/rfc3986#section-3.5) (`#` and the following component). |
 | `scope` | yes | `scope=openid`<br><br>`scope=openid%20eidas`<br><br>`scope=openid%20idcard%20mid` | The authentication scope.<br><br>`openid` is compulsory (required by the OpenID Connect protocol).<br><br> The scopes of `idcard`, `mid`, `banklink`, `smartid`, `eidas` (and `eidasonly`) can be used to request that only the desired method of authentication is displayed to the user. See 4.1.3 Selective use of authentication methods.<br><br>The `email` scope can be used to request that the user’s e-mail address is issued in the identity token. See 4.1.2 Requesting e-mail address.<br><br>In the case of cross-border authentication, further scopes can be used to request additional personal data (see below).<br><br>When using several scopes, the scopes must be separated by spaces. Thereat, the space is presented in the URL encoding (`%20`) ([RFC 3986](https://www.ietf.org/rfc/rfc3986.txt)). Scope values are case sensitive. Unknown values are ignored. |
 | `state` | yes | `state=hkMVY7vjuN7xyLl5` | Security code against false request attacks (_cross-site request forgery_, CSRF). Read more about formation and verification of `state` under ‘Protection against false request attacks. |
 | `response_type` | yes | `response_type=code` | Determines the manner of communication of the authentication result to the server. The method of authorisation code is supported (_authorization flow_ of the OpenID Connect protocol) and it is referred to the `code` value. |
@@ -229,15 +229,15 @@ Elements of an authentication request:
 | `nonce` | no | `fsdsfwrerhtry3qeewq` | A unique parameter which helps to prevent replay attacks based on the protocol ([References](References), [Core], subsection 3.1.2.1. Authentication Request). The `nonce` parameter is not compulsory. |
 | `acr_values` | no | `acr_values=substantial` | The minimum required level of authentication based on the eIDAS LoA (level of assurance). The parameter is only applied in the case of cross-border authentication. The parameter is ignored in the case of other methods of authentication. It is permitted to apply one value of the following: `low`, `substantial`, `high` . `substantial` is used by default if the value has not been selected. |
 
-#### 4.1.1 Atribuutide küsimine välismaalase kohta
+#### 4.1.1 Requesting attributes about foreigners
 
-Välismaalase autentimisel suunab TARA välismaalase tema koduriigi autentimisteenusesse. Euroopa Komisjoni määrusega on riigid kokku leppinud, et teise riigi autentimisteenus on alati kohustatud väljastama füüsilise isiku kohta neli atribuuti: 1) eesnimi; 2)  perekonnanimi; 3) sünniaeg; 4) isikukood vm identifikaator.
+In the case of authentication of a foreigner, the foreigner is redirected by TARA to the authentication service of their country.
+By a regulation of the European Committee, members states have agreed that another country’s authentication service must always issue four attributes of a natural person: 1) first name; 2) surname; 3) date of birth; 4) personal identification code or another identifier.
+Two attributes are always issued of the legal persons: 1) clegal person's identifier; 2) legal person’s name.
 
-Füüsilise isiku autentimise korral tagastatakse TARAs alati nn **kohustuslikud atribuudid** (eesnimi, perenimi, sünniaeg ja isiku identifikaator). Täiendavate lisaatribuutide pärimist ning juriidilise isiku autentimist läbi TARA hetkel ei toeta.
+#### 4.1.2 Requesting e-mail address
 
-#### 4.1.2 E-postiaadressi küsimine
-
-Skoobiga `email` saab nõuda, et identsustõendis väljastatakse kasutaja e-postiaadress. See võimalus on suunatud asutustele, kelle klientrakendus nõuab kasutaja autentimisel e-postiaadressi kindlakstegemist. Skoop `email` tuleb lisada põhiskoobile `openid`. Identsustõendis väljastatakse väited (_claims_) `email` ja `email_verified`. Näiteks:
+The `email` scope can be used to request the user’s e-mail address in the identity token. This option is targeted for the client applications that require verification of an e-mail address in authentication of a user. The `email` scope must be added to the main scope `openid`. The claims `email` and `email_verified` are issued in the identity token. For example:
 
 ```
 "sub": "EE60001019906",
@@ -245,35 +245,35 @@ Skoobiga `email` saab nõuda, et identsustõendis väljastatakse kasutaja e-post
 "email_verified": false
 ```
 
-Väite `email` väärtus loetakse kasutaja autentimissertifikaadi SAN laiendist (RFC822 tüüpi Subject Alternative Name väljast). E-postiaadress väljastatakse ainult juhul, kui kasutaja autenditakse Eesti ID-kaardiga. Klientrakenduses tuleb kindlasti arvestada, et kasutaja ei tarvitse olla oma e-posti suunanud - s.t sellel aadressil saadetud kiri ei tarvitse kasutajani jõuda.
+The `email` value is read from an extension of the user’s authentication certificate (from the RFC822 type Subject Alternative Name field). The e-mail address is only issued if the user is authenticated by an Estonian ID card. The client application must take into consideration that the user may not have redirected their e-mail, i.e. a e-mail sent to this address may not reach the user.
 
-Väite `email_verified` väärtus on alati `false`. See tähendab, et TARA ei kontrolli ega väljasta teavet, kas kasutaja on oma eesti.ee e-postiaadressi suunanud või mitte. (Vastav funktsionaalsus võib lisanduda tulevikus).
+The `email_verified` is always `false`. It means that TARA does not verify or issue information on whether or not the user has redirected their eesti.ee e-mail address. (The respective functionality may be added in the future).
 
-#### 4.1.3 Autentimisvahendite valikuline kasutus
+#### 4.1.3 Selective use of means of authentication
 
-Vaikimisi kuvatakse kasutajale kõik toetatud autentimismeetodid. Soovi korral on kuvatavaid autentimisvalikuid võimalik juhtida `scope` parameetri väärtuste abil. Sobivaid vahendeid on võimalik kombineerida, koostades loetelu soovitud autentimismeetoditest (lubatud väärtuste nimekiri on toodud tabelis 1).
+By default, all supported authentication methods are displayed to the user. If necessary, the authentication options displayed can be managed by using the `scope` parameter's value. parameetri väärtuste abil. Preferred authentication methods can be combined to draw up a list of the authentication methods (the list of permitted values is provided in Table 1).
 
-Tabel 1 - autentimisvalikute kuvamine
+Table 1 – displaying the authentication methods
 
-| Parameetri scope väärtus | Selgitus                       |
+| Value of the scope parameter | Explanation |
 |--------------------------|--------------------------------|
-| `idcard` | Eesti ID-kaardiga autentimise lubamine |
-| `mid` | Mobiil-ID autentimise lubamine |
-| `banklink` | Pangalinkide valiku lubamine |
-| `smartid` | Smart-ID autentimise lubamine |
-| `eidas` | Piiriülese autentimise valiku lubamine |
-| `eidasonly` | Ainult piiriülese autentimise valiku lubamine. <br><br>NB! `eidasonly` kasutuse korral ignoreeritakse alati kõiki ülejäänud autentimisvalikute eelistusi. |
+| `idcard` | Allowing Estonian ID card authentication |
+| `mid` | Allowing Mobile-ID authentication |
+| `banklink` | Allowing bank authentication |
+| `smartid` | Allowing Smart-ID authentication |
+| `eidas` | Allowing cross-border (eIDAS) authentication |
+| `eidasonly` | Allowing ONLY cross-border (eIDAS) authenticationAinult <br><br>NB! When `eidasonly` is used, all other preferred authentication methods will be always excluded. |
 
-Näide 1: Kõik autentimisvahendid
+Example 1: All means of authentication
 `scope=openid`
 
-Näide 2: Ainult ID-kaardi ja Mobiil-ID kasutus
+Example 2: Only ID card and mobile ID 
 `scope=openid%20idcard%20mid`
 
-Näide 3: Ainult piiriülene autentimine
+Example 3: Only cross-border authentication
 `scope=openid%20eidas`
 
-### 4.2 Tagasisuunamispäring
+### 4.2 Redirect request
 
 Tagasisuunamispäring on HTTP GET päring, millega kasutaja suunatakse autentimise järel TARA-st tagasi klientrakendusse.
 
