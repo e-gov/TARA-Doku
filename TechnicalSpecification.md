@@ -3,7 +3,7 @@ permalink: Technical specification
 ---
 
 # Technical specification
-v 1.6, 04.04.2019
+v 1.6, 05.04.2019
 
 ## 1 Overview
 
