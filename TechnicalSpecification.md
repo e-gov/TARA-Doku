@@ -345,22 +345,22 @@ The body of the request must include the following parameters:
 
 #### 4.3.1 Identity token
 
-TARA server kontrollib, et identsustõendit küsiv klientrakendus on TARAs registreeritud. Seejärel väljastab päringu vastuses (_HTTP response body_) identsustõendi.
+TARA server verifies that the identity token is requested by the right application and issues the identity token included in the response body (HTTP response body).
 
-Päringu vastus on JSON-struktuur, milles on neli elementi (vt järgnev tabel). 
+The response body uses JSON format consisting four elements (see the following table).
 
-| element | selgitus |
-|:-------:|----------|
-| `access_token` | OAuth 2.0 pääsutõend. Pääsutõendiga saab klientrakendus pärida `userinfo` otspunktist autenditud isikut kirjeldavad andmed.<br><br>TARA väljastab küll pääsutõendi, kuid soovitame pääsutõendit kasutada ainult siis, kui nn "karbitoote" liidestamisel ei ole võimalust kasutada identsustõendit (vt allpool). Kõik autenditud isikut kirjeldavad andmed väljastatakse juba identsustõendis. Identsustõendi kasutamine on eelistatud ja ka teoreetiliselt turvalisem, kuna identsustõend on allkirjastatud, `userinfo` otspunkti väljund aga mitte |
-| `token_type` | Väärtusega `bearer`. OAuth 2.0 pääsutõendi tüüp |
-| `expires_in` | OAuth 2.0 pääsutõendi aegumiskestus |
-| `id_token` | identsustõend, Base64 vormingus | 
+| element | explanation |
+|:-------:|-------------|
+| `access_token` | OAuth 2.0 access certificate. With identity token the client application can issue authenticated user's data from `userinfo` endpoint.<br><br>Even though TARA issues the access token, we only advise to use it (to receive the authenticated user’s data from the `userinfo` endpoint) in case it is not possible to use the identity token (e.g when interfacing out-of-the-box products). All the data of authenticated user are already issued within the identity token. Using the identity is recommended and, in theory, is considered to be more secure (as the identity token is signed, while the `userinfo` endpoint is not). |
+| `token_type` | OAuth 2.0 access token type with `bearer` value. Not used in TARA |
+| `expires_in` | The validity period of the OAuth 2.0 access token. Not used in TARA. |
+| `id_token` | Identity token, in Base64 format. | 
 
-Identsustõend on TARA poolt väljastatav tõend autentimise fakti kohta.
+The identity token is a certificate of the fact of authentication issued by TARA.
 
-Identsustõend väljastatakse [veebitõendi](https://jwt.io/) (JSON Web Token, JWT) vormingus.
+The identity token is issued in [JSON Web Token](https://jwt.io/), JWT format.
 
-Näide (identsustõendi sisu e _payload_):
+An example:
 
 ````json
 {
@@ -385,30 +385,29 @@ Näide (identsustõendi sisu e _payload_):
 }
 ````
 
-Identsustõendis väljastatakse järgmised väited (_claims_).
+The following claims are presented in the identity token.
 
-| identsustõendi element (väide) | näiteväärtus, selgitus     |
-|:-----------------------|---------------------|
-| `jti` (_JSON Token Identifier_) | `0c597356... ` - identsustõendi identifikaator |
-| `iss` (_Issuer_)       | `https://tara.ria.ee` - tõendi väljastaja (TARA-teenus); testteenuse puhul `https://tara-test.ria.ee` |
-| `aud` (_Audience_)     | `TARA-Demo` - autentimist küsinud infosüsteemi ID (kasutaja autentimisele suunamisel määratud `client_id` välja väärtus)|
-| `exp` (_Expires_) | `1530295852` - tõendi aegumisaeg, Unix _epoch_ vormingus |
-| `iat` (_Issued At_) | `1530267052` - tõendi väljaandmisaeg, Unix _epoch_ vormingus |
-| `nbf` (_Not Before_)   | `1530266752` - tõendi kehtivuse algusaeg, Unix _epoch_ vormingus |
-| `sub` (_Subject_)      | `EE60001019906` - autenditud kasutaja identifikaator (isikukood või eIDAS identifikaator) koos kodaniku riigikoodi eesliitega (riigikoodid vastavalt ISO 3166-1 alpha-2 standardile) |
-| `profile_attributes`   | autenditud isikut kirjeldavad andmed |
-| `profile_attributes`<br>`.date_of_birth` | `2000-01-01` - autenditud kasutaja sünnikuupäev ISO_8601 formaadis. Tagastatakse ainult Eesti isikukoodiga isikute puhul ning eIDAS autentimisel |
-| `profile_attributes`<br>`.given_name` | `MARY ÄNN` - autenditud kasutaja eesnimi (testnimi, valitud täpitähtede sisalduvuse pärast) |
-| `profile_attributes`<br>`.family_name` | `O’CONNEŽ-ŠUSLIK` - autenditud kasutaja perekonnanimi (testnimi, valitud täpitähtede jm eritärkide sisalduvuse pärast) |
-| `profile_attributes`<br>`_translit` | Sisaldab JSON objekti ladina tähestikus profiiliatribuutidest (vt allpool translitereerimine.). Väärtustatud ainult eIDAS autentimisel |
-| `amr` (_Authentication Method Reference_) | `mID` - kasutaja autentimiseks kasutatud autentimismeetod. Võimalikud väärtused: `mID` - mobiil-ID, `idcard` - Eesti ID-kaart, `eIDAS` - piiriülene, `banklink` - pangalink, `smartid` - Smart-ID  |
-| `state` | `abcdefghijklmnop` - turvaelement. Autentimispäringu `state` parameetri väärtus.  |
-| `nonce` | `qrstuvwxyzabcdef` - turvaelement. Autentimispäringu `nonce` parameetri väärtus. Väärtustatud ainult juhul kui autentimispäringus saadeti `nonce` parameeter. |
-| `acr` (_Authentication Context Class Reference_) | `high` - autentimistase, vastavalt eIDAS tasemetele. Võimalikud väärtused: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Elementi ei kasutata, kui autentimistase ei kohaldu või pole teada |
-| `at_hash` | `X0MVjwrmMQs/IBzfU2osvw==` - pääsutõendi räsi. TARA-s ei kasutata |
-| `email` | `60001019906@eesti.ee` - kasutaja e-postiaadress. Väljastatakse ainult  Eesti ID-kaardiga kasutaja autentimisel. Loetakse kasutaja autentimissertifikaadi SAN laiendist (RFC822 tüüpi `Subject Alternative Name` väljast) |
-| `email_verified` | `false` - tähendab, et e-postiaadressi kuulumine kasutajale on tuvastatud. TARA väljastab alati väärtuse `false`. See tähendab, et TARA ei kontrolli ega väljasta teavet, kas kasutaja on oma eesti.ee e-postiaadressi suunanud või mitte. |
-
+| identity token element (_claim_) | example of a value, explanation |
+|:---------------------------------|---------------------------------|
+| `jti` (_JSON Token Identifier_) | `0c597356... ` - identity token identifier |
+| `iss` (_Issuer_)       | `https://tara.ria.ee` - issuer of the certificate (TARA); in the case of test services `https://tara-test.ria.ee` |
+| `aud` (_Audience_)     | `TARA-Demo` - the ID of a client application that requested authentication (the value of `client_id` field is specified upon directing the user to the authentication process). |
+| `exp` (_Expires_) | `1530295852` - the expiration time of the certificate (in Unix _epoch_ format). |
+| `iat` (_Issued At_) | `1530267052` - the time of issue of the certificate (in Unix _epoch_ format). |
+| `nbf` (_Not Before_)   | `1530266752` - the validity start time of the certificate, Unix _epoch_ vormingus |
+| `sub` (_Subject_)      | `EE60001019906` - the identifier of the authenticated user (personal identification code or eIDAS identifier) with the prefix of the country code of the citizen (country codes based on the ISO 3166-1 alpha-2 standard). |
+| `profile_attributes`   | the data of the authenticated user, including the eIDAS attributes |
+| `profile_attributes`<br>`.date_of_birth` | `2000-01-01` - the date of birth of the authenticated user in the ISO_8601 format. Only sent in the case of persons with Estonian personal identification code and in the case of eIDAS authentication. |
+| `profile_attributes`<br>`.given_name` | `MARY ÄNN` - the first name of the authenticated user (the test name was chosen because it consists special characters). |
+| `profile_attributes`<br>`.family_name` | `O’CONNEŽ-ŠUSLIK` - the surname of the authenticated user (the test name was selected because it includes special characters). |
+| `profile_attributes`<br>`_translit` | Includes a JSON object consisting of profile attributes in the Latin alphabet (see the section on transliteration below). The value is present only in the case of eIDAS authentication. |
+| `amr` (_Authentication Method Reference_) | `mID` - the authentication method used for user authentication. Possible values: `mID` - Mobile-ID, `idcard` - Estonian ID card, `eIDAS` - cross-border, `banklink` - bank, `smartid` - Smart-ID  |
+| `state` | `abcdefghijklmnop` - security element. The authentication request’s `state` parameter value.  |
+| `nonce` | `qrstuvwxyzabcdef` - security element. The authentication request’s `nonce` parameter value. Value is present only in case the `nonce` parameter was sent in the authentication request. |
+| `acr` (_Authentication Context Class Reference_) | `high` - level of authentication based on the eIDAS LoA (level of assurance). Possible values: `low`, `substantial`, `high`. The element is not used if the level of authentication is not applicable or is unknown. |
+| `at_hash` | `X0MVjwrmMQs/IBzfU2osvw==` - the access token hash. Not used in TARA. |
+| `email` | `60001019906@eesti.ee` - the user’s e-mail address. Only issued if an Estonian ID card is used for authenticating the user. Is only read from the SAN extension of the user’s authentication certificate (from the RFC822 type `Subject Alternative Name` field) |
+| `email_verified` | `false` - the e-mail address of the user has been verified. TARA always issues a value `false`. It means that TARA does not verify or issue information on whether or not the user has redirected their eesti.ee e-mail address. |
 
 Identsustõend võib sisaldada muid OpenID Connect protokolli kohaseid välju, kuid neid teenuses ei kasutata. 
 
