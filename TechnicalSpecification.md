@@ -315,9 +315,9 @@ The redirect request errors are normally resulted by a misconfiguration; therefo
 
 ### 4.3 Identity token request
 
-Identsustõendipäring on HTTP POST päring, millega klientrakendus pärib TARA serverilt identsustõendi (_ID token_).
+The identity token request is a HTTP POST request which is used by the client application to request the identity token from the server of TARA.
 
-Identsustõendipäringu näide (HTTP POST päringu keha on loetavuse huvides jagatud mitmele reale):
+An example of an identity token request (for better readability, the body of the HTTP POST request is divided over several lines):
 
 ````
 POST /token HTTP/1.1
@@ -330,20 +330,20 @@ code=SplxlOBeZQQYbYS6WxSbIA&
 redirect_uri=https%3A%2F%2eteenus.asutus.ee%2Ftagasi
 ````
 
-Identsustõendipäringus tuleb esitada salasõna. Selleks tuleb päringusse lisada `Authorization` päis (_request header_), väärtusega, mis moodustatakse sõnast `Basic`, tühikust ja Base64 kodeeringus stringist `<client_id>:<client_secret>` (vt _RFC 2617 HTTP Authentication: Basic and Digest Access Authentication_, jaotis 2 _Basic Authentication Scheme_).
+The client secret code must be provided in the identity token request. For this purpose, the request must include the `Authorization` request header with the value formed of the word `Basic`, a space, and a string `<client_id>:<client_secret>` encoded in the Base64 format (see RFC 2617 HTTP Authentication: Basic and Digest Access Authentication, Section 2 Basic Authentication Scheme).
 
-HTTP POST päringu keha peab olema esitatud OpenID Connect protokolli kohaselt serialiseeritud [kujul](https://openid.net/specs/openid-connect-core-1_0.html#FormSerialization).
+The body of the HTTP POST request must be presented in a serialised [format](https://openid.net/specs/openid-connect-core-1_0.html#FormSerialization) based on the OpenID Connect protocol.
 
-Päringu kehas tuleb esitada järgnevad parameetrid:
+The body of the request must include the following parameters:
 
-| POST päringu keha element | näide                    |  selgitus     |
-|------------------------|-----------------------------|---------------|
-| protokoll, host ja tee | `https://tara.ria.ee/oidc/token` |   |
-| `grant_type`  | `grant_type=authorization_code` | Protokollikohane nõutav väärtus `authorization_code`. |
-| `code` | `code=Splx...` | Autentimisteenuselt saadud volituskood. | 
-| `redirect_uri` | `redirect_uri=https%3A%2F` | Autentimispäringus saadetud ümbersuunamis-URI. |
+| POST request body element | example | explanation |
+|---------------------------|---------|-------------|
+| protocol, host, and path | `https://tara.ria.ee/oidc/token` |   |
+| `grant_type`  | `grant_type=authorization_code` | The `authorization_code` value required based on the protocol. |
+| `code` | `code=Splx...` | Autentimisteenuselt saadud volituskood. The authorisation code received from the authentication service. | 
+| `redirect_uri` | `redirect_uri=https%3A%2F` | The redirect URL sent in the authorisation request. |
 
-#### 4.3.1 Identsustõend
+#### 4.3.1 Identity token
 
 TARA server kontrollib, et identsustõendit küsiv klientrakendus on TARAs registreeritud. Seejärel väljastab päringu vastuses (_HTTP response body_) identsustõendi.
 
