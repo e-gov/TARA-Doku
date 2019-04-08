@@ -409,32 +409,32 @@ The following claims are presented in the identity token.
 | `email` | `60001019906@eesti.ee` - the user’s e-mail address. Only issued if an Estonian ID card is used for authenticating the user. Is only read from the SAN extension of the user’s authentication certificate (from the RFC822 type `Subject Alternative Name` field) |
 | `email_verified` | `false` - the e-mail address of the user has been verified. TARA always issues a value `false`. It means that TARA does not verify or issue information on whether or not the user has redirected their eesti.ee e-mail address. |
 
-Identsustõend võib sisaldada muid OpenID Connect protokolli kohaseid välju, kuid neid teenuses ei kasutata. 
+Identitiy token might consist other OpenID Connect protocol based fields that are not supported in TARA.
 
-Klientrakendus peab identsustõendile järgi tulema kohe tagasisuunamispäringu saamisel. Kui identsustõendit ei pärita `5..10` minuti jooksul, siis identsustõend aegub ja autentimisprotsessi tuleb korrata.
+The client application must issue the identity token immediately or within `5...10` minutes (the expiry time of identity token).
 
-### 4.4 Kasutajainfopäring
+### 4.4 User info request
 
-Kasutajainfopäring võimaldab kehtiva  `OAuth 2.0` pääsutõendi alusel küsida infot autenditud kasutaja kohta. Päring peab olema esitatud HTTP GET meetodil. Kehtiva pääsutõendi korral väljastatakse JSON vormingus vastus.
+User info request enables requesting information about an authenticated user based on a valid `OAuth 2.0` access token. The request must be done by using the HTTP GET method.
 
-Pääsutõend tuleb esitada kasutajainfot väljastavale otspunktile [Bearer Token meetodil](https://tools.ietf.org/html/rfc6750#section-2.1) HTTP päises (soovituslik) või [URLi parameetrina](https://tools.ietf.org/html/rfc6750#section-2.3).
+The access token must be presented to the user info endpoint in the HTTP header or by using the [Bearer Token method](https://tools.ietf.org/html/rfc6750#section-2.1) or as a [URLi parameter](https://tools.ietf.org/html/rfc6750#section-2.3).
 
-Näide 1 - pääsutõendi edastamine `Authorization` päises:
+Example 1 – transferring an access certificate in the `Authorization` header:
+
 ````
 GET /oidc/profile HTTP/1.1
 Host: tara.ria.ee
 Authorization: Bearer AT-20-qWuioSEtFhYVdW89JJ4yWvtI5SaNWep0
 ````
 
-Näide 2 - pääsutõendi edastamine `access_token` parameetrina :
+Example 2 – transferring of access certificate as an `access_token` parameter:
+
 ````
 GET /oidc/profile?access_token=AT-20-qWuioSEtFhYVdW89JJ4yWvtI5SaNWep0 HTTP/1.1
 Host: tara.ria.ee
 ````
 
-Kehtiva pääsutõendi korral väljastatakse JSON vormingus vastus.
-
-Näide:
+The valid access token response is provided in the JSON format. Example:
 
 ````json
 {
@@ -449,28 +449,28 @@ Näide:
 }
 ```` 
 
-Vastuses esitatavad väited väljastatakse identsustõendi alusel. 
+The claims included in the response are issued based on the identity token.
 
-| json element (väide) | väljastamine kohustuslik | selgitus | 
-|:-----------------------|---------------------|-------------------|
-| `auth_time` | jah | Kasutaja eduka autentimise ajahetk. Unix *epoch* vormingus |
-| `sub` (_Subject_) | jah | Vormingult ja tähenduselt sama, mis `sub` identsustõendis |
-| `given_name` | jah | Vormingult ja tähenduselt sama, mis `profile_attributes.given_name` identsustõendis |
-| `family_name` | jah | Vormingult ja tähenduselt sama, mis `profile_attributes.family_name` identsustõendis |
-| `amr` | jah | Vormingult ja tähenduselt sama, mis `amr` identsustõendis |
-| `date_of_birth` |  ei <sup>1</sup> | Vormingult ja tähenduselt sama, mis `profile_attributes.date_of_birth` identsustõendis |
-| `email` | ei  <sup>1</sup> | Vormingult ja tähenduselt sama, mis `email` identsustõendis |
-| `email_verified` | ei  <sup>1</sup> | Vormingult ja tähenduselt sama, mis `email_verified` identsustõendis |
-| `acr` | ei  <sup>1</sup> | Vormingult ja tähenduselt sama, mis `acr` identsustõendis |
+| json element (_claim_) | disclosure is compulsory | explanation | 
+|:-----------------------|--------------------------|-------------|
+| `auth_time` | yes | The time of successful authentication of the user. In the Unix epoch format. |
+| `sub` (_Subject_) | yes | The same format and meaning as `sub` in identity token. |
+| `given_name` | yes | The same format and meaning as `profile_attributes.given_name` in identity token. |
+| `family_name` | yes | The same format and meaning as `profile_attributes.family_name` in identity token. |
+| `amr` | yes | The same format and meaning as `amr` in identity token. |
+| `date_of_birth` |  no <sup>1</sup> | The same format and meaning as `profile_attributes.date_of_birth` in identity token. |
+| `email` | ei  <sup>1</sup> | The same format and meaning as `email` in identity token. |
+| `email_verified` | no  <sup>1</sup> | The same format and meaning as `email_verified` in identity token. |
+| `acr` | no  <sup>1</sup> | The same format and meaning as `acr` in identity token. |
 
- <sup>1</sup> Väljastatakse ainult juhul, kui antud väide on esitatud ka identsustõendis.
+ <sup>1</sup> Only issued if the claim is also included in the identity token.
 
+**Error handling**
 
-**Vigade käsitlemine**
+In case the access token presented to the user information endpoint is missing or is expired, an error code and a brief description about the error are returned in the `WWW-Authenticate` header according to the [OpenID Connect Core 1.0 spetsifikatsioonile](https://openid.net/specs/openid-connect-core-1_0.html#UserInfoError).
 
-Juhul kui kasutajainfo otspunktile esitatav pääsutõend puudub või on aegunud tagastatakse veakood ja lühikirjeldus `WWW-Authenticate` päises vastavalt [OpenID Connect Core 1.0 spetsifikatsioonile](https://openid.net/specs/openid-connect-core-1_0.html#UserInfoError)
+An example:
 
-Näide:
 ````
 HTTP/1.1 401 Unauthorized
 WWW-Authenticate: Bearer error="invalid_token",error_description="The access token has expired"
