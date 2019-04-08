@@ -2,6 +2,9 @@
 permalink: TechnicalSpecification
 ---
 
+Mõned autentimismeetodid võivad olla veel arenduses või kasutatavad ainult testkeskkonnas. Vt [uudised](Uudised).
+{: .note}
+
 # Technical specification
 {: .no_toc}
 v 1.6, 02.04.2019
