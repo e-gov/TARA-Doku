@@ -536,67 +536,65 @@ The identity token must be used immediately, within 5 minutes. When the time lim
 
 The client application must implement protective measures against false request attacks (_cross-site request forgery_, CSRF). This can be achieved by using `state` and `nonce` security codes. Using`state` is compulsory; using `nonce` is optional. The procedure of using `state` is described below.
 
-Turvakoodi `state` kasutatakse autentimispäringule järgneva tagasisuunamispäringu võltsimise vastu. Klientrakenduses tuleb teostada järgmised sammud:
+The `state` security code is used to combat falsification of the redirect request following the authentication request. The client application must perform the following steps:
 
-1 Genereerida juhusõne, näiteks pikkusega 16 tärki: `XoD2LIie4KZRgmyc` (tähistame `R`).
+1 Generate a nonce word, for example of the length of 16 characters: `XoD2LIie4KZRgmyc` (referred to as `R`).
 
-2 Arvutada juhusõnest `R` räsi `H = hash(R)`, näiteks SHA256 räsialgoritmiga ja teisendades tulemuse Base64 vormingusse: `vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`.
+2 Calculate from the `R` nonce word the `H = hash(R)`hash, for example by using the SHA256 hash algorithm and by converting the result to the Base64 format: `vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`.
 
-3 Lisada autentimispäringule küpsise panemise korraldus, näiteks:
+3 Add an order to set a cookie to the authentication request, for example:
 
 `Set-Cookie ETEENUS=XoD2LIie4KZRgmyc; HttpOnly`,
 
-kus `ETEENUS` on vabalt valitud küpsisenimi. Küpsisele tuleb rakendada atribuuti `HttpOnly`.
+where `ETEENUS` is a freely selected cookie name. The `HttpOnly` attribute must be applied to the cookie.
 
-4 Seada p 2 arvutatud räsi parameetri `state` väärtuseks:
+4 Set the following value for the `state` parameter calculated based on section 2:
 
 `GET ... state=vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`
 
-Niisiis, autentimispäringuga saadetakse kaks asja: juhusõne küpsisesse panemiseks ja juhusõnest arvutatud räsiväärtus `state` parameetris. Klientrakendus ei pea juhusõne ega räsiväärtust meeles pidama.
+Thus, two elements are sent in an authentication request: a nonce word for including in the cookie and the hash value calculated from the nonce word in the `state` parameter. The client application is not required to remember the nonce word or the hash value.
 
-Tagasisuunamispäringu töötlemisel peab klientrakendus tegema järgmist:
+In the course of processing the redirect request, the client application must:
 
-5 Võtab päringuga tuleva küpsise `ETEENUS` väärtuse
+5 Take the `ETEENUS` value of the cookie received with the request.
 
-6 Arvutab küpsise väärtusest räsi
+6 Calculate the hash based on the cookie value.
 
-7 Kontrollib, et räsi ühtib tagasisuunamispäringus tagasipeegeldatava `state` väärtusega.
+7 Verify that the hash matches the `state` value mirrored back in the redirect request.
 
-Tagasisuunamispäringut tohib aktsepteerida ainult ülalkirjeldatud kontrolli õnnestumisel.
+The redirect request may only be accepted if the checks described above is successful.
 
-Kirjeldatud protseduuris on võtmetähtsusega väärtuse `state` sidumine sessiooniga. Seda tehakse küpsise abil. (See on autentimise ajutine sessioon.  Töösessiooni moodustab klientrakendus pärast autentimise edukat lõpuleviimist).
+The key element of the process described above is connection of the `state` value with the session. This is achieved by using a cookie. (This is a temporary authentication session. The work session will be created by the client application after the successful completion of the authentication).
 
-Täiendav teave: OpenID Connect protokollis kahjuks ei ole teema selgelt esitatud. Mõningast teavet saab soovi korral mitteametlikust dokumendist [OpenID Connect Basic Client Implementer's Guide 1.0](https://openid.net/specs/openid-connect-basic-1_0.html), jaotis "2.1.1.1 Request Parameters".
+Further information: unfortunately, this topic is not presented clearly in the OpenID Connect protocol. Some information can be found from an unofficial document, [OpenID Connect Basic Client Implementer's Guide 1.0](https://openid.net/specs/openid-connect-basic-1_0.html), section ‘2.1.1.1 Request Parameters’.
 
-Soovi korral võite veel tutvuda ründe (ja kaitse) detailse seletusega: [Võltspäringurünne ja kaitse selle vastu](Volts).  
+### 5.3 Logging
 
-### 5.3 Logimine
+Logging must enable the reconstruction of the course of the communication between TARA and the client application for each occasion of using TARA. For this purpose, all requests and responses must be logged by TARA as well as by the client application: [autentimispäring](#41-autentimisp%C3%A4ring), [tagasisuunamispäring](#42-tagasisuunamisp%C3%A4ring) and [identsustõendipäring](#43-identsust%C3%B5endip%C3%A4ring). As the volumes of data transferred are not large, the URL as well as the identity token must be logged in full. The retention periods of the logs should be determined based on the importance of the client application. We advise using 1 … 7 years. In case of any issue, please submit an excerpt from the log (Which requests were sent to TARA? Which responses were received?).
 
-Logimine peab võimaldama rekonstrueerida TARA ja klientrakenduse suhtluse käigu TARA iga kasutuse jaoks. Selleks tuleb nii TARA kui ka klientrakenduse poolel logida kõik päringud ja päringute vastused: [autentimispäring](#41-autentimisp%C3%A4ring), [tagasisuunamispäring](#42-tagasisuunamisp%C3%A4ring) ja [identsustõendipäring](#43-identsust%C3%B5endip%C3%A4ring). Kuna edastatavad andmemahud ei ole suured, siis tuleb logida nii URL kui ka identsustõend täielikul kujul. Logide säilitamistähtaja määramisel arvestada klientrakenduse olulisust. Orientiiriks pakume 1..7 aastat. Probleemide lahendamiseks pöördumisel palume esitada väljavõte logist (mis päringud TARA poole saadeti? mis saadi vastuseks?).
+## 6 Endpoints
 
-## 6 Otspunktid
+Test service
 
-Testteenus
-
-| otspunkt      |                        URL      |
+| endpoint      |                        URL      |
 |---------------|---------------------------------|
-| teenuseteave (_server discovery_) |  [https://tara-test.ria.ee/oidc/.well-known/openid-configuration](https://tara-test.ria.ee/oidc/.well-known/openid-configuration) |
-| teenuse avalik allkirjastamisvõti | [https://tara-test.ria.ee/oidc/jwks](https://tara-test.ria.ee/oidc/jwks) |
-| klientrakenduse registreerimine | dünaamilist registreerimist ei toetata, registreerimine staatiliselt, `help@ria.ee` kaudu |
-| autentimine (_authorization_) | [https://tara-test.ria.ee/oidc/authorize](https://tara-test.ria.ee/oidc/authorize) | 
-| tõendiväljastus (_token_) | [https://tara-test.ria.ee/oidc/token](https://tara-test.ria.ee/oidc/token) | 
+| server discovery |  [https://tara-test.ria.ee/oidc/.well-known/openid-configuration](https://tara-test.ria.ee/oidc/.well-known/openid-configuration) |
+| public signature key of the service | [https://tara-test.ria.ee/oidc/jwks](https://tara-test.ria.ee/oidc/jwks) |
+| registration of the client application | dynamic registration is not supported, static registration via `help@ria.ee`. |
+| authorization | [https://tara-test.ria.ee/oidc/authorize](https://tara-test.ria.ee/oidc/authorize) | 
+| token | [https://tara-test.ria.ee/oidc/token](https://tara-test.ria.ee/oidc/token) | 
 
-Toodanguteenus
+Production service
 
-| otspunkt      |                        URL      |
+| endpoint      |                        URL      |
 |---------------|---------------------------------|
-| teenuseteave (_server discovery_) | [https://tara.ria.ee/oidc/.well-known/openid-configuration](https://tara.ria.ee/oidc/.well-known/openid-configuration) |
-| teenuse avalik allkirjastamisvõti | [https://tara.ria.ee/oidc/jwks](https://tara.ria.ee/oidc/jwks) |
-| klientrakenduse registreerimine | dünaamilist registreerimist ei toetata, registreerimine staatiliselt, `help@ria.ee` kaudu |
-| autentimine (_authorization_) | [https://tara.ria.ee/oidc/authorize](https://tara.ria.ee/oidc/authorize) | 
-| tõendiväljastus (_token_) | [https://tara.ria.ee/oidc/token](https://tara.ria.ee/oidc/token) | 
+| server discovery | [https://tara.ria.ee/oidc/.well-known/openid-configuration](https://tara.ria.ee/oidc/.well-known/openid-configuration) |
+| public signature key of the service | [https://tara.ria.ee/oidc/jwks](https://tara.ria.ee/oidc/jwks) |
+| registration of the client application | dynamic registration is not supported, static registration via `help@ria.ee`. |
+| authorization | [https://tara.ria.ee/oidc/authorize](https://tara.ria.ee/oidc/authorize) | 
+| token | [https://tara.ria.ee/oidc/token](https://tara.ria.ee/oidc/token) | 
 
-## 7 Soovitusi liidestajale
+## 7 Reccommendations for interfacing with TARA
 
 TARA-ga liidestamine on lihtne. Siiski on vaja töid kavandada ja hoolikalt teostada.
 
