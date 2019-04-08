@@ -476,73 +476,65 @@ HTTP/1.1 401 Unauthorized
 WWW-Authenticate: Bearer error="invalid_token",error_description="The access token has expired"
 ````
 
-## 5 Turvatoimingud
+## 5 Security operations
 
-### 5.1 Identsustõendi kontrollimine
+### 5.1 Verification of the identity token
 
-Klientrakendus peab identsustõendit kindlasti kontrollima. Teostada tuleb kõik protokollikohased (OpenID Connect ja selle alusprotokoll OAuth 2.0) kontrollid.
+The client application must always verify the identity token. The client application must implement all the verifications based on OpenID Connect and OAuth 2.0 protocols.
 {: .adv}
 
-Kontrollida tuleb:
+The verification must verify identity token’s:
 
-- tõendi allkirja
-- tõendi väljaandjat
-- tõendi adressaati
-- tõendi ajalist kehtivust.
+- signature
+- issuer
+- addressee
+- validity
 
-Lähemalt nendest kontrollidest allpool. Vajadusel saate täpsemat teavet OpenID Connect ja OAuth 2.0 protokollikirjeldustest.
+For more detailed information about the identity token verifications can be found from OpenID Connect and OAuth 2.0 protocol specifications.
 
-**Allkirja kontrollimine.** Identsustõend väljastatakse autentimisteenuse TARA poolt allkirjastatult. Allkiri vastab JWT standardile.
+**Verifying the signature.** The identity token is signed by the TARA authentication service. The signature meets the JWT standard.
 
-Allkirjaalgoritmina kasutab TARA `RS256`. Klientrakendus peab suutma vähemalt selle algoritmiga antud allkirja kontrollida. Allkirja kontrollimine on otstarbekas teostada standardse JWT teegiga, mis toetaks kõiki JWT algoritme. Seda vähetõenäoliseks, kuid siiski võimalikuks juhuks, kui `RS256`-s peaks avastatama turvanõrkus, mis tingib algoritmi vahetamise.
+TARA uses the `RS256` signature algorithm. The client application must, at least, be able to verify the signature given by using this algorithm. It would be reasonable to use a standard JWT library which supports all JWT algorithms. A situation in which the TARA signature algorithm is needed is, in principle, possible – if a security failure is detected in `RS256`).
 
-Allkirja kontrollimisel tuleb kasutada TARA avalikku allkirjavõtit (edaspidi "võti"). Võtme saate võtmeväljastuse otspunktist (vt allpool jaotis "Otspunktid"). 
+For the signature verification the public signature key of TARA must be used. The public signature key is published at the public signature key endpoint (see chapter 6 "Endpoints").
 
-Võti on stabiilne. Vahetame võtit vastavalt turvasoovitustele, mitte sagedamini kui 2-3 aasta tagant. Kuid ei ole välistatud erakorraline võtmevahetus võtme korrumpeerumise korral.
+The public signature key is stable - the public signature key will be changed every 2-3 years or accordingly to the security recommendations.
 
-Võtmel on identifikaator (`kid`). Võtmeidentifikaatorite osas järgime OpenID Connect ja OAuth 2.0 soovitatud praktikat, mis teeb võimalikuks võtmevahetuse ilma teenuse katkestuseta. 
+The public signature key has an identifier (`kid`). The key identifier is aligned with the best practices of OpenID Connect and OAuth 2.0 that enables the key exchange without the service interruption.
 
-Võtmevahetusel (väga harv ja erakordne sündmus) on lühikese perioodi (5-10 min) jooksul võtmeväljastuse otspunktist nähtavad kaks võtit, kumbki oma identifikaatoriga. Muul ajal on otspunktis üksainus võti.
+TARA issues `kid` in the response of the request of identity token (JWT header element `kid`). `kid` refers to the key that the client application has to use for the verification of a signature.
 
-Näiteks praegune (märts 2019) võtme `kid`, kui vaatate võtmeväljastuse otspunktist [https://tara.ria.ee/oidc/jwks](https://tara.ria.ee/oidc/jwks), on `a8ff37`. Kui võtame kasutusele uue võtme, siis uuel võtmel saab olema teine `kid`.
+We recommend to buffer the signature key in order to decrease the amount of requests made to TARA server. It is reasonable to buffer `kid` with the signature key.
 
-Identsustõendi päringu vastuses väljastab TARA klientrakendusele ka `kid` (JWT päise (_header_) element `kid`). See `kid` osutab võtmele, mida peate väljastatud tõendi allkirja kontrollimisel kasutama.
+When receiving the identity token, the client application must verify whether the buffered key is available to use. 
 
-Soovitame võtit puhverdada, kuna see vähendab TARA serveri poole tehtavate päringute arvu. Kuid aktsepteeritav on ka võtme pärimine igas autentimises.
+If TARA sent the `kid` value in identity token that does not have a corresponding signature key in the buffer, then a new signature key must be issued from the public signature key endpoint.
 
-Otstarbekas on puhverdada `kid` koos võtmega (võti ise esitatakse väärtuste `n` ja `e` paarina).
+**Trust of the public signature key endpoint.** The client application makes HTTPS requests to TARA server towards to the identity token and public signature key endpoints. The client application must verify TARA server’s certificate (domains `tara.ria.ee` and `tara-test.ria.ee`). As the certificates of afore-mentioned domains are issued by DigiCert, the client application must use DigiCert’s root certificate or TARA certificate as a trust anchor.
 
-Identsustõendi saamisel peab klientrakendus kontrollima, kas saab kasutada puhverdatud võtit. Kui TARA saatis identsustõendis `kid` väärtuse, millele vastavat võtit puhvris ei ole, siis tuleb puhvrit uuendada, s.t pärida võtmeväljastuse otspunktist uus võti.
+**Verifying the issuer of the certificate** The `iss` value of the identity token element must be `https://tara-test.ria.ee` (for TARA test environment) or `https://tara.ria.ee` (for TARA production environment).
 
-Ülalesitatu teostamist võib mõjutada, kas liidestate TARA-ga "karbitoodet", üritate hakkama saada mõne OpenID Connect teegi seadistamisega või programmeerite liidestuse ise. Teegid ja karbitooted ei tarvitse puhverdamist toetada.
+**Verifying the addressee of the certificate.** The client application must verify whether the certificate received was issued for them. For this purpose, it must be made sure that the `aud` value of the identity token element matches the client ID issued upon registration of the client application.
 
-**Võtmeväljastuse otspunkti usaldamine.** Klientrakendus teeb HTTPS päringuid TARA serverile, identsustõendi väljastamise ja võtmeväljastuse otspunktide vastu. Klientrakendus peab kontrollima TARA serveri sertifikaati (domeenid `tara.ria.ee` ja `tara-test.ria.ee`). Serdid nendele domeenidele on välja antud DigiCert poolt. Klientrakenduses tuleb seetõttu kas DigiCert juursert või TARA sert seada usaldusankruks. 
+**Verifying the validity of the certificate.** The verification is done using three elements in the identity token: `iat`, `nbf`, `exp`. The client application uses its own clock to verify the validity. The following details should be verified:
 
-**Tõendi väljaandja kontrollimine.** Identsustõendi elemendi `iss` väärtus peab olema `https://tara-test.ria.ee` (TARA testkeskkonna puhul) või `https://tara.ria.ee` (TARA toodangukeskkonna puhul).
+1) that "not before" time has reached:
 
-**Tõendi adressaadi kontrollimine.** Klientrakendus peab kontrollima, et saadud tõend on välja antud just temale. Selleks veenduda, et identsustõendi elemendi `aud` väärtus ühtib klientrakendusele registreerimisel väljaantud kliendinimega (_Client ID_).
+`nbf <= jooksev_aeg + kellade_lubatud_erinevus` (current time + permitted difference between clocks).
 
-**Tõendi ajalise kehtivuse kontrollimine.** Kontrollitakse kolme identsustõendis sisalduva elemendi abil - `iat`, `nbf`, `exp`. Klientrakendus kasutab kontrollimisel oma kellaaega. Kontrollida tuleks, et: 
+2) that the "expired" time has not been reached:
 
-1) "not before" ajamoment on kätte jõudnud:
+`exp > jooksev_aeg - kellade_lubatud_erinevus` (current time - permitted difference between clocks).
 
-`nbf <= jooksev_aeg + kellade_lubatud_erinevus` 
+The application must choose the `kellade_lubatud_erinevus` value. These checks are required for preventing attacks and confusion.
 
-2) "expired" ajamoment ei ole kätte jõudnud:
+The identity token must be used immediately, within 5 minutes. When the time limit is exceeded, the identity token will be not issued.
 
-`exp > jooksev_aeg - kellade_lubatud_erinevus`.
+**Creating a session.** After a successful verification of the identity token, the client application will create a session with the user (‘log in the user’). The client application is responsible for creating and holding the sessions. The methods for doing this are not included in the scope of the TARA authentication service.
 
-`kellade_lubatud_erinevus` väärtus valida ise. Need kontrollid on vajaliku rünnete ja sassiminekute vältimiseks.
+### 5.2 Protection against false request attacks
 
-TARA põhimõte on, et identsustõendile tuleb järgi tulla kohe, 5 minuti jooksul. Selle aja ületamisel identsustõendit ei väljastatagi.
-
-**Seansi loomine.** Identsustõendi eduka kontrollimise järel loob klientrakendus kasutajaga seansi ("logib kasutaja sisse"). Seansi loomine ja pidamine on klientrakenduse kohustus. Kuidas seda teha, ei ole enam autentimisteenuse TARA skoobis.
-
-Märkus. Tavaliselt peetakse veebirakendusega seanssi küpsises hoitava seansitõendi (_session token_) abil. Seansitõend võib olla juhusõneline (_opaque_) või veebitõend (JWT). Vt lähemalt [Seansihaldus](Seansihaldus). Identsustõend ei sobi otseselt seansitõendiks, sest identsustõendi kehtivusaeg väljendab tõendi väljastamise perioodi, mitte seansi kehtivusperioodi. Küll aga saab klientrakendus seansitõendi koostada identsustõendi põhjal, valides seansi sobiva kehtivusaja. 
-
-### 5.2 Võltspäringuründe vastane kaitse
-
-Klientrakenduses tuleb rakendada võltspäringuründe (_cross-site request forgery_, CSRF) vastaseid kaitsemeetmeid. Seda tehakse turvakoodide `state` ja `nonce` abil. `state` kasutamine on kohustuslik; `nonce` kasutamine on vabatahtlik. Kirjeldame `state` kasutamise protseduuri.
+The client application must implement protective measures against false request attacks (_cross-site request forgery_, CSRF). This can be achieved by using `state` and `nonce` security codes. Using`state` is compulsory; using `nonce` is optional. The procedure of using `state` is described below.
 
 Turvakoodi `state` kasutatakse autentimispäringule järgneva tagasisuunamispäringu võltsimise vastu. Klientrakenduses tuleb teostada järgmised sammud:
 
