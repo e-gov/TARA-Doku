@@ -459,7 +459,7 @@ The claims included in the response are issued based on the identity token.
 | `family_name` | yes | The same format and meaning as `profile_attributes.family_name` in identity token. |
 | `amr` | yes | The same format and meaning as `amr` in identity token. |
 | `date_of_birth` |  no <sup>1</sup> | The same format and meaning as `profile_attributes.date_of_birth` in identity token. |
-| `email` | ei  <sup>1</sup> | The same format and meaning as `email` in identity token. |
+| `email` | no  <sup>1</sup> | The same format and meaning as `email` in identity token. |
 | `email_verified` | no  <sup>1</sup> | The same format and meaning as `email_verified` in identity token. |
 | `acr` | no  <sup>1</sup> | The same format and meaning as `acr` in identity token. |
 
@@ -596,40 +596,39 @@ Production service
 
 ## 7 Reccommendations for interfacing with TARA
 
-TARA-ga liidestamine on lihtne. Siiski on vaja töid kavandada ja hoolikalt teostada.
+Interfacing with TARA is easy. Yet, the operations should be carefully planned and executed.
 
-Liidestuja peab erilist tähelepanu pöörama, et kõik protokollikohased kontrollid saaksid tehtud - turvaelemendi `state` ja kui kasutatakse, siis ka `nonce` kontroll, identsustõendi kontroll jm. Vt [ID token validation](http://openid.net/specs/openid-connect-core-1_0.html#ImplicitIDTValidation) [Core].
+While performing the interfacing, special attention must be paid to ensure that all checks required based on the protocol are performed – checks of the `state` security element, as well as `nonce` security element, if used, the identity token verification, etc. See [ID token validation](http://openid.net/specs/openid-connect-core-1_0.html#ImplicitIDTValidation) [Core].
 
-Liidestamise protsess näeb välja järgmine.
+The process of interfacing is completed as follows:
 
-Asutus peaks välja selgitama, kas ja millistes oma e-teenustes soovib TARA kasutada. Selleks tuleks tutvuda TARA [ärikirjeldusega](Arikirjeldus), teenustaseme leppega (SLA-ga), käesoleva [tehnilise kirjeldusega](TehnilineKirjeldus). Võib heita pilgu teenuse [teekaardile](Teekaart). Vajadusel pidada nõu RIA-ga, `help@ria.ee`.
+The institution must determine whether and which of their e-services they would like to use TARA.
 
-Seejärel kavandada ja teostada teenuse kasutamiseks vajalik arendustöö - klientrakenduse täiendamine OpenID Connect protokolli kohase klientkomponendiga, sh testimine. Hinnanguline töömaht: kogenud arendajal u 2 päeva; kui OpenID Connect-i pole varem teinud, siis 2 nädalat. Aluseks käesolev [tehniline kirjeldus](TehnilineKirjeldus)
+Then, the development required for using the service should be planned and executed – complementation of the client application with the OpenID Connect protocol-based client component, including testing. The estimated volume of the development: approx. two days for an experienced developer; if the developer has no previous experience with OpenID Connect, two weeks. The development should be planned based on the current [technical specification](TechnicalSpecification)
 
-Arenduse valmides tuleb liidest testida. Selleks kasutatakse TARA testteenust. Asutus esitab taotluse testteenusega liitumiseks. Taotluse võib esitada juba enne arenduse algust. Taotluses teatab asutus:
+When the development is completed, the interface must be tested with the TARA test service. The representative of the institution must submit an application for subscribing to the test service. The application may be submitted before launching the development. In the application, the institution must state:
 
-- teenuse, millega soovitakse liituda (test- või toodanguteenus)
-- kinnituse, et liituja on välja arendanud omapoolse liidese ja seda TARA testteenuse vastu testinud (toodanguteenusega liitumise puhul)
-- e-teenuse või -teenused, mille kasutajaid soovitakse TARA abil autentida
-- kasutajate arvu prognoosi
-- kohustumuse kasutada teenust eesmärgipäraselt. Sh testteenust kasutada ainult testimiseks, mitte toodangus autentimiseks
-- nõustumuse teenustasemega (SLA-ga)
-- klientrakenduse identifikaatori ettepanek -`client_id`, OpenID Connect protokolli kohaselt
-- klientrakenduse testversiooni tagasisuunamis-URL (_redirect-URL_), OpenID Connect protokolli kohaselt
-- klientrakenduse testversiooni tagasisuunamis-URL juhuks, kui kasutaja soovib autentimist katkestada
-- autentimismeetod või meetodid, mida soovitakse kasutada
-- klientrakenduse haldaja kontaktandmed (e-post, telefon, isikukood).
+- the service to which they wish to subscribe to (test or production service)
+- confirmation that the subscriber has developed their interface and tested it against the TARA test service (when subscribing to the production service)
+- name(s) of the e-service(s)/client application(s) that will be integrated with TARA
+- the estimated number of users of the e-service
+- the obligation to only use the service for the intended purpose, including to only use the test service for testing, not for authentication
+-	consent with the service level agreement (SLA)
+- the proposal of the client application identifier – `client_id`, based on the OpenID Connect protocol
+-	the redirect-URL of the test version of the client application, based on the OpenID Connect protocol
+- the redirect-URL of the test version of the client application for the situations in which the user would like to terminate the authentication process
+- the authentication method or methods which the institution intends to use
+-	the contact details of the person responsible of the client application (e-mail address, telephone, personal identification code).
 
-Taotlus esitatakse ja edasine suhtlus teenuse haldamisel käib läbi RIA kasutajatoe, `help@ria.ee`. Vt lähemalt [RIA autentimisteenuste lehel](https://www.ria.ee/et/riigi-infosusteem/eid/partnerile.html#tara).
+The application is submitted and any further communication in the course of administration of the service is conducted via the user support of RIA, `help@ria.ee`. Read more from the [website of RIA authentication services](https://www.ria.ee/en/state-information-system/eid/partners.html#tara).
 
-RIA, rahuldades taotluse:
-- väljastab asutusele klientrakenduse salasõna `client_secret`. Salasõna on ette nähtud identsustõendi päringute allkirjastamiseks
-- avab asutuse klientrakenduse testversioonile juurdepääsu testteenusele.
+RIA, having satisfied the application:
 
-Järgneb liidestuse testimine. RIA abistab siin võimalike probleemide lahendamisel. Testimise kohta vt lähemalt: [Testimine](https://e-gov.github.io/TARA-Doku/Testimine).
+- issues a client application password `client_secret` for the institution. The client secret code is used for signing identity token requests
+- provides an access to the TARA test service.
 
-Tasub pilk heita [eneseabile](Eneseabi).
+As a next step, the institution performs tests of it's client applicaton interface. See the testing [guidelines](https://e-gov.github.io/TARA-Doku/Testimine).
 
-Liitumine TARA toodanguteenusega. Eduka testimise järel asutus esitab taotluse toodanguteenuse avamiseks klientrakendusele. Taotluses näidatakse klientrakenduse toodanguversiooni tagasisuunamis-URL (`redirect_uri`), OpenID Connect protokolli kohaselt jm andmed
+**Subscribing to the TARA production service.** After successful testing, the institution submits an application for integration with the production version for the client application. The application must include the redirect-URL of the production version of the client application (`redirect_uri`) based on the OpenID Connect protocol and other information.
 
-RIA, rahuldades taotluse, väljastab asutusele klientrakenduse toodanguversiooni salasõna `client_secret` ja avab asutuse klientrakenduse toodanguversioonile juurdepääsu toodanguteenusele.
+RIA, having satisfied the application, issues a password for the production version of the client application, `client_secret` and grants access to the production service for the production version of the client application.
