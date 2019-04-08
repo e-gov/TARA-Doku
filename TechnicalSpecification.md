@@ -3,7 +3,11 @@ permalink: Technical specification
 ---
 
 # Technical specification
-v 1.6, 05.04.2019
+{: .no_toc}
+v 1.6, 02.04.2019
+
+- TOC
+{:toc}
 
 ## 1 Overview
 
