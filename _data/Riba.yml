@@ -6,6 +6,8 @@
   url: "/Arikirjeldus"
 - title: "Tehniline kirjeldus"
   url: "/TehnilineKirjeldus"
+- title: "Technical specification"
+  url: "/TechnicalSpecification"
 - title: "Demo"
   url: "/Demo"  
 - title: "Eneseabi"
