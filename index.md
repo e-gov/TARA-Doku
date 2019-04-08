@@ -37,7 +37,7 @@ Eraldi on lehel teavet TARA edasiarendajale.
 
 ## Liidese arendajale
 
-[Tehniline kirjeldus](TehnilineKirjeldus) [Technical specification](TechnicalSpecification)
+[Tehniline kirjeldus](TehnilineKirjeldus) · [Technical specification](TechnicalSpecification)
 
 [Testimine](Testimine)
 
