@@ -1,5 +1,5 @@
 ---
-permalink: Technical specification
+permalink: TechnicalSpecification
 ---
 
 # Technical specification
