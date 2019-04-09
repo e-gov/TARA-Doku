@@ -12,8 +12,8 @@ Käesolevas dokumendis kirjeldame milliseid isikuandmeid ja mis eesmärgil RIA a
 
 Tingimused rakenduvad:
 
-1. TARA autentimisteenusele TARA
-2. RIA autentimisteenusele
+1. Riigi autentimisteenusele (TARA)
+2. Eesti autentimisteenusele (IdP)
 3. RIA eIDAS konnektorteenusele
 4. EL piiriülese autentimistaristu Eesti sõlmele ("eIDAS Node").
 
