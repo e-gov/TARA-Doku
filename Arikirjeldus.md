@@ -32,7 +32,7 @@ Samuti pakume välismaalase autentimist, eIDAS piiriülese autentimise skeemiga.
 
 Riigi autentimisteenusega on liitunud 8 riigiasutust 30
 infosüsteemiga, sh (riigiportaal eesti.ee, RIHA, ePRIA, Ehitisregister,
-Rahvastikuregister, eToetus, eSTAT jt) (märts 2019 seisuga).
+Rahvastikuregister, eToetus, eSTAT, EMDE jt) (märts 2019 seisuga).
 
 ## Tehnilised tingimused?
 

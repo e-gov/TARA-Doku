@@ -4,7 +4,7 @@ permalink: Isikuandmed
 
 # Andmekaitsetingimused
 
-_viimati uuendatud 13.09.2018_
+_viimati uuendatud 09.04.2019_
 
 Käesolevas dokumendis kirjeldame milliseid isikuandmeid ja mis eesmärgil RIA autentimisteenustes ([1], edaspidi "teenused") töötleme. Samuti anname teavet mis meetmeid kasutaja eraelu privaatsuse kaitseks rakendame. 
 
@@ -12,8 +12,8 @@ Käesolevas dokumendis kirjeldame milliseid isikuandmeid ja mis eesmärgil RIA a
 
 Tingimused rakenduvad:
 
-1. TARA autentimisteenusele TARA
-2. RIA autentimisteenusele
+1. Riigi autentimisteenusele (TARA)
+2. Eesti autentimisteenusele (IdP)
 3. RIA eIDAS konnektorteenusele
 4. EL piiriülese autentimistaristu Eesti sõlmele ("eIDAS Node").
 
