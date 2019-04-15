@@ -2,7 +2,7 @@
 permalink: Feder
 ---
 
-# Autentimise e seansi üleandmine
+# Autentimise e seansi edasiandmine
 {: .no_toc}
 
 06.02.2019  v0.1
@@ -12,7 +12,7 @@ permalink: Feder
 
 ## Ülevaade
 
-Käesolev dokument annab soovitusi seansi üleandmise koosvõimeliseks ja turvaliseks tehniliseks teostamiseks.
+Käesolev dokument annab soovitusi seansi edasiandmise koosvõimeliseks ja turvaliseks tehniliseks teostamiseks.
 
 ## Mõisted
 
