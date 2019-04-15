@@ -38,6 +38,8 @@ Rahvastikuregister, eToetus, eSTAT, EMDE jt) (märts 2019 seisuga).
 
 E-teenus liidestatakse autentimisteenusega OpenID Connect protokolli kohaselt. Vt lähemalt: [Tehniline kirjeldus](TehnilineKirjeldus).
 
+Soovi korral võib riigi autentimisteenusega liidesta asutuse oma autentimislahenduse, mis siis autentimist e seanssi asutuse e-teenustele edasi jagab. Selle kohta vt: [Autentimise e seansi edasiandmine](Feder).
+
 ## Kuidas liituda?
 
 Asutusel tuleb:
