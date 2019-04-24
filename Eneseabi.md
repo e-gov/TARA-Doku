@@ -10,6 +10,26 @@ Hea TARA-ga liidestuja! Siit leiad valiku küsimusi, mis teistel on tekkinud - j
 - TOC
 {:toc}
 
+## Kui saate /oidc/token otspunktile tehtud päringu (identsustõendi küsimine) vastuseks veateate `401 unauthorized`.
+
+Kontrollige:
+- HTTP autoriseerimispäis (_authorization_) on korrektselt vormistatud
+- autoriseerimispäises esitatud kasutajanimi ja parool on õigesti kirjutatud.
+
+Vajadusel uue parooli saamiseks pöörduge teenusehalduri poole.
+
+## Kas on võimalik kasutada ühes klientrakenduses mitut redirect-URL-i?
+
+Ei ole. Kasutatava platvormi tehnilise piirangu tõttu TARA praegu ei toeta mitut tagasipöördumisaadressi.
+
+## Kas TARA toetab _single sign-on (SSO)_ lahendust?
+
+Hetkel me ei paku _SSO_ funktsionaalsust. Kui see peaks muutuma siis teavitame sellest kindlasti oma kliente.
+
+## Kas TARA-l on olemas _health endpoint_ millega saaks monitoorida klientrakendust?
+
+Hetkel _health_ otspunkti väljapoole ei paku. SK teenuste tervise detailsem monitoorimine on küll kavas ja esimesel võimalusel teavitame sellest klientidele.
+
 ## Miks on autentimispäringus üldse vaja redirect-URL-i näidata?
 
 Tagasipöördumisaadress (redirect-URL) määratakse klientrakenduse registreerimisel. TARA põhineb OpenID Connect protokollil, mis näeb ette võimalust, et klientrakendusega seotakse mitu tagasipöördumisaadressi. Autentimispäringus peab klientrakendus TARA-le teatama, millisele registreeritud aadressidest soovib, et autenditud kasutaja tagasi suunatakse. Märgime, et kasutatava platvormi tehnilise piirangu tõttu TARA praegu ei toeta mitut tagasipöördumisaadressi. Klientrakendusega seome ühe tagasipöördumisaadressi ja see tuleb ka autentimispäringus näidata. Tagasipöördumisaadressi registreerimine aga on vajalik rünnete vältimiseks.
@@ -31,7 +51,7 @@ ID-kaardiga autentimisel küsitakse kasutajalt alati PIN1 koodi.
 Kasutajamugavuse suurendamiseks sirvikud puhverdavad PIN1 koodi. See tähendab, et kasutajalt küsitakse PIN1-te üks korda, edaspidi töö käigus aga enam ei küsita (kasutajale mugav). Oht on aga selles, et kui kasutaja lahkub ilma sirvikut sulgemata ja arvutile pääseb ligi teine kasutaja, siis uus kasutaja võib ilma PIN1-te teadmata- puhverdamise tõttu seda temalt ei küsita - eelmise kasutaja nime all e-teenusesse sisse.
 
 See on tõsine oht. PIN1 küsimine toimub kasutaja arvutis. TARA poolelt ei saa sirviku käitumist täielikult juhtida. Ohu vältimiseks peab kasutaja turvaliselt tegutsema:
-
+ 
 "Veebilehitsejad võivad puhverdada (ajutiselt salvestada) aktiivse ID-kaardi sessiooni käigus sisestatud PIN1 ehk isikutuvastamise koodi. Selle tulemusel võib õnnestuda erinevatesse e-teenustesse sisselogimine ilma PIN1-koodi korduvalt sisestamata. PIN1-koodi „puhverdamist“ saab vältida, kui järgida järgmist kolme põhimõtet:
 
 -	kui kasutasid ID-kaarti internetis mõnes e-teenuses, siis teenuse kasutamise lõppemisel vajuta kindlasti „Välju“, „Logi  välja“ või „Sulge“ nupule;
