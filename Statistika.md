@@ -2,20 +2,12 @@
 permalink: Statistika
 ---
 
-# TARA kasutusstatistika
+# TARA statistika
 {: .no_toc}
-
-- TOC
-{:toc}
-
-Vt ka:
-- [TARA-107](https://jira.ria.ee/browse/TARA-107) (JIRA)
-- [logimise käsitlus TARA-Server repo vikis](https://github.com/e-gov/TARA-Server/wiki/Logimine). 
-- [Tara-Stat mikroteenus kasutusstatistika kogumiseks ja vaatamiseks](https://e-gov.github.io/TARA-Stat/Dokumentatsioon). 
 
 ## TARA statistikalogi. Spetsifikatsioon
 
-20\.11.2017, täiendatud 2017-12-22 Priit Parmakson
+Algselt koostatud: 20\.11.2017.
 
 1\.	Statistikalogi eesmärk on koguda andmeid RIHA kasutusstatistika koostamiseks.<br>
 2\.	Statistikalogi salvestatakse eraldi logifailide kogumina.<br>
