@@ -10,6 +10,10 @@ Hea TARA-ga liidestuja! Siit leiad valiku küsimusi, mis teistel on tekkinud - j
 - TOC
 {:toc}
 
+## Kas erasektorile on ka mõnda teenust pakkuda?
+
+Jah. Kuigi riigi autentimisteenust pakume avaliku sektori avalikke ülesandeid täitvatele e-teenustele tasuta siis kõigile teistele e-teenustele pakume TARA eidas (piiriülese autentimise) skoobis.
+
 ## Kui saate /oidc/token otspunktile tehtud päringu (identsustõendi küsimine) vastuseks veateate `401 unauthorized`.
 
 Kontrollige:
