@@ -30,7 +30,7 @@ Vt ka:
 2017-12-08 12:03:42;openIdDemo;MobileID;START_AUTH;
 2017-12-08 12:03:42;openIdDemo;MobileID;ERROR;NOT_ACTIVATED
 2017-12-08 12:05:19;openIdDemo;IDCard;START_AUTH;
-2017-12-08 12:05:19;openIdDemo;IDCard;SUCCESSFUL_AUTH;
+2017-12-08 12:05:19;openIdDemo;IDCard;SUCCESSFUL_AUTH;;http://aia.demo.sk.ee/esteid2018
 2017-12-15 11:37:15;openIdDemo;MobileID;START_AUTH;
 2017-12-15 11:37:15;openIdDemo;MobileID;ERROR;USER_CANCEL
 2017-12-15 11:37:16;openIdDemo;MobileID;START_AUTH;
@@ -77,15 +77,16 @@ Vt ka:
 | 4.	| autentimismeetod	| `MobileID`, `IDCard` jne	| sõne	|
 | 5.  | toimingu alustamise kood |   | `START_AUTH` |
 
-- autentimistoimingu ebaõnnestumise kirje;
+- autentimistoimingu õnnestumise või ebaõnnestumise kirje;
 
 | nr	| väli |	selgitus	| formaat	|
 |-----|------|------------|---------|
 | 1.	| toimingu aeg	| autentimistoimingu alustamise aeg.	| ISO 8601, `YYYY-MM-DD hh:mm:ss` |
 | 2.	| klientrakendus	| klientrakenduse nimi, `client id` OpenID Connecti mõistes.	| sõne	|
 | 4.	| autentimismeetod	| `IDCard`, `MobileID`, `eIDAS/{riigi kood}`, `BankLink/{panga kood}`, `SmartID`	| sõne	|
-| 5.  | toimingu tulemus | õnnestumise puhul `SUCCESSFUL_AUTH`, ebaedu puhul `ERROR` |  |
-| 6.  | veateade | |  |
+| 5.  | toimingu tulemus | õnnestumise puhul `SUCCESSFUL_AUTH`, ebaedu puhul `ERROR` | üks järgnevatest konstantidest: `SUCCESSFUL_AUTH`, `ERROR` |
+| 6.  | veateade | selgitav veateade. Täidetud ainlt juhul kui tomingu tulemus on `ERROR`| sõne |
+| 7.  | ocsp url | kliendi sertifikaadi staatuse kontrollil kasutatud OCSP url. Täidetud ainult juhul kui autentimismeetod on `IDCard`| URL |
  
 Logikirjed on ajalises järgnevuses, kuid mitte paariti - s.t autentimistoimingu tulemuse kirje ei tarvitse vahetult järgneda autentimistoimingu alustamise kirjele.
 
