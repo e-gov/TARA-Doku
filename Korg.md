@@ -9,8 +9,12 @@ Priit Parmakson
 
 29.04.2019
 
+Sisukord
+
 - TOC
 {:toc}
+
+# Ülevaade
 
 Autentimise toimivus on e-teenuse käideldavuse seisukohalt kriitiline. Kui kasutajat ei saa autentida, siis ei saa ka personaliseeritud e-teenuse osutada.
 
@@ -42,13 +46,11 @@ Eesti autentimisteenus on RIA poolt osutatav teenus, millega autenditakse välis
 
 Märkus. Kavas on Eesti autentimisteenuses kasutusele võtta samasugune kehtivuskinnitusteenuse valikumeetod nagu TARAs (vaikimis kasutada tasuta teenust AIA-OCSP, viimase tõrke korral lülituda ümber tasulisele OCSP teenusele).
 
-## Avaliku sektori autentimisvõrk
-
 Eesti avalikus sektoris on hinnanguliselt sadu infosüsteemi. Kasutajale pakutakse mitut tuhat e-teenust. Kõigi nende ühendamine riigi autentimisteenusega (TARA-ga) paneks e-riigi sõltuma ühe tugiteenuse (TARA) "ülevalolekust". Sellise keskse nuripunkti (ingl _single point of failure_) tekkimine oleks suur risk.
 
 Vaja on leida võimalused keskse nuripunkti riski maandamiseks.
 
-## Elutukse
+## Elutukse pakkumine ja kasutamine
 
 Elutukse (ingl _heartbeat_) on reaalajaline teave, mida teenus väljastab oma toimivusseisundi kohta.
 
@@ -75,7 +77,7 @@ Elutukse ei ole siiski universaalne lahendus. Elutuksel on mitmeid puudusi:
 - elutukse õigsus ei ole garanteeritud. Teenus võib olla "maas", kuid elutukse järgi "OK". Elutukse korralik teostus nõuab enesediagnostika sisseehitamist teenusesse - see võib olla keeruline
 - elutukse negatiivse vastuse käsitlemine peab olema läbimõeldud. Näiteks, ahvatlev on mõelda, et kavandatud teenusekatkestusi võiks teenusekasutajatele edastada masinloetaval kujul. Kuid teenusekasutaja peab teadma, et sellised teavitused võivad tulla ja suutma neid automiseeritult käsitleda. 
 
-## Varuteenus
+## Alternatiivteenuse kasutamine
 
 Paljudel asutustel on loodud oma autentimislahendused. Asutuse oma autentimislahendusel võib olla võimalusi, mida TARA ei paku: seansihaldus, ühekordne sisselogimine (SSO), pääsuhaldus (autoriseerimine).
 
