@@ -14,7 +14,7 @@ Sisukord
 - TOC
 {:toc}
 
-# Ülevaade
+## Ülevaade
 
 Autentimise toimivus on e-teenuse käideldavuse seisukohalt kriitiline. Kui kasutajat ei saa autentida, siis ei saa ka personaliseeritud e-teenuse osutada.
 
