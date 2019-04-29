@@ -22,7 +22,7 @@ Välisteenuste kasutamine võimaldab küll raha kokku hoida, kuid samas loob sõ
 
 Välisteenuse tõrke võimalusega tuleb alati arvestada. Käideldavuse tõrget ei saa välistada, kuid kõik osapooled peavad rakendama meetmeid, et tõrgete esinemistõenäosust vähendada, tõrkeid avastada ja kiiresti lahendada.
 
-Käesolev leht kirjeldab RIA autentimisteenuste teenustevõrku ja annab juhiseid ning soovitusi autentimise kõrge käideldavuse tagamiseks.
+Käesolev leht kirjeldab RIA autentimisteenuste teenustevõrku ja annab soovitusi autentimise kõrge käideldavuse tagamiseks.
 
 Dokument on kavandi/ettepaneku staatuses.
 
@@ -81,10 +81,10 @@ Elutukse ei ole siiski universaalne lahendus. Elutuksel on mitmeid puudusi:
 
 Paljudel asutustel on loodud oma autentimislahendused. Asutuse oma autentimislahendusel võib olla võimalusi, mida TARA ei paku: seansihaldus, ühekordne sisselogimine (SSO), pääsuhaldus (autoriseerimine).
 
-Kui asutus ei soovi oma autentimislahendusest loobuda, siis võib TARA lisada täiendava või alternatiivse autentimislahendusena.
+Asutus võib TARA lisada täiendava või alternatiivse autentimislahendusena asutuse olemasolevale või kavandatavale autentimislahendusele. See vähendab asutuse autentimislahenduse käideldavusriski.
 {: .note}
 
-Kui asutus otsustab võtta kasutusele TARA, siis käideldavusriski maandamise üks võte on alernatiivse autentimislahenduse võimaldamine. 
+Kui asutus otsustab võtta kasutusele TARA, siis käideldavusriski maandamise üks võte on alternatiivse autentimislahenduse võimaldamine. 
 {: .note}
 
 Peamise ja alternatiivse autentimislahenduse vahel ümberlülitamise võib teostada käsitsi (seadistamisega) või automaatselt. Automaatse ümberlülitamise võimaldamiseks on TARA-s kavas luua avalik elutukse.
