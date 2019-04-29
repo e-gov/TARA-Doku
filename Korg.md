@@ -24,19 +24,23 @@ Dokument on kavandi/ettepaneku staatuses.
 
 ## Teenusevõrk
 
-**Üles- ja allavoolu teenused.** Teenus võib olla sisendiks teisele teenusele. Teisele teenusele teenust osutavat teenust nimetatakse "ülesvoolu" (või "ülemjooksu", _upstream_) teenuseks. Teist teenust tarbivat teenust nimetatakse "allavoolu" (või "alamjooksu", _downstream_) teenuseks.
+Teenus võib olla sisendiks teisele teenusele. Teisele teenusele teenust osutavat teenust nimetatakse "ülesvoolu" (või "ülemjooksu", _upstream_) teenuseks. Teist teenust tarbivat teenust nimetatakse "allavoolu" (või "alamjooksu", _downstream_) teenuseks.
 
 TARA kasutab mitmeid RIA-siseseid ja -väliseid teenuseid. Joonisel 1 on näidatud neist olulisimad.
 
-<p style='text-align:center;'><img src='img/Teenusvork.PNG' style='width:600px'></p>
+<p style='text-align:center;'><img src='img/Teenusvork.PNG' style='width:900px'></p>
 
-Nooled näitavad teenuse osutamise suunda. Märgime, et tegu on üldistatud joonisega. Teenust osutatakse tihti mitme HTTP-otspunkti kaudu. Näiteks autentimisteenusel TARA on autentimispäringu ja identsustõendi väljastamise otspunktid. eIDAS konnektor- ja vahendusteenustel on SAML metateabe otspunktid jne.
+Nooled näitavad teenuse osutamise suunda. Tegu on üldistatud joonisega. Teenust osutatakse tihti mitme HTTP-otspunkti kaudu. Näiteks autentimisteenusel TARA on autentimispäringu ja identsustõendi väljastamise otspunktid. eIDAS konnektor- ja vahendusteenustel on SAML metateabe otspunktid jne.
 
-- ID-kaardiga autentimisel kasutatakse kehtivuskinnitusteenust. Esimese valikuna pöördub TARA tasuta kehtivuskinnitusteenuse poole (AIA-OCSP, `aia.sk.ee/esteid20xx`, teenust osutab SK Identity Solutions AS). Kui tasuta teenuse kasutamine ebaõnnestub, siis proovib TARA tasulist teenust (`ocsp.sk.ee`, teenust osutab samuti SK Identity Solutions AS).
-- mobiil-ID-ga autentimisel kasutab TARA mobiil-ID autentimisteenust [DigiDocService](http://sk-eid.github.io/dds-documentation/). (Teenust osutab SK ID Solutions AS).
-- piiriülesel autentimisel pöördub TARA kõigepealt RIAs majutatud eIDAS konnektorteenuse poole. Konnektorteenus vahendab pöördumise välisriigi eIDAS vahendusteenuse poole. Sealt omakorda pöördutakse välisriigi autentimisteenusesse, kus kasutaja autenditakse.
+ID-kaardiga autentimisel kasutatakse kehtivuskinnitusteenust. Esimese valikuna pöördub TARA tasuta kehtivuskinnitusteenuse poole (AIA-OCSP, `aia.sk.ee/esteid20xx`, teenust osutab SK Identity Solutions AS). Kui tasuta teenuse kasutamine ebaõnnestub, siis proovib TARA tasulist teenust (`ocsp.sk.ee`, teenust osutab samuti SK Identity Solutions AS).
 
-Eesti autentimisteenus on RIA poolt osutatav teenus, millega autenditakse välisriigi e-teenust kasutav Eesti identimissüsteemi kasutaja. (Näiteks, kuid Eesti ID-kaardi omanik läheb Portugali e-teenusesse, siis suunatakse ta autentima Eesti autentimisteenusesse). Teenusvoog algab välisriigi e-teenusest. Välisriigi teenus pöördub välisriigi eIDAS konnektorteenuse poole. Viimane pöördub RIA eIDAS konnektorteenuse poole. Konnektorteenus pöördub Eesti autentimisteenuse poole. Eesti autentimisteenus võimaldab kasutaja autentida kas ID-kaardiga või mobiil-ID-ga. Vastavalt kasutab Eesti autentimisteenus tasulist kehtivuskinnitusteenust või mobiil-ID-ga autentimise teenust DigiDocService. Märkus. Kavas on Eesti autentimisteenuses kasutusele võtta samasugune kehtivuskinnitusteenuse valikumeetod nagu TARAs (vaikimis kasutada tasuta teenust AIA-OCSP, viimase tõrke korral lülituda ümber tasulisele OCSP teenusele).
+Mobiil-ID-ga autentimisel kasutab TARA mobiil-ID autentimisteenust [DigiDocService](http://sk-eid.github.io/dds-documentation/). (Teenust osutab SK ID Solutions AS).
+
+Piiriülesel autentimisel pöördub TARA kõigepealt RIAs majutatud eIDAS konnektorteenuse poole. Konnektorteenus vahendab pöördumise välisriigi eIDAS vahendusteenuse poole. Sealt omakorda pöördutakse välisriigi autentimisteenusesse, kus kasutaja autenditakse.
+
+Eesti autentimisteenus on RIA poolt osutatav teenus, millega autenditakse välisriigi e-teenust kasutav Eesti identimissüsteemi kasutaja. (Näiteks, kuid Eesti ID-kaardi omanik läheb Portugali e-teenusesse, siis suunatakse ta autentima Eesti autentimisteenusesse). Eesti autentimisteenust kasutav teenusvoog algab välisriigi e-teenusest. Välisriigi teenus pöördub välisriigi eIDAS konnektorteenuse poole. Viimane pöördub RIA eIDAS konnektorteenuse poole. Konnektorteenus pöördub Eesti autentimisteenuse poole. Eesti autentimisteenus võimaldab kasutaja autentida kas ID-kaardiga või mobiil-ID-ga. Vastavalt kasutab Eesti autentimisteenus tasulist kehtivuskinnitusteenust või mobiil-ID-ga autentimise teenust DigiDocService.
+
+Märkus. Kavas on Eesti autentimisteenuses kasutusele võtta samasugune kehtivuskinnitusteenuse valikumeetod nagu TARAs (vaikimis kasutada tasuta teenust AIA-OCSP, viimase tõrke korral lülituda ümber tasulisele OCSP teenusele).
 
 ## Avaliku sektori autentimisvõrk
 
@@ -49,7 +53,7 @@ Vaja on leida võimalused keskse nuripunkti riski maandamiseks.
 Elutukse (ingl _heartbeat_) on reaalajaline teave, mida teenus väljastab oma toimivusseisundi kohta.
 
 Igal teenus peaks pakkuma elutukse otspunkti.
-{: .adv}
+{: .note}
 
 Tüüpiliselt pakutakse elutukset HTTP-otspunkti kaudu. Elutukse vorminguks ei ole 
 
@@ -76,10 +80,10 @@ Elutukse ei ole siiski universaalne lahendus. Elutuksel on mitmeid puudusi:
 Paljudel asutustel on loodud oma autentimislahendused. Asutuse oma autentimislahendusel võib olla võimalusi, mida TARA ei paku: seansihaldus, ühekordne sisselogimine (SSO), pääsuhaldus (autoriseerimine).
 
 Kui asutus ei soovi oma autentimislahendusest loobuda, siis võib TARA lisada täiendava või alternatiivse autentimislahendusena.
-{: .adv}
+{: .note}
 
 Kui asutus otsustab võtta kasutusele TARA, siis käideldavusriski maandamise üks võte on alernatiivse autentimislahenduse võimaldamine. 
-{: .adv}
+{: .note}
 
 Peamise ja alternatiivse autentimislahenduse vahel ümberlülitamise võib teostada käsitsi (seadistamisega) või automaatselt. Automaatse ümberlülitamise võimaldamiseks on TARA-s kavas luua avalik elutukse.
 
