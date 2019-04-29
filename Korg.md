@@ -1,5 +1,5 @@
 ---
-permalink: Korg
+permalink: Toimivus
 ---
 
 # Autentimisteenuse toimivus ja selle tagamine
