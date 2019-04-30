@@ -26,6 +26,14 @@ Käesolev leht kirjeldab RIA autentimisteenuste teenustevõrku ja annab soovitus
 
 Dokument on kavandi/ettepaneku staatuses.
 
+## Mõisted
+
+**Talitluspidevus** (_Business Continuity_) on süsteemi võime toime tulla mitmesuguste tõrgete ja häiretega.
+
+**Kõrgkäideldavus** (_High Availability_) on siin kasutusel tähenduses, et süsteemi olulised komponendid on dubleeritud (mitmes eksemplaris).
+
+**Tõrkesiire** (_Failover_) on protsessi, soovitavalt automaatne, millega töö suunatakse rivist väljalangenud eksemplarilt teisele eksemplarile.
+
 ## Teenusevõrk
 
 Teenus võib olla sisendiks teisele teenusele. Teisele teenusele teenust osutavat teenust nimetatakse "ülesvoolu" (või "ülemjooksu", _upstream_) teenuseks. Teist teenust tarbivat teenust nimetatakse "allavoolu" (või "alamjooksu", _downstream_) teenuseks.
@@ -85,6 +93,9 @@ Asutus võib TARA lisada täiendava või alternatiivse autentimislahendusena asu
 {: .note}
 
 Kui asutus otsustab võtta kasutusele TARA, siis käideldavusriski maandamise üks võte on alternatiivse autentimislahenduse võimaldamine. 
+{: .note}
+
+Asutus peaks teostama tõrkesiirde peamise ja alternatiivse autentimisteenuse vahel.
 {: .note}
 
 Peamise ja alternatiivse autentimislahenduse vahel ümberlülitamise võib teostada käsitsi (seadistamisega) või automaatselt. Automaatse ümberlülitamise võimaldamiseks on TARA-s kavas luua avalik elutukse.
