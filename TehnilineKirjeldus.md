@@ -612,7 +612,7 @@ Toodanguteenus
 
 Aegumisajad (_timeout_)
 
-| ajalõpp  | väärtus  | märkus
+| aegumisaeg  | väärtus  | märkus
 |---------------------|----------|
 | TARA seansi aegumisag | 30 min | TARA server loob autentimise läbiviimiseks TARAsse saabuva kasutajaga oma seansi. Kui kasutaja TARA esilehel midagi ei tee, siis 30 min järel seanss aegub. TARA seanssi ei tohi segi ajada autentimise järel klientrakenduse ja kasutaja vahel loodava seansiga. |
 | SSL kätluse aegumisaeg | 25 s | Omab tähtsust ID-kaardiga autentimisel. Kasutaja peab 25 s jooksul jõudma PIN1 sisestada. Selle aja ületamisel turvalisuse kaalutlustel autentimine katkestatakse. | 
