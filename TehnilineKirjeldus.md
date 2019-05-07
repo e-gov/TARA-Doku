@@ -7,7 +7,7 @@ Mõned autentimismeetodid võivad olla veel arenduses või kasutatavad ainult te
 
 # Tehniline kirjeldus
 {: .no_toc}
-v 1.6, 02.04.2019
+v 1.7, 07.05.2019
 
 - TOC
 {:toc}
@@ -615,7 +615,7 @@ Aegumisajad (_timeout_)
 | aegumisaeg  | väärtus  | märkus
 |---------------------|----------|
 | TARA seansi aegumisag | 30 min | TARA server loob autentimise läbiviimiseks TARAsse saabuva kasutajaga oma seansi. Kui kasutaja TARA esilehel midagi ei tee, siis 30 min järel seanss aegub. TARA seanssi ei tohi segi ajada autentimise järel klientrakenduse ja kasutaja vahel loodava seansiga. |
-| SSL kätluse aegumisaeg | 25 s | Omab tähtsust ID-kaardiga autentimisel. Kasutaja peab 25 s jooksul jõudma PIN1 sisestada. Selle aja ületamisel turvalisuse kaalutlustel autentimine katkestatakse. | 
+| SSL/TLS kätluse aegumisaeg | 25 s | Omab tähtsust ID-kaardiga autentimisel. Kasutaja peab 25 s jooksul jõudma PIN1 sisestada. Selle aja ületamisel turvalisuse kaalutlustel autentimine katkestatakse. | 
 | OAuth volituskoodi aegumisaeg  | 30 s | Klientrakendus peab volituskoodi (_authorization code_) abil identsustõendi välja lunastama 30 s jooksul. |
 | identsustõendi (ja OAuth juurdepääsutõendi (_access token_)) aegumisaeg | 10 min | Identsustõendis on märgitud tõendi aegumise aeg. Turvalisuse kaalutlustel on tõendi kehtivuse periood seatud lühikeseks (10 min). Klientrakendus ei tohi aegunud tõendit kasutada. Märgime, et identsustõend üldjuhul ei sobi klientrakenduse ja kasutaja vahelise seansi tõendiks. Kui klientrakendus soovib veebitõendi (JWT) vormingus seansitõendit kasutada, siis peaks ta looma identsustõendi alusel uue tõendi. |
 
@@ -664,6 +664,7 @@ RIA, rahuldades taotluse, väljastab asutusele klientrakenduse toodanguversiooni
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
+| 1.7, 07.05.2019   | Täpsustatud autentimisprotsessiga seotud olulised aegumisajad. |
 | 1.6, 02.04.2019   | Täpsustatud atribuutide tagastamist ülepiirilise autentimise korral. Täpsustatud väidete `state` ja `nonce` kirjeldusi identsustõendis. |
 | 1.5, 21.03.2019   | Täpsemalt kirjeldatud identsustõendi allkirja kontrollimist |
 | 1.4, 18.03.2019   | Täpsustatud tagasisuunamispäringu kirjeldust vea korral. |
