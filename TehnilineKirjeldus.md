@@ -588,7 +588,7 @@ Soovi korral võite veel tutvuda ründe (ja kaitse) detailse seletusega: [Võlts
 
 Logimine peab võimaldama rekonstrueerida TARA ja klientrakenduse suhtluse käigu TARA iga kasutuse jaoks. Selleks tuleb nii TARA kui ka klientrakenduse poolel logida kõik päringud ja päringute vastused: [autentimispäring](#41-autentimisp%C3%A4ring), [tagasisuunamispäring](#42-tagasisuunamisp%C3%A4ring) ja [identsustõendipäring](#43-identsust%C3%B5endip%C3%A4ring). Kuna edastatavad andmemahud ei ole suured, siis tuleb logida nii URL kui ka identsustõend täielikul kujul. Logide säilitamistähtaja määramisel arvestada klientrakenduse olulisust. Orientiiriks pakume 1..7 aastat. Probleemide lahendamiseks pöördumisel palume esitada väljavõte logist (mis päringud TARA poole saadeti? mis saadi vastuseks?).
 
-## 6 Otspunktid
+## 6 Otspunktid ja ajalõpud
 
 Testteenus
 
@@ -609,6 +609,16 @@ Toodanguteenus
 | klientrakenduse registreerimine | dünaamilist registreerimist ei toetata, registreerimine staatiliselt, `help@ria.ee` kaudu |
 | autentimine (_authorization_) | [https://tara.ria.ee/oidc/authorize](https://tara.ria.ee/oidc/authorize) | 
 | tõendiväljastus (_token_) | [https://tara.ria.ee/oidc/token](https://tara.ria.ee/oidc/token) | 
+
+Ajalõpud (timeout)
+
+| ajalõpp  | väärtus  | märkus
+|---------------------|----------|
+| TARA seansi kestus | 30 min | TARA server loob autentimise läbiviimiseks TARAsse saabuva kasutajaga oma seansi. Kui kasutaja TARA esilehel midagi ei tee, siis 30 min järel seanss aegub. TARA seanssi ei tohi segi ajada autentimise järel klientrakenduse ja kasutaja vahel loodava seansiga. |
+| SSL kätluse ajalõpp | 25 s | Omab tähtsust ID-kaardiga autentimisel. Kasutaja peab 25 s jooksul jõudma PIN1 sisestada. Selle aja ületamisel turvalisuse kaalutlustel autentimine katkestatakse. | 
+| OAuth volituskoodi aegumise aeg  | 30 s | Klientrakendus peab volituskoodi abil identsustõendi välja lunastama 30 s jooksul. |
+| identsustõendi (ja OAuth juurdepääsutõendi (access token)) aegumise aeg | 10 min | Identsustõendis on märgitud tõendi aegumise aeg. Turvalisuse kaalutlustel on tõendi kehtivuse periood seatud lühikeseks (10 min). Klientrakendus ei tohi aegunud tõendit kasutada. Märgime, et identsustõend üldjuhul ei sobi klientrakenduse ja kasutaja vahelise seansi tõendiks. Kui klientrakendus soovib veebitõendi (JW>T) vormingus seansitõendit kasutada, siis peaks ta looma identsustõendi alusel uue tõendi. |
+
 
 ## 7 Soovitusi liidestajale
 
