@@ -8,7 +8,7 @@ Autentimisteenus TARA on Riigi Infosüsteemi Ameti poolt pakutav teenus, millega
 
 Siseriiklikest autentimismeetoditest pakume autentimist riikliku identiteedisüsteemiga:
 
-- mobiil-ID
+- mobiil-ID (ainult Eesti isikukoodiga kasutajad)
 - ID-kaart
 
 ja vahendame erasektori autentimismeetodeid: 
