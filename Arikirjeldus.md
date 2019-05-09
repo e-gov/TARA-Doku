@@ -30,9 +30,8 @@ Riigiasutusele ja avalik-juriidilistele isikutele või eraõiguslikele isikutele
 
 ## Kes TARA kasutavad?
 
-Riigi autentimisteenusega on liitunud 8 riigiasutust 30
-infosüsteemiga, sh (riigiportaal eesti.ee, RIHA, ePRIA, Ehitisregister,
-Rahvastikuregister, eToetus, eSTAT, EMDE jt) (märts 2019 seisuga).
+Riigi autentimisteenusega on liitunud 8 riigiasutust 40
+infosüsteemiga, sh (riigiportaal eesti.ee, e-maksuamet/e-toll (e-MTA), Haridusportaal, RIHA, ePRIA, Ehitisregister, Rahvastikuregister, eToetus, eSTAT, TAKIS, ) (aprill 2019 seisuga).
 
 ## Tehnilised tingimused?
 
