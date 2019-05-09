@@ -24,7 +24,7 @@ Samuti pakume välismaalase autentimist, eIDAS piiriülese autentimise skeemiga.
 
 ## Kellele?
 
- Avaliku sektori asutustele, kes soovivad:
+Riigiasutusele ja avalik-juriidilistele isikutele või eraõiguslikele isikutele, kes täidavad avalikku ülesannet, kes soovivad:
 - oma e-teenustes pakkuda kasutajatele laia valikut autentimismeetodeid, ise neid meetodeid teostamata.
 - lisada oma e-teenusele piiriülese autentimise toe.
 
