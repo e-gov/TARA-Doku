@@ -579,7 +579,7 @@ Logging must enable the reconstruction of the course of the communication betwee
 
 ## 6 Endpoints and timeouts
 
-Test service
+6.1 Test service
 
 | endpoint      |                        URL      |
 |---------------|---------------------------------|
@@ -589,7 +589,7 @@ Test service
 | authorization | [https://tara-test.ria.ee/oidc/authorize](https://tara-test.ria.ee/oidc/authorize) | 
 | token | [https://tara-test.ria.ee/oidc/token](https://tara-test.ria.ee/oidc/token) | 
 
-Production service
+6.2 Production service
 
 | endpoint      |                        URL      |
 |---------------|---------------------------------|
@@ -599,7 +599,7 @@ Production service
 | authorization | [https://tara.ria.ee/oidc/authorize](https://tara.ria.ee/oidc/authorize) | 
 | token | [https://tara.ria.ee/oidc/token](https://tara.ria.ee/oidc/token) | 
 
-Timeouts
+6.3 Timeouts
 
 | timeout      |   value    | remark                |
 |--------------|------------| --------------------- |
