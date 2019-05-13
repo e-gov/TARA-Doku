@@ -577,7 +577,7 @@ Further information: unfortunately, this topic is not presented clearly in the O
 
 Logging must enable the reconstruction of the course of the communication between TARA and the client application for each occasion of using TARA. For this purpose, all requests and responses must be logged by TARA as well as by the client application: [autentimispäring](#41-autentimisp%C3%A4ring), [tagasisuunamispäring](#42-tagasisuunamisp%C3%A4ring) and [identsustõendipäring](#43-identsust%C3%B5endip%C3%A4ring). As the volumes of data transferred are not large, the URL as well as the identity token must be logged in full. The retention periods of the logs should be determined based on the importance of the client application. We advise using 1 … 7 years. In case of any issue, please submit an excerpt from the log (Which requests were sent to TARA? Which responses were received?).
 
-## 6 Endpoints
+## 6 Endpoints and timeouts
 
 Test service
 
@@ -598,6 +598,15 @@ Production service
 | registration of the client application | dynamic registration is not supported, static registration via `help@ria.ee`. |
 | authorization | [https://tara.ria.ee/oidc/authorize](https://tara.ria.ee/oidc/authorize) | 
 | token | [https://tara.ria.ee/oidc/token](https://tara.ria.ee/oidc/token) | 
+
+Timeouts
+
+| timeout      |   value    | remark                |
+|--------------|------------| --------------------- |
+| TARA session | 30 min | TARA server creates a session with the user identified. If the user doesn't perform any activity at TARA page, the session will expire in after 30 minutes. Note: TARA session must be distinguished from the session between the client application and the user. |
+| SSL/TLS handshake | 25 s | In case of ID-card authentication. The user must enter PIN1 within 25 seconds. After the timeout, the authentication will be terminated for security reasons. |
+| OAuth authorization code | 30 s | The client application must issue the ID tokend using authorization code within 30 seconds. |
+| ID token (and OAuth access token) | 10 min | The ID token includes the token expiry time. For security reasons, the validity period of the token is set to 10 minutes. The client application must not use the expired token. Note that ID token is generally is generally not a proof of a session between the client application and the user. |
 
 ## 7 Reccommendations for interfacing with TARA
 
