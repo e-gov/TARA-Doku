@@ -7,7 +7,7 @@ Mõned autentimismeetodid võivad olla veel arenduses või kasutatavad ainult te
 
 # Tehniline kirjeldus
 {: .no_toc}
-v 1.7, 07.05.2019
+v 1.8, 20.05.2019
 
 - TOC
 {:toc}
@@ -227,10 +227,10 @@ Autentimispäringu elemendid:
 | `state` | jah | `state=hkMVY7vjuN7xyLl5` | Võltspäringuründe (_cross-site request forgery_, CSRF) vastane turvakood. `state` moodustamise ja kontrollimise kohta vt lähemalt jaotis "Võltspäringuründe vastane kaitse". |
 | `response_type` | jah | `response_type=code` | Määrab autentimise tulemuse serverile edastamise viisi. Toetatud on volituskoodi viis (OpenID Connect protokolli _authorization flow_), selle tähiseks on väärtus `code`. |
 | `client_id` | jah | `client_id=58e7...` | Rakenduse identifikaator. Rakenduse identifikaatori annab RIA asutusele klientrakenduse registreerimisel autentimisteenuse kasutajaks. |
-| `locale` | ei | `locale=et` | Kasutajaliidese keele valik. Toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida. Märkus. Parameetrit toetatakse kuni juuli 2019 lõpuni.</span> |
+| ~~`locale`~~ | ~~ei~~ | ~~`locale=et`~~ | ~~Kasutajaliidese keele valik. Toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida.~~ <br><br>Märkus. Parameetrit toetatakse kuni juuli 2019 lõpuni.</span> |
 | `ui_locales` | ei | `ui_locales=et` | Kasutajaliidese keele valik. Toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida. Märkus. Parameetrit toetatakse alates jaan 2019 lõpust.</span> |
 | `nonce` | ei | `fsdsfwrerhtry3qeewq` | Taasesitusründeid vältida aitav unikaalne parameeter, vastavalt protokollile ([Viited](Viited), [Core], jaotis 3.1.2.1. Authentication Request). Parameeter `nonce` ei ole kohustuslik. |
-| `acr_values` | ei | `acr_values=substantial` | Minimaalne nõutav autentimistase vastavalt eIDAS tasemetele. Parameeter rakendub ainult juhul kui kasutatakse piiriülest autentimist. Teiste autentimismeetodite korral parameetrit ignoreeritakse. Lubatud määrata üks väärtus järgmisest loetelust: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Kui määramata, siis vaikimisi `substantial` (märkimisväärne). |
+| `acr_values` | ei | `acr_values=substantial` | Ülepiiriliselt autentimisvahehendilt nõutav minimaalne eIDAS autentimistase<sup>1 </sup>.<br><br>Parameeter rakendub ainult juhul kui kasutatakse piiriülest autentimist. Teiste autentimismeetodite korral parameetrit ignoreeritakse. Lubatud määrata üks väärtus järgmisest loetelust: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Kui määramata, siis vaikimisi `substantial` (märkimisväärne). <br><br>Parameetri kasutamisel kontrollida identsustõendis `acr` väite vastavust nõutud minimaalsele tasemele (vt jaotis 5.1 Identsustõendi kontrollimine)<br><br><sup>1 </sup>Autentimistase on e-identimisüsteemile määratud usaldusväärsuse tase, millest on teisi liikmesriike teavitatud vastavalt eIDAS määrusele riiklikule e-identimise süsteemile ning eIDAS määruses toodud [nõuetele](https://eur-lex.europa.eu/legal-content/ET/TXT/HTML/?uri=CELEX:32015R1502&from=EN) (loe autentimistasemete kohta rohkem [siit](https://www.ria.ee/sites/default/files/content-editors/EID/eidas-autentimistasemed.pdf)).  |
 
 #### 4.1.1 Atribuutide küsimine välismaalase kohta
 
@@ -255,6 +255,8 @@ Väite `email_verified` väärtus on alati `false`. See tähendab, et TARA ei ko
 #### 4.1.3 Autentimisvahendite valikuline kasutus
 
 Vaikimisi kuvatakse kasutajale kõik toetatud autentimismeetodid. Soovi korral on kuvatavaid autentimisvalikuid võimalik juhtida `scope` parameetri väärtuste abil. Sobivaid vahendeid on võimalik kombineerida, koostades loetelu soovitud autentimismeetoditest (lubatud väärtuste nimekiri on toodud tabelis 1).
+
+Autentimisvahendite valikulise kasutuse korral on täiendava turvameetmena vajalik identsustõendis `amr` väite kontroll (loe ka jaotis 5.1 Identsustõendi kontrollimine).
 
 Tabel 1 - autentimisvalikute kuvamine
 
@@ -417,7 +419,7 @@ Identsustõendis väljastatakse järgmised väited (_claims_).
 
 Identsustõend võib sisaldada muid OpenID Connect protokolli kohaseid välju, kuid neid teenuses ei kasutata. 
 
-Klientrakendus peab identsustõendile järgi tulema kohe tagasisuunamispäringu saamisel. Kui identsustõendit ei pärita `5..10` minuti jooksul, siis identsustõend aegub ja autentimisprotsessi tuleb korrata.
+Klientrakendus peab identsustõendile järgi tulema kohe tagasisuunamispäringu saamisel. Kui identsustõendit ei pärita `30` sekundi jooksul, siis volituskood (_authorization code_) aegub ja autentimisprotsessi tuleb korrata.
 
 ### 4.4 Kasutajainfopäring
 
@@ -494,7 +496,9 @@ Kontrollida tuleb:
 - tõendi allkirja
 - tõendi väljaandjat
 - tõendi adressaati
-- tõendi ajalist kehtivust.
+- tõendi ajalist kehtivust
+- kasutaja autentinud autentimismeetodit tõendis
+- ülepiirilise autntimise korral eIDAS autentimistaset tõendis
 
 Lähemalt nendest kontrollidest allpool. Vajadusel saate täpsemat teavet OpenID Connect ja OAuth 2.0 protokollikirjeldustest.
 
@@ -540,7 +544,22 @@ Identsustõendi saamisel peab klientrakendus kontrollima, kas saab kasutada puhv
 
 `kellade_lubatud_erinevus` väärtus valida ise. Need kontrollid on vajaliku rünnete ja sassiminekute vältimiseks.
 
-TARA põhimõte on, et identsustõendile tuleb järgi tulla kohe, 5 minuti jooksul. Selle aja ületamisel identsustõendit ei väljastatagi.
+TARA põhimõte on, et identsustõendile tuleb järgi tulla kohe, 30 sekundi jooksul. Selle aja ületamisel identsustõendit ei väljastatagi.
+
+**Autentimismeetodi kontrollimine**
+
+Juhul kui kasutusel on autentimisvahendite valikuline kuvamine (vt jaotis 4.1.3 Autentimisvahendite valikuline kasutus) peab identsustõendis veenduma, et identsustõendi `amr` väites (_authentication method reference_) toodud autentimisvahend on lubatud.  Vastasel juhul võetakse vahendajaründe risk, kus autentimispäringu `scope` parameetri manipuleerimise läbi on võimalik kasutajal autentida meetodiga, mis pole liidestuja süsteemis aktsepteeritav (nt ID-kaardiga autentimise asemel kasutatakse pangalinke või smart-id'd).
+
+Näide: kui autentimispäringus on `scope` parameetris täpsustaud ainult ID-kaardi valik, tuleb veenduda, et identsustõendi `amr` väide sisaldaks koodi `idcard` (koodide nimekiri toodud jaotises 4.3.1 Identsustõend).
+
+**Minimaalse lubatud eIDAS autentimistaseme kontrollimine**
+
+Välistamaks ligipääsu soovitust madalama turvalisusastmega ülepiirilistele autentimisvahenditele, peab ülepiirilise autentimise korral  kontrollima, et identsustõendi `acr` väites esitatud autentimistase ei oleks väiksem minimaalsest lubatud autentimistasemest (loe autentimistasemete kohta [siit](https://www.ria.ee/sites/default/files/content-editors/EID/eidas-autentimistasemed.pdf)).
+
+Näiteks, kui liidestuja soovib kasutada vaid kõrge eIDAS autentimistasemega autentimisvahendeid ja täpsustab `acr_values` parameetris `high` väärtuse, tohib aktsepteerida ainult identsustõendeid, mille `acr` väite väärtus on `high`.
+
+Juhul kui autentimispäringus eIDAS autentimistaset `acr_values` parameetri abil ei täpsustatud, peab identsustõendis olev väärtus olema `substantial` või `high`.
+
 
 **Seansi loomine.** Identsustõendi eduka kontrollimise järel loob klientrakendus kasutajaga seansi ("logib kasutaja sisse"). Seansi loomine ja pidamine on klientrakenduse kohustus. Kuidas seda teha, ei ole enam autentimisteenuse TARA skoobis.
 
@@ -578,7 +597,7 @@ Tagasisuunamispäringu töötlemisel peab klientrakendus tegema järgmist:
 
 Tagasisuunamispäringut tohib aktsepteerida ainult ülalkirjeldatud kontrolli õnnestumisel.
 
-Kirjeldatud protseduuris on võtmetähtsusega väärtuse `state` sidumine sessiooniga. Seda tehakse küpsise abil. (See on autentimise ajutine sessioon.  Töösessiooni moodustab klientrakendus pärast autentimise edukat lõpuleviimist).
+Kirjeldatud protseduuris on võtmetähtsusega väärtuse `state` sidumine sessiooniga. Seda tehakse küpsise abil. (See on autentimise ajutine sessioon. Töösessiooni moodustab klientrakendus pärast autentimise edukat lõpuleviimist).
 
 Täiendav teave: OpenID Connect protokollis kahjuks ei ole teema selgelt esitatud. Mõningast teavet saab soovi korral mitteametlikust dokumendist [OpenID Connect Basic Client Implementer's Guide 1.0](https://openid.net/specs/openid-connect-basic-1_0.html), jaotis "2.1.1.1 Request Parameters".
 
@@ -664,6 +683,7 @@ RIA, rahuldades taotluse, väljastab asutusele klientrakenduse toodanguversiooni
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
+| 1.8, 20.05.2019   | Täpsustatud identsustõendi kontrolle `acr` ja `amr` väidete osas. |
 | 1.7, 07.05.2019   | Täpsustatud autentimisprotsessiga seotud olulised aegumisajad. |
 | 1.6, 02.04.2019   | Täpsustatud atribuutide tagastamist ülepiirilise autentimise korral. Täpsustatud väidete `state` ja `nonce` kirjeldusi identsustõendis. |
 | 1.5, 21.03.2019   | Täpsemalt kirjeldatud identsustõendi allkirja kontrollimist |
