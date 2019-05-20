@@ -498,7 +498,7 @@ Kontrollida tuleb:
 - tõendi adressaati
 - tõendi ajalist kehtivust
 - kasutaja autentinud autentimismeetodit tõendis
-- ülepiirilise autntimise korral eIDAS autentimistaset tõendis
+- ülepiirilise autentimise korral eIDAS autentimistaset tõendis
 
 Lähemalt nendest kontrollidest allpool. Vajadusel saate täpsemat teavet OpenID Connect ja OAuth 2.0 protokollikirjeldustest.
 
@@ -550,7 +550,7 @@ TARA põhimõte on, et identsustõendile tuleb järgi tulla kohe, 30 sekundi joo
 
 Juhul kui kasutusel on autentimisvahendite valikuline kuvamine (vt jaotis 4.1.3 Autentimisvahendite valikuline kasutus) peab identsustõendis veenduma, et identsustõendi `amr` väites (_authentication method reference_) toodud autentimisvahend on lubatud.  Vastasel juhul võetakse vahendajaründe risk, kus autentimispäringu `scope` parameetri manipuleerimise läbi on võimalik kasutajal autentida meetodiga, mis pole liidestuja süsteemis aktsepteeritav (nt ID-kaardiga autentimise asemel kasutatakse pangalinke või smart-id'd).
 
-Näide: kui autentimispäringus on `scope` parameetris täpsustaud ainult ID-kaardi valik, tuleb veenduda, et identsustõendi `amr` väide sisaldaks koodi `idcard` (koodide nimekiri toodud jaotises 4.3.1 Identsustõend).
+Näide: kui autentimispäringus on `scope` parameetris täpsustatud ainult ID-kaardi valik, tuleb veenduda, et identsustõendi `amr` väide sisaldaks koodi `idcard` (koodide nimekiri toodud jaotises 4.3.1 Identsustõend).
 
 **Minimaalse lubatud eIDAS autentimistaseme kontrollimine**
 
