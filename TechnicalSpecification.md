@@ -258,6 +258,8 @@ The `email_verified` is always `false`. It means that TARA does not verify or is
 
 By default, all supported authentication methods are displayed to the user. If necessary, the authentication options displayed can be managed by using the `scope` parameter's value. parameetri väärtuste abil. Preferred authentication methods can be combined to draw up a list of the authentication methods (the list of permitted values is provided in Table 1).
 
+When using the selective means of authentication the validation of `amr` claim must be performed in the identity token as an additional security method.
+
 Table 1 – displaying the authentication methods
 
 | Value of the scope parameter | Explanation |
