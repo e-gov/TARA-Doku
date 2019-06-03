@@ -539,17 +539,19 @@ The application must choose the `kellade_lubatud_erinevus` value. These checks a
 
 The identity token must be used immediately, within 5 minutes. When the time limit is exceeded, the identity token will be not issued.
 
-**Verifying the authentication method used in authentication** In case of using a selective 
+**Verifying the authentication method used in authentication.** In case of using a selective 
 When using the selective means of authentication (see section 4.1.3) the identity token must verify that the authentication method provided by the authentication method reference, `amr` ,is allowed. Otherwise, the risk of intermediary attacks is taken by allowing the user to authenticate through the method that is not acceptable in the interface (eg bank links or Smart-IDs are used instead of authentication with an ID card) through manipulation of the authentication request `scope` parameter.
 
-Example: When in the authentication request the `scope` parameter is defined to use only ID-card authentication method, it must be verified that the `amr` claim also contains an `idcard` code (the full list of all codes are described under section 4.3.1).
+For example, when in the authentication request the `scope` parameter is defined to use only ID-card authentication method, it must be verified that the `amr` claim also contains an `idcard` code (the full list of all codes is described under section 4.3.1).
 
-**Verifying the eIDAS level of assurance** 
+**Verifying the eIDAS level of assurance.** 
+In order to prevent access to cross-border authentication tools with a lower security level, it must be verified that the authentication level in the `acr` claim of identity token is not lower than the minimum level of assurance allowed.
 
+For example, if the client application wants to use only authentication methods with eIDAS level of assurance `high` and has specified the value in the `acr_values` parameter, then only the identity tokens with `acr_values` parameter with value `high` can be accepted.
 
+In case the level of assurance in the authentication request using `acr_values` parameter is not specified, the identity token must be equal to a level of assurance `substantial` or `high`.
 
-
-**Creating a session** After a successful verification of the identity token, the client application will create a session with the user (‘log in the user’). The client application is responsible for creating and holding the sessions. The methods for doing this are not included in the scope of the TARA authentication service.
+**Creating a session.** After a successful verification of the identity token, the client application will create a session with the user (‘log in the user’). The client application is responsible for creating and holding the sessions. The methods for doing this are not included in the scope of the TARA authentication service.
 
 ### 5.2 Protection against false request attacks
 
