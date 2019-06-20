@@ -13,7 +13,7 @@ Siseriiklikest autentimismeetoditest pakume autentimist riikliku identiteedisüs
 
 ja vahendame erasektori autentimismeetodeid: 
 
-- Smart-ID
+- Smart-ID (testkeskkonnas)
 - Coop pank
 - LHV pank
 - Luminor pank
