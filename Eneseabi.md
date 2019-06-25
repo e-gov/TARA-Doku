@@ -10,6 +10,10 @@ Hea TARA-ga liidestuja! Siit leiad valiku küsimusi, mis teistel on tekkinud - j
 - TOC
 {:toc}
 
+## Kas TARA pakub kaitset äraarvamisrünnete vastu?
+
+Kui kasutaja üritab korduvalt - aga ebaõnnestunult autentida, siis võib tegu olla äraarvamisründega. Kaitse äraarvamisründe vastu on sisse ehitatud ID-kaarti ja mobiil-ID-sse. Mõlemas autentimismeetodis peab kasutaja sisestama PIN-i. Kolme valestisisestamise korral kiibil olev sert lukustub. TARA ei paku täiendavat kaitsekihti. Äraarvamisrünnete automeerimise võimalused on ID-kaardi ja mobiil-ID puhul väikesed. Seetõttu ei paku TARA ka robotilukku (_Captcha_).
+
 ## Kas erasektorile on ka mõnda teenust pakkuda?
 
 Jah. Kuigi riigi autentimisteenust pakume avaliku sektori avalikke ülesandeid täitvatele e-teenustele tasuta siis kõigile teistele e-teenustele pakume TARA eidas (piiriülese autentimise) skoobis.
