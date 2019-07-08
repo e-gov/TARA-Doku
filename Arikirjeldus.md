@@ -11,7 +11,7 @@ Siseriiklikest autentimismeetoditest pakume autentimist riikliku identiteedisüs
 - mobiil-ID (ainult Eesti isikukoodiga kasutajad)
 - ID-kaart
 
-Samuti pakume piiriülest autentimist Euroopa Liidu teavitatud eID vahenditega.
+Samuti pakume piiriülest autentimist Euroopa Liidu teavitatud eID vahenditega läbi eIDAS-Node taristu.
 
 ## Kellele?
 
@@ -21,8 +21,8 @@ Riigiasutusele ja avalik-juriidilistele isikutele või eraõiguslikele isikutele
 
 ## Kes TARA kasutavad?
 
-Riigi autentimisteenusega on liitunud 8 riigiasutust 50
-infosüsteemiga, sh (riigiportaal eesti.ee, e-maksuamet/e-toll (e-MTA), Haridusportaal, RIHA, ePRIA, Ehitisregister, Rahvastikuregister, eToetus, eSTAT, TAKIS, ) (aprill 2019 seisuga).
+Riigi autentimisteenusega on liitunud 18 asutust 52
+infosüsteemiga, sh riigiportaal eesti.ee, e-maksuamet/e-toll (e-MTA), Haridusportaal, RIHA, ePRIA, Ehitisregister, Rahvastikuregister, eToetus, eSTAT, TAKIS, EIS, SKAIS, Haridusportaal edu.ee jt.
 
 ## Tehnilised tingimused?
 
