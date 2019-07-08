@@ -22,7 +22,7 @@ Riigiasutusele ja avalik-juriidilistele isikutele või eraõiguslikele isikutele
 ## Kes TARA kasutavad?
 
 Riigi autentimisteenusega on liitunud 18 asutust 52
-infosüsteemiga, sh riigiportaal eesti.ee, e-maksuamet/e-toll (e-MTA), Haridusportaal, RIHA, ePRIA, Ehitisregister, Rahvastikuregister, eToetus, eSTAT, TAKIS, EIS, SKAIS, Haridusportaal edu.ee jt.
+infosüsteemiga, sh riigiportaal eesti.ee, e-maksuamet/e-toll (e-MTA), Haridusportaal, RIHA, ePRIA, Ehitisregister, Rahvastikuregister, eToetus, eSTAT, TAKIS, EIS, SKAIS jt.
 
 ## Tehnilised tingimused?
 
