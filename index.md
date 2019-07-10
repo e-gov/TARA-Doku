@@ -44,6 +44,6 @@ Käesoleva lehe teave on mõeldud kolmele sihtrühmale.
 
 [Sõnastik](Sonastik) · [Viited](Viited) · [Eneseabi](Eneseabi)
 
-## TARA arendajale
+## Riigi autentimisteenuse arendajale
 
 [Kood ja arendaja dokumentatsioon](Arendajale)
