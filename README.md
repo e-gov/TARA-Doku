@@ -1,6 +1,6 @@
-# TARA autentimisteenus
+# Riigi autentimisteenus
 
-RIA autentimisteenuse "TARA" dokumentatsioon
+Riigi autentimisteenuse (TARA) dokumentatsioon
 
 Vt lähemalt: [https://e-gov.github.io/TARA-Doku/](https://e-gov.github.io/TARA-Doku/)
 
