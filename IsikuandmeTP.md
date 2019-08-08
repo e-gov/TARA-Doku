@@ -1,7 +1,3 @@
----
-permalink: Isikuandmed
----
-
 # Andmekaitsetingimused
 
 _viimati uuendatud 09.04.2019_

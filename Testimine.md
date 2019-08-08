@@ -58,7 +58,7 @@ curl \
 ### Kasutajad edukaks autentimiseks
 
 1. Mobiil-ID telefoninumber: `00000766`, isikukood: `60001019906`
-2. eIDAS riik Tšehhi, vali profiil `Testovací profily`
+2. eIDAS riik Rootsi, vali profiil `Test IdP`
 3. Luminor pangalink kasutajatunnus: `111111`, digivõtme kood: `9999`
 4. Smart-ID isikukood: `10101010005`.
 
@@ -78,7 +78,7 @@ TARA testkeskkond on suunatud vastu test-OCSP ja test-DigiDocService teenust. Se
 
 TARA testkeskkond on suunatud eIDAS testkeskkonna vastu. Igal riigil on testimiseks oma lahendus, kas parool või kaheastmeline autentimine. Kõik riigid ei ole veel liidestusega valmis, täpsema info saamiseks pöörduge `help@ria.ee`. Testimiseks saab kasutada:  
 
-- Tšehhi - parooli ei ole vaja, vali profiil `Testovací profily`
+- Rootsi - parooli ei ole vaja, vali profiil `Test IdP`
 - Norra - vali autentimiseks `MINID`, personal id number: `05068907693`, password: `password01`, PIN: `12345`. Vajuta `Continue`.
 
 ### Pangalink

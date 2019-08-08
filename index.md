@@ -8,29 +8,27 @@ permalink: /
 
 # Riigi autentimisteenus (TARA)
 
-Riigi autentimisteenus on keskselt osutatav teenus, millega asutus saab oma e-teenuses autentida ID-kaardi, mobiil-ID ja pangalinkide kasutaja ning alates 2018 sügisest ka välisriigi kasutaja.
+Riigi autentimisteenus on keskselt osutatav teenus, millega asutus saab oma e-teenuses autentida ID-kaardi, mobiil-ID ja alates 2018 sügisest ka välisriigi kasutaja.
 
 Riigi autentimisteenuse tarkvara tehniline nimi on TARA.
 
 TARA on [eelistatud viis](https://e-gov.github.io/eIDAS-Connector/Valik) piiriülese eIDAS-autentimise lisamiseks asutuse e-teenustele.
 
-Riigi keskset autentimisteenust pakub Riigi Infosüsteemi Amet. 
+Riigi keskset autentimisteenust pakub Riigi Infosüsteemi Amet.
 
 Ametlikku teavet TARA ja RIA muude teenuste kohta vt [RIA autentimisteenuste lehelt](https://www.ria.ee/et/riigi-infosusteem/eid/partnerile.html#tara). 
 
 Käesoleva lehe teave on mõeldud kolmele sihtrühmale.
 
-Asutuse äriüksuse juht saab siinse teabe alusel hinnata TARA sobivust, liidestustööde mahtu ja teha otsuse TARA kasutuselevõtuks.
+1 Asutuse äriüksuse juht saab siinse teabe alusel hinnata TARA sobivust, liidestustööde mahtu ja teha otsuse TARA kasutuselevõtuks.
 
-Liidese arendaja leiab siit kogu vajaliku tehnilise teabe asutuse e-teenuste liidestamiseks TARA-ga.
+2 Liidese arendaja leiab siit kogu vajaliku tehnilise teabe asutuse e-teenuste liidestamiseks TARA-ga.
 
-Eraldi on lehel teavet TARA edasiarendajale.
+3 Eraldi on lehel teavet TARA edasiarendajale.
 
 ## Ärikasutajale
 
 [Ärikirjeldus](Arikirjeldus) · [Liitumine](Liitumine)
-
-[Andmekaitsetingimused](Isikuandmed)
 
 <a href='https://e-gov.github.io/TARA-Doku/files/Uuendustest.pdf' target='_new'>TARA uuendustest</a>, esitlus eID infopäeval 26.04.2019<br> 
 <a href='https://e-gov.github.io/TARA-Doku/files/PiiriyleneAutentimine.pdf' target='_new'>Piiriülene autentimine</a>, esitlus eID infopäeval 15.11.2017<br>
@@ -46,6 +44,6 @@ Eraldi on lehel teavet TARA edasiarendajale.
 
 [Sõnastik](Sonastik) · [Viited](Viited) · [Eneseabi](Eneseabi)
 
-## TARA arendajale
+## Riigi autentimisteenuse arendajale
 
 [Kood ja arendaja dokumentatsioon](Arendajale)

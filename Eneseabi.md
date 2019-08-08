@@ -22,10 +22,6 @@ _Teenusetakistusrünne._ Ründaja võib, võimalik, et üritusi automeerides, al
 
 Need on ainult mõned võimalikest rünnetest. Kaitsemeetmeid on TARA-sse sisse ehitatud nii protokolli (vt [Tehniline kirjeldus](TehnilineKirjeldus)) kui ka selle teostuse tasandil. TARA käitamisel rakendatakse mitmesuguseid tehnilisi ja organisatsioonilisi kaitsemeetmeid isikuandmete kaitseks (vt [Andmekaitsetingimused](Isikuandmed)) TARA tarkvara on läbinud turvatestimise. Turvaolukorda jälgitakse pidevalt. Kokkuvõttes võib öelda, et TARA on turvaline.
 
-## Kas erasektorile on ka mõnda teenust pakkuda?
-
-Jah. Kuigi riigi autentimisteenust pakume avaliku sektori avalikke ülesandeid täitvatele e-teenustele tasuta siis kõigile teistele e-teenustele pakume TARA eidas (piiriülese autentimise) skoobis.
-
 ## Kui saate /oidc/token otspunktile tehtud päringu (identsustõendi küsimine) vastuseks veateate `401 unauthorized`.
 
 Kontrollige:

@@ -11,16 +11,7 @@ Siseriiklikest autentimismeetoditest pakume autentimist riikliku identiteedisüs
 - mobiil-ID (ainult Eesti isikukoodiga kasutajad)
 - ID-kaart
 
-ja vahendame erasektori autentimismeetodeid: 
-
-- Smart-ID (testkeskkonnas)
-- Coop pank
-- LHV pank
-- Luminor pank
-- SEB pank
-- Swedbank
-
-Samuti pakume välismaalase autentimist, eIDAS piiriülese autentimise skeemiga.
+Samuti pakume piiriülest autentimist Euroopa Liidu teavitatud eID vahenditega läbi eIDAS-Node taristu.
 
 ## Kellele?
 
@@ -30,8 +21,8 @@ Riigiasutusele ja avalik-juriidilistele isikutele või eraõiguslikele isikutele
 
 ## Kes TARA kasutavad?
 
-Riigi autentimisteenusega on liitunud 8 riigiasutust 40
-infosüsteemiga, sh (riigiportaal eesti.ee, e-maksuamet/e-toll (e-MTA), Haridusportaal, RIHA, ePRIA, Ehitisregister, Rahvastikuregister, eToetus, eSTAT, TAKIS, ) (aprill 2019 seisuga).
+Riigi autentimisteenusega on liitunud 18 asutust 52
+infosüsteemiga, sh riigiportaal eesti.ee, e-maksuamet/e-toll (e-MTA), Haridusportaal, RIHA, ePRIA, Ehitisregister, Rahvastikuregister, eToetus, eSTAT, TAKIS, EIS, SKAIS jt.
 
 ## Tehnilised tingimused?
 
