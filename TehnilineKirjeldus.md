@@ -252,11 +252,11 @@ Väite `email` väärtus loetakse kasutaja autentimissertifikaadi SAN laiendist 
 
 Väite `email_verified` väärtus on alati `false`. See tähendab, et TARA ei kontrolli ega väljasta teavet, kas kasutaja on oma eesti.ee e-postiaadressi suunanud või mitte. (Vastav funktsionaalsus võib lisanduda tulevikus).
 
-#### 4.1.3 Autentimisvahendite valikuline kasutus
+#### 4.1.3 Autentimismeetodite valikuline kasutus
 
 Vaikimisi kuvatakse kasutajale kõik toetatud autentimismeetodid. Soovi korral on kuvatavaid autentimisvalikuid võimalik juhtida `scope` parameetri väärtuste abil. Sobivaid vahendeid on võimalik kombineerida, koostades loetelu soovitud autentimismeetoditest (lubatud väärtuste nimekiri on toodud tabelis 1).
 
-Autentimisvahendite valikulise kasutuse korral on täiendava turvameetmena vajalik identsustõendis `amr` väite kontroll (loe ka jaotis 5.1 Identsustõendi kontrollimine).
+Autentimismeetodite valikulise kasutuse korral on täiendava turvameetmena vajalik identsustõendis `amr` väite kontroll (loe ka jaotis 5.1 Identsustõendi kontrollimine).
 
 Tabel 1 - autentimisvalikute kuvamine
 
@@ -269,7 +269,7 @@ Tabel 1 - autentimisvalikute kuvamine
 | `eidas` | Piiriülese autentimise valiku lubamine |
 | `eidasonly` | Ainult piiriülese autentimise valiku lubamine. <br><br>NB! `eidasonly` kasutuse korral ignoreeritakse alati kõiki ülejäänud autentimisvalikute eelistusi. |
 
-Näide 1: Kõik autentimisvahendid
+Näide 1: Kõik autentimismeetodid
 `scope=openid`
 
 Näide 2: Ainult ID-kaardi ja Mobiil-ID kasutus
@@ -548,15 +548,15 @@ TARA põhimõte on, et identsustõendile tuleb järgi tulla kohe, 30 sekundi joo
 
 **Autentimismeetodi kontrollimine**
 
-Juhul kui kasutusel on autentimisvahendite valikuline kuvamine (vt jaotis 4.1.3 Autentimisvahendite valikuline kasutus), peab identsustõendis veenduma, et identsustõendi `amr` väites (_authentication method reference_) toodud autentimisvahend on lubatud.  Vastasel juhul võetakse vahendajaründe risk, kus autentimispäringu `scope` parameetri manipuleerimise läbi on võimalik kasutajal autentida meetodiga, mis pole liidestuja süsteemis aktsepteeritav (nt ID-kaardiga autentimise asemel kasutatakse pangalinke või Smart-ID-d).
+Juhul kui kasutusel on autentimismeetodite valikuline kuvamine (vt jaotis 4.1.3 Autentimismeetodite valikuline kasutus), peab identsustõendis veenduma, et identsustõendi `amr` väites (_authentication method reference_) toodud autentimismeetod on lubatud.  Vastasel juhul võetakse vahendajaründe risk, kus autentimispäringu `scope` parameetri manipuleerimise läbi on võimalik kasutajal autentida meetodiga, mis pole liidestuja süsteemis aktsepteeritav (nt ID-kaardiga autentimise asemel kasutatakse pangalinke või Smart-ID-d).
 
 Näide: Kui autentimispäringus on `scope` parameetris määratud ainult ID-kaart, tuleb veenduda, et identsustõendi `amr` väide sisaldaks koodi `idcard` (koodide nimekiri on toodud jaotises 4.3.1 Identsustõend).
 
 **Minimaalse lubatud eIDAS autentimistaseme kontrollimine**
 
-Välistamaks ligipääsu soovitust madalama turvalisusastmega ülepiirilistele autentimisvahenditele, peab ülepiirilise autentimise korral  kontrollima, et identsustõendi `acr` väites esitatud autentimistase ei oleks väiksem minimaalsest lubatud autentimistasemest (loe autentimistasemete kohta [siit](https://www.ria.ee/sites/default/files/content-editors/EID/eidas-autentimistasemed.pdf)).
+Välistamaks ligipääsu soovitust madalama turvalisusastmega ülepiirilistele autentimismeetoditele, peab ülepiirilise autentimise korral  kontrollima, et identsustõendi `acr` väites esitatud autentimistase ei oleks väiksem minimaalsest lubatud autentimistasemest (loe autentimistasemete kohta [siit](https://www.ria.ee/sites/default/files/content-editors/EID/eidas-autentimistasemed.pdf)).
 
-Näiteks, kui liidestuja soovib kasutada vaid kõrge eIDAS autentimistasemega autentimisvahendeid ja täpsustab `acr_values` parameetris `high` väärtuse, tohib aktsepteerida ainult identsustõendeid, mille `acr` väite väärtus on `high`.
+Näiteks, kui liidestuja soovib kasutada vaid kõrge eIDAS autentimistasemega autentimismeetodeid ja täpsustab `acr_values` parameetris `high` väärtuse, tohib aktsepteerida ainult identsustõendeid, mille `acr` väite väärtus on `high`.
 
 Juhul kui autentimispäringus eIDAS autentimistaset `acr_values` parameetri abil ei täpsustatud, peab identsustõendis olev väärtus olema `substantial` või `high`.
 
@@ -689,7 +689,7 @@ RIA, rahuldades taotluse, väljastab asutusele klientrakenduse toodanguversiooni
 | 1.5, 21.03.2019   | Täpsemalt kirjeldatud identsustõendi allkirja kontrollimist |
 | 1.4, 18.03.2019   | Täpsustatud tagasisuunamispäringu kirjeldust vea korral. |
 | 1.3, 21.02.2019   | Lisatud kasutajainfopäringu kirjeldus. |
-| 1.2, 01.02.2019   | Autentimisvahendite valikuline kasutus `scope` parameetri abil. |
+| 1.2, 01.02.2019   | Autentimismeetodite valikuline kasutus `scope` parameetri abil. |
 | 1.1, 29.11.2018   | Täpsustused autentimispäringu parameetri osas (`redirect_uri`). |
 | 1.0, 03.10.2018   | Eemaldatud Danske pank autentimismeetodite toe koosseisust |
 | 0.9, 18.09.2018   | Eemaldatud mobiilinumber identsustõendi koosseisust |
