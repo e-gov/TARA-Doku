@@ -28,3 +28,5 @@ You are welcome to submit a link to your TARA integration solution to be added t
 nimetus | asukoht | keel | väljatöötaja
 --------|---------|------|--------------
 OmniAuth::Tara | [https://github.com/internetee/omniauth-tara](https://github.com/internetee/omniauth-tara) | Ruby | Estonian Internet Foundation |
+TARA-Go | [https://github.com/e-gov/TARA-Go](https://github.com/e-gov/TARA-Go) | Go | AS Cybernetica Riigi Infosüsteemi Ameti tellimusel |
+
