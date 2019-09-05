@@ -75,7 +75,7 @@ Teenus on toodangus avatud 2018. a märtsist.
 
 <img src='img/eesti_ee.png' width='500'>
 
-- ainult eIDAS-liidestuse korral on soovituslik Riigi autentimisteenusele (TARA) suunamiseks kasutada viidet “EL kodanik” / “Other EU country” või kasutada [logo](https://github.com/e-gov/TARA-Server/blob/master/disain/assets/eu_citizen_login_btn_190x50.svg)
+- ainult eIDAS-liidestuse korral on soovituslik Riigi autentimisteenusele (TARA) suunamiseks kasutada viidet “EL riigi eID” / “Other EU country” või kasutada [logo](https://github.com/e-gov/TARA-Server/blob/master/disain/assets/eu_citizen_login_btn_190x50.svg)
 
   <img src='img/eu_citizen_login_btn_190x50_rgb.png' width='150'> 
 
