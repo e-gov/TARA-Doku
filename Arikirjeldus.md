@@ -10,6 +10,7 @@ Siseriiklikest autentimismeetoditest pakume autentimist riikliku identiteedisüs
 
 - mobiil-ID (ainult Eesti isikukoodiga kasutajad)
 - ID-kaart
+- Smart-ID (ainult Eesti isikukoodiga kasutajad)
 
 Samuti pakume piiriülest autentimist Euroopa Liidu teavitatud eID vahenditega läbi eIDAS-Node taristu.
 
