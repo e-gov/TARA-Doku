@@ -48,10 +48,6 @@ Tagasipöördumisaadress (redirect-URL) määratakse klientrakenduse registreeri
 
 Lihtsamas keeles: Redirect-URL on selleks, et ise ka ikka meeles peaksite, mis URL-i te registreerimisel meile andsite. Muidu suuname teie kasutaja veel ei tea kuhu!
 
-## Kas on kavas pakkuda ka `userinfo` otspunkti?
-
-Userinfo otspunkt on mõeldud autenditud kasutaja kohta andmete väljastamiseks pääsutõendi (_access token_) alusel. TARAs väljastame autenditud kasutajate kohta minimaalse andmekomplekti (isikukood, ees- ja perekonnanimi). Selle väljastame kohe identsustõendis, sest nii on kõige lihtsam. Mööname, et "karbitarkvaradega" liidestujatele pakub huvi userinfo toetus. Hakkame seda pakkuma TARA uues versioonis, kuid tähtaega ei saa veel öelda, sest projekt on ettevalmistamise järgus.
-
 ## Kas autentimist saab teisele rakendusele edasi anda?
 
 Vt [siit](Feder).
