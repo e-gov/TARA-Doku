@@ -15,11 +15,11 @@ Siseriiklikest autentimismeetoditest pakume autentimist järgmiste vahenditega:
 
 Samuti pakume piiriülest autentimist Euroopa Liidu teavitatud eID vahenditega läbi eIDAS-Node taristu. Käesolevalt on TARAs toetatud järgmiste riikide teavitatud eID vahendid:
 
-- Saksamaa
-- Itaalia
-- Hispaania
-- Belgia
-- Luksemburg
+- Saksamaa (National Identity Card; Electronic Residence Permit)
+- Itaalia (Carta di Identità elettronica)
+- Hispaania (DNIe)
+- Belgia (Belgian Citizen eCard Foreigner eCard)
+- Luksemburg (Luxembourg eID card)
 
 Eesti riiklike ja piiriüleselt tunnustatud eID vahenditega (ID-kaart, mobiil-ID) on tagatud juurdepääs 15 Euroopa Liidu riigi (sh Hispaania, Itaalia, Belgia, Luksemburg, Norra, Rootsi, Taani, Läti, Holland, Austria, Sloveenia, Malta, Kreeka, Slovakkia, Suurbritannia) e-teenustele.
 
