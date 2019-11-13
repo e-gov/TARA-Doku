@@ -13,7 +13,7 @@ Siseriiklikest autentimismeetoditest pakume autentimist järgmiste vahenditega:
 - smart-ID (ainult Eesti isikukoodiga kasutajad)
 - pangalink (Swedbank, SEB, LHV, Coop, Luminor)
 
-Samuti pakume piiriülest autentimist Euroopa Liidu teavitatud eID vahenditega läbi eIDAS-Node taristu. Käesolevalt on TARAs toetatud järgmiste riikide teavitatud eID vahendid:
+Samuti pakume piiriülest autentimist Euroopa Liidu teavitatud eID vahenditega läbi eIDAS-Node taristu. Käesolevalt on TARAs toetatud järgmiste riikide eIDAS tagatistasemega "Kõrge" teavitatud eID vahendid:
 
 - Saksamaa (National Identity Card; Electronic Residence Permit)
 - Itaalia (Carta di Identità elettronica)
