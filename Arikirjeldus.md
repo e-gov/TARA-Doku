@@ -6,13 +6,22 @@ permalink: Arikirjeldus
 
 Autentimisteenus TARA on Riigi Infosüsteemi Ameti poolt pakutav teenus, millega asutus saab oma e-teenusesse lisada nii siseriiklike kui ka Euroopa Liidu piiriüleste autentimismeetodite toe.
 
-Siseriiklikest autentimismeetoditest pakume autentimist riikliku identiteedisüsteemiga:
+Siseriiklikest autentimismeetoditest pakume autentimist järgmiste vahenditega:
 
 - mobiil-ID (ainult Eesti isikukoodiga kasutajad)
 - ID-kaart
 - smart-ID (ainult Eesti isikukoodiga kasutajad)
+- pangalink (Swedbank, SEB, LHV, Coop, Luminor)
 
-Samuti pakume piiriülest autentimist Euroopa Liidu teavitatud eID vahenditega läbi eIDAS-Node taristu.
+Samuti pakume piiriülest autentimist Euroopa Liidu teavitatud eID vahenditega läbi eIDAS-Node taristu. Käesolevalt on TARAs toetatud järgmiste riikide teavitatud eID vahendid:
+
+- Saksamaa
+- Itaalia
+- Hispaania
+- Belgia
+- Luksemburg
+
+Eesti riiklike ja piiriüleselt tunnustatud eID vahenditega (ID-kaart, mobiil-ID) on tagatud juurdepääs 15 Euroopa Liidu riigi (sh Hispaania, Itaalia, Belgia, Luksemburg, Norra, Rootsi, Taani, Läti, Holland, Austria, Sloveenia, Malta, Kreeka, Slovakkia, Suurbritannia) e-teenustele.
 
 ## Kellele?
 
@@ -22,7 +31,7 @@ Riigiasutusele ja avalik-juriidilistele isikutele või eraõiguslikele isikutele
 
 ## Kes TARA kasutavad?
 
-Riigi autentimisteenusega on liitunud 18 asutust 52
+Riigi autentimisteenusega on liitunud 19 asutust 60
 infosüsteemiga, sh riigiportaal eesti.ee, e-maksuamet/e-toll (e-MTA), Haridusportaal, RIHA, ePRIA, Ehitisregister, Rahvastikuregister, eToetus, eSTAT, TAKIS, EIS, SKAIS jt.
 
 ## Tehnilised tingimused?
