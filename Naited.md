@@ -29,4 +29,4 @@ nimetus | asukoht | keel | väljatöötaja
 --------|---------|------|--------------
 OmniAuth::Tara | [https://github.com/internetee/omniauth-tara](https://github.com/internetee/omniauth-tara) | Ruby | Estonian Internet Foundation |
 TARA-Go | [https://github.com/e-gov/TARA-Go](https://github.com/e-gov/TARA-Go) | Go | AS Cybernetica Riigi Infosüsteemi Ameti tellimusel |
-
+TARA-Mock | [https://github.com/e-gov/TARA-Mock](https://github.com/e-gov/TARA-Mock) | Go | Riigi Infosüsteemi Amet |
