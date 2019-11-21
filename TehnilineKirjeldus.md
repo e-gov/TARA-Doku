@@ -1,4 +1,4 @@
----
+nt.ar---
 permalink: TehnilineKirjeldus
 ---
 
@@ -268,6 +268,7 @@ Tabel 1 - autentimisvalikute kuvamine
 | `smartid` | Smart-ID autentimise lubamine |
 | `eidas` | Piiriülese autentimise valiku lubamine |
 | `eidasonly` | Ainult piiriülese autentimise valiku lubamine. <br><br>NB! `eidasonly` kasutuse korral ignoreeritakse alati kõiki ülejäänud autentimisvalikute eelistusi. |
+| `eidas:country:xx` | Piiriülese autentimise riik, töötab ainult koos `eidasonly` autentimisvalikuga. Lubatud skoopide nimekiri on teenuseteabe otspunktis. |
 
 Näide 1: Kõik autentimismeetodid
 `scope=openid`
@@ -277,6 +278,9 @@ Näide 2: Ainult ID-kaardi ja Mobiil-ID kasutus
 
 Näide 3: Ainult piiriülene autentimine
 `scope=openid%20eidas`
+
+Näide 4: Piiriülene autentimine ilma TARA kasutajaliideses riigi valikuta. Riikide nimekiri valitakse autentimist alustanud infosüsteemis.
+`scope=openid%20eidasonly%20eidas%3Acountry%3Abe`
 
 ### 4.2 Tagasisuunamispäring
 
@@ -683,6 +687,7 @@ RIA, rahuldades taotluse, väljastab asutusele klientrakenduse toodanguversiooni
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
+| 1.9, 21.11.2019   | Lisatud skoobid `eidas:country:xx`. |
 | 1.8, 20.05.2019   | Täpsustatud identsustõendi kontrolle `acr` ja `amr` väidete osas. |
 | 1.7, 07.05.2019   | Täpsustatud autentimisprotsessiga seotud olulised aegumisajad. |
 | 1.6, 02.04.2019   | Täpsustatud atribuutide tagastamist ülepiirilise autentimise korral. Täpsustatud väidete `state` ja `nonce` kirjeldusi identsustõendis. |
