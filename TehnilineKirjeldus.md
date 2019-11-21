@@ -7,7 +7,7 @@ Mõned autentimismeetodid võivad olla veel arenduses või kasutatavad ainult te
 
 # Tehniline kirjeldus
 {: .no_toc}
-v 1.8, 20.05.2019
+v 1.9, 21.11.2019
 
 - TOC
 {:toc}
