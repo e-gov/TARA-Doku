@@ -23,7 +23,7 @@ Toodangukeskkonna kliendid, kes rakendavad autentimismeetodite valikulist kasutu
 Välistamaks ligipääsu soovitust madalama turvalisusastmega ülepiirilistele autentimisvahenditele, peab ülepiirilise autentimise korral kontrollima, et identsustõendi acr väites esitatud autentimistase ei oleks väiksem minimaalsest lubatud autentimistasemest (loe autentimistasemete kohta [siit](https://www.ria.ee/sites/default/files/content-editors/EID/autentimislahendustele-kehtivad-nouded.pdf).
 Näiteks, kui liidestuja soovib kasutada vaid kõrge eIDAS autentimistasemega autentimisvahendeid ja täpsustab `acr_values` parameetris `high` väärtuse, tohib aktsepteerida ainult identsustõendeid, mille `acr` väite väärtus on `high`.
 Juhul kui autentimispäringus eIDAS autentimistaset `acr_values` parameetri abil ei täpsustatud, peab identsustõendis olev väärtus olema `substantial` või `high`.
-Täpsemalt: https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus#5-turvatoimingud.
+Täpsemalt: (https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus#5-turvatoimingud).
 {: .note}
 
 18.02.2019 Kliendi terava tähelepaneku põhjal täpsustasime identsustõendi kehtivuse arvutust (seda ei teosta TARA, vaid peab teostama klientrakendus: ). Tõend kehtib, kuid on täidetud tingimused: 
