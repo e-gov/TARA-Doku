@@ -15,6 +15,21 @@ konfiparameetri `cas.authn.oidc.scopes` väärtused
 konfiparameetri `eidas.available-countries` iga riigikoodi väärtuse x kohta dünaamiliselt koostatud `eidas:country:x`.
 {: .note}
 
+11.09.2019 Alates 11. septembrist 2019 lisandub TARA toodangukeskkonda autentimisvahendina Smart-ID.
+Toodangukeskkonna kliendid, kes rakendavad autentimismeetodite valikulist kasutust ja soovivad smart-id, soovitame üle vaadata parameetri `scope` väärtus ja veenduda, et skoop `smartid` oleks lubatud.
+{: .note}
+
+05.09.2019 Alates 10. septembrist 2019 peavad EL-i liikmesriigid lubama autentida Itaalia eID vahendiga, mis on hinnatud tasemele märkimisväärne. See tähendab, et sellest kuupäevast peavad kõik avaliku sektori avalikud e-teenused, kes lubavad oma kodanikul kasutada sisse logimiseks märkimisväärse või madala tasemega eID vahendeid, lubama autentida ka Itaalia märkimisväärse autentimistasemega eID vahendiga. eIDAS autentimistasemele kõrge vastavad näiteks Eesti ID-kaart ja mobiil-ID, tasemele madal vastavad aga kõik ülejäänud hindamata eID skeemid, sh panga PIN-kalkulaator.
+
+Välistamaks ligipääsu soovitust madalama turvalisusastmega ülepiirilistele autentimisvahenditele, peab ülepiirilise autentimise korral kontrollima, et identsustõendi acr väites esitatud autentimistase ei oleks väiksem minimaalsest lubatud autentimistasemest (loe autentimistasemete kohta siit).
+
+Näiteks, kui liidestuja soovib kasutada vaid kõrge eIDAS autentimistasemega autentimisvahendeid ja täpsustab acr_values parameetris high väärtuse, tohib aktsepteerida ainult identsustõendeid, mille acr väite väärtus on high.
+
+Juhul kui autentimispäringus eIDAS autentimistaset acr_values parameetri abil ei täpsustatud, peab identsustõendis olev väärtus olema substantial või high.
+
+Täpsemalt: https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus#5-turvatoimingud.
+{: .note}
+
 18.02.2019 Kliendi terava tähelepaneku põhjal täpsustasime identsustõendi kehtivuse arvutust (seda ei teosta TARA, vaid peab teostama klientrakendus: ). Tõend kehtib, kuid on täidetud tingimused: 
 `nbf <= jooksev_aeg + kellade_lubatud_erinevus` ja `exp > jooksev_aeg - kellade_lubatud_erinevus`. Vt [veebitõendi standard](https://tools.ietf.org/html/rfc7519), jaot 4.1.4-5.
 {: .note}
