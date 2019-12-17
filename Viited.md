@@ -15,20 +15,20 @@ ___2 eIDAS___
 
 Spetsifikatsioon:
 
-eIDAS Technical specification v.1.1, [https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/eIDAS+Profile](https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/eIDAS+Profile),<br>
+eIDAS Technical specification v.1.2, [https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/eIDAS+eID+Profile](https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/eIDAS+eID+Profile),<br>
 koosseisus:
 
-- [eIDAS Message Format v1.1-2](https://ec.europa.eu/cefdigital/wiki/download/attachments/46992719/eIDAS%20Message%20Format_v1.1-2.pdf?version=1&modificationDate=1497252919575&api=v2)
+- [eIDAS Message Format v1.2](https://ec.europa.eu/cefdigital/wiki/download/attachments/82773108/eIDAS%20SAML%20Message%20Format%20v.1.2%20Final.pdf?version=3&modificationDate=1571068651727&api=v2)
 
-- [eIDAS Interoperability Architecture](https://ec.europa.eu/cefdigital/wiki/download/attachments/46992719/eidas_interoperability_architecture_v1.00.pdf?version=1&modificationDate=1497252919857&api=v2)
+- [eIDAS Interoperability Architecture v.1.2](https://ec.europa.eu/cefdigital/wiki/download/attachments/82773108/eIDAS%20Interoperability%20Architecture%20v.1.2%20Final.pdf?version=3&modificationDate=1571068651790&api=v2)
 
-- [eIDAS Crypto Requirements for the eIDAS Interoperability Framework v1.0](https://ec.europa.eu/cefdigital/wiki/download/attachments/46992719/eidas_-_crypto_requirements_for_the_eidas_interoperability_framework_v1.0.pdf?version=1&modificationDate=1497252920224&api=v2)
+- [eIDAS Cryptographic Requirement v.1.2](https://ec.europa.eu/cefdigital/wiki/download/attachments/82773108/eIDAS%20Cryptographic%20Requirement%20v.1.2%20Final.pdf?version=2&modificationDate=1571068651805&api=v2)
 
-- [eIDAS SAML Attribute Profile v1.1-2](https://ec.europa.eu/cefdigital/wiki/download/attachments/46992719/eIDAS%20SAML%20Attribute%20Profile%20v1.1_2.pdf?version=1&modificationDate=1497252920100&api=v2)
+- [eIDAS SAML Attribute Profile v1.2](https://ec.europa.eu/cefdigital/wiki/download/attachments/82773108/eIDAS%20SAML%20Attribute%20Profile%20v1.2%20Final.pdf?version=2&modificationDate=1571068651772&api=v2)
 
 Tarkvara dokumentatsioon:
 
-[eIDAS Software] [eIDAS-Node software releases](https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/eIDAS-Node+-+Current+release),<br>
+[eIDAS Software] [eIDAS-Node software releases](https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/eIDAS-Node+Integration+Package),<br>
 sh:
 - eIDAS-Node Installation Configuration and Integration Quick Start Guide
 - eIDAS-Node Migration Guide
@@ -56,8 +56,6 @@ ___4 CAS___
 [CAS Service Management] [https://apereo.github.io/cas/4.2.x/installation/Service-Management.html](https://apereo.github.io/cas/4.2.x/installation/Service-Management.html).
 
 ___5 Eesti___
-
-[tasemed] Riigi Infosüsteemi Amet. eIDAS autentimistasemed. v1.0, 15.03.2017, [https://www.ria.ee/sites/default/files/content-editors/EID/eidas-autentimistasemed.pdf](https://www.ria.ee/sites/default/files/content-editors/EID/eidas-autentimistasemed.pdf).
 
 [Autentimisnormatiiv] [Autentimislahendustele kehtestatud nõuded Eesti Vabariigi infosüsteemis](https://www.ria.ee/sites/default/files/content-editors/EID/autentimislahendustele-kehtivad-nouded.pdf), versioon 1.0, 31.3.2017, täiendatud 5.4.2017
 
