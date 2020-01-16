@@ -7,7 +7,7 @@ Mõned autentimismeetodid võivad olla veel arenduses või kasutatavad ainult te
 
 # Tehniline kirjeldus
 {: .no_toc}
-v 1.9, 21.11.2019
+v 1.10, 16.01.2020
 
 - TOC
 {:toc}
@@ -365,11 +365,13 @@ Päringu vastus on JSON-struktuur, milles on neli elementi (vt järgnev tabel).
 | `access_token` | OAuth 2.0 pääsutõend. Pääsutõendiga saab klientrakendus pärida `userinfo` otspunktist autenditud isikut kirjeldavad andmed.<br><br>TARA väljastab küll pääsutõendi, kuid soovitame pääsutõendit kasutada ainult siis, kui nn "karbitoote" liidestamisel ei ole võimalust kasutada identsustõendit (vt allpool). Kõik autenditud isikut kirjeldavad andmed väljastatakse juba identsustõendis. Identsustõendi kasutamine on eelistatud ja ka teoreetiliselt turvalisem, kuna identsustõend on allkirjastatud, `userinfo` otspunkti väljund aga mitte |
 | `token_type` | Väärtusega `bearer`. OAuth 2.0 pääsutõendi tüüp |
 | `expires_in` | OAuth 2.0 pääsutõendi aegumiskestus |
-| `id_token` | identsustõend, Base64 vormingus | 
+| `id_token` | identsustõend. Veebitõend esitatakse nn kompaktselt serialiseeritud kujul (vt [JWS Compact Serialization](https://tools.ietf.org/html/rfc7515#section-3.1)) | 
 
 Identsustõend on TARA poolt väljastatav tõend autentimise fakti kohta.
 
 Identsustõend väljastatakse [veebitõendi](https://jwt.io/) (JSON Web Token, JWT) vormingus.
+
+Identsustõend on alati [allkirjastatud](https://tools.ietf.org/html/rfc7515#section-5.2). 
 
 Näide (identsustõendi sisu e _payload_):
 
@@ -687,6 +689,7 @@ RIA, rahuldades taotluse, väljastab asutusele klientrakenduse toodanguversiooni
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
+| 1.10, 16.12.2020   | Täpsustatud identsustõendi vormingu kirjeldust. |
 | 1.9, 21.11.2019   | Lisatud skoobid `eidas:country:xx`. |
 | 1.8, 20.05.2019   | Täpsustatud identsustõendi kontrolle `acr` ja `amr` väidete osas. |
 | 1.7, 07.05.2019   | Täpsustatud autentimisprotsessiga seotud olulised aegumisajad. |
