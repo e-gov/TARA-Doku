@@ -7,7 +7,7 @@ Mõned autentimismeetodid võivad olla veel arenduses või kasutatavad ainult te
 
 # Tehniline kirjeldus
 {: .no_toc}
-v 1.10, 16.01.2020
+v 1.11, 29.01.2020
 
 - TOC
 {:toc}
@@ -43,8 +43,8 @@ TARA-s on nimetatud protokollidest valitud TARA kasutusjuhtudele vajalikud kasut
 - Teenus toetab volituskoodi voogu(_authorization code flow_). Volituskoodi voogu peetakse kõige turvalisemaks ja sellisena on avalike teenuste jaoks sobiv.
 - Kogu teave autenditud kasutaja kohta edastatakse rakendusele identsustõendis (_ID token_).
 - Rakendusele edastatakse ka eIDAS autentimistase, kui see on teada (`acr` väites).
-- Teenus toetab kasutajaliidese keele-eelistuse andmist autentimispäringus (`locale` parameetriga (kuni juuli 2019 lõpp) või `ui_locales` (alates jaan 2019 lõpp)).
-- Autentimismeetodi valib kasutaja autentimisteenuses.
+- Teenus toetab kasutajaliidese keele-eelistuse andmist autentimispäringus (parameetriga `ui_locales`).
+- Autentimismeetodi valib kasutaja autentimisteenuses või liidestunud infosüsteem (parameetri `scope` abil).
 - Piiriülene autentimine, vastavalt eIDAS tehnilisele spetsifikatsioonile.
 - Klientrakenduse dünaamilist registreerimist ei toetata. Klientrakenduse registreerimine toimub RIA-s eraldi protseduuriga.
 - Ühekordset sisselogimist (SSO) ja seansihaldust (_session management_) praegu ei toetata.
@@ -55,7 +55,7 @@ TARA edasiarendamisel - mis toimub lähtudes TARA kasutajate vajadustest ja või
 
 TARA võimaldab nii siseriiklikku kui ka piiriülest autentimist. See tähendab, et autentida saab nii eestlase (Eesti e-identimissüsteemi - ID-kaardi, mobiil-ID jms kasutaja) kui ka välismaalase (EL teise liikmesriigi e-identimissüsteemi kasutaja).
 
-eIDASe kontekstis teostab TARA kasutusvood "Eestlase autentimine Eesti e-teenuses" ja "Eesti e-teenust kasutava välismaalase autentimine" (joonis 1).
+eIDASe kontekstis teostab TARA kasutusvood "Eestlase autentimine Eesti e-teenuses" ja "Eesti e-teenust kasutava välismaalase autentimine" (joonis 1). Sh on võimalik välismaalase autentimist Eesti e-teenuse jaoks kasutada nii, et TARA kasutajaliidest kasutajale ei kuvata vaid kasutaja suunatakse otse välisriigi autentimisteenusesse (loe automaatse suunamise kohta p4.1.3)
 
 <p style='text-align:center;'><img src='img/YLEVAADE.PNG' style='width:600px'></p>
 
@@ -104,6 +104,8 @@ Joonis 1. Siseriiklik ja piiriülene autentimine
 - kasutaja autendib end välisriigi autentimisvahendiga
 - eduka autentimise korral (ning kui välisriigi autentimisvahendi tase on piisav) edasi samm 9
 - vea korral samm 10.
+
+NB! eIDAS autentimise korral on võimalik sihtriigi valik teha ka otse TARA-ga liidestunud infosüsteemis ning saata soovitud riigi kood autentimispäringuga. Sellisel juhul kasutajale TARA kasutajaliidest ei kuvata ja tehakse automaatne edasisuunamine läbi eIDAS taristu otse välisriigi autentimisteenusesse, kus kasutaja autendib end välisriigi autentimisvahendiga. Eduka autentimise korral (ning kui välisriigi autentimisvahendi tase on piisav) edasi samm 9
 
 7 Pangalingiga autentimine
 
@@ -223,7 +225,7 @@ Autentimispäringu elemendid:
 |------------------------|:---------- :|-----------------------------|---------------|
 | protokoll, host ja tee (_path_) | jah | `https://tara.ria.ee/oidc/authorize` | `/authorize` on TARA-teenuse OpenID Connect-kohane autentimisotspunkt (termin 'autoriseerimine' pärineb alusprotokollist OAuth 2.0). |
 | `redirect_uri` | jah | `redirect_uri=https%3A%2F%2F` `eteenus.asutus.ee%2Ftagasi` | Tagasisuunamis-URL. Tagasisuunamis-URL-i valib asutus ise. Tagasisuunamis-URL võib sisaldada _query_-osa. <br><br>Vajadusel kasutada [URLi kodeerimist](https://en.wikipedia.org/wiki/Percent-encoding). <br><br>URI-i [fragmendi osa](https://tools.ietf.org/html/rfc3986#section-3.5) (`#` märk ja sellele järgnev osa) kasutamine [ei ole lubatud](https://tools.ietf.org/html/rfc6749#section-3.1.2). |
-| `scope` | jah | `scope=openid`<br><br>`scope=openid%20eidas` <br><br>`scope=openid%20idcard%20mid` | Autentimise skoop.<br><br>`openid` on kohustuslik (seda nõuab OpenID Connect protokoll).<br><br> Skoopidega `idcard`, `mid`, `banklink`, `smartid`, `eidas` (ja `eidasonly`) saab nõuda, et kasutajale näidatakse ainult soovitud autentimismeetodeid. Vt jaotis 4.1.3 Autentimismeetodite valikuline kasutus.<br><br>Skoobiga `email` saab nõuda, et identsustõendis väljastatakse kasutaja e-postiaadress. Vt jaotis 4.1.2 E-postiaadressi küsimine.<br><br>Piiriülesel autentimisel saab kasutada lisaskoope täiendavate isikuandmete pärimiseks (vt allpool).<br><br>Mitme skoobi kasutamisel tuleb skoobid eraldada tühikutega. Tühik esitatakse seejuures URL-kodeeringus (`%20`) ([RFC 3986](https://www.ietf.org/rfc/rfc3986.txt)). Skoobi väärtused on tõstutundlikud. Tundmatuid väärtuseid ignoreeritakse. |
+| `scope` | jah | `scope=openid`<br><br>`scope=openid%20eidas` <br><br>`scope=openid%20idcard%20mid` | Autentimise skoop.<br><br>`openid` on kohustuslik (seda nõuab OpenID Connect protokoll).<br><br> Skoopidega `idcard`, `mid`, `banklink`, `smartid`, `eidas` (ja `eidasonly`) saab nõuda, et kasutajale näidatakse ainult soovitud autentimismeetodeid. Vt jaotis 4.1.3 Autentimismeetodite valikuline kasutus.<br><br>Skoobiga `email` saab nõuda, et identsustõendis väljastatakse kasutaja e-postiaadress. Vt jaotis 4.1.2 E-postiaadressi küsimine.<br><br>Piiriülesel autentimisel saab kasutada lisaskoope sihtriigi valiku täpsustamiseks, et kasutaja suunata otse välisriigi autentimisteenusesse või täiendavate isikuandmete pärimiseks (vt jaotis 4.1.3 ja 4.1.1).<br><br>Mitme skoobi kasutamisel tuleb skoobid eraldada tühikutega. Tühik esitatakse seejuures URL-kodeeringus (`%20`) ([RFC 3986](https://www.ietf.org/rfc/rfc3986.txt)). Skoobi väärtused on tõstutundlikud. Tundmatuid väärtuseid ignoreeritakse. |
 | `state` | jah | `state=hkMVY7vjuN7xyLl5` | Võltspäringuründe (_cross-site request forgery_, CSRF) vastane turvakood. `state` moodustamise ja kontrollimise kohta vt lähemalt jaotis "Võltspäringuründe vastane kaitse". |
 | `response_type` | jah | `response_type=code` | Määrab autentimise tulemuse serverile edastamise viisi. Toetatud on volituskoodi viis (OpenID Connect protokolli _authorization flow_), selle tähiseks on väärtus `code`. |
 | `client_id` | jah | `client_id=58e7...` | Rakenduse identifikaator. Rakenduse identifikaatori annab RIA asutusele klientrakenduse registreerimisel autentimisteenuse kasutajaks. |
@@ -689,6 +691,7 @@ RIA, rahuldades taotluse, väljastab asutusele klientrakenduse toodanguversiooni
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
+| 1.11, 29.12.2020   | Täpsustatud piiriülese autentimise kirjeldust. |
 | 1.10, 16.12.2020   | Täpsustatud identsustõendi vormingu kirjeldust. |
 | 1.9, 21.11.2019   | Lisatud skoobid `eidas:country:xx`. |
 | 1.8, 20.05.2019   | Täpsustatud identsustõendi kontrolle `acr` ja `amr` väidete osas. |
