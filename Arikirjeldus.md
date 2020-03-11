@@ -13,14 +13,14 @@ Siseriiklikest autentimismeetoditest pakume autentimist järgmiste vahenditega:
 - smart-ID (ainult Eesti isikukoodiga kasutajad)
 - pangalink (Swedbank, SEB, LHV, Coop, Luminor)
 
-Samuti pakume piiriülest autentimist Euroopa Liidu teavitatud eID vahenditega läbi eIDAS-Node taristu. Käesolevalt on TARAs toetatud järgmiste riikide eIDAS tagatistasemega "Kõrge" teavitatud eID vahendid:
+Samuti pakume piiriülest autentimist Euroopa Liidu teavitatud eID vahenditega läbi eIDAS-Node taristu. Käesolevalt on TARAs toetatud järgmiste riikide teavitatud eID vahendid:
 
-- Saksamaa (National Identity Card; Electronic Residence Permit)
-- Itaalia (Carta di Identità elettronica (CIE); Aruba PEC SpA; Namirial SpA; InfoCert SpA; In.Te.S.A. SpA; Poste Italiane SpA; Register.it SpA; Sielte SpA; Telecom Italia Trust Technologies S.r.l.; Lepida SpA)
-- Hispaania (Documento Nacional de Identidad electrónico (DNIe))
-- Belgia (Belgian Citizen eCard; Foreigner eCard; itsme® mobile App)
-- Luksemburg (Luxembourg eID card)
-- Horvaatia (Personal Identity Card (eOI))
+- Saksamaa: National Identity Card; Electronic Residence Permit
+- Itaalia: Carta di Identità elettronica (CIE); Aruba PEC SpA; Namirial SpA; InfoCert SpA; In.Te.S.A. SpA; Poste Italiane SpA; Register.it SpA; Sielte SpA; Telecom Italia Trust Technologies S.r.l.; Lepida SpA
+- Hispaania: Documento Nacional de Identidad electrónico (DNIe)
+- Belgia: Belgian Citizen eCard; Foreigner eCard; itsme® mobile App
+- Luksemburg: Luxembourg eID card
+- Horvaatia: Personal Identity Card (eOI)
 
 Eesti riiklike ja piiriüleselt tunnustatud eID vahenditega (ID-kaart, mobiil-ID) on tagatud juurdepääs järgmistes Euroopa Liidu riikide e-teenustele: Hispaania, Itaalia, Belgia, Luksemburg, Norra, Rootsi, Taani, Läti, Leedu, Holland, Austria, Sloveenia, Malta, Kreeka, Slovakkia, Suurbritannia, Soome).
 
