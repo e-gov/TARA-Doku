@@ -26,7 +26,7 @@ Eesti riiklike ja piiriüleselt tunnustatud eID vahenditega (ID-kaart, mobiil-ID
 
 ## Kellele?
 
-Riigiasutusele ja avalik-juriidilistele isikutele või eraõiguslikele isikutele, kes täidavad avalikku ülesannet ja soovivad:
+Avaliku sektori asutustele, kes soovivad:
 - oma e-teenustes pakkuda kasutajatele laia valikut autentimismeetodeid, ise neid meetodeid teostamata.
 - lisada oma e-teenusele piiriülese autentimise toe.
 
