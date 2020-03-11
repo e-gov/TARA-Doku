@@ -22,7 +22,7 @@ Samuti pakume piiriülest autentimist Euroopa Liidu teavitatud eID vahenditega l
 - Luksemburg: Luxembourg eID card
 - Horvaatia: Personal Identity Card (eOI)
 
-Eesti riiklike ja piiriüleselt tunnustatud eID vahenditega (ID-kaart, mobiil-ID) on tagatud juurdepääs järgmistes Euroopa Liidu riikide e-teenustele: Hispaania, Itaalia, Belgia, Luksemburg, Norra, Rootsi, Taani, Läti, Leedu, Holland, Austria, Sloveenia, Malta, Kreeka, Slovakkia, Suurbritannia, Soome).
+Eesti riiklike ja piiriüleselt tunnustatud eID vahenditega (ID-kaart, mobiil-ID) on tagatud juurdepääs järgmistes Euroopa Liidu riikide e-teenustele: Hispaania, Itaalia, Belgia, Luksemburg, Norra, Rootsi, Taani, Läti, Leedu, Holland, Austria, Sloveenia, Malta, Kreeka, Slovakkia, Suurbritannia, Soome.
 
 ## Kellele?
 
@@ -32,8 +32,7 @@ Riigiasutusele ja avalik-juriidilistele isikutele või eraõiguslikele isikutele
 
 ## Kes TARA kasutavad?
 
-Riigi autentimisteenusega on liitunud 19 asutust 60
-infosüsteemiga, sh riigiportaal eesti.ee, e-maksuamet/e-toll (e-MTA), Haridusportaal, RIHA, ePRIA, Ehitisregister, Rahvastikuregister, eToetus, eSTAT, TAKIS, EIS, SKAIS jt.
+Riigi autentimisteenusega on liitunud 32 asutust 88 infosüsteemiga, sh riigiportaal eesti.ee, e-maksuamet/e-toll (e-MTA), Haridusportaal, RIHA, ePRIA, Ehitisregister, Rahvastikuregister, eToetus, eSTAT, TAKIS, EIS, SKAIS jt.
 
 ## Tehnilised tingimused?
 
@@ -82,15 +81,15 @@ Teenus on toodangus avatud 2018. a märtsist.
 
 ## Soovitused Riigi autentimisteenuse integreerimiseks kliendi teenuses
 
-- kui teenuses on kasutuses üksnes Riigi autentimisteenus (TARA), on soovituslik kasutada viidet “Sisene” koos paigutusega veebilehe paremal üleval servas
+- kui teenuses on kasutuses üksnes Riigi autentimisteenus (TARA), kasutada viidet “Sisene” koos paigutusega veebilehe paremal üleval servas
 
 <img src='img/eesti_ee.png' width='500'>
 
-- ainult eIDAS-liidestuse korral on soovituslik Riigi autentimisteenusele (TARA) suunamiseks kasutada viidet “EL riigi eID” / “Other EU country” või kasutada [logo](https://github.com/e-gov/TARA-Server/blob/master/disain/assets/eu_citizen_login_btn_190x50.svg)
+- ainult eIDAS-liidestuse korral kasutada Riigi autentimisteenusele (TARA) suunamiseks viidet “EL riigi eID” / “Other EU country” või kasutada [logo](https://github.com/e-gov/TARA-Server/blob/master/disain/assets/eu_citizen_login_btn_190x50.svg)
 
   <img src='img/eu_citizen_login_btn_190x50_rgb.png' width='150'> 
 
-- kui teenuses on kasutusel Riigi autentimisteenuse (TARA) kõrval ka teisi autentimisvahendeid, on soovituslik kasutada viitena RIA autentimisteenuse [logo](https://github.com/e-gov/TARA-Server/blob/master/disain/assets/tara_logo.svg) koos selgitusega “Sisene Riigi autentimisteenuse kaudu” või “Sisene läbi Riigi autentimisteenuse”.
+- kui teenuses on kasutusel Riigi autentimisteenuse (TARA) kõrval ka teisi autentimisvahendeid, kasutada viitena RIA autentimisteenuse [logo](https://github.com/e-gov/TARA-Server/blob/master/disain/assets/tara_logo.svg) koos selgitusega “Sisene Riigi autentimisteenuse kaudu” või “Sisene läbi Riigi autentimisteenuse”.
 
   <img src='img/tara-logo-et.png' width='150'>
 
@@ -104,4 +103,3 @@ Kui pöördute liidestamisel või liidestatud klientrakenduses TARA kasutamise t
 Samuti tasub heita pilk [eneseabile](Eneseabi).
 
 [Tehniline kirjeldus](TehnilineKirjeldus) (liidese arendajale).
-
