@@ -5,6 +5,10 @@ permalink: Uudised
 # Uudised
 
 
+19.03.2020 Alates 01.04.2020 muutub TARA-s kasutajale vaikimisi kuvatavate autentimisvalikute nimekiri. Kui seni kuvati kasutajale kõik autentimisvahendid (ID-kaart, Mobiil-ID, pangalink, Smart-ID ja eIDAS), siis alates muudatuse rakendamise hetkest kuvatakse vaikimisi ainult kõrge tagatistasemega autentimisvahendeid (ID-kaart ja Mobiil-ID).
+Kõiki autentimisvahendeid on endiselt võimalik kasutada, kuid liitunud infosüsteem peab soovitud autentimisvalikute kuvamist sellisel juhul ise juhtima, kasutades TARA skoope (loe rohkem siit - https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus#413-autentimismeetodite-valikuline-kasutus)
+Midagi ei muutu klientide jaoks, kes juba kasutavad autentimismeetodeid valikuliselt.
+
 25.12.2019 Protokollitäiendus. Lisandus võimalus piiriülese (eIDAS) autentimise valiku korral kasutada TARA ilma kasutajaliidest kuvamata.
 Otse eIDAS võrgustikku suunamiseks ilma kasutajaliidese kuvamiseta peab skoobi URL parameeter välja nägema taoline:
 `.../authorize?scope=openeid eidasonly eidas:country:fi&...`.
