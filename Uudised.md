@@ -8,7 +8,7 @@ permalink: Uudised
 23.03.2020 Anname teada, et Smart-ID tagatistase on (üle)hindamisel, sest SK ID Solutioni Smart-ID väljastusprotsessile lisandus biomeetriline lahendus. Hinnangu valmimisel avaldab RIA Smart-ID kinnitatud taseme.
 {: .note}
 
-19.03.2020 Alates 01.04.2020 muutub TARA-s kasutajale vaikimisi kuvatavate autentimisvalikute nimekiri. Kui seni kuvati kasutajale kõik autentimisvahendid (ID-kaart, Mobiil-ID, pangalink, Smart-ID ja eIDAS), siis alates muudatuse rakendamise hetkest kuvatakse vaikimisi ainult kõrge tagatistasemega autentimisvahendeid (ID-kaart ja Mobiil-ID).
+19.03.2020 Alates 30.04.2020 muutub TARA-s kasutajale vaikimisi kuvatavate autentimisvalikute nimekiri. Kui seni kuvati kasutajale kõik autentimisvahendid (ID-kaart, Mobiil-ID, pangalink, Smart-ID ja eIDAS), siis alates muudatuse rakendamise hetkest kuvatakse vaikimisi ainult kõrge tagatistasemega autentimisvahendeid (ID-kaart ja Mobiil-ID).
 Kõiki autentimisvahendeid on endiselt võimalik kasutada, kuid liitunud infosüsteem peab soovitud autentimisvalikute kuvamist sellisel juhul ise juhtima, kasutades TARA skoope (loe rohkem siit - https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus#413-autentimismeetodite-valikuline-kasutus)
 Midagi ei muutu klientide jaoks, kes juba kasutavad autentimismeetodeid valikuliselt.
 {: .note}
