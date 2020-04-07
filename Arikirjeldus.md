@@ -21,12 +21,14 @@ Samuti pakume piiriülest autentimist Euroopa Liidu teavitatud eID vahenditega l
 - Belgia: Belgian Citizen eCard; Foreigner eCard; itsme® mobile App
 - Luksemburg: Luxembourg eID card
 - Horvaatia: Personal Identity Card (eOI)
+- Portugal: Portuguese national identity card (eID card); Digital Mobile Key
+- Läti: eID karte; eParaksts karte; eParaksts karte+; eParaksts
 
 Eesti riiklike ja piiriüleselt tunnustatud eID vahenditega (ID-kaart, mobiil-ID) on tagatud juurdepääs järgmistes Euroopa Liidu riikide e-teenustele: Hispaania, Itaalia, Belgia, Luksemburg, Norra, Rootsi, Taani, Läti, Leedu, Holland, Austria, Sloveenia, Malta, Kreeka, Slovakkia, Suurbritannia, Soome.
 
 ## Kellele?
 
-Avaliku sektori asutustele, kes soovivad:
+Valitsussektori asutustele, kes soovivad:
 - oma e-teenustes pakkuda kasutajatele laia valikut autentimismeetodeid, ise neid meetodeid teostamata.
 - lisada oma e-teenusele piiriülese autentimise toe.
 
