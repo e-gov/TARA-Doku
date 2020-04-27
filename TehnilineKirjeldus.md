@@ -7,7 +7,7 @@ Mõned autentimismeetodid võivad olla veel arenduses või kasutatavad ainult te
 
 # Tehniline kirjeldus
 {: .no_toc}
-v 1.11, 29.01.2020
+v 1.12, 27.04.2020
 
 - TOC
 {:toc}
@@ -575,7 +575,7 @@ Märkus. Tavaliselt peetakse veebirakendusega seanssi küpsises hoitava seansit�
 
 ### 5.2 Võltspäringuründe vastane kaitse
 
-Klientrakenduses tuleb rakendada võltspäringuründe (_cross-site request forgery_, CSRF) vastaseid kaitsemeetmeid. Seda tehakse turvakoodide `state` ja `nonce` abil. `state` kasutamine on kohustuslik; `nonce` kasutamine on vabatahtlik. Kirjeldame `state` kasutamise protseduuri.
+Klientrakenduses tuleb rakendada võltspäringuründe (_cross-site request forgery_, CSRF) vastaseid kaitsemeetmeid. Seda tehakse turvakoodide `state` ja `nonce` abil. `state` kasutamine on kohustuslik; `nonce` kasutamine on vabatahtlik. Kirjeldame `state` kasutamise protseduuri, kasutades klientrakenduses seatud küpsist (sellisel juhul ei pea klientrakendus saadetud state parameetri väärtust ise meeles pidama).
 
 Turvakoodi `state` kasutatakse autentimispäringule järgneva tagasisuunamispäringu võltsimise vastu. Klientrakenduses tuleb teostada järgmised sammud:
 
@@ -583,23 +583,21 @@ Turvakoodi `state` kasutatakse autentimispäringule järgneva tagasisuunamispär
 
 2 Arvutada juhusõnest `R` räsi `H = hash(R)`, näiteks SHA256 räsialgoritmiga ja teisendades tulemuse Base64 vormingusse: `vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`.
 
-3 Lisada autentimispäringule küpsise panemise korraldus, näiteks:
+3 Seada vahetult enne autentimispäringu tegemist klientrakenduse domeenile küpsis, mille väärtuseks juhusõne `R`. 
 
 `Set-Cookie ETEENUS=XoD2LIie4KZRgmyc; HttpOnly`,
 
 kus `ETEENUS` on vabalt valitud küpsisenimi. Küpsisele tuleb rakendada atribuuti `HttpOnly`.
 
-4 Seada p 2 arvutatud räsi parameetri `state` väärtuseks:
+4 Seada TARA autentimispäringu tegemisel p 2 arvutatud räsi parameetri `state` väärtuseks:
 
 `GET ... state=vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`
 
-Niisiis, autentimispäringuga saadetakse kaks asja: juhusõne küpsisesse panemiseks ja juhusõnest arvutatud räsiväärtus `state` parameetris. Klientrakendus ei pea juhusõne ega räsiväärtust meeles pidama.
-
 Tagasisuunamispäringu töötlemisel peab klientrakendus tegema järgmist:
 
-5 Võtab päringuga tuleva küpsise `ETEENUS` väärtuse
+5 Võtab päringuga tuleva küpsise `ETEENUS` väärtuse (tagasisuunamispäringuga saadetakse kasutaja kaks asja: kasutaja brauserist juhusõne küpsisena ja juhusõnest arvutatud räsiväärtus `state` parameetris).
 
-6 Arvutab küpsise väärtusest räsi
+6 Arvutab küpsise väärtusest räsi ja teisendab base64 kodeeringusse.
 
 7 Kontrollib, et räsi ühtib tagasisuunamispäringus tagasipeegeldatava `state` väärtusega.
 
@@ -691,8 +689,9 @@ RIA, rahuldades taotluse, väljastab asutusele klientrakenduse toodanguversiooni
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
-| 1.11, 29.12.2020   | Täpsustatud piiriülese autentimise kirjeldust. |
-| 1.10, 16.12.2020   | Täpsustatud identsustõendi vormingu kirjeldust. |
+| 1.12, 27.04.2020   | Parandus ja täpsustus võltspäringuründe vastase kaitse kirjelduses. |
+| 1.11, 29.01.2020   | Täpsustatud piiriülese autentimise kirjeldust. |
+| 1.10, 16.01.2020   | Täpsustatud identsustõendi vormingu kirjeldust. |
 | 1.9, 21.11.2019   | Lisatud skoobid `eidas:country:xx`. |
 | 1.8, 20.05.2019   | Täpsustatud identsustõendi kontrolle `acr` ja `amr` väidete osas. |
 | 1.7, 07.05.2019   | Täpsustatud autentimisprotsessiga seotud olulised aegumisajad. |
