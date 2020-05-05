@@ -24,7 +24,7 @@ Samuti pakume piiriülest autentimist Euroopa Liidu teavitatud eID vahenditega l
 - Portugal: Portuguese national identity card (eID card); Digital Mobile Key
 - Läti: eID karte; eParaksts karte; eParaksts karte+; eParaksts
 
-Eesti riiklike ja piiriüleselt tunnustatud eID vahenditega (ID-kaart, mobiil-ID) on tagatud juurdepääs järgmistes Euroopa Liidu riikide e-teenustele: Hispaania, Itaalia, Belgia, Luksemburg, Norra, Rootsi, Taani, Läti, Leedu, Holland, Austria, Sloveenia, Malta, Kreeka, Slovakkia, Suurbritannia, Soome.
+Eesti riiklike ja piiriüleselt tunnustatud eID vahenditega (ID-kaart, mobiil-ID) on tagatud juurdepääs järgmistes Euroopa Liidu riikide e-teenustele: Austria, Belgia, Hispaania, Holland, Horvaatia, Itaalia, Kreeka, Leedu, Luksemburg, Läti, Malta, Norra, Poola, Portugal, Rootsi, Slovakkia, Sloveenia, Soome, Suurbritannia, Taani.
 
 ## Kellele?
 
