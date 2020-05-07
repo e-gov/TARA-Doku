@@ -90,10 +90,6 @@ Lühinimetuse valimisel tuleks arvestada järgmiste asjaoludega:
 
 Kontrolli, et klientrakendus kasutab TARA poole pöördumisel õiget `clientid`-d ja tagasuunamis-URL-i (`redirecturi`). `clientid` tuleb anda autentimispäringus. Tagasisuunamis-URL tuleb anda nii autentimis- kui ka identsustõendi küsimise päringus. Need väärtused peavad täpselt vastama RIA-s registreeritutele. Kas oled neid väärtusi muutnud? Kas sul on mitu klientrakendust? Võib-olla nende väärtused on segamini läinud? Ülekontrollimiseks, milline `clientid` ja `redirecturi` on registreeritud, võib pöörduda RIA teenusehalduri poole.
 
-## OAuth2 teek üritab `jwks` otspunktist võtme võtmeidentifikaatori abil kätte saada, kuid see ei õnnestu.
-
-Teenuse avaliku allkirjastamisvõtme otspunkt ([https://tara.ria.ee/oidc/jwks](https://tara.ria.ee/oidc/jwks)) pakub praegu ühtainust võtit. See tuleb võtta ja kasutada. TARA edasiarendamisel (2018 lõpp - 2019 algus) lisame dünaamilise võtmevahetuse (key rollover). Siis saab võtit pärida võtmeidentifikaatoriga.
-
 ## TARA ütleb, et `Required+scope+&lt;openid&gt;+not+provided`.
 
 Põhjus - nagu ka teiste päringuparameetrite probleemide puhul - võib olla URL-kodeerimises. Skoobi `eidasonly` kasutamisel tuleb see saata koos skoobiga `openid`. Skoobid tuleb eraldada tühikuga (URL-encoded kujul: `openid%20eidasonly`). Saatmisel jälgida, et tühik URL-kodeeritakse, aga mitte rohkem, kui üks kord. 
