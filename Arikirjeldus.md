@@ -89,13 +89,13 @@ Teenus on toodangus avatud 2018. a märtsist.
 
 - ainult eIDAS-liidestuse korral kasutada Riigi autentimisteenusele (TARA) suunamiseks viidet “EL riigi eID” / “Other EU country” või kasutada [logo](https://github.com/e-gov/TARA-Server/blob/master/disain/assets/eu_citizen_login_btn_190x50.svg)
 
-  <img src='img/eu_citizen_login_btn_190x50_rgb.png' width='150'> 
+<img src='img/eu_citizen_login_btn_190x50_rgb.png' width='150'> 
 
 - kui teenuses on kasutusel Riigi autentimisteenuse (TARA) kõrval ka teisi autentimisvahendeid, kasutada viitena RIA autentimisteenuse [logo](https://github.com/e-gov/TARA-Server/blob/master/disain/assets/tara_logo.svg) koos selgitusega “Sisene Riigi autentimisteenuse kaudu” või “Sisene läbi Riigi autentimisteenuse”.
 
-  <img src='img/tara-logo-et.png' width='150'>
+<img src='img/tara-logo-et.png' width='150'>
   
-  <img src='img/tara.png' width='500'>
+<img src='img/tara.png' width='500'>
 
 
 ## Rohkem teavet?
