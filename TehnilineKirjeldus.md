@@ -7,7 +7,7 @@ Mõned autentimismeetodid võivad olla veel arenduses või kasutatavad ainult te
 
 # Tehniline kirjeldus
 {: .no_toc}
-v 1.12, 27.04.2020
+v 1.13, 26.06.2020
 
 - TOC
 {:toc}
@@ -307,9 +307,11 @@ Tagasisuunamispäringu elemendid:
 | `code` | `code=71ed579...`  | Volituskood (_authorization code_) on ühekordne “lubatäht” identsustõendi saamiseks. |
 | `state`            | `state=OFfVLKu0kNbJ2EZk`     | Võltspäringuründe vastane turvakood. Autentimispäringus saadetud turvakood peegeldatakse tagasi. `state` moodustamise ja kontrollimise kohta vt lähemalt jaotis "Võltspäringuründe vastane kaitse". |
 
-**Veateade tagasisuunamispäringus.** Kui TARA ei suutnud autentimispäringut töödelda - päring kas oli vigane või tekkis muu viga, siis saadab TARA tagasisuunamispäringus veakoodi (URL-i parameeter `error`) ja veakirjelduse (URL-i parameeter `error_description`). 
+**Veateade tagasisuunamispäringus.** Kui TARA ei suutnud autentimispäringut töödelda - päring kas oli vigane, kasutaja otsustas autentimise katkestada või tekkis muu viga, siis saadab TARA tagasisuunamispäringus veakoodi (URL-i parameeter `error`) ja veakirjelduse (URL-i parameeter `error_description`).
 
-TARA lähtub veakoodide tagastamisel OpenID Connect standardist (loe võimalike veakoodide kohta [siit](https://openid.net/specs/openid-connect-core-1_0.html#AuthError) ja [siit](https://tools.ietf.org/html/rfc6749#section-4.1.2.1)) ja veakirjelduse tekst esitatakse alati inglisekeelsena. 
+Juhul kui kasutaja katkestab TARA-s autentimise ("Tagasi teenusepakkuja juurde" link esilehel), tagastatakse veakood `user_cancel`.  
+
+Muude veakoodide tagastamisel lähtub TARA OpenID Connect standardist (loe võimalike veakoodide kohta [siit](https://openid.net/specs/openid-connect-core-1_0.html#AuthError) ja [siit](https://tools.ietf.org/html/rfc6749#section-4.1.2.1)) ja veakirjelduse tekst esitatakse alati inglisekeelsena. 
 
 
 Tagastatakse ka `state`, kuid volituskoodi (`code`) ei saadeta. Nt:
@@ -324,7 +326,11 @@ state=qnYY56Ra8QF7IUzqvw+PPLzMKoHtQkuUWbV/wcrkvdU=
 
 Tagasisuunamispäringu vigade korral on tavaliselt probleem liidestuses ja `error_description` parameetris esitatavat veakirjeldust ei ole vaja otse kasutajale kuvada. Klientrakenduses tuleks kontrollida, kas saadeti veakood. 
 
-**Autentimise katkestamine**. Kasutaja võib e-teenusesse tagasi pöörduda ka ilma autentimismeetodit valimata ja autentimist läbi tegemata (link "Tagasi teenusepakkuja juurde"). See võimalus on mõeldud juhuks, kui kasutaja vajutas klientrakenduses "Logi sisse", kuid tegelikult ei soovi sisse logida. Teenusega liitumise taotluses peab asutus RIA-le teada andma URL-i, kuhu kasutaja "Tagasi teenuspakkuja juurde" vajutamisel suunatakse. NB! OpenID Connect protokolli kohane tagasisuunamis-URL ja siin nimetatud URL on erineva tähendusega.
+**Autentimise katkestamine**. Kasutaja võib e-teenusesse tagasi pöörduda ka ilma autentimismeetodit valimata ja autentimist läbi tegemata (link "Tagasi teenusepakkuja juurde"). See võimalus on mõeldud juhuks, kui kasutaja vajutas klientrakenduses "Logi sisse", kuid tegelikult ei soovi sisse logida. 
+
+Autentimise katkestamise korral suunatakse kasutaja tagasi teenusepakkuja juurde tagasisuunamispäringuga, mille veakood on `user_cancel` <sup>1</sup> 
+
+<sup>1</sup> Alates augustist 2020 ei nõua RIA teenusega liitumise taotluses asutuselt enam eraldi URL-i tagasipöördumisurli kasutaja katkestamise jaoks (URL, kuhu suunatakse juhul kui kasutaja vajutab "Tagasi teenuspakkuja juurde". NB! OpenID Connect protokolli kohane tagasisuunamis-URL ja siin nimetatud URL on erineva tähendusega).
 
 ### 4.3 Identsustõendipäring
 
@@ -689,6 +695,7 @@ RIA, rahuldades taotluse, väljastab asutusele klientrakenduse toodanguversiooni
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
+| 1.13, 26.06.2020   | Täiendatud kasutajapoolset autentmise katkestamise käsitlust. Lisandus veakood `user_cancel`.  |
 | 1.12, 27.04.2020   | Parandus ja täpsustus võltspäringuründe vastase kaitse kirjelduses. |
 | 1.11, 29.01.2020   | Täpsustatud piiriülese autentimise kirjeldust. |
 | 1.10, 16.01.2020   | Täpsustatud identsustõendi vormingu kirjeldust. |
