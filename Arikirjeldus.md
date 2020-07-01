@@ -25,7 +25,7 @@ Samuti pakume piiriülest autentimist Euroopa Liidu teavitatud eID vahenditega l
 - Läti: eID karte; eParaksts karte; eParaksts karte+; eParaksts
 - Leedu: Lithuanian National Identity card (eID / ATK)
 
-Eesti riiklike ja piiriüleselt tunnustatud eID vahenditega (ID-kaart, mobiil-ID) on tagatud juurdepääs järgmistes Euroopa Liidu riikide e-teenustele: Austria, Belgia, Hispaania, Holland, Horvaatia, Itaalia, Kreeka, Leedu, Luksemburg, Läti, Malta, Norra, Poola, Portugal, Rootsi, Slovakkia, Sloveenia, Soome, Suurbritannia, Taani.
+Eesti riiklike ja piiriüleselt tunnustatud eID vahenditega (ID-kaart, mobiil-ID) on tagatud juurdepääs järgmiste Euroopa Liidu riikide e-teenustele: Austria, Belgia, Hispaania, Holland, Horvaatia, Itaalia, Kreeka, Leedu, Luksemburg, Läti, Malta, Norra, Poola, Portugal, Rootsi, Slovakkia, Sloveenia, Soome, Suurbritannia, Taani.
 
 ## Kellele?
 
