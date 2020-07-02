@@ -4,7 +4,7 @@ permalink: Liitumine
 
 # Liitumine
 
-Riigi autentimisteenus TARA on liitumiseks valitsussektori asutustele, kes soovivad:
+Riigi autentimisteenus on liitumiseks valitsussektori asutustele, kes soovivad:
 - oma e-teenustes pakkuda kasutajatele laia valikut autentimismeetodeid, ise neid meetodeid teostamata.
 - lisada oma e-teenusele piiriülese autentimise toe.
 
