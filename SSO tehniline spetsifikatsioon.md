@@ -84,8 +84,8 @@ If the SSO session update request fails for any reason, then the client applicat
 2. Client application verifies whether user has active client application session and that client application session storage contains a valid (not expired) TARA SSO identity token.
 3. Client application finds that user identity token is about to expire and redirects user agent to TARA SSO with a valid SSO session update request. The request must include the identity token and a `prompt=none` parameter.
 4. TARA SSO validates the request
-  1. Verifies that an SSO session is still active for user agent
-  2. Verifies that the SSO session subject matches the subject in the received identity token.
+  1. verifies that an SSO session is still active for user agent
+  2. verifies that the SSO session subject matches the subject in the received identity token.
 5. If all validations passed, TARA SSO will issue a new authorization code to the client application.
 6. Using the authorization code, the client application makes an identity token request to TARA SSO. Tara responds with a new identity token and a directive for the user agent to update SSO session cookie expiration date to `currentTime + 15 minutes`.
 7. Client application stores identity token with into its session storage and shows protected content to user.
