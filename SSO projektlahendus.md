@@ -207,7 +207,7 @@ Liitumiseks TARA SSO teenusega tuleb teenusepakkujal lisaks tavapärasele TARA t
 
 ### **Autentimise voog**
 
-<p style='text-align:left;'><img src='img/SSO_joonis4.png' style='width:800px'></p>
+<p style='text-align:left;'><img src='img/SSO_joonis4.png' style='width:950px'></p>
 Joonis 4: Kasutaja autentimise voog TARA SSOs
 
 1. Kasutaja algatab sirvikus klientrakendusse sisselogimise.
@@ -238,7 +238,7 @@ Uue identsustõendi saab väljastada vana identsustõendi põhjal selle kehtivus
 
 **Erinevalt OIDC protokolli tavamustrist loeme TARA SSO protokollis seansi oleku kontrolli päringu kehas eelmise identsustõendi saatmise kohustuslikuks.** Vana identsustõend annab TARA SSO teenusele võimaluse enne klientrakendusele andmete saatmist kontrollida ka subjekti samasust. See tähendab, TARA SSO kontrollib, kas eelmise identsustõendi subjekt kattub hetkel TARA SSOs sisse logitud subjektiga.
 
-<p style='text-align:left;'><img src='img/SSO_joonis5.png' style='width:800px'></p>
+<p style='text-align:left;'><img src='img/SSO_joonis5.png' style='width:950px'></p>
 Joonis 5: Klientrakenduse seansi oleku kontroll ja TARA SSO seansi kehtivuse pikendamine uue identsustõendi päringuga
 
 1. TARA SSOs autenditud ja klientrakenduses sisselogitud kasutaja suunab sirviku klientrakenduse otspunktile `https://portaal.ee/pealeht`.
