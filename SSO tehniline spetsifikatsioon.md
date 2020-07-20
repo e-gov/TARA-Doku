@@ -112,4 +112,43 @@ After a successful logout the user agent is redirected back to the client applic
 
 Each TARA SSO client application must declare support to the OIDC Back-Channel logout specification. Each client must provide a back-channel logout endpoint URL as part of their registration information. TARA SSO will send an out-of-band POST request to client application back-channel logout endpoint every time an SSO session ends.
 
+The logout request contains a logout token. The logout token must be validated according to OIDC Back-Channel logout specification (References: OIDC-BACK "2.6.  Logout Token Validation").  After receiving a valid logout token from the TARA SSO, the client application locates the session(s) identified by the `iss` and `sub` Claims and/or the `sid` Claim. The client application then clears any state associated with the identified session(s). If the identified user is already logged out at the client application when the logout request is received, the logout is considered to have succeeded.
 
+If the logout succeeded, the RP MUST respond with HTTP 200 OK.
+
+Access to the back-channel logout endpoint should be restricted. Only TARA SSO needs to have access to given endpoint.
+
+## Tokens
+
+### Identity token
+
+In TARA SSO protocol the identity token is a used as a certificate of the fact of authentication was performed. The identity token has a concrete issuance and expiration date between which it is to be considered valid.
+
+The identity token is issued in JSON Web Token (References: JWT).
+
+Example TARA SSO identity token
+
+{
+  "jti": "663a35d8-92ec-4a8d-95e7-fc6ca90ebda2",
+  "iss": "https://tara-sso-demo.eesti.ee/",
+  "aud": [
+    "sso-client-1"
+  ],
+  "exp": 1591709871,
+  "iat": 1591709811,
+  "sub": "EE60001018800",
+  "profile_attributes": {
+    "date_of_birth": "2000-01-01",
+    "family_name": "O’CONNEŽ-ŠUSLIK TESTNUMBER",
+    "given_name": "MARY ÄNN"
+  },
+  "amr": "mID",
+  "acr": "high",
+  "at_hash": "AKIDtvBT2JS_02tkl_DvuA",
+  "auth_time": 1591709810,
+  "nonce": "POYXXoyDo49deYC3o5_rG-ig3U4o-dtKgcym5SyHfCM",
+  "sid": "f5ab396c-1490-4042-b073-ae8e003c7258",
+  "state": "1OnH3qwltWy81fKqcmjYTqnco9yVQ2gGZXws/DBLNvQ=",
+  "email": "60001018800@eesti.ee",
+  "email_verified" : false
+}
