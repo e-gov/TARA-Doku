@@ -92,4 +92,4 @@ If the SSO session update request fails for any reason, then the client applicat
 
 ### Logout process
 
-<p style='text-align:left;'><img src='img/tara_sso_logout_flow.png' style='width:700px'></p>
+<p style='text-align:left;'><img src='img/tara_sso_logout_flow.png' style='width:800px'></p>
