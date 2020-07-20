@@ -41,7 +41,7 @@ Autentimisel luuakse kasutaja seadme (sirviku) ja TARA SSO komponendi vahel aute
 
 ## TARA SSO nõuded
 
-**TARA senise voo säilitamine**
+### **TARA senise voo säilitamine**
 
 Kliendid, kellel pole keskse seansihalduse järele vajadust, peaksid saama jätkata TARA teenuse kasutamist senisel kujul. Igasugune lisaarendus olemasolevatele klientidele TARA SSO teenuse lisandumisega tuleks välistada. Seda kasutusjuhtu toetab valitud arhitektuuriline lahendus, kus TARA SSO komponent paigaldatakse TARA komponendist eraldi. TARA SSO toetamiseks vajalikud muudatused saab TARA protokollis teha ilma olemasolevate klientide liidest muutmata. SSO funktsionaalsuse toetamiseks on soovitatav TARA liideses sisendparameetrina implementeerida klientrakenduse identifikaatori vastuvõtmise võimalus. TARA SSO kasutab vastavat päringu välja, et edastada TARA SSO komponendist autentimispäringu saatnud klientrakenduse identifikaator TARA komponendile. Väli peab TARA protokollis olema mittekohustuslik ja lubatud kasutada ainult TARA SSO serveri edastatud päringute korral.
 
