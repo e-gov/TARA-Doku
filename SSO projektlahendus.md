@@ -324,7 +324,7 @@ Keskse seansihalduse korral nõutakse, et kõik liidestatud klientrakendused lä
 5. [OIDC Back] OpenID Connect Back-Channel Logout 1.0 [https://openid.net/specs/openid-connect-backchannel-1_0.html](https://openid.net/specs/openid-connect-backchannel-1_0.html)
 6. [OAUTH] OAuth 2.0 raamistik ja seotud protokollid - [https://oauth.net/2/](https://oauth.net/2/)
 7. [TARA Legacy] Autentimise edasiandmine - [https://github.com/e-gov/TARA-Doku/blob/master/Edasiandmine.md](https://github.com/e-gov/TARA-Doku/blob/master/Edasiandmine.md)
-8. [OIDC Federated] OpenID Connect Federation - [https://openid.net/specs/openid-connect-federation-1_0.html]([https://openid.net/specs/openid-connect-federation-1_0.html)
+8. [OIDC Federated] OpenID Connect Federation - [https://openid.net/specs/openid-connect-federation-1_0.html](https://openid.net/specs/openid-connect-federation-1_0.html)
 9. [OIDC Conformance] OpenID Connect Conformance Profiles v3.0 - [https://openid.net/wordpress-content/uploads/2018/06/OpenID-Connect-Conformance-Profiles.pdf](https://openid.net/wordpress-content/uploads/2018/06/OpenID-Connect-Conformance-Profiles.pdf)
 10. [AKIT] Andmekaitse ja infoturbe leksikon - [https://akit.cyber.ee/](https://akit.cyber.ee/)
 11. [PKCE] Proof Key for Code Exchange by OAuth Public Clients - [https://tools.ietf.org/html/rfc7636](https://tools.ietf.org/html/rfc7636)
