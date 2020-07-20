@@ -78,7 +78,7 @@ SSO Session update request can be made only when the client application knows th
 
 If the SSO session update request fails for any reason, then the client application must perform a new SSO authentication process to get a new identity token.
 
-<p style='text-align:left;'><img src='img/tara_sso_session_update_flow.png' style='width:600px'></p>
+<p style='text-align:left;'><img src='img/tara_sso_session_update_flow.png' style='width:700px'></p>
 
 1. User wants to access protected content in client application.
 2. Client application verifies whether user has active client application session and that client application session storage contains a valid (not expired) TARA SSO identity token.
@@ -92,4 +92,4 @@ If the SSO session update request fails for any reason, then the client applicat
 
 ### Logout process
 
-<p style='text-align:left;'><img src='img/tara_sso_logout_flow.png' style='width:600px'></p>
+<p style='text-align:left;'><img src='img/tara_sso_logout_flow.png' style='width:700px'></p>
