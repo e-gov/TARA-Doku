@@ -317,22 +317,22 @@ Keskse seansihalduse korral nõutakse, et kõik liidestatud klientrakendused lä
 
 ## Viited
 
-[TARA] TARA tehniline kirjeldus - https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus
-[OIDC Core] OpenID Connect Core 1.0 - https://openid.net/specs/openid-connect-core-1_0.html
-[OIDC Session] OpenID Connect Session Management 1.0 - https://openid.net/specs/openid-connect-session-1_0.html
-[OIDC Front] OpenID Connect Front-Channel Logout 1.0 https://openid.net/specs/openid-connect-frontchannel-1_0.html
-[OIDC Back] OpenID Connect Back-Channel Logout 1.0 https://openid.net/specs/openid-connect-backchannel-1_0.html
-[OAUTH] OAuth 2.0 raamistik ja seotud protokollid - https://oauth.net/2/
-[TARA Legacy] Autentimise edasiandmine - https://github.com/e-gov/TARA-Doku/blob/master/Edasiandmine.md
-[OIDC Federated] OpenID Connect Federation - https://openid.net/specs/openid-connect-federation-1_0.html
-[OIDC Conformance] OpenID Connect Conformance Profiles v3.0 - https://openid.net/wordpress-content/uploads/2018/06/OpenID-Connect-Conformance-Profiles.pdf
-[AKIT] Andmekaitse ja infoturbe leksikon - https://akit.cyber.ee/
-[PKCE] Proof Key for Code Exchange by OAuth Public Clients - https://tools.ietf.org/html/rfc7636
-[OIDC Conformance RPLogout] Logout Conformance Testing for RPs - https://openid.net/certification/logout_rp_testing/
-[OIDC Conformance OPLogout] Logout Conformance Testing for OPs - https://openid.net/certification/logout_op_testing/
-[OIDC CertOP] Certified OpenID Providers for Logout Profiles - https://openid.net/certification/#Logout_OPs
-[OIDC CertRP] Certified OpenID Relying Parties for Logout Profiles - https://openid.net/certification/#Logout_RPs
-[JWK] JSON Web Key (JWK) - https://tools.ietf.org/html/rfc7517#section-4.1
-[OAUTH THREAT] OAuth 2.0 Security Best Current Practice (draft-ietf-oauth-security-topics-15) - https://tools.ietf.org/html/draft-ietf-oauth-security-topics-15
-[SSO SECURITY] SoK: Single Sign-On Security - An Evaluation of OpenID Connect - https://ieeexplore.ieee.org/document/7961984
-[EID FAILURE] eID infrastruktuuri tõrkekindluse analüüs. Uuringu aruanne. RIA, 10. juuni 2020. a.
+1. [TARA] TARA tehniline kirjeldus - https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus
+2. [OIDC Core] OpenID Connect Core 1.0 - https://openid.net/specs/openid-connect-core-1_0.html
+3. [OIDC Session] OpenID Connect Session Management 1.0 - https://openid.net/specs/openid-connect-session-1_0.html
+4. [OIDC Front] OpenID Connect Front-Channel Logout 1.0 https://openid.net/specs/openid-connect-frontchannel-1_0.html
+5. [OIDC Back] OpenID Connect Back-Channel Logout 1.0 https://openid.net/specs/openid-connect-backchannel-1_0.html
+6. [OAUTH] OAuth 2.0 raamistik ja seotud protokollid - https://oauth.net/2/
+7. [TARA Legacy] Autentimise edasiandmine - https://github.com/e-gov/TARA-Doku/blob/master/Edasiandmine.md
+8. [OIDC Federated] OpenID Connect Federation - https://openid.net/specs/openid-connect-federation-1_0.html
+9. [OIDC Conformance] OpenID Connect Conformance Profiles v3.0 - https://openid.net/wordpress-content/uploads/2018/06/OpenID-Connect-Conformance-Profiles.pdf
+10. [AKIT] Andmekaitse ja infoturbe leksikon - https://akit.cyber.ee/
+11. [PKCE] Proof Key for Code Exchange by OAuth Public Clients - https://tools.ietf.org/html/rfc7636
+12. [OIDC Conformance RPLogout] Logout Conformance Testing for RPs - https://openid.net/certification/logout_rp_testing/
+13. [OIDC Conformance OPLogout] Logout Conformance Testing for OPs - https://openid.net/certification/logout_op_testing/
+14. [OIDC CertOP] Certified OpenID Providers for Logout Profiles - https://openid.net/certification/#Logout_OPs
+15. [OIDC CertRP] Certified OpenID Relying Parties for Logout Profiles - https://openid.net/certification/#Logout_RPs
+16. [JWK] JSON Web Key (JWK) - https://tools.ietf.org/html/rfc7517#section-4.1
+17. [OAUTH THREAT] OAuth 2.0 Security Best Current Practice (draft-ietf-oauth-security-topics-15) - https://tools.ietf.org/html/draft-ietf-oauth-security-topics-15
+18. [SSO SECURITY] SoK: Single Sign-On Security - An Evaluation of OpenID Connect - https://ieeexplore.ieee.org/document/7961984
+19. [EID FAILURE] eID infrastruktuuri tõrkekindluse analüüs. Uuringu aruanne. RIA, 10. juuni 2020. a.
