@@ -60,8 +60,8 @@ In order to log a user into a client application, the client application must ac
 2. Client application checks whether the user has logged into the client application.
 3. Since the user is not authenticated in the client application, the client application will construct a TARA SSO authentication request URL and redirects user agent to it.
 4. TARA SSO checks whether there is a valid SSO session for given user agent. 
-    a. If SSO session exists and its level of assurance is equal or higher than requested the process will continue from step 8.
-    b. Otherwise TARA SSO will automatically terminate the existing session and the process continues from step 5.
+    1. If SSO session exists and its level of assurance is equal or higher than requested the process will continue from step 8.
+    2. Otherwise TARA SSO will automatically terminate the existing session and the process continues from step 5.
 5. SSO session does not exist, therefore, TARA SSO needs the user to be authenticated with TARA service. TARA SSO constructs a valid TARA authentication request and redirects user agent to it.
 6. User is securely authenticated in TARA service. The detailed authentication process is described in TARA technical specification (References: TARA). Once the user has been authenticated TARA will redirect the user agent back to TARA SSO with the TARA authorization code.
 7. TARA SSO uses the authorization code to acquire a user identity token from TARA service. This request happens in TARA SSO backend system. TARA SSO will store the user identification information in its session storage.
@@ -84,8 +84,8 @@ If the SSO session update request fails for any reason, then the client applicat
 2. Client application verifies whether user has active client application session and that client application session storage contains a valid (not expired) TARA SSO identity token.
 3. Client application finds that user identity token is about to expire and redirects user agent to TARA SSO with a valid SSO session update request. The request must include the identity token and a `prompt=none` parameter.
 4. TARA SSO validates the request
-    a. Verifies that an SSO session is still active for user agent
-    b. Verifies that the SSO session subject matches the subject in the received identity token.
+    1. Verifies that an SSO session is still active for user agent
+    2. Verifies that the SSO session subject matches the subject in the received identity token.
 5. If all validations passed, TARA SSO will issue a new authorization code to the client application.
 6. Using the authorization code, the client application makes an identity token request to TARA SSO. Tara responds with a new identity token and a directive for the user agent to update SSO session cookie expiration date to `currentTime + 15 minutes`.
 7. Client application stores identity token with into its session storage and shows protected content to user.
@@ -156,3 +156,8 @@ The identity token is issued in JSON Web Token (References: JWT).
 
 ````
 **Identity token claims**
+
+| Identity token element (claim)   | example |     explanation       |
+|------------------------|------------------ |-----------------------------|
+| sub | `"sub": "EE60001018800"` | 	The identifier of the authenticated user (personal identification code or eIDAS identifier) with the prefix of the country code of the citizen (country codes based on the ISO 3166-1 alpha-2 standard). The subject identifier format is set by TARA authentication service id token (References: Technical specification#TARA "4.3.1 Identity token") |
+| state | `"state": "1OnH3qwltWy81fKqcmjYTqnco9yVQ2gGZXws/DBLNvQ="` | Security element. The authentication request’s state parameter value. |
