@@ -254,6 +254,85 @@ Joonis 5: Klientrakenduse seansi oleku kontroll ja TARA SSO seansi kehtivuse pik
 
 ### SSO seansi lõpetamine klientrakendusest väljalogimisel
 
-
+Kui kasutaja avaldab soovi TARA SSO seansi raames sisse logitud klientrakendusest välja logida, tuleb ka TARA SSO serveris vastava klientrakenduse ja SSO seansi seos tühistada. OIDC protokolli standardvoog näeb ette, et väljalogimisel tühistatakse kõigepealt klientrakenduse seanss ning seejärel suunatakse sirvik SSO väljalogimise otspunktile. SSO väljalogimise otspunktis võib pakkuda kasutajale valiku tühistada kogu TARA SSO seanss või konkreetne TARA SSO klientrakenduse seanss.
 
 <p style='text-align:left;'><img src='img/SSO_joonis6.png' style='width:1000px'></p>
+Joonis 6: Klientrakenduse algatatud väljalogimise voog TARA SSO serveri poolel
+
+1. Autenditud kasutaja suunab sirviku klientrakenduse väljalogimise otspunktile `https://portaal.ee/logivalja`.
+2. Klientrakendus tühistab klientrakenduse seansi (sõltub klientrakenduse implementatsioonist, kas see toiming kujutab endast klientrakenduse seansi küpsise kustutamist või mingit muud rakenduse spetsiifilist toimingut).
+3. Klientrakendus suunab sirviku TARA SSO väljalogimise otspunktile. Suunamispäringuga antakse kaasa:
+    1. viimane teada olev kasutaja identsustõend (`id_token_hint` parameetriga),
+    2. klientrakendusse tagasisuunamise otspunkti aadress (`post_logout_redirect_uri` parameetriga).
+4. TARA SSO tuvastab SSO seansi küpsise järgi aktiivse SSO seansi ning kontrollib, et aktiivse SSO seansiga seotud kasutaja (subjekt) kattub päringuga saabunud identsustõendis oleva subjekti (`sub`) väite väärtusega (st logitakse õige kasutaja). Kui ei, siis jätkata sammuga 8.
+5. Kui TARA SSO seansiga on seotud rohkem kui üks klientrakenduse seanss, kuvatakse kasutajale TARA SSO väljalogimise vaheleht järgmiste valikutega:
+    1. "Tühistada ainult konkreetse klientrakendusega seotud TARA SSO klientrakenduse seanss",
+    2. "Tühistada kõik aktiivse TARA SSO seansiga seotud TARA SSO klientrakenduste seansid". Vastasel juhul vahelehte ei kuvata ja jätkatakse punktiga 6.
+6. TARA SSO teeb sisemiselt järgmised sammud tühistamisele kuuluvate SSO klientrakenduste seansside tühistamiseks. 
+    1. Saadab väljalogimise tõendi kõikidele klientrakendustele, mille TARA SSO klientrakenduse seanss tuleb tühistada (vastavalt kasutaja valikule punktis 5). Täpsemalt on klientrakenduste teavitamise protsess kirjeldatud peatükis "Seansi lõpetamine TARA SSO algatusel".
+7. Kui pärast TARA SSO klientrakenduste seansside tühistamist ei ole SSO seansiga seotud mitte ühtegi klientrakenduse seanssi, tühistab TARA SSO oma seansihoidlas kõik vastava SSO seansiga seotud andmed ja lisab tagasisuunamise päringule TARA SSO seansi küpsise kustutamise käsu.
+8. TARA SSO suunab sirviku klientrakenduse tagasisuunamise otspunktile (`post_logout_redirect_uri` parameetri väärtus).
+9. Klientrakendus kuvab kasutaja väljalogimise õnnestumise teate.
+
+### Seansi lõpetamine TARA SSO algatusel
+
+Iga kord kui TARA SSO seanss lõpeb, tuleb sellest teavitada ka seotud klientrakendusi. TARA SSO saadab klientrakendustele päringu lõpetamise teate koos allkirjastatud väljalogimistõendiga. Väljalogimistõend on tehniliselt väga sarnane identsustõendiga ja allkirjastatud sama võtmega, millega TARA SSO allkirjastab identsustõendeid (Viited [OIDC Back] "2.4.  Logout Token"). Väljalogimistõend väljastatakse konkreetsele klientrakendusele (`aud`), sisaldab konkreetse kasutaja identifikaatorit (`sub`) ja on korduvkasutamise vastu turvatud ühekordse tõendi tunnuse abil (`jti`). Pärast väljalogimistõendi kontrollimist on klientrakendus kohustatud vastava kasutaja (`sub`) seansi klientrakenduses tühistama.
+
+Kui klientrakendus seda toetab, lisab TARA SSO väljalogimise tõenditele täiendavalt TARA SSO seansi tunnuse väite `sid`. See tunnus on klientrakenduse spetsiifiline ja edastatakse nii identsus- kui väljalogimistõendi koosseisus. Märgime, et tegemist ei ole globaalse TARA SSO seansitunnusega, mis on salvestatud TARA SSO seansi küpsisesse. Tegemist on TARA SSO genereeritud unikaalse tunnusega, mis võimaldab luua seose konkreetsele klientrakendusele sama TARA SSO seansi raames väljastatud identsus- ja väljalogimistõendite vahel. Selle välja kasutamine on soovitatav juhul, kui klientrakendus soovib sama kasutaja jaoks hoida paralleelseid klientrakenduse seansse erinevates seadmetes (sirvikutes). Klientrakendus peab selle funktsionaalsuse toetamisest teada andma TARA SSOga liitumise hetkel, edastades TARA SSOga liitumise avaldusel `backchannel_logout_session_required` muutuja väärtuse `true` (vt ptk "Liitumine TARA SSO teenusega").
+
+TARA SSO teeb sisemiselt iga klientrakenduse kohta järgmised seansi tühistamise toimingud:
+
+1. kustutab TARA SSO klientrakenduse seansi kirje SSO seansi juurest (nii blokeeritakse uued autentimispäringud sama TARA SSO seansi raames),
+2. kustutab TARA SSO klientrakenduse seansiga seotud ja hetkel aktiivsed volituskoodid (nii blokeeritakse uute identsustõendite väljastamine juba välja saadetud volituskoodide alusel),
+3. saadab klientrakendusele taustakanali kaudu allkirjastatud väljalogimistõendi.
+
+## Skoobivälised märkused
+
+### TARA SSO teenuse arvelduse lisanduv keerukus
+
+TARA SSO teenuse kaudu tehtavate päringute loendamise ja hinnastamise mudel nõuab lõplikus realiseeritavas lahenduses eraldi käsitlust. Enam pole klientrakenduste pöördumised RIA suunas üks ühele seostatavad päringutega tasuliste autentimisteenuste pihta (mobiil-ID, OCSP, Smart-ID jne). SSO seansi kogukulu ja klientrakendusele esitatava arve suurus hakkab sõltuma vähemalt järgmistest parameetritest:
+
+- SSO seansi loomisel valitud autentimise vahendist, vahendite loetelu sõltub klientrakenduse poolt nõutavast autentimise tasemest;
+- kasutajate töövoost – erinevate süsteemide tekitatud seansi alustamiste päringute arvud võivad olla tasakaalust väljas. Näiteks kasutaja alustab seanssi alati - riigiportaalist eesti.ee ja liigub sealt edasi teistesse portaalidesse juba autenditud kasutajana;
+- mitu korda on kasutaja sama SSO seansi jooksul ühte klientrakendusse autentinud.
+TARA SSO tulevase implementatsiooni käigus vajab teenuse hinnastamine ja raporteerimine kindlasti eraldi täpsemat analüüsi.
+
+### TARA SSO klientrakenduste konfiguratsiooni haldus RIA poolel
+
+TARA SSO arenduse käigus tuleb leida lahendus TARA ja TARA SSOga liitunud kliendibaaside seostamiseks. Info TARA SSO autentimise algatanud klientrakenduse kohta peab jõudma ka TARA vaadetesse. Variandid selle lahendamiseks sõltuvad suuresti lõplikust implementatsioonist. Kui kliendibaaside vahel seost tekitada ei õnnestu, tuleb kaaluda TARA protokolli muutmist selliselt, et TARA SSO saaks klientrakenduse nime ja logo TARAle edastada.
+
+### TARA SSO autentimisvahendite usaldustasemete määramine
+
+TARA SSO teenusega liidestatavad klientrakendused peavad hakkama lähtuma samadest autentimisvahendite turvatasemetest. Sellest tulenevalt peaks riigi autentimisteenuse pakkuja omalt poolt määrama igale läbi TARA SSO (ja kaudselt ka läbi TARA) kasutatavale autentimisvahendile usaldustaseme. Usaldustase tuleks lisada väljastatud identsustõenditesse. Praegune TARA teenus teeb seda osaliselt. TARA lisab autentimise usaldustaseme klassifikaatori (`acr` väide) identsustõendisse ainult piiriülese autentimise käigus.
+
+Kui TARA teenus autentimistaset ise kaasa ei pane, tuleb otsus langetada TARA SSO poolel. Enne TARA SSO implementeerimist on tarvis ära teha autentimisvahendite usaldustasemete määramine. Tegemist on protseduurilise küsimusega ja väljub selle analüüsi skoobist. Kolmest intervjuust kolmel korral tõid riigiasutuste IT-spetsialistid välja, et autentimisvahendite usaldustaseme määramisel oodatakse sisendit pigem TARA SSO teenuse pakkujalt.
+
+## Kokkuvõte
+
+Analüüsi käigus pakuti välja riikliku autentimisteenuse seansihalduse protokoll, mis on kasutajale võimalikult mugav ja turvaline. Protokolli koostamisel on rakendatud maksimaalses ulatuses OIDC standardprotokolli osi, et lahendus oleks ühilduv laia hulga karbitoodetega ega nõuaks ootamatult suurt pingutust liidestajatelt.
+
+Lihtsustatult öeldes paigaldatakse keskse autentimisteenuse poolt kasutaja seadmesse SSO salavõti, mis võimaldab sellest seadmest kasutaja nimel siseneda kõikidesse liidestatud klientrakendustesse. Protokolli disainis on rõhku pandud võtme kaitsmisele ja selle õigeaegsele kustutamisele. Otsustuskohtades, kus olid kaalul kasutajamugavus ja turvalisus, sai otsus langetatud pigem viimase kasuks. 
+
+Keskse seansihalduse korral nõutakse, et kõik liidestatud klientrakendused lähtuvad samadest printsiipidest seansi kestuse ja usaldusväärsuse tagamisel. Kõik kasutaja SSO seansiga seotud klientrakendused annavad perioodiliselt teada kasutaja aktiivsusest klientrakenduses. Kasutaja mitteaktiivsus peab põhjustama ka kasutaja keskse autentimise seansi tühistamise. SSO seansi staatuse muutmiseks peab klientrakendus esitama sama seansi jooksul eelnevalt talle väljastatud identsustõendi.
+
+## Viited
+
+[TARA] TARA tehniline kirjeldus - https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus
+[OIDC Core] OpenID Connect Core 1.0 - https://openid.net/specs/openid-connect-core-1_0.html
+[OIDC Session] OpenID Connect Session Management 1.0 - https://openid.net/specs/openid-connect-session-1_0.html
+[OIDC Front] OpenID Connect Front-Channel Logout 1.0 https://openid.net/specs/openid-connect-frontchannel-1_0.html
+[OIDC Back] OpenID Connect Back-Channel Logout 1.0 https://openid.net/specs/openid-connect-backchannel-1_0.html
+[OAUTH] OAuth 2.0 raamistik ja seotud protokollid - https://oauth.net/2/
+[TARA Legacy] Autentimise edasiandmine - https://github.com/e-gov/TARA-Doku/blob/master/Edasiandmine.md
+[OIDC Federated] OpenID Connect Federation - https://openid.net/specs/openid-connect-federation-1_0.html
+[OIDC Conformance] OpenID Connect Conformance Profiles v3.0 - https://openid.net/wordpress-content/uploads/2018/06/OpenID-Connect-Conformance-Profiles.pdf
+[AKIT] Andmekaitse ja infoturbe leksikon - https://akit.cyber.ee/
+[PKCE] Proof Key for Code Exchange by OAuth Public Clients - https://tools.ietf.org/html/rfc7636
+[OIDC Conformance RPLogout] Logout Conformance Testing for RPs - https://openid.net/certification/logout_rp_testing/
+[OIDC Conformance OPLogout] Logout Conformance Testing for OPs - https://openid.net/certification/logout_op_testing/
+[OIDC CertOP] Certified OpenID Providers for Logout Profiles - https://openid.net/certification/#Logout_OPs
+[OIDC CertRP] Certified OpenID Relying Parties for Logout Profiles - https://openid.net/certification/#Logout_RPs
+[JWK] JSON Web Key (JWK) - https://tools.ietf.org/html/rfc7517#section-4.1
+[OAUTH THREAT] OAuth 2.0 Security Best Current Practice (draft-ietf-oauth-security-topics-15) - https://tools.ietf.org/html/draft-ietf-oauth-security-topics-15
+[SSO SECURITY] SoK: Single Sign-On Security - An Evaluation of OpenID Connect - https://ieeexplore.ieee.org/document/7961984
+[EID FAILURE] eID infrastruktuuri tõrkekindluse analüüs. Uuringu aruanne. RIA, 10. juuni 2020. a.
