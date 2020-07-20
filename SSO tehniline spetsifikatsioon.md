@@ -101,12 +101,15 @@ After a successful logout the user agent is redirected back to the client applic
 1. User requested to log out of client application
 2. Client application does its internal application session termination procedures.
 3. Client application redirects user agent to TARA SSO logout URL. The redirect must include the previous identity token and a redirect URI where the user agent must be redirected to after logout.
-4. TARA SSO validates the logout request. If the identity token is not linked to the active SSO session of given user agent, then nothing is done, and the user agent is redirected back to the redirect_uri. TARA SSO will unlink the client application from SSO session in its session store.
+4. TARA SSO validates the logout request. If the identity token is not linked to the active SSO session of given user agent, then nothing is done, and the user agent is redirected back to the `redirect_uri`. TARA SSO will unlink the client application from SSO session in its session store.
 5. If more client applications are linked to the same SSO session, then TARA SSO will show a logout consent page.
 6. User can either select to log out of only the client application that made the logout request or from all client applications that are linked to the same SSO session.
 7. If the user selected to log out from all client applications, TARA SSO will send a back-channel logout request to each linked client application and unlink client applications from TARA SSO session.
 8. If no client applications remain linked to SSO session, TARA SSO will terminate the session. User has been logged out of all client applications.
-9. User agent is redirected back to the redirect_uri of the client application which initiated the logout procedure.
+9. User agent is redirected back to the `redirect_uri` of the client application which initiated the logout procedure.
 
+### Back-channel logout notifications
+
+Each TARA SSO client application must declare support to the OIDC Back-Channel logout specification. Each client must provide a back-channel logout endpoint URL as part of their registration information. TARA SSO will send an out-of-band POST request to client application back-channel logout endpoint every time an SSO session ends.
 
 
