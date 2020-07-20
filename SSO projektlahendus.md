@@ -49,7 +49,7 @@ Kui tavapärases TARA autentimise voos tehakse eeldus, et klientrakendus on enne
 
 Uue SSO lahenduse välja töötamise üheks oluliseks nõudmiseks on võimalikult suur tagasiühilduvus olemasoleva TARA lahendusega. Keskse sisselogimisega TARA teenusest huvitatud asutused peaksid selle saama implementeerida võimalikult väikese vaevaga. Kuna olemas olev TARA teenus töötab OIDC protokollil ja on laialdaselt kasutusele võetud, on põhjendatud ka TARA SSO teenuse puhul järgida sama protokollistikku.
 
-### **Asutusteülene ja asutusesisene SSO**
+### Asutusteülene ja asutusesisene SSO
 
 Analüüsi käigus keskendume riigi autentimisteenusele keskse seansihalduse funktsionaalsuse lisamisele. Riigi autentimisteenus tegeleb kasutaja autentimisega ega tegele kasutaja autoriseerimisega (tema esindusõigustega). See tähendab, et autentimisteenus keskendub pigem kodaniku vaatele, mitte niivõrd ametniku vaatele. Riikliku autentimisteenuse kontekstis ei oma suurt tähtsust, kas klientrakendused asuvad ühe asutuse piires või mitme erineva asutuse haldusalas. Riigi autentimisteenus saab kõikidele SSOga liidestatud klientrakendustele pakkuda autentimise ja seansihalduse teenust samadel alustel.
 
@@ -96,7 +96,7 @@ Võrreldud mudelitest lugesime sobivamaks teise variandi. Eraldades TARA ja TARA
 
 ## TARA SSO OIDC protokoll
 
-### **Protokolli ülevaade**
+### Protokolli ülevaade
 
 Kasutaja autentimine toimub OIDC volituskoodi voo järgi (Viited, [OIDC Core], 3.1. Authentication using the Authorization Code Flow). Seda voogu kasutab ka TARA server ja seda peetakse üldiselt kõige turvalisemaks. Standardprotokolliga võrreldes viime sisse mõned kohandused, et tõsta protokolli voo üldist turvalisust. Kohandused piirduvad mittekohustuslike parameetrite kohustuslikuna määramisega ning on tehtud arvestusega, et need on OIDC standardiga kooskõlas ja olemasolevate tarkvaradega konflikte ei tekita. Kohandused on eraldi märgistatud TARA SSO protokolli tehnilises kirjelduses.
 
@@ -111,7 +111,7 @@ OIDFi koostatud kolmest seansihaldusega seotud spetsifikatsiooni kavandist raken
 
 Kuigi OIDF on avaldanud ka eeskanali kaudu seansi lõpetamise kavandi (Viited [OIDC Front]), TARA SSO raames selle voo tugi kohustuslik ei ole. Sõnumivahetus taustakanali kaudu katab paremini TARA SSO kasutusjuhte ja on tavapäraste veebirakenduste korral usaldusväärsem. Kui TARA SSO implementatsiooni käigus selgub, et eeskanali kaudu seansi lõpetamise tugi on teostatav vähese arenduskuluga (näiteks piisab ainult karbitoote konfiguratsiooni muutmisest), võib täiendava meetmena ka seda toetada. Kordame, et neis spetsifikatsioonides kirjeldatud OIDC protokolli täiendusi ei ole OIDF lõplikult kinnitatnud ja need võivad veel muutuda. Siiski on juba praegu nende spetsifikatsioonide kavandite järgi tehtud implementatsioonid olemas levinumates OIDC klienditeekides ja karbitoodetes (Viited: [OIDC Conformance RPLogout], [OIDC Conformance OPLogout], https://www.keycloak.org/, https://www.ory.sh/hydra/).  
 
-### **SSO seansi olemus ja olek**
+### SSO seansi olemus ja olek
 
 Tehnilisest aspektist tuleb TARA SSO protokollis arvestada, et kasutaja autentimise käigus luuakse seansse mitme osapoole vahel: TARA SSO serveri ja sirviku vahel luuakse SSO seanss ning sirviku ja klientrakenduse vahel luuakse klientrakenduse seanss. Lõppkasutaja jaoks mugava kasutusvoo loomiseks peavad kõik süsteemi osapooled omavahel tegema hulga lisatööd, et nende seansside olekuid sünkroniseerida. Joonisel 2 on välja toodud TARA SSO seansi osapooled ja peamised edastatavad andmeolemid.
 
@@ -145,7 +145,7 @@ Signaal TARA SSO seansi lõppemiseks klientrakenduse poolelt saab TARA SSO teenu
 
 TARA SSO eeldab kõikidelt klientrakendustelt OIDC protokolli toetamist. Klientrakendused peavad seansihalduseks olema võimelised vastu võtma, töötlema, kontrollima ja tagastama kasutajate identsustõendeid. Sellest lähtuvalt on TARA SSO puhul eeldatud, et OAuth 2.0 protokolli järgset kasutajainfo otspunkti implementeerida pole tarvis. TARA SSO väljastab koos identsustõenditega ka ligipääsutõendeid (_access_token_), kuid SSO protokolli voogudes ligipääsutõendi kasutamist ette nähtud ei ole. 
 
-### **Autentimistasemete valik TARA SSO autentimisel (LoA)**
+### Autentimistasemete valik TARA SSO autentimisel (LoA)
 
 TARA SSO seansihalduse juures tuleb erilist tähelepanu pöörata erinevatele eIDAS autentimistasemetele. Kuigi eIDAS lõi ühtse arusaama piiriülese usalduse tehnilise teostuse osas, ei ole määruse sisuline pool tavakasutajale kõige kergemini mõistetav (Lisa 4: Kasutatavuse testimise raport, "Teenus nõuab kõrgema autentimistasemega vahendiga uuesti autentimist"). Mida rohkem autentimistasemega seotud keerukust tavakasutaja eest ära peidame, seda parem on kasutusmugavus.
 
@@ -159,7 +159,7 @@ Kuna TARA SSO peab pakkuma keskset seansihaldusteenust kõikidele klientidele sa
 
 Märgime, et kui tulevikus siiski tekib tarvidus TARA SSO kaudu autentimisel klientrakenduse poolelt autentimisvahendite valikut täpsemalt juhtida, võiks skoobi parameetri asemel võtta kasutusele mõne alternatiivse päringu parameetri. Praeguse TARA protokolli skoobi parameetri kasutus on OAuth 2.0 spetsifikatsiooniga vastuolus (Viited, [OAUTH] 3.3. "Access Token Scope"), sest skoobid tohivad olla üksteist täiendavad, mitte vastanduvad. OIDC standardi lahendus kirjeldab skoobi parameetrit kui privileegide nimekirja, mida klientrakendus OIDC serverilt tellib. Privileegide põhjal saab klientrakendus ligipääsu vastavalt rohkemale või vähemale hulgale kliendi isiklikest andmetest. Kuigi OIDC standard ei käsitle täpsemalt skoopide äriloogilist tähendust ega omavahelisi seoseid, soovitame vältida käsitlust, kus skoobi parameetri võimalikud väärtused on üksteist välistavad (vt eespool kirjeldatud näidet). Lisaks tuleb arvestada, et kui seansi raames skoop muutub, rakendub see kõikidele sama seansiga seotud klientrakendustele. Seeläbi võib skoobi muudatus anda juba autenditud klientrakendustele ligipääsu täiendavatele isikuandmetele, mida kasutaja volituse või teavituse lehel ei kajastatud. TARA SSO lõplikus implementatsioonis võib kaaluda keerukama seansi kehtivuse mudelit (näiteks nii-öelda seansi uuendamist, "step-up authentication"), kuid autentimise toiminguga kaasnevast ligipääsu muudatustest peab ka lõppkasutajal olema selge arusaam.
 
-### **Kasutaja teavitamine enne isikuandmete jagamist klientrakendusega**
+### Kasutaja teavitamine enne isikuandmete jagamist klientrakendusega
 
 Isikuandmete kaitse aspektist on ülimalt oluline, et erinevate klientrakenduste vahel liikudes oleks kasutajal arusaam millal, kes ja mis eesmärgil tema isiklikke andmeid töötleb. OIDC protokoll ütleb selgelt, et vahetult pärast autentimist ja enne klientrakendusele informatsiooni jagamist peab autoriseerimise server (TARA ja/või TARA SSO) pärima volituse (_authorization consent_) isikuandmete jagamiseks klientrakendusega (Viited [OIDC Core] "3.1.2.4.  Authorization Server Obtains End-User Consent/Authorization"). Standardis pole volituse küsimise reaalse teostuse osa siiski väga süvitsi kirjeldatud.
 
@@ -182,7 +182,7 @@ Volituse andmine või sellest keeldumine salvestatakse TARA SSO teenuse logis. E
 
 Tavakasutuse korral kuvatakse volituse lehte SSO seansi raames kasutajale üks kord iga unikaalse klientrakenduse kohta. Kasutatavuse testimise käigus kinnitati, et volituse vahelehe kuvamise vajalikkus oli kasutajatele mõistetav.
 
-### **TARA SSO identsustõendi kaitsmine GET päringutes**
+### TARA SSO identsustõendi kaitsmine GET päringutes
 
 TARA SSO protokollis üritasime maksimaalses ulatuses vältida avatud isikuandmete liikumist läbi klientrakenduse kasutajaliidese komponendi. Isikuandmed liiguvad TARA SSO serverile identsustõendi koosseisus ja alati ainult taustakanali kaudu (klientrakenduse serveri ja TARA SSO tõendi väljastuse otspunkti otsesuhtluse kaudu). See on ka üks põhjustest, miks TARA SSO puhul toetame ainult OIDC standardi volituskoodi voogu.
 
@@ -194,7 +194,7 @@ Arvestades eelkirjeldatut ja nõuet püsida OIDC spetsifikatsiooni piirides, ei 
 
 ## Liitumine TARA SSO teenusega
 
-### **Kohustuslikud lisaandmed liitumislepingus**
+### Kohustuslikud lisaandmed liitumislepingus
 
 Liitumiseks TARA SSO teenusega tuleb teenusepakkujal lisaks tavapärasele TARA teenusega liitumise lepingule edastada mõned täiendavad parameetrid.
 
@@ -205,7 +205,7 @@ Liitumiseks TARA SSO teenusega tuleb teenusepakkujal lisaks tavapärasele TARA t
 
 ## SSO kasutusvoogude kirjeldused
 
-### **Autentimise voog**
+### Autentimise voog
 
 <p style='text-align:left;'><img src='img/SSO_joonis4.png' style='width:1000px'></p>
 Joonis 4: Kasutaja autentimise voog TARA SSOs
@@ -226,7 +226,7 @@ Joonis 4: Kasutaja autentimise voog TARA SSOs
 11. Klientrakendus pöördub TARA SSO poole, et volituskoodi abil pärida kasutaja TARA SSO identsustõend.
 12. Luuakse klientrakenduse seanss ja kasutajale kuvatakse klientrakenduse pealeht.
 
-### **SSO seansi oleku kontrolli voog**
+### SSO seansi oleku kontrolli voog
 
 Pärast edukat autentimist väljastab TARA SSO klientrakendusele kasutaja identsustõendi. Identsustõendil on kindel määratud kehtivus ja see on limiidiks ka klientrakenduse seansi kehtivuse seadmisel. Kui klientrakendus soovib oma seansi kehtivust pikendada, tuleb tal TARA SSO teenuselt pärida uus identsustõend. Eelmise identsustõendi aegumisel tuleb klientrakenduse seanss lõpetada.
 
@@ -252,5 +252,5 @@ Joonis 5: Klientrakenduse seansi oleku kontroll ja TARA SSO seansi kehtivuse pik
 7. Klientrakendus kontrollib saadud identsustõendi sisu, salvestab selle klientrakenduse seansi juurde ja pikendab klientrakenduse seansi kehtivust.
 8. Sirvik suunatakse portaali otspunktile `https://portaal.ee/pealeht`.
 
-### **SSO seansi lõpetamine klientrakendusest väljalogimisel**
+### SSO seansi lõpetamine klientrakendusest väljalogimisel
 
