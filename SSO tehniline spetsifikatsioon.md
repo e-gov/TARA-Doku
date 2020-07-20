@@ -60,8 +60,8 @@ In order to log a user into a client application, the client application must ac
 2. Client application checks whether the user has logged into the client application.
 3. Since the user is not authenticated in the client application, the client application will construct a TARA SSO authentication request URL and redirects user agent to it.
 4. TARA SSO checks whether there is a valid SSO session for given user agent. 
-  1. If SSO session exists and its level of assurance is equal or higher than requested the process will continue from step 8.
-  2. Otherwise TARA SSO will automatically terminate the existing session and the process continues from step 5.
+    1. If SSO session exists and its level of assurance is equal or higher than requested the process will continue from step 8.
+    2. Otherwise TARA SSO will automatically terminate the existing session and the process continues from step 5.
 5. SSO session does not exist, therefore, TARA SSO needs the user to be authenticated with TARA service. TARA SSO constructs a valid TARA authentication request and redirects user agent to it.
 6. User is securely authenticated in TARA service. The detailed authentication process is described in TARA technical specification (References: TARA). Once the user has been authenticated TARA will redirect the user agent back to TARA SSO with the TARA authorization code.
 7. TARA SSO uses the authorization code to acquire a user identity token from TARA service. This request happens in TARA SSO backend system. TARA SSO will store the user identification information in its session storage.
@@ -84,12 +84,29 @@ If the SSO session update request fails for any reason, then the client applicat
 2. Client application verifies whether user has active client application session and that client application session storage contains a valid (not expired) TARA SSO identity token.
 3. Client application finds that user identity token is about to expire and redirects user agent to TARA SSO with a valid SSO session update request. The request must include the identity token and a `prompt=none` parameter.
 4. TARA SSO validates the request
-  1. verifies that an SSO session is still active for user agent
-  2. verifies that the SSO session subject matches the subject in the received identity token.
+    1. Verifies that an SSO session is still active for user agent
+    2. Verifies that the SSO session subject matches the subject in the received identity token.
 5. If all validations passed, TARA SSO will issue a new authorization code to the client application.
 6. Using the authorization code, the client application makes an identity token request to TARA SSO. Tara responds with a new identity token and a directive for the user agent to update SSO session cookie expiration date to `currentTime + 15 minutes`.
 7. Client application stores identity token with into its session storage and shows protected content to user.
 
 ### Logout process
 
+It is expected that client applications terminate TARA SSO session as soon as the user has finished using client application(s). If a user has requested to log out of a client application, then information about this event must be sent to TARA SSO as well. TARA SSO will either terminate the SSO session automatically (if only one other client application is linked to the same SSO session) or display a logout consent form. The consent form allows user to log out of all client applications at once or just the single application.
+
+After a successful logout the user agent is redirected back to the client application. If a technical error occurs or the logout request is invalid (`redirect_uri` does not match identity token client registered redirect URLs), then the user is redirected to TARA SSO default error page.
+
 <p style='text-align:left;'><img src='img/tara_sso_logout_flow.png' style='width:800px'></p>
+
+1. User requested to log out of client application
+2. Client application does its internal application session termination procedures.
+3. Client application redirects user agent to TARA SSO logout URL. The redirect must include the previous identity token and a redirect URI where the user agent must be redirected to after logout.
+4. TARA SSO validates the logout request. If the identity token is not linked to the active SSO session of given user agent, then nothing is done, and the user agent is redirected back to the redirect_uri. TARA SSO will unlink the client application from SSO session in its session store.
+5. If more client applications are linked to the same SSO session, then TARA SSO will show a logout consent page.
+6. User can either select to log out of only the client application that made the logout request or from all client applications that are linked to the same SSO session.
+7. If the user selected to log out from all client applications, TARA SSO will send a back-channel logout request to each linked client application and unlink client applications from TARA SSO session.
+8. If no client applications remain linked to SSO session, TARA SSO will terminate the session. User has been logged out of all client applications.
+9. User agent is redirected back to the redirect_uri of the client application which initiated the logout procedure.
+
+
+
