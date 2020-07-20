@@ -213,9 +213,9 @@ Joonis 4: Kasutaja autentimise voog TARA SSOs
 1. Kasutaja algatab sirvikus klientrakendusse sisselogimise.
 2. Klientrakendus suunab sirviku TARA SSO autentimise otspunktile.
 3. TARA SSO kontrollib, kas sellel kasutajal juba eksisteerib sobiv TARA SSO seanss. Seanss eksisteerib, kui on täidetud kõik järgmised tingimused:
-    a. kasutaja sirvikus on olemas TARA SSO seansi küpsis;
-    b. SSO seansi küpsises olevale seansitunnusele leidub kehtiv seansi kirje TARA SSO serveris;
-    c. autentimispäringus nõutud autentimistase kattub SSO seansi autentimistasemega (st SSO seanss tekitati sama või kõrgema autentimise tasemega vahendit kasutades. `acr_values` parameetri sisu peab vastama seansi juures salvestatud acr parameetri väärtusele). Kui sobiv TARA SSO seanss juba eksisteerib, saab TARAga autentimise vahele jätta ja jätkata punktist 8.
+    1. kasutaja sirvikus on olemas TARA SSO seansi küpsis;
+    2. SSO seansi küpsises olevale seansitunnusele leidub kehtiv seansi kirje TARA SSO serveris;
+    3. autentimispäringus nõutud autentimistase kattub SSO seansi autentimistasemega (st SSO seanss tekitati sama või kõrgema autentimise tasemega vahendit kasutades. `acr_values` parameetri sisu peab vastama seansi juures salvestatud acr parameetri väärtusele). Kui sobiv TARA SSO seanss juba eksisteerib, saab TARAga autentimise vahele jätta ja jätkata punktist 8.
 4. Sirvik suunatakse riigi autentimisteenusesse TARA.
 5. Kasutaja autendib ennast TARA teenuses, kasutades ühte oma autentimisvahenditest. TARA autentimise protsessi käsitletakse täpsemalt TARA spetsifikatsioonis (Viited, [TARA]).
 6. Eduka autentimise järel suunab TARA server sirviku tagasi TARA SSO serverisse koos TARA volituskoodiga.
@@ -245,8 +245,8 @@ Joonis 5: Klientrakenduse seansi oleku kontroll ja TARA SSO seansi kehtivuse pik
 2. Klientrakendus kontrollib klientrakenduse seansiga seotud identsustõendi kehtivust. Kuna identsustõendi kehtivuse lõpuni on jäänud alla minuti, algatatakse klientrakenduse seansiga seotud identsustõendi värskendamine.
 3. Klientrakendus suunab sirviku TARA SSO autentimise otspunktile. Päringu parameetri `prompt=none` abil annab klientrakendus teada, et tegemist on seansi oleku kontrolli päringuga ning kasutajalt mingit sisendit küsida ei tohiks. Lisaks peab klientrakendus edastama päringuga viimase talle teada oleva identsustõendi `id_token_hint` parameetri väärtusena. 
 4. TARA SSO kontrollib saadud päringu sisu.
-    a. TARA SSO võrdleb TARA SSO seansis salvestatud identsustõendit vastu päringuga saadetud identsustõendit. TARA SSO tohib vastata korrektse volituskoodiga ainult juhul, kui SSO seanss on kehtiv ja seansiga seotud kasutaja tunnus (subjekt) kattub saadetud identsustõendi subjektiga (`sub`). Kui kehtivat seanssi ei leita või SSO seansis olevad viited (_claims_) ei vasta eelmisele identsustõendile, tuleb tagastada viga vastavalt OIDC Core spetsifikatsioonile (Viited, [OIDC Core], 3.1.2.6.  Authentication Error Response). Näiteks TARA SSO vastuskoodi `login_required` saamise korral võib klientrakendus järeldada, et kasutajal puudub kehtiv SSO seanss ja tuleks algatada uus autentimise päring vastavalt TARA SSO autentimise voole.
-    b. TARA SSO määrab SSO seansi kehtivuse lõppajaks `hetke_aeg + 15 minutit`.
+    1. TARA SSO võrdleb TARA SSO seansis salvestatud identsustõendit vastu päringuga saadetud identsustõendit. TARA SSO tohib vastata korrektse volituskoodiga ainult juhul, kui SSO seanss on kehtiv ja seansiga seotud kasutaja tunnus (subjekt) kattub saadetud identsustõendi subjektiga (`sub`). Kui kehtivat seanssi ei leita või SSO seansis olevad viited (_claims_) ei vasta eelmisele identsustõendile, tuleb tagastada viga vastavalt OIDC Core spetsifikatsioonile (Viited, [OIDC Core], 3.1.2.6.  Authentication Error Response). Näiteks TARA SSO vastuskoodi `login_required` saamise korral võib klientrakendus järeldada, et kasutajal puudub kehtiv SSO seanss ja tuleks algatada uus autentimise päring vastavalt TARA SSO autentimise voole.
+    2. TARA SSO määrab SSO seansi kehtivuse lõppajaks `hetke_aeg + 15 minutit`.
 5. TARA SSO suunab sirviku tagasi klientrakenduse URLile. Päringuga antakse kaasa uus volituskood ja käsklus sirvikus TARA SSO seansi küpsise kehtivust pikendada.
 6. Klientrakendus pöördub TARA SSO teenuse poole uue kasutaja identsustõendi pärimiseks.
 7. Klientrakendus kontrollib saadud identsustõendi sisu, salvestab selle klientrakenduse seansi juurde ja pikendab klientrakenduse seansi kehtivust.
@@ -254,3 +254,6 @@ Joonis 5: Klientrakenduse seansi oleku kontroll ja TARA SSO seansi kehtivuse pik
 
 ### SSO seansi lõpetamine klientrakendusest väljalogimisel
 
+
+
+<p style='text-align:left;'><img src='img/SSO_joonis6.png' style='width:1000px'></p>
