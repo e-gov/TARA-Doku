@@ -233,11 +233,24 @@ Pärast edukat autentimist väljastab TARA SSO klientrakendusele kasutaja idents
 Uue identsustõendi saab väljastada vana identsustõendi põhjal selle kehtivusaja jooksul, kasutajalt sisendit küsimata. Päringu saab teha klientrakenduse kasutajaliidesesse peidetud raami või skripti päringuga. Kriitiline on, et nii sirvik kui TARA SSO server teeksid rangelt päringu turvakontrolle:
 
 - järgitakse allikatevahelise ressursside ühiskasutuse päiseid (CORS) veendumaks, et päring saadetakse õigelt ja TARA SSOs registreeritud klientrakenduse domeenilt. See on suuresti veebiserverite ja tänapäevastesse sirvikutesse sisse ehitatud funktsionaalsus, kuid lõpliku implementatsiooni korral tuleb vastav loogika kindlasti ka automaattestidega katta.
-- päring peab sisaldama eelmist väljastatud identsustõendit id_token_hint parameetri väärtusena. See aitab tuvastada, et eelmine identsustõend on päringu teostaja valduses.
+- päring peab sisaldama eelmist väljastatud identsustõendit `id_token_hint` parameetri väärtusena. See aitab tuvastada, et eelmine identsustõend on päringu teostaja valduses.
 - lisaks teha kõik täiendavad identsustõendi kontrollid vastavalt OpenID Connect (Viited, [OIDC Core] "3.1.3.7. ID Token Validation") ja OAuth 2.0 (Viited [OAUTH]) protokollidele.
 
-### **Erinevalt OIDC protokolli tavamustrist loeme TARA SSO protokollis seansi oleku kontrolli päringu kehas eelmise identsustõendi saatmise kohustuslikuks.** Vana identsustõend annab TARA SSO teenusele võimaluse enne klientrakendusele andmete saatmist kontrollida ka subjekti samasust. See tähendab, TARA SSO kontrollib, kas eelmise identsustõendi subjekt kattub hetkel TARA SSOs sisse logitud subjektiga.
+**Erinevalt OIDC protokolli tavamustrist loeme TARA SSO protokollis seansi oleku kontrolli päringu kehas eelmise identsustõendi saatmise kohustuslikuks.** Vana identsustõend annab TARA SSO teenusele võimaluse enne klientrakendusele andmete saatmist kontrollida ka subjekti samasust. See tähendab, TARA SSO kontrollib, kas eelmise identsustõendi subjekt kattub hetkel TARA SSOs sisse logitud subjektiga.
 
 <p style='text-align:left;'><img src='img/SSO_joonis5.png' style='width:800px'></p>
 Joonis 5: Klientrakenduse seansi oleku kontroll ja TARA SSO seansi kehtivuse pikendamine uue identsustõendi päringuga
+
+1. TARA SSOs autenditud ja klientrakenduses sisselogitud kasutaja suunab sirviku klientrakenduse otspunktile `https://portaal.ee/pealeht`.
+2. Klientrakendus kontrollib klientrakenduse seansiga seotud identsustõendi kehtivust. Kuna identsustõendi kehtivuse lõpuni on jäänud alla minuti, algatatakse klientrakenduse seansiga seotud identsustõendi värskendamine.
+3. Klientrakendus suunab sirviku TARA SSO autentimise otspunktile. Päringu parameetri `prompt=none` abil annab klientrakendus teada, et tegemist on seansi oleku kontrolli päringuga ning kasutajalt mingit sisendit küsida ei tohiks. Lisaks peab klientrakendus edastama päringuga viimase talle teada oleva identsustõendi `id_token_hint` parameetri väärtusena. 
+4. TARA SSO kontrollib saadud päringu sisu.
+    a. TARA SSO võrdleb TARA SSO seansis salvestatud identsustõendit vastu päringuga saadetud identsustõendit. TARA SSO tohib vastata korrektse volituskoodiga ainult juhul, kui SSO seanss on kehtiv ja seansiga seotud kasutaja tunnus (subjekt) kattub saadetud identsustõendi subjektiga (`sub`). Kui kehtivat seanssi ei leita või SSO seansis olevad viited (_claims_) ei vasta eelmisele identsustõendile, tuleb tagastada viga vastavalt OIDC Core spetsifikatsioonile (Viited, [OIDC Core], 3.1.2.6.  Authentication Error Response). Näiteks TARA SSO vastuskoodi `login_required` saamise korral võib klientrakendus järeldada, et kasutajal puudub kehtiv SSO seanss ja tuleks algatada uus autentimise päring vastavalt TARA SSO autentimise voole.
+    b. TARA SSO määrab SSO seansi kehtivuse lõppajaks `hetke_aeg + 15 minutit`.
+5. TARA SSO suunab sirviku tagasi klientrakenduse URLile. Päringuga antakse kaasa uus volituskood ja käsklus sirvikus TARA SSO seansi küpsise kehtivust pikendada.
+6. Klientrakendus pöördub TARA SSO teenuse poole uue kasutaja identsustõendi pärimiseks.
+7. Klientrakendus kontrollib saadud identsustõendi sisu, salvestab selle klientrakenduse seansi juurde ja pikendab klientrakenduse seansi kehtivust.
+8. Sirvik suunatakse portaali otspunktile `https://portaal.ee/pealeht`.
+
+### **SSO seansi lõpetamine klientrakendusest väljalogimisel**
 
