@@ -115,7 +115,7 @@ Kuigi OIDF on avaldanud ka eeskanali kaudu seansi lõpetamise kavandi (Viited [O
 
 Tehnilisest aspektist tuleb TARA SSO protokollis arvestada, et kasutaja autentimise käigus luuakse seansse mitme osapoole vahel: TARA SSO serveri ja sirviku vahel luuakse SSO seanss ning sirviku ja klientrakenduse vahel luuakse klientrakenduse seanss. Lõppkasutaja jaoks mugava kasutusvoo loomiseks peavad kõik süsteemi osapooled omavahel tegema hulga lisatööd, et nende seansside olekuid sünkroniseerida. Joonisel 2 on välja toodud TARA SSO seansi osapooled ja peamised edastatavad andmeolemid.
 
-<p style='text-align:left;'><img src='img/SSO_joonis2.png' style='width:800px'></p>
+<p style='text-align:left;'><img src='img/SSO_joonis2.png' style='width:600px'></p>
 Joonis 2: TARA SSO, klientrakenduse ja sirviku vahel liikuvad andmeolemid
 
 TARA SSO seanss on sirvikupõhine. Iga uue autentimise korral tekitab TARA SSO uue unikaalse seansi, mis on seotud kasutaja sirvikuga sinna salvestatud SSO küpsise kaudu. SSO küpsise lugemise õigus on piiratud ainult TARA SSO domeenile. SSO seansi kehtivus on ajaliselt limiteeritud. SSO seansi kehtivuse jooksul saab TARA SSO väljastada klientrakendustele identsustõendeid ilma, et kasutaja peaks uuesti autentimisvahendit kasutama. SSO seansi kehtivust pikendatakse iga uue identsustõendi väljastamisel.
@@ -182,7 +182,7 @@ Volituse andmine või sellest keeldumine salvestatakse TARA SSO teenuse logis. E
 
 Tavakasutuse korral kuvatakse volituse lehte SSO seansi raames kasutajale üks kord iga unikaalse klientrakenduse kohta. Kasutatavuse testimise käigus kinnitati, et volituse vahelehe kuvamise vajalikkus oli kasutajatele mõistetav.
 
-**TARA SSO identsustõendi kaitsmine GET päringutes
+**TARA SSO identsustõendi kaitsmine GET päringutes**
 
 TARA SSO protokollis üritasime maksimaalses ulatuses vältida avatud isikuandmete liikumist läbi klientrakenduse kasutajaliidese komponendi. Isikuandmed liiguvad TARA SSO serverile identsustõendi koosseisus ja alati ainult taustakanali kaudu (klientrakenduse serveri ja TARA SSO tõendi väljastuse otspunkti otsesuhtluse kaudu). See on ka üks põhjustest, miks TARA SSO puhul toetame ainult OIDC standardi volituskoodi voogu.
 
