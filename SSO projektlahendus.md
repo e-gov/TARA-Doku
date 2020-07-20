@@ -82,7 +82,6 @@ Esimeses variandis vaatlesime kõrgvaatelist arhitektuuri, milles seansihaldus o
 Teise variandina vaatasime arhitektuuri mudelit, milles käsitletakse TARA SSO teenust eraldiseisva komponendina olemasoleva TARA teenuse ees.
 
 <p style='text-align:left;'><img src='img/SSO_joonis1.png' style='width:800px'></p>
-
 Joonis 1: Riigi autentimisteenuse kõrgvaateline arhitektuur
 
 Nende komponentide jaotus aitab kõige paremini tagada TARA SSO teenuse esimest kasutusjuhtu - TARA senise voo säilitamist. Kogu SSO funktsionaalsuse eraldiseisvasse rakendusse viimine tagab olemasoleva TARA voo ja protokolli maksimaalse sõltumatuse SSO teenuse arendustest. TARA teenuse vaatest on TARA SSO näol tegemist tavalise OIDC klientrakendusega. Suhtlus TARA ja TARA SSO vahel toimub üle OIDC protokolli ja on dikteeritud TARA arendustest. Arvestades, et OIDF pole kinnitanud ühtegi standardit seansihalduse kohta OIDC protokollis, on põhjendatud mitte rutata TARA protokollis mitte-standardsete muudatustesisseviimisega.
