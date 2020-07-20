@@ -213,10 +213,9 @@ Joonis 4: Kasutaja autentimise voog TARA SSOs
 1. Kasutaja algatab sirvikus klientrakendusse sisselogimise.
 2. Klientrakendus suunab sirviku TARA SSO autentimise otspunktile.
 3. TARA SSO kontrollib, kas sellel kasutajal juba eksisteerib sobiv TARA SSO seanss. Seanss eksisteerib, kui on täidetud kõik järgmised tingimused:
-- kasutaja sirvikus on olemas TARA SSO seansi küpsis;
-- SSO seansi küpsises olevale seansitunnusele leidub kehtiv seansi kirje TARA SSO serveris;
-- autentimispäringus nõutud autentimistase kattub SSO seansi autentimistasemega (st SSO seanss tekitati sama või kõrgema autentimise tasemega vahendit kasutades. `acr_values` parameetri sisu peab vastama seansi juures salvestatud acr parameetri väärtusele).
-Kui sobiv TARA SSO seanss juba eksisteerib, saab TARAga autentimise vahele jätta ja jätkata punktist 8.
+    a. kasutaja sirvikus on olemas TARA SSO seansi küpsis;
+    b. SSO seansi küpsises olevale seansitunnusele leidub kehtiv seansi kirje TARA SSO serveris;
+    c. autentimispäringus nõutud autentimistase kattub SSO seansi autentimistasemega (st SSO seanss tekitati sama või kõrgema autentimise tasemega vahendit kasutades. `acr_values` parameetri sisu peab vastama seansi juures salvestatud acr parameetri väärtusele). Kui sobiv TARA SSO seanss juba eksisteerib, saab TARAga autentimise vahele jätta ja jätkata punktist 8.
 4. Sirvik suunatakse riigi autentimisteenusesse TARA.
 5. Kasutaja autendib ennast TARA teenuses, kasutades ühte oma autentimisvahenditest. TARA autentimise protsessi käsitletakse täpsemalt TARA spetsifikatsioonis (Viited, [TARA]).
 6. Eduka autentimise järel suunab TARA server sirviku tagasi TARA SSO serverisse koos TARA volituskoodiga.
@@ -229,4 +228,16 @@ Kui sobiv TARA SSO seanss juba eksisteerib, saab TARAga autentimise vahele jätt
 
 **SSO seansi oleku kontrolli voog**
 
+Pärast edukat autentimist väljastab TARA SSO klientrakendusele kasutaja identsustõendi. Identsustõendil on kindel määratud kehtivus ja see on limiidiks ka klientrakenduse seansi kehtivuse seadmisel. Kui klientrakendus soovib oma seansi kehtivust pikendada, tuleb tal TARA SSO teenuselt pärida uus identsustõend. Eelmise identsustõendi aegumisel tuleb klientrakenduse seanss lõpetada.
+
+Uue identsustõendi saab väljastada vana identsustõendi põhjal selle kehtivusaja jooksul, kasutajalt sisendit küsimata. Päringu saab teha klientrakenduse kasutajaliidesesse peidetud raami või skripti päringuga. Kriitiline on, et nii sirvik kui TARA SSO server teeksid rangelt päringu turvakontrolle:
+
+- järgitakse allikatevahelise ressursside ühiskasutuse päiseid (CORS) veendumaks, et päring saadetakse õigelt ja TARA SSOs registreeritud klientrakenduse domeenilt. See on suuresti veebiserverite ja tänapäevastesse sirvikutesse sisse ehitatud funktsionaalsus, kuid lõpliku implementatsiooni korral tuleb vastav loogika kindlasti ka automaattestidega katta.
+- päring peab sisaldama eelmist väljastatud identsustõendit id_token_hint parameetri väärtusena. See aitab tuvastada, et eelmine identsustõend on päringu teostaja valduses.
+- lisaks teha kõik täiendavad identsustõendi kontrollid vastavalt OpenID Connect (Viited, [OIDC Core] "3.1.3.7. ID Token Validation") ja OAuth 2.0 (Viited [OAUTH]) protokollidele.
+
+**Erinevalt OIDC protokolli tavamustrist loeme TARA SSO protokollis seansi oleku kontrolli päringu kehas eelmise identsustõendi saatmise kohustuslikuks.** Vana identsustõend annab TARA SSO teenusele võimaluse enne klientrakendusele andmete saatmist kontrollida ka subjekti samasust. See tähendab, TARA SSO kontrollib, kas eelmise identsustõendi subjekt kattub hetkel TARA SSOs sisse logitud subjektiga.
+
+<p style='text-align:left;'><img src='img/SSO_joonis5.png' style='width:800px'></p>
+Joonis 5: Klientrakenduse seansi oleku kontroll ja TARA SSO seansi kehtivuse pikendamine uue identsustõendi päringuga
 
