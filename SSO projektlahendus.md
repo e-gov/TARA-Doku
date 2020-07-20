@@ -81,7 +81,7 @@ Esimeses variandis vaatlesime kõrgvaatelist arhitektuuri, milles seansihaldus o
 
 Teise variandina vaatasime arhitektuuri mudelit, milles käsitletakse TARA SSO teenust eraldiseisva komponendina olemasoleva TARA teenuse ees.
 
-<p style='text-align:center;'><img src='img/SSO_joonis1.png' style='width:600px'></p>
+<p style='text-align:left;'><img src='img/SSO_joonis1.png' style='width:800px'></p>
 
 Joonis 1: Riigi autentimisteenuse kõrgvaateline arhitektuur
 
