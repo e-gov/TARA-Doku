@@ -161,7 +161,7 @@ The identity token is issued in JSON Web Token (References: JWT).
 |----------------------------------|------------------ |-----------------------|
 | jti | `"jti"="663a35d8-92ec-4a8d-95e7-fc6ca90ebda2"` |  Identity token unique identifier, (References: JWT "4.1.7.  jti (JWT ID) Claim"). |
 | iss | `"iss":"https://tara-sso-demo.eesti.ee/"` |  Issuer of the identity token (TARA SSO). |
-| aud | "aud":<br> [<br> "sso-client-1" <br>] <br> or<br> `"aud": "sso-client-1"` |  Unique ID of a client application in TARA SSO client database. ID belongs to the client that requested authentication (the value of `client_id` field is specified upon directing the user to the authentication process). <br><br> String or array of strings. A single aud value is present in TARA SSO tokens. |
+| aud | "aud":<br> [<br> "sso-client-1" <br>] <br><br> or<br><br> `"aud": "sso-client-1"` |  Unique ID of a client application in TARA SSO client database. ID belongs to the client that requested authentication (the value of `client_id` field is specified upon directing the user to the authentication process). <br><br> String or array of strings. A single aud value is present in TARA SSO tokens. |
 | exp | `"exp": 1591709871` |  The expiration time of the identity token (in Unix _epoch_ format). |
 | iat | `"iat": 1591709811` |  The time of issue of the identity token (in Unix _epoch_ format). |
 | sub | `"sub": "EE60001018800"` |  The identifier of the authenticated user (personal identification code or eIDAS identifier) with the prefix of the country code of the citizen (country codes based on the ISO 3166-1 alpha-2 standard). The subject identifier format is set by TARA authentication service id token (References: TARA "4.3.1 Identity token"). |
