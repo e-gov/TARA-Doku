@@ -183,5 +183,35 @@ Identitiy token may consist other OpenID Connect protocol based fields that are 
 
 ### Logout token 
 
+TARA SSO sends a JWT similar to an ID Token to client applications called a Logout Token to request that they log out a TARA SSO session or user. The token issuer is TARA SSO and the audience is the client application. Upon receiving a logout token the client application is expected to validate the token to make sure that it is a valid logout request. In case the token is valid the client application session (session between client application and user agent) must be ended.
 
+Issued logout tokens are linked to ID tokens via the `sid` claim. Each client application is expected to internally keep track of the ID token `sid` claim and client application session relations. Meaning that each application session during which TARA SSO authentication was used, must hold the `sub` and `sid` values of ID tokens that were issued during that application session.
 
+A logout token contains a sub claim, a `sid` claim, or both. If a `sid` claim is present, the client application must log out all client application sessions that contain the same `sid` value. If only a `sub` claim is present, then all client application sessions with the same `sub` value must be logged out. Logout tokens with only a `sub` value are issued only if the logout was initiated by TARA SSO server (not a client application).
+
+OIDC logout tokens can be encrypted but TARA SSO logout tokens are not encrypted.
+
+**Example TARA SSO logout token payload**
+
+````
+{
+  "aud": [
+    "sso-client-1"
+  ],
+  "events": {
+    "http://schemas.openid.net/event/backchannel-logout": {}
+  },
+  "sub": "EE60001018800",
+  "iat": 1591958452,
+  "iss": "https://tara-sso-demo.eesti.ee/",
+  "jti": "c0cfc91a-cdf5-4706-ad26-847b3a3fb937",
+  "sid": "9038c51d-719f-40e1-9322-a7920a2087c8"
+}
+````
+**Logout token claims**
+
+| Identity token element (claim)   | example           |     explanation       |
+|----------------------------------|------------------ |-----------------------|
+| jti | `"jti"="663a35d8-92ec-4a8d-95e7-fc6ca90ebda2"` |  Identity token unique identifier, (References: JWT "4.1.7.  jti (JWT ID) Claim"). |
+| iss | `"iss":"https://tara-sso-demo.eesti.ee/"` |  Issuer of the identity token (TARA SSO). |
+| aud | "aud":<br> [<br> "sso-client-1" <br>] <br><br> or<br><br> `"aud": "sso-client-1"` |  Unique ID of a client application in TARA SSO client database. ID belongs to the client that requested authentication (the value of `client_id` field is specified upon directing the user to the authentication process). <br><br> String or array of strings. A single aud value is present in TARA SSO tokens. |
