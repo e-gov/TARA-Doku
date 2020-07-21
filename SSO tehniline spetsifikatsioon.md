@@ -159,9 +159,9 @@ The identity token is issued in JSON Web Token (References: JWT).
 
 | Identity token element (claim)   | example           |     explanation       |
 |----------------------------------|------------------ |-----------------------|
-| sub | `"sub": "EE60001018800"` |  The identifier of the authenticated user (personal identification code or eIDAS identifier) with the prefix of the country code of the citizen (country codes based on the ISO 3166-1 alpha-2 standard). The subject identifier format is set by TARA authentication service id token (References: TARA "4.3.1 Identity token"). |
-| state | `"state": "1OnH3qwltWy81fKqcmjYTqnco9yVQ2gGZXws/DBLNvQ="` |  Security element. The authentication request’s state parameter value. |
-| aud | "aud":<br> [<br> "sso-client-1" <br>] <br> or<br> `"aud": "sso-client-1"` |  Unique ID of a client application in TARA SSO client database. ID belongs to the client that requested authentication (the value of `client_id` field is specified upon directing the user to the authentication process). String or array of strings. A single aud value is present in TARA SSO tokens. |
+| jti | `"jti"="663a35d8-92ec-4a8d-95e7-fc6ca90ebda2"` |  Identity token unique identifier, (References: JWT "4.1.7.  jti (JWT ID) Claim"). |
+| iss | `"iss":"https://tara-sso-demo.eesti.ee/"` |  Issuer of the identity token (TARA SSO). |
+| aud | "aud":<br> [<br> "sso-client-1" <br>] <br> or<br> `"aud": "sso-client-1"` |  Unique ID of a client application in TARA SSO client database. ID belongs to the client that requested authentication (the value of `client_id` field is specified upon directing the user to the authentication process). <br><br> String or array of strings. A single aud value is present in TARA SSO tokens. |
 | exp | `"exp": 1591709871` |  The expiration time of the identity token (in Unix _epoch_ format). |
 | iat | `"iat": 1591709811` |  The time of issue of the identity token (in Unix _epoch_ format). |
 | sub | `"sub": "EE60001018800"` |  The identifier of the authenticated user (personal identification code or eIDAS identifier) with the prefix of the country code of the citizen (country codes based on the ISO 3166-1 alpha-2 standard). The subject identifier format is set by TARA authentication service id token (References: TARA "4.3.1 Identity token"). |
@@ -169,9 +169,14 @@ The identity token is issued in JSON Web Token (References: JWT).
 | profile_attributes.date_of_birth | `"date_of_birth": "2000-01-01"` |  The date of birth of the authenticated user in the ISO_8601 format. Only sent in the case of persons with Estonian personal identification code and in the case of eIDAS authentication. |
 | profile_attributes.given_name | `"given_name": "MARY ÄNN"` |  The first name of the authenticated user (the test name was chosen because it consists special characters). |
 | profile_attributes.family_name | `"family_name": "O’CONNEŽ-ŠUSLIK TESTNUMBER"` |  The surname of the authenticated user (the test name was selected because it includes special characters). |
-| amr | `"amr": "mID"` |  Authentication mehtod reference.  The authentication method used for user authentication. Possible values:<br> `mID` - Mobile-ID,<br> `idcard` - Estonian ID card'<br> `eIDAS` - cross-border<br> `banklink` - bank<br> `smartid` - Smart-ID<br> Available authentication methods depend on TARA authentication service and the list may be extended in the future (References: TARA "4.1 Authentication request"). |
+| amr | `"amr": "mID"` |  Authentication mehtod reference.  The authentication method used for user authentication. Possible values:<br><br> <li>`mID` - Mobile-ID</li><br> <li>`idcard` - Estonian ID card'</li><br> <li>`eIDAS` - cross-border</li><br> <li>`banklink` - bank<li><br> <li>`smartid` - Smart-ID</li><br><br> Available authentication methods depend on TARA authentication service and the list may be extended in the future (References: TARA "4.1 Authentication request"). |
+| state | `"state": "1OnH3qwltWy81fKqcmjYTqnco9yVQ2gGZXws/DBLNvQ="` |  Security element. The authentication request’s `state` parameter value. |
+| nonce | `"nonce": "POYXXoyDo49deYC3o5_rG-ig3U4o-dtKgcym5SyHfCM"` |  Security element. The authentication request’s nonce parameter value. Value is present only in case the `nonce` parameter was sent in the authentication request. |
+| acr | `"acr": "high"` |  The time of issue of the identity token (in Unix _epoch_ format). |
+
 | iat | `"iat": 1591709811` |  The time of issue of the identity token (in Unix _epoch_ format). |
 | iat | `"iat": 1591709811` |  The time of issue of the identity token (in Unix _epoch_ format). |
 | iat | `"iat": 1591709811` |  The time of issue of the identity token (in Unix _epoch_ format). |
 | iat | `"iat": 1591709811` |  The time of issue of the identity token (in Unix _epoch_ format). |
+
 
