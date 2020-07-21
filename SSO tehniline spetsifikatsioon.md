@@ -157,7 +157,16 @@ The identity token is issued in JSON Web Token (References: JWT).
 ````
 **Identity token claims**
 
-| Identity token element (claim)   | example |     explanation       |
-|------------------------|------------------ |-----------------------------|
-| sub | `"sub": "EE60001018800"` | 	The identifier of the authenticated user (personal identification code or eIDAS identifier) with the prefix of the country code of the citizen (country codes based on the ISO 3166-1 alpha-2 standard). The subject identifier format is set by TARA authentication service id token (References: Technical specification#TARA "4.3.1 Identity token") |
+| Identity token element (claim)   | example           |     explanation       |
+|----------------------------------|------------------ |-----------------------|
+| sub | `"sub": "EE60001018800"` | The identifier of the authenticated user (personal identification code or eIDAS identifier) with the prefix of the country code of the citizen (country codes based on the ISO 3166-1 alpha-2 standard). The subject identifier format is set by TARA authentication service id token (References: Technical specification#TARA "4.3.1 Identity token") |
+| state | `"state": "1OnH3qwltWy81fKqcmjYTqnco9yVQ2gGZXws/DBLNvQ="` | Security element. The authentication request’s state parameter value. |
+| aud | `"aud": [
+"sso-client-1"
+]
+
+or
+
+"aud": "sso-client-1"` | Unique ID of a client application in TARA SSO client database. ID belongs to the client that requested authentication (the value of `client_id` field is specified upon directing the user to the authentication process).
+String or array of strings. A single aud value is present in TARA SSO tokens. |
 | state | `"state": "1OnH3qwltWy81fKqcmjYTqnco9yVQ2gGZXws/DBLNvQ="` | Security element. The authentication request’s state parameter value. |
