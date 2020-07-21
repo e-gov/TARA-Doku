@@ -171,5 +171,17 @@ The identity token is issued in JSON Web Token (References: JWT).
 | profile_attributes.family_name | `"family_name": "O’CONNEŽ-ŠUSLIK TESTNUMBER"` |  The surname of the authenticated user (the test name was selected because it includes special characters). |
 | amr | `"amr": "mID"` |  Authentication mehtod reference.  The authentication method used for user authentication. Possible values:<br><br> <li>`mID` - Mobile-ID</li><br> <li>`idcard` - Estonian ID card'</li><br> <li>`eIDAS` - cross-border</li><br> <li>`banklink` - bank</li><br> <li>`smartid` - Smart-ID</li><br> Available authentication methods depend on TARA authentication service and the list may be extended in the future (References: TARA "4.1 Authentication request"). |
 | state | `"state": "1OnH3qwltWy81fKqcmjYTqnco9yVQ2gGZXws/DBLNvQ="` |  Security element. The authentication request’s `state` parameter value. |
-| nonce | `"nonce": "POYXXoyDo49deYC3o5_rG-ig3U4o-dtKgcym5SyHfCM"` |  Security element. The authentication request’s nonce parameter value. Value is present only in case the `nonce` parameter was sent in the authentication request. |
-| acr | `"acr": "high"` |  The time of issue of the identity token (in Unix _epoch_ format). |
+| nonce | `"nonce": "POYXXoyDo49deYC3o5_rG-ig3U4o-dtKgcym5SyHfCM"` |  Security element. The authentication request’s `nonce` parameter value. Value is present only in case the `nonce` parameter was sent in the authentication request. |
+| acr | `"acr": "high"` |  Authentication Context Class Reference. Signals the level of assurance of the authentication device that was used. Possible values: `low`, `substantial`, `high`. The element is not used if the level of authentication is not applicable or is unknown. |
+| at_hash | `"at_hash": "AKIDtvBT2JS_02tkl_DvuA"` |  The access token hash calculated as described in OIDC specification (References: OIDC-CORE). |
+| email | `"email": "60001018800@eesti.ee"` |  The user’s e-mail address.<br><br> Only issued if an Estonian ID card is used for authenticating the user in TARA service. Is read by TARA from the SAN extension of the user’s authentication certificate (from the RFC822 type `Subject Alternative Name` field) |
+| email_verified | `"email_verified" : false` |  Signals if the e-mail address of the user has been verified. TARA always issues a value false. It means that TARA does not verify or issue information on whether or not the user has redirected their eesti.ee e-mail address. TARA SSO will return the same value that is returned in TARA issued identity token. |
+| sid | `"sid": "f5ab396c-1490-4042-b073-ae8e003c7258"` |  Session ID - String identifier for a TARA SSO session. To and RP, This represents a session of a User Agent or device for a logged-in End-User. Different sid values are used to identify distinct sessions at TARA SSO. |
+| auth_time | `"auth_time": 1591709810` |  The time of successful authentication of the user in TARA SSO. In the Unix _epoch_ format. |
+
+Identitiy token may consist other OpenID Connect protocol based fields that are not supported in TARA SSO.
+
+### Logout token 
+
+
+
