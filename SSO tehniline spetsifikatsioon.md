@@ -169,14 +169,7 @@ The identity token is issued in JSON Web Token (References: JWT).
 | profile_attributes.date_of_birth | `"date_of_birth": "2000-01-01"` |  The date of birth of the authenticated user in the ISO_8601 format. Only sent in the case of persons with Estonian personal identification code and in the case of eIDAS authentication. |
 | profile_attributes.given_name | `"given_name": "MARY ÄNN"` |  The first name of the authenticated user (the test name was chosen because it consists special characters). |
 | profile_attributes.family_name | `"family_name": "O’CONNEŽ-ŠUSLIK TESTNUMBER"` |  The surname of the authenticated user (the test name was selected because it includes special characters). |
-| amr | `"amr": "mID"` |  Authentication mehtod reference.  The authentication method used for user authentication. Possible values:<br><br> <li>`mID` - Mobile-ID</li><br> <li>`idcard` - Estonian ID card'</li><br> <li>`eIDAS` - cross-border</li><br> <li>`banklink` - bank<li><br> <li>`smartid` - Smart-ID</li><br><br> Available authentication methods depend on TARA authentication service and the list may be extended in the future (References: TARA "4.1 Authentication request"). |
+| amr | `"amr": "mID"` |  Authentication mehtod reference.  The authentication method used for user authentication. Possible values:<br><br> <li>`mID` - Mobile-ID</li><br> <li>`idcard` - Estonian ID card'</li><br> <li>`eIDAS` - cross-border</li><br> <li>`banklink` - bank</li><br> <li>`smartid` - Smart-ID</li><br> Available authentication methods depend on TARA authentication service and the list may be extended in the future (References: TARA "4.1 Authentication request"). |
 | state | `"state": "1OnH3qwltWy81fKqcmjYTqnco9yVQ2gGZXws/DBLNvQ="` |  Security element. The authentication request’s `state` parameter value. |
 | nonce | `"nonce": "POYXXoyDo49deYC3o5_rG-ig3U4o-dtKgcym5SyHfCM"` |  Security element. The authentication request’s nonce parameter value. Value is present only in case the `nonce` parameter was sent in the authentication request. |
 | acr | `"acr": "high"` |  The time of issue of the identity token (in Unix _epoch_ format). |
-
-| iat | `"iat": 1591709811` |  The time of issue of the identity token (in Unix _epoch_ format). |
-| iat | `"iat": 1591709811` |  The time of issue of the identity token (in Unix _epoch_ format). |
-| iat | `"iat": 1591709811` |  The time of issue of the identity token (in Unix _epoch_ format). |
-| iat | `"iat": 1591709811` |  The time of issue of the identity token (in Unix _epoch_ format). |
-
-
