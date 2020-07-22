@@ -190,7 +190,7 @@ A logout token contains a sub claim, a `sid` claim, or both. If a `sid` claim is
 
 OIDC logout tokens can be encrypted but TARA SSO logout tokens are not encrypted.
 
-**Example TARA SSO logout token payload**
+***Example TARA SSO logout token payload***
 
 ````
 {
@@ -207,7 +207,7 @@ OIDC logout tokens can be encrypted but TARA SSO logout tokens are not encrypted
   "sid": "9038c51d-719f-40e1-9322-a7920a2087c8"
 }
 ````
-**Logout token claims**
+***Logout token claims***
 
 | Logout token element (claim)   | compulsory       |    example        |     explanation       |
 |--------------------------------|------------------|------------------ |-----------------------|
@@ -226,7 +226,7 @@ OIDC logout tokens can be encrypted but TARA SSO logout tokens are not encrypted
 
 An authentication request is a HTTP GET request by which the user is redirected from the client application to TARA SSO for authentication.
 
-**Example TARA SSO authentication request**
+***Example TARA SSO authentication request***
 ````
 GET https://tara-sso-demo.eesti.ee/oauth2/auth?
  
@@ -242,14 +242,14 @@ acr_values=substantial
 ````
 (for better readability, the parts of the HTTP request are divided onto several lines)
 
-**Request parameters**
+***Request parameters***
 
 | URL element   | compulsory       |    example        |     explanation       |
 |---------------|------------------|------------------ |-----------------------|
-| protocol, host, port and path | yes |  `https://tara-sso-demo.eesti.ee/oauth2/auth` |  `/oauth2/auth`<br> is the OpenID Connect-based authentication endpoint of the TARA SSO service (the concept of ‘authorization’ originates from the OAuth 2.0 standard protocol).<br> The URL is provided from OIDC server public discovery service: `https://tara-sso-demo.eesti.ee/.well-known/openid-configuration authorization_endpoint` parameter. |
+| protocol, host, port and path | yes |  `https://tara-sso-demo.eesti.ee/oauth2/auth` |  `/oauth2/auth` is the OpenID Connect-based authentication endpoint of the TARA SSO service (the concept of ‘authorization’ originates from the OAuth 2.0 standard protocol).<br><br> The URL is provided from OIDC server public discovery service: `https://tara-sso-demo.eesti.ee/.well-known/openid-configuration authorization_endpoint` parameter. |
 | client_id | yes |   |  Application identifier. The application identifier is issued to the institution by RIA upon registration of the client application as a user of the authentication service. |
 | redirect_uri | yes | `redirect_uri=https%3A%2F%2F eteenus.asutus.ee%2Ftagasi`  |  Redirect URL. The redirect URL is selected by the institution. The redirect URL may include the query component. URL encoding should be used, if necessary (References: URLENC).<br> It is not permitted (References: OAUTH "3.1.2. Redirection Endpoint") to use the URI fragment component (`#` and the following component; References: URI "3.5. Fragment").<br> The URL protocol, host, port and path must match one of the pre-registered redirect URLs of given client application registration metadata (see `client_id` parameter). |
-| scope | yes | `scope=openid` |  The authentication scope. Space delimited list of requested scopes.<br><br> `openid` scope is compulsory to signal that this is an OIDC authentication request.<br> In the default scope of openid TARA SSO will issue identity tokens with the following attributes:<br><br> `sub` (physical person identifier)<br> `given_name`<br> `family_name`<br> `date_of_birth`<br> `email`<br> `email_verified`<br><br> Presence of given attribute values will depend on the amount of information that is returned within TARA identity tokens. At this moment email is only available when authentication was performed with Estonian national id-card card type authentication device.<br><br> `email_verified` will always have a value of `false`. This is because TARA will not perform e-mail verification. |
+| scope | yes | `scope=openid` |  The authentication scope. Space delimited list of requested scopes.<br><br> `openid` scope is compulsory to signal that this is an OIDC authentication request.<br> In the default `scope` of openid TARA SSO will issue identity tokens with the following attributes:<br><br> `sub` (physical person identifier)<br> `given_name`<br> `family_name`<br> `date_of_birth`<br> `email`<br> `email_verified`<br><br> Presence of given attribute values will depend on the amount of information that is returned within TARA identity tokens. At this moment email is only available when authentication was performed with Estonian national id-card card type authentication device.<br><br> `email_verified` will always have a value of `false`. This is because TARA will not perform e-mail verification. |
 | state | yes |  `state=hkMVY7vjuN7xyLl5` |  Security code against false request attacks (cross-site request forgery, CSRF). Read more about formation and verification of state under 'Protection against false request attacks'. |
 | response_type | yes |  `response_type=code` |  Determines the manner of communication of the authentication result to the server. The method of authorization code is supported (authorization flow of the OpenID Connect protocol) and it is referred to the code value. |
 | ui_locales | no |  `ui_locales=et` |  Selection of the user interface language. The following languages are supported: `et`, `en`, `ru`. By default, the user interface is in Estonian language. The client can select the desired language. This will also set the GUI language for TARA service views. |
@@ -265,7 +265,7 @@ The user agent is redirected to the `redirect_uri` included in the authenticatio
 
 The state value will also be returned to the client application, making it possible to perform CSRF validation on client application side.
 
-**Example TARA SSO authentication redirect**
+***Example TARA SSO authentication redirect***
 ````
 HTTP GET https://eteenus.asutus.ee/tagasi?
  
@@ -274,7 +274,7 @@ state=hkMVY7vjuN7xyLl5
 ````
 (for better readability, the parts of the HTTP request are divided onto several lines)
 
-**Response parameters**
+***Response parameters***
 
 | Identity token element (claim)   | example           |     explanation       |
 |----------------------------------|------------------ |-----------------------|
@@ -290,7 +290,7 @@ TARA relies on the OpenID Connect standard on error messages (References: OIDC-C
 
 `state` is also returned but no authorization code (`code`) is sent.
 
-**Example TARA SSO authentication error**
+***Example TARA SSO authentication error***
 ````
 HTTP GET https://eteenus.asutus.ee/tagasi?
  
@@ -310,7 +310,7 @@ The user may also return to the e-service without choosing an authentication met
 
 The identity token request is a HTTP POST request which is used by the client application to request the identity token from the server of TARA SSO.
 
-**Example TARA SSO token request**
+***Example TARA SSO token request***
 ````
 POST /oauth2/token HTTP/1.1
 Host: tara-sso-demo.eesti.ee
@@ -327,9 +327,303 @@ The client secret code must be provided in the identity token request. For this 
 
 The body of the HTTP POST request must be presented in a serialized format based on the OpenID Connect protocol.
 
-**Request parameters**
+***Request parameters***
 
+| Parameter   | parameter type     |    example        |     explanation       |
+|-------------|--------------------|------------------ |-----------------------|
+| protocol, host, port and path | query |  `https://tara-sso-demo.eesti.ee/oauth2/token` |  TARA SSO server token endpoint URL. Published in TARA SSO discovery endpoint `token_endpoint` parameter value. |
+| grant_type | body |  `grant_type=authorization_code` |  The `authorization_code` value required based on the protocol. |
+| code | body |  `code=SplxlOBeZQQYbYS6WxSbIA` |  The authorization code received from the authentication service. |
+| redirect_uri | body |  `redirect_uri=https%3A%2F%2eteenus.asutus.ee%2Ftagasi` |  The redirect URL sent in the authentication request. |
 
+**Response**
 
+TARA SSO server verifies that the identity token is requested by the right application and issues the identity token included in the response body (HTTP response body).
+
+***Example TARA SSO token endpoint response***
+````
+HTTP/1.1 200 OK
+Content-Type: application/json
+Cache-Control: no-store
+Pragma: no-cache
+ 
+{
+ "access_token": "EKN-4fXC4n1RdkegKk-M0DRxZ8RwJYZ_EwW-9zLCYcA.7GT7Xq2deLvWzrrFq6f0DNwL6INW2PYRDPPEFMbws1o",
+ "token_type": "Bearer",
+ "expires_in": 3600,
+ "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6InB1YmxpYzoyMDQ0YmVlOC03MmY0LTQxYTMtYTRl
+              Zi1hODQ5Y2Y1MmIzNzAiLCJ0eXAiOiJKV1QifQ.eyJhY3IiOiJoaWdoIiwiYW1yIjoib
+              UlEIiwiYXRfaGFzaCI6Ik1Edl9MYzlFWmNpalZUWWJPMXBQdnciLCJhdWQiOlsic3NvL
+              WNsaWVudC0xIl0sImF1dGhfdGltZSI6MTU5MTcwOTgxMCwiZXhwIjoxNTkxNzE2NTk4L
+              CJpYXQiOjE1OTE3MTY1MzgsImlzcyI6Imh0dHBzOi8vc3NvLW9pZGMtc2VydmVyLmRld
+              i5raXQ6ODA4MC8iLCJqdGkiOiI2YTk4MGVkMC1hMDFhLTQzMjgtOWNkOC1hYzIxOTA2Y
+              mFkZTQiLCJub25jZSI6ImxSdWQwaVBxTVF2WGJBWHRmZ0VPVjJhYk9Mc3RJZEpSajRPS
+              WxoRDF2NGciLCJwcm9maWxlX2F0dHJpYnV0ZXMiOnsiZGF0ZV9vZl9iaXJ0aCI6IjIwM
+              DAtMDEtMDEiLCJmYW1pbHlfbmFtZSI6Ik_igJlDT05ORcW9LcWgVVNMSUsgVEVTVE5VT
+              UJFUiIsImdpdmVuX25hbWUiOiJNQVJZIMOETk4ifSwicmF0IjoxNTkxNzE2NTM1LCJza
+              WQiOiJmNWFiMzk2Yy0xNDkwLTQwNDItYjA3My1hZThlMDAzYzcyNTgiLCJzdWIiOiJFR
+              TYwMDAxMDE4ODAwIn0.VHymIxnGlPSqKZl9fXG6ggKekFTy7-p95vEdhPDWEske7zNS_
+              LELzK3pnWdsMNbO2IFf146ir6V-WmfYTRCN15IMsRhBOgqg_FacilqvK2B25fD8LxFoC
+              DwYRFjFFEs1U4j6SA0OrFh-aWbZ6xYhOlPErYLFgKt5gl6dkAdO34UM09gx5ASzrkW4d
+              gsfUcZ8YktDw9n_iq6TDtb17RMEqeIprRLCQ-fLEKaHe4GBAZc6RfwIzWLCmcwUL0sCq
+              vMrHBagM99lrzorkpbUA9MmUCBel6QbskIoZQE_hXjnR7H18kuhjwZ2_mWwYj9zb-4aM
+              HGL0dQn0eoz72lfjfh18NEFuLHyYHooxsN4H_8TonWPz_QvbCjFUkpm44lkAeaLM_9eO
+              VX7m_iaqNXHAbZUBzInSNyF8Fb7yZGCgSxWq4_HyPxnTaZfuh7P5xdK_mQ5aJXA0kee6
+              UAZNGg9dk-lqC3epVFUkgYDrr5Np8fNaqfbJJ_FGF0jY0GRGq7Ip-800Qko62m1ooTOj
+              -iP-3qW-bpmivpnFIWGzlZSbXE67Z1oEQZrNCOZNx6hSguNC2LgwQpfYg5UkXHk4rVk3
+              Vjc6MEZ5ZWIzdrvWoX5CEn1POF_r_JrqsTK1KkwxL9km0g5qP4jihcRKJ7HU0Ov_nalC
+              iia9Cl7qaszTRmyQbWCTvE"
+}
+````
+(for better readability, the body of the HTTP response is divided over several lines)
+
+***Response parameters***
+
+| Parameter   |    explanation       |
+|-------------|----------------------|
+| access_token |  OAuth 2.0 access token. With the access token the client application can request authenticated user’s data from userinfo endpoint.<br> **Not used in TARA SSO because TARA SSO session management is purely identity token dependent. All user data is already available in the ID token of the user.** |
+| token_type |  OAuth 2.0 access token type with `bearer` value. Not used in TARA SSO. |
+| expires_in |  The validity period of the OAuth 2.0 access token. Not used in TARA SSO. |
+| id_token |  Identity token, in Base64 format. The identity token is issued in JSON Web Token (References: JWT) |
+
+**Error response**
+
+In case the token endpoint encounters an error and can not issue valid tokens, an error response is generated according to OIDC Core specification (References: OIDC-CORE)
+
+### SSO session update request
+
+**Request**
+
+Client applications must periodically check the SSO authentication session validity on TARA SSO server. Session update requests will also signal TARA SSO server that the user is still active in the client application and the authentication session expiration time can be extended.
+
+The process of acquiring a new authentication token is similar to initial user authentication.
+
+1. The client application redirects user agent to TARA SSO authorization endpoint for an authorization code. 
+2. Upon receiving the authorization code, the client application (usually backend) makes a request to the TARA SSO token endpoint.
+
+***Example TARA SSO session update request***
+````
+GET https://tara-sso-demo.eesti.ee/oauth2/auth?
+ 
+redirect_uri=https%3A%2F%2eteenus.asutus.ee%2Ftagasi&
+scope=openid&
+state=hkMVY7vjuN7xyLl5&|
+response_type=code&
+client_id=58e7ba35aab5b4f1671a&
+ui_locales=en&
+nonce=fsdsfwrerhtry3qeewq&
+acr_values=substantial&
+prompt=none&
+id_token_hint=eyJhbGciOiJSUzI1NiIsImtpZCI6InB1YmxpYzo...TvE
+````
+***Request parameters***
+
+| URL element   | compulsory       |    example        |     explanation       |
+|---------------|------------------|------------------ |-----------------------|
+| protocol, host, port and path | yes |  `https://tara-sso-demo.eesti.ee/oauth2/auth` |  `/oauth2/auth` is the OpenID Connect-based authentication endpoint of the TARA SSO service (the concept of ‘authorization’ originates from the OAuth 2.0 standard protocol), References: [OAUTH]).<br><br> The URL is provided from OIDC server public discovery service: `https://tara-sso-demo.eesti.ee/.well-known/openid-configuration authorization_endpoint` parameter. |
+| client_id | yes |   |  Application identifier. The application identifier is issued to the institution by RIA upon registration of the client application as a user of the authentication service. |
+| redirect_uri | yes | `redirect_uri=https%3A%2F%2F eteenus.asutus.ee%2Ftagasi`  |  Redirect URL. The redirect URL is selected by the institution. The redirect URL may include the query component. URL encoding should be used, if necessary (References: URLENC).<br> It is not permitted (References: OAUTH "3.1.2. Redirection Endpoint") to use the URI fragment component (`#` and the following component; References: URI "3.5. Fragment").<br> The URL protocol, host, port and path must match one of the pre-registered redirect URLs of given client application registration metadata. |
+| scope | yes | `scope=openid` |  The authentication scope. Space delimited list of requested scopes.<br><br> `openid` scope is compulsory to signal that this is an OIDC authentication request.<br> In the default scope of `openid` TARA SSO will issue identity tokens with the following attributes:<br><br> `sub` (physical person identifier)<br> `given_name`<br> `family_name`<br> `date_of_birth`<br> `email`<br> `email_verified`<br><br> Presence of given attribute values will depend on the amount of information that is returned within TARA identity tokens. At this moment email is only available when authentication was performed with Estonian national id-card card type authentication device.<br><br> `email_verified` will always have a value of `false`. This is because TARA will not perform e-mail verification. |
+| state | yes |  `state=hkMVY7vjuN7xyLl5` |  Security code against false request attacks (cross-site request forgery, CSRF). Read more about formation and verification of state under 'Protection against false request attacks'. |
+| response_type | yes |  `response_type=code` |  Determines the manner of communication of the authentication result to the server. The method of authorization code is supported (authorization flow of the OpenID Connect protocol) and it is referred to the code value. |
+| ui_locales | no |  `ui_locales=et` |  Selection of the user interface language. The following languages are supported: `et`, `en`, `ru`. By default, the user interface is in Estonian language. The client can select the desired language. This will also set the GUI language for TARA service views. |
+| nonce | no |  `nonce=fsdsfwrerhtry3qeewq` |  A unique parameter which helps to prevent replay attacks based on the OIDC protocol (References, [Core], subsection 3.1.2.1. Authentication Request). The nonce parameter is not compulsory. |
+| acr_values | no |  `acr_values=substantial` |  The minimum required level of authentication based on the eIDAS LoA (level of assurance). It is permitted to apply one value of the following: `low`, `substantial`, `high`. `substantial` is used by default if the value has not been selected.<br><br> TARA SSO will store the authentication level of assurance (LoA) in the SSO session object as an Authentication Context Class Reference (`acr`) claim. The value is returned by TARA in the person identity token. Upon each TARA SSO authentication request, the server will check that the requested level of assurance (`acr_values` parameter value) is lower or equal to the `acr` claim value of the TARA SSO session. If the SSO session acr level of assurance is lower than requested, the previous TARA SSO session is automatically terminated and a new authentication is requested from TARA. After successful authentication a new SSO session is created. |
+| prompt | yes |  `prompt=none` |  Signals TARA SSO server that it MUST NOT display any authentication or consent view to the user. An error is returned if user is not already authenticated in TARA SSO or the client application does not have pre-configured consent for the requested scope, acr_values or does not fulfill other conditions for processing the request. The error code will typically be login_required, interaction_required, or another code defined in OIDC standard (References, [Technical specification#OIDC] Section 3.1.2.6.). |
+| id_token_hint | yes |  `id_token_hint=eyJhbGciOiJSUzI1NiIsImtpZCI6InB1YmxpYzo...TvE` |  ID Token previously issued by TARA SSO being passed as a hint about the user's current or past authenticated session with the client application. If the user identified by the ID Token is logged in or is logged in by the request, then TARA SSO returns a positive response; otherwise, it WILL return an error. **Encryption of the id_token_hint parameter is not supported in TARA SSO.** |
+
+**Response**
+
+TARA SSO server will respond with a HTTP 302 Found message to redirect user agent back to client application URL.
+
+The user agent is redirected to the `redirect_uri` included in the authentication request sent by the client application. In the redirect request, an authorization code (`code` URL parameter) is appended to the `redirect_uri` by TARA SSO, based on which the client application will (by a separate request) request from TARA SSO the personal identification code, name, and other attributes of the authenticated person. Technically, a HTTP status code `302 Found` redirect request is used for redirecting.
+
+The state value will also be returned to the client application, making it possible to perform CSRF validation on client application side.
+
+***Example TARA SSO session update redirect***
+````
+HTTP GET https://eteenus.asutus.ee/tagasi?
+ 
+code=71ed5797c3d957817d31&
+state=hkMVY7vjuN7xyLl5
+````
+***Response parameters***
+
+| URL element   |    example       |    explanation    |
+|---------------|------------------|------------------ |
+| protocol, host, port and path |  `https://eteenus.asutus.ee/tagasi` |  Matches the `redirect_uri` value sent in the authentication request. |
+| code |  `code=71ed579...` |  The authorization code is a single ‘permission note’ to receive the identity token. |
+| state |  `state=hkMVY7vjuN7xyLl5` |  Security code against false request attacks. The security code received in the authentication request is mirrored back. Read more about forming and verifying `state` from ‘Protection against false request attacks’. |
+
+**Error response**
+
+If TARA SSO is unable to process an session update request – there is an error in the request or another error has occurred – TARA SSO transfers an error message (URL parameter `error`) and the description of the error (URL parameter `error_description`) in the redirect request.
+
+TARA relies on the OpenID Connect standard on error messages (References: OIDC-CORE "3.1.2.6. Authentication Error Response" and Technical specification#OAUTH "4.1.2.1. Error Response"). The error messages are always displayed in English.
+
+`state` is also redirected but no authorization code (`code`) is sent. E.g.:
+
+***Example TARA SSO session update error***
+````
+HTTP GET https://eteenus.asutus.ee/tagasi?
+ 
+error=authentication_required&
+error_description=Authenticated+subject+does+not+match+provided+id_token_hint&
+state=hkMVY7vjuN7xyLl5
+````
+
+### SSO logout request
+
+**Request**
+
+A client application can notify the OP that the user has logged out of the site and might want to log out of TARA SSO as well. In this case, the client application, after having logged the user out of the client application, redirects the user's User Agent to TARA SSO's logout endpoint URL. This URL is normally obtained via the `end_session_endpoint` element of TARA SSO Discovery response or may be learned via other mechanisms.
+
+***Example TARA SSO logout request***
+````
+GET https://tara-sso-demo.eesti.ee/oauth2/sessions/logout?
+ 
+ 
+id_token_hint=eyJhbGciOiJSUzI1NiIsImtpZCI6InB1YmxpYzo3Njc2MG...VkDzh0LYvs
+post_logout_redirect_uri=https%3A%2F%2Feteenus.asutus.ee%2Ftagasi&
+state=0dHJpYnV0ZXMiOnsiZGF0ZV9vZl9iaXJ&
+ui_locales=et
+````
+***Request parameters***
+
+| URL element   | compulsory       |    example        |     explanation       |
+|---------------|------------------|------------------ |-----------------------|
+| protocol, host, port and path | yes |  `https://tara-sso-demo.eesti.ee/oauth2/sessions/logout` |  `/oauth2/auth` is the OpenID Connect-based logout endpoint of the TARA SSO service. Described in OIDC session management specification (References, OIDC-SESSION "2.1.  OpenID Provider Discovery Metadata" )<br><br> The URL is provided from OIDC server public discovery service: `https://tara-sso-demo.eesti.ee/.well-known/openid-configuration end_session_endpoint` parameter. |
+| post_logout_redirect_uri | yes | `redirect_uri=https%3A%2F%2Feteenus.asutus.ee%2Ftagasi` |  Redirect URL. The redirect URL is selected by the institution. The redirect URL may include the query component. URL encoding should be used, if necessary (References: URLENC).<br> It is not permitted (References: OAUTH "3.1.2. Redirection Endpoint") to use the URI fragment component (`#` and the following component; References: URI "3.5. Fragment").<br> The URL protocol, host, port and path must match one of the pre-registered redirect URLs of given client application. Client application is determined by the contents of the identity token (token audience must belong to a registered TARA SSO client application).<br> Different from OIDC session management specification, this parameter is considered mandatory in TARA SSO. In TARA SSO user logout flow we expect that the user is always redirected back to the client application that initiated the logout process. The `post_logout_redirect_uri` should point to the client application front page or a client application internal redirect url. |
+| id_token_hint | yes |  `id_token_hint=eyJhbGciOiJSU...TvE` |  ID Token previously issued by TARA SSO being passed as a hint about the user's current or past authenticated session with the client application. If the user identified by the ID Token is not logged in or is logged in by the request, then TARA SSO returns a positive response; otherwise, it WILL return an error. **`id_token_hint` encryption is not supported.** |
+| state | no |  `state=hkMVY7vjuN7xyLl5` |  Security code against false request attacks (cross-site request forgery, CSRF). Read more about formation and verification of state under 'Protection against false request attacks'.<br> If included in the logout request, the TARA passes this value back to the RP using the state query parameter when redirecting the user agent back to the client application.<br> Using the state parameter is not mandatory for login callbacks. It is expected that the user was already logged out of the client application before calling TARA SSO logout endpoint. |
+| ui_locales | no |  `ui_locales=et	` |  Selection of the user interface language. The following languages are supported: `et`, `en`, `ru`. By default, the user interface is in Estonian language.<br> If the user was logged into a single client application, then no GUI prompt will be displayed to the user. |
+
+**Response**
+
+After successful logout request, TARA SSO will redirect the user agent back to the client application.
+
+***Example TARA SSO logout redirect***
+````
+GET https://eteenus.asutus.ee/tagasi?state=hkMVY7vjuN7xyLl5
+````
+**Error response**
+
+If the logout request processing is unsuccessful (for example the client and post_logout_redirect_uri do not match or a technical error in TARA SSO prevents user logout), the user agent will be redirected to TARA SSO error URL. According to OIDC the logout request does not provide means to redirect the user back to client application with an error message. Therefore, the user logout flow will end in TARA SSO instead of the client application. TARA SSO should display some form of request correlation id to aid customer support.
+
+### Back-channel logout request
+
+**Request**
+
+All TARA SSO clients are expected to support OIDC Back-channel logout functionality. According to back-channel logout specification (References: OIDC-BACK) TARA SSO server will send an out-of-band logout request to each client application when the user has requested to end the TARA SSO session. TARA SSO will include a logout token with each request so that the client applications can verify the logout event. 
+
+Relying Parties supporting back-channel-based logout register a back-channel logout URI with TARA SSO as part of their client registration (References: OIDC-BACK "2.2.  Indicating RP Support for Back-Channel Logout"). 
+
+The back-channel logout URI must be an absolute URI as defined by Section 4.3 of [URI]. The back-channel logout includes an `application/x-www-form-urlencoded` formatted query component. The back-channel logout URI will not include a fragment component.
+
+Client applications must perform logout token validation to check if the received request is a valid TARA SSO logout request. Validation must be performed according to OIDC protocol OIDC-BACK "2.6. Logout Token Validation". If at any point token validation fails, the client application is expected to respond with a HTTP status code 400 Bad Request. If a session with a matching session ID is not found but the logout token is otherwise valid, then the client application should respond with HTTP status code 200 OK.
+
+***Example TARA SSO back-channel logout request***
+````
+POST /back-channel-logout HTTP/1.1
+Host: eteenus.asutus.ee
+Content-Type: application/x-www-form-urlencoded
+ 
+logout_token=eyJhbGciOiJSUzI1NiIsImtpZCI...p-wczlqgp1dg
+````
+***Request parameters***
+
+| Parameter   | compulsory     |    example        |     explanation       |
+|-------------|----------------|------------------ |-----------------------|
+| protocol, host, port and path | yes |  `https://eteenus.asutus.ee:443/back-channel-logout` |  Client application must authorize access to TARA SSO to an internal URL and port. Access to the port should be limited based on IP address. The port must be protected with TLS. TARA SSO must trust the logout endpoint server certificate. |
+| logout_token | yes |  `logout_token=eyJhbGciOiJSUz...qgp1dg` |  TARA SSO sends a JWT token similar to an ID token to client applications called a Logout Token to request that they log out. Logout token will give the client application exact information about the subject and the session (see the sid claim in ID Token) that should be logged out. The token is signed by TARA SSO with the same secret key that is used for singing issued ID Tokens. |
+
+## Security operations
+
+### Verification of the identity and logout tokens
+
+The client application must always verify the identity token and logout token. The client application must implement all the verifications based on OpenID Connect and OAuth 2.0 protocols. (References: OIDC-CORE, OIDC-BACK)
+
+The client must verify token’s:
+
+- signature
+- issuer
+- addressee
+- validity
+- authentication method (in case of identity token)
+- eIDAS level of assurance of (in case of identity token)
+
+For more detailed information about the identity token verifications can be found from OpenID Connect and OAuth 2.0 protocol specifications.
+
+**Verifying the signature**
+
+The identity token is signed by the TARA SSO authentication service. The logout tokens are signed by TARA SSO back-channel logout service. The signature meets the JWT standard. TARA SSO uses the same key for signing both the identity and logout tokens.
+
+TARA SSO uses the RS256 signature algorithm. The client application must, at least, be able to verify the signature given by using this algorithm. It would be reasonable to use a standard JWT library which supports all JWT algorithms. A situation in which the TARA SSO signature algorithm is needed is, in principle, possible – if a security failure is detected in RS256).
+
+For the signature verification the public signature key of TARA SSO must be used. The public signature key is published at the public signature key endpoint (see chapter “Endpoints”).
+
+The public signature key is stable - the public signature key will be changed every 2-3 years or accordingly to the security recommendations.
+
+The public signature key has an identifier (kid). The key identifier is aligned with the best practices of OpenID Connect and OAuth 2.0 that enables the key exchange without the service interruption.
+
+**Trust of the public signature key endpoint**
+
+The client application makes HTTPS requests to TARA SSO server towards to the identity token and public signature key endpoints. The client application must verify TARA SSO server’s certificate.
+
+**Verifying the issuer of tokens**
+
+The iss value of the identity token element must be https://tara-sso-demo.ria.ee (for TARA SSO test environment) or https://tara-sso.ria.ee (for TARA SSO production environment).
+
+**Verifying the addressee of the tokens**
+
+The client application must verify whether the certificate received was issued for them. For this purpose, it must be made sure that the `aud` value of the identity token element matches the `client ID` issued upon registration of the client application.
+
+**Verifying the validity of the tokens**
+
+***Identity token**
+
+The verification is done using elements in the identity token: `iat`, `exp`. The client application uses its own clock to verify the validity. The following details should be verified:
+
+1) that token issuing time has reached:
+
+`iat` <= (current time + permitted difference between clocks)
+
+2) that the “expired” time has not been reached:
+
+`exp` > (current time - permitted difference between clocks)
+
+The application must choose the permitted difference between clocks value. These checks are required for preventing attacks and confusion.
+
+***Logout token***
+
+The verification is done using the `iat` claim value of the logout token. The following details should be verified:
+
+1) that the token was not issued too far away from current time
+
+`iat` <= (current time + permitted difference between clocks)
+
+The application must choose the permitted difference between clocks value. These checks are required for preventing attacks and confusion.
+
+**Verifying the eIDAS level of assurance**
+
+In order to prevent access to cross-border authentication tools with a lower security level, it must be verified that the authentication level in the `acr` claim of identity token is not lower than the minimum level of assurance allowed.
+
+For example, if the client application wants to use only authentication methods with eIDAS level of assurance high and has specified the value in the `acr_values` parameter, then only identity tokens with `acr` claim with value high can be accepted.
+
+In case the level of assurance in the authentication request using acr_values parameter is not specified, the identity token must be equal to a level of assurance `substantial` or `high`.
+
+### Creating a session
+
+After a successful verification of the identity token, the client application will create a session with the user (‘log in the user’). The client application is responsible for creating and holding the sessions. The methods for doing this are not included in the scope of the TARA SSO authentication service.
+
+All tokens issued to the client application will contain a `sid` claim. This claim can be used to link client application session to SSO session. Client applications must store the latest identity token issued for each session. The previous token is required to create session update requests and logout requests.
+
+The client application session expiration time should be slightly shorter than TARA SSO identity token expiration date. This way the client application is forced to always request a new identity token before the last identity token expires. TARA SSO server will reject requests that contain identity tokens that were issued too far away from current time.
+
+Logout tokens usually contain the same `sid` claim. When a logout token is received the client application must find all application sessions that contain identity tokens with the same `sid` claim value and terminate them (force the user to log out on the same user agent).
+
+When an application session was terminated internally by TARA SSO, the logout token may instead contain only a `sub` claim. In this case the client application is expected to terminate all session that contain id tokens with matching sub value (force the user to log out on all user agents).
+
+### Protection against false request attacks
 
 
