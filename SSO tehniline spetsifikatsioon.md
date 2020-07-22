@@ -626,4 +626,56 @@ When an application session was terminated internally by TARA SSO, the logout to
 
 ### Protection against false request attacks
 
+The client application must implement protective measures against false request attacks (cross-site request forgery, CSRF). This can be achieved by using `state` and `nonce` security codes. Using `state` is compulsory; using `nonce` is optional. The procedure of using state is described below.
 
+The `state` security code is used to combat falsification of the redirect request following the authentication request. The client application must perform the following steps:
+
+1. Generate a nonce word, for example of the length of 16 characters: `XoD2LIie4KZRgmyc` (referred to as `R`).
+2. Calculate from the `R` nonce word the `H = hash(R)` hash, for example by using the SHA256 hash algorithm and by converting the result to the Base64 format: `vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`.
+3. Add an order to set a cookie to the authentication request, for example:
+`Set-Cookie ETEENUS=XoD2LIie4KZRgmyc; HttpOnly`,
+where `ETEENUS` is a freely selected cookie name. The HttpOnly attribute must be applied to the cookie.
+4. Set the following value for the state parameter calculated based on section 2:
+`GET ... state=vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`
+Thus, two elements are sent in an authentication request: a nonce word for including in the cookie and the hash value calculated from the nonce word in the `state` parameter. The client application is not required to remember the nonce word or the hash value.
+
+In the course of processing the redirect request, the client application must:
+
+1. Take the `ETEENUS` value of the cookie received with the request.
+2. Calculate the hash based on the cookie value.
+3. Verify that the hash matches the `state` value mirrored back in the redirect request.
+
+The redirect request may only be accepted if the checks described above are successful.
+
+The key element of the process described above is connection of the `state` value with the session. This is achieved by using a cookie. (This is a temporary authentication session. The work session will be created by the client application after the successful completion of the authentication).
+
+Further information: unfortunately, this topic is not presented clearly in the OpenID Connect protocol (References: OIDC-CORE). Some information can be found from an unofficial document (References: OIDC-BASIC section "2.1.1.1 Request Parameters").
+
+### Logging
+
+Logging must enable the reconstruction of the course of the communication between TARA SSO and the client application for each occasion of using TARA SSO. For this purpose, all following requests and responses must be logged by TARA SSO as well as by the client application: authentication_request, authentication_redirect, token_request, session_update_request, session_update_redirect, logout_request, logout_redirect, backchannel_logout. As the volumes of data transferred are not large, the URL as well as the identity token must be logged in full. The retention periods of the logs should be determined based on the importance of the client application. We advise using 1 … 7 years. In case of any issue, please submit an excerpt from the log (Which requests were sent to TARA SSO? Which responses were received?). Correlation of TARA and TARA SSO logs will be done on TARA SSO service provider side.
+
+## TARA SSO endpoints
+
+| Endpoint   |    description       |
+|------------|----------------------|
+| server discovery |  Public endpoint for TARA SSO server OpenID Connect configuration information. Usually provided as standard endpoint for OIDC implementations that support service discovery. (References: OIDC-DISCOVERY "4.1 OpenID Provider Configuration Request"). |
+| public signature key of the service |  JSON Web Key Set document for TARA SSO service. Publishes at minimum the public key that client applications must use to validate id token and logout token signatures. (References: JWK). |
+| registration of the client application |  Dynamic registration is not supported, static registration via `help@ria.ee`. |
+| authorization |  OAuth 2.0 authorization endpoint. Used for TARA SSO session update requests and authentication requests. (References: OAUTH "3.1.  Authorization Endpoint"). |
+| token |  TARA SSO endpoint to obtain an Access Token, an ID Token (References: OIDC-CORE "3.1.3.  Token Endpoint"). Access tokens are returned for OAuth 2.0 compliance but their use in TARA SSO protocol is not required. |
+| logout |  TARA SSO client application initiated logout endpoint. (References: OIDC-SESSION "5. RP-Initiated Logout"). |
+
+## References
+
+1. [OIDC-CORE] OpenID Connect Core 1.0 - [https://openid.net/specs/openid-connect-core-1_0.html](https://openid.net/specs/openid-connect-core-1_0.html)
+2. [OIDC-SESSION] OpenID Connect Session - [https://openid.net/specs/openid-connect-session-1_0.html](https://openid.net/specs/openid-connect-session-1_0.html)
+3. [OIDC-BACK] OpenID Connect Back-Channel Logout - [https://openid.net/specs/openid-connect-backchannel-1_0.html](https://openid.net/specs/openid-connect-backchannel-1_0.html)
+4. [OAUTH] The OAuth 2.0 Authorization Framework - [https://tools.ietf.org/html/rfc6749](https://tools.ietf.org/html/rfc6749)
+5. [URI] Uniform Resource Identifier (URI): Generic Syntax - [https://tools.ietf.org/html/rfc3986](https://tools.ietf.org/html/rfc3986)
+6. [JWT] JSON Web Token - [https://tools.ietf.org/html/rfc7519](https://tools.ietf.org/html/rfc7519)
+7. [TARA] TARA technical documentation - [https://e-gov.github.io/TARA-Doku/TechnicalSpecification](https://e-gov.github.io/TARA-Doku/TechnicalSpecification)
+8. [URLENC] Percent-encoding - [https://en.wikipedia.org/wiki/Percent-encoding](https://en.wikipedia.org/wiki/Percent-encoding)
+9. [OIDC-BASIC] OpenID Connect Basic Client Implementer’s Guide 1.0 - [https://openid.net/specs/openid-connect-basic-1_0.html](https://openid.net/specs/openid-connect-basic-1_0.html)
+10. [OIDC-DISCOVERY] OpenID Connect Discovery - [https://openid.net/specs/openid-connect-discovery-1_0.html](https://openid.net/specs/openid-connect-discovery-1_0.html)
+11. [JWK] JSON Web Key - [https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41)
