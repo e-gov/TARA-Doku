@@ -214,7 +214,7 @@ OIDC logout tokens can be encrypted but TARA SSO logout tokens are not encrypted
 | iss | yes |  `"iss": "https://tara-sso-demo.eesti.ee/"` |  Issuer Identifier, as specified in ID token (Chapter ID Token "Identity token claims"). |
 | sub | no |  `"sub": "EE60001018800"` |   |
 | events | yes | `"events": {`<br> `"http://schemas.openid.net/event/backchannel-logout": {}`<br> `}`` |  Claim whose value is a JSON object containing the member name http://schemas.openid.net/event/backchannel-logout.` This declares that the JWT is a Logout Token. The corresponding member value MUST be a JSON object and SHOULD be the empty JSON object `{}`. |
-| aud | "aud":<br> [<br> "sso-client-1" <br>] <br><br> or<br><br> `"aud": "sso-client-1"` |  Audience(s), as specified in ID token (Chapter ID Token "Identity token claims"). |
+| aud | yes |  `"aud": [`<br> `"sso-client-1"` <br>`]` <br><br> or<br><br> `"aud": "sso-client-1"` | Audience(s), as specified in ID token (Chapter ID Token "Identity token claims"). |
 | iat | yes |  `"iat": 1591958452` |  Issued at time, as specified ID token (Chapter ID Token "Identity token claims"). |
 | jti | yes |  `"jti": "c0cfc91a-cdf5-4706-ad26-847b3a3fb937"` |  Unique identifier for the token, as specified in Section 9 of OIDC-CORE. |
 
