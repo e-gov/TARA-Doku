@@ -250,4 +250,31 @@ acr_values=substantial
 | client_id | yes |   |  Application identifier. The application identifier is issued to the institution by RIA upon registration of the client application as a user of the authentication service. |
 | redirect_uri | yes | `redirect_uri=https%3A%2F%2F eteenus.asutus.ee%2Ftagasi`  |  Redirect URL. The redirect URL is selected by the institution. The redirect URL may include the query component. URL encoding should be used, if necessary (References: URLENC).<br> It is not permitted (References: OAUTH "3.1.2. Redirection Endpoint") to use the URI fragment component (`#` and the following component; References: URI "3.5. Fragment").<br> The URL protocol, host, port and path must match one of the pre-registered redirect URLs of given client application registration metadata (see `client_id` parameter). |
 | scope | yes | `scope=openid` |  The authentication scope. Space delimited list of requested scopes.<br> `openid` scope is compulsory to signal that this is an OIDC authentication request.<br> In the default scope of openid TARA SSO will issue identity tokens with the following attributes:<br><br> `sub` (physical person identifier)<br> `given_name`<br> `family_name`<br> `date_of_birth`<br> `email`<br> `email_verified`<br><br> Presence of given attribute values will depend on the amount of information that is returned within TARA identity tokens. At this moment email is only available when authentication was performed with Estonian national id-card card type authentication device.<br> `email_verified` will always have a value of `false`. This is because TARA will not perform e-mail verification. |
+| state | yes |  `state=hkMVY7vjuN7xyLl5` |  Security code against false request attacks (cross-site request forgery, CSRF). Read more about formation and verification of state under 'Protection against false request attacks'. |
+| response_type | yes |  `response_type=code` |  Determines the manner of communication of the authentication result to the server. The method of authorization code is supported (authorization flow of the OpenID Connect protocol) and it is referred to the code value. |
+| ui_locales | no |  `ui_locales=et` |  Selection of the user interface language. The following languages are supported: `et`, `en`, `ru`. By default, the user interface is in Estonian language. The client can select the desired language. This will also set the GUI language for TARA service views. |
+| nonce | no |  `nonce=fsdsfwrerhtry3qeewq` |  A unique parameter which helps to prevent replay attacks based on the OIDC protocol (References, [Core], subsection 3.1.2.1. Authentication Request). The nonce parameter is not compulsory. |
+| acr_values | no |  `acr_values=substantial` |  The minimum required level of authentication based on the eIDAS LoA (level of assurance). It is permitted to apply one value of the following: `low`, `substantial`, `high`. `substantial` is used by default if the value has not been selected.<br><br> TARA SSO will store the authentication level of assurance (LoA) in the SSO session object as an Authentication Context Class Reference (`acr`) claim. The value is returned by TARA in the person identity token. Upon each TARA SSO authentication request, the server will check that the requested level of assurance (`acr_values` parameter value) is lower or equal to the `acr` claim value of the TARA SSO session. If the SSO session acr level of assurance is lower than requested, the previous TARA SSO session is automatically terminated and a new authentication is requested from TARA. After successful authentication a new SSO session is created. |
+| prompt | no |  `prompt=consent` |  Required parameter signalling TARA SSO that user consent should be asked before returning information to the client application. If TARA SSO cannot obtain consent, it will return an error, typically `consent_required`. |
+
+**Response**
+
+TARA SSO server will respond with a HTTP 302 Found message to redirect user agent back to client application URL.
+
+The user agent is redirected to the `redirect_uri` included in the authentication request sent by the client application. In the redirect request, an authorization code (`code` URL parameter) is appended to the `redirect_uri` by TARA SSO, based on which the client application will (by a separate request) request from TARA SSO the personal identification code, name, and other attributes of the authenticated person. Technically, a HTTP status code `302 Found` redirect request is used for redirecting.
+
+The state value will also be returned to the client application, making it possible to perform CSRF validation on client application side.
+
+**Example TARA SSO authentication redirect**
+
+````
+HTTP GET https://eteenus.asutus.ee/tagasi?
+ 
+code=71ed5797c3d957817d31&
+state=hkMVY7vjuN7xyLl5
+````
+(for better readability, the parts of the HTTP request are divided onto several lines)
+
+**Response parameters**
+
 
