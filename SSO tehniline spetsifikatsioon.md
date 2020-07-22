@@ -227,4 +227,27 @@ OIDC logout tokens can be encrypted but TARA SSO logout tokens are not encrypted
 An authentication request is a HTTP GET request by which the user is redirected from the client application to TARA SSO for authentication.
 
 **Example TARA SSO authentication request**
+````
+GET https://tara-sso-demo.eesti.ee/oauth2/auth?
+ 
+redirect_uri=https%3A%2F%2Feteenindus.asutus.ee%2FCallback&
+scope=openid&
+state=hkMVY7vjuN7xyLl5&|
+response_type=code&
+client_id=58e7ba35aab5b4f1671a&
+ui_locales=en&
+nonce=fsdsfwrerhtry3qeewq&
+prompt=consent&
+acr_values=substantial
+````
+(for better readability, the parts of the HTTP request are divided onto several lines)
+
+**Request parameters**
+
+| URL element   | compulsory       |    example        |     explanation       |
+|---------------|------------------|------------------ |-----------------------|
+| protocol, host, port and path | yes |  `https://tara-sso-demo.eesti.ee/oauth2/auth` |  `/oauth2/auth`<br> is the OpenID Connect-based authentication endpoint of the TARA SSO service (the concept of ‘authorization’ originates from the OAuth 2.0 standard protocol).<br> The URL is provided from OIDC server public discovery service: `https://tara-sso-demo.eesti.ee/.well-known/openid-configuration authorization_endpoint` parameter. |
+| client_id | yes |   |  Application identifier. The application identifier is issued to the institution by RIA upon registration of the client application as a user of the authentication service. |
+| redirect_uri | yes | `redirect_uri=https%3A%2F%2F eteenus.asutus.ee%2Ftagasi`  |  Redirect URL. The redirect URL is selected by the institution. The redirect URL may include the query component. URL encoding should be used, if necessary (References: URLENC).<br> It is not permitted (References: OAUTH "3.1.2. Redirection Endpoint") to use the URI fragment component (`#` and the following component; References: URI "3.5. Fragment").<br> The URL protocol, host, port and path must match one of the pre-registered redirect URLs of given client application registration metadata (see `client_id` parameter). |
+| scope | yes | `scope=openid` |  The authentication scope. Space delimited list of requested scopes.<br> `openid` scope is compulsory to signal that this is an OIDC authentication request.<br> In the default scope of openid TARA SSO will issue identity tokens with the following attributes:<br><br> `sub` (physical person identifier)<br> `given_name`<br> `family_name`<br> `date_of_birth`<br> `email`<br> `email_verified`<br><br> Presence of given attribute values will depend on the amount of information that is returned within TARA identity tokens. At this moment email is only available when authentication was performed with Estonian national id-card card type authentication device.<br> `email_verified` will always have a value of `false`. This is because TARA will not perform e-mail verification. |
 
