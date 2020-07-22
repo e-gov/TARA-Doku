@@ -266,7 +266,6 @@ The user agent is redirected to the `redirect_uri` included in the authenticatio
 The state value will also be returned to the client application, making it possible to perform CSRF validation on client application side.
 
 **Example TARA SSO authentication redirect**
-
 ````
 HTTP GET https://eteenus.asutus.ee/tagasi?
  
@@ -276,5 +275,61 @@ state=hkMVY7vjuN7xyLl5
 (for better readability, the parts of the HTTP request are divided onto several lines)
 
 **Response parameters**
+
+| Identity token element (claim)   | example           |     explanation       |
+|----------------------------------|------------------ |-----------------------|
+| protocol, host, port and path	 | `https://eteenus.asutus.ee/tagasi` |  Matches the `redirect_uri` value sent in the authentication request. |
+| code | `code=71ed579...` |  The authorization code is a single ‘permission note’ to receive the identity token. |
+| state | `state=hkMVY7vjuN7xyLl5` |  Security code against false request attacks. The security code received in the authentication request is mirrored back. Read more about forming and verifying `state` from ‘Protection against false request attacks’. |
+
+**Error response**
+
+If TARA SSO is unable to process an authentication request – there is an error in the request, TARA was unable to authenticate user or another error has occurred – TARA SSO transfers an error message (URL parameter `error`) and the description of the error (URL parameter `error_description`) in the redirect request.
+
+TARA relies on the OpenID Connect standard on error messages (References: OIDC-CORE "3.1.2.6. Authentication Error Response" and OAUTH "4.1.2.1. Error Response"). The error messages are always displayed in English.
+
+`state` is also returned but no authorization code (`code`) is sent.
+
+**Example TARA SSO authentication error**
+````
+HTTP GET https://eteenus.asutus.ee/tagasi?
+ 
+error=invalid_scope&
+error_description=Required+scope+%3Copenid%3E+not+provided.+TARA+SSO+does+not+allow+this+request+to+be+processed&
+state=hkMVY7vjuN7xyLl5
+````
+(for better readability, the parts of the HTTP request are divided onto several lines)
+
+**Authentication termination response**
+
+The user may also return to the e-service without choosing an authentication method and completing the authentication process (via ‘Back to the service provider’ link). This option is provided for the cases in which the user has clicked ‘Log in’ in the client application but does not actually wish to log in. In the application for subscribing to the service, the institution must notify RIA of the URL to which the user should be redirected in the case of clicking ‘Back to the service provider’. NB! The OpenID Connect protocol-based redirect URL and the URL described here have different meanings.
+
+### Identity token request
+
+**Request**
+
+The identity token request is a HTTP POST request which is used by the client application to request the identity token from the server of TARA SSO.
+
+**Example TARA SSO token request**
+````
+POST /oauth2/token HTTP/1.1
+Host: tara-sso-demo.eesti.ee
+Content-Type: application/x-www-form-urlencoded
+Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW
+ 
+grant_type=authorization_code&
+code=SplxlOBeZQQYbYS6WxSbIA&
+redirect_uri=https%3A%2F%2eteenus.asutus.ee%2Ftagasi
+````
+(for better readability, the body of the HTTP POST request is divided over several lines)
+
+The client secret code must be provided in the identity token request. For this purpose, the request must include the Authorization request header with the value formed of the word Basic, a space, and a string <client_id>:<client_secret> encoded in the Base64 format (see RFC 2617 HTTP Authentication: Basic and Digest Access Authentication, Section 2 Basic Authentication Scheme).
+
+The body of the HTTP POST request must be presented in a serialized format based on the OpenID Connect protocol.
+
+**Request parameters**
+
+
+
 
 
