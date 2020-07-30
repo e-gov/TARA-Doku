@@ -10,7 +10,7 @@ Siseriiklikest autentimismeetoditest pakume autentimist järgmiste vahenditega:
 
 - mobiil-ID (ainult Eesti isikukoodiga kasutajad)
 - ID-kaart
-- smart-ID (ainult Eesti isikukoodiga kasutajad)
+- smart-ID (ainult Eesti isikukoodiga kasutajad) *Palume pöörata e-teenuste osutajatel tähelepanu asjaolule, et Smart-IDga isiku tuvastamisel ei ole võimalik eristada Eesti residente mitte residentidest (näiteks nagu seda võimaldab e-residentide sertifikaat).*
 - pangalink (Swedbank, SEB, LHV, Coop, Luminor)
 
 Samuti pakume piiriülest autentimist Euroopa Liidu teavitatud eID vahenditega läbi eIDAS-Node taristu. Käesolevalt on TARAs toetatud järgmiste riikide teavitatud eID vahendid:
