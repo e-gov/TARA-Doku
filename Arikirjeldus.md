@@ -41,7 +41,7 @@ Riigi autentimisteenusega on liitunud 36 asutust 107 infosüsteemiga, sh Riigipo
 
 E-teenus liidestatakse autentimisteenusega OpenID Connect protokolli kohaselt. Vt lähemalt: [Tehniline kirjeldus](TehnilineKirjeldus).
 
-Soovi korral võib riigi autentimisteenusega liidesta asutuse oma autentimislahenduse, mis siis autentimist e seanssi asutuse e-teenustele edasi jagab. Selle kohta vt: [Autentimise e seansi edasiandmine](Feder).
+Soovi korral võib riigi autentimisteenusega liidesta asutuse oma autentimislahenduse, mis siis autentimist e seanssi asutuse e-teenustele edasi jagab. Selle kohta vt: [Autentimise e seansi edasiandmine](Feder). RIA on ühtlasi kavandamas riikliku SSO arendusi, mille analüüsiga saab tutvuda [siin](Riikliku SSO tehniline analüüs).
 
 ## Kuidas liituda?
 
