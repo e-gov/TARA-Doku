@@ -7,7 +7,7 @@ Mõned autentimismeetodid võivad olla veel arenduses või kasutatavad ainult te
 
 # Tehniline kirjeldus
 {: .no_toc}
-v 1.13, 26.06.2020
+v 1.14, 04.08.2020
 
 - TOC
 {:toc}
@@ -229,10 +229,10 @@ Autentimispäringu elemendid:
 | `state` | jah | `state=hkMVY7vjuN7xyLl5` | Võltspäringuründe (_cross-site request forgery_, CSRF) vastane turvakood. `state` moodustamise ja kontrollimise kohta vt lähemalt jaotis "Võltspäringuründe vastane kaitse". |
 | `response_type` | jah | `response_type=code` | Määrab autentimise tulemuse serverile edastamise viisi. Toetatud on volituskoodi viis (OpenID Connect protokolli _authorization flow_), selle tähiseks on väärtus `code`. |
 | `client_id` | jah | `client_id=58e7...` | Rakenduse identifikaator. Rakenduse identifikaatori annab RIA asutusele klientrakenduse registreerimisel autentimisteenuse kasutajaks. |
-| ~~`locale`~~ | ~~ei~~ | ~~`locale=et`~~ | ~~Kasutajaliidese keele valik. Toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida.~~ <br><br>Märkus. Parameetrit toetatakse kuni juuli 2019 lõpuni. |
-| `ui_locales` | ei | `ui_locales=et` | Kasutajaliidese keele valik. Toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida. Märkus. Parameetrit toetatakse alates jaan 2019 lõpust. |
+| ~~`locale`~~ | ~~ei~~ | ~~`locale=et`~~ | ~~Kasutajaliidese keele valik. Toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida.~~ <br><br>Märkus. Parameetrit toetatakse kuni juuli 2019 lõpuni (kasuta `ui_locales` parameetrit selle asemel). |
+| `ui_locales` | ei | `ui_locales=et` | Kasutajaliidese keele valik. Toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida. |
 | `nonce` | ei | `fsdsfwrerhtry3qeewq` | Taasesitusründeid vältida aitav unikaalne parameeter, vastavalt protokollile ([Viited](Viited), [Core], jaotis 3.1.2.1. Authentication Request). Parameeter `nonce` ei ole kohustuslik. |
-| `acr_values` | ei | `acr_values=substantial` | Piiriüleselt autentimisvahendilt nõutav minimaalne eIDAS autentimistase<sup>1 </sup>.<br><br>Parameeter rakendub ainult  piiriülese autentimise korral. Teiste autentimismeetodite korral parameetrit ignoreeritakse. Lubatud on määrata üks väärtus järgmisest loetelust: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Kui määramata, siis vaikimisi `substantial` (märkimisväärne). <br><br>Parameetri kasutamisel kontrollida TARA-lt saadud identsustõendis `acr` väite vastavust nõutud minimaalsele tasemele (vt jaotis 5.1 Identsustõendi kontrollimine).<br><br><sup>1 </sup>Autentimistase on e-identimissüsteemile määratud usaldusväärsuse tase, millest on teisi liikmesriike teavitatud, vastavalt eIDAS määruse [nõuetele](https://eur-lex.europa.eu/legal-content/ET/TXT/HTML/?uri=CELEX:32015R1502&from=EN) (loe autentimistasemete kohta rohkem [siit](https://www.ria.ee/sites/default/files/content-editors/EID/eidas-autentimistasemed.pdf)).  |
+| `acr_values` | ei | `acr_values=high` | Nõutav minimaalne eIDAS autentimistase isikutuvastuseks kasutatavale autentimismeetodile (loe rohkem jaotisest "eIDAS autentimistasemed"). Lubatud on määrata üks väärtus järgmisest loetelust: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Kui määramata, siis vaikimisi `substantial` (märkimisväärne). <br><br>Kui `acr_values` väärtus on määratud, kuvab TARA kasutajale ainult autentimismeetodid, mille tase on sama või kõrgem kui `acr_values` väärtus. Piiriüleste autentimisvahendite korral edastatakse nõue välisriigi eIDAS autentimisteenusele. <br><br>TARA-lt saadud identsustõendis tuleb `acr` väite vastavust kontrollida nõutud minimaalsele tasemele (vt jaotis 5.1 Identsustõendi kontrollimine). |
 
 #### 4.1.1 Atribuutide küsimine välismaalase kohta
 
@@ -254,9 +254,25 @@ Väite `email` väärtus loetakse kasutaja autentimissertifikaadi SAN laiendist 
 
 Väite `email_verified` väärtus on alati `false`. See tähendab, et TARA ei kontrolli ega väljasta teavet, kas kasutaja on oma eesti.ee e-postiaadressi suunanud või mitte. (Vastav funktsionaalsus võib lisanduda tulevikus).
 
-#### 4.1.3 Autentimismeetodite valikuline kasutus
+#### 4.1.3 Mobiilinumbri küsimine
 
-Vaikimisi kuvatakse kasutajale kõik toetatud autentimismeetodid. Soovi korral on kuvatavaid autentimisvalikuid võimalik juhtida `scope` parameetri väärtuste abil. Sobivaid autentimismeetodeid on võimalik kombineerida, koostades loetelu soovitud autentimismeetoditest (lubatud väärtuste nimekiri on toodud tabelis 1).
+Skoobiga `phone` saab nõuda, et Mobiil-ID'ga autentimisel väljastatakse identsustõendis kasutaja telefoninumber. See võimalus on suunatud asutustele, kes kasutavad Mobiil-ID allkirjastamist, mis nõuab sisendina ka kasutaja telefoninumbrit. Skoop `phone` tuleb lisada põhiskoobile `openid`. Identsustõendis väljastatakse väited (_claims_) `phone_number` ja `phone_number_verified`. Näiteks:
+
+```
+"sub": "EE60001019906",
+"phone_number": "+37200000766",
+"phone_number_verified": true
+```
+
+Väite `phone_number` väärtus on E.164 formaadis telefoninumber koos riikliku suunakoodiga.
+
+Väite `phone_number_verified` väärtus on alati `true`. See tähendab, et `phone_number` väites väljastatud telefoninumbri kuulumine autenditud isikule on autentimisprotsessi käigus kontrollitud.
+
+Väited `phone_number` ja `phone_number_verified` väljastatakse ainult juhul, kui kasutaja autentimiseks kasutatakse Mobiil-ID'd.
+
+#### 4.1.4 Autentimismeetodite valikuline kasutus
+
+Vaikimisi kuvatakse kasutajale kõik toetatud ja eIDAS autentimistaseme poolt lubatud autentimismeetodid. Soovi korral on kuvatavaid autentimisvalikuid võimalik juhtida `scope` parameetri väärtuste abil. Sobivaid autentimismeetodeid on võimalik kombineerida, koostades loetelu soovitud autentimismeetoditest (lubatud väärtuste nimekiri on toodud tabelis 1).
 
 Autentimismeetodite valikulise kasutuse korral on täiendava turvameetmena vajalik identsustõendis `amr` väite kontroll (loe ka jaotis 5.1 Identsustõendi kontrollimine).
 
@@ -297,7 +313,6 @@ HTTP GET https://eteenus.asutus.ee/tagasi?
 code=71ed5797c3d957817d31&
 state=OFfVLKu0kNbJ2EZk
 ````
-
 
 Tagasisuunamispäringu elemendid:
 
@@ -429,7 +444,8 @@ Identsustõendis väljastatakse järgmised väited (_claims_).
 | `at_hash` | `X0MVjwrmMQs/IBzfU2osvw==` - pääsutõendi räsi. TARA-s ei kasutata |
 | `email` | `60001019906@eesti.ee` - kasutaja e-postiaadress. Väljastatakse ainult  Eesti ID-kaardiga kasutaja autentimisel. Loetakse kasutaja autentimissertifikaadi SAN laiendist (RFC822 tüüpi `Subject Alternative Name` väljast) |
 | `email_verified` | `false` - tähendab, et e-postiaadressi kuulumine kasutajale on tuvastatud. TARA väljastab alati väärtuse `false`. See tähendab, et TARA ei kontrolli ega väljasta teavet, kas kasutaja on oma eesti.ee e-postiaadressi suunanud või mitte. |
-
+| `phone_number`| `+37200000766` - kasutaja telefoninumber. Väljastatakse ainult  Eesti Mobiil-ID'ga kasutaja autentimisel. Telefoninumber esitatakse E.164 formaadis koos riikliku suunakoodiga. | 
+| `phone_number_verified` | `true` - tähendab, et telefoninumbri kuulumine kasutajale on tuvastatud. TARA väljastab alati väärtuse `true`. |
 
 Identsustõend võib sisaldada muid OpenID Connect protokolli kohaseid välju, kuid neid teenuses ei kasutata. 
 
@@ -483,6 +499,8 @@ Vastuses esitatavad väited väljastatakse identsustõendi alusel.
 | `date_of_birth` |  ei <sup>1</sup> | Vormingult ja tähenduselt sama, mis `profile_attributes.date_of_birth` identsustõendis |
 | `email` | ei  <sup>1</sup> | Vormingult ja tähenduselt sama, mis `email` identsustõendis |
 | `email_verified` | ei  <sup>1</sup> | Vormingult ja tähenduselt sama, mis `email_verified` identsustõendis |
+| `phone_number` | ei  <sup>1</sup> | Vormingult ja tähenduselt sama, mis `phone_number` identsustõendis |
+| `phone_number_verified` | ei  <sup>1</sup> | Vormingult ja tähenduselt sama, mis `phone_number_verified` identsustõendis |
 | `acr` | ei  <sup>1</sup> | Vormingult ja tähenduselt sama, mis `acr` identsustõendis |
 
  <sup>1</sup> Väljastatakse ainult juhul, kui antud väide on esitatud ka identsustõendis.
@@ -619,7 +637,26 @@ Soovi korral võite veel tutvuda ründe (ja kaitse) detailse seletusega: [Võlts
 
 Logimine peab võimaldama rekonstrueerida TARA ja klientrakenduse suhtluse käigu TARA iga kasutuse jaoks. Selleks tuleb nii TARA kui ka klientrakenduse poolel logida kõik päringud ja päringute vastused: [autentimispäring](#41-autentimisp%C3%A4ring), [tagasisuunamispäring](#42-tagasisuunamisp%C3%A4ring) ja [identsustõendipäring](#43-identsust%C3%B5endip%C3%A4ring). Kuna edastatavad andmemahud ei ole suured, siis tuleb logida nii URL kui ka identsustõend täielikul kujul. Logide säilitamistähtaja määramisel arvestada klientrakenduse olulisust. Orientiiriks pakume 1..7 aastat. Probleemide lahendamiseks pöördumisel palume esitada väljavõte logist (mis päringud TARA poole saadeti? mis saadi vastuseks?).
 
-## 6 Otspunktid ja aegumisajad
+## 6 eIDAS autentimistasemed
+
+eIDAS autentimistase on [eIDAS määruse](https://eur-lex.europa.eu/legal-content/ET/TXT/HTML/?uri=CELEX:32014R0910&from=EN) kohaselt autentimisvahendile määratud usaldusväärtuse tase (kõrge, märkimisväärne, madal), mis on määratud rakendusmääruse [(EL) 2015/1502](https://eur-lex.europa.eu/legal-content/ET/TXT/HTML/?uri=CELEX:32015R1502&from=EN) sätete alusel. Taseme määramisel hinnatakse autentimisvahendi kasutuse erinevaid aspekte - identiteedi väljastamise alused, lahenduse haldus, tehniline lahendus ja organisatoorsed protsessid (loe rohkem [siit](https://www.ria.ee/sites/default/files/content-editors/EID/eidas-autentimistasemed.pdf)). 
+
+TARA-s kasutatavate siseriiklike autentimisvahendite autentimistasemed kinnitab RIA. Autentimistaseme määramisel tuginetakse eIDAS rakendusmääruses toodud autentimistasemete nõuetele. 
+
+Siseriiklikele autentimismeetoditele on TARA-s määratud järgmised autentimistasemed: 
+
+| Autentimismeetod | Autentimistase | 
+|---------------|-------------|
+| ID-kaart | [kõrge](https://ec.europa.eu/cefdigital/wiki/pages/viewpage.action?pageId=65972776) | 
+| Mobiil-ID | [kõrge](https://ec.europa.eu/cefdigital/wiki/pages/viewpage.action?pageId=65972776) | 
+| Pangalingid | madal |
+| Smart-ID | [kõrge](https://www.ria.ee/sites/default/files/smart-id_tagatistaseme_kirjeldus_abiv.pdf) <sup>1</sup> |
+
+<sup>1</sup>NB! Tase kehtib vaid Eesti isikukoodiga isikutele, kellele on väljastatud Smart-Id. Tuleb arvestada, et mitteresidendid (Eesti e-residendid) pole eristatavad.
+
+Välisriigi autentimismeetodite autentimitased on määratakse vastava välisriigi enda poolt ja esitatakse teavitatakse sellest ülejäänud liikmesriike vastavalt [eIDAS määruse](https://eur-lex.europa.eu/legal-content/ET/TXT/HTML/?uri=CELEX:32015R1502&from=EN) nõuetele. Nimekirja kõigist ülepiiriliselt kasutatavatest autentimismeetoditest, millest riigid on teisi liikmesriike teavitanud, leiab [siit](https://ec.europa.eu/cefdigital/wiki/display/EIDCOMMUNITY/Overview+of+pre-notified+and+notified+eID+schemes+under+eIDAS). 
+
+## 7 Otspunktid ja aegumisajad
 
 Testteenus
 
@@ -651,7 +688,7 @@ Aegumisajad (_timeout_)
 | identsustõendi (ja OAuth juurdepääsutõendi (_access token_)) aegumisaeg | 10 min | Identsustõendis on märgitud tõendi aegumise aeg. Turvalisuse kaalutlustel on tõendi kehtivuse periood seatud lühikeseks (10 min). Klientrakendus ei tohi aegunud tõendit kasutada. Märgime, et identsustõend üldjuhul ei sobi klientrakenduse ja kasutaja vahelise seansi tõendiks. Kui klientrakendus soovib veebitõendi (JWT) vormingus seansitõendit kasutada, siis peaks ta looma identsustõendi alusel uue tõendi. |
 
 
-## 7 Soovitusi liidestajale
+## 8 Soovitusi liidestajale
 
 TARA-ga liidestamine on lihtne. Siiski on vaja töid kavandada ja hoolikalt teostada.
 
@@ -695,7 +732,8 @@ RIA, rahuldades taotluse, väljastab asutusele klientrakenduse toodanguversiooni
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
-| 1.13, 26.06.2020   | Täiendatud kasutajapoolset autentmise katkestamise käsitlust. Lisandus veakood `user_cancel`.  |
+| 1.14, 04.08.2020   | Lisandus valikuline skoop `phone`. Täiendatud `acr_values` parameetri käsitlust. |
+| 1.13, 26.06.2020   | Täiendatud kasutajapoolset autentimise katkestamise käsitlust. Lisandus veakood `user_cancel`.  |
 | 1.12, 27.04.2020   | Parandus ja täpsustus võltspäringuründe vastase kaitse kirjelduses. |
 | 1.11, 29.01.2020   | Täpsustatud piiriülese autentimise kirjeldust. |
 | 1.10, 16.01.2020   | Täpsustatud identsustõendi vormingu kirjeldust. |
