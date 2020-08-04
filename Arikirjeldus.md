@@ -35,7 +35,7 @@ Valitsussektori asutustele, kes soovivad:
 
 ## Kes Riigi autentimisteenust kasutavad?
 
-Riigi autentimisteenusega on liitunud 32 asutust 88 infosüsteemiga, sh riigiportaal eesti.ee, e-maksuamet/e-toll (e-MTA), Haridusportaal, RIHA, ePRIA, Ehitisregister, Rahvastikuregister, eToetus, eSTAT, TAKIS, EIS, SKAIS jt.
+Riigi autentimisteenusega on liitunud 36 asutust 107 infosüsteemiga, sh Riigiportaal eesti.ee, e-Maksuamet/e-Toll (e-MTA), Haridusportaal edu.ee, RIHA, ePRIA, Ehitisregister, Rahvastikuregister, Teeregister, e-Töötukassa, eToetus, SKAIS, Riiklik patsiendiportaal, EIS, ETIS jt.
 
 ## Tehnilised tingimused?
 
