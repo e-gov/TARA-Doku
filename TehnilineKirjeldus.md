@@ -636,27 +636,8 @@ Soovi korral võite veel tutvuda ründe (ja kaitse) detailse seletusega: [Võlts
 ### 5.3 Logimine
 
 Logimine peab võimaldama rekonstrueerida TARA ja klientrakenduse suhtluse käigu TARA iga kasutuse jaoks. Selleks tuleb nii TARA kui ka klientrakenduse poolel logida kõik päringud ja päringute vastused: [autentimispäring](#41-autentimisp%C3%A4ring), [tagasisuunamispäring](#42-tagasisuunamisp%C3%A4ring) ja [identsustõendipäring](#43-identsust%C3%B5endip%C3%A4ring). Kuna edastatavad andmemahud ei ole suured, siis tuleb logida nii URL kui ka identsustõend täielikul kujul. Logide säilitamistähtaja määramisel arvestada klientrakenduse olulisust. Orientiiriks pakume 1..7 aastat. Probleemide lahendamiseks pöördumisel palume esitada väljavõte logist (mis päringud TARA poole saadeti? mis saadi vastuseks?).
-
-## 6 eIDAS autentimistasemed
-
-eIDAS autentimistase on [eIDAS määruse](https://eur-lex.europa.eu/legal-content/ET/TXT/HTML/?uri=CELEX:32014R0910&from=EN) kohaselt autentimisvahendile määratud usaldusväärtuse tase (kõrge, märkimisväärne, madal), mis on määratud rakendusmääruse [(EL) 2015/1502](https://eur-lex.europa.eu/legal-content/ET/TXT/HTML/?uri=CELEX:32015R1502&from=EN) sätete alusel. Taseme määramisel hinnatakse autentimisvahendi kasutuse erinevaid aspekte - identiteedi väljastamise alused, lahenduse haldus, tehniline lahendus ja organisatoorsed protsessid (loe rohkem [siit](https://www.ria.ee/sites/default/files/content-editors/EID/eidas-autentimistasemed.pdf)). 
-
-TARA-s kasutatavate siseriiklike autentimisvahendite autentimistasemed kinnitab RIA. Autentimistaseme määramisel tuginetakse eIDAS rakendusmääruses toodud autentimistasemete nõuetele. 
-
-Siseriiklikele autentimismeetoditele on TARA-s määratud järgmised autentimistasemed: 
-
-| Autentimismeetod | Autentimistase | 
-|---------------|-------------|
-| ID-kaart | [kõrge](https://ec.europa.eu/cefdigital/wiki/pages/viewpage.action?pageId=65972776) | 
-| Mobiil-ID | [kõrge](https://ec.europa.eu/cefdigital/wiki/pages/viewpage.action?pageId=65972776) | 
-| Pangalingid | madal |
-| Smart-ID | [kõrge](https://www.ria.ee/sites/default/files/smart-id_tagatistaseme_kirjeldus_abiv.pdf) <sup>1</sup> |
-
-<sup>1</sup>NB! Tase kehtib vaid Eesti isikukoodiga isikutele, kellele on väljastatud Smart-Id. Tuleb arvestada, et mitteresidendid (Eesti e-residendid) pole eristatavad.
-
-Välisriigi autentimismeetodite autentimitased on määratakse vastava välisriigi enda poolt ja esitatakse teavitatakse sellest ülejäänud liikmesriike vastavalt [eIDAS määruse](https://eur-lex.europa.eu/legal-content/ET/TXT/HTML/?uri=CELEX:32015R1502&from=EN) nõuetele. Nimekirja kõigist ülepiiriliselt kasutatavatest autentimismeetoditest, millest riigid on teisi liikmesriike teavitanud, leiab [siit](https://ec.europa.eu/cefdigital/wiki/display/EIDCOMMUNITY/Overview+of+pre-notified+and+notified+eID+schemes+under+eIDAS). 
-
-## 7 Otspunktid ja aegumisajad
+ 
+## 6 Otspunktid ja aegumisajad
 
 Testteenus
 
@@ -688,7 +669,7 @@ Aegumisajad (_timeout_)
 | identsustõendi (ja OAuth juurdepääsutõendi (_access token_)) aegumisaeg | 10 min | Identsustõendis on märgitud tõendi aegumise aeg. Turvalisuse kaalutlustel on tõendi kehtivuse periood seatud lühikeseks (10 min). Klientrakendus ei tohi aegunud tõendit kasutada. Märgime, et identsustõend üldjuhul ei sobi klientrakenduse ja kasutaja vahelise seansi tõendiks. Kui klientrakendus soovib veebitõendi (JWT) vormingus seansitõendit kasutada, siis peaks ta looma identsustõendi alusel uue tõendi. |
 
 
-## 8 Soovitusi liidestajale
+## 7 Soovitusi liidestajale
 
 TARA-ga liidestamine on lihtne. Siiski on vaja töid kavandada ja hoolikalt teostada.
 
@@ -696,7 +677,7 @@ Liidestuja peab erilist tähelepanu pöörama, et kõik protokollikohased kontro
 
 Liidestamise protsess näeb välja järgmine.
 
-Asutus peaks välja selgitama, kas ja millistes oma e-teenustes soovib TARA kasutada. Selleks tuleks tutvuda TARA [ärikirjeldusega](Arikirjeldus), teenustaseme leppega (SLA-ga), käesoleva [tehnilise kirjeldusega](TehnilineKirjeldus). Võib heita pilgu teenuse [teekaardile](Teekaart). Vajadusel pidada nõu RIA-ga, `help@ria.ee`.
+Asutus peaks välja selgitama, kas ja millistes oma e-teenustes soovib TARA kasutada. Selleks tuleks tutvuda TARA [ärikirjeldusega](Arikirjeldus), teenustaseme leppega (SLA-ga), käesoleva [tehnilise kirjeldusega](TehnilineKirjeldus). Vajadusel pidada nõu RIA-ga, `help@ria.ee`.
 
 Seejärel kavandada ja teostada teenuse kasutamiseks vajalik arendustöö - klientrakenduse täiendamine OpenID Connect protokolli kohase klientkomponendiga, sh testimine. Hinnanguline töömaht: kogenud arendajal u 2 päeva; kui OpenID Connect-i pole varem teinud, siis 2 nädalat. Aluseks käesolev [tehniline kirjeldus](TehnilineKirjeldus)
 
@@ -728,11 +709,30 @@ Liitumine TARA toodanguteenusega. Eduka testimise järel asutus esitab taotluse 
 
 RIA, rahuldades taotluse, väljastab asutusele klientrakenduse toodanguversiooni salasõna `client_secret` ja avab asutuse klientrakenduse toodanguversioonile juurdepääsu toodanguteenusele.
 
+## 8 eIDAS autentimistasemed
+
+eIDAS autentimistase on [eIDAS määruse](https://eur-lex.europa.eu/legal-content/ET/TXT/HTML/?uri=CELEX:32014R0910&from=EN) kohaselt autentimisvahendile määratud usaldusväärtuse tase (kõrge, märkimisväärne, madal), mis on määratud rakendusmääruse [(EL) 2015/1502](https://eur-lex.europa.eu/legal-content/ET/TXT/HTML/?uri=CELEX:32015R1502&from=EN) sätete alusel. Taseme määramisel hinnatakse autentimisvahendi kasutuse erinevaid aspekte - identiteedi väljastamise alused, lahenduse haldus, tehniline lahendus ja organisatoorsed protsessid (loe rohkem [siit](https://www.ria.ee/sites/default/files/content-editors/EID/eidas-autentimistasemed.pdf)). 
+
+TARA-s kasutatavate siseriiklike autentimisvahendite autentimistasemed kinnitab RIA. Autentimistaseme määramisel tuginetakse eIDAS rakendusmääruses toodud autentimistasemete nõuetele. 
+
+Siseriiklikele autentimismeetoditele on TARA-s määratud järgmised autentimistasemed: 
+
+| Autentimismeetod | Autentimistase | 
+|---------------|-------------|
+| ID-kaart | [kõrge](https://ec.europa.eu/cefdigital/wiki/pages/viewpage.action?pageId=65972776) | 
+| Mobiil-ID | [kõrge](https://ec.europa.eu/cefdigital/wiki/pages/viewpage.action?pageId=65972776) | 
+| Pangalingid | madal |
+| Smart-ID | [kõrge](https://www.ria.ee/sites/default/files/smart-id_tagatistaseme_kirjeldus_abiv.pdf) <sup>1</sup> |
+
+<sup>1</sup>NB! Tase kehtib vaid Eesti isikukoodiga isikutele, kellele on väljastatud Smart-Id. Tuleb arvestada, et mitteresidendid (Eesti e-residendid) pole eristatavad.
+
+Välisriigi autentimismeetodite autentimitased on määratakse vastava välisriigi enda poolt ja esitatakse teavitatakse sellest ülejäänud liikmesriike vastavalt [eIDAS määruse](https://eur-lex.europa.eu/legal-content/ET/TXT/HTML/?uri=CELEX:32015R1502&from=EN) nõuetele. Nimekirja kõigist ülepiiriliselt kasutatavatest autentimismeetoditest, millest riigid on teisi liikmesriike teavitanud, leiab [siit](https://ec.europa.eu/cefdigital/wiki/display/EIDCOMMUNITY/Overview+of+pre-notified+and+notified+eID+schemes+under+eIDAS).
+
 ## Muutelugu
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
-| 1.14, 04.08.2020   | Lisandus valikuline skoop `phone`. Täiendatud `acr_values` parameetri käsitlust. |
+| 1.14, 04.08.2020   | Lisandus valikuline skoop `phone`. Täiendatud `acr_values` parameetri ja autentimistasemete käsitlust. |
 | 1.13, 26.06.2020   | Täiendatud kasutajapoolset autentimise katkestamise käsitlust. Lisandus veakood `user_cancel`.  |
 | 1.12, 27.04.2020   | Parandus ja täpsustus võltspäringuründe vastase kaitse kirjelduses. |
 | 1.11, 29.01.2020   | Täpsustatud piiriülese autentimise kirjeldust. |
