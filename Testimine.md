@@ -24,8 +24,7 @@ Päringute katsetamiseks ja silumiseks saab: <br>
 - autentimispäringut teha sirvikust
 - identsustõendi päringut teha töövahendiga cURL (vt jaotis "Näidispäringud (testimiseks)").
 
-Mobiil-ID ja ID-kaardiga autentimisel tuleb lähtuda juhendist: [https://www.id.ee/artikkel/teenuste-testimine/](https://www.id.ee/artikkel/teenuste-testimine/), vt jaotist "Testimine testnumbrite ja ID-kaardiga".
-
+Mobiil-ID ja ID-kaardiga autentimisel tuleb lähtuda juhendist: [https://www.id.ee/artikkel/teenuste-testimine/](https://www.id.ee/artikkel/teenuste-testimine/).
 
 | Testsamm      | Oodatav tulemus|
 | ------------- |:-------------:|
