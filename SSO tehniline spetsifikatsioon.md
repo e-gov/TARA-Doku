@@ -7,7 +7,7 @@ permalink: SSO tehniline spetsifikatsioon
 Analüüsi käigus koostati TARA SSO OpenID Connect profiili tehniline spetsifikatsioon. Spetsifikatsioon kirjeldab päringute struktuuri ja kohustuslikud päringu kontrolli reeglid.
 Ühtlasi tuuakse välja TARA SSO spetsiifilised protokolli täiendused.
 
-<p style='text-align:left;'><img src='img/EL_logo.jpg' style='width:250px'></p>
+<p style='text-align:left;'><img src='img/sf_logo.png' style='width:250px'></p>
 
 - TOC
 {:toc}
