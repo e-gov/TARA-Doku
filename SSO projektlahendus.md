@@ -4,7 +4,7 @@ permalink: SSO projektlahendus
 
 # Ühekordse sisselogimise (SSO) projektlahendus
 
-<p style='text-align:left;'><img src='img/EL_logo.jpg' style='width:250px'></p>
+<p style='text-align:left;'><img src='img/sf_logo.jpg' style='width:250px'></p>
 
 - TOC
 {:toc}
