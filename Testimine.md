@@ -5,7 +5,7 @@ permalink: Testimine
 # Testimine
 {: .no_toc}
 
-TARA testkeskkond asub aadressil: [https://tara-test.ria.ee/](https://tara-test.ria.ee/). TARA testkeskkond on liidestatud vastu test-OCSP ja test-DigiDocService teenust.
+TARA testkeskkond asub aadressil: [https://tara-test.ria.ee/](https://tara-test.ria.ee/). TARA testkeskkond on liidestatud vastu OCSP ja Mobiil-ID (mID) API testteenust.
 {: .note}
 
 - TOC
@@ -28,7 +28,7 @@ Mobiil-ID ja ID-kaardiga autentimisel tuleb lähtuda juhendist: [https://www.id.
 
 | Testsamm      | Oodatav tulemus|
 | ------------- |:-------------:|
-| 1. Tee autentimispäring (HTTP GET päring) otspunkti `https://tara-test.ria.ee/oidc/authorize` vastu | Sirvikus avaneb TARA testkeskkonna sisselogimise lehekülg |     
+| 1. Tee autentimispäring (HTTP GET päring) otspunkti `https://tara-test.ria.ee/oidc/authorize` vastu | Sirvikus avaneb TARA testkeskkonna sisselogimise lehekülg | 
 | 2. Alusta autentimist m-ID-ga. Kasuta selleks test-mobiilinumbreid või enda üles laaditud mobiiliandmeid | Autentimine viiakse läbi ja sirvik suunatakse liitumistaotluses väljatoodud tagasisuunamisaadressile (*redirect* URL-ile). Päringuga antakse kaasa väärtustatud *code* parameeter |
 | 3. Moodusta identsustõendipäring (HTTP POST päring) otspunkti `https://tara-test.ria.ee/oidc/token` vastu | Päringule tagastatakse Base64 kodeeritud identsustõend |
 
@@ -63,9 +63,9 @@ curl \
 
 ### ID-kaart ja Mobiil-ID
 
-TARA testkeskkond on suunatud vastu test-OCSP ja test-DigiDocService teenust. See tähendab, et TARAs tuleb autentimise läbiviimiseks rakendada testnumbreid ja test ID-kaarte või teha oma Mobiil-ID ja/või ID-kaardi sertifikaadid kättesaadavaks testteenuse andmebaasis. Lähemalt võimalustest:
+TARA testkeskkond on suunatud vastu OCSP ja Mobiil-ID (mID) API testteenust. See tähendab, et TARAs tuleb autentimise läbiviimiseks rakendada testnumbreid ja test ID-kaarte või teha oma Mobiil-ID ja/või ID-kaardi sertifikaadid kättesaadavaks testteenuse andmebaasis. Lähemalt võimalustest:
 
-1. Testnumbrid on kättesaadavad siit: [https://github.com/SK-EID/dds-documentation/wiki/Test-number-for-automated-testing-in-DEMO](https://github.com/SK-EID/dds-documentation/wiki/Test-number-for-automated-testing-in-DEMO). Rakendada ainult Eesti (EE) testnumbreid ja isikukoode.
+1. Testnumbrid on kättesaadavad siit: [https://github.com/SK-EID/MID/wiki/Test-number-for-automated-testing-in-DEMO](https://github.com/SK-EID/MID/wiki/Test-number-for-automated-testing-in-DEMO). Rakendada ainult Eesti (EE) testnumbreid ja isikukoode.
 
 2. Test ID-kaardi peab tellima SK-lt: [https://www.sk.ee/teenused/testkaardid/](https://www.sk.ee/teenused/testkaardid/). Juhul kui on võimalus enda ID-kaarti kasutada, ei ole test-kaardi tellimine vajalik.
 
@@ -105,6 +105,7 @@ Nõu küsimiseks ja võimaliku TARA vea raporteerimiseks palume pöörduda meili
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
+| 0.4, 11.09.2020   | Mobiil-ID info update |
 | 0.3, 05.09.2018   | Norra testandmed |
 | 0.2, 28.06.2018   | Pangalinkide ja Smart-ID info |
 | 0.1, 15.05.2018   | Esimene versioon |
