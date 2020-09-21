@@ -108,7 +108,7 @@ Jah, TARA kasutamiseks peab olema küpsiste salvestamine lubatud. Vastasel juhul
 
 ## Mida tähendab sõna "TARA"?
 
-Vt: Joh. V. Veski, [Sõna "tara" tähenduse asjus](https://dea.digar.ee/cgi-bin/dea?a=d&d=uuseesti19361028.2.57), "Uus Eesti", 1936 (Rahvusarhiivi Digar-kogu)
+Vt: Joh. V. Veski, [Sõna "tara" tähenduse asjus](https://dea.digar.ee/cgi-bin/dea?a=d&d=uuseesti19361028.2.57), "Uus Eesti", 1936 (Rahvusraamatukogu DIGARi Eesti artiklid)
 
 <p>&nbsp;</p>
 
