@@ -7,7 +7,7 @@ Mõned autentimismeetodid võivad olla veel arenduses või kasutatavad ainult te
 
 # Tehniline kirjeldus
 {: .no_toc}
-v 1.14, 04.08.2020
+v 1.15, 01.10.2020
 
 - TOC
 {:toc}
@@ -431,7 +431,7 @@ Identsustõendis väljastatakse järgmised väited (_claims_).
 | `exp` (_Expires_) | `1530295852` - tõendi aegumisaeg, Unix _epoch_ vormingus |
 | `iat` (_Issued At_) | `1530267052` - tõendi väljaandmisaeg, Unix _epoch_ vormingus |
 | `nbf` (_Not Before_)   | `1530266752` - tõendi kehtivuse algusaeg, Unix _epoch_ vormingus |
-| `sub` (_Subject_)      | `EE60001019906` - autenditud kasutaja identifikaator (isikukood või eIDAS identifikaator) koos kodaniku riigikoodi eesliitega (riigikoodid vastavalt ISO 3166-1 alpha-2 standardile) |
+| `sub` (_Subject_)      | `EE60001019906` - autenditud kasutaja identifikaator (isikukood või eIDAS identifikaator) koos kodaniku riigikoodi eesliitega (riigikoodid vastavalt ISO 3166-1 alpha-2 standardile). NB! eIDAS identifikaator võib olla maksimaalselt kuni 256 tähemärki. |
 | `profile_attributes`   | autenditud isikut kirjeldavad andmed |
 | `profile_attributes`<br>`.date_of_birth` | `2000-01-01` - autenditud kasutaja sünnikuupäev ISO_8601 formaadis. Tagastatakse ainult Eesti isikukoodiga isikute puhul ning eIDAS autentimisel |
 | `profile_attributes`<br>`.given_name` | `MARY ÄNN` - autenditud kasutaja eesnimi (testnimi, valitud täpitähtede sisalduvuse pärast) |
@@ -732,6 +732,7 @@ Välisriigi autentimismeetodite autentimitased on määratakse vastava välisrii
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
+| 1.15, 01.10.2020   | `sub` väite täpsustus - eidas identifikaatori pikkusepiirang. |
 | 1.14, 04.08.2020   | Lisandus valikuline skoop `phone`. Täiendatud `acr_values` parameetri ja autentimistasemete käsitlust. |
 | 1.13, 26.06.2020   | Täiendatud kasutajapoolset autentimise katkestamise käsitlust. Lisandus veakood `user_cancel`.  |
 | 1.12, 27.04.2020   | Parandus ja täpsustus võltspäringuründe vastase kaitse kirjelduses. |
