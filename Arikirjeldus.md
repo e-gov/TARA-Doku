@@ -24,8 +24,11 @@ Samuti pakume piiriülest autentimist Euroopa Liidu teavitatud eID vahenditega l
 - Portugal: Portuguese national identity card (eID card); Digital Mobile Key
 - Läti: eID karte; eParaksts karte; eParaksts karte+; eParaksts
 - Leedu: Lithuanian National Identity card (eID / ATK)
+- Holland: eHerkenning; DigiD Substantieel; DigiD Hoog
+- Tšehhi: CZ eID card
+- Slovakkia: Slovak Citizen eCard; Foreigner eCard
 
-Eesti riiklike ja piiriüleselt tunnustatud eID vahenditega (ID-kaart, mobiil-ID) on tagatud juurdepääs järgmiste Euroopa Liidu riikide e-teenustele: Austria, Belgia, Hispaania, Holland, Horvaatia, Itaalia, Kreeka, Leedu, Luksemburg, Läti, Malta, Norra, Poola, Portugal, Rootsi, Slovakkia, Sloveenia, Soome, Suurbritannia, Taani.
+Eesti riiklike ja piiriüleselt tunnustatud eID vahenditega (ID-kaart, mobiil-ID) on tagatud juurdepääs järgmiste Euroopa Liidu riikide e-teenustele: Austria, Belgia, Hispaania, Holland, Horvaatia, Itaalia, Kreeka, Leedu, Luksemburg, Läti, Malta, Norra, Poola, Portugal, Rootsi, Slovakkia, Sloveenia, Soome, Suurbritannia, Taani, Tšehhi.
 
 ## Kellele?
 
@@ -35,13 +38,13 @@ Valitsussektori asutustele, kes soovivad:
 
 ## Kes Riigi autentimisteenust kasutavad?
 
-Riigi autentimisteenusega on liitunud 38 asutust 130 infosüsteemiga, sh Riigiportaal eesti.ee, e-Maksuamet/e-Toll, Haridusportaal edu.ee, RIHA, ePRIA, Ehitisregister, Rahvastikuregister, Teeregister, e-Töötukassa, eToetus, SKAIS, Riiklik patsiendiportaal, EIS, ETIS jt.
+Riigi autentimisteenusega on liitunud 46 asutust 166 infosüsteemiga, sh Riigiportaal eesti.ee, e-Maksuamet/e-Toll, Haridusportaal edu.ee, RIHA, ePRIA, Ehitisregister, Rahvastikuregister, Teeregister, e-Töötukassa, eToetus, SKAIS, Riiklik patsiendiportaal, EIS, ETIS jt.
 
 ## Tehnilised tingimused?
 
 E-teenus liidestatakse autentimisteenusega OpenID Connect protokolli kohaselt. Vt lähemalt: [Tehniline kirjeldus](TehnilineKirjeldus).
 
-Soovi korral võib riigi autentimisteenusega liidesta asutuse oma autentimislahenduse, mis siis autentimist e seanssi asutuse e-teenustele edasi jagab. Selle kohta vt: [Autentimise e seansi edasiandmine](Feder). RIA on ühtlasi kavandamas riikliku SSO arendusi, mille analüüsiga saab tutvuda [Riikliku SSO tehniline analüüs](Riikliku SSO tehniline analüüs).
+Soovi korral võib riigi autentimisteenusega liidestada asutus oma autentimislahenduse, mis seanssi asutuse e-teenustele edasi jagab. Selle kohta vt: [Autentimise e seansi edasiandmine](Feder). RIA on ühtlasi kavandamas riikliku SSO arendusi, mille analüüsiga saab tutvuda [Riikliku SSO tehniline analüüs](Riikliku SSO tehniline analüüs).
 
 ## Kuidas liituda?
 
