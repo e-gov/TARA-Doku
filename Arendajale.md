@@ -14,13 +14,7 @@ Siin on ka valik avalikke dokumente, mis käsitlevad TARA mitmesuguseid sisekül
 
 [QA strateegia](QaStrateegia)
 
-[eesti.ee autentimislahendus](EE-Auth)
-
 [TARA arhitektuurne jätkusuutlikkus](Jatkusuutlikkus)<br>
-
-[Migration to eIDAS Node 2.0 – Technical Analysis](Migration)
-
-<a href='https://e-gov.github.io/eIDAS-Connector/'>eIDAS konnektorteenus</a>
 
 [Abiks dokumenteerijale](Dokuabi)
 
@@ -31,8 +25,6 @@ Siin on ka valik avalikke dokumente, mis käsitlevad TARA mitmesuguseid sisekül
 [Jõudlusanalüüs](Joudlus)<br>
 
 [Vead ja tõrked. Ennetamine ja Käsitlemine](Veakasitlus)<br>
-
-[TARA statistika](Statistika)<br>
 
 [Võtmehaldus](Votmehaldus)<br>
 
