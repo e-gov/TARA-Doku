@@ -9,9 +9,8 @@ Käesolevas dokumendis kirjeldame milliseid isikuandmeid ja mis eesmärgil RIA a
 Tingimused rakenduvad:
 
 1. Riigi autentimisteenusele (TARA)
-2. Eesti autentimisteenusele (IdP)
-3. RIA eIDAS konnektorteenusele
-4. EL piiriülese autentimistaristu Eesti sõlmele ("eIDAS Node").
+2. RIA eIDAS konnektorteenusele
+3. EL piiriülese autentimistaristu Eesti sõlmele ("eIDAS Node").
 
 ### 2 Mõisted
 
@@ -45,7 +44,7 @@ Teisi mõisteid vt [sõnastikust](https://e-gov.github.io/TARA-Doku/Sonastik).
 
 4\.3 Kasutajale on autentimise tulemus (sisse logitud või mitte) nähtav sirvikus.
 
-4\.4 Eesti eID kasutaja autentimisandmete saatmisel piiriülese eIDAS autentimistaristuga liitunud teise riiki küsitakse kasutaja nõusolekut (Eesti autentimisteenuses). 
+4\.4 Eesti eID kasutaja autentimisandmete saatmisel piiriülese eIDAS autentimistaristuga liitunud teise riiki küsitakse kasutaja nõusolekut (TARA teenuses).
 
 4\.5 Andmeid võidakse väljastada õigustatud asutustele turvaintsidentide uurimiseks või kohtuliku uurimise tarbeks, seaduses ettenähtud korras.  
 

@@ -16,8 +16,6 @@ Käesolev dokument kirjeldab tehnilisi lahendusi ja protseduurilisi meetmeid, mi
 
 Käsitlus hõlmab kahte teenust: 1) autentimisteenus TARA; 2) eIDAS konnektorteenus.
 
-Käsitlus ei hõlma Eesti autentimisteenust.
-
 Analüüs hõlmab nii tõrkeid kui ka tarkvara hooldustöödest tingitud katkestusi. Kirjeldame teadaolevad tõrgete klassid, analüüsime nende mõju ja kavandame tehnilised ning protseduurilised meetmed tõrgete kõrvaldamiseks.
 
 Käsitlus ei hõlma taristuspetsiifilisi ega turvameetmeid. Need kirjeldatakse eraldi, piiratud juurdepääsuga dokumendis.
