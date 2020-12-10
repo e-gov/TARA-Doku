@@ -46,13 +46,11 @@ Nooled näitavad teenuse osutamise suunda. Tegu on üldistatud joonisega. Teenus
 
 ID-kaardiga autentimisel kasutatakse kehtivuskinnitusteenust. Esimese valikuna pöördub TARA tasuta kehtivuskinnitusteenuse poole (AIA-OCSP, `aia.sk.ee/esteid20xx`, teenust osutab SK Identity Solutions AS). Kui tasuta teenuse kasutamine ebaõnnestub, siis proovib TARA tasulist teenust (`ocsp.sk.ee`, teenust osutab samuti SK Identity Solutions AS).
 
-Mobiil-ID-ga autentimisel kasutab TARA mobiil-ID autentimisteenust [DigiDocService](http://sk-eid.github.io/dds-documentation/). (Teenust osutab SK ID Solutions AS).
+Mobiil-ID-ga autentimisel kasutab TARA mobiil-ID autentimisteenust [MID REST API](https://github.com/SK-EID/MID/wiki). (Teenust osutab SK ID Solutions AS).
 
 Piiriülesel autentimisel pöördub TARA kõigepealt RIAs majutatud eIDAS konnektorteenuse poole. Konnektorteenus vahendab pöördumise välisriigi eIDAS vahendusteenuse poole. Sealt omakorda pöördutakse välisriigi autentimisteenusesse, kus kasutaja autenditakse.
 
-TARA on RIA poolt osutatav teenus, millega autenditakse välisriigi e-teenust kasutav Eesti identimissüsteemi kasutaja. (Näiteks, kuid Eesti ID-kaardi omanik läheb Portugali e-teenusesse, siis suunatakse ta autentima TARA-sse). TARA kasutav teenusvoog algab välisriigi e-teenusest. Välisriigi teenus pöördub välisriigi eIDAS konnektorteenuse poole. Viimane pöördub RIA eIDAS konnektorteenuse poole. Konnektorteenus pöördub TARA poole. TARA võimaldab kasutaja autentida kas ID-kaardiga või mobiil-ID-ga. Vastavalt kasutab TARA tasulist kehtivuskinnitusteenust või mobiil-ID-ga autentimise teenust DigiDocService.
-
-Märkus. Kavas on TARA-s kasutusele võtta samasugune kehtivuskinnitusteenuse valikumeetod nagu TARAs (vaikimis kasutada tasuta teenust AIA-OCSP, viimase tõrke korral lülituda ümber tasulisele OCSP teenusele).
+TARA on RIA poolt osutatav teenus, millega autenditakse välisriigi e-teenust kasutav Eesti identimissüsteemi kasutaja. (Näiteks, kuid Eesti ID-kaardi omanik läheb Portugali e-teenusesse, siis suunatakse ta autentima TARA-sse). TARA kasutav teenusvoog algab välisriigi e-teenusest. Välisriigi teenus pöördub välisriigi eIDAS konnektorteenuse poole. Viimane pöördub RIA eIDAS konnektorteenuse poole. Konnektorteenus pöördub TARA poole. TARA võimaldab kasutaja autentida kas ID-kaardiga või mobiil-ID-ga. Vastavalt kasutab TARA tasulist kehtivuskinnitusteenust või mobiil-ID-ga autentimise teenust MID REST API.
 
 Eesti avalikus sektoris on hinnanguliselt sadu infosüsteemi. Kasutajale pakutakse mitut tuhat e-teenust. Kõigi nende ühendamine riigi autentimisteenusega (TARA-ga) paneks e-riigi sõltuma ühe tugiteenuse (TARA) "ülevalolekust". Sellise keskse nuripunkti (ingl _single point of failure_) tekkimine oleks suur risk.
 

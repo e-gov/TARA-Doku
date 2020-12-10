@@ -61,11 +61,11 @@ ___5 Eesti___
 
 ___6 Muud___
 
-[DDS] SK ID Solutions AS. DigiDocService. Tehniline lisainfo. [https://www.sk.ee/teenused/kehtivuskinnituse-teenus/digidoc-veebiteenus/](https://www.sk.ee/teenused/kehtivuskinnituse-teenus/digidoc-veebiteenus/).
+[MID_REST_API] SK ID Solutions AS. Tehniline lisainfo (MID_REST_API). [https://www.skidsolutions.eu/teenused/mobiil-id/tehniline-lisainfo-mid-rest-api/](https://www.skidsolutions.eu/teenused/mobiil-id/tehniline-lisainfo-mid-rest-api/).
 
 [Krüpto] [Krüptograafiliste algoritmide elutsükli uuringud](https://www.ria.ee/ee/kruptograafiliste-algoritmide-elutsukli-uuringud.html), [Cryptographic Algorithms Lifecycle Report 2016](https://www.ria.ee/public/RIA/Cryptographic_Algorithms_Lifecycle_Report_2016.pdf) või uuem.
 
-[mID1] Sertifitseerimiskeskus. DigiDocService. Tehniline lisainfo. [https://www.sk.ee/teenused/kehtivuskinnituse-teenus/digidoc-veebiteenus/](https://www.sk.ee/teenused/kehtivuskinnituse-teenus/digidoc-veebiteenus/).
+[mID1] Sertifitseerimiskeskus. Tehniline lisainfo (MID_REST_API). [https://www.skidsolutions.eu/teenused/mobiil-id/tehniline-lisainfo-mid-rest-api/](https://www.skidsolutions.eu/teenused/mobiil-id/tehniline-lisainfo-mid-rest-api/).
 
 [mID2] Sertifitseerimiskeskus. Mobiil-ID kasutamine veebis. Autentimine. [http://www.id.ee/index.php?id=36940](http://www.id.ee/index.php?id=36940).
 

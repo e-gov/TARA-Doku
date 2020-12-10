@@ -59,7 +59,7 @@ Märkus. Komponentide kohta lähemalt vt TARA [arhitektuurikirjeldusest](Arhitek
 
 Autentimisteenus TARA kasutab välisteenuseid (nimetus, teenuseosutaja):
 1) kehtivuskinnitusteenus (OCSP), SK ID Solutions AS
-2) DigiDocService, SK ID Solutions AS
+2) MID REST API, SK ID Solutions AS
 3) Smart-ID, SK ID Solutions AS
 4) pangalink, vastav pank
 
