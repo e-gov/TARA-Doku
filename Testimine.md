@@ -58,20 +58,17 @@ curl \
 
 1. Mobiil-ID telefoninumber: `00000766`, isikukood: `60001019906`
 2. eIDAS riik Norra, vali autentimiseks profiil `MINID`
-3. Luminor pangalink kasutajatunnus: `111111`, digivõtme kood: `9999`
-4. Smart-ID isikukood: `10101010005`.
+3. Smart-ID isikukood: `10101010005`.
 
 ### ID-kaart ja Mobiil-ID
 
-TARA testkeskkond on suunatud vastu OCSP ja Mobiil-ID (mID) API testteenust. See tähendab, et TARAs tuleb autentimise läbiviimiseks rakendada testnumbreid ja test ID-kaarte või teha oma Mobiil-ID ja/või ID-kaardi sertifikaadid kättesaadavaks testteenuse andmebaasis. Lähemalt võimalustest:
+TARA testkeskkond on suunatud vastu OCSP ja Mobiil-ID testteenust. See tähendab, et TARAs tuleb autentimise läbiviimiseks rakendada testnumbreid ja test ID-kaarte. Alates 09.12.2020 ei ole enam test teenuses võimalik kasutada isiklikku Mobiil-ID kontot. Isikliku ID kaardi kasutus on endiselt võimalik. Lähemalt võimalustest:
 
 1. Testnumbrid on kättesaadavad siit: [https://github.com/SK-EID/MID/wiki/Test-number-for-automated-testing-in-DEMO](https://github.com/SK-EID/MID/wiki/Test-number-for-automated-testing-in-DEMO). Rakendada ainult Eesti (EE) testnumbreid ja isikukoode.
 
 2. Test ID-kaardi peab tellima SK-lt: [https://www.sk.ee/teenused/testkaardid/](https://www.sk.ee/teenused/testkaardid/). Juhul kui on võimalus enda ID-kaarti kasutada, ei ole test-kaardi tellimine vajalik.
 
-3. Isikliku mobiilinumbri ja sellega seotud sertifikaadid saab laadida üles siin: [https://demo.sk.ee/MIDCertsReg/](https://demo.sk.ee/MIDCertsReg/). Selleks järgida lehel paiknevat juhendit. Peale isikliku numbri üleslaadimist on võimalik TARA testkeskkonda siseneda oma mobiilinumbri ja isikukoodiga.
-
-4. Isikliku ID-kaardi sertifikaadid saab laadida üles siin: [https://demo.sk.ee/upload_cert/](https://demo.sk.ee/upload_cert/). Selleks järgida lehel paiknevat juhendit. Peale sertifikaadi üleslaadimist test andmebaasi saab isikliku ID-kaardiga siseneda TARAsse.
+3. Isikliku ID-kaardi sertifikaadid saab laadida üles siin: [https://demo.sk.ee/upload_cert/](https://demo.sk.ee/upload_cert/). Selleks järgida lehel paiknevat juhendit. Peale sertifikaadi üleslaadimist test andmebaasi saab isikliku ID-kaardiga siseneda TARAsse.
 
 ### eIDAS
 
@@ -81,9 +78,8 @@ TARA testkeskkond on suunatud eIDAS testkeskkonna vastu. Igal riigil on testimis
 
 ### Pangalink
 
-TARA testkeskkond on suunatud vastu pankade test pangalingi teenust. Testimiseks on kahel pangal selline keskkond:  
+TARA testkeskkond on suunatud vastu pankade test pangalingi teenust. Testimiseks on saadaval SEB keskkond:  
 
-- Luminor, kasutajatunnus: `111111`, digivõtme kood: `9999`. Rohkem infot: [https://www.luminor.ee/sites/default/files/documents/files/common/pangalingi-test-versioon.pdf](https://www.luminor.ee/sites/default/files/documents/files/common/pangalingi-test-versioon.pdf)
 - SEB, kasutaja ja koodikaardi info on SEB testkeskkonna juhendis: [https://www.seb.ee/files/upos/manused.zip](https://www.seb.ee/files/upos/manused.zip)
 
 ### Smart-ID
@@ -105,6 +101,7 @@ Nõu küsimiseks ja võimaliku TARA vea raporteerimiseks palume pöörduda meili
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
+| 0.5, 12.12.2020   | Mobiil-ID ja pangalinkide info uuendus |
 | 0.4, 11.09.2020   | Mobiil-ID info update |
 | 0.3, 05.09.2018   | Norra testandmed |
 | 0.2, 28.06.2018   | Pangalinkide ja Smart-ID info |
