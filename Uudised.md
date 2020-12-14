@@ -4,6 +4,8 @@ permalink: Uudised
 
 # Uudised
 
+14.12.2020 Alates 09.12.2020 ei ole võimalik TARA test keskkonnas kasutada Mobiil-ID testimiseks isiklikku Mobiil-ID numbrit. Testida saab ainult kasutades testnumbreid. Rohkem infot [siit.](https://www.skidsolutions.eu/uudised/mobiil-id-demo-keskkond-ei-ole-tehnilistel-pohjustel-kattesaadav/)
+{: .note}
 
 23.03.2020 Anname teada, et Smart-ID tagatistase on (üle)hindamisel, sest SK ID Solutioni Smart-ID väljastusprotsessile lisandus biomeetriline lahendus. Hinnangu valmimisel avaldab RIA Smart-ID kinnitatud taseme.
 {: .note}
