@@ -65,8 +65,6 @@ ___6 Muud___
 
 [Krüpto] [Krüptograafiliste algoritmide elutsükli uuringud](https://www.ria.ee/ee/kruptograafiliste-algoritmide-elutsukli-uuringud.html), [Cryptographic Algorithms Lifecycle Report 2016](https://www.ria.ee/public/RIA/Cryptographic_Algorithms_Lifecycle_Report_2016.pdf) või uuem.
 
-[mID1] Sertifitseerimiskeskus. Tehniline lisainfo (MID_REST_API). [https://www.skidsolutions.eu/teenused/mobiil-id/tehniline-lisainfo-mid-rest-api/](https://www.skidsolutions.eu/teenused/mobiil-id/tehniline-lisainfo-mid-rest-api/).
-
 [mID2] Sertifitseerimiskeskus. Mobiil-ID kasutamine veebis. Autentimine. [http://www.id.ee/index.php?id=36940](http://www.id.ee/index.php?id=36940).
 
 [Mobile Signature Service] [ETSI TS 102 204](http://www.etsi.org/deliver/etsi_ts/102200_102299/102204/01.01.04_60/ts_102204v010104p.pdf).
