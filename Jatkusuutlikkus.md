@@ -74,7 +74,7 @@ TARA teenus peab:
 1. pakkuma TARA teenuse klientrakendustele OpenID Connect protokolli kohast liidest, toetatud voo (_flow_) ja omaduste ulatuses.
     Praegu on toetatud volituskoodi voog, sh identsustõendi väljastamine. Tõenäoliselt lisame hiljem ühekordse sisselogimise (SSO) toe.
 2. teostama toetatud autentimismeetodid, kas ise või kasutades autentimisteenuse pakkujat.
-    Praegu on teostatud ID-kaardiga autentimine, sh kehtivuskinnituspäring SK OCSP teenusesse ja mobiil-ID-ga autentimine (SK DigiDocService teenuse abil).
+    Praegu on teostatud ID-kaardiga autentimine, sh kehtivuskinnituspäring SK OCSP teenusesse ja mobiil-ID-ga autentimine (SK MID REST API teenuse abil).
 3. Eesti e-teenust kasutava välismaalase autentimine, eIDAS taristu abil.
     See tähendab SAML autentimispäringu koostamist ja saatmist (veebisirvija ümbersuunamiskorraldusega) RIA konnektorteenusesse, samuti SAML autentimisvastuse vastuvõtmist, lahtivõtmist ja valideerimist RIA konnektorteenusest.
 

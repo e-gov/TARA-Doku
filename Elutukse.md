@@ -47,7 +47,7 @@ Nõuded:
   - teenuse poole pöördumiste arv
     - nt jooksva päeva, eelmise päeva jooksul
     - autentimismeetodite lõikes (2. järgus)
-- Väliste teenuste (eIDAS Node, DigiDocService, pangalingid) ülevalolek (teostada vastavalt võimalustele)
+- Väliste teenuste (eIDAS Node, MID REST API, pangalingid) ülevalolek (teostada vastavalt võimalustele)
 - Elutukse teostus esimeses järgus võiks olla lihtne, ilma andmebaasi kasutamiseta
 - Arvestada, et rakendus paigaldatakse toodangus kahes instantsis. Kummalgi instantsil erinev URL?
 - Ülalkavandatud elutukseteenus on mõeldud RIA sisekasutuseks. Vajadusel piiratakse juurdepääsu ka RIA sees (IP vm meetodiga)

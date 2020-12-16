@@ -27,7 +27,7 @@ Lähtekohtad:<br>
 |----|-----|
 | valesti implementeeritud protokoll (klientrakenduses) | Paar kõige tähtsamat nõuet lisatud liitumisjuhendisse (jaotis 2) |
 | eIDAS konnektorteenus on maas | |
-| SK DigiDocService on maas | |
+| SK MID REST API on maas | |
 | SK OCSP teenus on maas | |
 | välisriigi eIDAS vahendusserver on maas | |
 | välismaalasel ei õnnestu autentida | |
