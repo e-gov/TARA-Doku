@@ -16,15 +16,10 @@ This document describes the technical characteristics of the TARA authentication
 
 The TARA authentication service is a service provided by the Information System Authority of the Republic of Estonia which can be used by institutions to add the support of various different authentication methods to its e-service:
 
-- mobile-ID
+- Mobiil-ID
 - ID card
-- cross-border authentication (eIDAS) support
+- cross-border authentication (via eIDAS-Node) support
 - Smart-ID
-- Coop bank
-- LHV bank
-- Luminor bank
-- SEB bank
-- Swedbank
 
 This technical specification is targeted for mainly software developers. The reader should be familiar with the HTTP protocol. Experiences with OpenID Connect or OAuth 2.0 would be beneficial but are not necessary. The reader should be prepared to obtain further information from the original text of the OpenID Connect protocol, if necessary.
 
@@ -49,7 +44,7 @@ It is not ruled out that the scope of possibilities will be expanded as TARA is 
 
 ### 1.2 National and cross-border authentication
 
-TARA enables national as well as cross-border authentication. This means that Estonians (users of the Estonian e-identification system – ID card, mobile ID, etc.) as well as foreigners (users of the e-identification systems of other EU member states) can be authenticated.
+TARA enables national as well as cross-border authentication. This means that Estonians (users of the Estonian e-identification system – ID card, Mobiil-ID, etc.) as well as foreigners (users of the e-identification systems of other EU member states) can be authenticated.
 
 In the context of eIDAS, TARA is providing the ‘Authentication of an Estonian in an Estonian e-service’ and the ‘Authentication of a foreigner using an Estonian e-service’ application flows (Figure 1).
 
@@ -58,10 +53,11 @@ In the context of eIDAS, TARA is providing the ‘Authentication of an Estonian 
 - Klientrakendus – customer’s application
 - välismaa e-identimissüsteemi kasutaja – user of a foreign e-identification service
 - Eesti e-identimissüsteemi kasutaja – user of the Estonian e-identification service
-- eIDAS piiriülene autentimine – eIDAS cross-border authentication
+- eIDAS piiriülene autentimine – eIDAS-Node cross-border authentication
 - ID-kaardiga autentimine – authentication by ID card
-- Mobiil-ID-ga autentimine – authentication by mobile ID
+- Mobiil-ID-ga autentimine – authentication by Mobiil-ID
 - Pangalingid, Smart-ID jm – Bank links, Smart-ID, etc.
+
 #### Figure 1. National and cross-border authentication
 
 ## 2 Authentication process from the user’s perspective
@@ -78,9 +74,9 @@ In the context of eIDAS, TARA is providing the ‘Authentication of an Estonian 
 
 3 The authentication method selection screen is displayed to the user. Here, the user can:
 
-- choose authentication by mobile ID (step 4)
+- choose authentication by Mobiil-ID (step 4)
 -	choose authentication by ID card (step 5)
--	choose cross-border (eIDAS-) authentication (step 6)
+-	choose cross-border (eIDAS-Node) authentication (step 6)
   - incl. the country the eID of which they use (select the correct ‘flag’)
 -	choose authentication by bank link (step 7)
 -	choose authentication by smart ID (step 8)
