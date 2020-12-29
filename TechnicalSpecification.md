@@ -5,7 +5,7 @@ permalink: TechnicalSpecification
 
 # Technical specification
 {: .no_toc}
-v 1.6, 02.04.2019
+v 1.7, 29.12.2020
 
 - TOC
 {:toc}
