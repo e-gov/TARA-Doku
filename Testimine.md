@@ -76,12 +76,6 @@ TARA testkeskkond on suunatud eIDAS testkeskkonna vastu. Igal riigil on testimis
 
 - Norra - vali autentimiseks `MINID`, personal id number: `05068907693`, password: `password01`, PIN: `12345`. Vajuta `Continue`.
 
-### Pangalink
-
-TARA testkeskkond on suunatud vastu pankade test pangalingi teenust. Testimiseks on saadaval SEB keskkond:  
-
-- SEB, kasutaja ja koodikaardi info on SEB testkeskkonna juhendis: [https://www.seb.ee/files/upos/manused.zip](https://www.seb.ee/files/upos/manused.zip)
-
 ### Smart-ID
 
 TARA testkeskkond on suunatud vastu Smart-ID demo keskkonda. Kasutamiseks on kaks varianti:
@@ -101,6 +95,7 @@ Nõu küsimiseks ja võimaliku TARA vea raporteerimiseks palume pöörduda meili
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
+| 0.6, 29.12.2020   | Pangalingi info update |
 | 0.5, 12.12.2020   | Mobiil-ID ja pangalinkide info uuendus |
 | 0.4, 11.09.2020   | Mobiil-ID info update |
 | 0.3, 05.09.2018   | Norra testandmed |
