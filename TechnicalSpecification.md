@@ -56,7 +56,7 @@ In the context of eIDAS, TARA is providing the ‘Authentication of an Estonian 
 - eIDAS piiriülene autentimine – eIDAS-Node cross-border authentication
 - ID-kaardiga autentimine – authentication by ID card
 - Mobiil-ID-ga autentimine – authentication by Mobiil-ID
-- Pangalingid, Smart-ID jm – Bank links, Smart-ID, etc.
+- Smart-ID – Smart-ID.
 
 #### Figure 1. National and cross-border authentication
 
@@ -78,7 +78,6 @@ In the context of eIDAS, TARA is providing the ‘Authentication of an Estonian 
 -	choose authentication by ID card (step 5)
 -	choose cross-border (eIDAS-Node) authentication (step 6)
   - incl. the country the eID of which they use (select the correct ‘flag’)
--	choose authentication by bank link (step 7)
 -	choose authentication by smart ID (step 8)
 -	return to the client application.
 
@@ -102,14 +101,6 @@ In the context of eIDAS, TARA is providing the ‘Authentication of an Estonian 
 -	the user is redirected to the authentication service of the foreign country through the eIDAS infrastructure
 -	the user authenticates themselves by using the means of authentication of the foreign country
 -	in the case of successful authentication (and if the level of the means of authentication of the foreign country is sufficient), moving on to step 9
--	in the case of an error, to step 10.
-
-7 Bank authentication
-
--	the user selects the bank
--	the user is redirected to the bank’s authentication service
--	the user authenticates themselves by using the selected means of authentication
--	in the case of successful authentication, moving on to step 9
 -	in the case of an error, to step 10.
 
 8 Smart-ID authentication
@@ -221,7 +212,7 @@ Elements of an authentication request:
 | ----------- | ---------- | ------- | ----------- |
 | protocol, host, and patch | yes | `https://tara.ria.ee/oidc/authorize` | `/authorize` is the OpenID Connect-based authentication endpoint of the TARA service (the concept of ‘authorisation’ originates from the OAuth 2.0 standard protocol). 
 | `redirect_uri` | yes | `redirect_uri=https%3A%2F%2F eteenus.asutus.ee%2Ftagasi` | Redirect URL. The redirect URL is selected by the institution. The redirect URL may include the query component. <br><br> [URL encoding](https://en.wikipedia.org/wiki/Percent-encoding) should be used, if necessary.<br><br>It is [not permitted](https://tools.ietf.org/html/rfc6749#section-3.1.2) to use the URI [fragment component](https://tools.ietf.org/html/rfc3986#section-3.5) (`#` and the following component). |
-| `scope` | yes | `scope=openid`<br><br>`scope=openid%20eidas`<br><br>`scope=openid%20idcard%20mid` | The authentication scope.<br><br>`openid` is compulsory (required by the OpenID Connect protocol).<br><br> The scopes of `idcard`, `mid`, `banklink`, `smartid`, `eidas` (and `eidasonly`) can be used to request that only the desired method of authentication is displayed to the user. See 4.1.3 Selective use of authentication methods.<br><br>The `email` scope can be used to request that the user’s e-mail address is issued in the identity token. See 4.1.2 Requesting e-mail address.<br><br>In the case of cross-border authentication, further scopes can be used to request additional personal data (see below).<br><br>When using several scopes, the scopes must be separated by spaces. Thereat, the space is presented in the URL encoding (`%20`) ([RFC 3986](https://www.ietf.org/rfc/rfc3986.txt)). Scope values are case sensitive. Unknown values are ignored. |
+| `scope` | yes | `scope=openid`<br><br>`scope=openid%20eidas`<br><br>`scope=openid%20idcard%20mid` | The authentication scope.<br><br>`openid` is compulsory (required by the OpenID Connect protocol).<br><br> The scopes of `idcard`, `mid`, `smartid`, `eidas` (and `eidasonly`) can be used to request that only the desired method of authentication is displayed to the user. See 4.1.3 Selective use of authentication methods.<br><br>The `email` scope can be used to request that the user’s e-mail address is issued in the identity token. See 4.1.2 Requesting e-mail address.<br><br>In the case of cross-border authentication, further scopes can be used to request additional personal data (see below).<br><br>When using several scopes, the scopes must be separated by spaces. Thereat, the space is presented in the URL encoding (`%20`) ([RFC 3986](https://www.ietf.org/rfc/rfc3986.txt)). Scope values are case sensitive. Unknown values are ignored. |
 | `state` | yes | `state=hkMVY7vjuN7xyLl5` | Security code against false request attacks (_cross-site request forgery_, CSRF). Read more about formation and verification of `state` under ‘Protection against false request attacks. |
 | `response_type` | yes | `response_type=code` | Determines the manner of communication of the authentication result to the server. The method of authorisation code is supported (_authorization flow_ of the OpenID Connect protocol) and it is referred to the `code` value. |
 | `client_id` | yes | `client_id=58e7...` | Application identifier. The application identifier is issued to the institution by RIA upon registration of the client application as a user of the authentication service. |
@@ -262,7 +253,6 @@ Table 1 – displaying the authentication methods
 |--------------------------|--------------------------------|
 | `idcard` | Allowing Estonian ID card authentication |
 | `mid` | Allowing Mobile-ID authentication |
-| `banklink` | Allowing bank authentication |
 | `smartid` | Allowing Smart-ID authentication |
 | `eidas` | Allowing cross-border (eIDAS) authentication |
 | `eidasonly` | Allowing ONLY cross-border (eIDAS) authenticationAinult <br><br>NB! When `eidasonly` is used, all other preferred authentication methods will be always excluded. |
@@ -270,7 +260,7 @@ Table 1 – displaying the authentication methods
 Example 1: All means of authentication
 `scope=openid`
 
-Example 2: Only ID card and mobile ID 
+Example 2: Only ID card and mobile ID
 `scope=openid%20idcard%20mid`
 
 Example 3: Only cross-border authentication
@@ -404,7 +394,7 @@ The following claims are presented in the identity token.
 | `profile_attributes`<br>`.given_name` | `MARY ÄNN` - the first name of the authenticated user (the test name was chosen because it consists special characters). |
 | `profile_attributes`<br>`.family_name` | `O’CONNEŽ-ŠUSLIK` - the surname of the authenticated user (the test name was selected because it includes special characters). |
 | `profile_attributes`<br>`_translit` | Includes a JSON object consisting of profile attributes in the Latin alphabet (see the section on transliteration below). The value is present only in the case of eIDAS authentication. |
-| `amr` (_Authentication Method Reference_) | `mID` - the authentication method used for user authentication. Possible values: `mID` - Mobile-ID, `idcard` - Estonian ID card, `eIDAS` - cross-border, `banklink` - bank, `smartid` - Smart-ID  |
+| `amr` (_Authentication Method Reference_) | `mID` - the authentication method used for user authentication. Possible values: `mID` - Mobile-ID, `idcard` - Estonian ID card, `eIDAS` - cross-border, `smartid` - Smart-ID  |
 | `state` | `abcdefghijklmnop` - security element. The authentication request’s `state` parameter value.  |
 | `nonce` | `qrstuvwxyzabcdef` - security element. The authentication request’s `nonce` parameter value. Value is present only in case the `nonce` parameter was sent in the authentication request. |
 | `acr` (_Authentication Context Class Reference_) | `high` - level of authentication based on the eIDAS LoA (level of assurance). Possible values: `low`, `substantial`, `high`. The element is not used if the level of authentication is not applicable or is unknown. |
