@@ -7,7 +7,7 @@ Mõned autentimismeetodid võivad olla veel arenduses või kasutatavad ainult te
 
 # Tehniline kirjeldus
 {: .no_toc}
-v 1.15, 01.10.2020
+v 1.16, 29.12.2020
 
 - TOC
 {:toc}
@@ -20,13 +20,8 @@ Autentimisteenus TARA on Riigi Infosüsteemi Ameti poolt pakutav teenus, millega
 
 - mobiil-ID
 - ID-kaart
-- piiriülese (eIDAS-)autentimise tugi
+- piiriülese (eIDAS-Node)autentimise tugi
 - Smart-ID
-- Coop pank
-- LHV pank
-- Luminor pank
-- SEB pank
-- Swedbank
 
 Tehniline kirjeldus on suunatud TARA liidestajatele (arendajatele). Lugejalt eeldame HTTP protokolli tundmist. Kasulik, kuid mitte vajalik on  OpenID Connect või OAuth 2.0 kogemus. Lugeja peab olema valmis vajadusel hankima lisateavet OpenID Connect protokolli originaaltekstist [Core].
 
@@ -79,7 +74,6 @@ Joonis 1. Siseriiklik ja piiriülene autentimine
 - valida ID-kaardiga autentimise (samm 5)
 - valida piiriülese (eIDAS-) autentimise (samm 6)
   - sh riigi, mille eID-d ta kasutab (valib õige "lipukese")
-- valida pangalingiga autentimise (samm 7)
 - valida Smart-ID'ga autentimise (samm 8)
 - pöörduda tagasi klientrakendusse.
 
@@ -106,14 +100,6 @@ Joonis 1. Siseriiklik ja piiriülene autentimine
 - vea korral samm 10.
 
 NB! eIDAS autentimise korral on võimalik sihtriigi valik teha ka otse TARA-ga liidestunud infosüsteemis ning saata soovitud riigi kood autentimispäringuga. Sellisel juhul kasutajale TARA kasutajaliidest ei kuvata ja tehakse automaatne edasisuunamine läbi eIDAS taristu otse välisriigi autentimisteenusesse, kus kasutaja autendib end välisriigi autentimisvahendiga. Eduka autentimise korral (ning kui välisriigi autentimisvahendi tase on piisav) edasi samm 9
-
-7 Pangalingiga autentimine
-
-- kasutaja valib panga
-- kasutaja suunatakse panga autentimisteenusesse
-- kasutaja autendib end valitud autentimismeetodiga
-- eduka autentimise korral edasi samm 9
-- vea korral samm 10.
 
 8 Smart-ID'ga autentimine
 
@@ -721,7 +707,6 @@ Siseriiklikele autentimismeetoditele on TARA-s määratud järgmised autentimist
 |---------------|-------------|
 | ID-kaart | [kõrge](https://ec.europa.eu/cefdigital/wiki/pages/viewpage.action?pageId=65972776) | 
 | Mobiil-ID | [kõrge](https://ec.europa.eu/cefdigital/wiki/pages/viewpage.action?pageId=65972776) | 
-| Pangalingid | madal |
 | Smart-ID | [kõrge](https://www.ria.ee/sites/default/files/smart-id_tagatistaseme_kirjeldus_abiv.pdf) <sup>1</sup> |
 
 <sup>1</sup>NB! Tase kehtib vaid Eesti isikukoodiga isikutele, kellele on väljastatud Smart-Id. Tuleb arvestada, et mitteresidendid (Eesti e-residendid) pole eristatavad.
@@ -732,6 +717,7 @@ Välisriigi autentimismeetodite autentimitased on määratakse vastava välisrii
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
+| 1.16, 29.12.2020   | `bank` skoobi parameetri eemaldamine. |
 | 1.15, 01.10.2020   | `sub` väite täpsustus - eidas identifikaatori pikkusepiirang. |
 | 1.14, 04.08.2020   | Lisandus valikuline skoop `phone`. Täiendatud `acr_values` parameetri ja autentimistasemete käsitlust. |
 | 1.13, 26.06.2020   | Täiendatud kasutajapoolset autentimise katkestamise käsitlust. Lisandus veakood `user_cancel`.  |
