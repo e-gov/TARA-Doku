@@ -30,7 +30,7 @@ Käesoleva lehe teave on mõeldud kolmele sihtrühmale.
 
 [Ärikirjeldus](Arikirjeldus) · [Liitumine](Liitumine)
 
-<a href='https://e-gov.github.io/TARA-Doku/files/RiiklikSSO.pdf' target='_new'>Riiklik SSO (*single-sign-on*) ja Riigi autentimisteenus</a>, esitlus RIA infopäeval 17.11.2020<br>
+<a href='https://e-gov.github.io/TARA-Doku/files/SSO_esitlus_infopaev.pdf' target='_new'>Riiklik SSO (*single-sign-on*) ja Riigi autentimisteenus</a>, esitlus RIA infopäeval 17.11.2020<br>
 <a href='https://e-gov.github.io/TARA-Doku/files/TARA.pdf' target='_new'>Riigi autentimisteenus (TARA). Tehniline tutvustus ja tulevikuvaade</a>, esitlus eID infopäeval 21.11.2019<br> 
 <a href='https://e-gov.github.io/TARA-Doku/files/Uuendustest.pdf' target='_new'>TARA uuendustest</a>, esitlus eID infopäeval 26.04.2019<br> 
 
