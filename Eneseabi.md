@@ -10,6 +10,12 @@ Hea TARA-ga liidestuja! Siit leiad valiku küsimusi, mis teistel on tekkinud - j
 - TOC
 {:toc}
 
+## Miks ei ole soovitatav TARA otse liidestada _native_ mobiilirakendusega (ehk nn _native_ mobiiliäpiga)?
+
+TARA ei toeta avalikke klientsüsteeme ning teenus on mõeldud eelkõige vaid e-teenustele kus on võimalik liitumisel väljastatud saladust [turvaliselt hoiustada](https://tools.ietf.org/html/rfc6819#section-5.3.3).
+
+Mobiilirakendust võib aga lugeda avalikuks kliendiks kuna staatilise saladuse hoidmine mobiilirakendustes on raskendatud. Olenemata platvormist on saladust võimalik rakendusest erinevate tehnikatega välja lugeda või pöördprojekteerida. 
+ 
 ## Millist kaitset pakub TARA IT-kuritegude vastu?
 
 _PIN1 äraarvamisrünne._ Ründaja võib üritada ära arvata PIN1-te. Kaitse äraarvamisründe vastu on sisse ehitatud ID-kaarti ja mobiil-ID-sse. Mõlemas autentimismeetodis peab kasutaja sisestama PIN-i. Kolme valestisisestamise korral kiibil olev sert lukustub. Märgime, et ründaja peab enne olema saanud oma valdusse ohvri ID-kaardi või nutiseadme. TARA siin täiendavat kaitsekihti ei paku.
