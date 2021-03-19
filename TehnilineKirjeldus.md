@@ -7,7 +7,7 @@ Mõned autentimismeetodid võivad olla veel arenduses või kasutatavad ainult te
 
 # Tehniline kirjeldus
 {: .no_toc}
-v 1.16, 29.12.2020
+v 1.17, 19.03.2021
 
 - TOC
 {:toc}
@@ -519,7 +519,9 @@ Kontrollida tuleb:
 
 Lähemalt nendest kontrollidest allpool. Vajadusel saate täpsemat teavet OpenID Connect ja OAuth 2.0 protokollikirjeldustest.
 
-**Allkirja kontrollimine.** Identsustõend väljastatakse autentimisteenuse TARA poolt allkirjastatult. Allkiri vastab JWT standardile.
+#### 5.1.1 Allkirja kontrollimine
+
+Identsustõend väljastatakse autentimisteenuse TARA poolt allkirjastatult. Allkiri vastab JWT standardile.
 
 Allkirjaalgoritmina kasutab TARA `RS256`. Klientrakendus peab suutma vähemalt selle algoritmiga antud allkirja kontrollida. Allkirja kontrollimine on otstarbekas teostada standardse JWT teegiga, mis toetaks kõiki JWT algoritme. Seda vähetõenäoliseks, kuid siiski võimalikuks juhuks, kui `RS256`-s peaks avastatama turvanõrkus, mis tingib algoritmi vahetamise.
 
@@ -535,7 +537,7 @@ Identsustõendi päringu vastuses väljastab TARA klientrakendusele ka `kid` (JW
 
 Soovitame võtit puhverdada (koos `kid` väärtusega), kuna see vähendab TARA serveri poole tehtavate päringute arvu. Kuid aktsepteeritav on ka võtme pärimine igas autentimises.
 
-Eeltoodust lähtuvalt peab allkirja kontrollimisel teostama järgnevad tegevused:
+**Eeltoodust lähtuvalt peab allkirja kontrollimisel teostama järgnevad tegevused:**
 
 1 - JWT päisest lugema element `kid` väärtuse.
 
@@ -549,13 +551,21 @@ Eeltoodust lähtuvalt peab allkirja kontrollimisel teostama järgnevad tegevused
 
 NB! Kindlasti tasuks vältida võtme käsitsi kirjutamist klientrakenduse konfiguratsiooni. Võtme vahetusest teatatakse tüüpiliselt küll ette (va kiirest turvavajadusest tingitud vahetus), kuid selline lahendus vajab klientrakenduse poolset käsitsi seadistust ning toob kaasa teenuse katkemise perioodiks mil TARA kasutab juba uut võtit aga klientrakendusse ei ole uut võtit seadistatud.
 
-**Võtmeväljastuse otspunkti usaldamine.** Klientrakendus teeb HTTPS päringuid TARA serverile, identsustõendi väljastamise ja võtmeväljastuse otspunktide vastu. Klientrakendus peab kontrollima TARA serveri sertifikaati (domeenid `tara.ria.ee` ja `tara-test.ria.ee`). Serdid nendele domeenidele on välja antud DigiCert poolt. Klientrakenduses tuleb seetõttu kas DigiCert juursert või TARA sert seada usaldusankruks. 
+#### 5.1.2 Võtmeväljastuse otspunkti usaldamine
 
-**Tõendi väljaandja kontrollimine.** Identsustõendi elemendi `iss` väärtus peab olema `https://tara-test.ria.ee` (TARA testkeskkonna puhul) või `https://tara.ria.ee` (TARA toodangukeskkonna puhul).
+Klientrakendus teeb HTTPS päringuid TARA serverile, identsustõendi väljastamise ja võtmeväljastuse otspunktide vastu. Klientrakendus peab kontrollima TARA serveri sertifikaati (domeenid `tara.ria.ee` ja `tara-test.ria.ee`). Serdid nendele domeenidele on välja antud DigiCert poolt. Klientrakenduses tuleb seetõttu kas DigiCert juursert või TARA sert seada usaldusankruks. 
 
-**Tõendi adressaadi kontrollimine.** Klientrakendus peab kontrollima, et saadud tõend on välja antud just temale. Selleks veenduda, et identsustõendi elemendi `aud` väärtus ühtib klientrakendusele registreerimisel väljaantud kliendinimega (_Client ID_).
+#### 5.1.3 Tõendi väljaandja kontrollimine
 
-**Tõendi ajalise kehtivuse kontrollimine.** Kontrollitakse kolme identsustõendis sisalduva elemendi abil - `iat`, `nbf`, `exp`. Klientrakendus kasutab kontrollimisel oma kellaaega. Kontrollida tuleks, et: 
+Identsustõendi elemendi `iss` väärtus peab olema `https://tara-test.ria.ee` (TARA testkeskkonna puhul) või `https://tara.ria.ee` (TARA toodangukeskkonna puhul).
+
+#### 5.1.4 Tõendi adressaadi kontrollimine
+
+Klientrakendus peab kontrollima, et saadud tõend on välja antud just temale. Selleks veenduda, et identsustõendi elemendi `aud` väärtus ühtib klientrakendusele registreerimisel väljaantud kliendinimega (_Client ID_).
+
+#### 5.1.5 Tõendi ajalise kehtivuse kontrollimine
+
+Kontrollitakse kolme identsustõendis sisalduva elemendi abil - `iat`, `nbf`, `exp`. Klientrakendus kasutab kontrollimisel oma kellaaega. Kontrollida tuleks, et: 
 
 1) "not before" ajamoment on kätte jõudnud:
 
@@ -569,13 +579,13 @@ NB! Kindlasti tasuks vältida võtme käsitsi kirjutamist klientrakenduse konfig
 
 TARA põhimõte on, et identsustõendile tuleb järgi tulla kohe, 30 sekundi jooksul. Selle aja ületamisel identsustõendit ei väljastatagi.
 
-**Autentimismeetodi kontrollimine**
+#### 5.1.6 Autentimismeetodi kontrollimine
 
 Juhul kui kasutusel on autentimismeetodite valikuline kuvamine (vt jaotis 4.1.3 Autentimismeetodite valikuline kasutus), peab identsustõendis veenduma, et identsustõendi `amr` väites (_authentication method reference_) toodud autentimismeetod on lubatud.  Vastasel juhul võetakse vahendajaründe risk, kus autentimispäringu `scope` parameetri manipuleerimise läbi on võimalik kasutajal autentida meetodiga, mis pole liidestuja süsteemis aktsepteeritav (nt ID-kaardiga autentimise asemel kasutatakse Smart-ID-d).
 
 Näide: Kui autentimispäringus on `scope` parameetris määratud ainult ID-kaart, tuleb veenduda, et identsustõendi `amr` väide sisaldaks koodi `idcard` (koodide nimekiri on toodud jaotises 4.3.1 Identsustõend).
 
-**Minimaalse lubatud eIDAS autentimistaseme kontrollimine**
+#### 5.1.7 Minimaalse lubatud eIDAS autentimistaseme kontrollimine
 
 Välistamaks ligipääsu soovitust madalama turvalisusastmega ülepiirilistele autentimisvahenditele, peab ülepiirilise autentimise korral  kontrollima, et identsustõendi `acr` väites esitatud autentimistase ei oleks väiksem minimaalsest lubatud autentimistasemest (loe autentimistasemete kohta [siit](https://www.ria.ee/sites/default/files/content-editors/EID/autentimislahendustele-kehtivad-nouded.pdf)).
 
@@ -584,7 +594,9 @@ Näiteks, kui liidestuja soovib kasutada vaid kõrge eIDAS autentimistasemega au
 Juhul kui autentimispäringus eIDAS autentimistaset `acr_values` parameetri abil ei täpsustatud, peab identsustõendis olev väärtus olema `substantial` või `high`.
 
 
-**Seansi loomine.** Identsustõendi eduka kontrollimise järel loob klientrakendus kasutajaga seansi ("logib kasutaja sisse"). Seansi loomine ja pidamine on klientrakenduse kohustus. Kuidas seda teha, ei ole enam autentimisteenuse TARA skoobis.
+#### 5.1.8 Seansi loomine
+
+Identsustõendi eduka kontrollimise järel loob klientrakendus kasutajaga seansi ("logib kasutaja sisse"). Seansi loomine ja pidamine on klientrakenduse kohustus. Kuidas seda teha, ei ole enam autentimisteenuse TARA skoobis.
 
 Märkus. Tavaliselt peetakse veebirakendusega seanssi küpsises hoitava seansitõendi (_session token_) abil. Seansitõend võib olla juhusõneline (_opaque_) või veebitõend (JWT). Vt lähemalt [Seansihaldus](Seansihaldus). Identsustõend ei sobi otseselt seansitõendiks, sest identsustõendi kehtivusaeg väljendab tõendi väljastamise perioodi, mitte seansi kehtivusperioodi. Küll aga saab klientrakendus seansitõendi koostada identsustõendi põhjal, valides seansi sobiva kehtivusaja. 
 
