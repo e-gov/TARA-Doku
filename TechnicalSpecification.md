@@ -5,7 +5,7 @@ permalink: TechnicalSpecification
 
 # Technical specification
 {: .no_toc}
-v 1.7, 29.12.2020
+v 1.8, 19.03.2021
 
 - TOC
 {:toc}
@@ -487,31 +487,51 @@ The verification must verify identity token’s:
 
 For more detailed information about the identity token verifications can be found from OpenID Connect and OAuth 2.0 protocol specifications.
 
-**Verifying the signature.** The identity token is signed by the TARA authentication service. The signature meets the JWT standard.
+#### 5.1.1 Verifying the signature
+
+The identity token is signed by the TARA authentication service. The signature meets the JWT standard.
 
 TARA uses the `RS256` signature algorithm. The client application must, at least, be able to verify the signature given by using this algorithm. It would be reasonable to use a standard JWT library which supports all JWT algorithms. A situation in which the TARA signature algorithm is needed is, in principle, possible – if a security failure is detected in `RS256`).
 
 For the signature verification the public signature key of TARA must be used. The public signature key is published at the public signature key endpoint (see chapter 6 "Endpoints").
 
-The public signature key is stable - the public signature key will be changed every 2-3 years or accordingly to the security recommendations.
+The public signature key is stable - the public signature key will be changed  according to security recommendations. However, the key can be changed without prior notice for security reasons. Key exchange is carried out based on [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#RotateSigKeys) standard.
 
-The public signature key has an identifier (`kid`). The key identifier is aligned with the best practices of OpenID Connect and OAuth 2.0 that enables the key exchange without the service interruption.
+The public signature key has an identifier (`kid`). The key identifier is aligned with the best practices of [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#Signing) and OAuth 2.0 that enables the key exchange without the service interruption.
 
-TARA issues `kid` in the response of the request of identity token (JWT header element `kid`). `kid` refers to the key that the client application has to use for the verification of a signature.
+In case of the signing key change, two keys will be published at the public signatue key endpoint, both will have unique `kid` identifiers. 
 
-We recommend to buffer the signature key in order to decrease the amount of requests made to TARA server. It is reasonable to buffer `kid` with the signature key.
+TARA issues `kid` field in the response of the request of identity token (JWT header element `kid`). `kid` refers to the key that the client application has to use for the verification of a signature.
 
-When receiving the identity token, the client application must verify whether the buffered key is available to use. 
+We recommend to buffer the signature key (together with `kid` value) in order to decrease the amount of requests made to TARA server. However, it is allowed to request the key on each validation.
 
-If TARA sent the `kid` value in identity token that does not have a corresponding signature key in the buffer, then a new signature key must be issued from the public signature key endpoint.
+For signature validation following checks needs to be performed on client application:
 
-**Trust of the public signature key endpoint.** The client application makes HTTPS requests to TARA server towards to the identity token and public signature key endpoints. The client application must verify TARA server’s certificate (domains `tara.ria.ee` and `tara-test.ria.ee`). As the certificates of afore-mentioned domains are issued by DigiCert, the client application must use DigiCert’s root certificate or TARA certificate as a trust anchor.
+1 - Read the `kid` value from the JWT header.
 
-**Verifying the issuer of the certificate** The `iss` value of the identity token element must be `https://tara-test.ria.ee` (for TARA test environment) or `https://tara.ria.ee` (for TARA production environment).
+2.1 - If the client application does not buffer the public key, make request to public signature key endpoint and select key corresponding to `kid` value received from JWT header.
 
-**Verifying the addressee of the certificate.** The client application must verify whether the certificate received was issued for them. For this purpose, it must be made sure that the `aud` value of the identity token element matches the client ID issued upon registration of the client application.
+2.2 - If client application buffers the public key (it needs to be buffered together with `kid` value), it needs to compare the `kid` value from JWT header with buffered `kid` value. If they match, buffered key can be used. If not client application needs to make request to public signature key endpoint and select key corresponding to `kid` value received from JWT header and buffer it.
 
-**Verifying the validity of the certificate.** The verification is done using three elements in the identity token: `iat`, `nbf`, `exp`. The client application uses its own clock to verify the validity. The following details should be verified:
+3 - Validate the signature using the key corresponding to `kid` value from the JWT header.
+
+NB! "Hardcoding" the key to client application configuration must be avoided. The key change will be typically communicated (except of urgent security reasons), but manual key handling will result downtime in client application for the period when TARA is already using the new key until the new key is taken use in client application.
+
+#### 5.1.2 Trusting of the public signature key endpoint
+
+The client application makes HTTPS requests to TARA server towards to the identity token and public signature key endpoints. The client application must verify TARA server’s certificate (domains `tara.ria.ee` and `tara-test.ria.ee`). As the certificates of afore-mentioned domains are issued by DigiCert, the client application must use DigiCert’s root certificate or TARA certificate as a trust anchor.
+
+#### 5.1.3 Verifying the issuer of the certificate
+
+The `iss` value of the identity token element must be `https://tara-test.ria.ee` (for TARA test environment) or `https://tara.ria.ee` (for TARA production environment).
+
+#### 5.1.4 Verifying the addressee of the certificate
+
+The client application must verify whether the certificate received was issued for them. For this purpose, it must be made sure that the `aud` value of the identity token element matches the client ID issued upon registration of the client application.
+
+#### 5.1.5 Verifying the validity of the certificate
+
+The verification is done using three elements in the identity token: `iat`, `nbf`, `exp`. The client application uses its own clock to verify the validity. The following details should be verified:
 
 1) that "not before" time has reached:
 
@@ -525,19 +545,23 @@ The application must choose the `kellade_lubatud_erinevus` value. These checks a
 
 The identity token must be used immediately, within 5 minutes. When the time limit is exceeded, the identity token will be not issued.
 
-**Verifying the authentication method used in authentication.** In case of using a selective 
+#### 5.1.6 Verifying the authentication method used in authentication
+
 When using the selective means of authentication (see section 4.1.3) the identity token must verify that the authentication method provided by the authentication method reference, `amr` ,is allowed. Otherwise, the risk of intermediary attacks is taken by allowing the user to authenticate through the method that is not acceptable in the interface (eg Smart-ID is used instead of authentication with an ID card) through manipulation of the authentication request `scope` parameter.
 
 For example, when in the authentication request the `scope` parameter is defined to use only ID-card authentication method, it must be verified that the `amr` claim also contains an `idcard` code (the full list of all codes is described under section 4.3.1).
 
-**Verifying the eIDAS level of assurance.** 
+#### 5.1.7 Verifying the eIDAS level of assurance
+
 In order to prevent access to cross-border authentication tools with a lower security level, it must be verified that the authentication level in the `acr` claim of identity token is not lower than the minimum level of assurance allowed.
 
 For example, if the client application wants to use only authentication methods with eIDAS level of assurance `high` and has specified the value in the `acr_values` parameter, then only the identity tokens with `acr_values` parameter with value `high` can be accepted.
 
 In case the level of assurance in the authentication request using `acr_values` parameter is not specified, the identity token must be equal to a level of assurance `substantial` or `high`.
 
-**Creating a session.** After a successful verification of the identity token, the client application will create a session with the user (‘log in the user’). The client application is responsible for creating and holding the sessions. The methods for doing this are not included in the scope of the TARA authentication service.
+#### 5.1.8 Creating a session
+
+After a successful verification of the identity token, the client application will create a session with the user (‘log in the user’). The client application is responsible for creating and holding the sessions. The methods for doing this are not included in the scope of the TARA authentication service.
 
 ### 5.2 Protection against false request attacks
 
