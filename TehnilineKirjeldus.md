@@ -525,23 +525,28 @@ Allkirjaalgoritmina kasutab TARA `RS256`. Klientrakendus peab suutma vähemalt s
 
 Allkirja kontrollimisel tuleb kasutada TARA avalikku allkirjavõtit (edaspidi "võti"). Võtme saate võtmeväljastuse otspunktist (vt allpool jaotis "Otspunktid"). 
 
-Võti on stabiilne. Vahetame võtit vastavalt turvasoovitustele, mitte sagedamini kui 2-3 aasta tagant. Kuid ei ole välistatud erakorraline võtmevahetus võtme korrumpeerumise korral.
+Võti on tüüpiliselt stabiilne. Vahetame võtit vastavalt turvasoovitustele, kuid ei ole välistatud erakorraline võtmevahetus võtme korrumpeerumise korral. Võtmevahetuse protsessis järgime  [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#RotateSigKeys) standardit.
 
-Võtmel on identifikaator (`kid`). Võtmeidentifikaatorite osas järgime OpenID Connect ja OAuth 2.0 soovitatud praktikat, mis teeb võimalikuks võtmevahetuse ilma teenuse katkestuseta. 
+Võtmel on identifikaator (`kid`). Võtmeidentifikaatorite osas järgime [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#Signing) ja OAuth 2.0 soovitatud praktikat, mis teeb võimalikuks võtmevahetuse ilma teenuse katkestuseta. 
 
-Võtmevahetusel (väga harv ja erakordne sündmus) on lühikese perioodi (5-10 min) jooksul võtmeväljastuse otspunktist nähtavad kaks võtit, kumbki oma identifikaatoriga. Muul ajal on otspunktis üksainus võti.
-
-Näiteks praegune (märts 2019) võtme `kid`, kui vaatate võtmeväljastuse otspunktist [https://tara.ria.ee/oidc/jwks](https://tara.ria.ee/oidc/jwks), on `a8ff37`. Kui võtame kasutusele uue võtme, siis uuel võtmel saab olema teine `kid`.
+Võtmevahetusel on lühikese perioodi jooksul võtmeväljastuse otspunktist nähtavad kaks võtit, kumbki oma identifikaatoriga.
 
 Identsustõendi päringu vastuses väljastab TARA klientrakendusele ka `kid` (JWT päise (_header_) element `kid`). See `kid` osutab võtmele, mida peate väljastatud tõendi allkirja kontrollimisel kasutama.
 
-Soovitame võtit puhverdada, kuna see vähendab TARA serveri poole tehtavate päringute arvu. Kuid aktsepteeritav on ka võtme pärimine igas autentimises.
+Soovitame võtit puhverdada (koos `kid` väärtusega), kuna see vähendab TARA serveri poole tehtavate päringute arvu. Kuid aktsepteeritav on ka võtme pärimine igas autentimises.
 
-Otstarbekas on puhverdada `kid` koos võtmega (võti ise esitatakse väärtuste `n` ja `e` paarina).
+Eeltoodust lähtuvalt peab allkirja kontrollimisel teostama järgnevad tegevused:
 
-Identsustõendi saamisel peab klientrakendus kontrollima, kas saab kasutada puhverdatud võtit. Kui TARA saatis identsustõendis `kid` väärtuse, millele vastavat võtit puhvris ei ole, siis tuleb puhvrit uuendada, s.t pärida võtmeväljastuse otspunktist uus võti.
+1) JWT päisest lugema element `kid` väärtuse.
+
+2a) Juhul kui võtit ei puhverdata teostama päringu võtmeväljastuse otspunktile ning võtma JWT päisest saadud `kid` väärtusele vastava võtme.
+
+2b) Võtme puhverdamisel tuleb seda teha koos `kid` väärtusega. Valideerimisel võrrelda vastusest saadud `kid` väärtust puhverdatud võtme `kid` väärtusega. Juhul kui väärtused kattuvad kasutada puhverdatud võtit. Mittekattumise korral tuleb teostada päring võtmeväljastuse otspunktile ning võtta JWT päisest saadud `kid` väärtusele vastav võti ning puhverdada.
+
+3) Teostama allkirja kontrolli JWT päises oleva `kid` väärtusele vastava võtmega.
 
 Ülalesitatu teostamist võib mõjutada, kas liidestate TARA-ga "karbitoodet", üritate hakkama saada mõne OpenID Connect teegi seadistamisega või programmeerite liidestuse ise. Teegid ja karbitooted ei tarvitse puhverdamist toetada.
+NB! Kindlasti tasuks vältida võtme käsitsi kirjutamist klientrakenduse konfiguratsiooni. Võtme vahetusest teatatakse tüüpiliselt küll ette (va kiirest turvavajadusest tingitud vahetus), kuid selline lahendus vajab klientrakenduse poolset käsitsi seadistust ning toob kaasa teenuse katkemise perioodiks mil TARA kasutab juba uut võtit aga klientrakendusse ei ole uut võtit seadistatud.
 
 **Võtmeväljastuse otspunkti usaldamine.** Klientrakendus teeb HTTPS päringuid TARA serverile, identsustõendi väljastamise ja võtmeväljastuse otspunktide vastu. Klientrakendus peab kontrollima TARA serveri sertifikaati (domeenid `tara.ria.ee` ja `tara-test.ria.ee`). Serdid nendele domeenidele on välja antud DigiCert poolt. Klientrakenduses tuleb seetõttu kas DigiCert juursert või TARA sert seada usaldusankruks. 
 
@@ -716,6 +721,7 @@ Välisriigi autentimismeetodite autentimitased on määratakse vastava välisrii
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
+| 1.17, 19.03.2021   | Identsustõendi allkirja kontrollimise täpsustused. |
 | 1.16, 29.12.2020   | `banklink` skoobi parameetri eemaldamine. |
 | 1.15, 01.10.2020   | `sub` väite täpsustus - eidas identifikaatori pikkusepiirang. |
 | 1.14, 04.08.2020   | Lisandus valikuline skoop `phone`. Täiendatud `acr_values` parameetri ja autentimistasemete käsitlust. |

@@ -493,17 +493,27 @@ TARA uses the `RS256` signature algorithm. The client application must, at least
 
 For the signature verification the public signature key of TARA must be used. The public signature key is published at the public signature key endpoint (see chapter 6 "Endpoints").
 
-The public signature key is stable - the public signature key will be changed every 2-3 years or accordingly to the security recommendations.
+The public signature key is stable - the public signature key will be changed  according to security recommendations. However, the key can be changed without prior notice for security reasons. Key exchange is carried out based on [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#RotateSigKeys) standard.
 
-The public signature key has an identifier (`kid`). The key identifier is aligned with the best practices of OpenID Connect and OAuth 2.0 that enables the key exchange without the service interruption.
+The public signature key has an identifier (`kid`). The key identifier is aligned with the best practices of [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#Signing) and OAuth 2.0 that enables the key exchange without the service interruption.
 
-TARA issues `kid` in the response of the request of identity token (JWT header element `kid`). `kid` refers to the key that the client application has to use for the verification of a signature.
+In case of the signing key change, two keys will be published at the public signatue key endpoint, both will have unique `kid` identifiers. 
 
-We recommend to buffer the signature key in order to decrease the amount of requests made to TARA server. It is reasonable to buffer `kid` with the signature key.
+TARA issues `kid` field in the response of the request of identity token (JWT header element `kid`). `kid` refers to the key that the client application has to use for the verification of a signature.
 
-When receiving the identity token, the client application must verify whether the buffered key is available to use. 
+We recommend to buffer the signature key (together with `kid` value) in order to decrease the amount of requests made to TARA server. However, it is allowed to request the key on each validation.
 
-If TARA sent the `kid` value in identity token that does not have a corresponding signature key in the buffer, then a new signature key must be issued from the public signature key endpoint.
+For signature validation following checks needs to be performed on client application:
+
+1) Read the `kid` value from the JWT header.
+
+2a) If the client application do not buffer the public key, make request to public signature key endpoint and select key corresponding to `kid` value received from JWT header.
+
+2b) If client application buffers the public key (it needs to be buffered together with `kid` value), it needs to compare the `kid` value from JWT header with buffered `kid` value. If they match, buffered key can be used. If not client application needs to make request to public signature key endpoint and select key corresponding to `kid` value received from JWT header and buffer it.
+
+3) Validate the signature using the key corresponding to `kid` value from the JWT header.
+
+NB! "Hardcoding" the key to client application configuration must be avoided. The key change will be typically communicated (except of urgent security reasons), but manual key handling will result downtime in client application for the period when TARA is already using the new key until the new key is taken use in client application.
 
 **Trust of the public signature key endpoint.** The client application makes HTTPS requests to TARA server towards to the identity token and public signature key endpoints. The client application must verify TARA server’s certificate (domains `tara.ria.ee` and `tara-test.ria.ee`). As the certificates of afore-mentioned domains are issued by DigiCert, the client application must use DigiCert’s root certificate or TARA certificate as a trust anchor.
 
