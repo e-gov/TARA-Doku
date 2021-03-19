@@ -537,13 +537,13 @@ Soovitame võtit puhverdada (koos `kid` väärtusega), kuna see vähendab TARA s
 
 Eeltoodust lähtuvalt peab allkirja kontrollimisel teostama järgnevad tegevused:
 
-1) JWT päisest lugema element `kid` väärtuse.
+1 - JWT päisest lugema element `kid` väärtuse.
 
-2.1) Juhul kui võtit ei puhverdata teostama päringu võtmeväljastuse otspunktile ning võtma JWT päisest saadud `kid` väärtusele vastava võtme.
+2.1 - Juhul kui võtit ei puhverdata teostama päringu võtmeväljastuse otspunktile ning võtma JWT päisest saadud `kid` väärtusele vastava võtme.
 
-2.2) Võtme puhverdamisel tuleb seda teha koos `kid` väärtusega. Valideerimisel võrrelda vastusest saadud `kid` väärtust puhverdatud võtme `kid` väärtusega. Juhul kui väärtused kattuvad kasutada puhverdatud võtit. Mittekattumise korral tuleb teostada päring võtmeväljastuse otspunktile ning võtta JWT päisest saadud `kid` väärtusele vastav võti ning puhverdada.
+2.2 - Võtme puhverdamisel tuleb seda teha koos `kid` väärtusega. Valideerimisel võrrelda vastusest saadud `kid` väärtust puhverdatud võtme `kid` väärtusega. Juhul kui väärtused kattuvad kasutada puhverdatud võtit. Mittekattumise korral tuleb teostada päring võtmeväljastuse otspunktile ning võtta JWT päisest saadud `kid` väärtusele vastav võti ning puhverdada.
 
-3) Teostama allkirja kontrolli JWT päises oleva `kid` väärtusele vastava võtmega.
+3 - Teostama allkirja kontrolli JWT päises oleva `kid` väärtusele vastava võtmega.
 
 Ülalesitatu teostamist võib mõjutada, kas liidestate TARA-ga "karbitoodet", üritate hakkama saada mõne OpenID Connect teegi seadistamisega või programmeerite liidestuse ise. Teegid ja karbitooted ei tarvitse puhverdamist toetada.
 

@@ -505,13 +505,13 @@ We recommend to buffer the signature key (together with `kid` value) in order to
 
 For signature validation following checks needs to be performed on client application:
 
-1) Read the `kid` value from the JWT header.
+1 - Read the `kid` value from the JWT header.
 
-2.1) If the client application do not buffer the public key, make request to public signature key endpoint and select key corresponding to `kid` value received from JWT header.
+2.1 - If the client application do not buffer the public key, make request to public signature key endpoint and select key corresponding to `kid` value received from JWT header.
 
-2.2) If client application buffers the public key (it needs to be buffered together with `kid` value), it needs to compare the `kid` value from JWT header with buffered `kid` value. If they match, buffered key can be used. If not client application needs to make request to public signature key endpoint and select key corresponding to `kid` value received from JWT header and buffer it.
+2.2 - If client application buffers the public key (it needs to be buffered together with `kid` value), it needs to compare the `kid` value from JWT header with buffered `kid` value. If they match, buffered key can be used. If not client application needs to make request to public signature key endpoint and select key corresponding to `kid` value received from JWT header and buffer it.
 
-3) Validate the signature using the key corresponding to `kid` value from the JWT header.
+3 - Validate the signature using the key corresponding to `kid` value from the JWT header.
 
 NB! "Hardcoding" the key to client application configuration must be avoided. The key change will be typically communicated (except of urgent security reasons), but manual key handling will result downtime in client application for the period when TARA is already using the new key until the new key is taken use in client application.
 
