@@ -507,9 +507,9 @@ For signature validation following checks needs to be performed on client applic
 
 1) Read the `kid` value from the JWT header.
 
-2a) If the client application do not buffer the public key, make request to public signature key endpoint and select key corresponding to `kid` value received from JWT header.
+2.1) If the client application do not buffer the public key, make request to public signature key endpoint and select key corresponding to `kid` value received from JWT header.
 
-2b) If client application buffers the public key (it needs to be buffered together with `kid` value), it needs to compare the `kid` value from JWT header with buffered `kid` value. If they match, buffered key can be used. If not client application needs to make request to public signature key endpoint and select key corresponding to `kid` value received from JWT header and buffer it.
+2.2) If client application buffers the public key (it needs to be buffered together with `kid` value), it needs to compare the `kid` value from JWT header with buffered `kid` value. If they match, buffered key can be used. If not client application needs to make request to public signature key endpoint and select key corresponding to `kid` value received from JWT header and buffer it.
 
 3) Validate the signature using the key corresponding to `kid` value from the JWT header.
 

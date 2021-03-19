@@ -539,13 +539,14 @@ Eeltoodust lähtuvalt peab allkirja kontrollimisel teostama järgnevad tegevused
 
 1) JWT päisest lugema element `kid` väärtuse.
 
-2a) Juhul kui võtit ei puhverdata teostama päringu võtmeväljastuse otspunktile ning võtma JWT päisest saadud `kid` väärtusele vastava võtme.
+2.1) Juhul kui võtit ei puhverdata teostama päringu võtmeväljastuse otspunktile ning võtma JWT päisest saadud `kid` väärtusele vastava võtme.
 
-2b) Võtme puhverdamisel tuleb seda teha koos `kid` väärtusega. Valideerimisel võrrelda vastusest saadud `kid` väärtust puhverdatud võtme `kid` väärtusega. Juhul kui väärtused kattuvad kasutada puhverdatud võtit. Mittekattumise korral tuleb teostada päring võtmeväljastuse otspunktile ning võtta JWT päisest saadud `kid` väärtusele vastav võti ning puhverdada.
+2.2) Võtme puhverdamisel tuleb seda teha koos `kid` väärtusega. Valideerimisel võrrelda vastusest saadud `kid` väärtust puhverdatud võtme `kid` väärtusega. Juhul kui väärtused kattuvad kasutada puhverdatud võtit. Mittekattumise korral tuleb teostada päring võtmeväljastuse otspunktile ning võtta JWT päisest saadud `kid` väärtusele vastav võti ning puhverdada.
 
 3) Teostama allkirja kontrolli JWT päises oleva `kid` väärtusele vastava võtmega.
 
 Ülalesitatu teostamist võib mõjutada, kas liidestate TARA-ga "karbitoodet", üritate hakkama saada mõne OpenID Connect teegi seadistamisega või programmeerite liidestuse ise. Teegid ja karbitooted ei tarvitse puhverdamist toetada.
+
 NB! Kindlasti tasuks vältida võtme käsitsi kirjutamist klientrakenduse konfiguratsiooni. Võtme vahetusest teatatakse tüüpiliselt küll ette (va kiirest turvavajadusest tingitud vahetus), kuid selline lahendus vajab klientrakenduse poolset käsitsi seadistust ning toob kaasa teenuse katkemise perioodiks mil TARA kasutab juba uut võtit aga klientrakendusse ei ole uut võtit seadistatud.
 
 **Võtmeväljastuse otspunkti usaldamine.** Klientrakendus teeb HTTPS päringuid TARA serverile, identsustõendi väljastamise ja võtmeväljastuse otspunktide vastu. Klientrakendus peab kontrollima TARA serveri sertifikaati (domeenid `tara.ria.ee` ja `tara-test.ria.ee`). Serdid nendele domeenidele on välja antud DigiCert poolt. Klientrakenduses tuleb seetõttu kas DigiCert juursert või TARA sert seada usaldusankruks. 
