@@ -76,6 +76,7 @@ TARA testkeskkond on suunatud eIDAS testkeskkonna vastu. Igal riigil on testimis
 
 - Rootsi - vali autentimiseks `Test IdP`, Select the person to authenticate as: `Ulla Alm (198611062384)`, Select assurance level for the authentication: `http://id.elegnamnden.se/loa/1.0/eidas-nf-high`. Vajuta `Authenticate`, seejärel `Approve`.
 - Norra - vali autentimiseks `MINID`, personal ID number: `51109599720`, password: `password01`, PIN: `12345`. Vajuta `Continue`.
+- Itaalia - vali `Entra con SPID`, vali autentimiseks `DEMO SPID IDP`, username: `test`, password: `test`. Vajuta `Invia`.
 
 ### Smart-ID
 
