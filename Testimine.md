@@ -74,7 +74,8 @@ TARA testkeskkond on suunatud vastu OCSP ja Mobiil-ID testteenust. See tähendab
 
 TARA testkeskkond on suunatud eIDAS testkeskkonna vastu. Igal riigil on testimiseks oma lahendus, kas parool või kaheastmeline autentimine. Kõik riigid ei ole veel liidestusega valmis, täpsema info saamiseks pöörduge `help@ria.ee`. Testimiseks saab kasutada:  
 
-- Norra - vali autentimiseks `MINID`, personal id number: `05068907693`, password: `password01`, PIN: `12345`. Vajuta `Continue`.
+- Rootsi - vali autentimiseks `Test IdP`, Select the person to authenticate as: `Ulla Alm (198611062384)`, Select assurance level for the authentication: `http://id.elegnamnden.se/loa/1.0/eidas-nf-high`. Vajuta `Authenticate`, seejärel `Approve`.
+- Norra - vali autentimiseks `MINID`, personal ID number: `51109599720`, password: `password01`, PIN: `12345`. Vajuta `Continue`.
 
 ### Smart-ID
 
@@ -95,6 +96,7 @@ Nõu küsimiseks ja võimaliku TARA vea raporteerimiseks palume pöörduda meili
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
+| 0.7, 29.03.2021   | eIDAS testandmete update |
 | 0.6, 29.12.2020   | Pangalingi info update |
 | 0.5, 12.12.2020   | Mobiil-ID ja pangalinkide info uuendus |
 | 0.4, 11.09.2020   | Mobiil-ID info update |
