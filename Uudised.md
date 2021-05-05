@@ -4,6 +4,8 @@ permalink: Uudised
 
 # Uudised
 
+05.05.2021 Uudis! Riigi autentimisteenuse üleminek uuele tarkvara platvormile TARA2. Uuele TARA2 versioonile migreerime kõik kliendid demokeskkonnas ajavahemikus 05.-06.05.2021. Uus TARA2 platvorm on tagasiühilduv ning senine TARA dokumentatsiooni tehniline kirjeldus on endiselt kehtiv. Seega liidestunud klientide jaoks ei tohiks probleeme tekkida, kui liidestamisel on järgitud tehnilises dokumentatsioonis antud soovitusi. Siiski palume kindlasti kontrollida oma teenuse tööd demokeskkonnas ja kui esineb mingisuguseid probleeme, siis palun võtke kindlasti meiega ühendust help@ria.ee.TARA2 toodangukeskkonda migreerime kliendid (eeldatavalt) 12.05.2021.TARA2 platvormi koodi avalikustame GitHubi repodes lähimal ajal.
+
 14.12.2020 Alates 09.12.2020 ei ole võimalik TARA test keskkonnas kasutada Mobiil-ID testimiseks isiklikku Mobiil-ID numbrit. Testida saab ainult kasutades testnumbreid. Rohkem infot [siit.](https://www.skidsolutions.eu/uudised/mobiil-id-demo-keskkond-ei-ole-tehnilistel-pohjustel-kattesaadav/)
 {: .note}
 
