@@ -4,6 +4,8 @@ permalink: /
 
 <img src='img/ee_cef_0.png' style='width:400px'>
 
+<img src='img/EL_Regionaalarengu_Fond_horisontaalne-vaike.jpg'>
+
 <img src='img/LOVID.png' style='width: 80px;'>
 
 # Riigi autentimisteenus (TARA)
