@@ -11,7 +11,7 @@ Liidestunud klientide jaoks ei tohiks probleeme tekkida, kui liidestamisel on j�
 - state parameetril on miinimum pikkus 8 tähemärki (TARA dokumentatsioonis on soovitatud kasutada 16 tähemärgi pikkust väärtust).
 - Tagasisuunamispäringus tagastatakse ka kasutatud scope parameeter koos kasutatud väärtustega.
 - oidc/jwks otspunkti väljundisse lisandub parameeter use.
-{: .note}
+
 Palume kindlasti kontrollida oma teenuse tööd demokeskkonnas ja kui esineb mingisuguseid probleeme, siis palun võtke kindlasti meiega ühendust help@ria.ee.
 TARA2 toodangukeskkonda migreerime kliendid (eeldatavalt) 12.05.2021. TARA2 platvormi koodi avalikustame GitHubi repodes lähimal ajal.
 {: .note}
