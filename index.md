@@ -6,9 +6,9 @@ permalink: /
 
 <img src='img/EL_Regionaalarengu_Fond_horisontaalne-vaike.jpg'>
 
-<img src='img/LOVID.png' style='width: 80px;'>
 
-# Riigi autentimisteenus (TARA)
+
+# <img src='img/LOVID.png' style='width: 80px;'> Riigi autentimisteenus (TARA)
 
 Riigi autentimisteenus on keskselt osutatav teenus, millega asutus saab oma e-teenuses autentida ID-kaardi, mobiil-ID, smart-ID ja ka välisriigi kasutaja.
 
