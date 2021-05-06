@@ -4,13 +4,13 @@ permalink: Uudised
 
 # Uudised
 
-05.05.2021 Riigi autentimisteenuse üleminek uuele tarkvara platvormile TARA2. Uuele TARA2 versioonile migreerime kõik kliendid demokeskkonnas ajavahemikus 05.-06.05.2021. Uus TARA2 platvorm on tagasiühilduv ning senine TARA dokumentatsiooni tehniline kirjeldus on endiselt kehtiv.
+05.05.2021 Uuele TARA2 versioonile migreerime kõik kliendid demokeskkonnas ajavahemikus 05.-06.05.2021. Uus TARA2 platvorm on tagasiühilduv ning senine TARA dokumentatsiooni tehniline kirjeldus on endiselt kehtiv.
 Liidestunud klientide jaoks ei tohiks probleeme tekkida, kui liidestamisel on järgitud tehnilises dokumentatsioonis antud soovitusi, kuid eriti karbitoodete puhul tuleks üle kontrollida järgnevad täiendused/muutused:
 - Toetatakse ainult TARA tehnilises dokumentatsioonis toodud skoope ning tundmatute skoopide korral tagastatakse viga. NB! banklink skoobi kasutus ei ole TARA2 teenuses toetatud!
 - state parameetril on miinimum pikkus 8 tähemärki (TARA dokumentatsioonis on soovitatud kasutada 16 tähemärgi pikkust väärtust).
 - Tagasisuunamispäringus tagastatakse ka kasutatud scope parameeter koos kasutatud väärtustega.
-- oidc/jwks otspunkti väljundisse lisandub parameeter use
-Siiski palume kindlasti kontrollida oma teenuse tööd demokeskkonnas ja kui esineb mingisuguseid probleeme, siis palun võtke kindlasti meiega ühendust help@ria.ee.TARA2 toodangukeskkonda migreerime kliendid (eeldatavalt) 12.05.2021.TARA2 platvormi koodi avalikustame GitHubi repodes lähimal ajal.
+- oidc/jwks otspunkti väljundisse lisandub parameeter use.
+Palume kindlasti kontrollida oma teenuse tööd demokeskkonnas ja kui esineb mingisuguseid probleeme, siis palun võtke kindlasti meiega ühendust help@ria.ee.TARA2 toodangukeskkonda migreerime kliendid (eeldatavalt) 12.05.2021.TARA2 platvormi koodi avalikustame GitHubi repodes lähimal ajal.
 {: .note}
 
 14.12.2020 Alates 09.12.2020 ei ole võimalik TARA test keskkonnas kasutada Mobiil-ID testimiseks isiklikku Mobiil-ID numbrit. Testida saab ainult kasutades testnumbreid. Rohkem infot [siit.](https://www.skidsolutions.eu/uudised/mobiil-id-demo-keskkond-ei-ole-tehnilistel-pohjustel-kattesaadav/)
