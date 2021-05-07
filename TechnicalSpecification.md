@@ -489,7 +489,7 @@ For more detailed information about the identity token verifications can be foun
 
 The identity token is signed by the TARA authentication service. The signature meets the JWT standard.
 
-TARA uses the `RS256` signature algorithm. The client application must, at least, be able to verify the signature given by using this algorithm. It would be reasonable to use a standard JWT library which supports all JWT algorithms. A situation in which the TARA signature algorithm is needed is, in principle, possible – if a security failure is detected in `RS256`).
+TARA uses the `RS256` signature algorithm. The client application must, at least, be able to verify the signature given by using this algorithm. It would be reasonable to use a standard JWT library which supports all JWT algorithms. The change of algorithm is considered unlikely, but possible in case a security vulnerability is detected in the `RS256`.
 
 For the signature verification the public signature key of TARA must be used. The public signature key is published at the public signature key endpoint (see chapter 6 "Endpoints").
 
