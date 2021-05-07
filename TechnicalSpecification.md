@@ -34,7 +34,6 @@ For TARA, the application flows and features necessary for the applications of T
 - The service supports the authorisation code flow. The authorisation code flow is deemed the most secure option and is thus appropriate for public services.
 - All information about an authenticated user is transferred to the application in an ID token.
 - The eIDAS assurance level is also transferred to the application if it is known (in the `acr` statement).
-- The service supports assigning a language preference to the user interface in the authentication request (by the `locale` parameter (until the end of July 2019) or `ui_locales` (from the end of January 2019)).
 - The authentication method is selected by the user in the authentication service.
 - Cross-border authentication based on the technical specification of eIDAS.
 - Dynamic registration of the client application is not supported. The client application is registered in RIA by a separate procedure.
@@ -216,8 +215,7 @@ Elements of an authentication request:
 | `state` | yes | `state=hkMVY7vjuN7xyLl5` | Security code against false request attacks (_cross-site request forgery_, CSRF). Read more about formation and verification of `state` under ‘Protection against false request attacks. |
 | `response_type` | yes | `response_type=code` | Determines the manner of communication of the authentication result to the server. The method of authorisation code is supported (_authorization flow_ of the OpenID Connect protocol) and it is referred to the `code` value. |
 | `client_id` | yes | `client_id=58e7...` | Application identifier. The application identifier is issued to the institution by RIA upon registration of the client application as a user of the authentication service. |
-| `locale` | no | `locale=et` | Selection of the user interface language. The following languages are supported: `et`, `en`, `ru`. By default, the user interface is in Estonian language. The user can select the desired language. Note: the parameter will be supported until the end of July 2019. |
-| `ui_locales` | no | `ui_locales=et` | Selection of the user interface language. The following languages are supported: `et`, `en`, `ru`. By default, the user interface is in Estonian language. The user can select the desired language. Note: the parameter will be supported until the end of July 2019. |
+| `ui_locales` | no | `ui_locales=et` | Selection of the user interface language. The following languages are supported: `et`, `en`, `ru`. |
 | `nonce` | no | `fsdsfwrerhtry3qeewq` | A unique parameter which helps to prevent replay attacks based on the protocol ([References](References), [Core], subsection 3.1.2.1. Authentication Request). The `nonce` parameter is not compulsory. |
 | `acr_values` | no | `acr_values=substantial` | The minimum required level of authentication based on the eIDAS LoA (level of assurance). The parameter is only applied in the case of cross-border authentication. The parameter is ignored in the case of other methods of authentication. It is permitted to apply one value of the following: `low`, `substantial`, `high` . `substantial` is used by default if the value has not been selected. |
 
