@@ -402,7 +402,7 @@ The following claims are presented in the identity token.
 
 Identitiy token might consist other OpenID Connect protocol based fields that are not supported in TARA.
 
-The client application must use the identity token immediately or within `30` seconds (before the expiry time of the identity token).
+The client application must obtain the identity token immediately or within `30` seconds (before the expiry time of the identity token).
 
 ### 4.4 User info request
 
@@ -541,7 +541,7 @@ The verification is done using three elements in the identity token: `iat`, `nbf
 
 The application must choose the `kellade_lubatud_erinevus` value. These checks are required for preventing attacks and confusion.
 
-The identity token must be used immediately or within 30 seconds. When the time limit is exceeded, the identity token will not be issued.
+The identity token must be obtained immediately or within 30 seconds. When the time limit is exceeded, the identity token will not be issued.
 
 #### 5.1.6 Verifying the authentication method used in authentication
 
