@@ -225,7 +225,7 @@ Elements of an authentication request:
 
 In the case of authentication of a foreigner, the foreigner is redirected by TARA to the authentication service of their country.
 By a regulation of the European Committee, members states have agreed that another country’s authentication service must always issue four attributes of a natural person: 1) first name; 2) surname; 3) date of birth; 4) personal identification code or another identifier.
-Two attributes are always issued of the legal persons: 1) clegal person's identifier; 2) legal person’s name.
+Two attributes are always issued of the legal persons: 1) legal person's identifier; 2) legal person’s name.
 
 #### 4.1.2 Requesting e-mail address
 
@@ -255,7 +255,7 @@ Table 1 – displaying the authentication methods
 | `mid` | Allowing Mobile-ID authentication |
 | `smartid` | Allowing Smart-ID authentication |
 | `eidas` | Allowing cross-border (eIDAS) authentication |
-| `eidasonly` | Allowing ONLY cross-border (eIDAS) authenticationAinult <br><br>NB! When `eidasonly` is used, all other preferred authentication methods will be always excluded. |
+| `eidasonly` | Allowing ONLY cross-border (eIDAS) authentication <br><br>NB! When `eidasonly` is used, all other preferred authentication methods will be always excluded. |
 
 Example 1: All means of authentication
 `scope=openid`
@@ -333,7 +333,7 @@ The body of the request must include the following parameters:
 |---------------------------|---------|-------------|
 | protocol, host, and path | `https://tara.ria.ee/oidc/token` |   |
 | `grant_type`  | `grant_type=authorization_code` | The `authorization_code` value required based on the protocol. |
-| `code` | `code=Splx...` | Autentimisteenuselt saadud volituskood. The authorisation code received from the authentication service. | 
+| `code` | `code=Splx...` | The authorization code received from the authentication service. | 
 | `redirect_uri` | `redirect_uri=https%3A%2F` | The redirect URL sent in the authorisation request. |
 
 #### 4.3.1 Identity token
@@ -387,7 +387,7 @@ The following claims are presented in the identity token.
 | `aud` (_Audience_)     | `TARA-Demo` - the ID of a client application that requested authentication (the value of `client_id` field is specified upon directing the user to the authentication process). |
 | `exp` (_Expires_) | `1530295852` - the expiration time of the certificate (in Unix _epoch_ format). |
 | `iat` (_Issued At_) | `1530267052` - the time of issue of the certificate (in Unix _epoch_ format). |
-| `nbf` (_Not Before_)   | `1530266752` - the validity start time of the certificate, Unix _epoch_ vormingus |
+| `nbf` (_Not Before_)   | `1530266752` - the validity start time of the certificate (in Unix _epoch_ format). |
 | `sub` (_Subject_)      | `EE60001019906` - the identifier of the authenticated user (personal identification code or eIDAS identifier) with the prefix of the country code of the citizen (country codes based on the ISO 3166-1 alpha-2 standard). |
 | `profile_attributes`   | the data of the authenticated user, including the eIDAS attributes |
 | `profile_attributes`<br>`.date_of_birth` | `2000-01-01` - the date of birth of the authenticated user in the ISO_8601 format. Only sent in the case of persons with Estonian personal identification code and in the case of eIDAS authentication. |
