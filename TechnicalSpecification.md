@@ -599,7 +599,7 @@ Further information: unfortunately, this topic is not presented clearly in the O
 
 ### 5.3 Logging
 
-Logging must enable the reconstruction of the course of the communication between TARA and the client application for each occasion of using TARA. For this purpose, all requests and responses must be logged by TARA as well as by the client application: [autentimispäring](#41-autentimisp%C3%A4ring), [tagasisuunamispäring](#42-tagasisuunamisp%C3%A4ring) and [identsustõendipäring](#43-identsust%C3%B5endip%C3%A4ring). As the volumes of data transferred are not large, the URL as well as the identity token must be logged in full. The retention periods of the logs should be determined based on the importance of the client application. We advise using 1 … 7 years. In case of any issue, please submit an excerpt from the log (Which requests were sent to TARA? Which responses were received?).
+Logging must enable the reconstruction of the course of the communication between TARA and the client application for each occasion of using TARA. For this purpose, all requests and responses must be logged by TARA as well as by the client application: [authentication-request](#41-authentication-request), [redirect-request](#42-redirect-request) and [identity-token-request](#43-identity-token-request). As the volumes of data transferred are not large, the URL as well as the identity token must be logged in full. The retention periods of the logs should be determined based on the importance of the client application. We advise using 1 … 7 years. In case of any issue, please submit an excerpt from the log (Which requests were sent to TARA? Which responses were received?).
 
 ## 6 Endpoints and timeouts
 
