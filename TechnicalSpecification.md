@@ -662,7 +662,7 @@ The application is submitted and any further communication in the course of admi
 
 RIA, having satisfied the application:
 
-- issues a client application password `client_secret` for the institution. The client secret code is used for signing identity token requests
+- issues a client application password `client_secret` for the institution. The client secret code is used for authenticating identity token requests
 - provides an access to the TARA test service.
 
 As a next step, the institution performs tests of it's client applicaton interface. See the testing [guidelines](https://e-gov.github.io/TARA-Doku/Testimine).
