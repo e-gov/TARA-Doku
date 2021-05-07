@@ -402,7 +402,7 @@ The following claims are presented in the identity token.
 
 Identitiy token might consist other OpenID Connect protocol based fields that are not supported in TARA.
 
-The client application must issue the identity token immediately or within `5...10` minutes (the expiry time of identity token).
+The client application must use the identity token immediately or within `5...10` minutes (before the expiry time of the identity token).
 
 ### 4.4 User info request
 
