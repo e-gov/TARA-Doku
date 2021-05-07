@@ -400,7 +400,7 @@ The following claims are presented in the identity token.
 | `email` | `60001019906@eesti.ee` - the user’s e-mail address. Only issued if an Estonian ID card is used for authenticating the user. Is only read from the SAN extension of the user’s authentication certificate (from the RFC822 type `Subject Alternative Name` field) |
 | `email_verified` | `false` - the e-mail address of the user has been verified. TARA always issues a value `false`. It means that TARA does not verify or issue information on whether or not the user has redirected his/her eesti.ee e-mail address. |
 
-Identitiy token might consist other OpenID Connect protocol based fields that are not supported in TARA.
+Identity token might consist other OpenID Connect protocol based fields that are not supported in TARA.
 
 The client application must obtain the identity token immediately or within `30` seconds (before the expiry time of the identity token).
 
