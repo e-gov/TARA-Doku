@@ -398,7 +398,7 @@ The following claims are presented in the identity token.
 | `acr` (_Authentication Context Class Reference_) | `high` - level of authentication based on the eIDAS LoA (level of assurance). Possible values: `low`, `substantial`, `high`. The element is not used if the level of authentication is not applicable or is unknown. |
 | `at_hash` | `X0MVjwrmMQs/IBzfU2osvw==` - the access token hash. Not used in TARA. |
 | `email` | `60001019906@eesti.ee` - the user’s e-mail address. Only issued if an Estonian ID card is used for authenticating the user. Is only read from the SAN extension of the user’s authentication certificate (from the RFC822 type `Subject Alternative Name` field) |
-| `email_verified` | `false` - the e-mail address of the user has been verified. TARA always issues a value `false`. It means that TARA does not verify or issue information on whether or not the user has redirected their eesti.ee e-mail address. |
+| `email_verified` | `false` - the e-mail address of the user has been verified. TARA always issues a value `false`. It means that TARA does not verify or issue information on whether or not the user has redirected his/her eesti.ee e-mail address. |
 
 Identitiy token might consist other OpenID Connect protocol based fields that are not supported in TARA.
 
