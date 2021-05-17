@@ -58,7 +58,7 @@ curl \
 
 1. Mobiil-ID telefoninumber: `00000766`, isikukood: `60001019906`
 2. eIDAS riik Norra, vali autentimiseks profiil `MINID`
-3. Smart-ID isikukood: `10101010005`.
+3. Smart-ID isikukood: `30303039914`.
 
 ### ID-kaart ja Mobiil-ID
 
