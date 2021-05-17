@@ -14,7 +14,7 @@ Riigi autentimisteenus on keskselt osutatav teenus, millega asutus saab oma e-te
 
 Riigi autentimisteenuse tarkvara tehniline nimi on TARA.
 
-TARA on [eelistatud viis](https://e-gov.github.io/eIDAS-Connector/Valik) piiriülese eIDAS-autentimise lisamiseks asutuse e-teenustele.
+TARA on eelistatud viis piiriülese eIDAS-autentimise lisamiseks asutuse e-teenustele.
 
 Riigi keskset autentimisteenust pakub Riigi Infosüsteemi Amet.
 
