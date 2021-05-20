@@ -311,8 +311,8 @@ The identity token request is a HTTP POST request which is used by the client ap
 An example of an identity token request (for better readability, the body of the HTTP POST request is divided over several lines):
 
 ````
-POST /token HTTP/1.1
-Host: tara.ria.ee/oidc/token
+POST /oidc/token HTTP/1.1
+Host: tara.ria.ee
 Content-Type: application/x-www-form-urlencoded
 Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW
 

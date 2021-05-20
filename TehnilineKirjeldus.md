@@ -339,8 +339,8 @@ Identsustõendipäring on HTTP POST päring, millega klientrakendus pärib TARA 
 Identsustõendipäringu näide (HTTP POST päringu keha on loetavuse huvides jagatud mitmele reale):
 
 ````
-POST /token HTTP/1.1
-Host: tara.ria.ee/oidc/token
+POST /oidc/token HTTP/1.1
+Host: tara.ria.ee
 Content-Type: application/x-www-form-urlencoded
 Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW
 
