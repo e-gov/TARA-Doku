@@ -13,7 +13,7 @@ Liidestunud klientide jaoks ei tohiks probleeme tekkida, kui liidestamisel on j�
 - oidc/jwks otspunkti väljundisse lisandub parameeter use.
 
 Palume kindlasti kontrollida oma teenuse tööd demokeskkonnas ja kui esineb mingisuguseid probleeme, siis palun võtke kindlasti meiega ühendust help@ria.ee.
-TARA2 toodangukeskkonda migreerime kliendid (eeldatavalt) 18.05.2021. TARA2 platvormi koodi avalikustame GitHubi repodes lähimal ajal.
+TARA2 toodangukeskkonda migreerime kliendid (eeldatavalt) 31.05.2021. TARA2 platvormi koodi avalikustame GitHubi repodes lähimal ajal.
 {: .note}
 
 14.12.2020 Alates 09.12.2020 ei ole võimalik TARA test keskkonnas kasutada Mobiil-ID testimiseks isiklikku Mobiil-ID numbrit. Testida saab ainult kasutades testnumbreid. Rohkem infot [siit.](https://www.skidsolutions.eu/uudised/mobiil-id-demo-keskkond-ei-ole-tehnilistel-pohjustel-kattesaadav/)
