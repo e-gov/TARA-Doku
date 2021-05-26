@@ -7,7 +7,7 @@ Mõned autentimismeetodid võivad olla veel arenduses või kasutatavad ainult te
 
 # Tehniline kirjeldus
 {: .no_toc}
-v 1.17, 19.03.2021
+v 1.18, 26.05.2021
 
 - TOC
 {:toc}
@@ -211,7 +211,7 @@ Autentimispäringu elemendid:
 |------------------------|:---------- :|-----------------------------|---------------|
 | protokoll, host ja tee (_path_) | jah | `https://tara.ria.ee/oidc/authorize` | `/authorize` on TARA-teenuse OpenID Connect-kohane autentimisotspunkt (termin 'autoriseerimine' pärineb alusprotokollist OAuth 2.0). |
 | `redirect_uri` | jah | `redirect_uri=https%3A%2F%2F` `eteenus.asutus.ee%2Ftagasi` | Tagasisuunamis-URL. Tagasisuunamis-URL-i valib asutus ise. Tagasisuunamis-URL võib sisaldada _query_-osa. <br><br>Vajadusel kasutada [URLi kodeerimist](https://en.wikipedia.org/wiki/Percent-encoding). <br><br>URI-i [fragmendi osa](https://tools.ietf.org/html/rfc3986#section-3.5) (`#` märk ja sellele järgnev osa) kasutamine [ei ole lubatud](https://tools.ietf.org/html/rfc6749#section-3.1.2). |
-| `scope` | jah | `scope=openid`<br><br>`scope=openid%20eidas` <br><br>`scope=openid%20idcard%20mid` | Autentimise skoop.<br><br>`openid` on kohustuslik (seda nõuab OpenID Connect protokoll).<br><br> Skoopidega `idcard`, `mid`, `smartid`, `eidas` (ja `eidasonly`) saab nõuda, et kasutajale näidatakse ainult soovitud autentimismeetodeid. Vt jaotis 4.1.3 Autentimismeetodite valikuline kasutus.<br><br>Skoobiga `email` saab nõuda, et identsustõendis väljastatakse kasutaja e-postiaadress. Vt jaotis 4.1.2 E-postiaadressi küsimine.<br><br>Piiriülesel autentimisel saab kasutada lisaskoope sihtriigi valiku täpsustamiseks, et kasutaja suunata otse välisriigi autentimisteenusesse või täiendavate isikuandmete pärimiseks (vt jaotis 4.1.3 ja 4.1.1).<br><br>Mitme skoobi kasutamisel tuleb skoobid eraldada tühikutega. Tühik esitatakse seejuures URL-kodeeringus (`%20`) ([RFC 3986](https://www.ietf.org/rfc/rfc3986.txt)). Skoobi väärtused on tõstutundlikud. Tundmatuid väärtuseid ignoreeritakse. |
+| `scope` | jah | `scope=openid`<br><br>`scope=openid%20eidas` <br><br>`scope=openid%20idcard%20mid` | Autentimise skoop.<br><br>`openid` on kohustuslik (seda nõuab OpenID Connect protokoll).<br><br> Skoopidega `idcard`, `mid`, `smartid`, `eidas` (ja `eidasonly`) saab nõuda, et kasutajale näidatakse ainult soovitud autentimismeetodeid. Vt jaotis 4.1.3 Autentimismeetodite valikuline kasutus.<br><br>Skoobiga `email` saab nõuda, et identsustõendis väljastatakse kasutaja e-postiaadress. Vt jaotis 4.1.2 E-postiaadressi küsimine.<br><br>Piiriülesel autentimisel saab kasutada lisaskoope sihtriigi valiku täpsustamiseks, et kasutaja suunata otse välisriigi autentimisteenusesse või täiendavate isikuandmete pärimiseks (vt jaotis 4.1.3 ja 4.1.1).<br><br>Mitme skoobi kasutamisel tuleb skoobid eraldada tühikutega. Tühik esitatakse seejuures URL-kodeeringus (`%20`) ([RFC 3986](https://www.ietf.org/rfc/rfc3986.txt)). Skoobi väärtused on tõstutundlikud. Lubatud on ainult käesolevas dokumendis kirjeldatud skoobid, teiste väärtuste korral tagastatakse viga koodiga `invalid_scope`. |
 | `state` | jah | `state=hkMVY7vjuN7xyLl5` | Võltspäringuründe (_cross-site request forgery_, CSRF) vastane turvakood. `state` moodustamise ja kontrollimise kohta vt lähemalt jaotis "Võltspäringuründe vastane kaitse". |
 | `response_type` | jah | `response_type=code` | Määrab autentimise tulemuse serverile edastamise viisi. Toetatud on volituskoodi viis (OpenID Connect protokolli _authorization flow_), selle tähiseks on väärtus `code`. |
 | `client_id` | jah | `client_id=58e7...` | Rakenduse identifikaator. Rakenduse identifikaatori annab RIA asutusele klientrakenduse registreerimisel autentimisteenuse kasutajaks. |
@@ -307,6 +307,8 @@ Tagasisuunamispäringu elemendid:
 | `code` | `code=71ed579...`  | Volituskood (_authorization code_) on ühekordne “lubatäht” identsustõendi saamiseks. |
 | `state`            | `state=OFfVLKu0kNbJ2EZk`     | Võltspäringuründe vastane turvakood. Autentimispäringus saadetud turvakood peegeldatakse tagasi. `state` moodustamise ja kontrollimise kohta vt lähemalt jaotis "Võltspäringuründe vastane kaitse". |
 
+Päring võib sisaldada muid URL-i parameetreid, mida klientrakendus peab ignoreerima.
+
 **Veateade tagasisuunamispäringus.** Kui TARA ei suutnud autentimispäringut töödelda - päring kas oli vigane, kasutaja otsustas autentimise katkestada või tekkis muu viga, siis saadab TARA tagasisuunamispäringus veakoodi (URL-i parameeter `error`) ja veakirjelduse (URL-i parameeter `error_description`).
 
 Juhul kui kasutaja katkestab TARA-s autentimise ("Tagasi teenusepakkuja juurde" link esilehel), tagastatakse veakood `user_cancel`.  
@@ -374,6 +376,8 @@ Päringu vastus on JSON-struktuur, milles on neli elementi (vt järgnev tabel).
 | `token_type` | Väärtusega `bearer`. OAuth 2.0 pääsutõendi tüüp |
 | `expires_in` | OAuth 2.0 pääsutõendi aegumiskestus |
 | `id_token` | identsustõend. Veebitõend esitatakse nn kompaktselt serialiseeritud kujul (vt [JWS Compact Serialization](https://tools.ietf.org/html/rfc7515#section-3.1)) | 
+
+Päringu vastus võib sisaldada muid välju, mida klientrakendus peab ignoreerima.
 
 Identsustõend on TARA poolt väljastatav tõend autentimise fakti kohta.
 
@@ -490,6 +494,7 @@ Vastuses esitatavad väited väljastatakse identsustõendi alusel.
 
  <sup>1</sup> Väljastatakse ainult juhul, kui antud väide on esitatud ka identsustõendis.
 
+Päringu vastus võib sisaldada muid välju, mida klientrakendus peab ignoreerima.
 
 **Vigade käsitlemine**
 
@@ -620,6 +625,8 @@ kus `ETEENUS` on vabalt valitud küpsisenimi. Küpsisele tuleb rakendada atribuu
 
 `GET ... state=vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`
 
+Parameetri `state` pikkus peab olema minimaalselt 8 tähemärki.
+
 Tagasisuunamispäringu töötlemisel peab klientrakendus tegema järgmist:
 
 5 Võtab päringuga tuleva küpsise `ETEENUS` väärtuse (tagasisuunamispäringuga saadetakse kasutaja kaks asja: kasutaja brauserist juhusõne küpsisena ja juhusõnest arvutatud räsiväärtus `state` parameetris).
@@ -693,8 +700,7 @@ Arenduse valmides tuleb liidest testida. Selleks kasutatakse TARA testteenust. A
 - kohustumuse kasutada teenust eesmärgipäraselt. Sh testteenust kasutada ainult testimiseks, mitte toodangus autentimiseks
 - nõustumuse teenustasemega (SLA-ga)
 - klientrakenduse identifikaatori ettepanek -`client_id`, OpenID Connect protokolli kohaselt
-- klientrakenduse testversiooni tagasisuunamis-URL (_redirect-URL_), OpenID Connect protokolli kohaselt
-- klientrakenduse testversiooni tagasisuunamis-URL juhuks, kui kasutaja soovib autentimist katkestada
+- klientrakenduse testversiooni tagasisuunamis-URL (_redirect-URL_), OpenID Connect protokolli kohaselt. Lubatud on ainult HTTPS protokoll. URL-i fragmendi osa (`#` sümbol ja sellele järgnev osa) kasutamine ei ole lubatud.
 - autentimismeetod või meetodid, mida soovitakse kasutada
 - klientrakenduse haldaja kontaktandmed (e-post, telefon, isikukood).
 
@@ -734,6 +740,7 @@ Välisriigi autentimismeetodite autentimitased on määratakse vastava välisrii
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
+| 1.18, 26.05.2021   | Täpsustatud päringutes tundmatute väljade ja väärtuste lubatavust. Täpsustatud nõudeid `state` parameetrile ning tagasisuunamis-URL-ile. |
 | 1.17, 19.03.2021   | Identsustõendi allkirja kontrollimise täpsustused. |
 | 1.16, 29.12.2020   | `banklink` skoobi parameetri eemaldamine. |
 | 1.15, 01.10.2020   | `sub` väite täpsustus - eidas identifikaatori pikkusepiirang. |

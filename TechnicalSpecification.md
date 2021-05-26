@@ -5,7 +5,7 @@ permalink: TechnicalSpecification
 
 # Technical specification
 {: .no_toc}
-v 1.8, 19.03.2021
+v 1.9, 26.05.2021
 
 - TOC
 {:toc}
@@ -211,7 +211,7 @@ Elements of an authentication request:
 | ----------- | ---------- | ------- | ----------- |
 | protocol, host, and patch | yes | `https://tara.ria.ee/oidc/authorize` | `/authorize` is the OpenID Connect-based authentication endpoint of the TARA service (the concept of ‘authorisation’ originates from the OAuth 2.0 standard protocol). 
 | `redirect_uri` | yes | `redirect_uri=https%3A%2F%2F eteenus.asutus.ee%2Ftagasi` | Redirect URL. The redirect URL is selected by the institution. The redirect URL may include the query component. <br><br> [URL encoding](https://en.wikipedia.org/wiki/Percent-encoding) should be used, if necessary.<br><br>It is [not permitted](https://tools.ietf.org/html/rfc6749#section-3.1.2) to use the URI [fragment component](https://tools.ietf.org/html/rfc3986#section-3.5) (`#` and the following component). |
-| `scope` | yes | `scope=openid`<br><br>`scope=openid%20eidas`<br><br>`scope=openid%20idcard%20mid` | The authentication scope.<br><br>`openid` is compulsory (required by the OpenID Connect protocol).<br><br> The scopes of `idcard`, `mid`, `smartid`, `eidas` (and `eidasonly`) can be used to request that only the desired method of authentication is displayed to the user. See 4.1.3 Selective use of authentication methods.<br><br>The `email` scope can be used to request that the user’s e-mail address is issued in the identity token. See 4.1.2 Requesting e-mail address.<br><br>In the case of cross-border authentication, further scopes can be used to request additional personal data (see below).<br><br>When using several scopes, the scopes must be separated by spaces. Thereat, the space is presented in the URL encoding (`%20`) ([RFC 3986](https://www.ietf.org/rfc/rfc3986.txt)). Scope values are case sensitive. Unknown values are ignored. |
+| `scope` | yes | `scope=openid`<br><br>`scope=openid%20eidas`<br><br>`scope=openid%20idcard%20mid` | The authentication scope.<br><br>`openid` is compulsory (required by the OpenID Connect protocol).<br><br> The scopes of `idcard`, `mid`, `smartid`, `eidas` (and `eidasonly`) can be used to request that only the desired method of authentication is displayed to the user. See 4.1.3 Selective use of authentication methods.<br><br>The `email` scope can be used to request that the user’s e-mail address is issued in the identity token. See 4.1.2 Requesting e-mail address.<br><br>In the case of cross-border authentication, further scopes can be used to request additional personal data (see below).<br><br>When using several scopes, the scopes must be separated by spaces. Thereat, the space is presented in the URL encoding (`%20`) ([RFC 3986](https://www.ietf.org/rfc/rfc3986.txt)). Scope values are case sensitive. Only scope values described in current document are allowed, other values cause an error with code `invalid_scope` to be returned. |
 | `state` | yes | `state=hkMVY7vjuN7xyLl5` | Security code against false request attacks (_cross-site request forgery_, CSRF). Read more about formation and verification of `state` under ‘Protection against false request attacks. |
 | `response_type` | yes | `response_type=code` | Determines the manner of communication of the authentication result to the server. The method of authorisation code is supported (_authorization flow_ of the OpenID Connect protocol) and it is referred to the `code` value. |
 | `client_id` | yes | `client_id=58e7...` | Application identifier. The application identifier is issued to the institution by RIA upon registration of the client application as a user of the authentication service. |
@@ -286,6 +286,8 @@ Elements of a redirect request:
 | `code` | `code=71ed579...`  | The authorisation code is a single ‘permission note’ to receive the identity token. |
 | `state` | `state=OFfVLKu0kNbJ2EZk` | Security code against false request attacks. The security code received in the authentication request is mirrored back. Read more about forming and verifying `state` from ‘Protection against false request attacks’. |
 
+Request might contain other URL parameters, that client application must ignore.
+
 **Error message in the redirect request.** If TARA is unable to process an authentication request – there is an error in the request, or another error has occurred – TARA transfers an error message (URL parameter `error`) and the description of the error (URL parameter `error_description`) in the redirect request. 
 
 TARA relies on the OpenID Connect standard on error messages (more information regarding the error messages can be found from https://openid.net/specs/openid-connect-core-1_0.html#AuthError and https://tools.ietf.org/html/rfc6749#section-4.1.2.1). The error messages are always displayed in English.
@@ -346,6 +348,8 @@ The response body uses JSON format consisting four elements (see the following t
 | `token_type` | OAuth 2.0 access token type with `bearer` value. Not used in TARA |
 | `expires_in` | The validity period of the OAuth 2.0 access token. Not used in TARA. |
 | `id_token` | Identity token, in Base64 format. | 
+
+Response body might contain other fields, that client application must ignore.
 
 The identity token is a certificate of the fact of authentication issued by TARA.
 
@@ -455,6 +459,8 @@ The claims included in the response are issued based on the identity token.
 | `acr` | no  <sup>1</sup> | The same format and meaning as `acr` in identity token. |
 
  <sup>1</sup> Only issued if the claim is also included in the identity token.
+
+Response body might contain other fields, that client application must ignore.
 
 **Error handling**
 
@@ -581,6 +587,8 @@ where `ETEENUS` is a freely selected cookie name. The `HttpOnly` attribute must 
 
 `GET ... state=vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`
 
+Length of `state` parameter must be minimally 8 characters.
+
 Thus, two elements are sent in an authentication request: a nonce word for including in the cookie and the hash value calculated from the nonce word in the `state` parameter. The client application is not required to remember the nonce word or the hash value.
 
 In the course of processing the redirect request, the client application must:
@@ -653,8 +661,7 @@ When the development is completed, the interface must be tested with the TARA te
 - the obligation to only use the service for the intended purpose, including to only use the test service for testing, not for authentication
 -	consent with the service level agreement (SLA)
 - the proposal of the client application identifier – `client_id`, based on the OpenID Connect protocol
--	the redirect-URL of the test version of the client application, based on the OpenID Connect protocol
-- the redirect-URL of the test version of the client application for the situations in which the user would like to terminate the authentication process
+- the redirect-URL of the test version of the client application, based on the OpenID Connect protocol. Only HTTPS protocol is allowed. URL fragment part (`#` character and characters following it) is not allowed.
 - the authentication method or methods which the institution intends to use
 -	the contact details of the person responsible of the client application (e-mail address, telephone, personal identification code).
 
