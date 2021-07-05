@@ -18,8 +18,6 @@ Siin on ka valik avalikke dokumente, mis käsitlevad TARA mitmesuguseid sisekül
 
 [Abiks dokumenteerijale](Dokuabi)
 
-[TARA serverrakenduse sisearhitektuur](Sisearhitektuur)
-
 [TARA elutukseteenus](Elutukse), spetsifikatsioon<br>
 
 [Jõudlusanalüüs](Joudlus)<br>
