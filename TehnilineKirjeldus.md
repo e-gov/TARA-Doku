@@ -7,7 +7,7 @@ Mõned autentimismeetodid võivad olla veel arenduses või kasutatavad ainult te
 
 # Tehniline kirjeldus
 {: .no_toc}
-v 1.18, 26.05.2021
+v 1.19, 28.10.2021
 
 - TOC
 {:toc}
@@ -649,7 +649,7 @@ Logimine peab võimaldama rekonstrueerida TARA ja klientrakenduse suhtluse käig
  
 ## 6 Otspunktid ja aegumisajad
 
-Testteenus
+6.1 Testteenus
 
 | otspunkt      |                        URL      |
 |---------------|---------------------------------|
@@ -659,7 +659,7 @@ Testteenus
 | autentimine (_authorization_) | [https://tara-test.ria.ee/oidc/authorize](https://tara-test.ria.ee/oidc/authorize) | 
 | tõendiväljastus (_token_) | [https://tara-test.ria.ee/oidc/token](https://tara-test.ria.ee/oidc/token) | 
 
-Toodanguteenus
+6.2 Toodanguteenus
 
 | otspunkt      |                        URL      |
 |---------------|---------------------------------|
@@ -669,14 +669,14 @@ Toodanguteenus
 | autentimine (_authorization_) | [https://tara.ria.ee/oidc/authorize](https://tara.ria.ee/oidc/authorize) | 
 | tõendiväljastus (_token_) | [https://tara.ria.ee/oidc/token](https://tara.ria.ee/oidc/token) | 
 
-Aegumisajad (_timeout_)
+6.3 Aegumisajad (_timeout_)
 
 | aegumisaeg  | väärtus  | märkus
 |---------------------|----------|
 | TARA seansi aegumisag | 30 min | TARA server loob autentimise läbiviimiseks TARAsse saabuva kasutajaga oma seansi. Kui kasutaja TARA esilehel midagi ei tee, siis 30 min järel seanss aegub. TARA seanssi ei tohi segi ajada autentimise järel klientrakenduse ja kasutaja vahel loodava seansiga. |
 | SSL/TLS kätluse aegumisaeg | 25 s | Omab tähtsust ID-kaardiga autentimisel. Kasutaja peab 25 s jooksul jõudma PIN1 sisestada. Selle aja ületamisel turvalisuse kaalutlustel autentimine katkestatakse. | 
 | OAuth volituskoodi aegumisaeg  | 30 s | Klientrakendus peab volituskoodi (_authorization code_) abil identsustõendi välja lunastama 30 s jooksul. |
-| identsustõendi (ja OAuth juurdepääsutõendi (_access token_)) aegumisaeg | 10 min | Identsustõendis on märgitud tõendi aegumise aeg. Turvalisuse kaalutlustel on tõendi kehtivuse periood seatud lühikeseks (10 min). Klientrakendus ei tohi aegunud tõendit kasutada. Märgime, et identsustõend üldjuhul ei sobi klientrakenduse ja kasutaja vahelise seansi tõendiks. Kui klientrakendus soovib veebitõendi (JWT) vormingus seansitõendit kasutada, siis peaks ta looma identsustõendi alusel uue tõendi. |
+| identsustõendi (ja OAuth juurdepääsutõendi (_access token_)) aegumisaeg | 40 s | Identsustõendis on märgitud tõendi aegumise aeg. Turvalisuse kaalutlustel on tõendi kehtivuse periood seatud lühikeseks (40 sekundit). Klientrakendus ei tohi aegunud tõendit kasutada. Märgime, et identsustõend ei sobi klientrakenduse ja kasutaja vahelise seansi tõendiks. Kui klientrakendus soovib veebitõendi (JWT) vormingus seansitõendit kasutada, siis peaks ta looma identsustõendi alusel uue tõendi. |
 
 
 ## 7 Soovitusi liidestajale
@@ -740,6 +740,7 @@ Välisriigi autentimismeetodite autentimitased on määratakse vastava välisrii
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
+| 1.19, 28.10.2021   | Identsustõendi kehtivusaeg muudetud 10-lt minutilt 40 sekundile. |
 | 1.18, 26.05.2021   | Täpsustatud päringutes tundmatute väljade ja väärtuste lubatavust. Täpsustatud nõudeid `state` parameetrile ning tagasisuunamis-URL-ile. |
 | 1.17, 19.03.2021   | Identsustõendi allkirja kontrollimise täpsustused. |
 | 1.16, 29.12.2020   | `banklink` skoobi parameetri eemaldamine. |
