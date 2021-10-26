@@ -86,9 +86,9 @@ Teenus on toodangus avatud 2018. a märtsist.
 
 ## Soovitused Riigi autentimisteenuse integreerimiseks kliendi teenuses
 
-- kui teenuses on kasutuses üksnes Riigi autentimisteenus (TARA), kasutada viidet “Sisene” koos paigutusega veebilehe paremal üleval servas
+- kui teenuses on kasutuses üksnes Riigi autentimisteenus (TARA), kasutada viidet “Logi sisse” koos paigutusega veebilehe paremal üleval servas
 
-<img src='img/eesti_ee.png' width='500'>
+<img src='img/riigiportaal.png' width='500'>
 
 - ainult eIDAS-liidestuse korral kasutada Riigi autentimisteenusele (TARA) suunamiseks viidet “EL riigi eID” / “Other EU country” või kasutada [logo](https://github.com/e-gov/TARA2-Login/blob/master/disain/assets/eu_citizen_login_btn_190x50.svg)
 
