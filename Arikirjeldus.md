@@ -26,6 +26,7 @@ Samuti pakume piiriülest autentimist Euroopa Liidu teavitatud eID vahenditega l
 - Holland: eHerkenning; DigiD Substantieel; DigiD Hoog
 - Tšehhi: CZ eID card
 - Slovakkia: Slovak Citizen eCard; Foreigner eCard
+- Taani: NemID
 
 Eesti riiklike ja piiriüleselt tunnustatud eID vahenditega (ID-kaart, mobiil-ID) on tagatud juurdepääs järgmiste Euroopa Liidu riikide e-teenustele: Austria, Belgia, Hispaania, Holland, Horvaatia, Itaalia, Kreeka, Leedu, Luksemburg, Läti, Malta, Norra, Poola, Portugal, Rootsi, Slovakkia, Sloveenia, Soome, Suurbritannia, Taani, Tšehhi.
 
