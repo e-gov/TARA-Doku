@@ -653,7 +653,7 @@ Logimine peab võimaldama rekonstrueerida TARA ja klientrakenduse suhtluse käig
 
 | otspunkt      |                        URL      |
 |---------------|---------------------------------|
-| teenuseteave (_server discovery_) |  [https://tara-test.ria.ee/oidc/.well-known/openid-configuration](https://tara-test.ria.ee/oidc/.well-known/openid-configuration) |
+| teenuseteave (_server discovery_) | [https://tara-test.ria.ee/.well-known/openid-configuration](https://tara-test.ria.ee/.well-known/openid-configuration) <br>[https://tara-test.ria.ee/oidc/.well-known/openid-configuration](https://tara-test.ria.ee/oidc/.well-known/openid-configuration) |
 | teenuse avalik allkirjastamisvõti | [https://tara-test.ria.ee/oidc/jwks](https://tara-test.ria.ee/oidc/jwks) |
 | klientrakenduse registreerimine | dünaamilist registreerimist ei toetata, registreerimine staatiliselt, `help@ria.ee` kaudu |
 | autentimine (_authorization_) | [https://tara-test.ria.ee/oidc/authorize](https://tara-test.ria.ee/oidc/authorize) | 
@@ -663,7 +663,7 @@ Logimine peab võimaldama rekonstrueerida TARA ja klientrakenduse suhtluse käig
 
 | otspunkt      |                        URL      |
 |---------------|---------------------------------|
-| teenuseteave (_server discovery_) | [https://tara.ria.ee/oidc/.well-known/openid-configuration](https://tara.ria.ee/oidc/.well-known/openid-configuration) |
+| teenuseteave (_server discovery_) | [https://tara.ria.ee/.well-known/openid-configuration](https://tara.ria.ee/.well-known/openid-configuration) <br>[https://tara.ria.ee/oidc/.well-known/openid-configuration](https://tara.ria.ee/oidc/.well-known/openid-configuration) |
 | teenuse avalik allkirjastamisvõti | [https://tara.ria.ee/oidc/jwks](https://tara.ria.ee/oidc/jwks) |
 | klientrakenduse registreerimine | dünaamilist registreerimist ei toetata, registreerimine staatiliselt, `help@ria.ee` kaudu |
 | autentimine (_authorization_) | [https://tara.ria.ee/oidc/authorize](https://tara.ria.ee/oidc/authorize) | 
@@ -740,7 +740,7 @@ Välisriigi autentimismeetodite autentimitased on määratakse vastava välisrii
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
-| 1.19, 28.10.2021   | Identsustõendi kehtivusaeg muudetud 10-lt minutilt 40 sekundile. |
+| 1.19, 28.10.2021   | Identsustõendi kehtivusaeg muudetud 10-lt minutilt 40 sekundile.<br>Lisatud [standardijärgse teenusteabe otspunkti tee](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfig) `/.well-known/openid-configuration`. Senine tee `/oidc/.well-known/openid-configuration` jääb tagasiühilduvuseks alles. |
 | 1.18, 26.05.2021   | Täpsustatud päringutes tundmatute väljade ja väärtuste lubatavust. Täpsustatud nõudeid `state` parameetrile ning tagasisuunamis-URL-ile. |
 | 1.17, 19.03.2021   | Identsustõendi allkirja kontrollimise täpsustused. |
 | 1.16, 29.12.2020   | `banklink` skoobi parameetri eemaldamine. |

@@ -615,7 +615,7 @@ Logging must enable the reconstruction of the course of the communication betwee
 
 | endpoint      |                        URL      |
 |---------------|---------------------------------|
-| server discovery |  [https://tara-test.ria.ee/oidc/.well-known/openid-configuration](https://tara-test.ria.ee/oidc/.well-known/openid-configuration) |
+| server discovery | [https://tara-test.ria.ee/.well-known/openid-configuration](https://tara-test.ria.ee/.well-known/openid-configuration) <br>[https://tara-test.ria.ee/oidc/.well-known/openid-configuration](https://tara-test.ria.ee/oidc/.well-known/openid-configuration) |
 | public signature key of the service | [https://tara-test.ria.ee/oidc/jwks](https://tara-test.ria.ee/oidc/jwks) |
 | registration of the client application | dynamic registration is not supported, static registration via `help@ria.ee`. |
 | authorization | [https://tara-test.ria.ee/oidc/authorize](https://tara-test.ria.ee/oidc/authorize) | 
@@ -625,7 +625,7 @@ Logging must enable the reconstruction of the course of the communication betwee
 
 | endpoint      |                        URL      |
 |---------------|---------------------------------|
-| server discovery | [https://tara.ria.ee/oidc/.well-known/openid-configuration](https://tara.ria.ee/oidc/.well-known/openid-configuration) |
+| server discovery | [https://tara.ria.ee/.well-known/openid-configuration](https://tara.ria.ee/.well-known/openid-configuration) <br>[https://tara.ria.ee/oidc/.well-known/openid-configuration](https://tara.ria.ee/oidc/.well-known/openid-configuration) |
 | public signature key of the service | [https://tara.ria.ee/oidc/jwks](https://tara.ria.ee/oidc/jwks) |
 | registration of the client application | dynamic registration is not supported, static registration via `help@ria.ee`. |
 | authorization | [https://tara.ria.ee/oidc/authorize](https://tara.ria.ee/oidc/authorize) | 
