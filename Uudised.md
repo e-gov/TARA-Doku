@@ -4,7 +4,7 @@ permalink: Uudised
 
 # Uudised
 
-09.11.2021 15.11.2021 muutub .ria.ee domeenil kasutusel olev sertifikaat. Muudatus puudutab nii *tara.ria.ee* kui *tara-test.ria.ee* keskkondi.
+15.11.2021 muutub .ria.ee domeenil kasutusel olev sertifikaat. Muudatus puudutab nii *tara.ria.ee* kui *tara-test.ria.ee* keskkondi.
 Muutub RSA sertifikaadi väljastamise ahel. Uus sertifikaat on väljastatud "DigiCert TLS RSA SHA256 2020 CA1" ja ECC sertifikaat väljastatud "DigiCert TLS Hybrid ECC SHA384 2020 CA1" poolt.
 Palume klientidel, kes on oma teenuses usaldanud otse Riigi autentimisteenuse TLS sertifikaati, uuendada vastavalt usaldusankruks seatud sertifikaati. 
 Uued sertifikaadid on leitavad [id.ee veebist](https://www.id.ee/artikkel/riigi-autentimisteenuse-sertifikaadi-muudatus/).
