@@ -58,7 +58,7 @@ curl \
 
 1. Mobiil-ID telefoninumber: `00000766`, isikukood: `60001019906`
 2. eIDAS riik Norra, vali autentimiseks profiil `MINID`
-3. Smart-ID isikukood: `30303039914` - hetkel ei tööta. Palun kasutada teisi kontosid: [https://github.com/SK-EID/smart-id-documentation/wiki/Environment-technical-parameters] (https://github.com/SK-EID/smart-id-documentation/wiki/Environment-technical-parameters).
+3. Smart-ID isikukood: `30303039914` - hetkel ei tööta. Palun kasutada teisi kontosid: [https://github.com/SK-EID/smart-id-documentation/wiki/Environment-technical-parameters]
 
 ### ID-kaart ja Mobiil-ID
 
