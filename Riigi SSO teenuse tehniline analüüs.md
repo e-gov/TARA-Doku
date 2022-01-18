@@ -1,5 +1,5 @@
 ---
-permalink: Riigi SSO teenuse (GOVSSO) tehniline analüüs
+permalink: Riigi SSO teenuse tehniline analüüs
 ---
 
 # Riigi SSO teenuse (GOVSSO) tehniline analüüs
