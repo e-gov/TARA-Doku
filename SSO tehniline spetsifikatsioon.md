@@ -2,10 +2,10 @@
 permalink: SSO tehniline spetsifikatsioon
 ---
 
-# Riikliku SSO tehniline spetsifikatsioon ja protokolli kirjeldus
+# Riigi SSO teenuse (GOVSSO) tehniline spetsifikatsioon ja protokolli kirjeldus
 
-Analüüsi käigus koostati TARA SSO OpenID Connect profiili tehniline spetsifikatsioon. Spetsifikatsioon kirjeldab päringute struktuuri ja kohustuslikud päringu kontrolli reeglid.
-Ühtlasi tuuakse välja TARA SSO spetsiifilised protokolli täiendused.
+Analüüsi käigus koostati GOVSSO OpenID Connect profiili tehniline spetsifikatsioon. Spetsifikatsioon kirjeldab päringute struktuuri ja kohustuslikud päringu kontrolli reeglid.
+Ühtlasi tuuakse välja GOVSSO spetsiifilised protokolli täiendused.
 
 <p style='text-align:left;'><img src='img/sf_logo.png' style='width:250px'></p>
 
@@ -14,119 +14,119 @@ Analüüsi käigus koostati TARA SSO OpenID Connect profiili tehniline spetsifik
 
 ## Overview
 
-This document describes the technical characteristics of the TARA single-sign-on (SSO) service protocol and includes advice for implementing client application interfaces. TARA SSO protocol was designed following the best practices of OpenID Connect protocol and is heavily influenced of the current TARA service protocol (References: TARA). As a result, a large part of this document is identical to TARA service technical specification.
+This document describes the technical characteristics of the GOVSSO service protocol and includes advice for implementing client application interfaces. GOVSSO protocol was designed following the best practices of OpenID Connect protocol and is heavily influenced of the current TARA service protocol (References: TARA). As a result, a large part of this document is identical to TARA service technical specification.
 
-TARA SSO service will provide the same authentication means and similar flow as provided by TARA service. The actual authentication of users is still done in TARA service. TARA SSO will add an authentication session management functionality on top of the existing service. For the client application perspective TARA SSO will be a separate OIDC provider next to the existing TARA service.
+GOVSSO service will provide the same authentication means and similar flow as provided by TARA service. The actual authentication of users is still done in TARA service. GOVSSO will add an authentication session management functionality on top of the existing service. For the client application perspective GOVSSO will be a separate OIDC provider next to the existing TARA service.
 
 The terminology in this document follows the terminology used in TARA technical specification (References: TARA).
 
 ## OpenID Connect compliance
 
-TARA SSO protocol has been designed to follow the OpenID Connect protocol standard as closely as possible. The intent is to create a protocol that is compatible with a wide range of OpenID Foundation certified OIDC client applications and standard libraries. OIDC is by itself a very diverse protocol, providing multiple different workflows for a wide array of use-cases. To limit the scope of the development required to implement TARA SSO service and client applications, the full scope of OIDC protocol will not be supported. This chapter describes the main customizations that are done to TARA SSO as compared to the full OIDC protocol:
+GOVSSO protocol has been designed to follow the OpenID Connect protocol standard as closely as possible. The intent is to create a protocol that is compatible with a wide range of OpenID Foundation certified OIDC client applications and standard libraries. OIDC is by itself a very diverse protocol, providing multiple different workflows for a wide array of use-cases. To limit the scope of the development required to implement GOVSSO service and client applications, the full scope of OIDC protocol will not be supported. This chapter describes the main customizations that are done to GOVSSO as compared to the full OIDC protocol:
 
 - The service supports only the authorization code flow of OIDC. The authorization code flow is deemed the most secure option and is thus appropriate for public services.
 - All information about an authenticated user is transferred to the application in an ID token.
 - The eIDAS assurance level is also transferred to the application (in the `acr` claim, using custom claim values `high`, `substantial`, `low`).
-- The requested minimum authentication level of assurance is selected by the client application in the beginning of TARA SSO session (on initial authentication).
+- The requested minimum authentication level of assurance is selected by the client application in the beginning of GOVSSO session (on initial authentication).
 - Available authentication methods are provided based on the requested minimum authentication level of assurance.
-- TARA SSO supports only a single default scope that will return person authentication data: given name, family name, date_of_birth, email, person identifier. The - scope remains the same during the entire TARA SSO authentication session.
+- GOVSSO supports only a single default scope that will return person authentication data: given name, family name, date_of_birth, email, person identifier. The - scope remains the same during the entire GOVSSO authentication session.
 - Single-sign-on (SSO) is supported. Client applications are expected to perform session status checks to keep the authentication session alive.
 - Central logout is supported according to OIDC Back-Channel logout specification (References, OIDC-BACK).
-- Client applications must always prove knowledge of previous identity token to check session status or end session in TARA SSO. Different from OIDC standard protocol, the `id_token_hint` parameter is usually described as a mandatory parameter in TARA SSO requests.
+- Client applications must always prove knowledge of previous identity token to check session status or end session in GOVSSO. Different from OIDC standard protocol, the `id_token_hint` parameter is usually described as a mandatory parameter in GOVSSO requests.
 
 ## SSO session
 
-TARA SSO will create an SSO session for each successful user authentication and stores it in its internal session storage. The SSO session is used to store user personal information and various parameters about the authentication request (for example authentication time, authentication level of assurance, authentication method used). The authentication information and parameters are not allowed to change during the authentication session.
+GOVSSO will create an SSO session for each successful user authentication and stores it in its internal session storage. The SSO session is used to store user personal information and various parameters about the authentication request (for example authentication time, authentication level of assurance, authentication method used). The authentication information and parameters are not allowed to change during the authentication session.
 
 The SSO session is linked to the user agent via a session cookie. The user is allowed to create a single SSO session per user agent but may create concurrent sessions across multiple user agents.
 
-SSO session has a limited validity period of 15 minutes. During the SSO session validity period the user is not required to re-authenticate themselves while logging into different client applications. Instead they are given the option of using the authentication information stored in SSO session. TARA SSO issues identity tokens as proof of an active SSO session. The identity token contains the user personal information as well as the session information. All issued identity tokens are linked to an SSO session via a session id (`sid`) claim and have the same validity period as the SSO session.
+SSO session has a limited validity period of 15 minutes. During the SSO session validity period the user is not required to re-authenticate themselves while logging into different client applications. Instead they are given the option of using the authentication information stored in SSO session. GOVSSO issues identity tokens as proof of an active SSO session. The identity token contains the user personal information as well as the session information. All issued identity tokens are linked to an SSO session via a session id (`sid`) claim and have the same validity period as the SSO session.
 
 The SSO session validity period is extended every time a new client application authentication request is received, or an existing authenticated client application performs an SSO session update request. Every time an SSO session update request occurs, the session validity period is updated to `currentTime + 15 minutes`. This means that all client applications are contributing to keep the SSO session valid for the duration the user is still using the client applications.
 
 SSO session expires when no new authentication requests or session update requests have been received in the last 15 minutes. This is a safety feature assuring that user SSO session is not kept alive too long after the user has finished using the client applications.
 
-The SSO session may also be terminated before the end of its expiry time by the user. When the user initiates a logout from one client application the client application must inform TARA SSO of the logout event. The user is then given an option to terminate the SSO session and log out of all client applications related to the same SSO session.
+The SSO session may also be terminated before the end of its expiry time by the user. When the user initiates a logout from one client application the client application must inform GOVSSO of the logout event. The user is then given an option to terminate the SSO session and log out of all client applications related to the same SSO session.
 
-## TARA SSO process flows
+## GOVSSO process flows
 
 ### Authentication process
 
-In order to log a user into a client application, the client application must acquire an identity token from TARA SSO. The identity token will contain relevant user personal information as well as information of the SSO session. If the SSO session does not exist prior to the authentication request, a new session is created. If the session already exists but its level of assurance is lower than requested in the new request, then the previous SSO session will be terminated and a new SSO session will be created.
+In order to log a user into a client application, the client application must acquire an identity token from GOVSSO. The identity token will contain relevant user personal information as well as information of the SSO session. If the SSO session does not exist prior to the authentication request, a new session is created. If the session already exists but its level of assurance is lower than requested in the new request, then the previous SSO session will be terminated and a new SSO session will be created.
 
 <p style='text-align:left;'><img src='img/tara_sso_tech_auth_flow.png' style='width:1000px'></p>
 
 1. User requests protected page from client application.
 2. Client application checks whether the user has logged into the client application.
-3. Since the user is not authenticated in the client application, the client application will construct a TARA SSO authentication request URL and redirects user agent to it.
-4. TARA SSO checks whether there is a valid SSO session for given user agent. 
+3. Since the user is not authenticated in the client application, the client application will construct a GOVSSO authentication request URL and redirects user agent to it.
+4. GOVSSO checks whether there is a valid SSO session for given user agent. 
     1. If SSO session exists and its level of assurance is equal or higher than requested the process will continue from step 8.
-    2. Otherwise TARA SSO will automatically terminate the existing session and the process continues from step 5.
-5. SSO session does not exist, therefore, TARA SSO needs the user to be authenticated with TARA service. TARA SSO constructs a valid TARA authentication request and redirects user agent to it.
-6. User is securely authenticated in TARA service. The detailed authentication process is described in TARA technical specification (References: TARA). Once the user has been authenticated TARA will redirect the user agent back to TARA SSO with the TARA authorization code.
-7. TARA SSO uses the authorization code to acquire a user identity token from TARA service. This request happens in TARA SSO backend system. TARA SSO will store the user identification information in its session storage.
-8. TARA SSO will optionally display a user consent form. This form is displayed only when a previous SSO session was used for authentication. Meaning that in step 4a a valid existing session was found.
-9. TARA SSO will construct its own authorization code and redirects the user agent back to client application URL.
-10. The client application will use the authorization code to acquire a TARA SSO identity token. This is done in client application backend by sending an identity token request to TARA SSO.
-11. TARA SSO will respond to the client application with a TARA SSO identity token. TARA SSO will also internally update the SSO session expiration time to `currentTime + 15 minutes`. The client application now has the user authentication information and can display the protected page.
+    2. Otherwise GOVSSO will automatically terminate the existing session and the process continues from step 5.
+5. SSO session does not exist, therefore, GOVSSO needs the user to be authenticated with TARA service. GOVSSO constructs a valid TARA authentication request and redirects user agent to it.
+6. User is securely authenticated in TARA service. The detailed authentication process is described in TARA technical specification (References: TARA). Once the user has been authenticated TARA will redirect the user agent back to GOVSSO with the TARA authorization code.
+7. GOVSSO uses the authorization code to acquire a user identity token from TARA service. This request happens in GOVSSO backend system. GOVSSO will store the user identification information in its session storage.
+8. GOVSSO will optionally display a user consent form. This form is displayed only when a previous SSO session was used for authentication. Meaning that in step 4a a valid existing session was found.
+9. GOVSSO will construct its own authorization code and redirects the user agent back to client application URL.
+10. The client application will use the authorization code to acquire a GOVSSO identity token. This is done in client application backend by sending an identity token request to GOVSSO.
+11. GOVSSO will respond to the client application with a GOVSSO identity token. GOVSSO will also internally update the SSO session expiration time to `currentTime + 15 minutes`. The client application now has the user authentication information and can display the protected page.
 
 ### SSO session update process
 
-Once the user has been authenticated and an SSO session created, the client application must periodically perform SSO session update requests to keep the SSO session alive. In TARA SSO protocol this is done by acquiring a new token from TARA SSO service. TARA SSO session update requests are very similar to authentication requests. The only difference is that TARA SSO will not display any graphical page to the user when the user agent is redirected. To differentiate SSO session update requests from SSO authentication requests, the client application will a `prompt` parameter to the request (`prompt=none`). 
+Once the user has been authenticated and an SSO session created, the client application must periodically perform SSO session update requests to keep the SSO session alive. In GOVSSO protocol this is done by acquiring a new token from GOVSSO service. GOVSSO session update requests are very similar to authentication requests. The only difference is that GOVSSO will not display any graphical page to the user when the user agent is redirected. To differentiate SSO session update requests from SSO authentication requests, the client application will a `prompt` parameter to the request (`prompt=none`). 
 
-SSO Session update request can be made only when the client application knows the previous identity token and a valid SSO session exists. Client application must prove that it has knowledge of the SSO session context by including the previous user identity token with each session update request. This is a security measure and helps to assure that TARA SSO and client application have the same knowledge about the logged in user.
+SSO Session update request can be made only when the client application knows the previous identity token and a valid SSO session exists. Client application must prove that it has knowledge of the SSO session context by including the previous user identity token with each session update request. This is a security measure and helps to assure that GOVSSO and client application have the same knowledge about the logged in user.
 
 If the SSO session update request fails for any reason, then the client application must perform a new SSO authentication process to get a new identity token.
 
 <p style='text-align:left;'><img src='img/tara_sso_session_update_flow.png' style='width:700px'></p>
 
 1. User wants to access protected content in client application.
-2. Client application verifies whether user has active client application session and that client application session storage contains a valid (not expired) TARA SSO identity token.
-3. Client application finds that user identity token is about to expire and redirects user agent to TARA SSO with a valid SSO session update request. The request must include the identity token and a `prompt=none` parameter.
-4. TARA SSO validates the request
+2. Client application verifies whether user has active client application session and that client application session storage contains a valid (not expired) GOVSSO identity token.
+3. Client application finds that user identity token is about to expire and redirects user agent to GOVSSO with a valid SSO session update request. The request must include the identity token and a `prompt=none` parameter.
+4. GOVSSO validates the request
     1. Verifies that an SSO session is still active for user agent
     2. Verifies that the SSO session subject matches the subject in the received identity token.
-5. If all validations passed, TARA SSO will issue a new authorization code to the client application.
-6. Using the authorization code, the client application makes an identity token request to TARA SSO. Tara responds with a new identity token and a directive for the user agent to update SSO session cookie expiration date to `currentTime + 15 minutes`.
+5. If all validations passed, GOVSSO will issue a new authorization code to the client application.
+6. Using the authorization code, the client application makes an identity token request to GOVSSO. Tara responds with a new identity token and a directive for the user agent to update SSO session cookie expiration date to `currentTime + 15 minutes`.
 7. Client application stores identity token with into its session storage and shows protected content to user.
 
 ### Logout process
 
-It is expected that client applications terminate TARA SSO session as soon as the user has finished using client application(s). If a user has requested to log out of a client application, then information about this event must be sent to TARA SSO as well. TARA SSO will either terminate the SSO session automatically (if only one other client application is linked to the same SSO session) or display a logout consent form. The consent form allows user to log out of all client applications at once or just the single application.
+It is expected that client applications terminate GOVSSO session as soon as the user has finished using client application(s). If a user has requested to log out of a client application, then information about this event must be sent to GOVSSO as well. GOVSSO will either terminate the SSO session automatically (if only one other client application is linked to the same SSO session) or display a logout consent form. The consent form allows user to log out of all client applications at once or just the single application.
 
-After a successful logout the user agent is redirected back to the client application. If a technical error occurs or the logout request is invalid (`redirect_uri` does not match identity token client registered redirect URLs), then the user is redirected to TARA SSO default error page.
+After a successful logout the user agent is redirected back to the client application. If a technical error occurs or the logout request is invalid (`redirect_uri` does not match identity token client registered redirect URLs), then the user is redirected to GOVSSO default error page.
 
 <p style='text-align:left;'><img src='img/tara_sso_logout_flow.png' style='width:800px'></p>
 
 1. User requested to log out of client application
 2. Client application does its internal application session termination procedures.
-3. Client application redirects user agent to TARA SSO logout URL. The redirect must include the previous identity token and a redirect URI where the user agent must be redirected to after logout.
-4. TARA SSO validates the logout request. If the identity token is not linked to the active SSO session of given user agent, then nothing is done, and the user agent is redirected back to the `redirect_uri`. TARA SSO will unlink the client application from SSO session in its session store.
-5. If more client applications are linked to the same SSO session, then TARA SSO will show a logout consent page.
+3. Client application redirects user agent to GOVSSO logout URL. The redirect must include the previous identity token and a redirect URI where the user agent must be redirected to after logout.
+4. GOVSSO validates the logout request. If the identity token is not linked to the active SSO session of given user agent, then nothing is done, and the user agent is redirected back to the `redirect_uri`. GOVSSO will unlink the client application from SSO session in its session store.
+5. If more client applications are linked to the same SSO session, then GOVSSO will show a logout consent page.
 6. User can either select to log out of only the client application that made the logout request or from all client applications that are linked to the same SSO session.
-7. If the user selected to log out from all client applications, TARA SSO will send a back-channel logout request to each linked client application and unlink client applications from TARA SSO session.
-8. If no client applications remain linked to SSO session, TARA SSO will terminate the session. User has been logged out of all client applications.
+7. If the user selected to log out from all client applications, GOVSSO will send a back-channel logout request to each linked client application and unlink client applications from GOVSSO session.
+8. If no client applications remain linked to SSO session, GOVSSO will terminate the session. User has been logged out of all client applications.
 9. User agent is redirected back to the `redirect_uri` of the client application which initiated the logout procedure.
 
 ### Back-channel logout notifications
 
-Each TARA SSO client application must declare support to the OIDC Back-Channel logout specification. Each client must provide a back-channel logout endpoint URL as part of their registration information. TARA SSO will send an out-of-band POST request to client application back-channel logout endpoint every time an SSO session ends.
+Each GOVSSO client application must declare support to the OIDC Back-Channel logout specification. Each client must provide a back-channel logout endpoint URL as part of their registration information. GOVSSO will send an out-of-band POST request to client application back-channel logout endpoint every time an SSO session ends.
 
-The logout request contains a logout token. The logout token must be validated according to OIDC Back-Channel logout specification (References: OIDC-BACK "2.6.  Logout Token Validation").  After receiving a valid logout token from the TARA SSO, the client application locates the session(s) identified by the `iss` and `sub` Claims and/or the `sid` Claim. The client application then clears any state associated with the identified session(s). If the identified user is already logged out at the client application when the logout request is received, the logout is considered to have succeeded.
+The logout request contains a logout token. The logout token must be validated according to OIDC Back-Channel logout specification (References: OIDC-BACK "2.6.  Logout Token Validation").  After receiving a valid logout token from the GOVSSO, the client application locates the session(s) identified by the `iss` and `sub` Claims and/or the `sid` Claim. The client application then clears any state associated with the identified session(s). If the identified user is already logged out at the client application when the logout request is received, the logout is considered to have succeeded.
 
 If the logout succeeded, the RP MUST respond with HTTP 200 OK.
 
-Access to the back-channel logout endpoint should be restricted. Only TARA SSO needs to have access to given endpoint.
+Access to the back-channel logout endpoint should be restricted. Only GOVSSO needs to have access to given endpoint.
 
 ## Tokens
 
 ### Identity token
 
-In TARA SSO protocol the identity token is a used as a certificate of the fact of authentication was performed. The identity token has a concrete issuance and expiration date between which it is to be considered valid.
+In GOVSSO protocol the identity token is a used as a certificate of the fact of authentication was performed. The identity token has a concrete issuance and expiration date between which it is to be considered valid.
 
 The identity token is issued in JSON Web Token (References: JWT).
 
-**Example TARA SSO identity token:**
+**Example GOVSSO identity token:**
 
 ````
 {
@@ -159,8 +159,8 @@ The identity token is issued in JSON Web Token (References: JWT).
 | Identity token element (claim)   | example           |     explanation       |
 |----------------------------------|------------------ |-----------------------|
 | jti | `"jti"="663a35d8-92ec-4a8d-95e7-fc6ca90ebda2"` |  Identity token unique identifier, (References: JWT "4.1.7.  jti (JWT ID) Claim"). |
-| iss | `"iss":"https://tara-sso-demo.eesti.ee/"` |  Issuer of the identity token (TARA SSO). |
-| aud | `"aud": [`<br> `"sso-client-1"` <br>`]` <br><br> or<br><br> `"aud": "sso-client-1"` |  Unique ID of a client application in TARA SSO client database. ID belongs to the client that requested authentication (the value of `client_id` field is specified upon directing the user to the authentication process). <br><br> String or array of strings. A single aud value is present in TARA SSO tokens. |
+| iss | `"iss":"https://tara-sso-demo.eesti.ee/"` |  Issuer of the identity token (GOVSSO). |
+| aud | `"aud": [`<br> `"sso-client-1"` <br>`]` <br><br> or<br><br> `"aud": "sso-client-1"` |  Unique ID of a client application in GOVSSO client database. ID belongs to the client that requested authentication (the value of `client_id` field is specified upon directing the user to the authentication process). <br><br> String or array of strings. A single aud value is present in GOVSSO tokens. |
 | exp | `"exp": 1591709871` |  The expiration time of the identity token (in Unix _epoch_ format). |
 | iat | `"iat": 1591709811` |  The time of issue of the identity token (in Unix _epoch_ format). |
 | sub | `"sub": "EE60001018800"` |  The identifier of the authenticated user (personal identification code or eIDAS identifier) with the prefix of the country code of the citizen (country codes based on the ISO 3166-1 alpha-2 standard). The subject identifier format is set by TARA authentication service id token (References: TARA "4.3.1 Identity token"). |
@@ -174,23 +174,23 @@ The identity token is issued in JSON Web Token (References: JWT).
 | acr | `"acr": "high"` |  Authentication Context Class Reference. Signals the level of assurance of the authentication device that was used. Possible values: `low`, `substantial`, `high`. The element is not used if the level of authentication is not applicable or is unknown. |
 | at_hash | `"at_hash": "AKIDtvBT2JS_02tkl_DvuA"` |  The access token hash calculated as described in OIDC specification (References: OIDC-CORE). |
 | email | `"email": "60001018800@eesti.ee"` |  The user’s e-mail address.<br><br> Only issued if an Estonian ID card is used for authenticating the user in TARA service. Is read by TARA from the SAN extension of the user’s authentication certificate (from the RFC822 type `Subject Alternative Name` field) |
-| email_verified | `"email_verified" : false` |  Signals if the e-mail address of the user has been verified. TARA always issues a value false. It means that TARA does not verify or issue information on whether or not the user has redirected their eesti.ee e-mail address. TARA SSO will return the same value that is returned in TARA issued identity token. |
-| sid | `"sid": "f5ab396c-1490-4042-b073-ae8e003c7258"` |  Session ID - String identifier for a TARA SSO session. To and RP, This represents a session of a User Agent or device for a logged-in End-User. Different sid values are used to identify distinct sessions at TARA SSO. |
-| auth_time | `"auth_time": 1591709810` |  The time of successful authentication of the user in TARA SSO. In the Unix _epoch_ format. |
+| email_verified | `"email_verified" : false` |  Signals if the e-mail address of the user has been verified. TARA always issues a value false. It means that TARA does not verify or issue information on whether or not the user has redirected their eesti.ee e-mail address. GOVSSO will return the same value that is returned in TARA issued identity token. |
+| sid | `"sid": "f5ab396c-1490-4042-b073-ae8e003c7258"` |  Session ID - String identifier for a GOVSSO session. To and RP, This represents a session of a User Agent or device for a logged-in End-User. Different sid values are used to identify distinct sessions at GOVSSO. |
+| auth_time | `"auth_time": 1591709810` |  The time of successful authentication of the user in GOVSSO. In the Unix _epoch_ format. |
 
-Identitiy token may consist other OpenID Connect protocol based fields that are not supported in TARA SSO.
+Identitiy token may consist other OpenID Connect protocol based fields that are not supported in GOVSSO.
 
 ### Logout token 
 
-TARA SSO sends a JWT similar to an ID Token to client applications called a Logout Token to request that they log out a TARA SSO session or user. The token issuer is TARA SSO and the audience is the client application. Upon receiving a logout token the client application is expected to validate the token to make sure that it is a valid logout request. In case the token is valid the client application session (session between client application and user agent) must be ended.
+GOVSSO sends a JWT similar to an ID Token to client applications called a Logout Token to request that they log out a GOVSSO session or user. The token issuer is GOVSSO and the audience is the client application. Upon receiving a logout token the client application is expected to validate the token to make sure that it is a valid logout request. In case the token is valid the client application session (session between client application and user agent) must be ended.
 
-Issued logout tokens are linked to ID tokens via the `sid` claim. Each client application is expected to internally keep track of the ID token `sid` claim and client application session relations. Meaning that each application session during which TARA SSO authentication was used, must hold the `sub` and `sid` values of ID tokens that were issued during that application session.
+Issued logout tokens are linked to ID tokens via the `sid` claim. Each client application is expected to internally keep track of the ID token `sid` claim and client application session relations. Meaning that each application session during which GOVSSO authentication was used, must hold the `sub` and `sid` values of ID tokens that were issued during that application session.
 
-A logout token contains a sub claim, a `sid` claim, or both. If a `sid` claim is present, the client application must log out all client application sessions that contain the same `sid` value. If only a `sub` claim is present, then all client application sessions with the same `sub` value must be logged out. Logout tokens with only a `sub` value are issued only if the logout was initiated by TARA SSO server (not a client application).
+A logout token contains a sub claim, a `sid` claim, or both. If a `sid` claim is present, the client application must log out all client application sessions that contain the same `sid` value. If only a `sub` claim is present, then all client application sessions with the same `sub` value must be logged out. Logout tokens with only a `sub` value are issued only if the logout was initiated by GOVSSO server (not a client application).
 
-OIDC logout tokens can be encrypted but TARA SSO logout tokens are not encrypted.
+OIDC logout tokens can be encrypted but v logout tokens are not encrypted.
 
-***Example TARA SSO logout token payload***
+***Example GOVSSO logout token payload***
 
 ````
 {
@@ -224,9 +224,9 @@ OIDC logout tokens can be encrypted but TARA SSO logout tokens are not encrypted
 
 **Request**
 
-An authentication request is a HTTP GET request by which the user is redirected from the client application to TARA SSO for authentication.
+An authentication request is a HTTP GET request by which the user is redirected from the client application to GOVSSO for authentication.
 
-***Example TARA SSO authentication request***
+***Example GOVSSO authentication request***
 ````
 GET https://tara-sso-demo.eesti.ee/oauth2/auth?
  
@@ -246,26 +246,26 @@ acr_values=substantial
 
 | URL element   | compulsory       |    example        |     explanation       |
 |---------------|------------------|------------------ |-----------------------|
-| protocol, host, port and path | yes |  `https://tara-sso-demo.eesti.ee/oauth2/auth` |  `/oauth2/auth` is the OpenID Connect-based authentication endpoint of the TARA SSO service (the concept of ‘authorization’ originates from the OAuth 2.0 standard protocol).<br><br> The URL is provided from OIDC server public discovery service: `https://tara-sso-demo.eesti.ee/.well-known/openid-configuration authorization_endpoint` parameter. |
+| protocol, host, port and path | yes |  `https://tara-sso-demo.eesti.ee/oauth2/auth` |  `/oauth2/auth` is the OpenID Connect-based authentication endpoint of the GOVSSO service (the concept of ‘authorization’ originates from the OAuth 2.0 standard protocol).<br><br> The URL is provided from OIDC server public discovery service: `https://tara-sso-demo.eesti.ee/.well-known/openid-configuration authorization_endpoint` parameter. |
 | client_id | yes |   |  Application identifier. The application identifier is issued to the institution by RIA upon registration of the client application as a user of the authentication service. |
 | redirect_uri | yes | `redirect_uri=https%3A%2F%2F eteenus.asutus.ee%2Ftagasi`  |  Redirect URL. The redirect URL is selected by the institution. The redirect URL may include the query component. URL encoding should be used, if necessary (References: URLENC).<br> It is not permitted (References: OAUTH "3.1.2. Redirection Endpoint") to use the URI fragment component (`#` and the following component; References: URI "3.5. Fragment").<br> The URL protocol, host, port and path must match one of the pre-registered redirect URLs of given client application registration metadata (see `client_id` parameter). |
-| scope | yes | `scope=openid` |  The authentication scope. Space delimited list of requested scopes.<br><br> `openid` scope is compulsory to signal that this is an OIDC authentication request.<br> In the default `scope` of openid TARA SSO will issue identity tokens with the following attributes:<br><br> `sub` (physical person identifier)<br> `given_name`<br> `family_name`<br> `date_of_birth`<br> `email`<br> `email_verified`<br><br> Presence of given attribute values will depend on the amount of information that is returned within TARA identity tokens. At this moment email is only available when authentication was performed with Estonian national id-card card type authentication device.<br><br> `email_verified` will always have a value of `false`. This is because TARA will not perform e-mail verification. |
+| scope | yes | `scope=openid` |  The authentication scope. Space delimited list of requested scopes.<br><br> `openid` scope is compulsory to signal that this is an OIDC authentication request.<br> In the default `scope` of openid GOVSSO will issue identity tokens with the following attributes:<br><br> `sub` (physical person identifier)<br> `given_name`<br> `family_name`<br> `date_of_birth`<br> `email`<br> `email_verified`<br><br> Presence of given attribute values will depend on the amount of information that is returned within TARA identity tokens. At this moment email is only available when authentication was performed with Estonian national id-card card type authentication device.<br><br> `email_verified` will always have a value of `false`. This is because TARA will not perform e-mail verification. |
 | state | yes |  `state=hkMVY7vjuN7xyLl5` |  Security code against false request attacks (cross-site request forgery, CSRF). Read more about formation and verification of state under 'Protection against false request attacks'. |
 | response_type | yes |  `response_type=code` |  Determines the manner of communication of the authentication result to the server. The method of authorization code is supported (authorization flow of the OpenID Connect protocol) and it is referred to the code value. |
 | ui_locales | no |  `ui_locales=et` |  Selection of the user interface language. The following languages are supported: `et`, `en`, `ru`. By default, the user interface is in Estonian language. The client can select the desired language. This will also set the GUI language for TARA service views. |
 | nonce | no |  `nonce=fsdsfwrerhtry3qeewq` |  A unique parameter which helps to prevent replay attacks based on the OIDC protocol (References, [Core], subsection 3.1.2.1. Authentication Request). The nonce parameter is not compulsory. |
-| acr_values | no |  `acr_values=substantial` |  The minimum required level of authentication based on the eIDAS LoA (level of assurance). It is permitted to apply one value of the following: `low`, `substantial`, `high`. `substantial` is used by default if the value has not been selected.<br><br> TARA SSO will store the authentication level of assurance (LoA) in the SSO session object as an Authentication Context Class Reference (`acr`) claim. The value is returned by TARA in the person identity token. Upon each TARA SSO authentication request, the server will check that the requested level of assurance (`acr_values` parameter value) is lower or equal to the `acr` claim value of the TARA SSO session. If the SSO session acr level of assurance is lower than requested, the previous TARA SSO session is automatically terminated and a new authentication is requested from TARA. After successful authentication a new SSO session is created. |
-| prompt | no |  `prompt=consent` |  Required parameter signalling TARA SSO that user consent should be asked before returning information to the client application. If TARA SSO cannot obtain consent, it will return an error, typically `consent_required`. |
+| acr_values | no |  `acr_values=substantial` |  The minimum required level of authentication based on the eIDAS LoA (level of assurance). It is permitted to apply one value of the following: `low`, `substantial`, `high`. `substantial` is used by default if the value has not been selected.<br><br> GOVSSO will store the authentication level of assurance (LoA) in the SSO session object as an Authentication Context Class Reference (`acr`) claim. The value is returned by TARA in the person identity token. Upon each GOVSSO authentication request, the server will check that the requested level of assurance (`acr_values` parameter value) is lower or equal to the `acr` claim value of the GOVSSO session. If the SSO session acr level of assurance is lower than requested, the previous GOVSSO session is automatically terminated and a new authentication is requested from TARA. After successful authentication a new SSO session is created. |
+| prompt | no |  `prompt=consent` |  Required parameter signalling GOVSSO that user consent should be asked before returning information to the client application. If GOVSSO cannot obtain consent, it will return an error, typically `consent_required`. |
 
 **Response**
 
-TARA SSO server will respond with a HTTP 302 Found message to redirect user agent back to client application URL.
+GOVSSO server will respond with a HTTP 302 Found message to redirect user agent back to client application URL.
 
-The user agent is redirected to the `redirect_uri` included in the authentication request sent by the client application. In the redirect request, an authorization code (`code` URL parameter) is appended to the `redirect_uri` by TARA SSO, based on which the client application will (by a separate request) request from TARA SSO the personal identification code, name, and other attributes of the authenticated person. Technically, a HTTP status code `302 Found` redirect request is used for redirecting.
+The user agent is redirected to the `redirect_uri` included in the authentication request sent by the client application. In the redirect request, an authorization code (`code` URL parameter) is appended to the `redirect_uri` by GOVSSO, based on which the client application will (by a separate request) request from GOVSSO the personal identification code, name, and other attributes of the authenticated person. Technically, a HTTP status code `302 Found` redirect request is used for redirecting.
 
 The state value will also be returned to the client application, making it possible to perform CSRF validation on client application side.
 
-***Example TARA SSO authentication redirect***
+***Example GOVSSO authentication redirect***
 ````
 HTTP GET https://eteenus.asutus.ee/tagasi?
  
@@ -284,13 +284,13 @@ state=hkMVY7vjuN7xyLl5
 
 **Error response**
 
-If TARA SSO is unable to process an authentication request – there is an error in the request, TARA was unable to authenticate user or another error has occurred – TARA SSO transfers an error message (URL parameter `error`) and the description of the error (URL parameter `error_description`) in the redirect request.
+If GOVSSO is unable to process an authentication request – there is an error in the request, TARA was unable to authenticate user or another error has occurred – GOVSSO transfers an error message (URL parameter `error`) and the description of the error (URL parameter `error_description`) in the redirect request.
 
 TARA relies on the OpenID Connect standard on error messages (References: OIDC-CORE "3.1.2.6. Authentication Error Response" and OAUTH "4.1.2.1. Error Response"). The error messages are always displayed in English.
 
 `state` is also returned but no authorization code (`code`) is sent.
 
-***Example TARA SSO authentication error***
+***Example GOVSSO authentication error***
 ````
 HTTP GET https://eteenus.asutus.ee/tagasi?
  
@@ -308,9 +308,9 @@ The user may also return to the e-service without choosing an authentication met
 
 **Request**
 
-The identity token request is a HTTP POST request which is used by the client application to request the identity token from the server of TARA SSO.
+The identity token request is a HTTP POST request which is used by the client application to request the identity token from the server of GOVSSO.
 
-***Example TARA SSO token request***
+***Example GOVSSO token request***
 ````
 POST /oauth2/token HTTP/1.1
 Host: tara-sso-demo.eesti.ee
@@ -331,16 +331,16 @@ The body of the HTTP POST request must be presented in a serialized format based
 
 | Parameter   | parameter type     |    example        |     explanation       |
 |-------------|--------------------|------------------ |-----------------------|
-| protocol, host, port and path | query |  `https://tara-sso-demo.eesti.ee/oauth2/token` |  TARA SSO server token endpoint URL. Published in TARA SSO discovery endpoint `token_endpoint` parameter value. |
+| protocol, host, port and path | query |  `https://tara-sso-demo.eesti.ee/oauth2/token` |  GOVSSO server token endpoint URL. Published in GOVSSO discovery endpoint `token_endpoint` parameter value. |
 | grant_type | body |  `grant_type=authorization_code` |  The `authorization_code` value required based on the protocol. |
 | code | body |  `code=SplxlOBeZQQYbYS6WxSbIA` |  The authorization code received from the authentication service. |
 | redirect_uri | body |  `redirect_uri=https%3A%2F%2eteenus.asutus.ee%2Ftagasi` |  The redirect URL sent in the authentication request. |
 
 **Response**
 
-TARA SSO server verifies that the identity token is requested by the right application and issues the identity token included in the response body (HTTP response body).
+GOVSSO server verifies that the identity token is requested by the right application and issues the identity token included in the response body (HTTP response body).
 
-***Example TARA SSO token endpoint response***
+***Example GOVSSO token endpoint response***
 ````
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -381,9 +381,9 @@ Pragma: no-cache
 
 | Parameter   |    explanation       |
 |-------------|----------------------|
-| access_token |  OAuth 2.0 access token. With the access token the client application can request authenticated user’s data from userinfo endpoint.<br> **Not used in TARA SSO because TARA SSO session management is purely identity token dependent. All user data is already available in the ID token of the user.** |
-| token_type |  OAuth 2.0 access token type with `bearer` value. Not used in TARA SSO. |
-| expires_in |  The validity period of the OAuth 2.0 access token. Not used in TARA SSO. |
+| access_token |  OAuth 2.0 access token. With the access token the client application can request authenticated user’s data from userinfo endpoint.<br> **Not used in GOVSSO because GOVSSO session management is purely identity token dependent. All user data is already available in the ID token of the user.** |
+| token_type |  OAuth 2.0 access token type with `bearer` value. Not used in GOVSSO. |
+| expires_in |  The validity period of the OAuth 2.0 access token. Not used in GOVSSO. |
 | id_token |  Identity token, in Base64 format. The identity token is issued in JSON Web Token (References: JWT) |
 
 **Error response**
@@ -394,14 +394,14 @@ In case the token endpoint encounters an error and can not issue valid tokens, a
 
 **Request**
 
-Client applications must periodically check the SSO authentication session validity on TARA SSO server. Session update requests will also signal TARA SSO server that the user is still active in the client application and the authentication session expiration time can be extended.
+Client applications must periodically check the SSO authentication session validity on GOVSSO server. Session update requests will also signal GOVSSO server that the user is still active in the client application and the authentication session expiration time can be extended.
 
 The process of acquiring a new authentication token is similar to initial user authentication.
 
-1. The client application redirects user agent to TARA SSO authorization endpoint for an authorization code. 
-2. Upon receiving the authorization code, the client application (usually backend) makes a request to the TARA SSO token endpoint.
+1. The client application redirects user agent to GOVSSO authorization endpoint for an authorization code. 
+2. Upon receiving the authorization code, the client application (usually backend) makes a request to the GOVSSO token endpoint.
 
-***Example TARA SSO session update request***
+***Example GOVSSO session update request***
 ````
 GET https://tara-sso-demo.eesti.ee/oauth2/auth?
  
@@ -420,27 +420,27 @@ id_token_hint=eyJhbGciOiJSUzI1NiIsImtpZCI6InB1YmxpYzo...TvE
 
 | URL element   | compulsory       |    example        |     explanation       |
 |---------------|------------------|------------------ |-----------------------|
-| protocol, host, port and path | yes |  `https://tara-sso-demo.eesti.ee/oauth2/auth` |  `/oauth2/auth` is the OpenID Connect-based authentication endpoint of the TARA SSO service (the concept of ‘authorization’ originates from the OAuth 2.0 standard protocol), References: [OAUTH]).<br><br> The URL is provided from OIDC server public discovery service: `https://tara-sso-demo.eesti.ee/.well-known/openid-configuration authorization_endpoint` parameter. |
+| protocol, host, port and path | yes |  `https://tara-sso-demo.eesti.ee/oauth2/auth` |  `/oauth2/auth` is the OpenID Connect-based authentication endpoint of the GOVSSO service (the concept of ‘authorization’ originates from the OAuth 2.0 standard protocol), References: [OAUTH]).<br><br> The URL is provided from OIDC server public discovery service: `https://tara-sso-demo.eesti.ee/.well-known/openid-configuration authorization_endpoint` parameter. |
 | client_id | yes |   |  Application identifier. The application identifier is issued to the institution by RIA upon registration of the client application as a user of the authentication service. |
 | redirect_uri | yes | `redirect_uri=https%3A%2F%2F eteenus.asutus.ee%2Ftagasi`  |  Redirect URL. The redirect URL is selected by the institution. The redirect URL may include the query component. URL encoding should be used, if necessary (References: URLENC).<br> It is not permitted (References: OAUTH "3.1.2. Redirection Endpoint") to use the URI fragment component (`#` and the following component; References: URI "3.5. Fragment").<br> The URL protocol, host, port and path must match one of the pre-registered redirect URLs of given client application registration metadata. |
-| scope | yes | `scope=openid` |  The authentication scope. Space delimited list of requested scopes.<br><br> `openid` scope is compulsory to signal that this is an OIDC authentication request.<br> In the default scope of `openid` TARA SSO will issue identity tokens with the following attributes:<br><br> `sub` (physical person identifier)<br> `given_name`<br> `family_name`<br> `date_of_birth`<br> `email`<br> `email_verified`<br><br> Presence of given attribute values will depend on the amount of information that is returned within TARA identity tokens. At this moment email is only available when authentication was performed with Estonian national id-card card type authentication device.<br><br> `email_verified` will always have a value of `false`. This is because TARA will not perform e-mail verification. |
+| scope | yes | `scope=openid` |  The authentication scope. Space delimited list of requested scopes.<br><br> `openid` scope is compulsory to signal that this is an OIDC authentication request.<br> In the default scope of `openid` GOVSSO will issue identity tokens with the following attributes:<br><br> `sub` (physical person identifier)<br> `given_name`<br> `family_name`<br> `date_of_birth`<br> `email`<br> `email_verified`<br><br> Presence of given attribute values will depend on the amount of information that is returned within TARA identity tokens. At this moment email is only available when authentication was performed with Estonian national id-card card type authentication device.<br><br> `email_verified` will always have a value of `false`. This is because TARA will not perform e-mail verification. |
 | state | yes |  `state=hkMVY7vjuN7xyLl5` |  Security code against false request attacks (cross-site request forgery, CSRF). Read more about formation and verification of state under 'Protection against false request attacks'. |
 | response_type | yes |  `response_type=code` |  Determines the manner of communication of the authentication result to the server. The method of authorization code is supported (authorization flow of the OpenID Connect protocol) and it is referred to the code value. |
 | ui_locales | no |  `ui_locales=et` |  Selection of the user interface language. The following languages are supported: `et`, `en`, `ru`. By default, the user interface is in Estonian language. The client can select the desired language. This will also set the GUI language for TARA service views. |
 | nonce | no |  `nonce=fsdsfwrerhtry3qeewq` |  A unique parameter which helps to prevent replay attacks based on the OIDC protocol (References, [Core], subsection 3.1.2.1. Authentication Request). The nonce parameter is not compulsory. |
-| acr_values | no |  `acr_values=substantial` |  The minimum required level of authentication based on the eIDAS LoA (level of assurance). It is permitted to apply one value of the following: `low`, `substantial`, `high`. `substantial` is used by default if the value has not been selected.<br><br> TARA SSO will store the authentication level of assurance (LoA) in the SSO session object as an Authentication Context Class Reference (`acr`) claim. The value is returned by TARA in the person identity token. Upon each TARA SSO authentication request, the server will check that the requested level of assurance (`acr_values` parameter value) is lower or equal to the `acr` claim value of the TARA SSO session. If the SSO session acr level of assurance is lower than requested, the previous TARA SSO session is automatically terminated and a new authentication is requested from TARA. After successful authentication a new SSO session is created. |
-| prompt | yes |  `prompt=none` |  Signals TARA SSO server that it MUST NOT display any authentication or consent view to the user. An error is returned if user is not already authenticated in TARA SSO or the client application does not have pre-configured consent for the requested scope, acr_values or does not fulfill other conditions for processing the request. The error code will typically be login_required, interaction_required, or another code defined in OIDC standard (References, [Technical specification#OIDC] Section 3.1.2.6.). |
-| id_token_hint | yes |  `id_token_hint=eyJhbGciOiJSUzI1NiIsImtpZCI6InB1YmxpYzo...TvE` |  ID Token previously issued by TARA SSO being passed as a hint about the user's current or past authenticated session with the client application. If the user identified by the ID Token is logged in or is logged in by the request, then TARA SSO returns a positive response; otherwise, it WILL return an error. **Encryption of the id_token_hint parameter is not supported in TARA SSO.** |
+| acr_values | no |  `acr_values=substantial` |  The minimum required level of authentication based on the eIDAS LoA (level of assurance). It is permitted to apply one value of the following: `low`, `substantial`, `high`. `substantial` is used by default if the value has not been selected.<br><br> GOVSSO will store the authentication level of assurance (LoA) in the SSO session object as an Authentication Context Class Reference (`acr`) claim. The value is returned by TARA in the person identity token. Upon each GOVSSO authentication request, the server will check that the requested level of assurance (`acr_values` parameter value) is lower or equal to the `acr` claim value of the GOVSSO session. If the SSO session acr level of assurance is lower than requested, the previous GOVSSO session is automatically terminated and a new authentication is requested from TARA. After successful authentication a new SSO session is created. |
+| prompt | yes |  `prompt=none` |  Signals GOVSSO server that it MUST NOT display any authentication or consent view to the user. An error is returned if user is not already authenticated in GOVSSO or the client application does not have pre-configured consent for the requested scope, acr_values or does not fulfill other conditions for processing the request. The error code will typically be login_required, interaction_required, or another code defined in OIDC standard (References, [Technical specification#OIDC] Section 3.1.2.6.). |
+| id_token_hint | yes |  `id_token_hint=eyJhbGciOiJSUzI1NiIsImtpZCI6InB1YmxpYzo...TvE` |  ID Token previously issued by GOVSSO being passed as a hint about the user's current or past authenticated session with the client application. If the user identified by the ID Token is logged in or is logged in by the request, then GOVSSO returns a positive response; otherwise, it WILL return an error. **Encryption of the id_token_hint parameter is not supported in GOVSSO.** |
 
 **Response**
 
-TARA SSO server will respond with a HTTP 302 Found message to redirect user agent back to client application URL.
+GOVSSO server will respond with a HTTP 302 Found message to redirect user agent back to client application URL.
 
-The user agent is redirected to the `redirect_uri` included in the authentication request sent by the client application. In the redirect request, an authorization code (`code` URL parameter) is appended to the `redirect_uri` by TARA SSO, based on which the client application will (by a separate request) request from TARA SSO the personal identification code, name, and other attributes of the authenticated person. Technically, a HTTP status code `302 Found` redirect request is used for redirecting.
+The user agent is redirected to the `redirect_uri` included in the authentication request sent by the client application. In the redirect request, an authorization code (`code` URL parameter) is appended to the `redirect_uri` by GOVSSO, based on which the client application will (by a separate request) request from GOVSSO the personal identification code, name, and other attributes of the authenticated person. Technically, a HTTP status code `302 Found` redirect request is used for redirecting.
 
 The state value will also be returned to the client application, making it possible to perform CSRF validation on client application side.
 
-***Example TARA SSO session update redirect***
+***Example GOVSSO session update redirect***
 ````
 HTTP GET https://eteenus.asutus.ee/tagasi?
  
@@ -457,13 +457,13 @@ state=hkMVY7vjuN7xyLl5
 
 **Error response**
 
-If TARA SSO is unable to process an session update request – there is an error in the request or another error has occurred – TARA SSO transfers an error message (URL parameter `error`) and the description of the error (URL parameter `error_description`) in the redirect request.
+If GOVSSO is unable to process an session update request – there is an error in the request or another error has occurred – GOVSSO transfers an error message (URL parameter `error`) and the description of the error (URL parameter `error_description`) in the redirect request.
 
 TARA relies on the OpenID Connect standard on error messages (References: OIDC-CORE "3.1.2.6. Authentication Error Response" and Technical specification#OAUTH "4.1.2.1. Error Response"). The error messages are always displayed in English.
 
 `state` is also redirected but no authorization code (`code`) is sent. E.g.:
 
-***Example TARA SSO session update error***
+***Example GOVSSO session update error***
 ````
 HTTP GET https://eteenus.asutus.ee/tagasi?
  
@@ -476,9 +476,9 @@ state=hkMVY7vjuN7xyLl5
 
 **Request**
 
-A client application can notify the OP that the user has logged out of the site and might want to log out of TARA SSO as well. In this case, the client application, after having logged the user out of the client application, redirects the user's User Agent to TARA SSO's logout endpoint URL. This URL is normally obtained via the `end_session_endpoint` element of TARA SSO Discovery response or may be learned via other mechanisms.
+A client application can notify the OP that the user has logged out of the site and might want to log out of GOVSSO as well. In this case, the client application, after having logged the user out of the client application, redirects the user's User Agent to GOVSSO's logout endpoint URL. This URL is normally obtained via the `end_session_endpoint` element of GOVSSO Discovery response or may be learned via other mechanisms.
 
-***Example TARA SSO logout request***
+***Example GOVSSO logout request***
 ````
 GET https://tara-sso-demo.eesti.ee/oauth2/sessions/logout?
  
@@ -492,37 +492,37 @@ ui_locales=et
 
 | URL element   | compulsory       |    example        |     explanation       |
 |---------------|------------------|------------------ |-----------------------|
-| protocol, host, port and path | yes |  `https://tara-sso-demo.eesti.ee/oauth2/sessions/logout` |  `/oauth2/auth` is the OpenID Connect-based logout endpoint of the TARA SSO service. Described in OIDC session management specification (References, OIDC-SESSION "2.1.  OpenID Provider Discovery Metadata" )<br><br> The URL is provided from OIDC server public discovery service: `https://tara-sso-demo.eesti.ee/.well-known/openid-configuration end_session_endpoint` parameter. |
-| post_logout_redirect_uri | yes | `redirect_uri=https%3A%2F%2Feteenus.asutus.ee%2Ftagasi` |  Redirect URL. The redirect URL is selected by the institution. The redirect URL may include the query component. URL encoding should be used, if necessary (References: URLENC).<br> It is not permitted (References: OAUTH "3.1.2. Redirection Endpoint") to use the URI fragment component (`#` and the following component; References: URI "3.5. Fragment").<br> The URL protocol, host, port and path must match one of the pre-registered redirect URLs of given client application. Client application is determined by the contents of the identity token (token audience must belong to a registered TARA SSO client application).<br> Different from OIDC session management specification, this parameter is considered mandatory in TARA SSO. In TARA SSO user logout flow we expect that the user is always redirected back to the client application that initiated the logout process. The `post_logout_redirect_uri` should point to the client application front page or a client application internal redirect url. |
-| id_token_hint | yes |  `id_token_hint=eyJhbGciOiJSU...TvE` |  ID Token previously issued by TARA SSO being passed as a hint about the user's current or past authenticated session with the client application. If the user identified by the ID Token is not logged in or is logged in by the request, then TARA SSO returns a positive response; otherwise, it WILL return an error. **`id_token_hint` encryption is not supported.** |
-| state | no |  `state=hkMVY7vjuN7xyLl5` |  Security code against false request attacks (cross-site request forgery, CSRF). Read more about formation and verification of state under 'Protection against false request attacks'.<br> If included in the logout request, the TARA passes this value back to the RP using the state query parameter when redirecting the user agent back to the client application.<br> Using the state parameter is not mandatory for login callbacks. It is expected that the user was already logged out of the client application before calling TARA SSO logout endpoint. |
+| protocol, host, port and path | yes |  `https://tara-sso-demo.eesti.ee/oauth2/sessions/logout` |  `/oauth2/auth` is the OpenID Connect-based logout endpoint of the GOVSSO service. Described in OIDC session management specification (References, OIDC-SESSION "2.1.  OpenID Provider Discovery Metadata" )<br><br> The URL is provided from OIDC server public discovery service: `https://tara-sso-demo.eesti.ee/.well-known/openid-configuration end_session_endpoint` parameter. |
+| post_logout_redirect_uri | yes | `redirect_uri=https%3A%2F%2Feteenus.asutus.ee%2Ftagasi` |  Redirect URL. The redirect URL is selected by the institution. The redirect URL may include the query component. URL encoding should be used, if necessary (References: URLENC).<br> It is not permitted (References: OAUTH "3.1.2. Redirection Endpoint") to use the URI fragment component (`#` and the following component; References: URI "3.5. Fragment").<br> The URL protocol, host, port and path must match one of the pre-registered redirect URLs of given client application. Client application is determined by the contents of the identity token (token audience must belong to a registered GOVSSO client application).<br> Different from OIDC session management specification, this parameter is considered mandatory in GOVSSO. In GOVSSO user logout flow we expect that the user is always redirected back to the client application that initiated the logout process. The `post_logout_redirect_uri` should point to the client application front page or a client application internal redirect url. |
+| id_token_hint | yes |  `id_token_hint=eyJhbGciOiJSU...TvE` |  ID Token previously issued by GOVSSO being passed as a hint about the user's current or past authenticated session with the client application. If the user identified by the ID Token is not logged in or is logged in by the request, then GOVSSO returns a positive response; otherwise, it WILL return an error. **`id_token_hint` encryption is not supported.** |
+| state | no |  `state=hkMVY7vjuN7xyLl5` |  Security code against false request attacks (cross-site request forgery, CSRF). Read more about formation and verification of state under 'Protection against false request attacks'.<br> If included in the logout request, the TARA passes this value back to the RP using the state query parameter when redirecting the user agent back to the client application.<br> Using the state parameter is not mandatory for login callbacks. It is expected that the user was already logged out of the client application before calling GOVSSO logout endpoint. |
 | ui_locales | no |  `ui_locales=et	` |  Selection of the user interface language. The following languages are supported: `et`, `en`, `ru`. By default, the user interface is in Estonian language.<br> If the user was logged into a single client application, then no GUI prompt will be displayed to the user. |
 
 **Response**
 
-After successful logout request, TARA SSO will redirect the user agent back to the client application.
+After successful logout request, GOVSSO will redirect the user agent back to the client application.
 
-***Example TARA SSO logout redirect***
+***Example GOVSSO logout redirect***
 ````
 GET https://eteenus.asutus.ee/tagasi?state=hkMVY7vjuN7xyLl5
 ````
 **Error response**
 
-If the logout request processing is unsuccessful (for example the client and post_logout_redirect_uri do not match or a technical error in TARA SSO prevents user logout), the user agent will be redirected to TARA SSO error URL. According to OIDC the logout request does not provide means to redirect the user back to client application with an error message. Therefore, the user logout flow will end in TARA SSO instead of the client application. TARA SSO should display some form of request correlation id to aid customer support.
+If the logout request processing is unsuccessful (for example the client and post_logout_redirect_uri do not match or a technical error in GOVSSO prevents user logout), the user agent will be redirected to GOVSSO error URL. According to OIDC the logout request does not provide means to redirect the user back to client application with an error message. Therefore, the user logout flow will end in GOVSSO instead of the client application. GOVSSO should display some form of request correlation id to aid customer support.
 
 ### Back-channel logout request
 
 **Request**
 
-All TARA SSO clients are expected to support OIDC Back-channel logout functionality. According to back-channel logout specification (References: OIDC-BACK) TARA SSO server will send an out-of-band logout request to each client application when the user has requested to end the TARA SSO session. TARA SSO will include a logout token with each request so that the client applications can verify the logout event. 
+All GOVSSO clients are expected to support OIDC Back-channel logout functionality. According to back-channel logout specification (References: OIDC-BACK) GOVSSO server will send an out-of-band logout request to each client application when the user has requested to end the GOVSSO session. GOVSSO will include a logout token with each request so that the client applications can verify the logout event. 
 
-Relying Parties supporting back-channel-based logout register a back-channel logout URI with TARA SSO as part of their client registration (References: OIDC-BACK "2.2.  Indicating RP Support for Back-Channel Logout"). 
+Relying Parties supporting back-channel-based logout register a back-channel logout URI with GOVSSO as part of their client registration (References: OIDC-BACK "2.2.  Indicating RP Support for Back-Channel Logout"). 
 
 The back-channel logout URI must be an absolute URI as defined by Section 4.3 of [URI]. The back-channel logout includes an `application/x-www-form-urlencoded` formatted query component. The back-channel logout URI will not include a fragment component.
 
-Client applications must perform logout token validation to check if the received request is a valid TARA SSO logout request. Validation must be performed according to OIDC protocol OIDC-BACK "2.6. Logout Token Validation". If at any point token validation fails, the client application is expected to respond with a HTTP status code 400 Bad Request. If a session with a matching session ID is not found but the logout token is otherwise valid, then the client application should respond with HTTP status code 200 OK.
+Client applications must perform logout token validation to check if the received request is a valid GOVSSO logout request. Validation must be performed according to OIDC protocol OIDC-BACK "2.6. Logout Token Validation". If at any point token validation fails, the client application is expected to respond with a HTTP status code 400 Bad Request. If a session with a matching session ID is not found but the logout token is otherwise valid, then the client application should respond with HTTP status code 200 OK.
 
-***Example TARA SSO back-channel logout request***
+***Example GOVSSO back-channel logout request***
 ````
 POST /back-channel-logout HTTP/1.1
 Host: eteenus.asutus.ee
@@ -534,8 +534,8 @@ logout_token=eyJhbGciOiJSUzI1NiIsImtpZCI...p-wczlqgp1dg
 
 | Parameter   | compulsory     |    example        |     explanation       |
 |-------------|----------------|------------------ |-----------------------|
-| protocol, host, port and path | yes |  `https://eteenus.asutus.ee:443/back-channel-logout` |  Client application must authorize access to TARA SSO to an internal URL and port. Access to the port should be limited based on IP address. The port must be protected with TLS. TARA SSO must trust the logout endpoint server certificate. |
-| logout_token | yes |  `logout_token=eyJhbGciOiJSUz...qgp1dg` |  TARA SSO sends a JWT token similar to an ID token to client applications called a Logout Token to request that they log out. Logout token will give the client application exact information about the subject and the session (see the sid claim in ID Token) that should be logged out. The token is signed by TARA SSO with the same secret key that is used for singing issued ID Tokens. |
+| protocol, host, port and path | yes |  `https://eteenus.asutus.ee:443/back-channel-logout` |  Client application must authorize access to GOVSSO to an internal URL and port. Access to the port should be limited based on IP address. The port must be protected with TLS. GOVSSO must trust the logout endpoint server certificate. |
+| logout_token | yes |  `logout_token=eyJhbGciOiJSUz...qgp1dg` |  GOVSSO sends a JWT token similar to an ID token to client applications called a Logout Token to request that they log out. Logout token will give the client application exact information about the subject and the session (see the sid claim in ID Token) that should be logged out. The token is signed by GOVSSO with the same secret key that is used for singing issued ID Tokens. |
 
 ## Security operations
 
@@ -556,11 +556,11 @@ For more detailed information about the identity token verifications can be foun
 
 **Verifying the signature**
 
-The identity token is signed by the TARA SSO authentication service. The logout tokens are signed by TARA SSO back-channel logout service. The signature meets the JWT standard. TARA SSO uses the same key for signing both the identity and logout tokens.
+The identity token is signed by the GOVSSO authentication service. The logout tokens are signed by GOVSSO back-channel logout service. The signature meets the JWT standard. GOVSSO uses the same key for signing both the identity and logout tokens.
 
-TARA SSO uses the RS256 signature algorithm. The client application must, at least, be able to verify the signature given by using this algorithm. It would be reasonable to use a standard JWT library which supports all JWT algorithms. A situation in which the TARA SSO signature algorithm is needed is, in principle, possible – if a security failure is detected in RS256).
+GOVSSO uses the RS256 signature algorithm. The client application must, at least, be able to verify the signature given by using this algorithm. It would be reasonable to use a standard JWT library which supports all JWT algorithms. A situation in which the GOVSSO signature algorithm is needed is, in principle, possible – if a security failure is detected in RS256).
 
-For the signature verification the public signature key of TARA SSO must be used. The public signature key is published at the public signature key endpoint (see chapter “Endpoints”).
+For the signature verification the public signature key of GOVSSO must be used. The public signature key is published at the public signature key endpoint (see chapter “Endpoints”).
 
 The public signature key is stable - the public signature key will be changed every 2-3 years or accordingly to the security recommendations.
 
@@ -568,11 +568,11 @@ The public signature key has an identifier (kid). The key identifier is aligned 
 
 **Trust of the public signature key endpoint**
 
-The client application makes HTTPS requests to TARA SSO server towards to the identity token and public signature key endpoints. The client application must verify TARA SSO server’s certificate.
+The client application makes HTTPS requests to GOVSSO server towards to the identity token and public signature key endpoints. The client application must verify GOVSSO server’s certificate.
 
 **Verifying the issuer of tokens**
 
-The iss value of the identity token element must be https://tara-sso-demo.ria.ee (for TARA SSO test environment) or https://tara-sso.ria.ee (for TARA SSO production environment).
+The iss value of the identity token element must be https://tara-sso-demo.ria.ee (for GOVSSO test environment) or https://tara-sso.ria.ee (for GOVSSO production environment).
 
 **Verifying the addressee of the tokens**
 
@@ -614,15 +614,15 @@ In case the level of assurance in the authentication request using acr_values pa
 
 ### Creating a session
 
-After a successful verification of the identity token, the client application will create a session with the user (‘log in the user’). The client application is responsible for creating and holding the sessions. The methods for doing this are not included in the scope of the TARA SSO authentication service.
+After a successful verification of the identity token, the client application will create a session with the user (‘log in the user’). The client application is responsible for creating and holding the sessions. The methods for doing this are not included in the scope of the GOVSSO authentication service.
 
 All tokens issued to the client application will contain a `sid` claim. This claim can be used to link client application session to SSO session. Client applications must store the latest identity token issued for each session. The previous token is required to create session update requests and logout requests.
 
-The client application session expiration time should be slightly shorter than TARA SSO identity token expiration date. This way the client application is forced to always request a new identity token before the last identity token expires. TARA SSO server will reject requests that contain identity tokens that were issued too far away from current time.
+The client application session expiration time should be slightly shorter than GOVSSO identity token expiration date. This way the client application is forced to always request a new identity token before the last identity token expires. GOVSSO server will reject requests that contain identity tokens that were issued too far away from current time.
 
 Logout tokens usually contain the same `sid` claim. When a logout token is received the client application must find all application sessions that contain identity tokens with the same `sid` claim value and terminate them (force the user to log out on the same user agent).
 
-When an application session was terminated internally by TARA SSO, the logout token may instead contain only a `sub` claim. In this case the client application is expected to terminate all session that contain id tokens with matching sub value (force the user to log out on all user agents).
+When an application session was terminated internally by GOVSSO, the logout token may instead contain only a `sub` claim. In this case the client application is expected to terminate all session that contain id tokens with matching sub value (force the user to log out on all user agents).
 
 ### Protection against false request attacks
 
@@ -653,18 +653,18 @@ Further information: unfortunately, this topic is not presented clearly in the O
 
 ### Logging
 
-Logging must enable the reconstruction of the course of the communication between TARA SSO and the client application for each occasion of using TARA SSO. For this purpose, all following requests and responses must be logged by TARA SSO as well as by the client application: authentication_request, authentication_redirect, token_request, session_update_request, session_update_redirect, logout_request, logout_redirect, backchannel_logout. As the volumes of data transferred are not large, the URL as well as the identity token must be logged in full. The retention periods of the logs should be determined based on the importance of the client application. We advise using 1 … 7 years. In case of any issue, please submit an excerpt from the log (Which requests were sent to TARA SSO? Which responses were received?). Correlation of TARA and TARA SSO logs will be done on TARA SSO service provider side.
+Logging must enable the reconstruction of the course of the communication between GOVSSO and the client application for each occasion of using GOVSSO. For this purpose, all following requests and responses must be logged by GOVSSO as well as by the client application: authentication_request, authentication_redirect, token_request, session_update_request, session_update_redirect, logout_request, logout_redirect, backchannel_logout. As the volumes of data transferred are not large, the URL as well as the identity token must be logged in full. The retention periods of the logs should be determined based on the importance of the client application. We advise using 1 … 7 years. In case of any issue, please submit an excerpt from the log (Which requests were sent to GOVSSO? Which responses were received?). Correlation of TARA and GOVSSO logs will be done on GOVSSO service provider side.
 
-## TARA SSO endpoints
+## GOVSSO endpoints
 
 | Endpoint   |    description       |
 |------------|----------------------|
-| server discovery |  Public endpoint for TARA SSO server OpenID Connect configuration information. Usually provided as standard endpoint for OIDC implementations that support service discovery. (References: OIDC-DISCOVERY "4.1 OpenID Provider Configuration Request"). |
-| public signature key of the service |  JSON Web Key Set document for TARA SSO service. Publishes at minimum the public key that client applications must use to validate id token and logout token signatures. (References: JWK). |
+| server discovery |  Public endpoint for GOVSSO server OpenID Connect configuration information. Usually provided as standard endpoint for OIDC implementations that support service discovery. (References: OIDC-DISCOVERY "4.1 OpenID Provider Configuration Request"). |
+| public signature key of the service |  JSON Web Key Set document for GOVSSO service. Publishes at minimum the public key that client applications must use to validate id token and logout token signatures. (References: JWK). |
 | registration of the client application |  Dynamic registration is not supported, static registration via `help@ria.ee`. |
-| authorization |  OAuth 2.0 authorization endpoint. Used for TARA SSO session update requests and authentication requests. (References: OAUTH "3.1.  Authorization Endpoint"). |
-| token |  TARA SSO endpoint to obtain an Access Token, an ID Token (References: OIDC-CORE "3.1.3.  Token Endpoint"). Access tokens are returned for OAuth 2.0 compliance but their use in TARA SSO protocol is not required. |
-| logout |  TARA SSO client application initiated logout endpoint. (References: OIDC-SESSION "5. RP-Initiated Logout"). |
+| authorization |  OAuth 2.0 authorization endpoint. Used for GOVSSO session update requests and authentication requests. (References: OAUTH "3.1.  Authorization Endpoint"). |
+| token |  GOVSSO endpoint to obtain an Access Token, an ID Token (References: OIDC-CORE "3.1.3.  Token Endpoint"). Access tokens are returned for OAuth 2.0 compliance but their use in GOVSSO protocol is not required. |
+| logout |  GOVSSO client application initiated logout endpoint. (References: OIDC-SESSION "5. RP-Initiated Logout"). |
 
 ## References
 
