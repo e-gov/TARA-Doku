@@ -7,26 +7,17 @@ permalink: /
 <img src='img/EL_Regionaalarengu_Fond_horisontaalne-vaike.jpg'>
 
 
-
 # <img src='img/LOVID.png' style='width: 80px;'> Riigi autentimisteenus (TARA)
 
-Riigi autentimisteenus on keskselt osutatav teenus, millega asutus saab oma e-teenuses autentida ID-kaardi, mobiil-ID, smart-ID ja ka välisriigi kasutaja.
-
-Riigi autentimisteenuse tarkvara tehniline nimi on TARA.
+Riigi autentimisteenus (tehnilise nimega TARA) on Riigi Infosüsteemi Ameti poolt keskselt osutatav teenus, millega asutus saab oma e-teenuses autentida ID-kaardi, mobiil-ID, smart-ID ja Euroopa Liidu eID kasutaja.
 
 TARA on eelistatud viis piiriülese eIDAS-autentimise lisamiseks asutuse e-teenustele.
 
-Riigi keskset autentimisteenust pakub Riigi Infosüsteemi Amet.
+Ametlikku teavet TARA ja RIA muude teenuste kohta leiab [RIA autentimisteenuste lehelt](https://www.ria.ee/et/riigi-infosusteem/eid/partnerile.html#tara). 
 
-Ametlikku teavet TARA ja RIA muude teenuste kohta vt [RIA autentimisteenuste lehelt](https://www.ria.ee/et/riigi-infosusteem/eid/partnerile.html#tara). 
-
-Käesoleva lehe teave on mõeldud kolmele sihtrühmale.
-
-1 Asutuse äriüksuse juht saab siinse teabe alusel hinnata TARA sobivust, liidestustööde mahtu ja teha otsuse TARA kasutuselevõtuks.
-
-2 Liidese arendaja leiab siit kogu vajaliku tehnilise teabe asutuse e-teenuste liidestamiseks TARA-ga.
-
-3 Eraldi on lehel teavet TARA edasiarendajale.
+Käesoleva lehe teave on mõeldud peamiselt kahele sihtrühmale:
+1. Asutuse äriüksuse juht saab siinse teabe alusel hinnata TARA sobivust, liidestustööde mahtu ja teha otsuse TARA kasutuselevõtuks;
+2. Liidese arendaja leiab siit kogu vajaliku tehnilise teabe asutuse e-teenuste liidestamiseks TARA-ga.
 
 ## Ärikasutajale
 
