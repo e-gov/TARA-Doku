@@ -15,11 +15,11 @@ Teenust osutatakse kõigile valitsussektori asutustele vastavalt Rahandusministe
 
 TARA on eelistatud viis piiriülese eIDAS-autentimise lisamiseks asutuse e-teenustele.
 
-Ametlikku teavet TARA ja RIA muude teenuste kohta leiab [RIA autentimisteenuste lehelt](https://www.ria.ee/et/riigi-infosusteem/eid/partnerile.html#tara). 
-
 Käesoleva lehe teave on mõeldud peamiselt kahele sihtrühmale:
 1. Asutuse äriüksuse juht saab siinse teabe alusel hinnata TARA sobivust, liidestustööde mahtu ja teha otsuse TARA kasutuselevõtuks;
 2. Liidese arendaja leiab siit kogu vajaliku tehnilise teabe asutuse e-teenuste liidestamiseks TARA-ga.
+
+Ametlikku teavet TARA ja teiste RIA teenuste kohta leiab [RIA autentimisteenuste lehelt](https://www.ria.ee/et/riigi-infosusteem/eid/partnerile.html#tara). 
 
 ## Ärikasutajale
 
