@@ -47,15 +47,7 @@ TARA enables national as well as cross-border authentication. This means that Es
 
 In the context of eIDAS, TARA is providing the ‘Authentication of an Estonian in an Estonian e-service’ and the ‘Authentication of a foreigner using an Estonian e-service’ application flows (Figure 1).
 
-<p style='text-align:center;'><img src='img/YLEVAADE.PNG' style='width:600px'></p>
-
-- Klientrakendus – customer’s application
-- välismaa e-identimissüsteemi kasutaja – user of a foreign e-identification service
-- Eesti e-identimissüsteemi kasutaja – user of the Estonian e-identification service
-- eIDAS piiriülene autentimine – eIDAS-Node cross-border authentication
-- ID-kaardiga autentimine – authentication by ID card
-- Mobiil-ID-ga autentimine – authentication by Mobiil-ID
-- Smart-ID – Smart-ID.
+<p style='text-align:center;'><img src='img/YLEVAADE_EN.png' style='width:600px'></p>
 
 #### Figure 1. National and cross-border authentication
 
