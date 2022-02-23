@@ -42,7 +42,7 @@ Ei ole. Kasutatava platvormi tehnilise piirangu tõttu TARA praegu ei toeta mitu
 
 ## Kas TARA toetab _single sign-on (SSO)_ lahendust?
 
-Hetkel me ei paku _SSO_ funktsionaalsust. Kui see peaks muutuma siis teavitame sellest kindlasti oma kliente.
+Hetkel me ei paku _SSO_ funktsionaalsust. RIA on hetkel arendamas riigi SSO teenust (GOVSSO), mis jõuab toodangukeskkonda 2022 II poolaasta esimeses pooles.
 
 ## Kas TARA-l on olemas _health endpoint_ millega saaks monitoorida klientrakendust?
 
