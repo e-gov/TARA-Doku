@@ -211,7 +211,7 @@ Autentimispäringu elemendid:
 |------------------------|:---------- :|-----------------------------|---------------|
 | protokoll, host ja tee (_path_) | jah | `https://tara.ria.ee/oidc/authorize` | `/authorize` on TARA-teenuse OpenID Connect-kohane autentimisotspunkt (termin 'autoriseerimine' pärineb alusprotokollist OAuth 2.0). |
 | `redirect_uri` | jah | `redirect_uri=https%3A%2F%2F` `eteenus.asutus.ee%2Ftagasi` | Tagasisuunamis-URL. Tagasisuunamis-URL-i valib asutus ise. Tagasisuunamis-URL võib sisaldada _query_-osa. <br><br>Vajadusel kasutada [URLi kodeerimist](https://en.wikipedia.org/wiki/Percent-encoding). <br><br>URI-i [fragmendi osa](https://tools.ietf.org/html/rfc3986#section-3.5) (`#` märk ja sellele järgnev osa) kasutamine [ei ole lubatud](https://tools.ietf.org/html/rfc6749#section-3.1.2). |
-| `scope` | jah | `scope=openid`<br><br>`scope=openid%20eidas` <br><br>`scope=openid%20idcard%20mid` | Autentimise skoop.<br><br>`openid` on kohustuslik (seda nõuab OpenID Connect protokoll).<br><br> Skoopidega `idcard`, `mid`, `smartid`, `eidas` (ja `eidasonly`) saab nõuda, et kasutajale näidatakse ainult soovitud autentimismeetodeid. Vt jaotis 4.1.3 Autentimismeetodite valikuline kasutus.<br><br>Skoobiga `email` saab nõuda, et identsustõendis väljastatakse kasutaja e-postiaadress. Vt jaotis 4.1.2 E-postiaadressi küsimine.<br><br>Piiriülesel autentimisel saab kasutada lisaskoope sihtriigi valiku täpsustamiseks, et kasutaja suunata otse välisriigi autentimisteenusesse või täiendavate isikuandmete pärimiseks (vt jaotis 4.1.3 ja 4.1.1).<br><br>Mitme skoobi kasutamisel tuleb skoobid eraldada tühikutega. Tühik esitatakse seejuures URL-kodeeringus (`%20`) ([RFC 3986](https://www.ietf.org/rfc/rfc3986.txt)). Skoobi väärtused on tõstutundlikud. Lubatud on ainult käesolevas dokumendis kirjeldatud skoobid, teiste väärtuste korral tagastatakse viga koodiga `invalid_scope`. |
+| `scope` | jah | `scope=openid`<br><br>`scope=openid%20eidas` <br><br>`scope=openid%20idcard%20mid` | Autentimise skoop.<br><br>`openid` on kohustuslik (seda nõuab OpenID Connect protokoll).<br><br> Skoopidega `idcard`, `mid`, `smartid`, `eidas` (ja `eidasonly`) saab nõuda, et kasutajale näidatakse ainult soovitud autentimismeetodeid. Vt jaotis 4.1.3 Autentimismeetodite valikuline kasutus.<br><br>Skoobiga `email` saab nõuda, et identsustõendis väljastatakse kasutaja e-posti aadress. Vt jaotis 4.1.2 E-posti aadressi küsimine.<br><br>Piiriülesel autentimisel saab kasutada lisaskoope sihtriigi valiku täpsustamiseks, et kasutaja suunata otse välisriigi autentimisteenusesse või täiendavate isikuandmete pärimiseks (vt jaotis 4.1.3 ja 4.1.1).<br><br>Mitme skoobi kasutamisel tuleb skoobid eraldada tühikutega. Tühik esitatakse seejuures URL-kodeeringus (`%20`) ([RFC 3986](https://www.ietf.org/rfc/rfc3986.txt)). Skoobi väärtused on tõstutundlikud. Lubatud on ainult käesolevas dokumendis kirjeldatud skoobid, teiste väärtuste korral tagastatakse viga koodiga `invalid_scope`. |
 | `state` | jah | `state=hkMVY7vjuN7xyLl5` | Võltspäringuründe (_cross-site request forgery_, CSRF) vastane turvakood. `state` moodustamise ja kontrollimise kohta vt lähemalt jaotis "Võltspäringuründe vastane kaitse". |
 | `response_type` | jah | `response_type=code` | Määrab autentimise tulemuse serverile edastamise viisi. Toetatud on volituskoodi viis (OpenID Connect protokolli _authorization flow_), selle tähiseks on väärtus `code`. |
 | `client_id` | jah | `client_id=58e7...` | Rakenduse identifikaator. Rakenduse identifikaatori annab RIA asutusele klientrakenduse registreerimisel autentimisteenuse kasutajaks. |
@@ -226,9 +226,9 @@ Välismaalase autentimisel suunab TARA välismaalase tema koduriigi autentimiste
 
 Füüsilise isiku autentimise korral tagastatakse TARAs alati nn **kohustuslikud atribuudid** (eesnimi, perenimi, sünniaeg ja isiku identifikaator). Täiendavate lisaatribuutide pärimist ning juriidilise isiku autentimist läbi TARA hetkel ei toeta.
 
-#### 4.1.2 E-postiaadressi küsimine
+#### 4.1.2 E-posti aadressi küsimine
 
-Skoobiga `email` saab nõuda, et identsustõendis väljastatakse kasutaja e-postiaadress. See võimalus on suunatud asutustele, kelle klientrakendus nõuab kasutaja autentimisel e-postiaadressi kindlakstegemist. Skoop `email` tuleb lisada põhiskoobile `openid`. Identsustõendis väljastatakse väited (_claims_) `email` ja `email_verified`. Näiteks:
+Skoobiga `email` saab nõuda, et identsustõendis väljastatakse kasutaja e-posti aadress. See võimalus on suunatud asutustele, kelle klientrakendus nõuab kasutaja autentimisel e-postiaadressi kindlakstegemist. Skoop `email` tuleb lisada põhiskoobile `openid`. Identsustõendis väljastatakse väited (_claims_) `email` ja `email_verified`. Näiteks:
 
 ```
 "sub": "EE60001019906",
@@ -236,9 +236,9 @@ Skoobiga `email` saab nõuda, et identsustõendis väljastatakse kasutaja e-post
 "email_verified": false
 ```
 
-Väite `email` väärtus loetakse kasutaja autentimissertifikaadi SAN laiendist (RFC822 tüüpi Subject Alternative Name väljast). E-postiaadress väljastatakse ainult juhul, kui kasutaja autenditakse Eesti ID-kaardiga. Klientrakenduses tuleb kindlasti arvestada, et kasutaja ei tarvitse olla oma e-posti suunanud - s.t sellel aadressil saadetud kiri ei tarvitse kasutajani jõuda.
+Väite `email` väärtus loetakse kasutaja autentimissertifikaadi SAN laiendist (RFC822 tüüpi Subject Alternative Name väljast). E-posti aadress väljastatakse ainult juhul, kui kasutaja autenditakse Eesti ID-kaardiga. Klientrakenduses tuleb kindlasti arvestada, et kasutaja ei tarvitse olla oma e-posti suunanud - s.t sellel aadressil saadetud kiri ei tarvitse kasutajani jõuda.
 
-Väite `email_verified` väärtus on alati `false`. See tähendab, et TARA ei kontrolli ega väljasta teavet, kas kasutaja on oma eesti.ee e-postiaadressi suunanud või mitte. (Vastav funktsionaalsus võib lisanduda tulevikus).
+Väite `email_verified` väärtus on alati `false`. See tähendab, et TARA ei kontrolli ega väljasta teavet, kas kasutaja on oma eesti.ee e-posti aadressi suunanud või mitte. (Vastav funktsionaalsus võib lisanduda tulevikus).
 
 #### 4.1.3 Mobiilinumbri küsimine
 
@@ -431,8 +431,8 @@ Identsustõendis väljastatakse järgmised väited (_claims_).
 | `nonce` | `qrstuvwxyzabcdef` - turvaelement. Autentimispäringu `nonce` parameetri väärtus. Väärtustatud ainult juhul kui autentimispäringus saadeti `nonce` parameeter. |
 | `acr` (_Authentication Context Class Reference_) | `high` - autentimistase, vastavalt eIDAS tasemetele. Võimalikud väärtused: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Elementi ei kasutata, kui autentimistase ei kohaldu või pole teada |
 | `at_hash` | `X0MVjwrmMQs/IBzfU2osvw==` - pääsutõendi räsi. TARA-s ei kasutata |
-| `email` | `60001019906@eesti.ee` - kasutaja e-postiaadress. Väljastatakse ainult  Eesti ID-kaardiga kasutaja autentimisel. Loetakse kasutaja autentimissertifikaadi SAN laiendist (RFC822 tüüpi `Subject Alternative Name` väljast) |
-| `email_verified` | `false` - tähendab, et e-postiaadressi kuulumine kasutajale on tuvastatud. TARA väljastab alati väärtuse `false`. See tähendab, et TARA ei kontrolli ega väljasta teavet, kas kasutaja on oma eesti.ee e-postiaadressi suunanud või mitte. |
+| `email` | `60001019906@eesti.ee` - kasutaja e-posti aadress. Väljastatakse ainult  Eesti ID-kaardiga kasutaja autentimisel. Loetakse kasutaja autentimissertifikaadi SAN laiendist (RFC822 tüüpi `Subject Alternative Name` väljast) |
+| `email_verified` | `false` - tähendab, et e-posti aadressi kuulumine kasutajale on tuvastatud. TARA väljastab alati väärtuse `false`. See tähendab, et TARA ei kontrolli ega väljasta teavet, kas kasutaja on oma eesti.ee e-postiaadressi suunanud või mitte. |
 | `phone_number`| `+37200000766` - kasutaja telefoninumber. Väljastatakse ainult  Eesti Mobiil-ID'ga kasutaja autentimisel. Telefoninumber esitatakse E.164 formaadis koos riikliku suunakoodiga. | 
 | `phone_number_verified` | `true` - tähendab, et telefoninumbri kuulumine kasutajale on tuvastatud. TARA väljastab alati väärtuse `true`. |
 
