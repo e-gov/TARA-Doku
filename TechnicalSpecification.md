@@ -368,7 +368,7 @@ An example:
   ],
   "state": "1OnH3qwltWy81fKqcmjYTqnco9yVQ2gGZXws/DBLNvQ=",
   "nonce": "",
-  "at_hash": "X0MVjwrmMQs/IBzfU2osvw=="
+  "at_hash": "X0MVjwrmMQs_IBzfU2osvw"
 }
 ````
 
@@ -392,7 +392,7 @@ The following claims are presented in the identity token.
 | `state` | `abcdefghijklmnop` - security element. The authentication request’s `state` parameter value.  |
 | `nonce` | `qrstuvwxyzabcdef` - security element. The authentication request’s `nonce` parameter value. Value is present only in case the `nonce` parameter was sent in the authentication request. |
 | `acr` (_Authentication Context Class Reference_) | `high` - level of authentication based on the eIDAS LoA (level of assurance). Possible values: `low`, `substantial`, `high`. The element is not used if the level of authentication is not applicable or is unknown. |
-| `at_hash` | `X0MVjwrmMQs/IBzfU2osvw==` - the access token hash. Not used in TARA. |
+| `at_hash` | `X0MVjwrmMQs_IBzfU2osvw` - the access token hash. Not used in TARA. |
 | `email` | `60001019906@eesti.ee` - the user’s e-mail address. Only issued if an Estonian ID card is used for authenticating the user. Is only read from the SAN extension of the user’s authentication certificate (from the RFC822 type `Subject Alternative Name` field) |
 | `email_verified` | `false` - the e-mail address of the user has been verified. TARA always issues a value `false`. It means that TARA does not verify or issue information on whether or not the user has redirected his/her eesti.ee e-mail address. |
 
