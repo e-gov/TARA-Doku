@@ -203,7 +203,7 @@ Elements of an authentication request:
 | ----------- | ---------- | ------- | ----------- |
 | protocol, host, and patch | yes | `https://tara.ria.ee/oidc/authorize` | `/authorize` is the OpenID Connect-based authentication endpoint of the TARA service (the concept of ‘authorisation’ originates from the OAuth 2.0 standard protocol). 
 | `redirect_uri` | yes | `redirect_uri=https%3A%2F%2F eteenus.asutus.ee%2Ftagasi` | Redirect URL. The redirect URL is selected by the institution. The redirect URL may include the query component. <br><br> [URL encoding](https://en.wikipedia.org/wiki/Percent-encoding) should be used, if necessary.<br><br>It is [not permitted](https://tools.ietf.org/html/rfc6749#section-3.1.2) to use the URI [fragment component](https://tools.ietf.org/html/rfc3986#section-3.5) (`#` and the following component). |
-| `scope` | yes | `scope=openid`<br><br>`scope=openid%20eidas`<br><br>`scope=openid%20idcard%20mid` | The authentication scope.<br><br>`openid` is compulsory (required by the OpenID Connect protocol).<br><br> The scopes of `idcard`, `mid`, `smartid`, `eidas` (and `eidasonly`) can be used to request that only the desired method of authentication is displayed to the user. See 4.1.3 Selective use of authentication methods.<br><br>The `email` scope can be used to request that the user’s e-mail address is issued in the identity token. See 4.1.2 Requesting e-mail address.<br><br>In the case of cross-border authentication, further scopes can be used to request additional personal data (see below).<br><br>When using several scopes, the scopes must be separated by spaces. Thereat, the space is presented in the URL encoding (`%20`) ([RFC 3986](https://www.ietf.org/rfc/rfc3986.txt)). Scope values are case sensitive. Only scope values described in current document are allowed, other values cause an error with code `invalid_scope` to be returned. |
+| `scope` | yes | `scope=openid`<br><br>`scope=openid%20eidas`<br><br>`scope=openid%20idcard%20mid` | The authentication scope.<br><br>`openid` is compulsory (required by the OpenID Connect protocol).<br><br> The scopes of `idcard`, `mid`, `smartid`, `eidas` (and `eidasonly`) can be used to request that only the desired method of authentication is displayed to the user. See 4.1.4 Selective use of authentication methods.<br><br>The `email` scope can be used to request that the user’s e-mail address is issued in the identity token. See 4.1.2 Requesting e-mail address.<br><br>The `phone` scope can be used to request that the user’s phone number is issued in the identity token upon authentication with Mobile-ID. See 4.1.3 Requesting phone number.<br><br>In the case of cross-border authentication, further scopes can be used to request additional personal data (see below).<br><br>When using several scopes, the scopes must be separated by spaces. Thereat, the space is presented in the URL encoding (`%20`) ([RFC 3986](https://www.ietf.org/rfc/rfc3986.txt)). Scope values are case sensitive. Only scope values described in current document are allowed, other values cause an error with code `invalid_scope` to be returned. |
 | `state` | yes | `state=hkMVY7vjuN7xyLl5` | Security code against false request attacks (_cross-site request forgery_, CSRF). Read more about formation and verification of `state` under ‘Protection against false request attacks. |
 | `response_type` | yes | `response_type=code` | Determines the manner of communication of the authentication result to the server. The method of authorisation code is supported (_authorization flow_ of the OpenID Connect protocol) and it is referred to the `code` value. |
 | `client_id` | yes | `client_id=58e7...` | Application identifier. The application identifier is issued to the institution by RIA upon registration of the client application as a user of the authentication service. |
@@ -231,7 +231,25 @@ The `email` value is read from an extension of the user’s authentication certi
 
 The `email_verified` is always `false`. It means that TARA does not verify or issue information on whether or not the user has redirected their eesti.ee e-mail address. (The respective functionality may be added in the future).
 
-#### 4.1.3 Selective use of means of authentication
+
+#### 4.1.3 Requesting phone number 
+
+The `phone` scope can be used to request the user's phone number in the identity token. This option is targetet for the client applications that facilitate signatures with Mobile-ID, which requires the user's phone as input. The identity token will contain the `phone_number` and `phone_number_verified` claims. For example:
+
+```
+"sub": "EE60001019906",
+"phone_number": "+37200000766",
+"phone_number_verified": true
+```
+
+The claim `phone_number` value is a phone number presented in E.164 format and contains a prefix that indicates the country of origin. 
+
+The claim `phone_number_verified` is always `true`. This means, that the number in the claim `phone_number` has been verified.
+
+The claims `phone_number` and `phone_number_verified` are issued only if Mobile-ID is used for authentication. 
+
+
+#### 4.1.4 Selective use of means of authentication
 
 By default, all supported authentication methods are displayed to the user. If necessary, the authentication options displayed can be managed by using the `scope` parameter's value. parameetri väärtuste abil. Preferred authentication methods can be combined to draw up a list of the authentication methods (the list of permitted values is provided in Table 1).
 
@@ -395,6 +413,8 @@ The following claims are presented in the identity token.
 | `at_hash` | `X0MVjwrmMQs/IBzfU2osvw==` - the access token hash. Not used in TARA. |
 | `email` | `60001019906@eesti.ee` - the user’s e-mail address. Only issued if an Estonian ID card is used for authenticating the user. Is only read from the SAN extension of the user’s authentication certificate (from the RFC822 type `Subject Alternative Name` field) |
 | `email_verified` | `false` - the e-mail address of the user has been verified. TARA always issues a value `false`. It means that TARA does not verify or issue information on whether or not the user has redirected his/her eesti.ee e-mail address. |
+| `phone_number`| `+37200000766` - the user's phone number. Only issued if Estonian Mobile-ID is used for authenticating the user. The phone number is issued in accordance to E.164 format with a prefix indicating the country of origin. | 
+| `phone_number_verified` | `true` - the phone number of the user has been verified. TARA always issues a value `true`. |
 
 Identity token might consist other OpenID Connect protocol based fields that are not supported in TARA.
 
@@ -448,6 +468,8 @@ The claims included in the response are issued based on the identity token.
 | `date_of_birth` |  no <sup>1</sup> | The same format and meaning as `profile_attributes.date_of_birth` in identity token. |
 | `email` | no  <sup>1</sup> | The same format and meaning as `email` in identity token. |
 | `email_verified` | no  <sup>1</sup> | The same format and meaning as `email_verified` in identity token. |
+| `phone_number` | no  <sup>1</sup> | The same format and meaning as `phone_number` in identity token. |
+| `phone_number_verified` | no  <sup>1</sup> | The same format and meaning as `phone_number_verified` in identity token. |
 | `acr` | no  <sup>1</sup> | The same format and meaning as `acr` in identity token. |
 
  <sup>1</sup> Only issued if the claim is also included in the identity token.
