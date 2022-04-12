@@ -565,7 +565,7 @@ The identity token must be obtained immediately or within 30 seconds. When the t
 
 #### 5.1.6 Verifying the authentication method used in authentication
 
-When using the selective means of authentication (see section 4.1.3) the identity token must verify that the authentication method provided by the authentication method reference, `amr` ,is allowed. Otherwise, the risk of intermediary attacks is taken by allowing the user to authenticate through the method that is not acceptable in the interface (eg Smart-ID is used instead of authentication with an ID card) through manipulation of the authentication request `scope` parameter.
+When using the selective means of authentication (see section 4.1.4) the identity token must verify that the authentication method provided by the authentication method reference, `amr` ,is allowed. Otherwise, the risk of intermediary attacks is taken by allowing the user to authenticate through the method that is not acceptable in the interface (eg Smart-ID is used instead of authentication with an ID card) through manipulation of the authentication request `scope` parameter.
 
 For example, when in the authentication request the `scope` parameter is defined to use only ID-card authentication method, it must be verified that the `amr` claim also contains an `idcard` code (the full list of all codes is described under section 4.3.1).
 
