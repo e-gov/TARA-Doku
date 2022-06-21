@@ -38,7 +38,7 @@ Ametlikku teavet TARA ja teiste RIA teenuste kohta leiab [RIA autentimisteenuste
 
 [Liidestuja tarkvara](Naited)
 
-[Sõnastik](Sonastik) · [Viited](Viited) · [Eneseabi](Eneseabi)
+[Sõnastik](Sonastik) · [Viited](Viited) · [Abi](Abi)
 
 ## Riigi autentimisteenuse arendajale
 
