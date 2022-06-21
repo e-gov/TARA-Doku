@@ -2,6 +2,18 @@
 permalink: KKK
 ---
 
+Küsimuste korral, täiendava teabe või abi saamiseks palume pöörduda kasutajatoe poole `help@ria.ee`.
+
+Kui pöördute liidestamisel või TARA kasutamisel tekkinud tehnilise probleemiga, siis palume valmis panna väljavõte klientrakenduse logist. Tõrkepõhjuse väljaselgitamiseks vajame teavet, millised päring(ud) TARAsse saadeti ja mida vastuseks saadi.
+
+Ärge saatke kasutajatoe poole pöördumises teile väljastatud klientrakenduse salasõna!
+{: .adv}
+
+Enne tehnilise küsimusega pöördumist tasub heita pilk korduma kippuvate küsimuste rubriiki.
+
+Samuti oleme tänulikud teenuse täiendusettepaneku eest.
+
+
 # Korduma kippuvad küsimused
 {: .no_toc}
 
