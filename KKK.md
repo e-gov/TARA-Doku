@@ -1,8 +1,8 @@
 ---
-permalink: Eneseabi
+permalink: KKK
 ---
 
-# Eneseabi
+# Korduma kippuvad küsimused
 {: .no_toc}
 
 Hea TARA-ga liidestuja! Siit leiad valiku küsimusi, mis teistel on tekkinud - ja vastused.
