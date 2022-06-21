@@ -1,5 +1,5 @@
 ---
-permalink: KKK
+permalink: Abi
 ---
 
 Küsimuste korral, täiendava teabe või abi saamiseks palume pöörduda kasutajatoe poole `help@ria.ee`.
