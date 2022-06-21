@@ -81,7 +81,7 @@ Asutusel tuleb:
 
 Testteenus on avatud 2017. a sügisest.
 
-Teenus on toodangus avatud 2018. a märtsist.
+Teenus on toodangukeskkonnas avatud 2018. a märtsist.
 
 ## Kuidas teenus välja näeb?
 
@@ -110,6 +110,6 @@ Kontakt: `help@ria.ee`.
 
 Kui pöördute liidestamisel või liidestatud klientrakenduses TARA kasutamise tehnilise probleemiga, siis palume valmis panna väljavõte klientrakenduse logist. Tõrkepõhjuse väljaselgitamiseks vajame teavet, mis päring(ud) TARAsse saadeti ja mis vastuseks saadi.
 
-Samuti tasub heita pilk [eneseabile](Eneseabi).
+Samuti tasub heita pilk [korduma kippuvate küsimuste rubriiki](KKK).
 
 [Tehniline kirjeldus](TehnilineKirjeldus) (liidese arendajale).
