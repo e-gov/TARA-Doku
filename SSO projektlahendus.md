@@ -2,6 +2,10 @@
 permalink: SSO projektlahendus
 ---
 
+# [ARHIVEERITUD]
+
+&#9888; Dokumenti ei ajakohastata. Palume siinsele teabele mitte tugineda.
+
 # Riigi SSO teenuse (GOVSSO) projektlahendus
 
 <p style='text-align:left;'><img src='img/sf_logo.png' style='width:250px'></p>
