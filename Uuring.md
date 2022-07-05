@@ -3,6 +3,10 @@ permalink: Uuring
 layout: Lihtne
 ---
 
+# [ARHIVEERITUD]
+
+&#9888; Dokumenti ei ajakohastata. Palume siinsele teabele mitte tugineda.
+
 Autentimisteenuse turvauuring
 {: .pais}
 
