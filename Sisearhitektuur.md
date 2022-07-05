@@ -2,6 +2,10 @@
 permalink: Sisearhitektuur
 ---
 
+# [ARHIVEERITUD]
+
+&#9888; Dokumenti ei ajakohastata. Palume siinsele teabele mitte tugineda.
+
 # TARA serverrakenduse sisearhitektuur
 
 Käesolev dokument kirjeldab TARA serverrakenduse [TARA-Server](https://github.com/e-gov/TARA-Server) sisearhitektuuri. Peaeesmärk on abistada TARA (edasi)arendajat, eriti järgmistes küsimustes: 
