@@ -2,6 +2,10 @@
 permalink: QaStrateegia
 ---
 
+# [ARHIVEERITUD]
+
+&#9888; Dokumenti ei ajakohastata. Palume siinsele teabele mitte tugineda.
+
 # QA strateegia
 
 - TOC
