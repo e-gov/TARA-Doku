@@ -3,6 +3,10 @@ permalink: UuringMarkmed
 layout: lihtne
 ---
 
+# [ARHIVEERITUD]
+
+&#9888; Dokumenti ei ajakohastata. Palume siinsele teabele mitte tugineda.
+
 ## Uurimisvajadus
 
 E-teenuste ühtses inforuumis ei ole senine infosüsteemi- või asutusepõhine sisselogimine enam optimaalne lahendus. Kasutaja liigub erinevate e-teenuste vahel, näiteks alustab eesti.ee-s, avastab ja tarbib erinevaid teenuseid. Riigi teenusruumis sujuvaks liikumiseks tuleks kasutusele võtta ühekordne sisselogimine (_single sign-on, SSO_).
