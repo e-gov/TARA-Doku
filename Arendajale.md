@@ -12,15 +12,9 @@ Näiteks TARA autentimisvahendite teenuse kood asub: [https://github.com/e-gov/T
 
 Siin on ka valik avalikke dokumente, mis käsitlevad TARA mitmesuguseid sisekülgi. Dokumendid võivad pakkuda huvi lugejale, kes soovib TARA edasiarendamises kaasa lüüa:
 
-[QA strateegia](QaStrateegia)
-
-[TARA arhitektuurne jätkusuutlikkus](Jatkusuutlikkus)<br>
-
 [Abiks dokumenteerijale](Dokuabi)
 
 [TARA elutukseteenus](Elutukse), spetsifikatsioon<br>
-
-[Jõudlusanalüüs](Joudlus)<br>
 
 [Vead ja tõrked. Ennetamine ja Käsitlemine](Veakasitlus)<br>
 
