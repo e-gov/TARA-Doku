@@ -2,6 +2,10 @@
 permalink: Joudlus
 ---
 
+# [ARHIVEERITUD]
+
+&#9888; Dokumenti ei ajakohastata. Palume siinsele teabele mitte tugineda.
+
 # Jõudlusanalüüs
 
 ## Jõudlusmudel
