@@ -2,6 +2,10 @@
 permalink: Migration
 ---
 
+# [ARHIVEERITUD]
+
+&#9888; Dokumenti ei ajakohastata. Palume siinsele teabele mitte tugineda.
+
 Estonian Information System Authority
 
 # Migration to eIDAS Node 2.0 – Technical Analysis
