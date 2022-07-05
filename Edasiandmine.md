@@ -1,7 +1,10 @@
 ---
 permalink: Edasiandmine
 ---
-# <span style="color: red">[ARHIVEERITUD]</span>
+# [ARHIVEERITUD]
+
+&#9888; Dokumenti ei ajakohastata. Palume siinsele teabele mitte tugineda.
+
 # Autentimise edasiandmine
 {: .no_toc}
 
