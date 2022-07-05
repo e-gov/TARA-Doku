@@ -1,6 +1,9 @@
 ---
 permalink: HA
 ---
+# [ARHIVEERITUD]
+
+&#9888; Dokumenti ei ajakohastata. Palume siinsele teabele mitte tugineda.
 
 Autentimisteenus TARA · eIDAS konnektorteenus
 
