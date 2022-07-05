@@ -1,6 +1,8 @@
 ---
 permalink: Autentimisprotokoll
 ---
+# [ARHIVEERITUD]
+&#9888; Dokumenti ei ajakohastata. Palume siinsele teabele mitte tugineda.
 
 # Autentimisprotokolli turvauuring
 
