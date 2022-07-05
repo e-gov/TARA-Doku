@@ -1,6 +1,9 @@
 ---
 permalink: Feder
 ---
+# [ARHIVEERITUD]
+
+&#9888; Dokumenti ei ajakohastata. Palume siinsele teabele mitte tugineda.
 
 # Autentimise e seansi edasiandmine
 {: .no_toc}
