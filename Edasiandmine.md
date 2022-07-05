@@ -1,7 +1,7 @@
 ---
 permalink: Edasiandmine
 ---
-
+# <span style="color:red">[ARHIVEERITUD]</span>
 # Autentimise edasiandmine
 {: .no_toc}
 
