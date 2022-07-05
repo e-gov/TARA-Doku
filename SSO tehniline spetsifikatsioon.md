@@ -2,6 +2,10 @@
 permalink: SSO tehniline spetsifikatsioon
 ---
 
+# [ARHIVEERITUD]
+
+&#9888; Dokumenti ei ajakohastata. Palume siinsele teabele mitte tugineda.
+
 # Riigi SSO teenuse (GOVSSO) tehniline spetsifikatsioon ja protokolli kirjeldus
 
 Analüüsi käigus koostati GOVSSO OpenID Connect profiili tehniline spetsifikatsioon. Spetsifikatsioon kirjeldab päringute struktuuri ja kohustuslikud päringu kontrolli reeglid.
