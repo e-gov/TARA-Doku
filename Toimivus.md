@@ -2,6 +2,10 @@
 permalink: Toimivus
 ---
 
+# [ARHIVEERITUD]
+
+&#9888; Dokumenti ei ajakohastata. Palume siinsele teabele mitte tugineda.
+
 # Autentimisteenuse toimivus ja selle tagamine
 {: .no_toc}
 
@@ -97,6 +101,3 @@ Asutus peaks teostama tõrkesiirde peamise ja alternatiivse autentimisteenuse va
 {: .note}
 
 Peamise ja alternatiivse autentimislahenduse vahel ümberlülitamise võib teostada käsitsi (seadistamisega) või automaatselt. Automaatse ümberlülitamise võimaldamiseks on TARA-s kavas luua avalik elutukse.
-
-
-
