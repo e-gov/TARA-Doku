@@ -5,8 +5,6 @@ permalink: HA
 
 &#9888; Dokumenti ei ajakohastata. Palume siinsele teabele mitte tugineda.
 
-Autentimisteenus TARA · eIDAS konnektorteenus
-
 # Käideldavuse analüüs
 {: .no_toc}
 
