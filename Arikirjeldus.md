@@ -40,13 +40,13 @@ Valitsussektori asutustele, kes soovivad:
 
 ## Kes Riigi autentimisteenust kasutavad?
 
-Riigi autentimisteenusega on liitunud 46 asutust 166 infosüsteemiga, sh Riigiportaal eesti.ee, e-Maksuamet/e-Toll, Haridusportaal edu.ee, RIHA, ePRIA, Ehitisregister, Rahvastikuregister, Teeregister, e-Töötukassa, eToetus, SKAIS, Riiklik patsiendiportaal, EIS, ETIS jt.
+Riigi autentimisteenusega on liitunud 46 asutust 166 infosüsteemiga, sh Riigiportaal eesti.ee, e-Maksuamet/e-Toll, Haridusportaal edu.ee, RIHA, ePRIA, Ehitisregister, e-Rahvastikuregister, Teeregister, e-Töötukassa, eToetus, SKAIS, Riiklik patsiendiportaal, EIS, ETIS jt.
 
 ## Tehnilised tingimused?
 
 E-teenus liidestatakse autentimisteenusega OpenID Connect protokolli kohaselt. Vt lähemalt: [Tehniline kirjeldus](TehnilineKirjeldus).
 
-Soovi korral võib riigi autentimisteenusega liidestada asutus oma autentimislahenduse, mis seanssi asutuse e-teenustele edasi jagab. Selle kohta vt: [Autentimise e seansi edasiandmine](Feder). RIA on ühtlasi kavandamas riikliku SSO arendusi, mille analüüsiga saab tutvuda [Riikliku SSO tehniline analüüs](Riikliku SSO tehniline analüüs).
+RIA pakub alates augustist 2022 Riigi SSO teenust (GOVSSO), mille dokumentatsiooniga saab tutvuda [GOVSSO GitHub](https://e-gov.github.io/GOVSSO) lehel.
 
 ## Kuidas liituda?
 
@@ -110,6 +110,6 @@ Kontakt: `help@ria.ee`.
 
 Kui pöördute liidestamisel või liidestatud klientrakenduses TARA kasutamise tehnilise probleemiga, siis palume valmis panna väljavõte klientrakenduse logist. Tõrkepõhjuse väljaselgitamiseks vajame teavet, mis päring(ud) TARAsse saadeti ja mis vastuseks saadi.
 
-Samuti tasub heita pilk [korduma kippuvate küsimuste rubriiki](KKK).
+Samuti tasub heita pilk [korduma kippuvate küsimuste rubriiki](Abi).
 
 [Tehniline kirjeldus](TehnilineKirjeldus) (liidese arendajale).
