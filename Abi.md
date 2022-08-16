@@ -50,25 +50,19 @@ Vajadusel uue parooli saamiseks pöörduge teenusehalduri poole.
 
 ## Kas on võimalik kasutada ühes klientrakenduses mitut redirect-URL-i?
 
-Ei ole. Kasutatava platvormi tehnilise piirangu tõttu TARA praegu ei toeta mitut tagasipöördumisaadressi.
+Jah on. Oluline on, et autentimise alustamise päringus oleks kaasa pandud see redirect-URL millele soovitakse kasutaja tagsisuunamist autentimise õnnestumisel. Kõik redirect-URL väärtused peavad olema registreeritud TARA teenuses.
+
+## Miks on autentimispäringus üldse vaja redirect-URL-i näidata?
+
+TARA põhineb OpenID Connect protokollil, mis näeb ette võimalust, et klientrakendusega seotakse mitu tagasipöördumisaadressi. Tagasipöördumisaadressi registreerimine on vajalik rünnete vältimiseks millega suunatakse kasutaja hoopis kolmanda osapoole lehele.
 
 ## Kas TARA toetab _single sign-on (SSO)_ lahendust?
 
-RIA on hetkel arendamas riigi SSO teenust (GOVSSO), mis jõuab toodangukeskkonda 2022 II poolaasta esimeses pooles.
+TARA ei toeta keskset ühekordset sisselogimist. Antud funktsionaalsust pakub Riigi SSO teenus (GOVSSO) mille tehniline info on leitav [siit.](https://e-gov.github.io/GOVSSO/)
 
 ## Kas TARA-l on olemas _health endpoint_ millega saaks monitoorida klientrakendust?
 
 Hetkel _health_ otspunkti väljapoole ei paku. SK teenuste tervise detailsem monitoorimine on küll kavas ja esimesel võimalusel teavitame sellest klientidele.
-
-## Miks on autentimispäringus üldse vaja redirect-URL-i näidata?
-
-Tagasipöördumisaadress (redirect-URL) määratakse klientrakenduse registreerimisel. TARA põhineb OpenID Connect protokollil, mis näeb ette võimalust, et klientrakendusega seotakse mitu tagasipöördumisaadressi. Autentimispäringus peab klientrakendus TARA-le teatama, millisele registreeritud aadressidest soovib, et autenditud kasutaja tagasi suunatakse. Märgime, et kasutatava platvormi tehnilise piirangu tõttu TARA praegu ei toeta mitut tagasipöördumisaadressi. Klientrakendusega seome ühe tagasipöördumisaadressi ja see tuleb ka autentimispäringus näidata. Tagasipöördumisaadressi registreerimine aga on vajalik rünnete vältimiseks.
-
-Lihtsamas keeles: Redirect-URL on selleks, et ise ka ikka meeles peaksite, mis URL-i te registreerimisel meile andsite. Muidu suuname teie kasutaja veel ei tea kuhu!
-
-## Kas autentimist saab teisele rakendusele edasi anda?
-
-Vt [siit](Feder).
 
 ## Teatud juhtudel saab võõra ID-kaardiga sisse logida. See ei ole soovitav käitumine.
 
