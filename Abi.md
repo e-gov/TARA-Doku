@@ -54,7 +54,7 @@ Jah on. Oluline on, et autentimise alustamise päringus oleks kaasa pandud see r
 
 ## Miks on autentimispäringus üldse vaja redirect-URL-i näidata?
 
-TARA põhineb OpenID Connect protokollil, mis näeb ette võimalust, et klientrakendusega seotakse mitu tagasipöördumisaadressi. Tagasipöördumisaadressi registreerimine on vajalik rünnete vältimiseks millega suunatakse kasutaja hoopis kolmanda osapoole lehele.
+TARA põhineb OpenID Connect protokollil, mis näeb ette võimalust, et klientrakendusega seotakse mitu tagasipöördumisaadressi. agasipöördumisaadressi eelregistreerimine on vajalik, et vältida ründeid, kus kasutaja suunatakse ründaja soovitud lehele.
 
 ## Kas TARA toetab _single sign-on (SSO)_ lahendust?
 
