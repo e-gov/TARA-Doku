@@ -6,7 +6,7 @@ permalink: Arikirjeldus
 
 Riigi autentimisteenus (TARA) on Riigi Infosüsteemi Ameti poolt pakutav teenus, millega asutus saab oma e-teenusesse lisada nii siseriiklike kui ka Euroopa Liidu piiriüleste autentimismeetodite toe.
 
-Teenust osutatakse kõigile valitsussektori asutustele vastavalt Rahandusministeeriumi [kodulehel»](https://www.fin.ee/riik-ja-omavalitsused-planeeringud/riigihaldus) toodud [tabelile»](https://www.fin.ee/media/7177/download) (XLSX) (v.a Muu avalik sektor).
+Teenust osutatakse kõigile valitsussektori asutustele vastavalt Rahandusministeeriumi [kodulehel»](https://www.fin.ee/riik-ja-omavalitsused-planeeringud/riigihaldus) toodud tabelile "Avaliku sektori asutused haldusalade kaupa" (v.a Muu avalik sektor).
 
 Siseriiklikest autentimismeetoditest pakume autentimist järgmiste vahenditega:
 
