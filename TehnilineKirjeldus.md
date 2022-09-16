@@ -736,6 +736,26 @@ Siseriiklikele autentimismeetoditele on TARA-s määratud järgmised autentimist
 
 Välisriigi autentimismeetodite autentimitased on määratakse vastava välisriigi enda poolt ja esitatakse teavitatakse sellest ülejäänud liikmesriike vastavalt [eIDAS määruse](https://eur-lex.europa.eu/legal-content/ET/TXT/HTML/?uri=CELEX:32015R1502&from=EN) nõuetele. Nimekirja kõigist ülepiiriliselt kasutatavatest autentimismeetoditest, millest riigid on teisi liikmesriike teavitanud, leiab [siit](https://ec.europa.eu/cefdigital/wiki/display/EIDCOMMUNITY/Overview+of+pre-notified+and+notified+eID+schemes+under+eIDAS).
 
+## 9 Erasektori asutuse erisused
+
+Erasektori asutuste liidestumisprotsessid ja autentimisvood on avaliku sektori asutustega identsed.
+
+Võrreldes avaliku sektori asutustega on erasektori asutuste jaoks autentimisel lubatud kohustuslik skoop `openid` koos piiriülese eIDAS-autentimise skoopidega `eidas`, `eidasonly`, `eidas:country:xx`. Vt ka [`scope` parameetri kohta autentimispäringus.](https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus#41-autentimisp%C3%A4ring)
+
+`eidas:country:xx` skoop töötab üksnes koos `eidasonly` autentimisvalikuga.
+
+`eidas:country:xx` skoop võimaldab TARAga liidestujal jätta vahele TARA kasutajaliidese kuva ning suunata autentija vahetult skoobis määratud riigi autentimisteenusesse.
+
+Erasektori asutustele on hetkel toetatud autentimiseks järgnevad riigid:
+
+| Riik     | Riigikood |
+|----------|-----------|
+| Belgia   | BE        |
+| Portugal | PT        |
+| Rootsi   | SE        |
+
+NB! Riigi Infosüsteemi Amet ei taga teiste riikide autentimisteenuste toimimist. Erasektori autentimise võimalus sõltub eIDAS liikmesriikidest ning võib vastavalt liikmesriikide tegevusele muutuda.
+
 ## Muutelugu
 
 | Versioon, kuupäev | Muudatus |
