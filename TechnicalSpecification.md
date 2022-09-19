@@ -5,7 +5,7 @@ permalink: TechnicalSpecification
 
 # Technical specification
 {: .no_toc}
-v 1.10, 28.10.2021
+v 1.11, 20.09.2022
 
 - TOC
 {:toc}
@@ -16,7 +16,7 @@ This document describes the technical characteristics of the TARA authentication
 
 The TARA authentication service is a service provided by the Information System Authority of the Republic of Estonia which can be used by institutions to add the support of various different authentication methods to its e-service:
 
-- Mobiil-ID
+- Mobile-ID
 - ID card
 - cross-border authentication (via eIDAS-Node) support
 - Smart-ID
@@ -34,7 +34,8 @@ For TARA, the application flows and features necessary for the applications of T
 - The service supports the authorisation code flow. The authorisation code flow is deemed the most secure option and is thus appropriate for public services.
 - All information about an authenticated user is transferred to the application in an ID token.
 - The eIDAS assurance level is also transferred to the application if it is known (in the `acr` statement).
-- The authentication method is selected by the user in the authentication service.
+- The service supports using user's language preference by including `ui_locales` parameter in the authentication request.
+- The authentication method is selected by the user in the authentication service or by the interfaced client with the `scope` parameter.
 - Cross-border authentication based on the technical specification of eIDAS.
 - Dynamic registration of the client application is not supported. The client application is registered in RIA by a separate procedure.
 - Single sign-on (SSO) and _session management_ are currently not supported.
@@ -43,9 +44,9 @@ It is not ruled out that the scope of possibilities will be expanded as TARA is 
 
 ### 1.2 National and cross-border authentication
 
-TARA enables national as well as cross-border authentication. This means that Estonians (users of the Estonian e-identification system – ID card, Mobiil-ID, etc.) as well as foreigners (users of the e-identification systems of other EU member states) can be authenticated.
+TARA enables national as well as cross-border authentication. This means that Estonians (users of the Estonian e-identification system – ID card, Mobile-ID, etc.) as well as foreigners (users of the e-identification systems of other EU member states) can be authenticated.
 
-In the context of eIDAS, TARA is providing the ‘Authentication of an Estonian in an Estonian e-service’ and the ‘Authentication of a foreigner using an Estonian e-service’ application flows (Figure 1).
+In the context of eIDAS, TARA is providing the ‘Authentication of an Estonian in an Estonian e-service’ and the ‘Authentication of a foreigner using an Estonian e-service’ application flows (Figure 1). When using TARA to authenticate foreigners, it is possible to [skip TARA‘s user interface and direct the client straight to the foreign state‘s authentication system](https://e-gov.github.io/TARA-Doku/TechnicalSpecification#414-selective-use-of-means-of-authentication).
 
 <p style='text-align:left;'><img src='img/YLEVAADE_EN.png' style='width:600px'></p>
 
@@ -56,7 +57,7 @@ In the context of eIDAS, TARA is providing the ‘Authentication of an Estonian 
 1 The user uses a client application providing an e-service
 
 - the user may be Estonian or a foreigner;
-- a screen with a ‘Log in’ etc. button is displayed to the user;
+- a screen with a ‘Log in’ or an equivalent button is displayed to the user;
 - the user clicks ‘Log in’.
 
 2 The client application redirects the user to the TARA service (by browser redirection)
@@ -65,57 +66,59 @@ In the context of eIDAS, TARA is providing the ‘Authentication of an Estonian 
 
 3 The authentication method selection screen is displayed to the user. Here, the user can:
 
-- choose authentication by Mobiil-ID (step 4)
+- choose authentication by Mobile-ID (step 4)
 -	choose authentication by ID card (step 5)
 -	choose cross-border (eIDAS-Node) authentication (step 6)
   - incl. the country the eID of which they use (select the correct ‘flag’)
--	choose authentication by smart ID (step 8)
+-	choose authentication by smart ID (step 7)
 -	return to the client application.
 
-4 Mobiil-ID authentication
+4 Mobile-ID authentication
 
 - the user enters their mobile phone number and personal identification code
 -	a verification code is displayed on the user’s mobile device
 -	waiting for confirmation
--	in the case of successful authentication, moving on to step 9; in the case of an error, to step 10.
+-	in case of a successful authentication, move to step 8; in case of an error, to step 9.
 
 5 ID card authentication
 
 -	first, information about the authentication certificate is displayed to the user
 -	the user confirms selection of the certificate
 -	the user enters PIN1
--	in the case of successful authentication, moving on to step 9; in the case of an error, to step 10.
+-	in case of a successful authentication, move to step 8; in case of an error, to step 9.
 
 6 Cross-border (eIDAS-) authentication
 
--	the user selects the target country
--	the user is redirected to the authentication service of the foreign country through the eIDAS infrastructure
--	the user authenticates themselves by using the means of authentication of the foreign country
--	in the case of successful authentication (and if the level of the means of authentication of the foreign country is sufficient), moving on to step 9
--	in the case of an error, to step 10.
+- the user selects the target country
+- the user is redirected to the authentication service of the foreign country through the eIDAS infrastructure
+- the user authenticates themselves by using the means of authentication of the foreign country
+- in case of a successful authentication (and if the level of the means of authentication of the foreign country is sufficient), move to step 8
+- in case of an error, move to step 9.
 
-8 Smart-ID authentication
+NB! For eIDAS authentication, it is possible to choose the target country in the interfaced client and specify it in the authentication request. This will allow the user to skip TARA user interface and be directed to the specified country's authentication service. If the authentication was successful and the means of authentication has a sufficient level of assurance, move to step 8.
+
+7 Smart-ID authentication
 
 -	the user enters an Estonian personal identification code
 -	a verification code is displayed on the user’s mobile device
 -	waiting for confirmation
--	in the case of successful authentication, moving on to step 9; in the case of an error, to step 10.
+-	in case of a successful authentication, move to step 8; in case of an error, to step 9.
 
-9 Authenticated user
+8 Authenticated user
 
 -	is redirected back to the client application
 -	the client application requests the identity token from the TARA server
 -	the _identity token_ is a signed certificate confirming successful authentication
 -	the identity token includes the user’s data (attributes) which were identified in the course of authentication
--	the client application notifies the user of successful log in in an appropriate manner.
+-	the client application notifies the user of successful login in an appropriate manner.
 
-10 From the error message screen:
+9 From the error message screen:
 
 -	the user can return to the selection of the authentication method
 -	and try again, by using a different authentication method, if desired
 -	or terminate the authentication process and return to the client application.
 
-11 The user can also:
+10 The user can also:
 
 - obtain further information about the service of TARA.
 
@@ -133,7 +136,7 @@ Figure 2. Authentication request
 
 The flow begins from the browser. A page is loaded from the client application to the browser, where the user choose click ‘Log in’ or start the authentication process in another manner.
 
-After the user selects ‘Log in’, the browser sends a HTTP request **1a** to the client application (to the server component of the client application). The client application may also launch the authentication process autonomously, as a result of some other operation performed by the user.
+After the user selects ‘Log in’, the browser sends an HTTP request **1a** to the client application (to the server component of the client application). The client application may also launch the authentication process autonomously, as a result of some other operation performed by the user.
 
 The client application creates an authentication request. The composition of the authentication request is described in a separate section below. The client application sends a response body **1b** to the browser. The response body includes the HTTP redirection and the authentication request.
 
@@ -147,15 +150,15 @@ The page of authentication methods is displayed to the user. The flow is describ
 
 Figure 3. Redirect request
 
-The user chooses an authentication method. The selection is transferred to the server component of TARA by a HTTP request **3a**.
+The user chooses an authentication method. The selection is transferred to the server component of TARA by an HTTP request **3a**.
 
 This is followed by an authentication dialogue based on the authentication method selected by the user. In the authentication dialogue, several messages may be exchanged between the browser and the server component of TARA and several redirections may be completed. For example, in the case of cross-border authentication, the user is redirected several times to reach an authentication service of a foreign country. These requests and responses are referred to as “…” in the Figure.
 
 The authentication dialogue terminates and the user must be redirected back to the client application.
 
-The server component of TARA sends a HTTP response body **3b** to the browser which includes a redirection order for redirecting the user to the client application.
+The server component of TARA sends an HTTP response body **3b** to the browser which includes a redirection order for redirecting the user to the client application.
 
-The browser completes the redirection order **3b** by sending a HTTP request **4a** to the server component of the client application (redirect request).
+The browser completes the redirection order **3b** by sending an HTTP request **4a** to the server component of the client application (redirect request).
 
 The redirect request includes the result of the authentication process (the person was or was not identified). The redirect request is described in detail in a separate section below.
 
@@ -177,13 +180,13 @@ Thereby, the authentication is completed. The user has now been identified in th
 
 In most cases, the client application then launches a session with the user. Launching a session is not included in the scope of TARA.
 
-The client application sends a HTTP response **4b** to the browser, such as the ‘Logged in’ page.
+The client application sends an HTTP response **4b** to the browser, such as the ‘Logged in’ page.
 
 ## 4 Requests
 
 ### 4.1 Authentication request
 
-An authentication request is a HTTP GET request by which the user is redirected from the client application to TARA for authentication.
+An authentication request is an HTTP GET request by which the user is redirected from the client application to TARA for authentication.
 
 An example of an authentication request (for better readability, the query component of the URL was divided over several lines):
 
@@ -199,23 +202,27 @@ client_id=58e7ba35aab5b4f1671a
 
 Elements of an authentication request:
 
-| URL element               | compulsory | example                                                                           | explanation                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-|---------------------------|------------|-----------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| protocol, host, and patch | yes        | `https://tara.ria.ee/oidc/authorize`                                              | `/authorize` is the OpenID Connect-based authentication endpoint of the TARA service (the concept of ‘authorisation’ originates from the OAuth 2.0 standard protocol).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| `redirect_uri`            | yes        | `redirect_uri=https%3A%2F%2F eteenus.asutus.ee%2Ftagasi`                          | Redirect URL. The redirect URL is selected by the institution. The redirect URL may include the query component. <br><br> [URL encoding](https://en.wikipedia.org/wiki/Percent-encoding) should be used, if necessary.<br><br>It is [not permitted](https://tools.ietf.org/html/rfc6749#section-3.1.2) to use the URI [fragment component](https://tools.ietf.org/html/rfc3986#section-3.5) (`#` and the following component).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| `scope`                   | yes        | `scope=openid`<br><br>`scope=openid%20eidas`<br><br>`scope=openid%20idcard%20mid` | The authentication scope.<br><br>`openid` is compulsory (required by the OpenID Connect protocol).<br><br> The scopes of `idcard`, `mid`, `smartid`, `eidas` (and `eidasonly`) can be used to request that only the desired method of authentication is displayed to the user. See 4.1.3 Selective use of authentication methods.<br><br>The `email` scope can be used to request that the user’s e-mail address is issued in the identity token. See 4.1.2 Requesting e-mail address.<br><br>In the case of cross-border authentication, further scopes can be used to request additional personal data (see below).<br><br>When using several scopes, the scopes must be separated by spaces. Thereat, the space is presented in the URL encoding (`%20`) ([RFC 3986](https://www.ietf.org/rfc/rfc3986.txt)). Scope values are case sensitive. Only scope values described in current document are allowed, other values cause an error with code `invalid_scope` to be returned. |
-| `state`                   | yes        | `state=hkMVY7vjuN7xyLl5`                                                          | Security code against false request attacks (_cross-site request forgery_, CSRF). Read more about formation and verification of `state` under ‘Protection against false request attacks.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| `response_type`           | yes        | `response_type=code`                                                              | Determines the manner of communication of the authentication result to the server. The method of authorisation code is supported (_authorization flow_ of the OpenID Connect protocol) and it is referred to the `code` value.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| `client_id`               | yes        | `client_id=58e7...`                                                               | Application identifier. The application identifier is issued to the institution by RIA upon registration of the client application as a user of the authentication service.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| `ui_locales`              | no         | `ui_locales=et`                                                                   | Selection of the user interface language. The following languages are supported: `et`, `en`, `ru`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| `nonce`                   | no         | `fsdsfwrerhtry3qeewq`                                                             | A unique parameter which helps to prevent replay attacks based on the protocol ([References](References), [Core], subsection 3.1.2.1. Authentication Request). The `nonce` parameter is not compulsory.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| `acr_values`              | no         | `acr_values=substantial`                                                          | The minimum required level of authentication based on the eIDAS LoA (level of assurance). The parameter is only applied in the case of cross-border authentication. The parameter is ignored in the case of other methods of authentication. It is permitted to apply one value of the following: `low`, `substantial`, `high` . `substantial` is used by default if the value has not been selected.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| URL element               | compulsory | example                                                                           | explanation                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+|---------------------------|------------|-----------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| protocol, host, and patch | yes        | `https://tara.ria.ee/oidc/authorize`                                              | `/authorize` is the OpenID Connect-based authentication endpoint of the TARA service (the concept of ‘authorisation’ originates from the OAuth 2.0 standard protocol).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| `redirect_uri`            | yes        | `redirect_uri=https%3A%2F%2F eteenus.asutus.ee%2Ftagasi`                          | Redirect URL. The redirect URL is selected by the institution. The redirect URL may include the query component. <br><br> [URL encoding](https://en.wikipedia.org/wiki/Percent-encoding) should be used, if necessary.<br><br>It is [not permitted](https://tools.ietf.org/html/rfc6749#section-3.1.2) to use the URI [fragment component](https://tools.ietf.org/html/rfc3986#section-3.5) (`#` and the following component).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `scope`                   | yes        | `scope=openid`<br><br>`scope=openid%20eidas`<br><br>`scope=openid%20idcard%20mid` | The authentication scope.<br><br>`openid` is compulsory (required by the OpenID Connect protocol).<br><br> The scopes of `idcard`, `mid`, `smartid`, `eidas` (and `eidasonly`) can be used to request that only the desired method of authentication is displayed to the user. See 4.1.4 Selective use of authentication methods.<br><br>The `email` scope can be used to request that the user’s e-mail address is issued in the identity token. See 4.1.2 Requesting e-mail address.<br><br>In case of cross-border authentication, further scopes can be used to either specify the foreign country and direct the user to its authentication service or to request additional personal data (see 4.1.4 and 4.1.1).<br><br>When using several scopes, the scopes must be separated by spaces. Thereat, the space is presented in the URL encoding (`%20`) ([RFC 3986](https://www.ietf.org/rfc/rfc3986.txt)). Scope values are case sensitive. Only scope values described in current document are allowed, other values cause an error with code `invalid_scope` to be returned. |
+| `state`                   | yes        | `state=hkMVY7vjuN7xyLl5`                                                          | Security code against false request attacks (_cross-site request forgery_, CSRF). Read more about formation and verification of `state` under ‘Protection against false request attacks.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `response_type`           | yes        | `response_type=code`                                                              | Determines the manner of communication of the authentication result to the server. The method of authorisation code is supported (_authorization flow_ of the OpenID Connect protocol) and it is referred to the `code` value.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `client_id`               | yes        | `client_id=58e7...`                                                               | Application identifier. The application identifier is issued to the institution by RIA upon registration of the client application as a user of the authentication service.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| `ui_locales`              | no         | `ui_locales=et`                                                                   | Selection of the user interface language. The following languages are supported: `et`, `en`, `ru`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| `nonce`                   | no         | `fsdsfwrerhtry3qeewq`                                                             | A unique parameter which helps to prevent replay attacks based on the protocol ([References](Viited), [Core], subsection 3.1.2.1. Authentication Request). The `nonce` parameter is not compulsory.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `acr_values`              | no         | `acr_values=high`                                                                 | The minimum required level of authentication based on the eIDAS LoA ([read more about eIDAS level-of-assurance](https://e-gov.github.io/TARA-Doku/TechnicalSpecification#8-eidas-level-of-assurance)). It is permitted to apply only one of the following values: `low`, `substantial`, `high` . `substantial` is used by default if the value has not been specified. <br><br>TARA will only display authentication methods which have an equal or higher LoA compared to the value of `acr_values` in the authentication request. For cross-border authentication, the value is forwarded to the foreign country's eIDAS authentication service. <br><br> On the interfaced client side, [it must be verified](https://e-gov.github.io/TARA-Doku/TechnicalSpecification#517-verifying-the-eidas-level-of-assurance) that the authentication level in the `acr` claim of an identity token is not lower than the minimum allowed level-of-assurance.                                                                                                                                |
 
 #### 4.1.1 Requesting attributes about foreigners
 
-In the case of authentication of a foreigner, the foreigner is redirected by TARA to the authentication service of their country.
-By a regulation of the European Committee, members states have agreed that another country’s authentication service must always issue four attributes of a natural person: 1) first name; 2) surname; 3) date of birth; 4) personal identification code or another identifier.
-Two attributes are always issued of the legal persons: 1) legal person's identifier; 2) legal person’s name.
+In case of authentication of a foreigner, the foreigner is redirected by TARA to the authentication service of their country.
+
+By a regulation of the European Commission, member states have agreed that another country’s authentication service must always issue four attributes of a natural person: 1) first name; 2) surname; 3) date of birth; 4) personal identification code or another identifier.
+
+In case of natural person authentication, TARA always returns **the compulsory** attributes: first name, surname, date of birth and personal identifier. 
+
+At the moment, TARA does not support requesting additional attributes nor authenticating legal persons.
 
 #### 4.1.2 Requesting e-mail address
 
@@ -227,25 +234,41 @@ The `email` scope can be used to request the user’s e-mail address in the iden
 "email_verified": false
 ```
 
-The `email` value is read from an extension of the user’s authentication certificate (from the RFC822 type Subject Alternative Name field). The e-mail address is only issued if the user is authenticated by an Estonian ID card. The client application must take into consideration that the user may not have redirected their e-mail, i.e. a e-mail sent to this address may not reach the user.
+The `email` value is read from an extension of the user’s authentication certificate (from the RFC822 type Subject Alternative Name field). The e-mail address is only issued if the user is authenticated by an Estonian ID card. The client application must take into consideration that the user may not have redirected their e-mail, i.e. an e-mail sent to this address may not reach the user.
 
-The `email_verified` is always `false`. It means that TARA does not verify or issue information on whether or not the user has redirected their eesti.ee e-mail address. (The respective functionality may be added in the future).
+The `email_verified` is always `false`. It means that TARA does not verify or issue information on whether the user has redirected their eesti.ee e-mail address. (The respective functionality may be added in the future).
 
-#### 4.1.3 Selective use of means of authentication
+#### 4.1.3 Requesting phone number
 
-By default, all supported authentication methods are displayed to the user. If necessary, the authentication options displayed can be managed by using the `scope` parameter's value. parameetri väärtuste abil. Preferred authentication methods can be combined to draw up a list of the authentication methods (the list of permitted values is provided in Table 1).
+The `phone` scope can be used to request the user’s phone number in the identity token. This option is targeted for client applications that use Mobile-ID, which requires user's phone number as input, as a means for giving digital signatures. The `phone` scope must be added to the main scope `openid`. The claims `phone` and `phone_number_verified` are issued in the identity token. For example:
+
+```
+"sub": "EE60001019906",
+"phone_number": "+37200000766",
+"phone_number_verified": true
+```
+
+The value of `phone_number` claim is in E.164 format and prefixed by a country code.
+
+The value of `phone_number_verified` claim is always `true`. This means that the ownership of the phone number has been verified during the authentication process, i.e. the phone number belongs to the authenticating user.
+
+The claims `phone_number` and `phone_number_verified` can only be issued if Mobile-ID was used for authentication.
+
+#### 4.1.4 Selective use of means of authentication
+
+By default, all supported authentication methods are displayed to the user. If necessary, the authentication options displayed can be managed by using the `scope` parameter's value. Preferred authentication methods can be combined to draw up a list of the authentication methods (the list of permitted values is provided in Table 1).
 
 When using the selective means of authentication the validation of `amr` claim must be performed in the identity token as an additional security method.
 
 Table 1 – displaying the authentication methods
 
-| Value of the scope parameter | Explanation |
-|--------------------------|--------------------------------|
-| `idcard` | Allowing Estonian ID card authentication |
-| `mid` | Allowing Mobile-ID authentication |
-| `smartid` | Allowing Smart-ID authentication |
-| `eidas` | Allowing cross-border (eIDAS) authentication |
-| `eidasonly` | Allowing ONLY cross-border (eIDAS) authentication <br><br>NB! When `eidasonly` is used, all other preferred authentication methods will be always excluded. |
+| Value of the scope parameter | Explanation                                                                                                                                                 |
+|------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `idcard`                     | Allowing Estonian ID card authentication                                                                                                                    |
+| `mid`                        | Allowing Mobile-ID authentication                                                                                                                           |
+| `smartid`                    | Allowing Smart-ID authentication                                                                                                                            |
+| `eidas`                      | Allowing cross-border (eIDAS) authentication                                                                                                                |
+| `eidasonly`                  | Allowing ONLY cross-border (eIDAS) authentication <br><br>NB! When `eidasonly` is used, all other preferred authentication methods will be always excluded. |
 
 Example 1: All means of authentication
 `scope=openid`
@@ -258,9 +281,9 @@ Example 3: Only cross-border authentication
 
 ### 4.2 Redirect request
 
-The redirect request is a HTTP GET request which is used to redirect the user back from TARA to the client application.
+The redirect request is an HTTP GET request which is used to redirect the user back from TARA to the client application.
 
-The user is redirected to the return address included in the authentication request sent by the client application. In the redirect request, an authorization code is sent to the client application by TARA, based on which the client application will (by a separate request) request from TARA the personal identification code, name, and other attributes of the authenticated person. Technically, a HTTP redirect request is used for redirecting.
+The user is redirected to the return address included in the authentication request sent by the client application. In the redirect request, an authorization code is sent to the client application by TARA, based on which the client application will (by a separate request) request from TARA the personal identification code, name, and other attributes of the authenticated person. Technically, an HTTP redirect request is used for redirecting.
 
 An example of a redirect request:
 
@@ -272,17 +295,19 @@ state=OFfVLKu0kNbJ2EZk
 
 Elements of a redirect request:
 
-| URL element | example | selgitus |
-|-------------|---------|----------|
-| protocol, host, and path | `https://eteenus.asutus.ee/tagasi` | Matches the `redirect_uri` value sent in the authentication request. |
-| `code` | `code=71ed579...`  | The authorisation code is a single ‘permission note’ to receive the identity token. |
-| `state` | `state=OFfVLKu0kNbJ2EZk` | Security code against false request attacks. The security code received in the authentication request is mirrored back. Read more about forming and verifying `state` from ‘Protection against false request attacks’. |
+| URL element              | example                            | description                                                                                                                                                                                                            |
+|--------------------------|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| protocol, host, and path | `https://eteenus.asutus.ee/tagasi` | Matches the `redirect_uri` value sent in the authentication request.                                                                                                                                                   |
+| `code`                   | `code=71ed579...`                  | The authorisation code is a single ‘permission note’ to receive the identity token.                                                                                                                                    |
+| `state`                  | `state=OFfVLKu0kNbJ2EZk`           | Security code against false request attacks. The security code received in the authentication request is mirrored back. Read more about forming and verifying `state` from ‘Protection against false request attacks’. |
 
 Request might contain other URL parameters, that client application must ignore.
 
-**Error message in the redirect request.** If TARA is unable to process an authentication request – there is an error in the request, or another error has occurred – TARA transfers an error message (URL parameter `error`) and the description of the error (URL parameter `error_description`) in the redirect request. 
+**Error message in the redirect request.** If TARA is unable to process an authentication request – there is an error in the request, another error has occurred or user canceled the process – TARA transfers an error message (URL parameter `error`) and the description of the error (URL parameter `error_description`) in the redirect request. 
 
-TARA relies on the OpenID Connect standard on error messages (more information regarding the error messages can be found from https://openid.net/specs/openid-connect-core-1_0.html#AuthError and https://tools.ietf.org/html/rfc6749#section-4.1.2.1). The error messages are always displayed in English.
+If a user cancels authentication in TARA (’Return to service provider’ link on TARA's front page), a `user_cancel` error message is returned.
+
+For other cases, TARA relies on the OpenID Connect standard on error messages (more information regarding the error messages can be found from https://openid.net/specs/openid-connect-core-1_0.html#AuthError and https://tools.ietf.org/html/rfc6749#section-4.1.2.1). The error messages are always displayed in English.
 
 `state` is also redirected but no authorisation code (`code`) is sent. E.g.:
 
@@ -294,13 +319,17 @@ TARA+do+not+allow+this+request+to+be+processed&
 state=qnYY56Ra8QF7IUzqvw+PPLzMKoHtQkuUWbV/wcrkvdU=
 ````
 
-The redirect request errors are normally resulted by a misconfiguration; therefore the error description in parameter `error_description` is not needed to be displayed for the user directly. The client application should check whether or not an error message has been sent.
+The redirect request errors are normally resulted by a misconfiguration; therefore the error description in parameter `error_description` is not needed to be displayed for the user directly. The client application should check whether an error message was sent.
 
-**Termination of the authentication process.** The user may also return to the e-service without choosing an authentication method and completing the authentication process (via ‘Back to the service provider’ link). This option is provided for the cases in which the user has clicked ‘Log in’ in the client application but does not actually wish to log in. In the application for subscribing to the service, the institution must notify RIA of the URL to which the user should be redirected in the case of clicking ‘Back to the service provider’. NB! The OpenID Connect protocol-based redirect URL and the URL described here have different meanings.
+**Termination of the authentication process.** The user may also return to the e-service without choosing an authentication method and completing the authentication process (via ‘Return to service provider’ link). This option is provided for the cases in which the user has clicked ‘Log in’ in the client application but does not actually wish to log in. 
+
+Terminating the authentication process will redirect the user back to the client with error message `user_cancel`<sup>1</sup>.
+
+<sup>1</sup> Beginning from August 2020, Information System Authority does not require a separate redirect URL for terminated authentications (a URL for redirects after user has chosen ‘Return to service provider’ option). NB! The OpenID Connect protocol-based redirect URL and the URL described here have different meanings.
 
 ### 4.3 Identity token request
 
-The identity token request is a HTTP POST request which is used by the client application to request the identity token from the server of TARA.
+The identity token request is an HTTP POST request which is used by the client application to request the identity token from the server of TARA.
 
 An example of an identity token request (for better readability, the body of the HTTP POST request is divided over several lines):
 
@@ -321,12 +350,12 @@ The body of the HTTP POST request must be presented in a serialised [format](htt
 
 The body of the request must include the following parameters:
 
-| POST request body element | example | explanation |
-|---------------------------|---------|-------------|
-| protocol, host, and path | `https://tara.ria.ee/oidc/token` |   |
-| `grant_type`  | `grant_type=authorization_code` | The `authorization_code` value required based on the protocol. |
-| `code` | `code=Splx...` | The authorization code received from the authentication service. | 
-| `redirect_uri` | `redirect_uri=https%3A%2F` | The redirect URL sent in the authorisation request. |
+| POST request body element | example                          | explanation                                                      |
+|---------------------------|----------------------------------|------------------------------------------------------------------|
+| protocol, host, and path  | `https://tara.ria.ee/oidc/token` |                                                                  |
+| `grant_type`              | `grant_type=authorization_code`  | The `authorization_code` value required based on the protocol.   |
+| `code`                    | `code=Splx...`                   | The authorization code received from the authentication service. | 
+| `redirect_uri`            | `redirect_uri=https%3A%2F`       | The redirect URL sent in the authorisation request.              |
 
 #### 4.3.1 Identity token
 
@@ -334,18 +363,20 @@ TARA server verifies that the identity token is requested by the right applicati
 
 The response body uses JSON format consisting four elements (see the following table).
 
-| element | explanation |
-|:-------:|-------------|
+|    element     | explanation                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+|:--------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `access_token` | OAuth 2.0 access certificate. With identity token the client application can issue authenticated user's data from `userinfo` endpoint.<br><br>Even though TARA issues the access token, we only advise to use it (to receive the authenticated user’s data from the `userinfo` endpoint) in case it is not possible to use the identity token (e.g when interfacing out-of-the-box products). All the data of authenticated user are already issued within the identity token. Using the identity is recommended and, in theory, is considered to be more secure (as the identity token is signed, while the `userinfo` endpoint is not). |
-| `token_type` | OAuth 2.0 access token type with `bearer` value. Not used in TARA |
-| `expires_in` | The validity period of the OAuth 2.0 access token. Not used in TARA. |
-| `id_token` | Identity token, in Base64 format. | 
+|  `token_type`  | OAuth 2.0 access token type with `bearer` value. Not used in TARA                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+|  `expires_in`  | The validity period of the OAuth 2.0 access token. Not used in TARA.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+|   `id_token`   | Identity token. Presented in [JWS Compact Serialization](https://tools.ietf.org/html/rfc7515#section-3.1) form.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | 
 
 Response body might contain other fields, that client application must ignore.
 
 The identity token is a certificate of the fact of authentication issued by TARA.
 
 The identity token is issued in [JSON Web Token](https://jwt.io/), JWT format.
+
+The identity token is always [signed](https://tools.ietf.org/html/rfc7515#section-5.2).
 
 An example:
 
@@ -374,28 +405,29 @@ An example:
 
 The following claims are presented in the identity token.
 
-| identity token element (_claim_) | example of a value, explanation |
-|:---------------------------------|---------------------------------|
-| `jti` (_JSON Token Identifier_) | `0c597356... ` - identity token identifier |
-| `iss` (_Issuer_)       | `https://tara.ria.ee` - issuer of the certificate (TARA); in the case of test services `https://tara-test.ria.ee` |
-| `aud` (_Audience_)     | `TARA-Demo` - the ID of a client application that requested authentication (the value of `client_id` field is specified upon directing the user to the authentication process). |
-| `exp` (_Expires_) | `1530295852` - the expiration time of the certificate (in Unix _epoch_ format). |
-| `iat` (_Issued At_) | `1530267052` - the time of issue of the certificate (in Unix _epoch_ format). |
-| `nbf` (_Not Before_)   | `1530266752` - the validity start time of the certificate (in Unix _epoch_ format). |
-| `sub` (_Subject_)      | `EE60001019906` - the identifier of the authenticated user (personal identification code or eIDAS identifier) with the prefix of the country code of the citizen (country codes based on the ISO 3166-1 alpha-2 standard). |
-| `profile_attributes`   | the data of the authenticated user, including the eIDAS attributes |
-| `profile_attributes`<br>`.date_of_birth` | `2000-01-01` - the date of birth of the authenticated user in the ISO_8601 format. Only sent in the case of persons with Estonian personal identification code and in the case of eIDAS authentication. |
-| `profile_attributes`<br>`.given_name` | `MARY ÄNN` - the first name of the authenticated user (the test name was chosen because it consists special characters). |
-| `profile_attributes`<br>`.family_name` | `O’CONNEŽ-ŠUSLIK` - the surname of the authenticated user (the test name was selected because it includes special characters). |
-| `profile_attributes`<br>`_translit` | Includes a JSON object consisting of profile attributes in the Latin alphabet (see the section on transliteration below). The value is present only in the case of eIDAS authentication. |
-| `amr` (_Authentication Method Reference_) | `mID` - the authentication method used for user authentication. Possible values: `mID` - Mobile-ID, `idcard` - Estonian ID card, `eIDAS` - cross-border, `smartid` - Smart-ID  |
-| `state` | `abcdefghijklmnop` - security element. The authentication request’s `state` parameter value.  |
-| `nonce` | `qrstuvwxyzabcdef` - security element. The authentication request’s `nonce` parameter value. Value is present only in case the `nonce` parameter was sent in the authentication request. |
-| `acr` (_Authentication Context Class Reference_) | `high` - level of authentication based on the eIDAS LoA (level of assurance). Possible values: `low`, `substantial`, `high`. The element is not used if the level of authentication is not applicable or is unknown. |
-| `at_hash` | `X0MVjwrmMQs/IBzfU2osvw==` - the access token hash. Not used in TARA. |
-| `email` | `60001019906@eesti.ee` - the user’s e-mail address. Only issued if an Estonian ID card is used for authenticating the user. Is only read from the SAN extension of the user’s authentication certificate (from the RFC822 type `Subject Alternative Name` field) |
-| `email_verified` | `false` - the e-mail address of the user has been verified. TARA always issues a value `false`. It means that TARA does not verify or issue information on whether or not the user has redirected his/her eesti.ee e-mail address. |
-
+| identity token element (_claim_)                 | example of a value, explanation                                                                                                                                                                                                                                                            |
+|:-------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `jti` (_JSON Token Identifier_)                  | `0c597356... ` - identity token identifier                                                                                                                                                                                                                                                 |
+| `iss` (_Issuer_)                                 | `https://tara.ria.ee` - issuer of the certificate (TARA); in the case of test services `https://tara-test.ria.ee`                                                                                                                                                                          |
+| `aud` (_Audience_)                               | `TARA-Demo` - the ID of a client application that requested authentication (the value of `client_id` field is specified upon directing the user to the authentication process).                                                                                                            |
+| `exp` (_Expires_)                                | `1530295852` - the expiration time of the certificate (in Unix _epoch_ format).                                                                                                                                                                                                            |
+| `iat` (_Issued At_)                              | `1530267052` - the time of issue of the certificate (in Unix _epoch_ format).                                                                                                                                                                                                              |
+| `nbf` (_Not Before_)                             | `1530266752` - the validity start time of the certificate (in Unix _epoch_ format).                                                                                                                                                                                                        |
+| `sub` (_Subject_)                                | `EE60001019906` - the identifier of the authenticated user (personal identification code or eIDAS identifier) with the prefix of the country code of the citizen (country codes based on the ISO 3166-1 alpha-2 standard). NB! eIDAS identifier length may be a maximum of 256 characters. |
+| `profile_attributes`                             | the data of the authenticated user, including the eIDAS attributes                                                                                                                                                                                                                         |
+| `profile_attributes`<br>`.date_of_birth`         | `2000-01-01` - the date of birth of the authenticated user in the ISO_8601 format. Only sent in the case of persons with Estonian personal identification code and in the case of eIDAS authentication.                                                                                    |
+| `profile_attributes`<br>`.given_name`            | `MARY ÄNN` - the first name of the authenticated user (the test name was chosen because it consists special characters).                                                                                                                                                                   |
+| `profile_attributes`<br>`.family_name`           | `O’CONNEŽ-ŠUSLIK` - the surname of the authenticated user (the test name was selected because it includes special characters).                                                                                                                                                             |
+| `profile_attributes`<br>`_translit`              | Includes a JSON object consisting of profile attributes in the Latin alphabet (see the section on transliteration below). The value is present only in the case of eIDAS authentication.                                                                                                   |
+| `amr` (_Authentication Method Reference_)        | `mID` - the authentication method used for user authentication. Possible values: `mID` - Mobile-ID, `idcard` - Estonian ID card, `eIDAS` - cross-border, `smartid` - Smart-ID                                                                                                              |
+| `state`                                          | `abcdefghijklmnop` - security element. The authentication request’s `state` parameter value.                                                                                                                                                                                               |
+| `nonce`                                          | `qrstuvwxyzabcdef` - security element. The authentication request’s `nonce` parameter value. Value is present only in case the `nonce` parameter was sent in the authentication request.                                                                                                   |
+| `acr` (_Authentication Context Class Reference_) | `high` - level of authentication based on the eIDAS LoA (level of assurance). Possible values: `low`, `substantial`, `high`. The element is not used if the level of authentication is not applicable or is unknown.                                                                       |
+| `at_hash`                                        | `X0MVjwrmMQs/IBzfU2osvw==` - the access token hash. Not used in TARA.                                                                                                                                                                                                                      |
+| `email`                                          | `60001019906@eesti.ee` - the user’s e-mail address. Only issued if an Estonian ID card is used for authenticating the user. Is only read from the SAN extension of the user’s authentication certificate (from the RFC822 type `Subject Alternative Name` field)                           |
+| `email_verified`                                 | `false` - the e-mail address of the user has been verified. TARA always issues a value `false`. It means that TARA does not verify or issue information on whether or not the user has redirected his/her eesti.ee e-mail address.                                                         |
+| `phone_number`                                   | `+37200000766` - the user’s phone number. Issued only when authenticating with Estonian Mobile-ID service. The phone number is presented in E.164 format and prefixed by a country code.                                                                                                   |
+| `phone_number_verified`                          | `true` - the ownership of the phone number to the authenticating user has been confirmed. If the claim is present, then it is always `true`                                                                                                                                                |
 Identity token might consist other OpenID Connect protocol based fields that are not supported in TARA.
 
 The client application must obtain the identity token immediately or within `30` seconds (before the expiry time of the identity token).
@@ -438,17 +470,19 @@ The valid access token response is provided in the JSON format. Example:
 
 The claims included in the response are issued based on the identity token.
 
-| json element (_claim_) | disclosure is compulsory | explanation | 
-|:-----------------------|--------------------------|-------------|
-| `auth_time` | yes | The time of successful authentication of the user. In the Unix epoch format. |
-| `sub` (_Subject_) | yes | The same format and meaning as `sub` in identity token. |
-| `given_name` | yes | The same format and meaning as `profile_attributes.given_name` in identity token. |
-| `family_name` | yes | The same format and meaning as `profile_attributes.family_name` in identity token. |
-| `amr` | yes | The same format and meaning as `amr` in identity token. |
-| `date_of_birth` |  no <sup>1</sup> | The same format and meaning as `profile_attributes.date_of_birth` in identity token. |
-| `email` | no  <sup>1</sup> | The same format and meaning as `email` in identity token. |
-| `email_verified` | no  <sup>1</sup> | The same format and meaning as `email_verified` in identity token. |
-| `acr` | no  <sup>1</sup> | The same format and meaning as `acr` in identity token. |
+| json element (_claim_)  | disclosure is compulsory | explanation                                                                          | 
+|:------------------------|--------------------------|--------------------------------------------------------------------------------------|
+| `auth_time`             | yes                      | The time of successful authentication of the user. In the Unix epoch format.         |
+| `sub` (_Subject_)       | yes                      | The same format and meaning as `sub` in identity token.                              |
+| `given_name`            | yes                      | The same format and meaning as `profile_attributes.given_name` in identity token.    |
+| `family_name`           | yes                      | The same format and meaning as `profile_attributes.family_name` in identity token.   |
+| `amr`                   | yes                      | The same format and meaning as `amr` in identity token.                              |
+| `date_of_birth`         | no <sup>1</sup>          | The same format and meaning as `profile_attributes.date_of_birth` in identity token. |
+| `email`                 | no  <sup>1</sup>         | The same format and meaning as `email` in identity token.                            |
+| `email_verified`        | no  <sup>1</sup>         | The same format and meaning as `email_verified` in identity token.                   |
+| `phone_number`          | no  <sup>1</sup>         | The same format and meaning as `phone_number` in identity token.                     |
+| `phone_number_verified` | no  <sup>1</sup>         | The same format and meaning as `phone_number_verified` in identity token.            |
+| `acr`                   | no  <sup>1</sup>         | The same format and meaning as `acr` in identity token.                              |
 
  <sup>1</sup> Only issued if the claim is also included in the identity token.
 
@@ -456,7 +490,7 @@ Response body might contain other fields, that client application must ignore.
 
 **Error handling**
 
-In case the access token presented to the user information endpoint is missing or is expired, an error code and a brief description about the error are returned in the `WWW-Authenticate` header according to the [OpenID Connect Core 1.0 spetsifikatsioonile](https://openid.net/specs/openid-connect-core-1_0.html#UserInfoError).
+In case the access token presented to the user information endpoint is missing or is expired, an error code and a brief description about the error are returned as `WWW-Authenticate` header according to the [OpenID Connect Core 1.0 spetsifikatsioonile](https://openid.net/specs/openid-connect-core-1_0.html#UserInfoError).
 
 An example:
 
@@ -495,7 +529,7 @@ The public signature key is stable - the public signature key will be changed  a
 
 The public signature key has an identifier (`kid`). The key identifier is aligned with the best practices of [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#Signing) and OAuth 2.0 that enables the key exchange without the service interruption.
 
-In case of the signing key change, two keys will be published at the public signatue key endpoint, both will have unique `kid` identifiers. 
+In case of the signing key change, two keys will be published at the public signature key endpoint, both will have unique `kid` identifiers. 
 
 TARA issues `kid` field in the response of the request of identity token (JWT header element `kid`). `kid` refers to the key that the client application has to use for the verification of a signature.
 
@@ -515,7 +549,7 @@ NB! "Hardcoding" the key to client application configuration must be avoided. Th
 
 #### 5.1.2 Trusting of the public signature key endpoint
 
-The client application makes HTTPS requests to TARA server towards to the identity token and public signature key endpoints. The client application must verify TARA server’s certificate (domains `tara.ria.ee` and `tara-test.ria.ee`). As the certificates of afore-mentioned domains are issued by DigiCert, the client application must use DigiCert’s root certificate or TARA certificate as a trust anchor.
+The client application makes HTTPS requests to TARA server towards to the identity token and public signature key endpoints. The client application must verify TARA server’s certificate (domains `tara.ria.ee` and `tara-test.ria.ee`). As the certificates of aforementioned domains are issued by DigiCert, the client application must use DigiCert’s root certificate or TARA certificate as a trust anchor.
 
 #### 5.1.3 Verifying the issuer of the certificate
 
@@ -543,7 +577,7 @@ The identity token must be obtained immediately or within 30 seconds. When the t
 
 #### 5.1.6 Verifying the authentication method used in authentication
 
-When using the selective means of authentication (see section 4.1.3) the identity token must verify that the authentication method provided by the authentication method reference, `amr` ,is allowed. Otherwise, the risk of intermediary attacks is taken by allowing the user to authenticate through the method that is not acceptable in the interface (eg Smart-ID is used instead of authentication with an ID card) through manipulation of the authentication request `scope` parameter.
+When using the selective means of authentication (see section 4.1.4) the identity token must verify that the authentication method provided by the authentication method reference, `amr` ,is allowed. Otherwise, the risk of intermediary attacks is taken by allowing the user to authenticate through the method that is not acceptable in the interface (e.g. Smart-ID is used instead of authentication with an ID card) through manipulation of the authentication request `scope` parameter.
 
 For example, when in the authentication request the `scope` parameter is defined to use only ID-card authentication method, it must be verified that the `amr` claim also contains an `idcard` code (the full list of all codes is described under section 4.3.1).
 
@@ -561,7 +595,7 @@ After a successful verification of the identity token, the client application wi
 
 ### 5.2 Protection against false request attacks
 
-The client application must implement protective measures against false request attacks (_cross-site request forgery_, CSRF). This can be achieved by using `state` and `nonce` security codes. Using `state` is compulsory; using `nonce` is optional. The procedure of using `state` is described below.
+The client application must implement protective measures against false request attacks (_cross-site request forgery_, CSRF). This can be achieved by using `state` and `nonce` security codes. Using `state` is compulsory; using `nonce` is optional. Using `state` with a cookie set on the client application side means that the client application itself does not have to remember the state parameter value.  The process is described below.
 
 The `state` security code is used to combat falsification of the redirect request following the authentication request. The client application must perform the following steps:
 
@@ -569,25 +603,23 @@ The `state` security code is used to combat falsification of the redirect reques
 
 2 Calculate from the `R` nonce word the `H = hash(R)`hash, for example by using the SHA256 hash algorithm and by converting the result to the Base64 format: `vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`.
 
-3 Add an order to set a cookie to the authentication request, for example:
+3 Add an order to set a cookie for the client application domain with a value of R immediately before making the authentication request, for example:
 
 `Set-Cookie ETEENUS=XoD2LIie4KZRgmyc; HttpOnly`,
 
 where `ETEENUS` is a freely selected cookie name. The `HttpOnly` attribute must be applied to the cookie.
 
-4 Set the following value for the `state` parameter calculated based on section 2:
+4 Set the following value, in the authentication request to TARA, for the `state` parameter calculated based on section 2:
 
 `GET ... state=vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`
 
 Length of `state` parameter must be minimally 8 characters.
 
-Thus, two elements are sent in an authentication request: a nonce word for including in the cookie and the hash value calculated from the nonce word in the `state` parameter. The client application is not required to remember the nonce word or the hash value.
-
 In the course of processing the redirect request, the client application must:
 
-5 Take the `ETEENUS` value of the cookie received with the request.
+5 Take the `ETEENUS` value of the cookie received with the request (two user specific elements are sent with the redirect request: a nonce word as a cookie and the hash value calculated from the nonce word in the `state` parameter).
 
-6 Calculate the hash based on the cookie value.
+6 Calculate the hash based on the cookie value and encode it with base64.
 
 7 Verify that the hash matches the `state` value mirrored back in the redirect request.
 
@@ -601,38 +633,56 @@ Further information: unfortunately, this topic is not presented clearly in the O
 
 Logging must enable the reconstruction of the course of the communication between TARA and the client application for each occasion of using TARA. For this purpose, all requests and responses must be logged by TARA as well as by the client application: [authentication request](#41-authentication-request), [redirect request](#42-redirect-request) and [identity token request](#43-identity-token-request). As the volumes of data transferred are not large, the URL as well as the identity token must be logged in full. The retention periods of the logs should be determined based on the importance of the client application. We advise using 1 … 7 years. In case of any issue, please submit an excerpt from the log (Which requests were sent to TARA? Which responses were received?).
 
-## 6 Endpoints and timeouts
+## 6 eIDAS levels of assurance
 
-6.1 Test service
+As stated by [eIDAS regulation](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014R0910&from=EN), eIDAS level of assurance (LoA) is the level of reliability (high, substantial, low) assigned to a means of authentication under the implementing regulation [(EL) 2015/1502](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015R1502&from=EN). The LoA of a means of authentication is determined by several aspects: the basis of identity issuance, organizational processes, the technical solution and management of the solution.
 
-| endpoint      |                        URL      |
-|---------------|---------------------------------|
-| server discovery | [https://tara-test.ria.ee/.well-known/openid-configuration](https://tara-test.ria.ee/.well-known/openid-configuration) <br>[https://tara-test.ria.ee/oidc/.well-known/openid-configuration](https://tara-test.ria.ee/oidc/.well-known/openid-configuration) |
-| public signature key of the service | [https://tara-test.ria.ee/oidc/jwks](https://tara-test.ria.ee/oidc/jwks) |
-| registration of the client application | dynamic registration is not supported, static registration via `help@ria.ee`. |
-| authorization | [https://tara-test.ria.ee/oidc/authorize](https://tara-test.ria.ee/oidc/authorize) | 
-| token | [https://tara-test.ria.ee/oidc/token](https://tara-test.ria.ee/oidc/token) | 
+Levels of assurance for domestic authentication methods used in TARA are approved by the Information System Authority according to eIDAS implementing regulation. 
 
-6.2 Production service
+Means of authentication used in TARA have been assigned the following levels of assurance:
 
-| endpoint      |                        URL      |
-|---------------|---------------------------------|
-| server discovery | [https://tara.ria.ee/.well-known/openid-configuration](https://tara.ria.ee/.well-known/openid-configuration) <br>[https://tara.ria.ee/oidc/.well-known/openid-configuration](https://tara.ria.ee/oidc/.well-known/openid-configuration) |
-| public signature key of the service | [https://tara.ria.ee/oidc/jwks](https://tara.ria.ee/oidc/jwks) |
-| registration of the client application | dynamic registration is not supported, static registration via `help@ria.ee`. |
-| authorization | [https://tara.ria.ee/oidc/authorize](https://tara.ria.ee/oidc/authorize) | 
-| token | [https://tara.ria.ee/oidc/token](https://tara.ria.ee/oidc/token) | 
+| Means of authentication | Level of assurance                                                                                                         |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------|
+| ID-Card                 | [high](https://ec.europa.eu/digital-building-blocks/wikis/display/EIDCOMMUNITY/Estonia)                                    |
+| Mobile-ID               | [high](https://ec.europa.eu/digital-building-blocks/wikis/display/EIDCOMMUNITY/Estonia)                                    |
+| Smart-ID                | [high](https://www.ria.ee/sites/default/files/content-editors/EID/smart-id-tagatistaseme-kirjeldus-uabiv.pdf) <sup>1</sup> |
 
-6.3 Timeouts
+<sup>1</sup>NB! The LoA applies only for persons with an Estonian identity code and a Smart-ID account. Interfacing party has to consider that non-residents (Estonian e-residents) are not distinguishable from residents.
 
-| timeout      |   value    | remark                |
-|--------------|------------| --------------------- |
-| TARA session | 30 min | TARA server creates a session with the user identified. If the user doesn't perform any activity at TARA page, the session will expire in after 30 minutes. Note: TARA session must be distinguished from the session between the client application and the user. |
-| SSL/TLS handshake | 25 s | In case of ID-card authentication. The user must enter PIN1 within 25 seconds. After the timeout, the authentication will be terminated for security reasons. |
-| OAuth authorization code | 30 s | The client application must obtain the ID token using authorization code within 30 seconds. |
-| ID token (and OAuth access token) | 40 s | The ID token includes the token expiry time. For security reasons, the validity period of the token is set to 40 seconds. The client application must not use the expired token. Note that ID token is not a proof of a session between the client application and the user. |
+Every member state assigns LoA's to their own domestic means of authentication and notifies other member states of them according to [eIDAS regulation](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015R1502&from=EN). Please refer [here](https://ec.europa.eu/cefdigital/wiki/display/EIDCOMMUNITY/Overview+of+pre-notified+and+notified+eID+schemes+under+eIDAS) for a list of all authentication methods that have been notified by member states.
 
-## 7 Recommendations for interfacing with TARA
+## 7 Endpoints and timeouts
+
+7.1 Test service
+
+| endpoint                               | URL                                                                                                                                                                                                                                                         |
+|----------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| server discovery                       | [https://tara-test.ria.ee/.well-known/openid-configuration](https://tara-test.ria.ee/.well-known/openid-configuration) <br>[https://tara-test.ria.ee/oidc/.well-known/openid-configuration](https://tara-test.ria.ee/oidc/.well-known/openid-configuration) |
+| public signature key of the service    | [https://tara-test.ria.ee/oidc/jwks](https://tara-test.ria.ee/oidc/jwks)                                                                                                                                                                                    |
+| registration of the client application | dynamic registration is not supported, static registration via `help@ria.ee`.                                                                                                                                                                               |
+| authorization                          | [https://tara-test.ria.ee/oidc/authorize](https://tara-test.ria.ee/oidc/authorize)                                                                                                                                                                          | 
+| token                                  | [https://tara-test.ria.ee/oidc/token](https://tara-test.ria.ee/oidc/token)                                                                                                                                                                                  | 
+
+7.2 Production service
+
+| endpoint                               | URL                                                                                                                                                                                                                                     |
+|----------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| server discovery                       | [https://tara.ria.ee/.well-known/openid-configuration](https://tara.ria.ee/.well-known/openid-configuration) <br>[https://tara.ria.ee/oidc/.well-known/openid-configuration](https://tara.ria.ee/oidc/.well-known/openid-configuration) |
+| public signature key of the service    | [https://tara.ria.ee/oidc/jwks](https://tara.ria.ee/oidc/jwks)                                                                                                                                                                          |
+| registration of the client application | dynamic registration is not supported, static registration via `help@ria.ee`.                                                                                                                                                           |
+| authorization                          | [https://tara.ria.ee/oidc/authorize](https://tara.ria.ee/oidc/authorize)                                                                                                                                                                | 
+| token                                  | [https://tara.ria.ee/oidc/token](https://tara.ria.ee/oidc/token)                                                                                                                                                                        | 
+
+7.3 Timeouts
+
+| timeout                           | value  | remark                                                                                                                                                                                                                                                                       |
+|-----------------------------------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| TARA session                      | 30 min | TARA server creates a session with the user identified. If the user doesn't perform any activity at TARA page, the session will expire in after 30 minutes. Note: TARA session must be distinguished from the session between the client application and the user.           |
+| SSL/TLS handshake                 | 25 s   | In case of ID-card authentication. The user must enter PIN1 within 25 seconds. After the timeout, the authentication will be terminated for security reasons.                                                                                                                |
+| OAuth authorization code          | 30 s   | The client application must obtain the ID token using authorization code within 30 seconds.                                                                                                                                                                                  |
+| ID token (and OAuth access token) | 40 s   | The ID token includes the token expiry time. For security reasons, the validity period of the token is set to 40 seconds. The client application must not use the expired token. Note that ID token is not a proof of a session between the client application and the user. |
+
+## 8 Recommendations for interfacing with TARA
 
 Interfacing with TARA is easy. Yet, the operations should be carefully planned and executed.
 
@@ -655,22 +705,22 @@ When the development is completed, the interface must be tested with the TARA te
 - the proposal of the client application identifier – `client_id`, based on the OpenID Connect protocol
 - the redirect-URL of the test version of the client application, based on the OpenID Connect protocol. Only HTTPS protocol is allowed. URL fragment part (`#` character and characters following it) is not allowed.
 - the authentication method or methods which the institution intends to use
--	the contact details of the person responsible of the client application (e-mail address, telephone, personal identification code).
+-	the contact details of the person responsible for the client application (e-mail address, telephone, personal identification code).
 
 The application is submitted and any further communication in the course of administration of the service is conducted via the user support of RIA, `help@ria.ee`. Read more from the [website of RIA authentication services](https://www.ria.ee/en/state-information-system/eid/partners.html#tara).
 
 RIA, having satisfied the application:
 
-- issues a client application password `client_secret` for the institution. The client secret code is used for signing the identity token requests
-- provides an access to the TARA test service.
+- issues a client application password `client_secret` for the institution. The client secret code is used for signing the identity token requests.
+- provides access to the TARA test service.
 
-As a next step, the institution performs tests of it's client applicaton interface. See the testing [guidelines](https://e-gov.github.io/TARA-Doku/Testimine).
+As a next step, the institution performs tests of its client application interface. See the testing [guidelines](https://e-gov.github.io/TARA-Doku/Testimine).
 
 **Subscribing to the TARA production service.** After successful testing, the institution submits an application for integration with the production version for the client application. The application must include the redirect-URL of the production version of the client application (`redirect_uri`) based on the OpenID Connect protocol and other information.
 
 RIA, having satisfied the application, issues a password for the production version of the client application, `client_secret` and grants access to the production service for the production version of the client application.
 
-## 8 Private sector client specifications
+## 9 Private sector client specifications
 
 The interfacing process and authentication flows for private sector clients are identical with public sector clients.
 

@@ -50,7 +50,7 @@ TARA edasiarendamisel - mis toimub lähtudes TARA kasutajate vajadustest ja või
 
 TARA võimaldab nii siseriiklikku kui ka piiriülest autentimist. See tähendab, et autentida saab nii eestlase (Eesti e-identimissüsteemi - ID-kaardi, mobiil-ID jms kasutaja) kui ka välismaalase (EL teise liikmesriigi e-identimissüsteemi kasutaja).
 
-eIDASe kontekstis teostab TARA kasutusvood "Eestlase autentimine Eesti e-teenuses" ja "Eesti e-teenust kasutava välismaalase autentimine" (joonis 1). Sh on võimalik välismaalase autentimist Eesti e-teenuse jaoks kasutada nii, et TARA kasutajaliidest kasutajale ei kuvata vaid kasutaja suunatakse otse välisriigi autentimisteenusesse (loe automaatse suunamise kohta p4.1.3)
+eIDASe kontekstis teostab TARA kasutusvood "Eestlase autentimine Eesti e-teenuses" ja "Eesti e-teenust kasutava välismaalase autentimine" (joonis 1). Sh on võimalik välismaalase autentimist Eesti e-teenuse jaoks kasutada nii, et TARA kasutajaliidest kasutajale ei kuvata vaid kasutaja suunatakse otse välisriigi autentimisteenusesse (loe automaatse suunamise kohta p4.1.4)
 
 <p style='text-align:left;'><img src='img/YLEVAADE.png' style='width:600px'></p>
 
@@ -74,7 +74,7 @@ Joonis 1. Siseriiklik ja piiriülene autentimine
 - valida ID-kaardiga autentimise (samm 5)
 - valida piiriülese (eIDAS-) autentimise (samm 6)
   - sh riigi, mille eID-d ta kasutab (valib õige "lipukese")
-- valida Smart-ID'ga autentimise (samm 8)
+- valida Smart-ID'ga autentimise (samm 7)
 - pöörduda tagasi klientrakendusse.
 
 4 Mobiil-ID-ga autentimine
@@ -82,33 +82,33 @@ Joonis 1. Siseriiklik ja piiriülene autentimine
 - kasutaja sisestab mobiilinumbri ja isikukoodi
 - kasutaja mobiilseadmele kuvatakse kontrollkood
 - kinnituse ootamine
-- eduka autentimise korral edasi samm 9, vea korral samm 10.
+- eduka autentimise korral edasi samm 8, vea korral samm 9.
 
 5 ID-kaardiga autentimine
 
 - algab kasutajale teabe kuvamisega autentimisserdi kohta
 - kasutaja kinnitab serdivaliku
 - kasutaja sisestab PIN1-koodi
-- eduka autentimise korral edasi samm 9, vea korral samm 10.
+- eduka autentimise korral edasi samm 8, vea korral samm 9.
 
 6 Piiriülene (eIDAS-) autentimine
 
 - kasutaja valib sihtriigi
 - kasutaja suunatakse läbi eIDAS taristu välisriigi autentimisteenusesse
 - kasutaja autendib end välisriigi autentimisvahendiga
-- eduka autentimise korral (ning kui välisriigi autentimisvahendi tase on piisav) edasi samm 9
-- vea korral samm 10.
+- eduka autentimise korral (ning kui välisriigi autentimisvahendi tase on piisav) edasi samm 8
+- vea korral samm 9.
 
-NB! eIDAS autentimise korral on võimalik sihtriigi valik teha ka otse TARA-ga liidestunud infosüsteemis ning saata soovitud riigi kood autentimispäringuga. Sellisel juhul kasutajale TARA kasutajaliidest ei kuvata ja tehakse automaatne edasisuunamine läbi eIDAS taristu otse välisriigi autentimisteenusesse, kus kasutaja autendib end välisriigi autentimisvahendiga. Eduka autentimise korral (ning kui välisriigi autentimisvahendi tase on piisav) edasi samm 9
+NB! eIDAS autentimise korral on võimalik sihtriigi valik teha ka otse TARA-ga liidestunud infosüsteemis ning saata soovitud riigi kood autentimispäringuga. Sellisel juhul kasutajale TARA kasutajaliidest ei kuvata ja tehakse automaatne edasisuunamine läbi eIDAS taristu otse välisriigi autentimisteenusesse, kus kasutaja autendib end välisriigi autentimisvahendiga. Eduka autentimise korral (ning kui välisriigi autentimisvahendi tase on piisav) edasi samm 8
 
-8 Smart-ID'ga autentimine
+7 Smart-ID'ga autentimine
 
 - kasutaja sisestab Eesti isikukoodi
 - kasutaja mobiilseadmele kuvatakse kontrollkood
 - kinnituse ootamine
-- eduka autentimise korral edasi samm 9, vea korral samm 10.
+- eduka autentimise korral edasi samm 8, vea korral samm 9.
 
-9 Autenditud kasutaja
+8 Autenditud kasutaja
 
 - suunatakse tagasi klientrakendusse
 - klientrakendus pärib TARA serverilt identsustõendi
@@ -116,13 +116,13 @@ NB! eIDAS autentimise korral on võimalik sihtriigi valik teha ka otse TARA-ga l
 - identsustõendis sisalduvad autentimisel tuvastatud kasutaja andmed (atribuudid)
 - klientrakendus annab kasutajale asjakohasel viisil teada, et sisselogimine õnnestus.
 
-10 Veateate lehelt
+9 Veateate lehelt
 
 - saab kasutaja minna tagasi autentimismeetodi valikusse
 - ja seal kas üritada uuesti, võimalik, et teise autentimismeetodiga
 - või katkestada autentimise ja minna tagasi klientrakendusse.
 
-11 Lisaks on kasutajal võimalik:
+10 Lisaks on kasutajal võimalik:
 
 - saada täiendavat teavet TARA-teenuse kohta.
 
@@ -207,18 +207,18 @@ client_id=58e7ba35aab5b4f1671a
 
 Autentimispäringu elemendid:
 
-| URL-i element          | kohustuslik | näide                       |  selgitus     |
-|------------------------|:---------- :|-----------------------------|---------------|
-| protokoll, host ja tee (_path_) | jah | `https://tara.ria.ee/oidc/authorize` | `/authorize` on TARA-teenuse OpenID Connect-kohane autentimisotspunkt (termin 'autoriseerimine' pärineb alusprotokollist OAuth 2.0). |
-| `redirect_uri` | jah | `redirect_uri=https%3A%2F%2F` `eteenus.asutus.ee%2Ftagasi` | Tagasisuunamis-URL. Tagasisuunamis-URL-i valib asutus ise. Tagasisuunamis-URL võib sisaldada _query_-osa. <br><br>Vajadusel kasutada [URLi kodeerimist](https://en.wikipedia.org/wiki/Percent-encoding). <br><br>URI-i [fragmendi osa](https://tools.ietf.org/html/rfc3986#section-3.5) (`#` märk ja sellele järgnev osa) kasutamine [ei ole lubatud](https://tools.ietf.org/html/rfc6749#section-3.1.2). |
-| `scope` | jah | `scope=openid`<br><br>`scope=openid%20eidas` <br><br>`scope=openid%20idcard%20mid` | Autentimise skoop.<br><br>`openid` on kohustuslik (seda nõuab OpenID Connect protokoll).<br><br> Skoopidega `idcard`, `mid`, `smartid`, `eidas` (ja `eidasonly`) saab nõuda, et kasutajale näidatakse ainult soovitud autentimismeetodeid. Vt jaotis 4.1.3 Autentimismeetodite valikuline kasutus.<br><br>Skoobiga `email` saab nõuda, et identsustõendis väljastatakse kasutaja e-posti aadress. Vt jaotis 4.1.2 E-posti aadressi küsimine.<br><br>Piiriülesel autentimisel saab kasutada lisaskoope sihtriigi valiku täpsustamiseks, et kasutaja suunata otse välisriigi autentimisteenusesse või täiendavate isikuandmete pärimiseks (vt jaotis 4.1.3 ja 4.1.1).<br><br>Mitme skoobi kasutamisel tuleb skoobid eraldada tühikutega. Tühik esitatakse seejuures URL-kodeeringus (`%20`) ([RFC 3986](https://www.ietf.org/rfc/rfc3986.txt)). Skoobi väärtused on tõstutundlikud. Lubatud on ainult käesolevas dokumendis kirjeldatud skoobid, teiste väärtuste korral tagastatakse viga koodiga `invalid_scope`. |
-| `state` | jah | `state=hkMVY7vjuN7xyLl5` | Võltspäringuründe (_cross-site request forgery_, CSRF) vastane turvakood. `state` moodustamise ja kontrollimise kohta vt lähemalt jaotis "Võltspäringuründe vastane kaitse". |
-| `response_type` | jah | `response_type=code` | Määrab autentimise tulemuse serverile edastamise viisi. Toetatud on volituskoodi viis (OpenID Connect protokolli _authorization flow_), selle tähiseks on väärtus `code`. |
-| `client_id` | jah | `client_id=58e7...` | Rakenduse identifikaator. Rakenduse identifikaatori annab RIA asutusele klientrakenduse registreerimisel autentimisteenuse kasutajaks. |
-| ~~`locale`~~ | ~~ei~~ | ~~`locale=et`~~ | ~~Kasutajaliidese keele valik. Toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida.~~ <br><br>Märkus. Parameetrit toetatakse kuni juuli 2019 lõpuni (kasuta `ui_locales` parameetrit selle asemel). |
-| `ui_locales` | ei | `ui_locales=et` | Kasutajaliidese keele valik. Toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida. |
-| `nonce` | ei | `fsdsfwrerhtry3qeewq` | Taasesitusründeid vältida aitav unikaalne parameeter, vastavalt protokollile ([Viited](Viited), [Core], jaotis 3.1.2.1. Authentication Request). Parameeter `nonce` ei ole kohustuslik. |
-| `acr_values` | ei | `acr_values=high` | Nõutav minimaalne eIDAS autentimistase isikutuvastuseks kasutatavale autentimismeetodile (loe rohkem jaotisest "eIDAS autentimistasemed"). Lubatud on määrata üks väärtus järgmisest loetelust: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Kui määramata, siis vaikimisi `substantial` (märkimisväärne). <br><br>Kui `acr_values` väärtus on määratud, kuvab TARA kasutajale ainult autentimismeetodid, mille tase on sama või kõrgem kui `acr_values` väärtus. Piiriüleste autentimisvahendite korral edastatakse nõue välisriigi eIDAS autentimisteenusele. <br><br>TARA-lt saadud identsustõendis tuleb `acr` väite vastavust kontrollida nõutud minimaalsele tasemele (vt jaotis 5.1 Identsustõendi kontrollimine). |
+| URL-i element          | kohustuslik | näide                       | selgitus                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+|------------------------|:---------- :|-----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| protokoll, host ja tee (_path_) | jah | `https://tara.ria.ee/oidc/authorize` | `/authorize` on TARA-teenuse OpenID Connect-kohane autentimisotspunkt (termin 'autoriseerimine' pärineb alusprotokollist OAuth 2.0).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `redirect_uri` | jah | `redirect_uri=https%3A%2F%2F` `eteenus.asutus.ee%2Ftagasi` | Tagasisuunamis-URL. Tagasisuunamis-URL-i valib asutus ise. Tagasisuunamis-URL võib sisaldada _query_-osa. <br><br>Vajadusel kasutada [URLi kodeerimist](https://en.wikipedia.org/wiki/Percent-encoding). <br><br>URI-i [fragmendi osa](https://tools.ietf.org/html/rfc3986#section-3.5) (`#` märk ja sellele järgnev osa) kasutamine [ei ole lubatud](https://tools.ietf.org/html/rfc6749#section-3.1.2).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| `scope` | jah | `scope=openid`<br><br>`scope=openid%20eidas` <br><br>`scope=openid%20idcard%20mid` | Autentimise skoop.<br><br>`openid` on kohustuslik (seda nõuab OpenID Connect protokoll).<br><br> Skoopidega `idcard`, `mid`, `smartid`, `eidas` (ja `eidasonly`) saab nõuda, et kasutajale näidatakse ainult soovitud autentimismeetodeid. Vt jaotis 4.1.4 Autentimismeetodite valikuline kasutus.<br><br>Skoobiga `email` saab nõuda, et identsustõendis väljastatakse kasutaja e-posti aadress. Vt jaotis 4.1.2 E-posti aadressi küsimine.<br><br>Piiriülesel autentimisel saab kasutada lisaskoope sihtriigi valiku täpsustamiseks, et kasutaja suunata otse välisriigi autentimisteenusesse või täiendavate isikuandmete pärimiseks (vt jaotis 4.1.4 ja 4.1.1).<br><br>Mitme skoobi kasutamisel tuleb skoobid eraldada tühikutega. Tühik esitatakse seejuures URL-kodeeringus (`%20`) ([RFC 3986](https://www.ietf.org/rfc/rfc3986.txt)). Skoobi väärtused on tõstutundlikud. Lubatud on ainult käesolevas dokumendis kirjeldatud skoobid, teiste väärtuste korral tagastatakse viga koodiga `invalid_scope`. |
+| `state` | jah | `state=hkMVY7vjuN7xyLl5` | Võltspäringuründe (_cross-site request forgery_, CSRF) vastane turvakood. `state` moodustamise ja kontrollimise kohta vt lähemalt jaotis "Võltspäringuründe vastane kaitse".                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `response_type` | jah | `response_type=code` | Määrab autentimise tulemuse serverile edastamise viisi. Toetatud on volituskoodi viis (OpenID Connect protokolli _authorization flow_), selle tähiseks on väärtus `code`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| `client_id` | jah | `client_id=58e7...` | Rakenduse identifikaator. Rakenduse identifikaatori annab RIA asutusele klientrakenduse registreerimisel autentimisteenuse kasutajaks.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| ~~`locale`~~ | ~~ei~~ | ~~`locale=et`~~ | ~~Kasutajaliidese keele valik. Toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida.~~ <br><br>Märkus. Parameetrit toetatakse kuni juuli 2019 lõpuni (kasuta `ui_locales` parameetrit selle asemel).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `ui_locales` | ei | `ui_locales=et` | Kasutajaliidese keele valik. Toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| `nonce` | ei | `fsdsfwrerhtry3qeewq` | Taasesitusründeid vältida aitav unikaalne parameeter, vastavalt protokollile ([Viited](Viited), [Core], jaotis 3.1.2.1. Authentication Request). Parameeter `nonce` ei ole kohustuslik.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| `acr_values` | ei | `acr_values=high` | Nõutav minimaalne eIDAS autentimistase isikutuvastuseks kasutatavale autentimismeetodile (loe rohkem jaotisest "eIDAS autentimistasemed"). Lubatud on määrata üks väärtus järgmisest loetelust: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Kui määramata, siis vaikimisi `substantial` (märkimisväärne). <br><br>Kui `acr_values` väärtus on määratud, kuvab TARA kasutajale ainult autentimismeetodid, mille tase on sama või kõrgem kui `acr_values` väärtus. Piiriüleste autentimisvahendite korral edastatakse nõue välisriigi eIDAS autentimisteenusele. <br><br>TARA-lt saadud identsustõendis tuleb `acr` väite vastavust kontrollida nõutud minimaalsele tasemele (vt jaotis 5.1 Identsustõendi kontrollimine).                                                                                                                                                                                                                                                                       |
 
 #### 4.1.1 Atribuutide küsimine välismaalase kohta
 
@@ -586,7 +586,7 @@ TARA põhimõte on, et identsustõendile tuleb järgi tulla kohe, 30 sekundi joo
 
 #### 5.1.6 Autentimismeetodi kontrollimine
 
-Juhul kui kasutusel on autentimismeetodite valikuline kuvamine (vt jaotis 4.1.3 Autentimismeetodite valikuline kasutus), peab identsustõendis veenduma, et identsustõendi `amr` väites (_authentication method reference_) toodud autentimismeetod on lubatud.  Vastasel juhul võetakse vahendajaründe risk, kus autentimispäringu `scope` parameetri manipuleerimise läbi on võimalik kasutajal autentida meetodiga, mis pole liidestuja süsteemis aktsepteeritav (nt ID-kaardiga autentimise asemel kasutatakse Smart-ID-d).
+Juhul kui kasutusel on autentimismeetodite valikuline kuvamine (vt jaotis 4.1.4 Autentimismeetodite valikuline kasutus), peab identsustõendis veenduma, et identsustõendi `amr` väites (_authentication method reference_) toodud autentimismeetod on lubatud.  Vastasel juhul võetakse vahendajaründe risk, kus autentimispäringu `scope` parameetri manipuleerimise läbi on võimalik kasutajal autentida meetodiga, mis pole liidestuja süsteemis aktsepteeritav (nt ID-kaardiga autentimise asemel kasutatakse Smart-ID-d).
 
 Näide: Kui autentimispäringus on `scope` parameetris määratud ainult ID-kaart, tuleb veenduda, et identsustõendi `amr` väide sisaldaks koodi `idcard` (koodide nimekiri on toodud jaotises 4.3.1 Identsustõend).
 
@@ -712,7 +712,7 @@ RIA, rahuldades taotluse:
 
 Järgneb liidestuse testimine. RIA abistab siin võimalike probleemide lahendamisel. Testimise kohta vt lähemalt: [Testimine](https://e-gov.github.io/TARA-Doku/Testimine).
 
-Tasub pilk heita [eneseabile](Eneseabi).
+Tasub pilk heita [abi peatükile](Abi).
 
 Liitumine TARA toodanguteenusega. Eduka testimise järel asutus esitab taotluse toodanguteenuse avamiseks klientrakendusele. Taotluses näidatakse klientrakenduse toodanguversiooni tagasisuunamis-URL (`redirect_uri`), OpenID Connect protokolli kohaselt jm andmed
 
@@ -728,13 +728,13 @@ Siseriiklikele autentimismeetoditele on TARA-s määratud järgmised autentimist
 
 | Autentimismeetod | Autentimistase | 
 |---------------|-------------|
-| ID-kaart | [kõrge](https://ec.europa.eu/cefdigital/wiki/pages/viewpage.action?pageId=65972776) | 
-| Mobiil-ID | [kõrge](https://ec.europa.eu/cefdigital/wiki/pages/viewpage.action?pageId=65972776) | 
-| Smart-ID | [kõrge](https://www.ria.ee/sites/default/files/smart-id_tagatistaseme_kirjeldus_abiv.pdf) <sup>1</sup> |
+| ID-kaart | [kõrge](https://ec.europa.eu/digital-building-blocks/wikis/display/EIDCOMMUNITY/Estonia) | 
+| Mobiil-ID | [kõrge](https://ec.europa.eu/digital-building-blocks/wikis/display/EIDCOMMUNITY/Estonia) | 
+| Smart-ID | [kõrge](https://www.ria.ee/sites/default/files/content-editors/EID/smart-id-tagatistaseme-kirjeldus-uabiv.pdf) <sup>1</sup> |
 
-<sup>1</sup>NB! Tase kehtib vaid Eesti isikukoodiga isikutele, kellele on väljastatud Smart-Id. Tuleb arvestada, et mitteresidendid (Eesti e-residendid) pole eristatavad.
+<sup>1</sup>NB! Tase kehtib vaid Eesti isikukoodiga isikutele, kellele on Smart-ID konto. Tuleb arvestada, et mitteresidendid (Eesti e-residendid) pole eristatavad residentidest.
 
-Välisriigi autentimismeetodite autentimitased on määratakse vastava välisriigi enda poolt ja esitatakse teavitatakse sellest ülejäänud liikmesriike vastavalt [eIDAS määruse](https://eur-lex.europa.eu/legal-content/ET/TXT/HTML/?uri=CELEX:32015R1502&from=EN) nõuetele. Nimekirja kõigist ülepiiriliselt kasutatavatest autentimismeetoditest, millest riigid on teisi liikmesriike teavitanud, leiab [siit](https://ec.europa.eu/cefdigital/wiki/display/EIDCOMMUNITY/Overview+of+pre-notified+and+notified+eID+schemes+under+eIDAS).
+Välisriigi autentimismeetodite autentimitasemed on määratud vastava välisriigi enda poolt ja neist teavitatakse teisi liikmesriike vastavalt [eIDAS määruse](https://eur-lex.europa.eu/legal-content/ET/TXT/HTML/?uri=CELEX:32015R1502&from=EN) nõuetele. Nimekirja kõigist ülepiiriliselt kasutatavatest autentimismeetoditest, millest riigid on teisi liikmesriike teavitanud, leiab [siit](https://ec.europa.eu/cefdigital/wiki/display/EIDCOMMUNITY/Overview+of+pre-notified+and+notified+eID+schemes+under+eIDAS).
 
 ## 9 Erasektori asutuse erisused
 
