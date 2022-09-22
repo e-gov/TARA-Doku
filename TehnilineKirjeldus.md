@@ -406,7 +406,7 @@ Näide (identsustõendi sisu e _payload_):
   ],
   "state": "1OnH3qwltWy81fKqcmjYTqnco9yVQ2gGZXws/DBLNvQ=",
   "nonce": "",
-  "at_hash": "X0MVjwrmMQs/IBzfU2osvw=="
+  "at_hash": "X0MVjwrmMQs_IBzfU2osvw"
 }
 ````
 
@@ -430,7 +430,7 @@ Identsustõendis väljastatakse järgmised väited (_claims_).
 | `state` | `abcdefghijklmnop` - turvaelement. Autentimispäringu `state` parameetri väärtus.  |
 | `nonce` | `qrstuvwxyzabcdef` - turvaelement. Autentimispäringu `nonce` parameetri väärtus. Väärtustatud ainult juhul kui autentimispäringus saadeti `nonce` parameeter. |
 | `acr` (_Authentication Context Class Reference_) | `high` - autentimistase, vastavalt eIDAS tasemetele. Võimalikud väärtused: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Elementi ei kasutata, kui autentimistase ei kohaldu või pole teada |
-| `at_hash` | `X0MVjwrmMQs/IBzfU2osvw==` - pääsutõendi räsi. TARA-s ei kasutata |
+| `at_hash` | `X0MVjwrmMQs_IBzfU2osvw` - pääsutõendi räsi. TARA-s ei kasutata |
 | `email` | `60001019906@eesti.ee` - kasutaja e-posti aadress. Väljastatakse ainult  Eesti ID-kaardiga kasutaja autentimisel. Loetakse kasutaja autentimissertifikaadi SAN laiendist (RFC822 tüüpi `Subject Alternative Name` väljast) |
 | `email_verified` | `false` - tähendab, et e-posti aadressi kuulumine kasutajale on tuvastatud. TARA väljastab alati väärtuse `false`. See tähendab, et TARA ei kontrolli ega väljasta teavet, kas kasutaja on oma eesti.ee e-postiaadressi suunanud või mitte. |
 | `phone_number`| `+37200000766` - kasutaja telefoninumber. Väljastatakse ainult  Eesti Mobiil-ID'ga kasutaja autentimisel. Telefoninumber esitatakse E.164 formaadis koos riikliku suunakoodiga. | 
