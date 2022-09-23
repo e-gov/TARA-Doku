@@ -428,7 +428,8 @@ The following claims are presented in the identity token:
 | `email_verified`                                 | `false` - the e-mail address of the user has been verified. TARA always issues a value `false`. It means that TARA does not verify or issue information on whether or not the user has redirected his/her eesti.ee e-mail address.                                                         |
 | `phone_number`                                   | `+37200000766` - the user’s phone number. Issued only when authenticating with Estonian Mobile-ID service. The phone number is presented in E.164 format and prefixed by a country code.                                                                                                   |
 | `phone_number_verified`                          | `true` - the ownership of the phone number to the authenticating user has been confirmed. If the claim is present, then it is always `true`                                                                                                                                                |
-Identity token might consist other OpenID Connect protocol based fields that are not supported in TARA.
+
+Identity token might consist of other OpenID Connect protocol based fields that are not supported in TARA.
 
 The client application must obtain the identity token immediately or within `30` seconds (before the expiry time of the identity token).
 
