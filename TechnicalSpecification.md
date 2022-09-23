@@ -403,10 +403,10 @@ An example:
 }
 ````
 
-The following claims are presented in the identity token.
+The following claims are presented in the identity token:
 
 | identity token element (_claim_)                 | example of a value, explanation                                                                                                                                                                                                                                                            |
-|:-------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `jti` (_JSON Token Identifier_)                  | `0c597356... ` - identity token identifier                                                                                                                                                                                                                                                 |
 | `iss` (_Issuer_)                                 | `https://tara.ria.ee` - issuer of the certificate (TARA); in the case of test services `https://tara-test.ria.ee`                                                                                                                                                                          |
 | `aud` (_Audience_)                               | `TARA-Demo` - the ID of a client application that requested authentication (the value of `client_id` field is specified upon directing the user to the authentication process).                                                                                                            |
