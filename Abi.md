@@ -58,7 +58,7 @@ TARA põhineb OpenID Connect protokollil, mis näeb ette võimalust, et klientra
 
 ## Kas TARA toetab _single sign-on (SSO)_ lahendust?
 
-TARA ei toeta keskset ühekordset sisselogimist. Antud funktsionaalsust pakub Riigi SSO teenus (GOVSSO) mille tehniline info on leitav [siit.](https://e-gov.github.io/GOVSSO/)
+TARA ei toeta keskset ühekordset sisselogimist. Antud funktsionaalsust pakub Riigi SSO teenus (GovSSO) mille tehniline info on leitav [siit.](https://e-gov.github.io/GOVSSO/)
 
 ## Kas TARA-l on olemas _health endpoint_ millega saaks monitoorida klientrakendust?
 

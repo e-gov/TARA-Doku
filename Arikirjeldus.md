@@ -46,7 +46,7 @@ Riigi autentimisteenusega on liitunud 46 asutust 166 infosüsteemiga, sh Riigipo
 
 E-teenus liidestatakse autentimisteenusega OpenID Connect protokolli kohaselt. Vt lähemalt: [Tehniline kirjeldus](TehnilineKirjeldus).
 
-RIA pakub alates augustist 2022 Riigi SSO teenust (GOVSSO), mille dokumentatsiooniga saab tutvuda [GOVSSO GitHub](https://e-gov.github.io/GOVSSO) lehel.
+RIA pakub alates augustist 2022 Riigi SSO teenust (GovSSO), mille dokumentatsiooniga saab tutvuda [GovSSO GitHub](https://e-gov.github.io/GOVSSO) lehel.
 
 ## Kuidas liituda?
 
