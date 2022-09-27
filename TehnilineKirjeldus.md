@@ -4,7 +4,7 @@ permalink: TehnilineKirjeldus
 
 # Tehniline kirjeldus
 {: .no_toc}
-v 1.24, 09.05.2023
+v 1.25, 23.08.2023
 
 - TOC
 {:toc}
@@ -200,18 +200,17 @@ client_id=58e7ba35aab5b4f1671a
 
 Autentimispäringu elemendid:
 
-| URL-i element          | kohustuslik | näide                       |  selgitus     |
-|------------------------|:---------- :|-----------------------------|---------------|
-| protokoll, host ja tee (_path_) | jah | `https://tara.ria.ee/oidc/authorize` | `/authorize` on TARA-teenuse OpenID Connect-kohane autentimisotspunkt (termin 'autoriseerimine' pärineb alusprotokollist OAuth 2.0). |
-| `redirect_uri` | jah | `redirect_uri=https%3A%2F%2F` `eteenus.asutus.ee%2Ftagasi` | Tagasisuunamis-URL. Tagasisuunamis-URL-i valib asutus ise. Tagasisuunamis-URL võib sisaldada _query_-osa. <br><br>Vajadusel kasutada [URLi kodeerimist](https://en.wikipedia.org/wiki/Percent-encoding). <br><br>URI-i [fragmendi osa](https://tools.ietf.org/html/rfc3986#section-3.5) (`#` märk ja sellele järgnev osa) kasutamine [ei ole lubatud](https://tools.ietf.org/html/rfc6749#section-3.1.2). |
-| `scope` | jah | `scope=openid`<br><br>`scope=openid%20eidas` <br><br>`scope=openid%20idcard%20mid` | Autentimise skoop.<br><br>`openid` on kohustuslik (seda nõuab OpenID Connect protokoll).<br><br> Skoopidega `idcard`, `mid`, `smartid`, `eidas` (ja `eidasonly`) saab nõuda, et kasutajale näidatakse ainult soovitud autentimismeetodeid. Vt jaotis 4.1.4 Autentimismeetodite valikuline kasutus.<br><br>Skoobiga `email` saab nõuda, et identsustõendis väljastatakse kasutaja e-posti aadress. Vt jaotis 4.1.2 E-posti aadressi küsimine.<br><br>Piiriülesel autentimisel saab kasutada lisaskoope sihtriigi valiku täpsustamiseks, et kasutaja suunata otse välisriigi autentimisteenusesse või täiendavate isikuandmete pärimiseks (vt jaotis 4.1.4 ja 4.1.1).<br><br>Mitme skoobi kasutamisel tuleb skoobid eraldada tühikutega. Tühik esitatakse seejuures URL-kodeeringus (`%20`) ([RFC 3986](https://www.ietf.org/rfc/rfc3986.txt)). Skoobi väärtused on tõstutundlikud. Lubatud on ainult käesolevas dokumendis kirjeldatud skoobid, teiste väärtuste korral tagastatakse viga koodiga `invalid_scope`. |
-| `state` | jah | `state=hkMVY7vjuN7xyLl5` | Võltspäringuründe (_cross-site request forgery_, CSRF) vastane turvakood. `state` moodustamise ja kontrollimise kohta vt lähemalt jaotis "Võltspäringuründe vastane kaitse". |
-| `response_type` | jah | `response_type=code` | Määrab autentimise tulemuse serverile edastamise viisi. Toetatud on volituskoodi viis (OpenID Connect protokolli _authorization flow_), selle tähiseks on väärtus `code`. |
-| `client_id` | jah | `client_id=58e7...` | Rakenduse identifikaator. Rakenduse identifikaatori annab RIA asutusele klientrakenduse registreerimisel autentimisteenuse kasutajaks. |
-| ~~`locale`~~ | ~~ei~~ | ~~`locale=et`~~ | ~~Kasutajaliidese keele valik. Toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida.~~ <br><br>Märkus. Parameetrit toetatakse kuni juuli 2019 lõpuni (kasuta `ui_locales` parameetrit selle asemel). |
-| `ui_locales` | ei | `ui_locales=et` | Kasutajaliidese keele valik. Toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida. |
-| `nonce` | ei | `fsdsfwrerhtry3qeewq` | Taasesitusründeid vältida aitav unikaalne parameeter, vastavalt protokollile ([Viited](Viited), [Core], jaotis 3.1.2.1. Authentication Request). Parameeter `nonce` ei ole kohustuslik. |
-| `acr_values` | ei | `acr_values=high` | Nõutav minimaalne eIDAS autentimistase isikutuvastuseks kasutatavale autentimismeetodile (loe rohkem jaotisest "eIDAS autentimistasemed"). Lubatud on määrata üks väärtus järgmisest loetelust: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Kui määramata, siis vaikimisi `substantial` (märkimisväärne). <br><br>Kui `acr_values` väärtus on määratud, kuvab TARA kasutajale ainult autentimismeetodid, mille tase on sama või kõrgem kui `acr_values` väärtus. Piiriüleste autentimisvahendite korral edastatakse nõue välisriigi eIDAS autentimisteenusele. <br><br>TARA-lt saadud identsustõendis tuleb `acr` väite vastavust kontrollida nõutud minimaalsele tasemele (vt jaotis 5.1 Identsustõendi kontrollimine). |
+| URL-i element                   | kohustuslik | näide                                                                              | selgitus                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+|---------------------------------|:-----------:|------------------------------------------------------------------------------------|---------------|
+| protokoll, host ja tee (_path_) |     jah     | `https://tara.ria.ee/oidc/authorize`                                               | `/authorize` on TARA-teenuse OpenID Connect-kohane autentimisotspunkt (termin 'autoriseerimine' pärineb alusprotokollist OAuth 2.0).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `redirect_uri`                  |     jah     | `redirect_uri=https%3A%2F%2F` `eteenus.asutus.ee%2Ftagasi`                         | Tagasisuunamis-URL. Tagasisuunamis-URL-i valib asutus ise. Tagasisuunamis-URL võib sisaldada _query_-osa. <br><br>Vajadusel kasutada [URLi kodeerimist](https://en.wikipedia.org/wiki/Percent-encoding). <br><br>URI-i [fragmendi osa](https://tools.ietf.org/html/rfc3986#section-3.5) (`#` märk ja sellele järgnev osa) kasutamine [ei ole lubatud](https://tools.ietf.org/html/rfc6749#section-3.1.2).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| `scope`                         |     jah     | `scope=openid`<br><br>`scope=openid%20eidas` <br><br>`scope=openid%20idcard%20mid` | Autentimise skoop.<br><br>`openid` on kohustuslik (seda nõuab OpenID Connect protokoll).<br><br> Skoopidega `idcard`, `mid`, `smartid`, `eidas` (ja `eidasonly`) saab nõuda, et kasutajale näidatakse ainult soovitud autentimismeetodeid. Vt jaotis 4.1.4 Autentimismeetodite valikuline kasutus.<br><br>Skoobiga `email` saab nõuda, et identsustõendis väljastatakse kasutaja e-posti aadress. Vt jaotis 4.1.2 E-posti aadressi küsimine.<br><br>Piiriülesel autentimisel saab kasutada lisaskoope sihtriigi valiku täpsustamiseks, et kasutaja suunata otse välisriigi autentimisteenusesse või täiendavate isikuandmete pärimiseks (vt jaotis 4.1.4 ja 4.1.1).<br><br>Mitme skoobi kasutamisel tuleb skoobid eraldada tühikutega. Tühik esitatakse seejuures URL-kodeeringus (`%20`) ([RFC 3986](https://www.ietf.org/rfc/rfc3986.txt)). Skoobi väärtused on tõstutundlikud. Lubatud on ainult käesolevas dokumendis kirjeldatud skoobid, teiste väärtuste korral tagastatakse viga koodiga `invalid_scope`. |
+| `state`                         |     jah     | `state=hkMVY7vjuN7xyLl5`                                                           | `state` parameetrit kasutatakse autentimis- ja tagasisuunamispäringu  sidumiseks. Võimaldab vähendada võltspäringuründe (CSRF, XSRF) ohtu. `state` parameetri väärtuseks peaks olema vähemalt 16 märgilise juhusõne räsi, mis on teisendatud Base64 vormingusse. `state` moodustamise ja kontrollimise kohta vaata lähemalt jaotis "Võltspäringuründe vastane kaitse".                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `response_type`                 |     jah     | `response_type=code`                                                               | Määrab autentimise tulemuse serverile edastamise viisi. Toetatud on volituskoodi viis (OpenID Connect protokolli _authorization flow_), selle tähiseks on väärtus `code`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| `client_id`                     |     jah     | `client_id=58e7...`                                                                | Rakenduse identifikaator. Rakenduse identifikaatori annab RIA asutusele klientrakenduse registreerimisel autentimisteenuse kasutajaks.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| `ui_locales`                    |     ei      | `ui_locales=et`                                                                    | Kasutajaliidese keele valik. Toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| `nonce`                         |     ei      | `nonce=fsdsfwrerhtry3qeewq`                                                        | Soovitatav kasutada ning kontrollida. Taasesitusründeid vältida aitav unikaalne väärtus ([Viited](Viited), [Core], jaotis 3.1.2.1. Authentication Request). Kasutatakse identsustõendi sidumiseks ja verifitseerimiseks konkreetse autentimisseansiga. `nonce` parameetri väärtuseks peaks olema vähemalt 16 märgilise juhusõne räsi, mis on teisendatud Base64 vormingusse. `nonce` moodustamise ja kontrollimise kohta vaata lähemalt jaotis "Võltspäringuründe vastane kaitse".                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `acr_values`                    |     ei      | `acr_values=high`                                                                  | Nõutav minimaalne eIDAS autentimistase isikutuvastuseks kasutatavale autentimismeetodile (loe rohkem jaotisest [eIDAS autentimistasemed](TehnilineKirjeldus#8-eidas-autentimistasemed)). Lubatud on määrata üks väärtus järgmisest loetelust: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Kui määramata, siis vaikimisi `substantial` (märkimisväärne). <br><br>Kui `acr_values` väärtus on määratud, kuvab TARA kasutajale ainult autentimismeetodid, mille tase on sama või kõrgem kui `acr_values` väärtus. Piiriüleste autentimisvahendite korral edastatakse nõue välisriigi eIDAS autentimisteenusele. <br><br>TARA-lt saadud identsustõendis tuleb `acr` väite vastavust kontrollida nõutud minimaalsele tasemele (vt jaotis 5.1 Identsustõendi kontrollimine).                                                                                                                                                                                                                         |
 
 #### 4.1.1 Atribuutide küsimine välismaalase kohta
 
@@ -257,14 +256,14 @@ Autentimismeetodite valikulise kasutuse korral on täiendava turvameetmena vajal
 
 Tabel 1 - autentimisvalikute kuvamine
 
-| Parameetri scope väärtus | Selgitus                       |
-|--------------------------|--------------------------------|
-| `idcard` | Eesti ID-kaardiga autentimise lubamine |
-| `mid` | Mobiil-ID autentimise lubamine |
-| `smartid` | Smart-ID autentimise lubamine |
-| `eidas` | Piiriülese autentimise valiku lubamine |
-| `eidasonly` | Ainult piiriülese autentimise valiku lubamine. <br><br>NB! `eidasonly` kasutuse korral ignoreeritakse alati kõiki ülejäänud autentimisvalikute eelistusi. |
-| `eidas:country:xx` | Piiriülese autentimise riik (TARA riigi valiku lehte ei kuvata). Töötab ainult koos `eidasonly` autentimisvalikuga. Lubatud skoopide nimekiri on teenuseteabe otspunktis. |
+| Parameetri scope väärtus | Selgitus                                                                                                                                                  |
+|--------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `idcard`                 | Eesti ID-kaardiga autentimise lubamine                                                                                                                    |
+| `mid`                    | Mobiil-ID autentimise lubamine                                                                                                                            |
+| `smartid`                | Smart-ID autentimise lubamine                                                                                                                             |
+| `eidas`                  | Piiriülese autentimise valiku lubamine                                                                                                                    |
+| `eidasonly`              | Ainult piiriülese autentimise valiku lubamine. <br><br>NB! `eidasonly` kasutuse korral ignoreeritakse alati kõiki ülejäänud autentimisvalikute eelistusi. |
+| `eidas:country:xx`       | Piiriülese autentimise riik (TARA riigi valiku lehte ei kuvata). Töötab ainult koos `eidasonly` autentimisvalikuga. Lubatud skoopide nimekiri on teenuseteabe otspunktis.                     |
 
 Näide 1: Kõik autentimismeetodid
 `scope=openid`
@@ -294,11 +293,11 @@ state=OFfVLKu0kNbJ2EZk
 
 Tagasisuunamispäringu elemendid:
 
-| URL-i element          | näide                       |  selgitus     |
-|------------------------|-----------------------------|---------------|
-| protokoll, host ja tee (_path_) | `https://eteenus.asutus.ee/tagasi` | Ühtib autentimispäringus saadetud `redirect_uri` väärtusega. |
-| `code` | `code=71ed579...`  | Volituskood (_authorization code_) on ühekordne “lubatäht” identsustõendi saamiseks. |
-| `state`            | `state=OFfVLKu0kNbJ2EZk`     | Võltspäringuründe vastane turvakood. Autentimispäringus saadetud turvakood peegeldatakse tagasi. `state` moodustamise ja kontrollimise kohta vt lähemalt jaotis "Võltspäringuründe vastane kaitse". |
+| URL-i element                   | näide                              | selgitus                                                                                                                                                                                            |
+|---------------------------------|------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| protokoll, host ja tee (_path_) | `https://eteenus.asutus.ee/tagasi` | Ühtib autentimispäringus saadetud `redirect_uri` väärtusega.                                                                                                                                        |
+| `code`                          | `code=71ed579...`                  | Volituskood (_authorization code_) on ühekordne “lubatäht” identsustõendi saamiseks.                                                                                                                |
+| `state`                         | `state=OFfVLKu0kNbJ2EZk`           | Võltspäringuründe vastane turvakood. Autentimispäringus saadetud turvakood peegeldatakse tagasi. `state` moodustamise ja kontrollimise kohta vt lähemalt jaotis "Võltspäringuründe vastane kaitse". |
 
 Päring võib sisaldada muid URL-i parameetreid, mida klientrakendus peab ignoreerima.
 
@@ -350,12 +349,12 @@ HTTP POST päringu keha peab olema esitatud OpenID Connect protokolli kohaselt s
 
 Päringu kehas tuleb esitada järgnevad parameetrid:
 
-| POST päringu keha element | näide                    |  selgitus     |
-|------------------------|-----------------------------|---------------|
-| protokoll, host ja tee | `https://tara.ria.ee/oidc/token` |   |
-| `grant_type`  | `grant_type=authorization_code` | Protokollikohane nõutav väärtus `authorization_code`. |
-| `code` | `code=Splx...` | Autentimisteenuselt saadud volituskood. | 
-| `redirect_uri` | `redirect_uri=https%3A%2F` | Autentimispäringus saadetud ümbersuunamis-URI. |
+| POST päringu keha element | näide                            | selgitus                                              |
+|---------------------------|----------------------------------|-------------------------------------------------------|
+| protokoll, host ja tee    | `https://tara.ria.ee/oidc/token` |                                                       |
+| `grant_type`              | `grant_type=authorization_code`  | Protokollikohane nõutav väärtus `authorization_code`. |
+| `code`                    | `code=Splx...`                   | Autentimisteenuselt saadud volituskood.               | 
+| `redirect_uri`            | `redirect_uri=https%3A%2F`       | Autentimispäringus saadetud ümbersuunamis-URI.        |
 
 #### 4.3.1 Identsustõend
 
@@ -363,12 +362,12 @@ TARA server kontrollib, et identsustõendit küsiv klientrakendus on TARAs regis
 
 Päringu vastus on JSON-struktuur, milles on neli elementi (vt järgnev tabel). 
 
-| element | selgitus |
-|:-------:|----------|
+|    element     | selgitus                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+|:--------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `access_token` | OAuth 2.0 pääsutõend. Pääsutõendiga saab klientrakendus pärida `userinfo` otspunktist autenditud isikut kirjeldavad andmed.<br><br>TARA väljastab küll pääsutõendi, kuid soovitame pääsutõendit kasutada ainult siis, kui nn "karbitoote" liidestamisel ei ole võimalust kasutada identsustõendit (vt allpool). Kõik autenditud isikut kirjeldavad andmed väljastatakse juba identsustõendis. Identsustõendi kasutamine on eelistatud ja ka teoreetiliselt turvalisem, kuna identsustõend on allkirjastatud, `userinfo` otspunkti väljund aga mitte |
-| `token_type` | Väärtusega `bearer`. OAuth 2.0 pääsutõendi tüüp |
-| `expires_in` | OAuth 2.0 pääsutõendi aegumiskestus |
-| `id_token` | identsustõend. Veebitõend esitatakse nn kompaktselt serialiseeritud kujul (vt [JWS Compact Serialization](https://tools.ietf.org/html/rfc7515#section-3.1)) | 
+|  `token_type`  | Väärtusega `bearer`. OAuth 2.0 pääsutõendi tüüp                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+|  `expires_in`  | OAuth 2.0 pääsutõendi aegumiskestus                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+|   `id_token`   | identsustõend. Veebitõend esitatakse nn kompaktselt serialiseeritud kujul (vt [JWS Compact Serialization](https://tools.ietf.org/html/rfc7515#section-3.1))                                                                                                                                                                                                                                                                                                                                                                                         | 
 
 Päringu vastus võib sisaldada muid välju, mida klientrakendus peab ignoreerima.
 
@@ -405,29 +404,29 @@ Näide (identsustõendi sisu e _payload_):
 
 Identsustõendis väljastatakse järgmised väited (_claims_).
 
-| identsustõendi element (väide) | näiteväärtus, selgitus     |
-|:-----------------------|---------------------|
-| `jti` (_JSON Token Identifier_) | `0c597356... ` - identsustõendi identifikaator |
-| `iss` (_Issuer_)       | `https://tara.ria.ee` - tõendi väljastaja (TARA-teenus); testteenuse puhul `https://tara-test.ria.ee` |
-| `aud` (_Audience_)     | `TARA-Demo` - autentimist küsinud infosüsteemi ID (kasutaja autentimisele suunamisel määratud `client_id` välja väärtus)|
-| `exp` (_Expires_) | `1530295852` - tõendi aegumisaeg, Unix _epoch_ vormingus |
-| `iat` (_Issued At_) | `1530267052` - tõendi väljaandmisaeg, Unix _epoch_ vormingus |
-| `nbf` (_Not Before_)   | `1530266752` - tõendi kehtivuse algusaeg, Unix _epoch_ vormingus |
-| `sub` (_Subject_)      | `EE60001019906` - autenditud kasutaja identifikaator (isikukood või eIDAS identifikaator) koos kodaniku riigikoodi eesliitega (riigikoodid vastavalt ISO 3166-1 alpha-2 standardile). NB! eIDAS identifikaator võib olla maksimaalselt kuni 256 tähemärki. |
-| `profile_attributes`   | autenditud isikut kirjeldavad andmed |
-| `profile_attributes`<br>`.date_of_birth` | `2000-01-01` - autenditud kasutaja sünnikuupäev ISO_8601 formaadis. Tagastatakse ainult Eesti isikukoodiga isikute puhul ning eIDAS autentimisel |
-| `profile_attributes`<br>`.given_name` | `MARY ÄNN` - autenditud kasutaja eesnimi (testnimi, valitud täpitähtede sisalduvuse pärast) |
-| `profile_attributes`<br>`.family_name` | `O’CONNEŽ-ŠUSLIK` - autenditud kasutaja perekonnanimi (testnimi, valitud täpitähtede jm eritärkide sisalduvuse pärast) |
-| `profile_attributes`<br>`_translit` | Sisaldab JSON objekti ladina tähestikus profiiliatribuutidest (vt allpool translitereerimine.). Väärtustatud ainult eIDAS autentimisel |
-| `amr` (_Authentication Method Reference_) | `mID` - kasutaja autentimiseks kasutatud autentimismeetod. Võimalikud väärtused: `mID` - mobiil-ID, `idcard` - Eesti ID-kaart, `eIDAS` - piiriülene, `smartid` - Smart-ID  |
-| `state` | `abcdefghijklmnop` - turvaelement. Autentimispäringu `state` parameetri väärtus.  |
-| `nonce` | `qrstuvwxyzabcdef` - turvaelement. Autentimispäringu `nonce` parameetri väärtus. Väärtustatud ainult juhul kui autentimispäringus saadeti `nonce` parameeter. |
-| `acr` (_Authentication Context Class Reference_) | `high` - autentimistase, vastavalt eIDAS tasemetele. Võimalikud väärtused: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Elementi ei kasutata, kui autentimistase ei kohaldu või pole teada |
-| `at_hash` | `X0MVjwrmMQs/IBzfU2osvw==` - pääsutõendi räsi. TARA-s ei kasutata |
-| `email` | `60001019906@eesti.ee` - kasutaja e-posti aadress. Väljastatakse ainult  Eesti ID-kaardiga kasutaja autentimisel. Loetakse kasutaja autentimissertifikaadi SAN laiendist (RFC822 tüüpi `Subject Alternative Name` väljast) |
-| `email_verified` | `false` - tähendab, et e-posti aadressi kuulumine kasutajale on tuvastatud. TARA väljastab alati väärtuse `false`. See tähendab, et TARA ei kontrolli ega väljasta teavet, kas kasutaja on oma eesti.ee e-postiaadressi suunanud või mitte. |
-| `phone_number`| `+37200000766` - kasutaja telefoninumber. Väljastatakse ainult  Eesti Mobiil-ID'ga kasutaja autentimisel. Telefoninumber esitatakse E.164 formaadis koos riikliku suunakoodiga. | 
-| `phone_number_verified` | `true` - tähendab, et telefoninumbri kuulumine kasutajale on tuvastatud. TARA väljastab alati väärtuse `true`. |
+| identsustõendi element (väide)                   | näiteväärtus, selgitus                                                                                                                                                                                                                                     |
+|:-------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `jti` (_JSON Token Identifier_)                  | `0c597356... ` - identsustõendi identifikaator                                                                                                                                                                                                             |
+| `iss` (_Issuer_)                                 | `https://tara.ria.ee` - tõendi väljastaja (TARA-teenus); testteenuse puhul `https://tara-test.ria.ee`                                                                                                                                                      |
+| `aud` (_Audience_)                               | `TARA-Demo` - autentimist küsinud infosüsteemi ID (kasutaja autentimisele suunamisel määratud `client_id` välja väärtus)                                                                                                                                   |
+| `exp` (_Expires_)                                | `1530295852` - tõendi aegumisaeg, Unix _epoch_ vormingus                                                                                                                                                                                                   |
+| `iat` (_Issued At_)                              | `1530267052` - tõendi väljaandmisaeg, Unix _epoch_ vormingus                                                                                                                                                                                               |
+| `nbf` (_Not Before_)                             | `1530266752` - tõendi kehtivuse algusaeg, Unix _epoch_ vormingus                                                                                                                                                                                           |
+| `sub` (_Subject_)                                | `EE60001019906` - autenditud kasutaja identifikaator (isikukood või eIDAS identifikaator) koos kodaniku riigikoodi eesliitega (riigikoodid vastavalt ISO 3166-1 alpha-2 standardile). NB! eIDAS identifikaator võib olla maksimaalselt kuni 256 tähemärki. |
+| `profile_attributes`                             | autenditud isikut kirjeldavad andmed                                                                                                                                                                                                                       |
+| `profile_attributes`<br>`.date_of_birth`         | `2000-01-01` - autenditud kasutaja sünnikuupäev ISO_8601 formaadis. Tagastatakse ainult Eesti isikukoodiga isikute puhul ning eIDAS autentimisel                                                                                                           |
+| `profile_attributes`<br>`.given_name`            | `MARY ÄNN` - autenditud kasutaja eesnimi (testnimi, valitud täpitähtede sisalduvuse pärast)                                                                                                                                                                |
+| `profile_attributes`<br>`.family_name`           | `O’CONNEŽ-ŠUSLIK` - autenditud kasutaja perekonnanimi (testnimi, valitud täpitähtede jm eritärkide sisalduvuse pärast)                                                                                                                                     |
+| `profile_attributes`<br>`_translit`              | Sisaldab JSON objekti ladina tähestikus profiiliatribuutidest (vt allpool translitereerimine.). Väärtustatud ainult eIDAS autentimisel                                                                                                                     |
+| `amr` (_Authentication Method Reference_)        | `mID` - kasutaja autentimiseks kasutatud autentimismeetod. Võimalikud väärtused: `mID` - mobiil-ID, `idcard` - Eesti ID-kaart, `eIDAS` - piiriülene, `smartid` - Smart-ID                                                                                  |
+| `state`                                          | `abcdefghijklmnop` - turvaelement. Autentimispäringu `state` parameetri väärtus.                                                                                                                                                                           |
+| `nonce`                                          | `qrstuvwxyzabcdef` - turvaelement. Autentimispäringu `nonce` parameetri väärtus. Väärtustatud ainult juhul kui autentimispäringus saadeti `nonce` parameeter.                                                                                              |
+| `acr` (_Authentication Context Class Reference_) | `high` - autentimistase, vastavalt eIDAS tasemetele. Võimalikud väärtused: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Elementi ei kasutata, kui autentimistase ei kohaldu või pole teada                                               |
+| `at_hash`                                        | `X0MVjwrmMQs/IBzfU2osvw==` - pääsutõendi räsi. TARA-s ei kasutata                                                                                                                                                                                          |
+| `email`                                          | `60001019906@eesti.ee` - kasutaja e-posti aadress. Väljastatakse ainult  Eesti ID-kaardiga kasutaja autentimisel. Loetakse kasutaja autentimissertifikaadi SAN laiendist (RFC822 tüüpi `Subject Alternative Name` väljast)                                 |
+| `email_verified`                                 | `false` - tähendab, et e-posti aadressi kuulumine kasutajale on tuvastatud. TARA väljastab alati väärtuse `false`. See tähendab, et TARA ei kontrolli ega väljasta teavet, kas kasutaja on oma eesti.ee e-postiaadressi suunanud või mitte.                |
+| `phone_number`                                   | `+37200000766` - kasutaja telefoninumber. Väljastatakse ainult  Eesti Mobiil-ID'ga kasutaja autentimisel. Telefoninumber esitatakse E.164 formaadis koos riikliku suunakoodiga.                                                                            | 
+| `phone_number_verified`                          | `true` - tähendab, et telefoninumbri kuulumine kasutajale on tuvastatud. TARA väljastab alati väärtuse `true`.                                                                                                                                             |
 
 Identsustõend võib sisaldada muid OpenID Connect protokolli kohaseid välju, kuid neid teenuses ei kasutata. 
 
@@ -471,19 +470,19 @@ Näide:
 
 Vastuses esitatavad väited väljastatakse identsustõendi alusel. 
 
-| json element (väide) | väljastamine kohustuslik | selgitus | 
-|:-----------------------|---------------------|-------------------|
-| `auth_time` | jah | Kasutaja eduka autentimise ajahetk. Unix *epoch* vormingus |
-| `sub` (_Subject_) | jah | Vormingult ja tähenduselt sama, mis `sub` identsustõendis |
-| `given_name` | jah | Vormingult ja tähenduselt sama, mis `profile_attributes.given_name` identsustõendis |
-| `family_name` | jah | Vormingult ja tähenduselt sama, mis `profile_attributes.family_name` identsustõendis |
-| `amr` | jah | Vormingult ja tähenduselt sama, mis `amr` identsustõendis |
-| `date_of_birth` |  ei <sup>1</sup> | Vormingult ja tähenduselt sama, mis `profile_attributes.date_of_birth` identsustõendis |
-| `email` | ei  <sup>1</sup> | Vormingult ja tähenduselt sama, mis `email` identsustõendis |
-| `email_verified` | ei  <sup>1</sup> | Vormingult ja tähenduselt sama, mis `email_verified` identsustõendis |
-| `phone_number` | ei  <sup>1</sup> | Vormingult ja tähenduselt sama, mis `phone_number` identsustõendis |
-| `phone_number_verified` | ei  <sup>1</sup> | Vormingult ja tähenduselt sama, mis `phone_number_verified` identsustõendis |
-| `acr` | ei  <sup>1</sup> | Vormingult ja tähenduselt sama, mis `acr` identsustõendis |
+| json element (väide)    | väljastamine kohustuslik | selgitus                                                                               | 
+|:------------------------|--------------------------|----------------------------------------------------------------------------------------|
+| `auth_time`             | jah                      | Kasutaja eduka autentimise ajahetk. Unix *epoch* vormingus                             |
+| `sub` (_Subject_)       | jah                      | Vormingult ja tähenduselt sama, mis `sub` identsustõendis                              |
+| `given_name`            | jah                      | Vormingult ja tähenduselt sama, mis `profile_attributes.given_name` identsustõendis    |
+| `family_name`           | jah                      | Vormingult ja tähenduselt sama, mis `profile_attributes.family_name` identsustõendis   |
+| `amr`                   | jah                      | Vormingult ja tähenduselt sama, mis `amr` identsustõendis                              |
+| `date_of_birth`         | ei <sup>1</sup>          | Vormingult ja tähenduselt sama, mis `profile_attributes.date_of_birth` identsustõendis |
+| `email`                 | ei  <sup>1</sup>         | Vormingult ja tähenduselt sama, mis `email` identsustõendis                            |
+| `email_verified`        | ei  <sup>1</sup>         | Vormingult ja tähenduselt sama, mis `email_verified` identsustõendis                   |
+| `phone_number`          | ei  <sup>1</sup>         | Vormingult ja tähenduselt sama, mis `phone_number` identsustõendis                     |
+| `phone_number_verified` | ei  <sup>1</sup>         | Vormingult ja tähenduselt sama, mis `phone_number_verified` identsustõendis            |
+| `acr`                   | ei  <sup>1</sup>         | Vormingult ja tähenduselt sama, mis `acr` identsustõendis                              |
 
  <sup>1</sup> Väljastatakse ainult juhul, kui antud väide on esitatud ka identsustõendis.
 
@@ -514,6 +513,7 @@ Kontrollida tuleb:
 - tõendi ajalist kehtivust
 - kasutaja autentinud autentimismeetodit tõendis
 - ülepiirilise autentimise korral eIDAS autentimistaset tõendis
+- `nonce` parameetri väärtust, kui parameeter saadeti autentimispäringus
 
 Lähemalt nendest kontrollidest allpool. Vajadusel saate täpsemat teavet OpenID Connect ja OAuth 2.0 protokollikirjeldustest.
 
@@ -571,19 +571,21 @@ Klientrakendus peab kontrollima, et saadud tõend on välja antud just temale. S
 
 #### 5.1.5 Tõendi ajalise kehtivuse kontrollimine
 
-Kontrollitakse kolme identsustõendis sisalduva elemendi abil - `iat`, `nbf`, `exp`. Klientrakendus kasutab kontrollimisel oma kellaaega. Kontrollida tuleks, et: 
+Tõendi ajalist kehtivust kontrollitakse kahe identsustõendis sisalduva elemendi abil - `iat` ja `exp`. Klientrakendus kasutab kontrollimisel oma kellaaega. Kontrollida tuleks, et: 
 
-1) "not before" ajamoment on kätte jõudnud:
+1) "issued at" aeg oleks kätte jõudnud ja sobiv:
 
-`nbf <= jooksev_aeg + kellade_lubatud_erinevus` 
+`iat <= jooksev_aeg + kellade_lubatud_erinevus` 
 
 2) "expired" ajamoment ei ole kätte jõudnud:
 
 `exp > jooksev_aeg - kellade_lubatud_erinevus`.
 
-`kellade_lubatud_erinevus` väärtus valida ise. Need kontrollid on vajaliku rünnete ja sassiminekute vältimiseks.
+Täiendavalt leidub identsustõendis ka `nbf` ("not before") väide (mille väärtus on võrdne `iat` väitega). Nimetatud element tagastatakse tagasiühilduvuseks vanemate TARA versioonidega. Identsustõendi kehtivus tuleb teostada `iat` väite põhjal ning `nbf` väidet võib ignoreerida.
 
-TARA põhimõte on, et identsustõendile tuleb järgi tulla kohe, 30 sekundi jooksul. Selle aja ületamisel identsustõendit ei väljastatagi.
+`kellade_lubatud_erinevus` väärtus valida ise (arvestada võrgu viiteid, ...).
+
+TARA põhimõte on, et identsustõendile tuleb järgi tulla kohe, 30 sekundi jooksul. Selle aja ületamisel autoriseerimiskood aegub ning identsustõendit ei väljastata.
 
 #### 5.1.6 Autentimismeetodi kontrollimine
 
@@ -599,8 +601,11 @@ Näiteks, kui liidestuja soovib kasutada vaid kõrge eIDAS autentimistasemega au
 
 Juhul kui autentimispäringus eIDAS autentimistaset `acr_values` parameetri abil ei täpsustatud, peab identsustõendis olev väärtus olema `substantial` või `high`.
 
+#### 5.1.8 Nonce parameetri kontrollimine
 
-#### 5.1.8 Seansi loomine
+Kui autentimispäringuga saadeti `nonce` parameeter, siis identsustõend peab sisaldama `nonce` väidet ning klient peab kontrollima, et selle väärtus ühtiks autentimispäringus saadetud väärtusega. Vaata [Viited](Viited), [Core], alamjaotis 15.5.2.  Nonce Implementation Notes. 
+
+#### 5.1.9 Seansi loomine
 
 Identsustõendi eduka kontrollimise järel loob klientrakendus kasutajaga seansi ("logib kasutaja sisse"). Seansi loomine ja pidamine on klientrakenduse kohustus. Kuidas seda teha, ei ole enam autentimisteenuse TARA skoobis.
 
@@ -608,33 +613,32 @@ Märkus. Tavaliselt peetakse veebirakendusega seanssi küpsises hoitava seansit�
 
 ### 5.2 Võltspäringuründe vastane kaitse
 
-Klientrakenduses tuleb rakendada võltspäringuründe (_cross-site request forgery_, CSRF) vastaseid kaitsemeetmeid. Seda tehakse turvakoodide `state` ja `nonce` abil. `state` kasutamine on kohustuslik; `nonce` kasutamine on vabatahtlik. Kirjeldame `state` kasutamise protseduuri, kasutades klientrakenduses seatud küpsist (sellisel juhul ei pea klientrakendus saadetud state parameetri väärtust ise meeles pidama).
+Klientrakenduses tuleb rakendada võltspäringuründe (CSRF ja taasesitusründe) vastaseid kaitsemeetmeid. Seda tehakse turvakoodide `state` ja `nonce` abil. 
 
-Turvakoodi `state` kasutatakse autentimispäringule järgneva tagasisuunamispäringu võltsimise vastu. Klientrakenduses tuleb teostada järgmised sammud:
+* `state` kasutamine on kohustuslik ning tuleb rakendada autentimispäringule järgneva [tagasisuunamispäringu](#42-tagasisuunamisp%C3%A4ring) kontrolliks; 
+* `nonce` kasutamine on vabatahtlik, kuid soovitatav ning selle eesmärk on identsustõendi taasesitusründe tõkestamine. `nonce` kontroll peaks toimuma [identsustõendi kontrolli osana](#518-nonce-parameetri-kontrollimine);
 
-1 Genereerida juhusõne, näiteks pikkusega 16 tärki: `XoD2LIie4KZRgmyc` (tähistame `R`).
+Liidestuja peab otsustama, kas `state` väärtust hoiustatakse liidestuja rakendus poolel või kasutaja brauseris küpsisena.
 
-2 Arvutada juhusõnest `R` räsi `H = hash(R)`, näiteks SHA256 räsialgoritmiga ja teisendades tulemuse Base64 vormingusse: `vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`.
+**Talletades `state` kasutaja brauseris seatud küpsisena, tuleb teostada järgmised sammud:**
 
-3 Seada vahetult enne autentimispäringu tegemist klientrakenduse domeenile küpsis, mille väärtuseks juhusõne `R`. 
+1) Genereerida klientrakenduses vähemalt 16 baidine juhusõne: `XoD2LIie4KZRgmyc` (tähistame `R`);
 
-`Set-Cookie ETEENUS=XoD2LIie4KZRgmyc; HttpOnly`,
+2) Arvutada juhusõnest `R` räsi `H = hash(R)`, näiteks SHA256 räsialgoritmiga, ja teisendades tulemuse Base64 vormingusse: `vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`;
 
-kus `ETEENUS` on vabalt valitud küpsisenimi. Küpsisele tuleb rakendada atribuuti `HttpOnly`.
+3) Seada vahetult enne autentimispäringu tegemist klientrakenduse domeenile küpsis, mille väärtuseks juhusõne `R`:
+   1) `Set-Cookie ETEENUS=XoD2LIie4KZRgmyc; HttpOnly; Secure`, kus `ETEENUS` on vabalt valitud küpsisenimi. Küpsisele tuleb rakendada atribuudid `HttpOnly` ja `Secure`;
 
-4 Seada TARA autentimispäringu tegemisel p 2 arvutatud räsi parameetri `state` väärtuseks:
+4) Seada TARA autentimispäringu tegemisel p 2 arvutatud räsi parameetri `state` väärtuseks:
+   1) `GET ... state=vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`
 
-`GET ... state=vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`
+**Tagasisuunamispäringu töötlemisel peab klientrakendus tegema järgmist:**
 
-Parameetri `state` pikkus peab olema minimaalselt 8 tähemärki.
+1) Võtta päringuga tuleva küpsise `ETEENUS` väärtus (tagasisuunamispäringuga saadetakse kasutaja kaks asja: kasutaja brauserist juhusõne küpsisena ja juhusõnest arvutatud räsiväärtus `state` parameetris);
 
-Tagasisuunamispäringu töötlemisel peab klientrakendus tegema järgmist:
+2) Arvutada küpsise väärtusest räsi ja teisendama Base64 kodeeringusse;
 
-5 Võtab päringuga tuleva küpsise `ETEENUS` väärtuse (tagasisuunamispäringuga saadetakse kasutaja kaks asja: kasutaja brauserist juhusõne küpsisena ja juhusõnest arvutatud räsiväärtus `state` parameetris).
-
-6 Arvutab küpsise väärtusest räsi ja teisendab base64 kodeeringusse.
-
-7 Kontrollib, et räsi ühtib tagasisuunamispäringus tagasipeegeldatava `state` väärtusega.
+3) Kontrollida, et räsi ühtib tagasisuunamispäringus tagasipeegeldatava `state` väärtusega;
 
 Tagasisuunamispäringut tohib aktsepteerida ainult ülalkirjeldatud kontrolli õnnestumisel.
 
@@ -652,23 +656,23 @@ Logimine peab võimaldama rekonstrueerida TARA ja klientrakenduse suhtluse käig
 
 6.1 Testteenus
 
-| otspunkt      |                        URL      |
-|---------------|---------------------------------|
+| otspunkt                          | URL                                                                                                                                                                                                                                                         |
+|-----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | teenuseteave (_server discovery_) | [https://tara-test.ria.ee/.well-known/openid-configuration](https://tara-test.ria.ee/.well-known/openid-configuration) <br>[https://tara-test.ria.ee/oidc/.well-known/openid-configuration](https://tara-test.ria.ee/oidc/.well-known/openid-configuration) |
-| teenuse avalik allkirjastamisvõti | [https://tara-test.ria.ee/oidc/jwks](https://tara-test.ria.ee/oidc/jwks) |
-| klientrakenduse registreerimine | dünaamilist registreerimist ei toetata, registreerimine staatiliselt, `help@ria.ee` kaudu |
-| autentimine (_authorization_) | [https://tara-test.ria.ee/oidc/authorize](https://tara-test.ria.ee/oidc/authorize) | 
-| tõendiväljastus (_token_) | [https://tara-test.ria.ee/oidc/token](https://tara-test.ria.ee/oidc/token) | 
+| teenuse avalik allkirjastamisvõti | [https://tara-test.ria.ee/oidc/jwks](https://tara-test.ria.ee/oidc/jwks)                                                                                                                                                                                    |
+| klientrakenduse registreerimine   | dünaamilist registreerimist ei toetata, registreerimine staatiliselt, `help@ria.ee` kaudu                                                                                                                                                                   |
+| autentimine (_authorization_)     | [https://tara-test.ria.ee/oidc/authorize](https://tara-test.ria.ee/oidc/authorize)                                                                                                                                                                          | 
+| tõendiväljastus (_token_)         | [https://tara-test.ria.ee/oidc/token](https://tara-test.ria.ee/oidc/token)                                                                                                                                                                                  | 
 
 6.2 Toodanguteenus
 
-| otspunkt      |                        URL      |
-|---------------|---------------------------------|
+| otspunkt                          | URL                                                                                                                                                                                                                                     |
+|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | teenuseteave (_server discovery_) | [https://tara.ria.ee/.well-known/openid-configuration](https://tara.ria.ee/.well-known/openid-configuration) <br>[https://tara.ria.ee/oidc/.well-known/openid-configuration](https://tara.ria.ee/oidc/.well-known/openid-configuration) |
-| teenuse avalik allkirjastamisvõti | [https://tara.ria.ee/oidc/jwks](https://tara.ria.ee/oidc/jwks) |
-| klientrakenduse registreerimine | dünaamilist registreerimist ei toetata, registreerimine staatiliselt, `help@ria.ee` kaudu |
-| autentimine (_authorization_) | [https://tara.ria.ee/oidc/authorize](https://tara.ria.ee/oidc/authorize) | 
-| tõendiväljastus (_token_) | [https://tara.ria.ee/oidc/token](https://tara.ria.ee/oidc/token) | 
+| teenuse avalik allkirjastamisvõti | [https://tara.ria.ee/oidc/jwks](https://tara.ria.ee/oidc/jwks)                                                                                                                                                                          |
+| klientrakenduse registreerimine   | dünaamilist registreerimist ei toetata, registreerimine staatiliselt, `help@ria.ee` kaudu                                                                                                                                               |
+| autentimine (_authorization_)     | [https://tara.ria.ee/oidc/authorize](https://tara.ria.ee/oidc/authorize)                                                                                                                                                                | 
+| tõendiväljastus (_token_)         | [https://tara.ria.ee/oidc/token](https://tara.ria.ee/oidc/token)                                                                                                                                                                        | 
 
 6.3 Aegumisajad (_timeout_)
 
@@ -727,11 +731,11 @@ TARA-s kasutatavate siseriiklike autentimisvahendite autentimistasemed kinnitab 
 
 Siseriiklikele autentimismeetoditele on TARA-s määratud järgmised autentimistasemed: 
 
-| Autentimismeetod | Autentimistase | 
-|---------------|-------------|
-| ID-kaart | [kõrge](https://ec.europa.eu/digital-building-blocks/wikis/display/EIDCOMMUNITY/Estonia) | 
-| Mobiil-ID | [kõrge](https://ec.europa.eu/digital-building-blocks/wikis/display/EIDCOMMUNITY/Estonia) | 
-| Smart-ID | [kõrge](https://www.ria.ee/media/586/download) <sup>1</sup> |
+| Autentimismeetod | Autentimistase                                                                                                              | 
+|------------------|-----------------------------------------------------------------------------------------------------------------------------|
+| ID-kaart         | [kõrge](https://ec.europa.eu/digital-building-blocks/wikis/display/EIDCOMMUNITY/Estonia)                                    | 
+| Mobiil-ID        | [kõrge](https://ec.europa.eu/digital-building-blocks/wikis/display/EIDCOMMUNITY/Estonia)                                    | 
+| Smart-ID         | [kõrge](https://www.ria.ee/media/586/download) <sup>1</sup> |
 
 <sup>1</sup>NB! Tase kehtib vaid Eesti isikukoodiga isikutele, kellele on Smart-ID konto. Tuleb arvestada, et mitteresidendid (Eesti e-residendid) pole eristatavad residentidest.
 
@@ -759,39 +763,40 @@ NB! Riigi Infosüsteemi Amet ei taga teiste riikide autentimisteenuste toimimist
 
 ## Muutelugu
 
-| Versioon, kuupäev | Muudatus |
-|-----------------|--------------|
-| 1.24, 09.05.2023   | Formaadi ja kirjavigade parandused. Autentimisvahendite nimetuste ühtlustamine, EU eID kui autentimismeetod (piiriülene autentimine eIDAS taristus). |
-| 1.23, 29.03.2023   | Formaadi ja kirjavigade parandused. Autentimisvahendite nimetuste ühtlustamine, EU eID kui autentimisvahend (piiriülene autentimine eIDAS taristus). |
-| 1.22, 29.03.2023   | Lisatud viide Riigi SSO teenusele (GovSSO). Parendatud sõnastust. |
-| 1.21, 10.11.2022   | Täpsustatud "5.1.2 Otspunktide TLS ühenduse kontrollimine" peatükis juhiseid. |
-| 1.20, 16.09.2022   | Lisatud peatükk "9 Erasektori asutuse erisused". |
-| 1.19, 28.10.2021   | Identsustõendi kehtivusaeg muudetud 10-lt minutilt 40 sekundile.<br>Lisatud [standardijärgse teenusteabe otspunkti tee](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfig) `/.well-known/openid-configuration`. Senine tee `/oidc/.well-known/openid-configuration` jääb tagasiühilduvuseks alles. |
-| 1.18, 26.05.2021   | Täpsustatud päringutes tundmatute väljade ja väärtuste lubatavust. Täpsustatud nõudeid `state` parameetrile ning tagasisuunamis-URL-ile. |
-| 1.17, 19.03.2021   | Identsustõendi allkirja kontrollimise täpsustused. |
-| 1.16, 29.12.2020   | `banklink` skoobi parameetri eemaldamine. |
-| 1.15, 01.10.2020   | `sub` väite täpsustus - eidas identifikaatori pikkusepiirang. |
-| 1.14, 04.08.2020   | Lisandus valikuline skoop `phone`. Täiendatud `acr_values` parameetri ja autentimistasemete käsitlust. |
-| 1.13, 26.06.2020   | Täiendatud kasutajapoolset autentimise katkestamise käsitlust. Lisandus veakood `user_cancel`.  |
-| 1.12, 27.04.2020   | Parandus ja täpsustus võltspäringuründe vastase kaitse kirjelduses. |
-| 1.11, 29.01.2020   | Täpsustatud piiriülese autentimise kirjeldust. |
-| 1.10, 16.01.2020   | Täpsustatud identsustõendi vormingu kirjeldust. |
-| 1.9, 21.11.2019   | Lisatud skoobid `eidas:country:xx`. |
-| 1.8, 20.05.2019   | Täpsustatud identsustõendi kontrolle `acr` ja `amr` väidete osas. |
-| 1.7, 07.05.2019   | Täpsustatud autentimisprotsessiga seotud olulised aegumisajad. |
-| 1.6, 02.04.2019   | Täpsustatud atribuutide tagastamist ülepiirilise autentimise korral. Täpsustatud väidete `state` ja `nonce` kirjeldusi identsustõendis. |
-| 1.5, 21.03.2019   | Täpsemalt kirjeldatud identsustõendi allkirja kontrollimist |
-| 1.4, 18.03.2019   | Täpsustatud tagasisuunamispäringu kirjeldust vea korral. |
-| 1.3, 21.02.2019   | Lisatud kasutajainfopäringu kirjeldus. |
-| 1.2, 01.02.2019   | Autentimismeetodite valikuline kasutus `scope` parameetri abil. |
-| 1.1, 29.11.2018   | Täpsustused autentimispäringu parameetri osas (`redirect_uri`). |
-| 1.0, 03.10.2018   | Eemaldatud Danske pank autentimismeetodite toe koosseisust |
-| 0.9, 18.09.2018   | Eemaldatud mobiilinumber identsustõendi koosseisust |
-| 0.8, 18.06.2018   | Täiendused seoses Smart-ID toega. |
-| 0.7, 24.05.2018   | Täiendused seoses pangalinkide toega. |
-| 0.6, 22.04.2018   | Täiendatud autentimisvoo tehnilist kirjeldust. Struktuuri parendusi |
-| 0.5, 16.04.2018   | Translitereerimise täpsustused; võltspäringu vastane kaitse üksikasjalikumalt kirjeldatud; täpsemalt kirjeldatud identsustõendi kontrollimine; lisatud skoop `eidasonly` |
-| 0.4, 30.01.2018   | Translitereerimise täiendused piiriülese autentimise korral (eIDAS) |
-| 0.3, 30.01.2018   | Lisatud piiriülene autentimine (eIDAS) |
-| 0.2, 28.11.2017   | Lisatud ID-kaardiga autentimine |
-| 0.1, 10.10.2017   | Mobiil-ID-ga autentimine. |
+| Versioon, kuupäev | Muudatus                                                                                                                                                                                                                                                                                                                   |
+|-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1.25, 23.08.2023  | `iat` ja `nbf` väidete kasutuse ümber defineerimine identsustõendi valideerimisel. `state` ja `nonce` parameetrite kasutuse täpsustused. Peatükkide järjekorra ümberstruktueerimine. |
+| 1.24, 09.05.2023  | Formaadi ja kirjavigade parandused. Autentimisvahendite nimetuste ühtlustamine, EU eID kui autentimismeetod (piiriülene autentimine eIDAS taristus). |
+| 1.23, 28.04.2023  | Täpsustatud eidas:country:xx skoobi kasutuse kirjeldust. |
+| 1.22, 29.03.2023  | Lisatud viide Riigi SSO teenusele (GovSSO). Parendatud sõnastust. |
+| 1.21, 10.11.2022  | Täpsustatud "5.1.2 Otspunktide TLS ühenduse kontrollimine" peatükis juhiseid. |
+| 1.20, 16.09.2022  | Lisatud peatükk "9 Erasektori asutuse erisused". |
+| 1.19, 28.10.2021  | Identsustõendi kehtivusaeg muudetud 10-lt minutilt 40 sekundile.<br>Lisatud [standardijärgse teenusteabe otspunkti tee](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfig) `/.well-known/openid-configuration`. Senine tee `/oidc/.well-known/openid-configuration` jääb tagasiühilduvuseks alles. |
+| 1.18, 26.05.2021  | Täpsustatud päringutes tundmatute väljade ja väärtuste lubatavust. Täpsustatud nõudeid `state` parameetrile ning tagasisuunamis-URL-ile.                                                                                                                                                                                   |
+| 1.17, 19.03.2021  | Identsustõendi allkirja kontrollimise täpsustused.                                                                                                                                                                                                                                                                         |
+| 1.16, 29.12.2020  | `banklink` skoobi parameetri eemaldamine.                                                                                                                                                                                                                                                                                  |
+| 1.15, 01.10.2020  | `sub` väite täpsustus - eidas identifikaatori pikkusepiirang.                                                                                                                                                                                                                                                              |
+| 1.14, 04.08.2020  | Lisandus valikuline skoop `phone`. Täiendatud `acr_values` parameetri ja autentimistasemete käsitlust.                                                                                                                                                                                                                     |
+| 1.13, 26.06.2020  | Täiendatud kasutajapoolset autentimise katkestamise käsitlust. Lisandus veakood `user_cancel`.                                                                                                                                                                                                                             |
+| 1.12, 27.04.2020  | Parandus ja täpsustus võltspäringuründe vastase kaitse kirjelduses.                                                                                                                                                                                                                                                        |
+| 1.11, 29.01.2020  | Täpsustatud piiriülese autentimise kirjeldust.                                                                                                                                                                                                                                                                             |
+| 1.10, 16.01.2020  | Täpsustatud identsustõendi vormingu kirjeldust.                                                                                                                                                                                                                                                                            |
+| 1.9, 21.11.2019   | Lisatud skoobid `eidas:country:xx`.                                                                                                                                                                                                                                                                                        |
+| 1.8, 20.05.2019   | Täpsustatud identsustõendi kontrolle `acr` ja `amr` väidete osas.                                                                                                                                                                                                                                                          |
+| 1.7, 07.05.2019   | Täpsustatud autentimisprotsessiga seotud olulised aegumisajad.                                                                                                                                                                                                                                                             |
+| 1.6, 02.04.2019   | Täpsustatud atribuutide tagastamist ülepiirilise autentimise korral. Täpsustatud väidete `state` ja `nonce` kirjeldusi identsustõendis.                                                                                                                                                                                    |
+| 1.5, 21.03.2019   | Täpsemalt kirjeldatud identsustõendi allkirja kontrollimist                                                                                                                                                                                                                                                                |
+| 1.4, 18.03.2019   | Täpsustatud tagasisuunamispäringu kirjeldust vea korral.                                                                                                                                                                                                                                                                   |
+| 1.3, 21.02.2019   | Lisatud kasutajainfopäringu kirjeldus.                                                                                                                                                                                                                                                                                     |
+| 1.2, 01.02.2019   | Autentimismeetodite valikuline kasutus `scope` parameetri abil.                                                                                                                                                                                                                                                            |
+| 1.1, 29.11.2018   | Täpsustused autentimispäringu parameetri osas (`redirect_uri`).                                                                                                                                                                                                                                                            |
+| 1.0, 03.10.2018   | Eemaldatud Danske pank autentimismeetodite toe koosseisust                                                                                                                                                                                                                                                                 |
+| 0.9, 18.09.2018   | Eemaldatud mobiilinumber identsustõendi koosseisust                                                                                                                                                                                                                                                                        |
+| 0.8, 18.06.2018   | Täiendused seoses Smart-ID toega.                                                                                                                                                                                                                                                                                          |
+| 0.7, 24.05.2018   | Täiendused seoses pangalinkide toega.                                                                                                                                                                                                                                                                                      |
+| 0.6, 22.04.2018   | Täiendatud autentimisvoo tehnilist kirjeldust. Struktuuri parendusi                                                                                                                                                                                                                                                        |
+| 0.5, 16.04.2018   | Translitereerimise täpsustused; võltspäringu vastane kaitse üksikasjalikumalt kirjeldatud; täpsemalt kirjeldatud identsustõendi kontrollimine; lisatud skoop `eidasonly`                                                                                                                                                   |
+| 0.4, 30.01.2018   | Translitereerimise täiendused piiriülese autentimise korral (eIDAS)                                                                                                                                                                                                                                                        |
+| 0.3, 30.01.2018   | Lisatud piiriülene autentimine (eIDAS)                                                                                                                                                                                                                                                                                     |
+| 0.2, 28.11.2017   | Lisatud ID-kaardiga autentimine                                                                                                                                                                                                                                                                                            |
+| 0.1, 10.10.2017   | Mobiil-ID-ga autentimine.                                                                                                                                                                                                                                                                                                  |

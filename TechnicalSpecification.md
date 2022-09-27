@@ -4,7 +4,7 @@ permalink: TechnicalSpecification
 
 # Technical specification
 {: .no_toc}
-v 1.15, 26.06.2023
+v 1.16, 23.08.2023
 
 - TOC
 {:toc}
@@ -203,12 +203,12 @@ Elements of an authentication request:
 | protocol, host, and patch | yes        | `https://tara.ria.ee/oidc/authorize`                                              | `/authorize` is the OpenID Connect-based authentication endpoint of the TARA service (the concept of ‘authorisation’ originates from the OAuth 2.0 standard protocol).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | `redirect_uri`            | yes        | `redirect_uri=https%3A%2F%2F eteenus.asutus.ee%2Ftagasi`                          | Redirect URL. The redirect URL is selected by the institution. The redirect URL may include the query component. <br><br> [URL encoding](https://en.wikipedia.org/wiki/Percent-encoding) should be used, if necessary.<br><br>It is [not permitted](https://tools.ietf.org/html/rfc6749#section-3.1.2) to use the URI [fragment component](https://tools.ietf.org/html/rfc3986#section-3.5) (`#` and the following component).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | `scope`                   | yes        | `scope=openid`<br><br>`scope=openid%20eidas`<br><br>`scope=openid%20idcard%20mid` | The authentication scope.<br><br>`openid` is compulsory (required by the OpenID Connect protocol).<br><br> The scopes of `idcard`, `mid`, `smartid`, `eidas` (and `eidasonly`) can be used to request that only the desired method of authentication is displayed to the user. See 4.1.4 Selective use of authentication methods.<br><br>The `email` scope can be used to request that the user’s e-mail address is issued in the identity token. See 4.1.2 Requesting e-mail address.<br><br>In case of cross-border authentication, further scopes can be used to either specify the foreign country and direct the user to its authentication service or to request additional personal data (see 4.1.4 and 4.1.1).<br><br>When using several scopes, the scopes must be separated by spaces. Thereat, the space is presented in the URL encoding (`%20`) ([RFC 3986](https://www.ietf.org/rfc/rfc3986.txt)). Scope values are case sensitive. Only scope values described in current document are allowed, other values cause an error with code `invalid_scope` to be returned. |
-| `state`                   | yes        | `state=hkMVY7vjuN7xyLl5`                                                          | Security code against false request attacks (_cross-site request forgery_, CSRF). Read more about formation and verification of `state` under ‘Protection against false request attacks.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `state`                   | yes        | `state=hkMVY7vjuN7xyLl5`                                                          | `state` parameter is used to maintain state between the authentication and callback requests. Used to mitigate Cross-Site Request Forgery (CSRF, XSRF) attacks. `state` parameter should contain a hashed value of a string consisting of at least 16 random characters and encoded in Base64. Read more about formation and verification of `state` under ‘Protection against false request attacks’.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | `response_type`           | yes        | `response_type=code`                                                              | Determines the manner of communication of the authentication result to the server. The method of authorisation code is supported (_authorization flow_ of the OpenID Connect protocol) and it is referred to the `code` value.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | `client_id`               | yes        | `client_id=58e7...`                                                               | Application identifier. The application identifier is issued to the institution by RIA upon registration of the client application as a user of the authentication service.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | `ui_locales`              | no         | `ui_locales=et`                                                                   | Selection of the user interface language. The following languages are supported: `et`, `en`, `ru`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| `nonce`                   | no         | `fsdsfwrerhtry3qeewq`                                                             | A unique parameter which helps to prevent replay attacks based on the protocol ([References](Viited), [Core], subsection 3.1.2.1. Authentication Request). The `nonce` parameter is not compulsory.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| `acr_values`              | no         | `acr_values=high`                                                                 | The minimum required level of authentication based on the eIDAS LoA ([read more about eIDAS level-of-assurance](TechnicalSpecification#6-eidas-levels-of-assurance)). It is permitted to apply only one of the following values: `low`, `substantial`, `high` . `substantial` is used by default if the value has not been specified. <br><br>TARA will only display authentication methods which have an equal or higher LoA compared to the value of `acr_values` in the authentication request. For cross-border authentication, the value is forwarded to the foreign country's eIDAS authentication service. <br><br> On the interfaced client side, [it must be verified](https://e-gov.github.io/TARA-Doku/TechnicalSpecification#517-verifying-the-eidas-level-of-assurance) that the authentication level in the `acr` claim of an identity token is not lower than the minimum allowed level-of-assurance.                                                                                                                                |
+| `nonce`                   | no         | `nonce=fsdsfwrerhtry3qeewq`                                                       | Recommended to use and verify. A unique value which helps to prevent replay attacks based on the protocol ([References](Viited), [Core], subsection 3.1.2.1. Authentication Request). Can be used to associate and verify identity token with a specific authentication process. `nonce` parameter should contain a hashed value of a string consisting of at least 16 random characters and encoded in Base64. Read more about formation and verification of `nonce` under ‘Protection against false request attacks’.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `acr_values`              | no         | `acr_values=high`                                                                 | The minimum required level of authentication based on the eIDAS LoA ([read more about eIDAS level-of-assurance](TechnicalSpecification#6-eidas-levels-of-assurance)). It is permitted to apply only one of the following values: `low`, `substantial`, `high` . `substantial` is used by default if the value has not been specified. <br><br>TARA will only display authentication methods which have an equal or higher LoA compared to the value of `acr_values` in the authentication request. For cross-border authentication, the value is forwarded to the foreign country's eIDAS authentication service. <br><br> On the interfaced client side, [it must be verified](https://e-gov.github.io/TARA-Doku/TechnicalSpecification#517-verifying-the-eidas-level-of-assurance) that the authentication level in the `acr` claim of an identity token is not lower than the minimum allowed level-of-assurance.                                                                                                                               |
 
 #### 4.1.1 Requesting attributes about foreigners
 
@@ -236,7 +236,7 @@ The `email_verified` is always `false`. It means that TARA does not verify or is
 
 #### 4.1.3 Requesting phone number
 
-The `phone` scope can be used to request the user’s phone number in the identity token. This option is targeted for client applications that use Mobile-ID, which requires user's phone number as input, as a means for giving digital signatures. The `phone` scope must be added to the main scope `openid`. The claims `phone` and `phone_number_verified` are issued in the identity token. For example:
+The `phone` scope can be used to request the user’s phone number in the identity token. This option is targeted for client applications that use Mobile-ID, which requires user's phone number for input, as a means for giving digital signatures. The `phone` scope must be added to the main scope `openid`. The claims `phone` and `phone_number_verified` are issued in the identity token. For example:
 
 ```
 "sub": "EE60001019906",
@@ -411,7 +411,7 @@ The following claims are presented in the identity token:
 | `iss` (_Issuer_)                                 | `https://tara.ria.ee` - issuer of the certificate (TARA); in the case of test services `https://tara-test.ria.ee`                                                                                                                                                                          |
 | `aud` (_Audience_)                               | `TARA-Demo` - the ID of a client application that requested authentication (the value of `client_id` field is specified upon directing the user to the authentication process).                                                                                                            |
 | `exp` (_Expires_)                                | `1530295852` - the expiration time of the certificate (in Unix _epoch_ format).                                                                                                                                                                                                            |
-| `iat` (_Issued At_)                              | `1530267052` - the time of issue of the certificate (in Unix _epoch_ format).                                                                                                                                                                                                              |
+| `iat` (_Issued At_)                              | `1530267052` - the time of issuance of the certificate (in Unix _epoch_ format).                                                                                                                                                                                                           |
 | `nbf` (_Not Before_)                             | `1530266752` - the validity start time of the certificate (in Unix _epoch_ format).                                                                                                                                                                                                        |
 | `sub` (_Subject_)                                | `EE60001019906` - the identifier of the authenticated user (personal identification code or eIDAS identifier) with the prefix of the country code of the citizen (country codes based on the ISO 3166-1 alpha-2 standard). NB! eIDAS identifier length may be a maximum of 256 characters. |
 | `profile_attributes`                             | the data of the authenticated user, including the eIDAS attributes                                                                                                                                                                                                                         |
@@ -491,7 +491,7 @@ Response body might contain other fields, that client application must ignore.
 
 **Error handling**
 
-In case the access token presented to the user information endpoint is missing or is expired, an error code and a brief description about the error are returned as `WWW-Authenticate` header according to the [OpenID Connect Core 1.0 spetsifikatsioonile](https://openid.net/specs/openid-connect-core-1_0.html#UserInfoError).
+In case the access token presented to the user information endpoint is missing or is expired, an error code and a brief description about the error are returned as `WWW-Authenticate` header according to the [OpenID Connect Core 1.0 specification](https://openid.net/specs/openid-connect-core-1_0.html#UserInfoError).
 
 An example:
 
@@ -515,6 +515,7 @@ The verification must verify identity token’s:
 - validity
 - authentication method
 - eIDAS level of assurance
+- value of `nonce` if the parameter was used in authentication request
 
 For more detailed information about the identity token verifications can be found from OpenID Connect and OAuth 2.0 protocol specifications.
 
@@ -570,19 +571,21 @@ The client application must verify whether the certificate received was issued f
 
 #### 5.1.5 Verifying the validity of the certificate
 
-The verification is done using three elements in the identity token: `iat`, `nbf`, `exp`. The client application uses its own clock to verify the validity. The following details should be verified:
+The verification is done using two elements in the identity token: `iat` and `exp`. The client application uses its own clock to verify the validity. The following details should be verified:
 
-1) that "not before" time has reached:
+1) that "issued at" time is acceptable to the client:
 
-`nbf <= jooksev_aeg + kellade_lubatud_erinevus` (current time + permitted difference between clocks).
+`iat <= current_time + permitted_difference_between_clocks`
 
 2) that the "expired" time has not been reached:
 
-`exp > jooksev_aeg - kellade_lubatud_erinevus` (current time - permitted difference between clocks).
+`exp > current_time - permitted_difference_between_clocks`
 
-The application must choose the `kellade_lubatud_erinevus` value. These checks are required for preventing attacks and confusion.
+The identity token also includes the `nbf` ('not before') claim (which value is equal to `iat` claim). This element is present for backwards compatibility with older versions of TARA. The ID token validity check should be done based on `iat` claim and `nbf` can be ignored.
 
-The identity token must be obtained immediately or within 30 seconds. When the time limit is exceeded, the identity token will not be issued.
+The application must choose the `permitted_difference_between_clocks` value (considering network latency, ...).
+
+The identity token must be obtained as soon as possible within 30 seconds. When the time limit is exceeded, the authorization code expires and identity token will not be issued.
 
 #### 5.1.6 Verifying the authentication method used in authentication
 
@@ -598,39 +601,42 @@ For example, if the client application wants to use only authentication methods 
 
 In case the level of assurance in the authentication request using `acr_values` parameter is not specified, the identity token must be equal to a level of assurance `substantial` or `high`.
 
-#### 5.1.8 Creating a session
+#### 5.1.8 Verifying nonce parameter
+
+If the optional `nonce` parameter was sent in the authentication request, then the `nonce` claim must be present in ID token and client must verify the value with the value sent in the authentication request. See [References](Viited), [Core], subsection 15.5.2.  Nonce Implementation Notes.
+
+#### 5.1.9 Creating a session
 
 After a successful verification of the identity token, the client application will create a session with the user (‘log in the user’). The client application is responsible for creating and holding the sessions. The methods for doing this are not included in the scope of the TARA authentication service.
 
 ### 5.2 Protection against false request attacks
 
-The client application must implement protective measures against false request attacks (_cross-site request forgery_, CSRF). This can be achieved by using `state` and `nonce` security codes. Using `state` is compulsory; using `nonce` is optional. Using `state` with a cookie set on the client application side means that the client application itself does not have to remember the state parameter value.  The process is described below.
+The client application must implement protective measures against false request attacks (_cross-site request forgery_, CSRF). This can be achieved by using `state` and `nonce` security codes.
 
-The `state` security code is used to combat falsification of the redirect request following the authentication request. The client application must perform the following steps:
+* Using `state` is compulsory and the parameter should be verified during [redirect request](#42-redirect-request); 
+* Using `nonce` is optional (but highly recommended) and its purpose is to avoid identity token replay attacks. `nonce` verification should be done during [identity token verification](#518-verifying-nonce-parameter);
 
-1 Generate a nonce word, for example of the length of 16 characters: `XoD2LIie4KZRgmyc` (referred to as `R`).
+The interfacer has to decide whether `state` value is stored on the server side or in the user's browser as a cookie.
 
-2 Calculate from the `R` nonce word the `H = hash(R)`hash, for example by using the SHA256 hash algorithm and by converting the result to the Base64 format: `vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`.
+**When storing `state` as a cookie, the client application must perform the following steps:**
 
-3 Add an order to set a cookie for the client application domain with a value of R immediately before making the authentication request, for example:
+1) Generate a random string of at least 16 bytes: `XoD2LIie4KZRgmyc` (referred to as `R`);
 
-`Set-Cookie ETEENUS=XoD2LIie4KZRgmyc; HttpOnly`,
+2) Calculate the hash (referred to as `H`) of `R` (`H = hash(R)`), for example by using the SHA256 hash algorithm, and convert the result to Base64 format: `vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`;
 
-where `ETEENUS` is a freely selected cookie name. The `HttpOnly` attribute must be applied to the cookie.
+3) Immediately before making the authentication request, add an order to set a cookie for the client application domain with a value of `R`:
+   1) `Set-Cookie CLIENTSERVICE=XoD2LIie4KZRgmyc; HttpOnly; Secure` where `CLIENTSERVICE` is a freely selected cookie name. The `HttpOnly` and `Secure` attributes must be applied;
 
-4 Set the following value, in the authentication request to TARA, for the `state` parameter calculated based on section 2:
+4) In the authentication request, set the value of `state` to `H`:
+   1) `GET ... state=vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`;
 
-`GET ... state=vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`
+**During processing of the redirect request, the client application must:**
 
-Length of `state` parameter must be minimally 8 characters.
+1) Take the `CLIENTSERVICE` value of the cookie received with the request (two user specific elements are sent with the redirect request: the cookie containing `R` and the `state` parameter containing `H`);
 
-In the course of processing the redirect request, the client application must:
+2) Use the received cookie´s value to calculate the hash and encode it with Base64;
 
-5 Take the `ETEENUS` value of the cookie received with the request (two user specific elements are sent with the redirect request: a nonce word as a cookie and the hash value calculated from the nonce word in the `state` parameter).
-
-6 Calculate the hash based on the cookie value and encode it with base64.
-
-7 Verify that the hash matches the `state` value mirrored back in the redirect request.
+3) Verify that the hash matches the `state` value mirrored back in the redirect request;
 
 The redirect request may only be accepted if the checks described above is successful.
 
@@ -642,27 +648,9 @@ Further information: unfortunately, this topic is not presented clearly in the O
 
 Logging must enable the reconstruction of the course of the communication between TARA and the client application for each occasion of using TARA. For this purpose, all requests and responses must be logged by TARA as well as by the client application: [authentication request](#41-authentication-request), [redirect request](#42-redirect-request) and [identity token request](#43-identity-token-request). As the volumes of data transferred are not large, the URL as well as the identity token must be logged in full. The retention periods of the logs should be determined based on the importance of the client application. We advise using 1 … 7 years. In case of any issue, please submit an excerpt from the log (Which requests were sent to TARA? Which responses were received?).
 
-## 6 eIDAS levels of assurance
+## 6 Endpoints and timeouts
 
-As stated by [eIDAS regulation](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014R0910&from=EN), eIDAS level of assurance (LoA) is the level of reliability (high, substantial, low) assigned to a means of authentication under the implementing regulation [(EL) 2015/1502](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015R1502&from=EN). The LoA of a means of authentication is determined by several aspects: the basis of identity issuance, organizational processes, the technical solution and management of the solution.
-
-Levels of assurance for domestic authentication methods used in TARA are approved by the Information System Authority according to eIDAS implementing regulation. 
-
-Means of authentication used in TARA have been assigned the following levels of assurance:
-
-| Means of authentication | Level of assurance                                                                                                         |
-|-------------------------|----------------------------------------------------------------------------------------------------------------------------|
-| ID-Card                 | [high](https://ec.europa.eu/digital-building-blocks/wikis/display/EIDCOMMUNITY/Estonia)                                    |
-| Mobile-ID               | [high](https://ec.europa.eu/digital-building-blocks/wikis/display/EIDCOMMUNITY/Estonia)                                    |
-| Smart-ID                | [high](https://www.ria.ee/media/586/download) <sup>1</sup> |
-
-<sup>1</sup>NB! The LoA applies only for persons with an Estonian identity code and a Smart-ID account. Interfacing party has to consider that non-residents (Estonian e-residents) are not distinguishable from residents.
-
-Every member state assigns LoA's to their own domestic means of authentication and notifies other member states of them according to [eIDAS regulation](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015R1502&from=EN). Please refer [here](https://ec.europa.eu/cefdigital/wiki/display/EIDCOMMUNITY/Overview+of+pre-notified+and+notified+eID+schemes+under+eIDAS) for a list of all authentication methods that have been notified by member states.
-
-## 7 Endpoints and timeouts
-
-7.1 Test service
+6.1 Test service
 
 | endpoint                               | URL                                                                                                                                                                                                                                                         |
 |----------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -672,7 +660,7 @@ Every member state assigns LoA's to their own domestic means of authentication a
 | authorization                          | [https://tara-test.ria.ee/oidc/authorize](https://tara-test.ria.ee/oidc/authorize)                                                                                                                                                                          | 
 | token                                  | [https://tara-test.ria.ee/oidc/token](https://tara-test.ria.ee/oidc/token)                                                                                                                                                                                  | 
 
-7.2 Production service
+6.2 Production service
 
 | endpoint                               | URL                                                                                                                                                                                                                                     |
 |----------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -682,7 +670,7 @@ Every member state assigns LoA's to their own domestic means of authentication a
 | authorization                          | [https://tara.ria.ee/oidc/authorize](https://tara.ria.ee/oidc/authorize)                                                                                                                                                                | 
 | token                                  | [https://tara.ria.ee/oidc/token](https://tara.ria.ee/oidc/token)                                                                                                                                                                        | 
 
-7.3 Timeouts
+6.3 Timeouts
 
 | timeout                           | value  | remark                                                                                                                                                                                                                                                                       |
 |-----------------------------------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -691,7 +679,7 @@ Every member state assigns LoA's to their own domestic means of authentication a
 | OAuth authorization code          | 30 s   | The client application must obtain the ID token using authorization code within 30 seconds.                                                                                                                                                                                  |
 | ID token (and OAuth access token) | 40 s   | The ID token includes the token expiry time. For security reasons, the validity period of the token is set to 40 seconds. The client application must not use the expired token. Note that ID token is not a proof of a session between the client application and the user. |
 
-## 8 Recommendations for interfacing with TARA
+## 7 Recommendations for interfacing with TARA
 
 Interfacing with TARA is easy. Yet, the operations should be carefully planned and executed.
 
@@ -728,6 +716,24 @@ As a next step, the institution performs tests of its client application interfa
 **Subscribing to the TARA production service.** After successful testing, the institution submits an application for integration with the production version for the client application. The application must include the redirect-URL of the production version of the client application (`redirect_uri`) based on the OpenID Connect protocol and other information.
 
 RIA, having satisfied the application, issues a password for the production version of the client application, `client_secret` and grants access to the production service for the production version of the client application.
+
+## 8 eIDAS levels of assurance
+
+As stated by [eIDAS regulation](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014R0910&from=EN), eIDAS level of assurance (LoA) is the level of reliability (high, substantial, low) assigned to a means of authentication under the implementing regulation [(EL) 2015/1502](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015R1502&from=EN). The LoA of a means of authentication is determined by several aspects: the basis of identity issuance, organizational processes, the technical solution and management of the solution.
+
+Levels of assurance for domestic authentication methods used in TARA are approved by the Information System Authority according to eIDAS implementing regulation.
+
+Means of authentication used in TARA have been assigned the following levels of assurance:
+
+| Means of authentication | Level of assurance                                                                                                         |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------|
+| ID-Card                 | [high](https://ec.europa.eu/digital-building-blocks/wikis/display/EIDCOMMUNITY/Estonia)                                    |
+| Mobile-ID               | [high](https://ec.europa.eu/digital-building-blocks/wikis/display/EIDCOMMUNITY/Estonia)                                    |
+| Smart-ID                | [high](https://www.ria.ee/sites/default/files/content-editors/EID/smart-id-tagatistaseme-kirjeldus-uabiv.pdf) <sup>1</sup> |
+
+<sup>1</sup>NB! The LoA applies only for persons with an Estonian identity code and a Smart-ID account. Interfacing party has to consider that non-residents (Estonian e-residents) are not distinguishable from residents.
+
+Every member state assigns LoA's to their own domestic means of authentication and notifies other member states of them according to [eIDAS regulation](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015R1502&from=EN). Please refer [here](https://ec.europa.eu/cefdigital/wiki/display/EIDCOMMUNITY/Overview+of+pre-notified+and+notified+eID+schemes+under+eIDAS) for a list of all authentication methods that have been notified by member states.
 
 ## 9 Private sector client specifications
 

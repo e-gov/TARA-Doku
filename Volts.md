@@ -82,10 +82,10 @@ Võltspäringuründe vastu pakub kaitset tõkestav element `state`. Kuid `state`
 Vastuse 1b saatmisel paneb server kaasa küpsise, milles sisaldub seansiidentifikaator (_session ID_):
 
 ```
-Set-Cookie: SessionID=2h5ft6; HttpOnly
+Set-Cookie: SessionID=2h5ft6; HttpOnly; Secure
 ``` 
 
-Seansiidentifikaator (näites `2h5ft6`) on juhustring. Tõkestava elemendi `state` moodustab sirvik, arvutades seansiidentifikaatori räsi: `state = hash(2h5ft6)`.
+Seansiidentifikaator (näites `2h5ft6`) on juhusõne. Tõkestava elemendi `state` moodustab sirvik, arvutades seansiidentifikaatori räsi: `state = hash(2h5ft6)`.
 
 Nii seotakse `state` konkreetse sirvikuga. Kuid seansiidentifikaator ei ole räsi põhjal arvutatav.
 
