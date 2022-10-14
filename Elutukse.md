@@ -2,6 +2,10 @@
 permalink: Elutukse
 ---
 
+# [ARHIVEERITUD]
+
+&#9888; Dokumenti ei ajakohastata. Palume siinsele teabele mitte tugineda.
+
 # TARA elutukseteenus
 
 _spetsifikatsioon_
