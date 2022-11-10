@@ -4,8 +4,16 @@ permalink: Uudised
 
 # Uudised
 
+10.11.2022
+**14.11.2022 kell 11:00 vahetub TLS sertifikaat `tara-test.ria.ee` keskkonnas ja 17.11.2022 kell 13:30 `tara.ria.ee` keskkonnas.**
+* Palume klientidel, kes on oma teenuses usaldanud otse Riigi autentimisteenuse TLS lõppsertifikaati (`*.ria.ee`), uuendada vastavalt usaldusankruks seatud lõppsertifikaati [uue vastu](https://github.com/e-gov/TARA-Doku/blob/master/certificates/star_ria_ee_valid_until_2023-11-22.crt).
+* Palume klientidel, kes on oma teenuses usaldanud senist DigiCert vahesertifikaati (DigiCert TLS RSA SHA256 2020 CA1), uuendada vastavalt usaldusankruks seatud vahesertifikaati [uue vastu (DigiCert TLS Hybrid ECC SHA384 2020 CA1)](https://cacerts.digicert.com/DigiCertTLSHybridECCSHA3842020CA1-1.crt.pem).
+* Kliendid, kes on oma teenuses usaldanud DigiCert juursertifikaati (DigiCert Global Root CA), muudatusi tegema ei pea.
+* Täpsemalt TLS ühenduste usaldamisest: [https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus#512-otspunktide-tls-%C3%BChenduse-kontrollimine](https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus#512-otspunktide-tls-%C3%BChenduse-kontrollimine). Kui Teil esineb teenusega probleeme, siis palun võtke meiega ühendust [help@ria.ee](help@ria.ee).
+{: .note}
+
 09.11.2021
-**15.11.2021 muutub _*.ria.ee_ domeenil kasutusel olev sertifikaat.** Muudatus puudutab nii `tara.ria.ee` kui `tara-test.ria.ee` keskkondi.
+15.11.2021 muutub _*.ria.ee_ domeenil kasutusel olev sertifikaat. Muudatus puudutab nii `tara.ria.ee` kui `tara-test.ria.ee` keskkondi.
 Muutub RSA sertifikaadi väljastamise ahel. Uus sertifikaat on väljastatud "DigiCert TLS RSA SHA256 2020 CA1" ja ECC sertifikaat väljastatud "DigiCert TLS Hybrid ECC SHA384 2020 CA1" poolt.
 Palume klientidel, kes on oma teenuses usaldanud otse Riigi autentimisteenuse TLS sertifikaati, uuendada vastavalt usaldusankruks seatud sertifikaati. 
 Uued sertifikaadid on leitavad [id.ee veebist](https://www.id.ee/artikkel/riigi-autentimisteenuse-sertifikaadi-muudatus/).
