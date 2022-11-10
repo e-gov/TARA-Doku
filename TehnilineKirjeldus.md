@@ -7,7 +7,7 @@ Mõned autentimismeetodid võivad olla veel arenduses või kasutatavad ainult te
 
 # Tehniline kirjeldus
 {: .no_toc}
-v 1.20, 16.09.2022
+v 1.21, 10.11.2022
 
 - TOC
 {:toc}
@@ -556,9 +556,17 @@ Soovitame võtit puhverdada (koos `kid` väärtusega), kuna see vähendab TARA s
 
 NB! Kindlasti tasuks vältida võtme käsitsi kirjutamist klientrakenduse konfiguratsiooni. Võtme vahetusest teatatakse tüüpiliselt küll ette (va kiirest turvavajadusest tingitud vahetus), kuid selline lahendus vajab klientrakenduse poolset käsitsi seadistust ning toob kaasa teenuse katkemise perioodiks mil TARA kasutab juba uut võtit aga klientrakendusse ei ole uut võtit seadistatud.
 
-#### 5.1.2 Võtmeväljastuse otspunkti usaldamine
+#### 5.1.2 Otspunktide TLS ühenduse kontrollimine
 
-Klientrakendus teeb HTTPS päringuid TARA serverile, identsustõendi väljastamise ja võtmeväljastuse otspunktide vastu. Klientrakendus peab kontrollima TARA serveri sertifikaati (domeenid `tara.ria.ee` ja `tara-test.ria.ee`). Serdid nendele domeenidele on välja antud DigiCert poolt. Klientrakenduses tuleb seetõttu kas DigiCert juursert või TARA sert seada usaldusankruks. 
+Klientrakendusest TARA poole sooritatavatel päringutel (kõikidesse otspunktidesse ehk teenuseteabe otspunkti, võtmeväljastusotspunkti, tõendiväljastusotspunkti) tuleb TLS ühenduse algatamisel sooritada korrektselt kõik vajalikud kontrollid. Soovitav on neid mitte ise implementeerida, vaid kasutada mõnda HTTPS või TLS ühenduste funktsionaalsusega teeki.
+
+TLS ühenduse usaldusahelaks peab määrama ainult [DigiCert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) juursertifikaadi. Soovitav ei ole usaldada teiste CA-de sertifikaate ega tervet operatsioonisüsteemi CA sertifikaatide hoidlat. Vajadusel võib TLS ühenduse usaldusahelaks määrata DigiCert Global Root CA asemel [lõppsertifikaadi](https://github.com/e-gov/TARA-Doku/blob/master/certificates/star_ria_ee_valid_until_2023-11-22.crt), mis vahetub vähemalt iga aasta tagant.
+
+HTTPS või TLS ühenduste funktsionaalsusega teek peab iga ühenduse algatamisel teostama järgnevad kontrollid:
+* kontrollima, kas moodustub valiidsete allkirjadega sertifikaadiahel, mis lõpeb [DigiCert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) juursertifikaadiga;
+* kontrollima, kas päringus olev _hostname_ (`tara.ria.ee` või `tara-test.ria.ee`) vastab serveri esitatud sertifikaadis olevale CN väljale või sisaldub SAN väljal;
+* kontrollima ahela kõikidel sertifikaatidel kehtivuse alguse ja lõpu väärtuseid;
+* kontrollima sertifikaatides defineeritud _constraint_'e (basic, name, key usage, critical extensions).
 
 #### 5.1.3 Tõendi väljaandja kontrollimine
 
@@ -760,6 +768,7 @@ NB! Riigi Infosüsteemi Amet ei taga teiste riikide autentimisteenuste toimimist
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
+| 1.21, 10.11.2022   | Täpsustatud "5.1.2 Otspunktide TLS ühenduse kontrollimine" peatükis juhiseid. |
 | 1.20, 16.09.2022   | Lisatud peatükk "9 Erasektori asutuse erisused". |
 | 1.19, 28.10.2021   | Identsustõendi kehtivusaeg muudetud 10-lt minutilt 40 sekundile.<br>Lisatud [standardijärgse teenusteabe otspunkti tee](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfig) `/.well-known/openid-configuration`. Senine tee `/oidc/.well-known/openid-configuration` jääb tagasiühilduvuseks alles. |
 | 1.18, 26.05.2021   | Täpsustatud päringutes tundmatute väljade ja väärtuste lubatavust. Täpsustatud nõudeid `state` parameetrile ning tagasisuunamis-URL-ile. |
