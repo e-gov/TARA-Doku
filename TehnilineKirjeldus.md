@@ -600,7 +600,7 @@ Näide: Kui autentimispäringus on `scope` parameetris määratud ainult ID-kaar
 
 #### 5.1.7 Minimaalse lubatud eIDAS autentimistaseme kontrollimine
 
-Välistamaks ligipääsu soovitust madalama turvalisusastmega ülepiirilistele autentimisvahenditele, peab ülepiirilise autentimise korral  kontrollima, et identsustõendi `acr` väites esitatud autentimistase ei oleks väiksem minimaalsest lubatud autentimistasemest (loe autentimistasemete kohta [siit](https://www.ria.ee/sites/default/files/content-editors/EID/autentimislahendustele-kehtivad-nouded.pdf)).
+Välistamaks ligipääsu soovitust madalama turvalisusastmega autentimisvahenditele, peab autentimisel kontrollima, et identsustõendi `acr` väites esitatud autentimistase ei oleks väiksem minimaalsest lubatud autentimistasemest (loe autentimistasemete kohta [siit](https://www.ria.ee/sites/default/files/content-editors/EID/autentimislahendustele-kehtivad-nouded.pdf)).
 
 Näiteks, kui liidestuja soovib kasutada vaid kõrge eIDAS autentimistasemega autentimisvahendeid ja täpsustab `acr_values` parameetris `high` väärtuse, tohib aktsepteerida ainult identsustõendeid, mille `acr` väite väärtus on `high`.
 
@@ -718,7 +718,7 @@ RIA, rahuldades taotluse:
 - väljastab asutusele klientrakenduse salasõna `client_secret`. Salasõna on ette nähtud identsustõendi päringute allkirjastamiseks
 - avab asutuse klientrakenduse testversioonile juurdepääsu testteenusele.
 
-Järgneb liidestuse testimine. RIA abistab siin võimalike probleemide lahendamisel. Testimise kohta vt lähemalt: [Testimine](https://e-gov.github.io/TARA-Doku/Testimine).
+Järgneb liidestuse testimine. RIA abistab siin võimalike probleemide lahendamisel. Vaata lähemalt [testimise juhiseid](https://e-gov.github.io/TARA-Doku/Testing).
 
 Tasub pilk heita [abi peatükile](Abi).
 

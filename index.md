@@ -36,7 +36,7 @@ Ametlikku teavet TARA ja teiste RIA teenuste kohta leiab [RIA autentimisteenuste
 
 [Tehniline kirjeldus](TehnilineKirjeldus) · [Technical specification](TechnicalSpecification)
 
-[Testimine](Testimine)
+[Testing](Testing)
 
 [Liidestuja tarkvara](Naited)
 
