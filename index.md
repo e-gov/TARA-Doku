@@ -22,7 +22,7 @@ Käesoleva lehe teave on mõeldud kolmele sihtrühmale:
 2. Liidese arendaja leiab siit kogu vajaliku tehnilise teabe asutuse e-teenuste liidestamiseks TARA-ga;
 3. TARA edasiarendajale.
 
-Ametlikku teavet TARA ja teiste RIA teenuste kohta leiab [RIA autentimisteenuste lehelt](https://www.ria.ee/et/riigi-infosusteem/eid/partnerile.html#tara). 
+Ametlikku teavet TARA ja teiste RIA teenuste kohta leiab [RIA autentimisteenuste lehelt](https://ria.ee/riigi-infosusteem/elektrooniline-identiteet-ja-usaldusteenused/kesksed-autentimisteenused#tara).
 
 ## Ärikasutajale
 
