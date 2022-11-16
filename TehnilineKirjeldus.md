@@ -200,7 +200,7 @@ GET https://tara.ria.ee/oidc/authorize?
 
 redirect_uri=https%3A%2F%2Feteenindus.asutus.ee%2FCallback&
 scope=openid&
-state=hkMVY7vjuN7xyLl5&|
+state=hkMVY7vjuN7xyLl5&
 response_type=code&
 client_id=58e7ba35aab5b4f1671a
 ````
