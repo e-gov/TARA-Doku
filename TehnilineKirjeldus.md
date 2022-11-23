@@ -600,7 +600,7 @@ Näide: Kui autentimispäringus on `scope` parameetris määratud ainult ID-kaar
 
 #### 5.1.7 Minimaalse lubatud eIDAS autentimistaseme kontrollimine
 
-Välistamaks ligipääsu soovitust madalama turvalisusastmega autentimisvahenditele, peab autentimisel kontrollima, et identsustõendi `acr` väites esitatud autentimistase ei oleks väiksem minimaalsest lubatud autentimistasemest (loe autentimistasemete kohta [siit](https://www.ria.ee/sites/default/files/content-editors/EID/autentimislahendustele-kehtivad-nouded.pdf)).
+Välistamaks ligipääsu soovitust madalama turvalisusastmega autentimisvahenditele, peab autentimisel kontrollima, et identsustõendi `acr` väites esitatud autentimistase ei oleks väiksem minimaalsest lubatud autentimistasemest (loe autentimistasemete kohta [siit](https://www.ria.ee/media/1971/download)).
 
 Näiteks, kui liidestuja soovib kasutada vaid kõrge eIDAS autentimistasemega autentimisvahendeid ja täpsustab `acr_values` parameetris `high` väärtuse, tohib aktsepteerida ainult identsustõendeid, mille `acr` väite väärtus on `high`.
 
@@ -738,7 +738,7 @@ Siseriiklikele autentimismeetoditele on TARA-s määratud järgmised autentimist
 |---------------|-------------|
 | ID-kaart | [kõrge](https://ec.europa.eu/digital-building-blocks/wikis/display/EIDCOMMUNITY/Estonia) | 
 | Mobiil-ID | [kõrge](https://ec.europa.eu/digital-building-blocks/wikis/display/EIDCOMMUNITY/Estonia) | 
-| Smart-ID | [kõrge](https://www.ria.ee/sites/default/files/content-editors/EID/smart-id-tagatistaseme-kirjeldus-uabiv.pdf) <sup>1</sup> |
+| Smart-ID | [kõrge](https://www.ria.ee/media/586/download) <sup>1</sup> |
 
 <sup>1</sup>NB! Tase kehtib vaid Eesti isikukoodiga isikutele, kellele on Smart-ID konto. Tuleb arvestada, et mitteresidendid (Eesti e-residendid) pole eristatavad residentidest.
 

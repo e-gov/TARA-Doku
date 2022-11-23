@@ -646,7 +646,7 @@ Means of authentication used in TARA have been assigned the following levels of 
 |-------------------------|----------------------------------------------------------------------------------------------------------------------------|
 | ID-Card                 | [high](https://ec.europa.eu/digital-building-blocks/wikis/display/EIDCOMMUNITY/Estonia)                                    |
 | Mobile-ID               | [high](https://ec.europa.eu/digital-building-blocks/wikis/display/EIDCOMMUNITY/Estonia)                                    |
-| Smart-ID                | [high](https://www.ria.ee/sites/default/files/content-editors/EID/smart-id-tagatistaseme-kirjeldus-uabiv.pdf) <sup>1</sup> |
+| Smart-ID                | [high](https://www.ria.ee/media/586/download) <sup>1</sup> |
 
 <sup>1</sup>NB! The LoA applies only for persons with an Estonian identity code and a Smart-ID account. Interfacing party has to consider that non-residents (Estonian e-residents) are not distinguishable from residents.
 
