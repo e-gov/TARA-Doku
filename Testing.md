@@ -32,7 +32,7 @@ The table below holds information on test accounts for quick access.
 
 | Authentication method | Login info                                                                                                                                                                                         |
 |-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Mobile-ID             | **Number:** 68000769, **ID code:** 60001017869                                                                                                                                                     |
+| Mobile-ID             | **ID code:** 60001017869, **Number:** 68000769                                                                                                                                                     |
 | Smart-ID              | **ID code:** 30303039914                                                                                                                                                                           |
 | EU eID (eIDAS)        | Choose **Czech Republic** from the drop-down menu. Press `Continue`. You will be redirected to the Czech Republic demo authentication service. Select **Testovací profily** and press `Přihlásit`. |
 
