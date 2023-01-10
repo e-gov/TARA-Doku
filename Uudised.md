@@ -9,7 +9,7 @@ TARA hakkab ID-kaardiga sisse logimise kuval kontrollima kasutaja veebisirvikus 
 
 1) Kui kasutaja arvutis on Web eID veebisirvikulaiendus töökorras, siis ühtegi lisateadet ei kuvata.
 2) Kui kasutaja arvutis on Web eID veebisirvikulaiendus puudu, siis kuvatakse hoiatusteade, mis ei takista ID-kaardiga autentimise kasutamist:
-<img src='img/TARA_Web-eID.png' style='width:400px'>
+<img src='img/TARA_Web-eID.png' style='width:800px'>
 
 Praegu jätkub TARA-s ID-kaardiga autentimine senise lahendusega (TLS-i kliendisertifikaadipõhiselt), kuid 2023. aasta kevadel on planeeritud TARA-s selle vahetamine uue Web eID lahenduse vastu.
 Kasutajal peaks olema ajakohased Web eID komponendid (Web eID versioon 2) kui ta on paigaldanud või uuendanud ID-tarkvara pärast 2023. märtsi.
