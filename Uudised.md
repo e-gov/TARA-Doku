@@ -10,10 +10,12 @@ TARA hakkab ID-kaardiga sisse logimise kuval kontrollima kasutaja veebisirvikus 
 
 1) Kui kasutaja arvutis on Web eID veebisirvikulaiendus töökorras, siis ühtegi lisateadet ei kuvata.
 2) Kui kasutaja arvutis on Web eID veebisirvikulaiendus puudu, siis kuvatakse hoiatusteade, mis ei takista ID-kaardiga autentimise kasutamist:
+
 <img src='img/TARA_Web-eID.png' style='width:800px'>
 
 Praegu jätkub TARA-s ID-kaardiga autentimine senise lahendusega (TLS-i kliendisertifikaadipõhiselt), kuid 2023. aasta kevadel on planeeritud TARA-s selle vahetamine uue Web eID lahenduse vastu.
 Kasutajal peaks olema ajakohased Web eID komponendid (Web eID versioon 2) kui ta on paigaldanud või uuendanud ID-tarkvara pärast 2023. märtsi.
+
 ___
 
 **10.11.2022**
@@ -22,6 +24,7 @@ ___
 • Palume klientidel, kes on oma teenuses usaldanud senist DigiCert vahesertifikaati (DigiCert TLS RSA SHA256 2020 CA1), uuendada vastavalt usaldusankruks seatud vahesertifikaati [uue vastu (DigiCert TLS Hybrid ECC SHA384 2020 CA1)](https://cacerts.digicert.com/DigiCertTLSHybridECCSHA3842020CA1-1.crt.pem).<br/>
 • Kliendid, kes on oma teenuses usaldanud DigiCert juursertifikaati (DigiCert Global Root CA), muudatusi tegema ei pea.<br/>
 Täpsemalt TLS ühenduste usaldamisest: [https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus#512-otspunktide-tls-%C3%BChenduse-kontrollimine](https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus#512-otspunktide-tls-%C3%BChenduse-kontrollimine). Kui Teil esineb teenusega probleeme, siis palun võtke meiega ühendust [help@ria.ee](help@ria.ee).
+
 ___
 
 **09.11.2021**
@@ -32,6 +35,7 @@ Palume klientidel, kes on oma teenuses usaldanud otse Riigi autentimisteenuse TL
 Uued sertifikaadid on leitavad [id.ee veebist](https://www.id.ee/artikkel/riigi-autentimisteenuse-sertifikaadi-muudatus/).
 Täpsemalt võtmeväljastuse otspunkti usaldamisest räägib [TARA tehniline kirjeldus](https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus#5-turvatoimingud).
 Kui Teil esineb teenusega probleeme, siis palun võtke meiega ühendust [help@ria.ee](help@ria.ee).
+
 ___
 
 **05.05.2021**
@@ -44,11 +48,13 @@ Tagasisuunamispäringus tagastatakse ka kasutatud scope parameeter koos kasutatu
 oidc/jwks otspunkti väljundisse lisandub parameeter use.
 Palume kindlasti kontrollida oma teenuse tööd demokeskkonnas ja kui esineb mingisuguseid probleeme, siis palun võtke kindlasti meiega ühendust help@ria.ee.
 TARA2 toodangukeskkonda migreerime kliendid (eeldatavalt) 31.05.2021. TARA2 platvormi koodi avalikustame GitHubi repodes lähimal ajal.
+
 ___
 
 **14.12.2020**
 ## Alates 09.12.2020 ei ole võimalik TARA test keskkonnas kasutada Mobiil-ID testimiseks isiklikku Mobiil-ID numbrit.
 Testida saab ainult kasutades testnumbreid. Rohkem infot [siit.](https://www.skidsolutions.eu/uudised/mobiil-id-demo-keskkond-ei-ole-tehnilistel-pohjustel-kattesaadav/)
+
 ___
 
 **19.03.2020**
@@ -56,6 +62,7 @@ ___
 Kui seni kuvati kasutajale kõik autentimisvahendid (ID-kaart, Mobiil-ID, pangalink, Smart-ID ja eIDAS), siis alates muudatuse rakendamise hetkest kuvatakse vaikimisi ainult kõrge tagatistasemega autentimisvahendeid (ID-kaart ja Mobiil-ID).
 Kõiki autentimisvahendeid on endiselt võimalik kasutada, kuid liitunud infosüsteem peab soovitud autentimisvalikute kuvamist sellisel juhul ise juhtima, kasutades TARA skoope (loe rohkem siit - https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus#413-autentimismeetodite-valikuline-kasutus)
 Midagi ei muutu klientide jaoks, kes juba kasutavad autentimismeetodeid valikuliselt.
+
 ___
 
 **25.12.2019**
@@ -67,11 +74,13 @@ Otsene eIDAS võrgustikku suunatakse alati kui esinevad eelnevas näites kirjeld
 TARA-server metateabe kaudu kätte saadud 'scopes_supported' väärtus koostatakse järgnevalt:
 konfiparameetri `cas.authn.oidc.scopes` väärtused
 konfiparameetri `eidas.available-countries` iga riigikoodi väärtuse x kohta dünaamiliselt koostatud `eidas:country:x`.
+
 ___
 
 **11.09.2019**
 ## Alates 11. septembrist 2019 lisandub TARA toodangukeskkonda autentimisvahendina Smart-ID.
 Toodangukeskkonna kliendid, kes rakendavad autentimismeetodite valikulist kasutust ja soovivad smart-id, soovitame üle vaadata parameetri `scope` väärtus ja veenduda, et skoop `smartid` oleks lubatud.
+
 ___
 
 **05.09.2019**
@@ -81,6 +90,7 @@ Välistamaks ligipääsu soovitust madalama turvalisusastmega ülepiirilistele a
 Näiteks, kui liidestuja soovib kasutada vaid kõrge eIDAS autentimistasemega autentimisvahendeid ja täpsustab `acr_values` parameetris `high` väärtuse, tohib aktsepteerida ainult identsustõendeid, mille `acr` väite väärtus on `high`.
 Juhul kui autentimispäringus eIDAS autentimistaset `acr_values` parameetri abil ei täpsustatud, peab identsustõendis olev väärtus olema `substantial` või `high`.
 [Täpsemalt](https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus#5-turvatoimingud).
+
 ___
 
 **18.02.2019**
@@ -88,4 +98,5 @@ ___
 Identsustõendi kehetuvust ei teosta TARA, vaid kontroll tuleb teostada klientrakenduse poolel.
 Tõend kehtib, kuid on täidetud tingimused:
 `nbf <= jooksev_aeg + kellade_lubatud_erinevus` ja `exp > jooksev_aeg - kellade_lubatud_erinevus`. Vt [veebitõendi standard](https://tools.ietf.org/html/rfc7519), jaot 4.1.4-5.
+
 ___
