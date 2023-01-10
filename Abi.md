@@ -123,8 +123,7 @@ Jah, TARA kasutamiseks peab olema küpsiste salvestamine lubatud. Vastasel juhul
 TARA hakkab ID-kaardiga sisse logimise kuval kontrollima kasutaja veebisirvikus Web eID laienduse olemasolu.
 1) Kui kasutaja arvutis on Web eID veebisirvikulaiendus töökorras, siis ühtegi lisateadet ei kuvata.
 2) Kui kasutaja arvutis on Web eID veebisirvikulaiendus puudu, siis kuvatakse hoiatusteade, mis ei takista ID-kaardiga autentimise kasutamist:
-![tara-web-eid-tekst1a](https://user-images.githubusercontent.com/98874684/211541695-86b23df0-5245-425a-9b77-a4026788adba.png)
-
+<img src='img/TARA_Web-eID.png' style='width:400px'>
 
 Praegu jätkub TARA-s ID-kaardiga autentimine senise lahendusega (TLS-i kliendisertifikaadipõhiselt), kuid 2023. aasta kevadel on planeeritud TARA-s selle vahetamine uue Web eID lahenduse vastu.
 
