@@ -162,8 +162,6 @@ The browser completes the redirection order **3b** by sending an HTTP request **
 
 The redirect request includes the result of the authentication process (the person was or was not identified). The redirect request is described in detail in a separate section below.
 
-The role of TARA should be ending here. In the case of the OpenID Connect implicit flow, it does. However, TARA uses the authorisation code flow which is deemed somewhat more secure than the implicit flow. In the case of the authorisation code flow, the authorisation service does not transfer the entire authentication in the redirect request, but only the authorisation token.
-
 An authorisation code is issued against the personal identification code, name, and other personal data of the person identified by sending a separate request to the server component of TARA (Figure 4).
 
 <p style='text-align:center;'><img src='img/VOOG-03.PNG' style='width:400px'></p>
