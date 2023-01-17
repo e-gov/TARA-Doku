@@ -5,7 +5,7 @@ permalink: TechnicalSpecification
 
 # Technical specification
 {: .no_toc}
-v 1.11, 20.09.2022
+v 1.12, 29.03.2023
 
 - TOC
 {:toc}
@@ -27,9 +27,9 @@ We have attempted to use uniform terminology throughout the technical specificat
 
 ### 1.1 OpenID Connect
 
-The TARA authentication service is based on the OpenID Connect protocol, which is in turn based on the OAuth 2.0 protocol. OpenID Connect and OAuth 2.0 are extensive standards with numerous possibilities.
+The TARA authentication service is based on the OpenID Connect protocol ([References](Viited), [Core]), which is in turn based on the OAuth 2.0 protocol. OpenID Connect and OAuth 2.0 are extensive standards with numerous possibilities.
 
-For TARA, the application flows and features necessary for the applications of TARA were chosen and some adjustments were made. The main selections and adjustments compared to the full OpenID Connect protocol are the following:
+For TARA, limited subset from standards was chosen and some adjustments were made. The main selections and adjustments compared to the full OpenID Connect protocol are the following:
 
 - The service supports the authorisation code flow. The authorisation code flow is deemed the most secure option and is thus appropriate for public services.
 - All information about an authenticated user is transferred to the application in an ID token.
@@ -38,9 +38,9 @@ For TARA, the application flows and features necessary for the applications of T
 - The authentication method is selected by the user in the authentication service or by the interfaced client with the `scope` parameter.
 - Cross-border authentication based on the technical specification of eIDAS.
 - Dynamic registration of the client application is not supported. The client application is registered in RIA by a separate procedure.
-- Single sign-on (SSO) and _session management_ are currently not supported.
+- Single sign-on (SSO) and _session management_ are not supported. Use State Single Sign-On (GovSSO) service for single sign-on functionality, find the documentation [here](https://e-gov.github.io/GOVSSO/).
 
-It is not ruled out that the scope of possibilities will be expanded as TARA is being developed further – based on the needs of the users of TARA and the opportunities for satisfying the needs at a high-quality level, while keeping the service simple and focussed.
+Based on feedback of users the TARA functionality may expand.
 
 ### 1.2 National and cross-border authentication
 
@@ -160,9 +160,9 @@ The server component of TARA sends an HTTP response body **3b** to the browser w
 
 The browser completes the redirection order **3b** by sending an HTTP request **4a** to the server component of the client application (redirect request).
 
-The redirect request includes the result of the authentication process (the person was or was not identified). The redirect request is described in detail in a separate section below.
+If the authentication was successful authorization code is returned with the request. The redirect request is described in detail in a separate section below.
 
-An authorisation code is issued against the personal identification code, name, and other personal data of the person identified by sending a separate request to the server component of TARA (Figure 4).
+An authorisation code is used to retrieve the identification code, name and other personal data by sending a separate request to the server component of TARA (Figure 4).
 
 <p style='text-align:center;'><img src='img/VOOG-03.PNG' style='width:400px'></p>
 

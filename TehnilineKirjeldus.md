@@ -7,7 +7,7 @@ Mõned autentimismeetodid võivad olla veel arenduses või kasutatavad ainult te
 
 # Tehniline kirjeldus
 {: .no_toc}
-v 1.21, 10.11.2022
+v 1.22, 29.03.2023
 
 - TOC
 {:toc}
@@ -33,7 +33,7 @@ Tehnilises kirjelduses on püütud järgida ühtset terminoloogiat. Sõnaseletus
 
 Autentimisteenus TARA põhineb OpenID Connect protokollil ([Viited](Viited), [Core]), mis omakorda tugineb OAuth 2.0 protokollile. OpenID Connect ja OAuth 2.0 on ulatuslikud, paljude võimalustega standardid.
 
-TARA-s on nimetatud protokollidest valitud TARA kasutusjuhtudele vajalikud kasutusvood ja omadused ning tehtud mõned kohandused. Peamised valikud ja kohandused OpenID Connect täisprotokolliga võrreldes on järgmised:
+TARA-s on nimetatud protokollidest valitud piiritletud alamhulk ning tehtud mõned kohandused. Peamised valikud ja kohandused OpenID Connect täisprotokolliga võrreldes on järgmised:
 
 - Teenus toetab volituskoodi voogu(_authorization code flow_). Volituskoodi voogu peetakse kõige turvalisemaks ja sellisena on avalike teenuste jaoks sobiv.
 - Kogu teave autenditud kasutaja kohta edastatakse rakendusele identsustõendis (_ID token_).
@@ -42,9 +42,9 @@ TARA-s on nimetatud protokollidest valitud TARA kasutusjuhtudele vajalikud kasut
 - Autentimismeetodi valib kasutaja autentimisteenuses või liidestunud infosüsteem (parameetri `scope` abil).
 - Piiriülene autentimine, vastavalt eIDAS tehnilisele spetsifikatsioonile.
 - Klientrakenduse dünaamilist registreerimist ei toetata. Klientrakenduse registreerimine toimub RIA-s eraldi protseduuriga.
-- Ühekordset sisselogimist (SSO) ja seansihaldust (_session management_) praegu ei toetata.
+- Ühekordset sisselogimist (SSO) ja seansihaldust (_session management_) ei toetata. Ühekordse sisselogimise teenuse jaoks kasutada Riigi SSO teenust (GovSSO) mille dokumentatsioon on leitav [siit](https://e-gov.github.io/GOVSSO/).
 
-TARA edasiarendamisel - mis toimub lähtudes TARA kasutajate vajadustest ja võimalustest neid kvaliteetselt rahuldada, hoides teenuse lihtsa ja fokusseerituna - ei ole võimatu, et võimalused laienevad.
+Sõltuvalt kasutajate tagasisidest võib TARA funktsionaalsus laieneda.
 
 ### 1.2 Siseriiklik ja piiriülene autentimine
 
@@ -165,9 +165,7 @@ TARA serverikomponent saadab sirvikusse HTTP päringuvastuse **3b**, milles on �
 
 Sirvik täidab ümbersuunamiskorralduse **3b**, saates klientrakenduse serverikomponendile HTTP päringu **4a** (tagasisuunamispäringu). 
 
-Tagasisuunamispäringus sisaldub autentimise tulemus (isik tuvastati või mitte). Tagasisuunamispäring on täpsemalt kirjeldatud eraldi jaotises allpool.
-
-TARA roll võiks sellega lõppeda. OpenID Connect otsevoo (_implicit flow_) puhul lõpebki. Kuid TARA-s on kasutusel otsevoost mõneti turvalisemaks peetav volituskoodi voog (_authorization flow_). Volituskoodi voo korral ei saada autentimisteenus tagasisuunamispäringus autentimise tulemust täielikult, vaid ainult volituskoodi (_authorization token_).
+Tagasisuunamispäringus sisaldub õnnestunud autentimise korral volituskood (_authorization code_). Tagasisuunamispäring on täpsemalt kirjeldatud eraldi jaotises allpool.
 
 Volituskood lunastatakse autenditud isiku isikukoodi, nime jm isikuandmete vastu eraldi päringu tegemisega TARA serverikomponendi poole (joonis 4).   
 
@@ -768,6 +766,7 @@ NB! Riigi Infosüsteemi Amet ei taga teiste riikide autentimisteenuste toimimist
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
+| 1.22, 29.03.2022   | Lisatud viide Riigi SSO teenusele (GovSSO). Parendatud sõnastust. |
 | 1.21, 10.11.2022   | Täpsustatud "5.1.2 Otspunktide TLS ühenduse kontrollimine" peatükis juhiseid. |
 | 1.20, 16.09.2022   | Lisatud peatükk "9 Erasektori asutuse erisused". |
 | 1.19, 28.10.2021   | Identsustõendi kehtivusaeg muudetud 10-lt minutilt 40 sekundile.<br>Lisatud [standardijärgse teenusteabe otspunkti tee](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfig) `/.well-known/openid-configuration`. Senine tee `/oidc/.well-known/openid-configuration` jääb tagasiühilduvuseks alles. |
@@ -799,4 +798,3 @@ NB! Riigi Infosüsteemi Amet ei taga teiste riikide autentimisteenuste toimimist
 | 0.3, 30.01.2018   | Lisatud piiriülene autentimine (eIDAS) |
 | 0.2, 28.11.2017   | Lisatud ID-kaardiga autentimine |
 | 0.1, 10.10.2017   | Mobiil-ID-ga autentimine. |
-
