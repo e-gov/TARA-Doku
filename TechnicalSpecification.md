@@ -2,10 +2,9 @@
 permalink: TechnicalSpecification
 ---
 
-
 # Technical specification
 {: .no_toc}
-v 1.13, 28.04.2023
+v 1.14, 09.05.2023
 
 - TOC
 {:toc}
@@ -16,10 +15,11 @@ This document describes the technical characteristics of the TARA authentication
 
 The TARA authentication service is a service provided by the Information System Authority of the Republic of Estonia which can be used by institutions to add the support of various different authentication methods to its e-service:
 
-- Mobile-ID
-- ID card
-- cross-border authentication (via eIDAS-Node) support
+- ID-card
 - Smart-ID
+- Mobile-ID
+- EU eID (cross-border authentication through eIDAS infrastructure)
+
 
 This technical specification is targeted for mainly software developers. The reader should be familiar with the HTTP protocol. Experiences with OpenID Connect or OAuth 2.0 would be beneficial but are not necessary. The reader should be prepared to obtain further information from the original text of the OpenID Connect protocol, if necessary.
 
@@ -44,7 +44,7 @@ Based on feedback of users the TARA functionality may expand.
 
 ### 1.2 National and cross-border authentication
 
-TARA enables national as well as cross-border authentication. This means that Estonians (users of the Estonian e-identification system – ID card, Mobile-ID, etc.) as well as foreigners (users of the e-identification systems of other EU member states) can be authenticated.
+TARA enables national as well as cross-border authentication. This means that users of the Estonian e-identification system (ID-card, Mobile-ID, etc.) as well as users of the e-identification systems of other EU member states can be authenticated.
 
 In the context of eIDAS, TARA is providing the ‘Authentication of an Estonian in an Estonian e-service’ and the ‘Authentication of a foreigner using an Estonian e-service’ application flows (Figure 1). When using TARA to authenticate foreigners, it is possible to [skip TARA‘s user interface and direct the client straight to the foreign state‘s authentication system](https://e-gov.github.io/TARA-Doku/TechnicalSpecification#414-selective-use-of-means-of-authentication).
 
@@ -66,28 +66,33 @@ In the context of eIDAS, TARA is providing the ‘Authentication of an Estonian 
 
 3 The authentication method selection screen is displayed to the user. Here, the user can:
 
-- choose authentication by Mobile-ID (step 4)
--	choose authentication by ID card (step 5)
--	choose cross-border (eIDAS-Node) authentication (step 6)
-  - incl. the country the eID of which they use (select the correct ‘flag’)
--	choose authentication by smart ID (step 7)
--	return to the client application.
+- choose authentication by ID-card (step 4)
+- choose authentication by Mobile-ID (step 5)
+- choose authentication by Smart-ID (step 6)
+- choose authentication by EU eID (cross-border) (step 7)
+- return to the client application.
 
-4 Mobile-ID authentication
+4 ID-card authentication
+
+- information about the authentication certificate is displayed to the user (it may be required to select correct certificate)
+- the user enters PIN1
+- in case of a successful authentication, move to step 8; in case of an error, to step 9.
+
+5 Mobile-ID authentication
 
 - the user enters their mobile phone number and personal identification code
--	a verification code is displayed on the user’s mobile device
--	waiting for confirmation
--	in case of a successful authentication, move to step 8; in case of an error, to step 9.
+- a verification code is displayed on the user’s mobile device
+- waiting for confirmation
+- in case of a successful authentication, move to step 8; in case of an error, to step 9.
 
-5 ID card authentication
+6 Smart-ID authentication
 
--	first, information about the authentication certificate is displayed to the user
--	the user confirms selection of the certificate
--	the user enters PIN1
--	in case of a successful authentication, move to step 8; in case of an error, to step 9.
+- the user enters an Estonian personal identification code
+- a verification code is displayed on the user’s mobile device
+- waiting for confirmation
+- in case of a successful authentication, move to step 8; in case of an error, to step 9.
 
-6 Cross-border (eIDAS-) authentication
+7 EU eID (cross-border) authentication
 
 - the user selects the target country
 - the user is redirected to the authentication service of the foreign country through the eIDAS infrastructure
@@ -95,28 +100,21 @@ In the context of eIDAS, TARA is providing the ‘Authentication of an Estonian 
 - in case of a successful authentication (and if the level of the means of authentication of the foreign country is sufficient), move to step 8
 - in case of an error, move to step 9.
 
-NB! For eIDAS authentication, it is possible to choose the target country in the interfaced client and specify it in the authentication request. This will allow the user to skip TARA user interface and be directed to the specified country's authentication service. If the authentication was successful and the means of authentication has a sufficient level of assurance, move to step 8.
-
-7 Smart-ID authentication
-
--	the user enters an Estonian personal identification code
--	a verification code is displayed on the user’s mobile device
--	waiting for confirmation
--	in case of a successful authentication, move to step 8; in case of an error, to step 9.
+NB! For EU eID authentication, it is possible to choose the target country in the interfaced client and specify it in the authentication request. This will allow the user to skip TARA user interface and be directed to the specified country's authentication service. If the authentication was successful and the means of authentication has a sufficient level of assurance, move to step 8.
 
 8 Authenticated user
 
--	is redirected back to the client application
--	the client application requests the identity token from the TARA server
--	the _identity token_ is a signed certificate confirming successful authentication
--	the identity token includes the user’s data (attributes) which were identified in the course of authentication
--	the client application notifies the user of successful login in an appropriate manner.
+- is redirected back to the client application
+- the client application requests the identity token from the TARA server
+- the _identity token_ is a signed certificate confirming successful authentication
+- the identity token includes the user’s data (attributes) which were identified in the course of authentication
+- the client application notifies the user of successful login in an appropriate manner.
 
 9 From the error message screen:
 
--	the user can return to the selection of the authentication method
--	and try again, by using a different authentication method, if desired
--	or terminate the authentication process and return to the client application.
+- the user can return to the selection of the authentication method
+- and try again, by using a different authentication method, if desired
+- or terminate the authentication process and return to the client application.
 
 10 The user can also:
 
@@ -232,7 +230,7 @@ The `email` scope can be used to request the user’s e-mail address in the iden
 "email_verified": false
 ```
 
-The `email` value is read from an extension of the user’s authentication certificate (from the RFC822 type Subject Alternative Name field). The e-mail address is only issued if the user is authenticated by an Estonian ID card. The client application must take into consideration that the user may not have redirected their e-mail, i.e. an e-mail sent to this address may not reach the user.
+The `email` value is read from an extension of the user’s authentication certificate (from the RFC822 type Subject Alternative Name field). The e-mail address is only issued if the user is authenticated by an Estonian ID-card. The client application must take into consideration that the user may not have redirected their e-mail, i.e. an e-mail sent to this address may not reach the user.
 
 The `email_verified` is always `false`. It means that TARA does not verify or issue information on whether the user has redirected their eesti.ee e-mail address. (The respective functionality may be added in the future).
 
@@ -262,7 +260,7 @@ Table 1 – displaying the authentication methods
 
 | Value of the scope parameter | Explanation                                                                                                                                                 |
 |------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `idcard`                     | Allowing Estonian ID card authentication                                                                                                                    |
+| `idcard`                     | Allowing Estonian ID-card authentication                                                                                                                    |
 | `mid`                        | Allowing Mobile-ID authentication                                                                                                                           |
 | `smartid`                    | Allowing Smart-ID authentication                                                                                                                            |
 | `eidas`                      | Allowing cross-border (eIDAS) authentication                                                                                                                |
@@ -272,7 +270,7 @@ Table 1 – displaying the authentication methods
 Example 1: All means of authentication
 `scope=openid`
 
-Example 2: Only ID card and mobile ID
+Example 2: Only ID-card and Mobile-ID
 `scope=openid%20idcard%20mid`
 
 Example 3: Only cross-border authentication
@@ -421,12 +419,12 @@ The following claims are presented in the identity token:
 | `profile_attributes`<br>`.given_name`            | `MARY ÄNN` - the first name of the authenticated user (the test name was chosen because it consists special characters).                                                                                                                                                                   |
 | `profile_attributes`<br>`.family_name`           | `O’CONNEŽ-ŠUSLIK` - the surname of the authenticated user (the test name was selected because it includes special characters).                                                                                                                                                             |
 | `profile_attributes`<br>`_translit`              | Includes a JSON object consisting of profile attributes in the Latin alphabet (see the section on transliteration below). The value is present only in the case of eIDAS authentication.                                                                                                   |
-| `amr` (_Authentication Method Reference_)        | `mID` - the authentication method used for user authentication. Possible values: `mID` - Mobile-ID, `idcard` - Estonian ID card, `eIDAS` - cross-border, `smartid` - Smart-ID                                                                                                              |
+| `amr` (_Authentication Method Reference_)        | `mID` - the authentication method used for user authentication. Possible values: `mID` - Mobile-ID, `idcard` - Estonian ID-card, `eIDAS` - cross-border, `smartid` - Smart-ID                                                                                                              |
 | `state`                                          | `abcdefghijklmnop` - security element. The authentication request’s `state` parameter value.                                                                                                                                                                                               |
 | `nonce`                                          | `qrstuvwxyzabcdef` - security element. The authentication request’s `nonce` parameter value. Value is present only in case the `nonce` parameter was sent in the authentication request.                                                                                                   |
 | `acr` (_Authentication Context Class Reference_) | `high` - level of authentication based on the eIDAS LoA (level of assurance). Possible values: `low`, `substantial`, `high`. The element is not used if the level of authentication is not applicable or is unknown.                                                                       |
 | `at_hash`                                        | `X0MVjwrmMQs/IBzfU2osvw==` - the access token hash. Not used in TARA.                                                                                                                                                                                                                      |
-| `email`                                          | `60001019906@eesti.ee` - the user’s e-mail address. Only issued if an Estonian ID card is used for authenticating the user. Is only read from the SAN extension of the user’s authentication certificate (from the RFC822 type `Subject Alternative Name` field)                           |
+| `email`                                          | `60001019906@eesti.ee` - the user’s e-mail address. Only issued if an Estonian ID-card is used for authenticating the user. Is only read from the SAN extension of the user’s authentication certificate (from the RFC822 type `Subject Alternative Name` field)                           |
 | `email_verified`                                 | `false` - the e-mail address of the user has been verified. TARA always issues a value `false`. It means that TARA does not verify or issue information on whether or not the user has redirected his/her eesti.ee e-mail address.                                                         |
 | `phone_number`                                   | `+37200000766` - the user’s phone number. Issued only when authenticating with Estonian Mobile-ID service. The phone number is presented in E.164 format and prefixed by a country code.                                                                                                   |
 | `phone_number_verified`                          | `true` - the ownership of the phone number to the authenticating user has been confirmed. If the claim is present, then it is always `true`                                                                                                                                                |
@@ -580,7 +578,7 @@ The identity token must be obtained immediately or within 30 seconds. When the t
 
 #### 5.1.6 Verifying the authentication method used in authentication
 
-When using the selective means of authentication (see section 4.1.4) the identity token must verify that the authentication method provided by the authentication method reference, `amr` ,is allowed. Otherwise, the risk of intermediary attacks is taken by allowing the user to authenticate through the method that is not acceptable in the interface (e.g. Smart-ID is used instead of authentication with an ID card) through manipulation of the authentication request `scope` parameter.
+When using the selective means of authentication (see section 4.1.4) the identity token must verify that the authentication method provided by the authentication method reference, `amr` ,is allowed. Otherwise, the risk of intermediary attacks is taken by allowing the user to authenticate through the method that is not acceptable in the interface (e.g. Smart-ID is used instead of authentication with an ID-card) through manipulation of the authentication request `scope` parameter.
 
 For example, when in the authentication request the `scope` parameter is defined to use only ID-card authentication method, it must be verified that the `amr` claim also contains an `idcard` code (the full list of all codes is described under section 4.3.1).
 

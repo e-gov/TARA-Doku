@@ -1,13 +1,10 @@
-nt.ar---
+---
 permalink: TehnilineKirjeldus
 ---
 
-Mõned autentimismeetodid võivad olla veel arenduses või kasutatavad ainult testkeskkonnas. Vt [uudised](Uudised).
-{: .note}
-
 # Tehniline kirjeldus
 {: .no_toc}
-v 1.23, 28.04.2023
+v 1.24, 09.05.2023
 
 - TOC
 {:toc}
@@ -18,10 +15,10 @@ Käesolev dokument määratleb autentimisteenuse TARA tehnilised omadused ja ann
 
 Autentimisteenus TARA on Riigi Infosüsteemi Ameti poolt pakutav teenus, millega asutus saab oma e-teenusesse lisada erinevate autentimismeetodite toe:
 
-- mobiil-ID
 - ID-kaart
-- piiriülese (eIDAS-Node)autentimise tugi
+- Mobiil-ID
 - Smart-ID
+- EU eID (piiriülene autentimine läbi eIDAS taristu)
 
 Tehniline kirjeldus on suunatud TARA liidestajatele (arendajatele). Lugejalt eeldame HTTP protokolli tundmist. Kasulik, kuid mitte vajalik on  OpenID Connect või OAuth 2.0 kogemus. Lugeja peab olema valmis vajadusel hankima lisateavet OpenID Connect protokolli originaaltekstist [Core].
 
@@ -48,7 +45,7 @@ Sõltuvalt kasutajate tagasisidest võib TARA funktsionaalsus laieneda.
 
 ### 1.2 Siseriiklik ja piiriülene autentimine
 
-TARA võimaldab nii siseriiklikku kui ka piiriülest autentimist. See tähendab, et autentida saab nii eestlase (Eesti e-identimissüsteemi - ID-kaardi, mobiil-ID jms kasutaja) kui ka välismaalase (EL teise liikmesriigi e-identimissüsteemi kasutaja).
+TARA võimaldab nii siseriiklikku kui ka piiriülest autentimist. See tähendab, et autentida saab nii Eesti e-identimissüsteemi (ID-kaardi, Mobiil-ID jms kasutaja) kui ka EL teise liikmesriigi e-identimissüsteemi kasutaja.
 
 eIDASe kontekstis teostab TARA kasutusvood "Eestlase autentimine Eesti e-teenuses" ja "Eesti e-teenust kasutava välismaalase autentimine" (joonis 1). Sh on võimalik välismaalase autentimist Eesti e-teenuse jaoks kasutada nii, et TARA kasutajaliidest kasutajale ei kuvata vaid kasutaja suunatakse otse välisriigi autentimisteenusesse (loe automaatse suunamise kohta p4.1.4)
 
@@ -70,28 +67,33 @@ Joonis 1. Siseriiklik ja piiriülene autentimine
 
 3 Kasutajale avaneb autentimismeetodi valiku kuva.  Siin võib kasutaja:
 
-- valida mobiil-ID-ga autentimise (samm 4)
-- valida ID-kaardiga autentimise (samm 5)
-- valida piiriülese (eIDAS-) autentimise (samm 6)
-  - sh riigi, mille eID-d ta kasutab (valib õige "lipukese")
-- valida Smart-ID'ga autentimise (samm 7)
+- valida ID-kaardiga autentimise (samm 4)
+- valida Mobiil-ID-ga autentimise (samm 5)
+- valida Smart-ID-ga autentimise (samm 6)
+- valida EU eID-ga autentimise (piiriülese autentimise) (samm 7)
 - pöörduda tagasi klientrakendusse.
 
-4 Mobiil-ID-ga autentimine
+4 ID-kaardiga autentimine
+
+- algab kasutajale teabe kuvamisega autentimissertifikaadi kohta (vajalik võib olla sertifikaadi valik kasutaja poolt)
+- kasutaja sisestab PIN1-koodi
+- eduka autentimise korral edasi samm 8, vea korral samm 9.
+
+5 Mobiil-ID-ga autentimine
 
 - kasutaja sisestab mobiilinumbri ja isikukoodi
 - kasutaja mobiilseadmele kuvatakse kontrollkood
 - kinnituse ootamine
 - eduka autentimise korral edasi samm 8, vea korral samm 9.
 
-5 ID-kaardiga autentimine
+6 Smart-ID-ga autentimine
 
-- algab kasutajale teabe kuvamisega autentimisserdi kohta
-- kasutaja kinnitab serdivaliku
-- kasutaja sisestab PIN1-koodi
+- kasutaja sisestab Eesti isikukoodi
+- kasutaja mobiilseadmele kuvatakse kontrollkood
+- kinnituse ootamine
 - eduka autentimise korral edasi samm 8, vea korral samm 9.
 
-6 Piiriülene (eIDAS-) autentimine
+7 EU eID-ga (piiriülene) autentimine
 
 - kasutaja valib sihtriigi
 - kasutaja suunatakse läbi eIDAS taristu välisriigi autentimisteenusesse
@@ -99,14 +101,7 @@ Joonis 1. Siseriiklik ja piiriülene autentimine
 - eduka autentimise korral (ning kui välisriigi autentimisvahendi tase on piisav) edasi samm 8
 - vea korral samm 9.
 
-NB! eIDAS autentimise korral on võimalik sihtriigi valik teha ka otse TARA-ga liidestunud infosüsteemis ning saata soovitud riigi kood autentimispäringuga. Sellisel juhul kasutajale TARA kasutajaliidest ei kuvata ja tehakse automaatne edasisuunamine läbi eIDAS taristu otse välisriigi autentimisteenusesse, kus kasutaja autendib end välisriigi autentimisvahendiga. Eduka autentimise korral (ning kui välisriigi autentimisvahendi tase on piisav) edasi samm 8
-
-7 Smart-ID'ga autentimine
-
-- kasutaja sisestab Eesti isikukoodi
-- kasutaja mobiilseadmele kuvatakse kontrollkood
-- kinnituse ootamine
-- eduka autentimise korral edasi samm 8, vea korral samm 9.
+NB! EU eID autentimise korral on võimalik sihtriigi valik teha ka otse TARA-ga liidestunud infosüsteemis ning saata soovitud riigi kood autentimispäringuga. Sellisel juhul kasutajale TARA kasutajaliidest ei kuvata ja tehakse automaatne edasisuunamine läbi eIDAS taristu otse välisriigi autentimisteenusesse, kus kasutaja autendib end välisriigi autentimisvahendiga. Eduka autentimise korral (ning kui välisriigi autentimisvahendi tase on piisav) edasi samm 8
 
 8 Autenditud kasutaja
 
@@ -766,8 +761,9 @@ NB! Riigi Infosüsteemi Amet ei taga teiste riikide autentimisteenuste toimimist
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
-| 1.23, 28.04.2022   | Täpsustatud eidas:country:xx skoobi kasutuse kirjeldust. |
-| 1.22, 29.03.2022   | Lisatud viide Riigi SSO teenusele (GovSSO). Parendatud sõnastust. |
+| 1.24, 09.05.2023   | Formaadi ja kirjavigade parandused. Autentimisvahendite nimetuste ühtlustamine, EU eID kui autentimismeetod (piiriülene autentimine eIDAS taristus). |
+| 1.23, 29.03.2023   | Formaadi ja kirjavigade parandused. Autentimisvahendite nimetuste ühtlustamine, EU eID kui autentimisvahend (piiriülene autentimine eIDAS taristus). |
+| 1.22, 29.03.2023   | Lisatud viide Riigi SSO teenusele (GovSSO). Parendatud sõnastust. |
 | 1.21, 10.11.2022   | Täpsustatud "5.1.2 Otspunktide TLS ühenduse kontrollimine" peatükis juhiseid. |
 | 1.20, 16.09.2022   | Lisatud peatükk "9 Erasektori asutuse erisused". |
 | 1.19, 28.10.2021   | Identsustõendi kehtivusaeg muudetud 10-lt minutilt 40 sekundile.<br>Lisatud [standardijärgse teenusteabe otspunkti tee](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfig) `/.well-known/openid-configuration`. Senine tee `/oidc/.well-known/openid-configuration` jääb tagasiühilduvuseks alles. |
