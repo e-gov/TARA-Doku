@@ -4,7 +4,7 @@ permalink: TechnicalSpecification
 
 # Technical specification
 {: .no_toc}
-v 1.14, 09.05.2023
+v 1.15, 26.06.2023
 
 - TOC
 {:toc}
@@ -548,9 +548,17 @@ For signature validation following checks needs to be performed on client applic
 
 NB! "Hardcoding" the key to client application configuration must be avoided. The key change will be typically communicated (except of urgent security reasons), but manual key handling will result downtime in client application for the period when TARA is already using the new key until the new key is taken use in client application.
 
-#### 5.1.2 Trusting of the public signature key endpoint
+#### 5.1.2 Verifying the TLS connection to endpoints
 
-The client application makes HTTPS requests to TARA server towards to the identity token and public signature key endpoints. The client application must verify TARA server’s certificate (domains `tara.ria.ee` and `tara-test.ria.ee`). As the certificates of aforementioned domains are issued by DigiCert, the client application must use DigiCert’s root certificate or TARA certificate as a trust anchor.
+When making requests from the client application to TARA (to all endpoints, i.e., server discovery endpoint, public signature key endpoint, token endpoint), all necessary checks must be correctly performed during the initiation of the TLS connection. It is recommended not to implement these checks yourself, but to use a library with HTTPS or TLS connection functionality.
+
+The trust anchor for the TLS connection must be set to the [DigiCert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) root certificate only. It is not advisable to trust certificates from other CAs or the entire operating system's CA certificate store. If necessary, instead of the DigiCert Global Root CA, the trust anchor for the TLS connection can be set to the [end-entity certificate](https://github.com/e-gov/TARA-Doku/blob/master/certificates/star_ria_ee_valid_until_2023-11-22.crt), which is replaced at least once a year.
+
+The HTTPS or TLS connection functionality library must perform the following checks for each connection initiation:
+* check whether a certificate chain with valid signatures is formed, ending with the DigiCert Global Root CA root certificate;
+* check whether the hostname in the request (`tara.ria.ee` or `tara-test.ria.ee`) matches the CN field in the server's presented certificate or is included in the SAN field;
+* check the start and end validity values for all certificates in the chain;
+* check the constraints defined in the certificates (basic, name, key usage, critical extensions).
 
 #### 5.1.3 Verifying the issuer of the certificate
 

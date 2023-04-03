@@ -551,9 +551,9 @@ NB! Kindlasti tasuks vältida võtme käsitsi kirjutamist klientrakenduse konfig
 
 #### 5.1.2 Otspunktide TLS ühenduse kontrollimine
 
-Klientrakendusest TARA poole sooritatavatel päringutel (kõikidesse otspunktidesse ehk teenuseteabe otspunkti, võtmeväljastusotspunkti, tõendiväljastusotspunkti) tuleb TLS ühenduse algatamisel sooritada korrektselt kõik vajalikud kontrollid. Soovitav on neid mitte ise implementeerida, vaid kasutada mõnda HTTPS või TLS ühenduste funktsionaalsusega teeki.
+Klientrakendusest TARA poole sooritatavatel päringutel (kõikidesse otspunktidesse ehk teenuseteabe otspunkti, võtmeväljastusotspunkti, tõendiväljastusotspunkti) tuleb TLS ühenduse algatamisel sooritada korrektselt kõik vajalikud kontrollid. Soovitatav on neid mitte ise implementeerida, vaid kasutada mõnda HTTPS või TLS ühenduste funktsionaalsusega teeki.
 
-TLS ühenduse usaldusahelaks peab määrama ainult [DigiCert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) juursertifikaadi. Soovitav ei ole usaldada teiste CA-de sertifikaate ega tervet operatsioonisüsteemi CA sertifikaatide hoidlat. Vajadusel võib TLS ühenduse usaldusahelaks määrata DigiCert Global Root CA asemel [lõppsertifikaadi](https://github.com/e-gov/TARA-Doku/blob/master/certificates/star_ria_ee_valid_until_2023-11-22.crt), mis vahetub vähemalt iga aasta tagant.
+TLS ühenduse usaldusankruks peab määrama ainult [DigiCert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) juursertifikaadi. Soovitatav ei ole usaldada teiste CA-de sertifikaate ega tervet operatsioonisüsteemi CA sertifikaatide hoidlat. Vajadusel võib TLS ühenduse usaldusankruks määrata DigiCert Global Root CA asemel [lõppolemi sertifikaadi](https://github.com/e-gov/TARA-Doku/blob/master/certificates/star_ria_ee_valid_until_2023-11-22.crt), mis vahetub vähemalt iga aasta tagant.
 
 HTTPS või TLS ühenduste funktsionaalsusega teek peab iga ühenduse algatamisel teostama järgnevad kontrollid:
 * kontrollima, kas moodustub valiidsete allkirjadega sertifikaadiahel, mis lõpeb [DigiCert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) juursertifikaadiga;
