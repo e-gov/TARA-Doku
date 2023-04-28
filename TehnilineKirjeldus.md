@@ -7,7 +7,7 @@ Mõned autentimismeetodid võivad olla veel arenduses või kasutatavad ainult te
 
 # Tehniline kirjeldus
 {: .no_toc}
-v 1.22, 29.03.2023
+v 1.23, 28.04.2023
 
 - TOC
 {:toc}
@@ -269,7 +269,7 @@ Tabel 1 - autentimisvalikute kuvamine
 | `smartid` | Smart-ID autentimise lubamine |
 | `eidas` | Piiriülese autentimise valiku lubamine |
 | `eidasonly` | Ainult piiriülese autentimise valiku lubamine. <br><br>NB! `eidasonly` kasutuse korral ignoreeritakse alati kõiki ülejäänud autentimisvalikute eelistusi. |
-| `eidas:country:xx` | Piiriülese autentimise riik, töötab ainult koos `eidasonly` autentimisvalikuga. Lubatud skoopide nimekiri on teenuseteabe otspunktis. |
+| `eidas:country:xx` | Piiriülese autentimise riik (TARA riigi valiku lehte ei kuvata). Töötab ainult koos `eidasonly` autentimisvalikuga. Lubatud skoopide nimekiri on teenuseteabe otspunktis. |
 
 Näide 1: Kõik autentimismeetodid
 `scope=openid`
@@ -280,7 +280,7 @@ Näide 2: Ainult ID-kaardi ja Mobiil-ID kasutus
 Näide 3: Ainult piiriülene autentimine
 `scope=openid%20eidas`
 
-Näide 4: Piiriülene autentimine ilma TARA kasutajaliideses riigi valikuta. Riikide nimekiri valitakse autentimist alustanud infosüsteemis.
+Näide 4: Piiriülene autentimine ilma TARA kasutajaliideses riigi valikuta. Riik valitakse autentimist alustanud infosüsteemis.
 `scope=openid%20eidasonly%20eidas%3Acountry%3Abe`
 
 ### 4.2 Tagasisuunamispäring
@@ -766,6 +766,7 @@ NB! Riigi Infosüsteemi Amet ei taga teiste riikide autentimisteenuste toimimist
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
+| 1.23, 28.04.2022   | Täpsustatud eidas:country:xx skoobi kasutuse kirjeldust. |
 | 1.22, 29.03.2022   | Lisatud viide Riigi SSO teenusele (GovSSO). Parendatud sõnastust. |
 | 1.21, 10.11.2022   | Täpsustatud "5.1.2 Otspunktide TLS ühenduse kontrollimine" peatükis juhiseid. |
 | 1.20, 16.09.2022   | Lisatud peatükk "9 Erasektori asutuse erisused". |

@@ -5,7 +5,7 @@ permalink: TechnicalSpecification
 
 # Technical specification
 {: .no_toc}
-v 1.12, 29.03.2023
+v 1.13, 28.04.2023
 
 - TOC
 {:toc}
@@ -267,6 +267,7 @@ Table 1 – displaying the authentication methods
 | `smartid`                    | Allowing Smart-ID authentication                                                                                                                            |
 | `eidas`                      | Allowing cross-border (eIDAS) authentication                                                                                                                |
 | `eidasonly`                  | Allowing ONLY cross-border (eIDAS) authentication <br><br>NB! When `eidasonly` is used, all other preferred authentication methods will be always excluded. |
+| `eidas:country:xx`           | Selects defined country for cross-border (eIDAS) authentication (skips the TARA country selection page). Can only be used together with `eidasonly` scope. Supported country codes can be retrieved from discovery endpoint. |
 
 Example 1: All means of authentication
 `scope=openid`
@@ -276,6 +277,9 @@ Example 2: Only ID card and mobile ID
 
 Example 3: Only cross-border authentication
 `scope=openid%20eidas`
+
+Example 4: Cross-border (eIDAS) authentication without TARA country selection page. The country is selected by client application.
+`scope=openid%20eidasonly%20eidas%3Acountry%3Abe`
 
 ### 4.2 Redirect request
 
