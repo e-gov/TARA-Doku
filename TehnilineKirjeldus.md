@@ -4,7 +4,7 @@ permalink: TehnilineKirjeldus
 
 # Tehniline kirjeldus
 {: .no_toc}
-v 1.24, 09.05.2023
+v 1.25, 26.10.2023
 
 - TOC
 {:toc}
@@ -551,15 +551,18 @@ NB! Kindlasti tasuks vältida võtme käsitsi kirjutamist klientrakenduse konfig
 
 #### 5.1.2 Otspunktide TLS ühenduse kontrollimine
 
+Siin peatükis kirjeldatud sertifikaadid rakendatakse `tara-test.ria.ee` keskkonnas 07.11.2023 ja `tara.ria.ee` keskkonnas 14.11.2023. Seni kehtivad [eelmises versioonis](https://github.com/e-gov/TARA-Doku/blob/1c0d51a59864184d424b9055d405b573b90f6555/TehnilineKirjeldus.md#512-otspunktide-tls-%C3%BChenduse-kontrollimine) kirjeldatud sertifikaadid.
+{: .adv}
+
 Klientrakendusest TARA poole sooritatavatel päringutel (kõikidesse otspunktidesse ehk teenuseteabe otspunkti, võtmeväljastusotspunkti, tõendiväljastusotspunkti) tuleb TLS ühenduse algatamisel sooritada korrektselt kõik vajalikud kontrollid. Soovitatav on neid mitte ise implementeerida, vaid kasutada mõnda HTTPS või TLS ühenduste funktsionaalsusega teeki.
 
-TLS ühenduse usaldusankruks peab määrama ainult [DigiCert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) juursertifikaadi. Soovitatav ei ole usaldada teiste CA-de sertifikaate ega tervet operatsioonisüsteemi CA sertifikaatide hoidlat. Vajadusel võib TLS ühenduse usaldusankruks määrata DigiCert Global Root CA asemel [lõppolemi sertifikaadi](https://github.com/e-gov/TARA-Doku/blob/master/certificates/star_ria_ee_valid_until_2023-11-22.crt), mis vahetub vähemalt iga aasta tagant.
+TLS ühenduse usaldusankruks peab määrama ainult [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) juursertifikaadi. Soovitatav ei ole usaldada teiste CA-de sertifikaate ega tervet operatsioonisüsteemi CA sertifikaatide hoidlat. Vajadusel võib TLS ühenduse usaldusankruks määrata DigiCert Global Root G2 asemel [lõppolemi sertifikaadi](https://github.com/e-gov/TARA-Doku/blob/master/certificates/star_ria_ee_valid_until_2024-11-17.crt), mis vahetub vähemalt iga aasta tagant.
 
 HTTPS või TLS ühenduste funktsionaalsusega teek peab iga ühenduse algatamisel teostama järgnevad kontrollid:
-* kontrollima, kas moodustub valiidsete allkirjadega sertifikaadiahel, mis lõpeb [DigiCert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) juursertifikaadiga;
+* kontrollima, kas moodustub valiidsete allkirjadega sertifikaadiahel, mis lõpeb [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) juursertifikaadiga;
 * kontrollima, kas päringus olev _hostname_ (`tara.ria.ee` või `tara-test.ria.ee`) vastab serveri esitatud sertifikaadis olevale CN väljale või sisaldub SAN väljal;
 * kontrollima ahela kõikidel sertifikaatidel kehtivuse alguse ja lõpu väärtuseid;
-* kontrollima sertifikaatides defineeritud _constraint_'e (basic, name, key usage, critical extensions).
+* kontrollima sertifikaatides defineeritud _constraint_'e (basic, name, key usage, critical extensions). <-- RFC?
 
 #### 5.1.3 Tõendi väljaandja kontrollimine
 
@@ -761,6 +764,7 @@ NB! Riigi Infosüsteemi Amet ei taga teiste riikide autentimisteenuste toimimist
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
+| 1.25, 26.10.2023   | TLS usaldusankru muutus (juursertifikaadi vahetus, lõppolemi sertifikaadi vahetus). |
 | 1.24, 09.05.2023   | Formaadi ja kirjavigade parandused. Autentimisvahendite nimetuste ühtlustamine, EU eID kui autentimismeetod (piiriülene autentimine eIDAS taristus). |
 | 1.23, 28.04.2023   | Täpsustatud eidas:country:xx skoobi kasutuse kirjeldust. |
 | 1.22, 29.03.2023   | Lisatud viide Riigi SSO teenusele (GovSSO). Parendatud sõnastust. |

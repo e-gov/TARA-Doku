@@ -4,7 +4,7 @@ permalink: TechnicalSpecification
 
 # Technical specification
 {: .no_toc}
-v 1.15, 26.06.2023
+v 1.16, 26.10.2023
 
 - TOC
 {:toc}
@@ -550,12 +550,15 @@ NB! "Hardcoding" the key to client application configuration must be avoided. Th
 
 #### 5.1.2 Verifying the TLS connection to endpoints
 
+Certificates described in this chapter will be applied in `tara-test.ria.ee` environment on 2023-11-07 and in `tara.ria.ee` environment on 2023-11-14. Until that time certificates described in the [previous version](https://github.com/e-gov/TARA-Doku/blob/1c0d51a59864184d424b9055d405b573b90f6555/TechnicalSpecification.md#512-verifying-the-tls-connection-to-endpoints) are in effect.
+{: .adv}
+
 When making requests from the client application to TARA (to all endpoints, i.e., server discovery endpoint, public signature key endpoint, token endpoint), all necessary checks must be correctly performed during the initiation of the TLS connection. It is recommended not to implement these checks yourself, but to use a library with HTTPS or TLS connection functionality.
 
-The trust anchor for the TLS connection must be set to the [DigiCert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) root certificate only. It is not advisable to trust certificates from other CAs or the entire operating system's CA certificate store. If necessary, instead of the DigiCert Global Root CA, the trust anchor for the TLS connection can be set to the [end-entity certificate](https://github.com/e-gov/TARA-Doku/blob/master/certificates/star_ria_ee_valid_until_2023-11-22.crt), which is replaced at least once a year.
+The trust anchor for the TLS connection must be set to the [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) root certificate only. It is not advisable to trust certificates from other CAs or the entire operating system's CA certificate store. If necessary, instead of the DigiCert Global Root G2, the trust anchor for the TLS connection can be set to the [end-entity certificate](https://github.com/e-gov/TARA-Doku/blob/master/certificates/star_ria_ee_valid_until_2024-11-17.crt), which is replaced at least once a year.
 
 The HTTPS or TLS connection functionality library must perform the following checks for each connection initiation:
-* check whether a certificate chain with valid signatures is formed, ending with the DigiCert Global Root CA root certificate;
+* check whether a certificate chain with valid signatures is formed, ending with the [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) root certificate;
 * check whether the hostname in the request (`tara.ria.ee` or `tara-test.ria.ee`) matches the CN field in the server's presented certificate or is included in the SAN field;
 * check the start and end validity values for all certificates in the chain;
 * check the constraints defined in the certificates (basic, name, key usage, critical extensions).
