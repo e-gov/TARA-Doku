@@ -762,7 +762,7 @@ NB! Riigi Infosüsteemi Amet ei taga teiste riikide autentimisteenuste toimimist
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
 | 1.24, 09.05.2023   | Formaadi ja kirjavigade parandused. Autentimisvahendite nimetuste ühtlustamine, EU eID kui autentimismeetod (piiriülene autentimine eIDAS taristus). |
-| 1.23, 29.03.2023   | Formaadi ja kirjavigade parandused. Autentimisvahendite nimetuste ühtlustamine, EU eID kui autentimisvahend (piiriülene autentimine eIDAS taristus). |
+| 1.23, 28.04.2023   | Täpsustatud eidas:country:xx skoobi kasutuse kirjeldust. |
 | 1.22, 29.03.2023   | Lisatud viide Riigi SSO teenusele (GovSSO). Parendatud sõnastust. |
 | 1.21, 10.11.2022   | Täpsustatud "5.1.2 Otspunktide TLS ühenduse kontrollimine" peatükis juhiseid. |
 | 1.20, 16.09.2022   | Lisatud peatükk "9 Erasektori asutuse erisused". |
