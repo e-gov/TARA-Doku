@@ -10,6 +10,8 @@ Uus sertifikaat on võrreldes eelmisega väljastatud teisest ahelast. Uus välja
 Palume klientidel, kes on oma teenuses usaldanud otse Riigi autentimisteenuse TLS lõppsertifikaati (`*.ria.ee`), uuendada vastavalt usaldusankruks seatud lõppsertifikaati [uue vastu](https://github.com/e-gov/TARA-Doku/blob/master/certificates/star_ria_ee_valid_until_2024-10-01.crt).<br/>
 Täpsemalt TLS ühenduste usaldamisest: [https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus#512-otspunktide-tls-%C3%BChenduse-kontrollimine](https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus#512-otspunktide-tls-%C3%BChenduse-kontrollimine). Kui Teil esineb teenusega probleeme, siis palun võtke meiega ühendust [help@ria.ee](help@ria.ee).
 
+___
+
 **10.01.2023**
 ## Riigi autentimisteenus (TARA) hakkab ID-kaardiga sisse logimise kuval kontrollima kasutaja veebisirvikus Web eID laienduse olemasolu.
 Riigi autentimisteenus hakkab ID-kaardiga sisse logimise kuval kontrollima kasutaja veebisirvikus Web eID laienduse olemasolu.
