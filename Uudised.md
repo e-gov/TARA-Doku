@@ -4,6 +4,12 @@ permalink: Uudised
 
 # Uudised
 
+**25.10.2023**
+## 07.11.2023 vahetub TLS sertifikaat `tara-test.ria.ee` keskkonnas ja 14.11.2023 `tara.ria.ee` keskkonnas.
+Uus sertifikaat on võrreldes eelmisega väljastatud teisest ahelast. Uus väljastaja (issuer) on "DigiCert Global G2 TLS RSA SHA256 2020 CA1".<br/>
+Palume klientidel, kes on oma teenuses usaldanud otse Riigi autentimisteenuse TLS lõppsertifikaati (`*.ria.ee`), uuendada vastavalt usaldusankruks seatud lõppsertifikaati [uue vastu](https://github.com/e-gov/TARA-Doku/blob/master/certificates/star_ria_ee_valid_until_2024-10-01.crt).<br/>
+Täpsemalt TLS ühenduste usaldamisest: [https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus#512-otspunktide-tls-%C3%BChenduse-kontrollimine](https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus#512-otspunktide-tls-%C3%BChenduse-kontrollimine). Kui Teil esineb teenusega probleeme, siis palun võtke meiega ühendust [help@ria.ee](help@ria.ee).
+
 **10.01.2023**
 ## Riigi autentimisteenus (TARA) hakkab ID-kaardiga sisse logimise kuval kontrollima kasutaja veebisirvikus Web eID laienduse olemasolu.
 Riigi autentimisteenus hakkab ID-kaardiga sisse logimise kuval kontrollima kasutaja veebisirvikus Web eID laienduse olemasolu.
