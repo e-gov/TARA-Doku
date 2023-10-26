@@ -556,13 +556,17 @@ Siin peatükis kirjeldatud sertifikaadid rakendatakse `tara-test.ria.ee` keskkon
 
 Klientrakendusest TARA poole sooritatavatel päringutel (kõikidesse otspunktidesse ehk teenuseteabe otspunkti, võtmeväljastusotspunkti, tõendiväljastusotspunkti) tuleb TLS ühenduse algatamisel sooritada korrektselt kõik vajalikud kontrollid. Soovitatav on neid mitte ise implementeerida, vaid kasutada mõnda HTTPS või TLS ühenduste funktsionaalsusega teeki.
 
-TLS ühenduse usaldusankruks peab määrama ainult [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) juursertifikaadi. Soovitatav ei ole usaldada teiste CA-de sertifikaate ega tervet operatsioonisüsteemi CA sertifikaatide hoidlat. Vajadusel võib TLS ühenduse usaldusankruks määrata DigiCert Global Root G2 asemel [lõppolemi sertifikaadi](https://github.com/e-gov/TARA-Doku/blob/master/certificates/star_ria_ee_valid_until_2024-11-17.crt), mis vahetub vähemalt iga aasta tagant.
+Klientrakenduses peab TLS ühenduse usaldusankruks määrama ainult [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) juursertifikaadi. Soovitatav ei ole klientrakenduses usaldada teiste CA-de sertifikaate ega tervet operatsioonisüsteemi CA sertifikaatide hoidlat. Veebisirvikud usaldavad paljude CA-de sertifikaate, kuid neil on sertifikaatide volitamata väljastamise probleemi leevendamiseks kasutusel Certificate Transparency mehhanism. TARA autentimisvoog on kombinatsioon veebisirviku poolt ja klientrakenduse poolt tehtavatest päringutest, seega autentimisvoo terviklikuks õnnestumiseks rakendub mõlema poolt sooritatavate kontrollide ühend. Võrreldes lõppolemi sertifikaadi usaldamisega on CA juursertifikaadi usaldamisel suurem risk ühenduda vale otspunktiga (juhul kui välisel osapoolel õnnestub edukalt läbi viia sertifikaatide volitamata väljastamise rünne selle CA usaldusahelaga seotud organisatsioonides ning võrguliikluse vahemeherünne klientrakenduse ja TARA vahel). Peame seda riski aktsepteeritavaks, kuid iga liidestuja võib enda hinnangu ise kujundada ja vajadusel määrata klientrakenduses TLS ühenduse usaldusankruks CA juursertifikaadi (DigiCert Global Root G2) asemel [TARA lõppolemi sertifikaadi (`*.ria.ee`)](https://github.com/e-gov/TARA-Doku/blob/master/certificates/star_ria_ee_valid_until_2024-11-17.crt), kuid peab arvestama, et viimane vahetub tihedamini (vähemalt iga aasta tagant).
 
 HTTPS või TLS ühenduste funktsionaalsusega teek peab iga ühenduse algatamisel teostama järgnevad kontrollid:
 * kontrollima, kas moodustub valiidsete allkirjadega sertifikaadiahel, mis lõpeb [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) juursertifikaadiga;
 * kontrollima, kas päringus olev _hostname_ (`tara.ria.ee` või `tara-test.ria.ee`) vastab serveri esitatud sertifikaadis olevale CN väljale või sisaldub SAN väljal;
 * kontrollima ahela kõikidel sertifikaatidel kehtivuse alguse ja lõpu väärtuseid;
 * kontrollima sertifikaatides defineeritud _constraint_'e (basic, name, key usage, critical extensions). <-- RFC?
+
+Lisaks tuleb jälgida ahela kõikide sertifikaatide tühistamist mõnel järgnevatest viisidest:
+* RIA teavitab sertifikaatide tühistamisest liidestujate kontaktisikuid e-kirjaga.
+* Klientrakendus võib kontrollida CA poolt pakutavat kehtivuskinnitusteenust (OCSP) või tühistusnimekirja (CRL), kuid peab arvestama, et RIA ei vastuta CA kui välise osapoole teenuste kättesaadavuse eest. Praegu `tara.ria.ee` ja `tara-test.ria.ee` otspunktid kehtivuskinnituse klammerdamist (_OCSP stapling_) ei paku.
 
 #### 5.1.3 Tõendi väljaandja kontrollimine
 
@@ -764,7 +768,7 @@ NB! Riigi Infosüsteemi Amet ei taga teiste riikide autentimisteenuste toimimist
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
-| 1.25, 26.10.2023   | TLS usaldusankru muutus (juursertifikaadi vahetus, lõppolemi sertifikaadi vahetus). |
+| 1.25, 26.10.2023   | TLS usaldusankru muutus (juursertifikaadi vahetus, lõppolemi sertifikaadi vahetus). Täpsustatud TLS usaldusankru määramise ja sertifikaatide tühistamise kontrollimise juhiseid. |
 | 1.24, 09.05.2023   | Formaadi ja kirjavigade parandused. Autentimisvahendite nimetuste ühtlustamine, EU eID kui autentimismeetod (piiriülene autentimine eIDAS taristus). |
 | 1.23, 28.04.2023   | Täpsustatud eidas:country:xx skoobi kasutuse kirjeldust. |
 | 1.22, 29.03.2023   | Lisatud viide Riigi SSO teenusele (GovSSO). Parendatud sõnastust. |
