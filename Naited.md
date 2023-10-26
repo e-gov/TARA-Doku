@@ -22,7 +22,7 @@ Näiterakendused on paigaldatud Heroku free tier pilve. Kui soovite neid proovid
 
 Kui kasutate tasuta saadud tarkvara, siis andke ka kogukonnale midagi tagasi. Täiendused on teretulnud.
 
-You are welcome to submit a link to your TARA integration solution to be added to this list. Please contact: help@ria.ee.
+You are welcome to submit a link to your TARA integration solution to be added to this list. Please contact: [help@ria.ee](mailto:help@ria.ee).
 {: .note}
 
 | nimetus        | asukoht | keel | väljatöötaja |

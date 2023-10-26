@@ -8,4 +8,4 @@ Riigi autentimisteenus on mõeldud liitumiseks valitsussektori asutustele, kes s
 
 Liitumiseks peate esitama taotluse. Vastavad vormid leiate <a href='https://www.ria.ee/riigi-infosusteem/elektrooniline-identiteet-ja-usaldusteenused/kesksed-autentimisteenused#tara'>Riigi Infosüsteemi Ameti veebilehelt</a>.
 
-Küsimuste korral ja abi saamiseks pöörduge palun kasutajatoe poole: `help@ria.ee`.
+Küsimuste korral ja abi saamiseks pöörduge palun kasutajatoe poole: [help@ria.ee](mailto:help@ria.ee).

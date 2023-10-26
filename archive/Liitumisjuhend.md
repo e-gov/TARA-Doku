@@ -20,7 +20,7 @@ Vt ka: [Sonastik](Sonastik), [Viited](Viited)
 Asutus selgitab välja, kas ja millistes oma e-teenustes soovib TARA autentimisteenust kasutada. Selleks palume:
 - tutvuda TARA-teenuse [ärikirjeldusega](Arikirjeldus), teenustaseme leppega (SLA-ga), vajadusel ka [tehnilise kirjeldusega](TehnilineKirjeldus)
 - heita pilk ka teenuse [teekaardiga](https://e-gov.github.io/TARA-Doku/#teekaart)
-- vajadusel pidada nõu RIA-ga, `help@ria.ee`.
+- vajadusel pidada nõu RIA-ga, [help@ria.ee](mailto:help@ria.ee).
 
 ## 2 Kavandada ja teostada arendus
 Asutus kavandab ja teostab teenuse kasutamiseks vajalikud arendustööd. 
@@ -47,7 +47,7 @@ Asutus esitab taotluse testteenusega liitumiseks. Taotluse võib esitada juba en
 10) autentimismeetod või meetodid, mida soovitakse kasutada<br>
 11) klientrakenduse haldaja kontaktandmed (e-post, telefon, isikukood).
 
-Taotlus esitatakse ja edasine suhtlus teenuse haldamisel käib läbi RIA kasutajatoe, `help@ria.ee`. Vt lähemalt [RIA autentimisteenuste lehel](https://www.ria.ee/et/riigi-infosusteem/eid/partnerile.html#tara).
+Taotlus esitatakse ja edasine suhtlus teenuse haldamisel käib läbi RIA kasutajatoe, [help@ria.ee](mailto:help@ria.ee). Vt lähemalt [RIA autentimisteenuste lehel](https://www.ria.ee/et/riigi-infosusteem/eid/partnerile.html#tara).
 
 RIA, rahuldades taotluse:
 - väljastab asutusele klientrakenduse salasõna `client_secret`. Salasõna on ette nähtud identsustõendi päringute allkirjastamiseks
