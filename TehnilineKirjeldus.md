@@ -562,7 +562,7 @@ HTTPS või TLS ühenduste funktsionaalsusega teek peab iga ühenduse algatamisel
 * kontrollima, kas moodustub valiidsete allkirjadega sertifikaadiahel, mis lõpeb [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) juursertifikaadiga;
 * kontrollima, kas päringus olev _hostname_ (`tara.ria.ee` või `tara-test.ria.ee`) vastab serveri esitatud sertifikaadis olevale CN väljale või sisaldub SAN väljal;
 * kontrollima ahela kõikidel sertifikaatidel kehtivuse alguse ja lõpu väärtuseid;
-* kontrollima sertifikaatides defineeritud _constraint_'e (basic, name, key usage, critical extensions). <-- RFC?
+* kontrollima sertifikaatides defineeritud _constraint_'e (basic, name, key usage, critical extensions).
 
 Lisaks tuleb jälgida ahela kõikide sertifikaatide tühistamist mõnel järgnevatest viisidest:
 * RIA teavitab sertifikaatide tühistamisest liidestujate kontaktisikuid e-kirjaga.
