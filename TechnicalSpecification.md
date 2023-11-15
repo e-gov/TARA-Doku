@@ -208,7 +208,7 @@ Elements of an authentication request:
 | `client_id`               | yes        | `client_id=58e7...`                                                               | Application identifier. The application identifier is issued to the institution by RIA upon registration of the client application as a user of the authentication service.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | `ui_locales`              | no         | `ui_locales=et`                                                                   | Selection of the user interface language. The following languages are supported: `et`, `en`, `ru`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | `nonce`                   | no         | `fsdsfwrerhtry3qeewq`                                                             | A unique parameter which helps to prevent replay attacks based on the protocol ([References](Viited), [Core], subsection 3.1.2.1. Authentication Request). The `nonce` parameter is not compulsory.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| `acr_values`              | no         | `acr_values=high`                                                                 | The minimum required level of authentication based on the eIDAS LoA ([read more about eIDAS level-of-assurance](TechnicalSpecification#6-eidas-levels-of-assurance)). It is permitted to apply only one of the following values: `low`, `substantial`, `high` . `substantial` is used by default if the value has not been specified. <br><br>TARA will only display authentication methods which have an equal or higher LoA compared to the value of `acr_values` in the authentication request. For cross-border authentication, the value is forwarded to the foreign country's eIDAS authentication service. <br><br> On the interfaced client side, [it must be verified](https://e-gov.github.io/TARA-Doku/TechnicalSpecification#517-verifying-the-eidas-level-of-assurance) that the authentication level in the `acr` claim of an identity token is not lower than the minimum allowed level-of-assurance.                                                                                                                                |
+| `acr_values`              | no         | `acr_values=high`                                                                 | The minimum required level of authentication based on the eIDAS LoA ([read more about eIDAS level-of-assurance](TechnicalSpecification#8-eidas-levels-of-assurance)). It is permitted to apply only one of the following values: `low`, `substantial`, `high` . `substantial` is used by default if the value has not been specified. <br><br>TARA will only display authentication methods which have an equal or higher LoA compared to the value of `acr_values` in the authentication request. For cross-border authentication, the value is forwarded to the foreign country's eIDAS authentication service. <br><br> On the interfaced client side, [it must be verified](https://e-gov.github.io/TARA-Doku/TechnicalSpecification#517-verifying-the-eidas-level-of-assurance) that the authentication level in the `acr` claim of an identity token is not lower than the minimum allowed level-of-assurance.                                                                                                                                |
 
 #### 4.1.1 Requesting attributes about foreigners
 
@@ -524,7 +524,7 @@ The identity token is signed by the TARA authentication service. The signature m
 
 TARA uses the `RS256` signature algorithm. The client application must, at least, be able to verify the signature given by using this algorithm. It would be reasonable to use a standard JWT library which supports all JWT algorithms. The change of algorithm is considered unlikely, but possible in case a security vulnerability is detected in the `RS256`.
 
-For the signature verification, the public signature key of TARA must be used. The public signature key is published at the public signature key [endpoint](#7-endpoints-and-timeouts).
+For the signature verification, the public signature key of TARA must be used. The public signature key is published at the public signature key [endpoint](#6-endpoints-and-timeouts).
 
 The public signature key is stable - the public signature key will be changed according to security recommendations. However, the key can be changed without prior notice for security reasons. The key change process is described in a separate [chapter](#54-id-token-signing-key-change).
 
@@ -660,7 +660,7 @@ The key change is carried out based on [OpenID Connect](https://openid.net/specs
 
 RIA notifies contact persons of integrators by e-mail about identity token signing key change.
 
-Until the notified date, TARA signs identity tokens with the key that is being used until then. From the notified date, TARA will start signing identity tokens with the new key, which will be added to [public signature key endpoint](#7-endpoints-and-timeouts) by the time the first identity token is signed with it. Therefore, for some time, two public keys are visible at the public signature key endpoint at the same time, each with its own unique `kid` identifier. Example of publishing two keys:
+Until the notified date, TARA signs identity tokens with the key that is being used until then. From the notified date, TARA will start signing identity tokens with the new key, which will be added to [public signature key endpoint](#6-endpoints-and-timeouts) by the time the first identity token is signed with it. Therefore, for some time, two public keys are visible at the public signature key endpoint at the same time, each with its own unique `kid` identifier. Example of publishing two keys:
 ```json
 {
    "keys": [
@@ -688,27 +688,9 @@ The old public key will be removed from the public signature key endpoint after 
 
 See also [Verifying the signature](#511-verifying-the-signature) chapter for information on how the public key must be used in signature validation.
 
-## 6 eIDAS levels of assurance
+## 6 Endpoints and timeouts
 
-As stated by [eIDAS regulation](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014R0910&from=EN), eIDAS level of assurance (LoA) is the level of reliability (high, substantial, low) assigned to a means of authentication under the implementing regulation [(EL) 2015/1502](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015R1502&from=EN). The LoA of a means of authentication is determined by several aspects: the basis of identity issuance, organizational processes, the technical solution and management of the solution.
-
-Levels of assurance for domestic authentication methods used in TARA are approved by the Information System Authority according to eIDAS implementing regulation. 
-
-Means of authentication used in TARA have been assigned the following levels of assurance:
-
-| Means of authentication | Level of assurance                                                                                                         |
-|-------------------------|----------------------------------------------------------------------------------------------------------------------------|
-| ID-Card                 | [high](https://ec.europa.eu/digital-building-blocks/wikis/display/EIDCOMMUNITY/Estonia)                                    |
-| Mobile-ID               | [high](https://ec.europa.eu/digital-building-blocks/wikis/display/EIDCOMMUNITY/Estonia)                                    |
-| Smart-ID                | [high](https://www.ria.ee/media/586/download) <sup>1</sup> |
-
-<sup>1</sup>NB! The LoA applies only for persons with an Estonian identity code and a Smart-ID account. Interfacing party has to consider that non-residents (Estonian e-residents) are not distinguishable from residents.
-
-Every member state assigns LoA's to their own domestic means of authentication and notifies other member states of them according to [eIDAS regulation](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015R1502&from=EN). Please refer [here](https://ec.europa.eu/cefdigital/wiki/display/EIDCOMMUNITY/Overview+of+pre-notified+and+notified+eID+schemes+under+eIDAS) for a list of all authentication methods that have been notified by member states.
-
-## 7 Endpoints and timeouts
-
-7.1 Test service
+6.1 Test service
 
 | endpoint                               | URL                                                                                                                                                                                                                                                         |
 |----------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -718,7 +700,7 @@ Every member state assigns LoA's to their own domestic means of authentication a
 | authorization                          | [https://tara-test.ria.ee/oidc/authorize](https://tara-test.ria.ee/oidc/authorize)                                                                                                                                                                          | 
 | token                                  | [https://tara-test.ria.ee/oidc/token](https://tara-test.ria.ee/oidc/token)                                                                                                                                                                                  | 
 
-7.2 Production service
+6.2 Production service
 
 | endpoint                               | URL                                                                                                                                                                                                                                     |
 |----------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -728,7 +710,7 @@ Every member state assigns LoA's to their own domestic means of authentication a
 | authorization                          | [https://tara.ria.ee/oidc/authorize](https://tara.ria.ee/oidc/authorize)                                                                                                                                                                | 
 | token                                  | [https://tara.ria.ee/oidc/token](https://tara.ria.ee/oidc/token)                                                                                                                                                                        | 
 
-7.3 Timeouts
+6.3 Timeouts
 
 | timeout                           | value  | remark                                                                                                                                                                                                                                                                       |
 |-----------------------------------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -737,7 +719,7 @@ Every member state assigns LoA's to their own domestic means of authentication a
 | OAuth authorization code          | 30 s   | The client application must obtain the ID token using authorization code within 30 seconds.                                                                                                                                                                                  |
 | ID token (and OAuth access token) | 40 s   | The ID token includes the token expiry time. For security reasons, the validity period of the token is set to 40 seconds. The client application must not use the expired token. Note that ID token is not a proof of a session between the client application and the user. |
 
-## 8 Recommendations for interfacing with TARA
+## 7 Recommendations for interfacing with TARA
 
 Interfacing with TARA is easy. Yet, the operations should be carefully planned and executed.
 
@@ -774,6 +756,24 @@ As a next step, the institution performs tests of its client application interfa
 **Subscribing to the TARA production service.** After successful testing, the institution submits an application for integration with the production version for the client application. The application must include the redirect-URL of the production version of the client application (`redirect_uri`) based on the OpenID Connect protocol and other information.
 
 RIA, having satisfied the application, issues a password for the production version of the client application, `client_secret` and grants access to the production service for the production version of the client application.
+
+## 8 eIDAS levels of assurance
+
+As stated by [eIDAS regulation](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014R0910&from=EN), eIDAS level of assurance (LoA) is the level of reliability (high, substantial, low) assigned to a means of authentication under the implementing regulation [(EL) 2015/1502](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015R1502&from=EN). The LoA of a means of authentication is determined by several aspects: the basis of identity issuance, organizational processes, the technical solution and management of the solution.
+
+Levels of assurance for domestic authentication methods used in TARA are approved by the Information System Authority according to eIDAS implementing regulation.
+
+Means of authentication used in TARA have been assigned the following levels of assurance:
+
+| Means of authentication | Level of assurance                                                                                                         |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------|
+| ID-Card                 | [high](https://ec.europa.eu/digital-building-blocks/wikis/display/EIDCOMMUNITY/Estonia)                                    |
+| Mobile-ID               | [high](https://ec.europa.eu/digital-building-blocks/wikis/display/EIDCOMMUNITY/Estonia)                                    |
+| Smart-ID                | [high](https://www.ria.ee/media/586/download) <sup>1</sup> |
+
+<sup>1</sup>NB! The LoA applies only for persons with an Estonian identity code and a Smart-ID account. Interfacing party has to consider that non-residents (Estonian e-residents) are not distinguishable from residents.
+
+Every member state assigns LoA's to their own domestic means of authentication and notifies other member states of them according to [eIDAS regulation](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015R1502&from=EN). Please refer [here](https://ec.europa.eu/cefdigital/wiki/display/EIDCOMMUNITY/Overview+of+pre-notified+and+notified+eID+schemes+under+eIDAS) for a list of all authentication methods that have been notified by member states.
 
 ## 9 Private sector client specifications
 

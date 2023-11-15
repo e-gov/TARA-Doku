@@ -87,7 +87,7 @@ When using selective means of authentication, [`amr` validation](TechnicalSpecif
 
 ### 3.3 Adjusting level of assurance
 
-eIDAS level of assurance (LoA) refers to [the level of reliability assigned to a means of authentication](TechnicalSpecification#6-eidas-levels-of-assurance).
+eIDAS level of assurance (LoA) refers to [the level of reliability assigned to a means of authentication](TechnicalSpecification#8-eidas-levels-of-assurance).
 
 In an authentication request to TARA this value is by default `substantial`. If the integrator wishes to increase or decrease the LoA, then the authentication request should include the `acr_values` parameter with the corresponding value.
 
@@ -125,7 +125,7 @@ The integrator has to ensure that if an error is returned and user is redirected
 
 ### 3.7 Public signature key identifier usage
 
-The public signature key (`kid`) is used for JWT [signature verification](TechnicalSpecification#511-verifying-the-signature) and can be obtained from the public signature key [endpoint](TechnicalSpecification#7-endpoints-and-timeouts).
+The public signature key (`kid`) is used for JWT [signature verification](TechnicalSpecification#511-verifying-the-signature) and can be obtained from the public signature key [endpoint](TechnicalSpecification#6-endpoints-and-timeouts).
 
 The integrator should ensure that the `kid` value is not hardcoded on the client application side. If the key is hardcoded and should change, then client application users will be unable to log in.
 
