@@ -67,4 +67,4 @@ RIA, rahuldades taotluse:
 
 ## 6 URL-id
 
-Otspunktide URL-id vt [tehnilises kirjelduses](TehnilineKirjeldus#6-otspunktid).
+Otspunktide URL-id vt [tehnilises kirjelduses](TehnilineKirjeldus#6-otspunktid-ja-aegumisajad).
