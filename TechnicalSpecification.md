@@ -236,7 +236,7 @@ The `email_verified` is always `false`. It means that TARA does not verify or is
 
 #### 4.1.3 Requesting phone number
 
-The `phone` scope can be used to request the user’s phone number in the identity token. This option is targeted for client applications that use Mobile-ID, which requires user's phone number as input, as a means for giving digital signatures. The `phone` scope must be added to the main scope `openid`. The claims `phone` and `phone_number_verified` are issued in the identity token. For example:
+The `phone` scope can be used to request the user’s phone number in the identity token. This option is targeted for client applications that use Mobile-ID, which requires user's phone number for input, as a means for giving digital signatures. The `phone` scope must be added to the main scope `openid`. The claims `phone` and `phone_number_verified` are issued in the identity token. For example:
 
 ```
 "sub": "EE60001019906",
@@ -411,7 +411,7 @@ The following claims are presented in the identity token:
 | `iss` (_Issuer_)                                 | `https://tara.ria.ee` - issuer of the certificate (TARA); in the case of test services `https://tara-test.ria.ee`                                                                                                                                                                          |
 | `aud` (_Audience_)                               | `TARA-Demo` - the ID of a client application that requested authentication (the value of `client_id` field is specified upon directing the user to the authentication process).                                                                                                            |
 | `exp` (_Expires_)                                | `1530295852` - the expiration time of the certificate (in Unix _epoch_ format).                                                                                                                                                                                                            |
-| `iat` (_Issued At_)                              | `1530267052` - the time of issue of the certificate (in Unix _epoch_ format).                                                                                                                                                                                                              |
+| `iat` (_Issued At_)                              | `1530267052` - the time of issuance of the certificate (in Unix _epoch_ format).                                                                                                                                                                                                           |
 | `nbf` (_Not Before_)                             | `1530266752` - the validity start time of the certificate (in Unix _epoch_ format).                                                                                                                                                                                                        |
 | `sub` (_Subject_)                                | `EE60001019906` - the identifier of the authenticated user (personal identification code or eIDAS identifier) with the prefix of the country code of the citizen (country codes based on the ISO 3166-1 alpha-2 standard). NB! eIDAS identifier length may be a maximum of 256 characters. |
 | `profile_attributes`                             | the data of the authenticated user, including the eIDAS attributes                                                                                                                                                                                                                         |
@@ -491,7 +491,7 @@ Response body might contain other fields, that client application must ignore.
 
 **Error handling**
 
-In case the access token presented to the user information endpoint is missing or is expired, an error code and a brief description about the error are returned as `WWW-Authenticate` header according to the [OpenID Connect Core 1.0 spetsifikatsioonile](https://openid.net/specs/openid-connect-core-1_0.html#UserInfoError).
+In case the access token presented to the user information endpoint is missing or is expired, an error code and a brief description about the error are returned as `WWW-Authenticate` header according to the [OpenID Connect Core 1.0 specification](https://openid.net/specs/openid-connect-core-1_0.html#UserInfoError).
 
 An example:
 
