@@ -4,7 +4,7 @@ permalink: TehnilineKirjeldus
 
 # Tehniline kirjeldus
 {: .no_toc}
-v 1.27, 25.04.2024
+v 1.28, 15.06.2024
 
 - TOC
 {:toc}
@@ -208,7 +208,6 @@ Autentimispäringu elemendid:
 | `state` | jah | `state=hkMVY7vjuN7xyLl5` | Võltspäringuründe (_cross-site request forgery_, CSRF) vastane turvakood. `state` moodustamise ja kontrollimise kohta vt lähemalt jaotis "Võltspäringuründe vastane kaitse". |
 | `response_type` | jah | `response_type=code` | Määrab autentimise tulemuse serverile edastamise viisi. Toetatud on volituskoodi viis (OpenID Connect protokolli _authorization flow_), selle tähiseks on väärtus `code`. |
 | `client_id` | jah | `client_id=58e7...` | Rakenduse identifikaator. Rakenduse identifikaatori annab RIA asutusele klientrakenduse registreerimisel autentimisteenuse kasutajaks. |
-| ~~`locale`~~ | ~~ei~~ | ~~`locale=et`~~ | ~~Kasutajaliidese keele valik. Toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida.~~ <br><br>Märkus. Parameetrit toetatakse kuni juuli 2019 lõpuni (kasuta `ui_locales` parameetrit selle asemel). |
 | `ui_locales` | ei | `ui_locales=et` | Kasutajaliidese keele valik. Toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida. |
 | `nonce` | ei | `fsdsfwrerhtry3qeewq` | Taasesitusründeid vältida aitav unikaalne parameeter, vastavalt protokollile ([Viited](Viited), [Core], jaotis 3.1.2.1. Authentication Request). Parameeter `nonce` ei ole kohustuslik. |
 | `acr_values` | ei | `acr_values=high` | Nõutav minimaalne eIDAS autentimistase isikutuvastuseks kasutatavale autentimismeetodile (loe rohkem jaotisest "eIDAS autentimistasemed"). Lubatud on määrata üks väärtus järgmisest loetelust: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Kui määramata, siis vaikimisi `substantial` (märkimisväärne). <br><br>Kui `acr_values` väärtus on määratud, kuvab TARA kasutajale ainult autentimismeetodid, mille tase on sama või kõrgem kui `acr_values` väärtus. Piiriüleste autentimisvahendite korral edastatakse nõue välisriigi eIDAS autentimisteenusele. <br><br>TARA-lt saadud identsustõendis tuleb `acr` väite vastavust kontrollida nõutud minimaalsele tasemele (vt jaotis 5.1 Identsustõendi kontrollimine). |
@@ -809,6 +808,7 @@ NB! Riigi Infosüsteemi Amet ei taga teiste riikide autentimisteenuste toimimist
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
+| 1.28, 15.06.2024   | Eemaldatud autentimispäringu parameeter `locale`, mis pole toetatud pärast 2019. aasta juulit. |
 | 1.27, 25.04.2024   | TLS usaldusankru muutus (juursertifikaatide lisamine, lõppolemi sertifikaadi eemaldamine). |
 | 1.26, 23.11.2023   | TARA võtmevahetusprotsess viidud eraldi peatükki. |
 | 1.25, 26.10.2023   | TLS usaldusankru muutus (juursertifikaadi vahetus, lõppolemi sertifikaadi vahetus). Täpsustatud TLS usaldusankru määramise ja sertifikaatide tühistamise kontrollimise juhiseid. |
