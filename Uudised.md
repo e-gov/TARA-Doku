@@ -4,6 +4,15 @@ permalink: Uudised
 
 # Uudised
 
+**23.11.2023**
+## TARA identsustõendi allkirjastamise võtme vahetus
+TARA toodangukeskkonnas on alates 01.08.2023 lisatud https://tara.ria.ee/oidc/jwks nimekirja praegu kasutatava võtme (`kid` väärtusega `public:SOP0AEUxG6ZgUzYH`) kõrvale uus avalik võti (`kid` väärtusega `fcd76c92-bc34-4e9f-b874-4c816c34639d`). 
+Tehnilises kirjelduses on täpsustatud peatükke [Allkirja kontrollimine](TehnilineKirjeldus#511-allkirja-kontrollimine) ja [Identsustõendi allkirjastamise võtme vahetus](TehnilineKirjeldus#54-identsust%C3%B5endi-allkirjastamise-v%C3%B5tme-vahetus).
+
+Uue võtme kasutusele võtu kuupäev teavitatakse eraldi. Kuni teavitatava kuupäevani allkirjastab TARA identsustõendeid praegu kasutatava võtmega (`kid` väärtusega `public:SOP0AEUxG6ZgUzYH`). Alates teavitatavast kuupäevast hakkab TARA allkirjastama identsustõendeid uue võtmega (`kid` väärtusega `fcd76c92-bc34-4e9f-b874-4c816c34639d`) ja vana võti eemaldatakse võtmeväljastuse otspunktist.
+
+___
+
 **26.10.2023**
 ## 07.11.2023 vahetub TLS sertifikaat `tara-test.ria.ee` keskkonnas ja 14.11.2023 vahetub `tara.ria.ee` keskkonnas.
 • Palume klientidel, kes on oma teenuses usaldanud senist DigiCert juursertifikaati (DigiCert Global Root CA), lisada enne vahetusaega usaldusankruks uus DigiCert juursertifikaat ([DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)) ja eemaldada pärast vahetusaega senine juursertifikaat.<br/>

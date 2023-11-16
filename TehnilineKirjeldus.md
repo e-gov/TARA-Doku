@@ -4,7 +4,7 @@ permalink: TehnilineKirjeldus
 
 # Tehniline kirjeldus
 {: .no_toc}
-v 1.25, 26.10.2023
+v 1.26, 23.11.2023
 
 - TOC
 {:toc}
@@ -523,13 +523,11 @@ Identsustõend väljastatakse autentimisteenuse TARA poolt allkirjastatult. Allk
 
 Allkirjaalgoritmina kasutab TARA `RS256`. Klientrakendus peab suutma vähemalt selle algoritmiga antud allkirja kontrollida. Allkirja kontrollimine on otstarbekas teostada standardse JWT teegiga, mis toetaks kõiki JWT algoritme. Seda vähetõenäoliseks, kuid siiski võimalikuks juhuks, kui `RS256`-s peaks avastatama turvanõrkus, mis tingib algoritmi vahetamise.
 
-Allkirja kontrollimisel tuleb kasutada TARA avalikku allkirjavõtit (edaspidi "võti"). Võtme saate võtmeväljastuse otspunktist (vt allpool jaotis "Otspunktid"). 
+Allkirja kontrollimisel tuleb kasutada TARA avalikku allkirjavõtit (edaspidi "võti"). Võtme saate võtmeväljastuse [otspunktist](#6-otspunktid-ja-aegumisajad). 
 
-Võti on tüüpiliselt stabiilne. Vahetame võtit vastavalt turvasoovitustele, kuid ei ole välistatud erakorraline võtmevahetus võtme korrumpeerumise korral. Võtmevahetuse protsessis järgime  [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#RotateSigKeys) standardit.
+Võti on tüüpiliselt stabiilne. Vahetame võtit vastavalt turvasoovitustele, kuid ei ole välistatud erakorraline võtmevahetus võtme korrumpeerumise korral. Võtmevahetuse protsess on kirjeldatud [eraldi peatükis](#54-identsust%C3%B5endi-allkirjastamise-v%C3%B5tme-vahetus).
 
 Võtmel on identifikaator (`kid`). Võtmeidentifikaatorite osas järgime [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#Signing) ja OAuth 2.0 soovitatud praktikat, mis teeb võimalikuks võtmevahetuse ilma teenuse katkestuseta. 
-
-Võtmevahetusel on lühikese perioodi jooksul võtmeväljastuse otspunktist nähtavad kaks võtit, kumbki oma identifikaatoriga.
 
 Identsustõendi päringu vastuses väljastab TARA klientrakendusele ka `kid` (JWT päise (_header_) element `kid`). See `kid` osutab võtmele, mida peate väljastatud tõendi allkirja kontrollimisel kasutama.
 
@@ -539,9 +537,9 @@ Soovitame võtit puhverdada (koos `kid` väärtusega), kuna see vähendab TARA s
 
 1 - JWT päisest lugema element `kid` väärtuse.
 
-2.1 - Juhul kui võtit ei puhverdata teostama päringu võtmeväljastuse otspunktile ning võtma JWT päisest saadud `kid` väärtusele vastava võtme.
+2.1 - Juhul kui võtit ei puhverdata, teostama päringu võtmeväljastuse otspunktile ning võtma JWT päisest saadud `kid` väärtusele vastava võtme.
 
-2.2 - Võtme puhverdamisel tuleb seda teha koos `kid` väärtusega. Valideerimisel võrrelda vastusest saadud `kid` väärtust puhverdatud võtme `kid` väärtusega. Juhul kui väärtused kattuvad kasutada puhverdatud võtit. Mittekattumise korral tuleb teostada päring võtmeväljastuse otspunktile ning võtta JWT päisest saadud `kid` väärtusele vastav võti ning puhverdada.
+2.2 - Võtme puhverdamisel tuleb seda teha koos `kid` väärtusega. Valideerimisel võrrelda vastusest saadud `kid` väärtust puhverdatud võtme `kid` väärtusega. Juhul kui väärtused kattuvad kasutada puhverdatud võtit. Mittekattumise korral tuleb teostada päring võtmeväljastuse otspunktile ning võtta JWT päisest saadud `kid` väärtusele vastav võti ning puhverdada see koos vastava `kid` väärtusega. Alternatiivina võib puhverdada võtmeväljastuse otspunktist kõik võtmed koos `kid` väärtustega ning valideerimisel kasutada puhvrist sobivat võtit. Sellisel juhul peaks puhver olema aeguv. Soovitav puhvri eluiga peaks jääma vahemikku 5 minutit kuni 24 tundi.
 
 3 - Teostama allkirja kontrolli JWT päises oleva `kid` väärtusele vastava võtmega.
 
@@ -651,7 +649,41 @@ Soovi korral võite veel tutvuda ründe (ja kaitse) detailse seletusega: [Võlts
 ### 5.3 Logimine
 
 Logimine peab võimaldama rekonstrueerida TARA ja klientrakenduse suhtluse käigu TARA iga kasutuse jaoks. Selleks tuleb nii TARA kui ka klientrakenduse poolel logida kõik päringud ja päringute vastused: [autentimispäring](#41-autentimisp%C3%A4ring), [tagasisuunamispäring](#42-tagasisuunamisp%C3%A4ring) ja [identsustõendipäring](#43-identsust%C3%B5endip%C3%A4ring). Kuna edastatavad andmemahud ei ole suured, siis tuleb logida nii URL kui ka identsustõend täielikul kujul. Logide säilitamistähtaja määramisel arvestada klientrakenduse olulisust. Orientiiriks pakume 1..7 aastat. Probleemide lahendamiseks pöördumisel palume esitada väljavõte logist (mis päringud TARA poole saadeti? mis saadi vastuseks?).
- 
+
+### 5.4 Identsustõendi allkirjastamise võtme vahetus
+
+Võtmevahetuse protsessis järgitakse [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#RotateSigKeys) standardit.
+
+RIA teavitab identsustõendi allkirjastamise võtme vahetamisest liidestujate kontaktisikuid e-kirjaga.
+
+Kuni teavitatava kuupäevani allkirjastab TARA identsustõendeid seni kasutusel oleva võtmega. Alates teavitatavast kuupäevast hakkab TARA allkirjastama identsustõendeid uue võtmega, mis lisatakse [võtmeväljastuse otspunkti](#6-otspunktid-ja-aegumisajad) hiljemalt sellega esimese identsustõendi allkirjastamise ajaks. Seega on teatud ajaperioodil võtmeväljastuse otspunktis nähtavad kaks avalikku võtit korraga, kumbki oma unikaalse `kid` identifikaatoriga. Näide kahe võtme publitseerimisest:
+```json
+{
+   "keys": [
+      {
+         "use": "sig",
+         "kty": "RSA",
+         "kid": "8b2c7561-fdf8-41d4-b466-ab323c3865c6",
+         "alg": "RS256",
+         "n": "sqEw...",
+         "e": "AQAB"
+      },
+      {
+         "use": "sig",
+         "kty": "RSA",
+         "kid": "1c5b7961-41d4-b468-a768-db523c3617f4",
+         "alg": "RS256",
+         "n": "y7XY...",
+         "e": "AQAB"
+      }
+   ]
+}
+```
+
+Vana avalik võti eemaldatakse võtmeväljastuse otspunktist pärast seda kui sellega allkirjastatud viimased identsustõendid on aegunud.
+
+Vaata ka peatükki [Allkirjade kontrollimine](#511-allkirja-kontrollimine), kus kirjeldatakse, kuidas peab avalikku võtit allkirja kontrollimiseks kasutama.
+
 ## 6 Otspunktid ja aegumisajad
 
 6.1 Testteenus
@@ -765,6 +797,7 @@ NB! Riigi Infosüsteemi Amet ei taga teiste riikide autentimisteenuste toimimist
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
+| 1.26, 23.11.2023   | TARA võtmevahetusprotsess viidud eraldi peatükki. |
 | 1.25, 26.10.2023   | TLS usaldusankru muutus (juursertifikaadi vahetus, lõppolemi sertifikaadi vahetus). Täpsustatud TLS usaldusankru määramise ja sertifikaatide tühistamise kontrollimise juhiseid. |
 | 1.24, 09.05.2023   | Formaadi ja kirjavigade parandused. Autentimisvahendite nimetuste ühtlustamine, EU eID kui autentimismeetod (piiriülene autentimine eIDAS taristus). |
 | 1.23, 28.04.2023   | Täpsustatud eidas:country:xx skoobi kasutuse kirjeldust. |

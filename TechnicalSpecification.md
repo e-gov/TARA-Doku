@@ -4,7 +4,7 @@ permalink: TechnicalSpecification
 
 # Technical specification
 {: .no_toc}
-v 1.16, 26.10.2023
+v 1.17, 23.11.2023
 
 - TOC
 {:toc}
@@ -524,27 +524,25 @@ The identity token is signed by the TARA authentication service. The signature m
 
 TARA uses the `RS256` signature algorithm. The client application must, at least, be able to verify the signature given by using this algorithm. It would be reasonable to use a standard JWT library which supports all JWT algorithms. The change of algorithm is considered unlikely, but possible in case a security vulnerability is detected in the `RS256`.
 
-For the signature verification the public signature key of TARA must be used. The public signature key is published at the public signature key endpoint (see chapter 6 "Endpoints").
+For the signature verification, the public signature key of TARA must be used. The public signature key is published at the public signature key [endpoint](#7-endpoints-and-timeouts).
 
-The public signature key is stable - the public signature key will be changed  according to security recommendations. However, the key can be changed without prior notice for security reasons. Key exchange is carried out based on [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#RotateSigKeys) standard.
+The public signature key is stable - the public signature key will be changed according to security recommendations. However, the key can be changed without prior notice for security reasons. The key change process is described in a separate [chapter](#54-id-token-signing-key-change).
 
 The public signature key has an identifier (`kid`). The key identifier is aligned with the best practices of [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#Signing) and OAuth 2.0 that enables the key exchange without the service interruption.
-
-In case of the signing key change, two keys will be published at the public signature key endpoint, both will have unique `kid` identifiers. 
 
 TARA issues `kid` field in the response of the request of identity token (JWT header element `kid`). `kid` refers to the key that the client application has to use for the verification of a signature.
 
 We recommend to buffer the signature key (together with `kid` value) in order to decrease the amount of requests made to TARA server. However, it is allowed to request the key on each validation.
 
-For signature validation following checks needs to be performed on client application:
+**For signature validation the following checks need to be performed on the client application:**
 
 1 - Read the `kid` value from the JWT header.
 
-2.1 - If the client application does not buffer the public key, make request to public signature key endpoint and select key corresponding to `kid` value received from JWT header.
+2.1 - If the client application does not buffer the public key, make a request to the public signature key endpoint and select the key corresponding to the `kid` value received from the JWT header.
 
-2.2 - If client application buffers the public key (it needs to be buffered together with `kid` value), it needs to compare the `kid` value from JWT header with buffered `kid` value. If they match, buffered key can be used. If not client application needs to make request to public signature key endpoint and select key corresponding to `kid` value received from JWT header and buffer it.
+2.2 - If the client application buffers the public key (it needs to be buffered together with the `kid` value), it needs to compare the `kid` value from the JWT header with the buffered `kid` value. If they match, the buffered key can be used. If not, the client application needs to make a request to the public signature key endpoint and select the key corresponding to the `kid` value received from the JWT header and buffer it together with the corresponding `kid` value. Alternatively, the client application can buffer all the published keys from the public signature key endpoint together with `kid` values and during validation select the matching key from the buffer. However, in that case, the buffer should have an expiration time. Recommended buffer expiration should be between 5 minutes to 24 hours.
 
-3 - Validate the signature using the key corresponding to `kid` value from the JWT header.
+3 - Validate the signature using the key corresponding to the `kid` value from the JWT header.
 
 NB! "Hardcoding" the key to client application configuration must be avoided. The key change will be typically communicated (except of urgent security reasons), but manual key handling will result downtime in client application for the period when TARA is already using the new key until the new key is taken use in client application.
 
@@ -645,6 +643,40 @@ Further information: unfortunately, this topic is not presented clearly in the O
 ### 5.3 Logging
 
 Logging must enable the reconstruction of the course of the communication between TARA and the client application for each occasion of using TARA. For this purpose, all requests and responses must be logged by TARA as well as by the client application: [authentication request](#41-authentication-request), [redirect request](#42-redirect-request) and [identity token request](#43-identity-token-request). As the volumes of data transferred are not large, the URL as well as the identity token must be logged in full. The retention periods of the logs should be determined based on the importance of the client application. We advise using 1 … 7 years. In case of any issue, please submit an excerpt from the log (Which requests were sent to TARA? Which responses were received?).
+
+### 5.4 ID token signing key change
+
+The key change is carried out based on [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#RotateSigKeys) standard.
+
+RIA notifies contact persons of integrators by e-mail about identity token signing key change.
+
+Until the notified date, TARA signs identity tokens with the key that is being used until then. From the notified date, TARA will start signing identity tokens with the new key, which will be added to [public signature key endpoint](#7-endpoints-and-timeouts) by the time the first identity token is signed with it. Therefore, for some time, two public keys are visible at the public signature key endpoint at the same time, each with its own unique `kid` identifier. Example of publishing two keys:
+```json
+{
+   "keys": [
+      {
+         "use": "sig",
+         "kty": "RSA",
+         "kid": "8b2c7561-fdf8-41d4-b466-ab323c3865c6",
+         "alg": "RS256",
+         "n": "sqEw...",
+         "e": "AQAB"
+      },
+      {
+         "use": "sig",
+         "kty": "RSA",
+         "kid": "1c5b7961-41d4-b468-a768-db523c3617f4",
+         "alg": "RS256",
+         "n": "y7XY...",
+         "e": "AQAB"
+      }
+   ]
+}
+```
+
+The old public key will be removed from the public signature key endpoint after the last identity tokens signed with it have expired.
+
+See also [Verifying the signature](#511-verifying-the-signature) chapter for information on how the public key must be used in signature validation.
 
 ## 6 eIDAS levels of assurance
 
