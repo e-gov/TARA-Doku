@@ -4,7 +4,7 @@ permalink: TechnicalSpecification
 
 # Technical specification
 {: .no_toc}
-v 1.18, 25.04.2024
+v 1.19, 15.06.2024
 
 - TOC
 {:toc}
@@ -387,7 +387,7 @@ An example:
   "aud": "TARA-Demo",
   "exp": 1530295852,
   "iat": 1530267052,
-  "nbf": 1530266752,
+  "nbf": 1530267052,
   "sub": "EE60001019906",
   "profile_attributes": {
     "date_of_birth": "2000-01-01",
@@ -412,7 +412,7 @@ The following claims are presented in the identity token:
 | `aud` (_Audience_)                               | `TARA-Demo` - the ID of a client application that requested authentication (the value of `client_id` field is specified upon directing the user to the authentication process).                                                                                                            |
 | `exp` (_Expires_)                                | `1530295852` - the expiration time of the certificate (in Unix _epoch_ format).                                                                                                                                                                                                            |
 | `iat` (_Issued At_)                              | `1530267052` - the time of issuance of the certificate (in Unix _epoch_ format).                                                                                                                                                                                                           |
-| `nbf` (_Not Before_)                             | `1530266752` - the validity start time of the certificate (in Unix _epoch_ format).                                                                                                                                                                                                        |
+| `nbf` (_Not Before_)                             | `1530267052` - same as `iat` value. This claim is returned to maintain backward compatibility with older TARA versions (it is not a standard OpenID Connect claim). It is recommended to use `iat` value instead. |
 | `sub` (_Subject_)                                | `EE60001019906` - the identifier of the authenticated user (personal identification code or eIDAS identifier) with the prefix of the country code of the citizen (country codes based on the ISO 3166-1 alpha-2 standard). NB! eIDAS identifier length may be a maximum of 256 characters. |
 | `profile_attributes`                             | the data of the authenticated user, including the eIDAS attributes                                                                                                                                                                                                                         |
 | `profile_attributes`<br>`.date_of_birth`         | `2000-01-01` - the date of birth of the authenticated user in the ISO_8601 format. Only sent in the case of persons with Estonian personal identification code and in the case of eIDAS authentication.                                                                                    |
@@ -420,10 +420,10 @@ The following claims are presented in the identity token:
 | `profile_attributes`<br>`.family_name`           | `O’CONNEŽ-ŠUSLIK` - the surname of the authenticated user (the test name was selected because it includes special characters).                                                                                                                                                             |
 | `profile_attributes`<br>`_translit`              | Includes a JSON object consisting of profile attributes in the Latin alphabet (see the section on transliteration below). The value is present only in the case of eIDAS authentication.                                                                                                   |
 | `amr` (_Authentication Method Reference_)        | `mID` - the authentication method used for user authentication. Possible values: `mID` - Mobile-ID, `idcard` - Estonian ID-card, `eIDAS` - cross-border, `smartid` - Smart-ID                                                                                                              |
-| `state`                                          | `abcdefghijklmnop` - security element. The authentication request’s `state` parameter value.                                                                                                                                                                                               |
+| `state`                                          | `abcdefghijklmnop` - security element. The authentication request’s `state` parameter value. This claim is returned to maintain backward compatibility with older TARA versions (it is not a standard OpenID Connect claim). It is recommended to use `state` parameter of callback request instead. |
 | `nonce`                                          | `qrstuvwxyzabcdef` - security element. The authentication request’s `nonce` parameter value. Value is present only in case the `nonce` parameter was sent in the authentication request.                                                                                                   |
 | `acr` (_Authentication Context Class Reference_) | `high` - level of authentication based on the eIDAS LoA (level of assurance). Possible values: `low`, `substantial`, `high`. The element is not used if the level of authentication is not applicable or is unknown.                                                                       |
-| `at_hash`                                        | `X0MVjwrmMQs/IBzfU2osvw==` - the access token hash. Not used in TARA.                                                                                                                                                                                                                      |
+| `at_hash`                                        | `X0MVjwrmMQs/IBzfU2osvw==` - the access token hash. Not used in TARA. Value is Base64 Standard encoded (standard specifies Base64 URL encoded). The non-standard encoding is used to ensure backward compatibility with older TARA versions. |
 | `email`                                          | `60001019906@eesti.ee` - the user’s e-mail address. Only issued if an Estonian ID-card is used for authenticating the user. Is only read from the SAN extension of the user’s authentication certificate (from the RFC822 type `Subject Alternative Name` field)                           |
 | `email_verified`                                 | `false` - the e-mail address of the user has been verified. TARA always issues a value `false`. It means that TARA does not verify or issue information on whether or not the user has redirected his/her eesti.ee e-mail address.                                                         |
 | `phone_number`                                   | `+37200000766` - the user’s phone number. Issued only when authenticating with Estonian Mobile-ID service. The phone number is presented in E.164 format and prefixed by a country code.                                                                                                   |
@@ -473,7 +473,7 @@ The claims included in the response are issued based on the identity token.
 
 | json element (_claim_)  | disclosure is compulsory | explanation                                                                          | 
 |:------------------------|--------------------------|--------------------------------------------------------------------------------------|
-| `auth_time`             | yes                      | The time of successful authentication of the user. In the Unix epoch format.         |
+| `auth_time`             | yes                      | The same format and meaning as `iat` in identity token.                              |
 | `sub` (_Subject_)       | yes                      | The same format and meaning as `sub` in identity token.                              |
 | `given_name`            | yes                      | The same format and meaning as `profile_attributes.given_name` in identity token.    |
 | `family_name`           | yes                      | The same format and meaning as `profile_attributes.family_name` in identity token.   |
@@ -582,19 +582,21 @@ The client application must verify whether the certificate received was issued f
 
 #### 5.1.5 Verifying the validity of the certificate
 
-The verification is done using three elements in the identity token: `iat`, `nbf`, `exp`. The client application uses its own clock to verify the validity. The following details should be verified:
+The verification is done using two elements in the identity token: `iat` and `exp`. The client application uses its own clock to verify the validity. The following details should be verified:
 
-1) that "not before" time has reached:
+1) that "issued at" time has been reached:
 
-`nbf <= jooksev_aeg + kellade_lubatud_erinevus` (current time + permitted difference between clocks).
+`iat <= current_time + permitted_difference_between_clocks`
 
 2) that the "expired" time has not been reached:
 
-`exp > jooksev_aeg - kellade_lubatud_erinevus` (current time - permitted difference between clocks).
+`exp > current_time - permitted_difference_between_clocks`
 
-The application must choose the `kellade_lubatud_erinevus` value. These checks are required for preventing attacks and confusion.
+The identity token also includes the `nbf` ('not before') claim (which value is equal to `iat` claim). This element is present for backwards compatibility with older versions of TARA. The ID token validity check should be done based on `iat` claim and `nbf` can be ignored.
 
-The identity token must be obtained immediately or within 30 seconds. When the time limit is exceeded, the identity token will not be issued.
+The application must choose the `permitted_difference_between_clocks` value, taking into consideration network latency.
+
+The identity token must be obtained as soon as possible within 30 seconds. When the time limit is exceeded, the authorization code expires and identity token will not be issued.
 
 #### 5.1.6 Verifying the authentication method used in authentication
 

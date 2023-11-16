@@ -386,7 +386,7 @@ Näide (identsustõendi sisu e _payload_):
   "aud": "TARA-Demo",
   "exp": 1530295852,
   "iat": 1530267052,
-  "nbf": 1530266752,
+  "nbf": 1530267052,
   "sub": "EE60001019906",
   "profile_attributes": {
     "date_of_birth": "2000-01-01",
@@ -411,7 +411,7 @@ Identsustõendis väljastatakse järgmised väited (_claims_).
 | `aud` (_Audience_)     | `TARA-Demo` - autentimist küsinud infosüsteemi ID (kasutaja autentimisele suunamisel määratud `client_id` välja väärtus)|
 | `exp` (_Expires_) | `1530295852` - tõendi aegumisaeg, Unix _epoch_ vormingus |
 | `iat` (_Issued At_) | `1530267052` - tõendi väljaandmisaeg, Unix _epoch_ vormingus |
-| `nbf` (_Not Before_)   | `1530266752` - tõendi kehtivuse algusaeg, Unix _epoch_ vormingus |
+| `nbf` (_Not Before_)   | `1530267052` - sama, mis `iat` väärtus. Väide tagastatakse tagasiühilduvuse tagamiseks vanemate TARA versioonidega (ei ole OpenID Connect standardijärgne väide). Selle asemel on soovitav kasutada `iat` väärtust. |
 | `sub` (_Subject_)      | `EE60001019906` - autenditud kasutaja identifikaator (isikukood või eIDAS identifikaator) koos kodaniku riigikoodi eesliitega (riigikoodid vastavalt ISO 3166-1 alpha-2 standardile). NB! eIDAS identifikaator võib olla maksimaalselt kuni 256 tähemärki. |
 | `profile_attributes`   | autenditud isikut kirjeldavad andmed |
 | `profile_attributes`<br>`.date_of_birth` | `2000-01-01` - autenditud kasutaja sünnikuupäev ISO_8601 formaadis. Tagastatakse ainult Eesti isikukoodiga isikute puhul ning eIDAS autentimisel |
@@ -419,10 +419,10 @@ Identsustõendis väljastatakse järgmised väited (_claims_).
 | `profile_attributes`<br>`.family_name` | `O’CONNEŽ-ŠUSLIK` - autenditud kasutaja perekonnanimi (testnimi, valitud täpitähtede jm eritärkide sisalduvuse pärast) |
 | `profile_attributes`<br>`_translit` | Sisaldab JSON objekti ladina tähestikus profiiliatribuutidest (vt allpool translitereerimine.). Väärtustatud ainult eIDAS autentimisel |
 | `amr` (_Authentication Method Reference_) | `mID` - kasutaja autentimiseks kasutatud autentimismeetod. Võimalikud väärtused: `mID` - mobiil-ID, `idcard` - Eesti ID-kaart, `eIDAS` - piiriülene, `smartid` - Smart-ID  |
-| `state` | `abcdefghijklmnop` - turvaelement. Autentimispäringu `state` parameetri väärtus.  |
+| `state` | `abcdefghijklmnop` - turvaelement. Autentimispäringu `state` parameetri väärtus. Väide tagastatakse tagasiühilduvuse tagamiseks vanemate TARA versioonidega (ei ole OpenID Connect standardijärgne väide). Selle asemel on soovitav kasutada tagasisuunamispäringu `state` URL-parameetrit. |
 | `nonce` | `qrstuvwxyzabcdef` - turvaelement. Autentimispäringu `nonce` parameetri väärtus. Väärtustatud ainult juhul kui autentimispäringus saadeti `nonce` parameeter. |
 | `acr` (_Authentication Context Class Reference_) | `high` - autentimistase, vastavalt eIDAS tasemetele. Võimalikud väärtused: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Elementi ei kasutata, kui autentimistase ei kohaldu või pole teada |
-| `at_hash` | `X0MVjwrmMQs/IBzfU2osvw==` - pääsutõendi räsi. TARA-s ei kasutata |
+| `at_hash` | `X0MVjwrmMQs/IBzfU2osvw==` - pääsutõendi räsi. TARA-s ei kasutata. Väärtus on Base64 Standard kodeeringus (standardikohane on Base64 URL kodeering). Mittestandardne kodeering on kasutusel tagamaks tagasiühilduvust vanemate TARA versioonidega. |
 | `email` | `60001019906@eesti.ee` - kasutaja e-posti aadress. Väljastatakse ainult  Eesti ID-kaardiga kasutaja autentimisel. Loetakse kasutaja autentimissertifikaadi SAN laiendist (RFC822 tüüpi `Subject Alternative Name` väljast) |
 | `email_verified` | `false` - tähendab, et e-posti aadressi kuulumine kasutajale on tuvastatud. TARA väljastab alati väärtuse `false`. See tähendab, et TARA ei kontrolli ega väljasta teavet, kas kasutaja on oma eesti.ee e-postiaadressi suunanud või mitte. |
 | `phone_number`| `+37200000766` - kasutaja telefoninumber. Väljastatakse ainult  Eesti Mobiil-ID'ga kasutaja autentimisel. Telefoninumber esitatakse E.164 formaadis koos riikliku suunakoodiga. | 
@@ -472,7 +472,7 @@ Vastuses esitatavad väited väljastatakse identsustõendi alusel.
 
 | json element (väide) | väljastamine kohustuslik | selgitus | 
 |:-----------------------|---------------------|-------------------|
-| `auth_time` | jah | Kasutaja eduka autentimise ajahetk. Unix *epoch* vormingus |
+| `auth_time` | jah | Vormingult ja tähenduselt sama, mis `iat` identsustõendis |
 | `sub` (_Subject_) | jah | Vormingult ja tähenduselt sama, mis `sub` identsustõendis |
 | `given_name` | jah | Vormingult ja tähenduselt sama, mis `profile_attributes.given_name` identsustõendis |
 | `family_name` | jah | Vormingult ja tähenduselt sama, mis `profile_attributes.family_name` identsustõendis |
@@ -582,19 +582,21 @@ Klientrakendus peab kontrollima, et saadud tõend on välja antud just temale. S
 
 #### 5.1.5 Tõendi ajalise kehtivuse kontrollimine
 
-Kontrollitakse kolme identsustõendis sisalduva elemendi abil - `iat`, `nbf`, `exp`. Klientrakendus kasutab kontrollimisel oma kellaaega. Kontrollida tuleks, et: 
+Tõendi ajalist kehtivust kontrollitakse kahe identsustõendis sisalduva elemendi abil - `iat` ja `exp`. Klientrakendus kasutab kontrollimisel oma kellaaega. Kontrollida tuleks, et:
 
-1) "not before" ajamoment on kätte jõudnud:
+1) "issued at" aeg on kätte jõudnud:
 
-`nbf <= jooksev_aeg + kellade_lubatud_erinevus` 
+`iat <= jooksev_aeg + kellade_lubatud_erinevus`
 
-2) "expired" ajamoment ei ole kätte jõudnud:
+2) "expired" aeg ei ole kätte jõudnud:
 
 `exp > jooksev_aeg - kellade_lubatud_erinevus`.
 
-`kellade_lubatud_erinevus` väärtus valida ise. Need kontrollid on vajaliku rünnete ja sassiminekute vältimiseks.
+Täiendavalt leidub identsustõendis ka `nbf` ("not before") väide (mille väärtus on võrdne `iat` väitega). Nimetatud element tagastatakse tagasiühilduvuseks vanemate TARA versioonidega. Identsustõendi kehtivus tuleb teostada `iat` väite põhjal ning `nbf` väidet võib ignoreerida.
 
-TARA põhimõte on, et identsustõendile tuleb järgi tulla kohe, 30 sekundi jooksul. Selle aja ületamisel identsustõendit ei väljastatagi.
+`kellade_lubatud_erinevus` väärtus valida ise, arvestades võrgu latentsusaega.
+
+Identsustõendi peab pärima kohe kui võimalik, 30 sekundi jooksul. Selle aja ületamisel volituskood aegub ning identsustõendit ei väljastata.
 
 #### 5.1.6 Autentimismeetodi kontrollimine
 
@@ -808,7 +810,7 @@ NB! Riigi Infosüsteemi Amet ei taga teiste riikide autentimisteenuste toimimist
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
-| 1.28, 15.06.2024   | Eemaldatud autentimispäringu parameeter `locale`, mis pole toetatud pärast 2019. aasta juulit. |
+| 1.28, 15.06.2024   | Eemaldatud autentimispäringu parameeter `locale`, mis pole toetatud pärast 2019. aasta juulit. Identsustõendis `nbf`, `state` ja `at_hash` ei ole standardijärgsed (säilitatakse tagasiühilduvuseks). |
 | 1.27, 25.04.2024   | TLS usaldusankru muutus (juursertifikaatide lisamine, lõppolemi sertifikaadi eemaldamine). |
 | 1.26, 23.11.2023   | TARA võtmevahetusprotsess viidud eraldi peatükki. |
 | 1.25, 26.10.2023   | TLS usaldusankru muutus (juursertifikaadi vahetus, lõppolemi sertifikaadi vahetus). Täpsustatud TLS usaldusankru määramise ja sertifikaatide tühistamise kontrollimise juhiseid. |
