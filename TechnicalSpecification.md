@@ -4,7 +4,7 @@ permalink: TechnicalSpecification
 
 # Technical specification
 {: .no_toc}
-v 1.19, 15.06.2024
+v 1.20, 16.06.2024
 
 - TOC
 {:toc}
@@ -203,11 +203,11 @@ Elements of an authentication request:
 | protocol, host, and patch | yes        | `https://tara.ria.ee/oidc/authorize`                                              | `/authorize` is the OpenID Connect-based authentication endpoint of the TARA service (the concept of ‘authorisation’ originates from the OAuth 2.0 standard protocol).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | `redirect_uri`            | yes        | `redirect_uri=https%3A%2F%2F eteenus.asutus.ee%2Ftagasi`                          | Redirect URL. The redirect URL is selected by the institution. The redirect URL may include the query component. <br><br> [URL encoding](https://en.wikipedia.org/wiki/Percent-encoding) should be used, if necessary.<br><br>It is [not permitted](https://tools.ietf.org/html/rfc6749#section-3.1.2) to use the URI [fragment component](https://tools.ietf.org/html/rfc3986#section-3.5) (`#` and the following component).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | `scope`                   | yes        | `scope=openid`<br><br>`scope=openid%20eidas`<br><br>`scope=openid%20idcard%20mid` | The authentication scope.<br><br>`openid` is compulsory (required by the OpenID Connect protocol).<br><br> The scopes of `idcard`, `mid`, `smartid`, `eidas` (and `eidasonly`) can be used to request that only the desired method of authentication is displayed to the user. See 4.1.4 Selective use of authentication methods.<br><br>The `email` scope can be used to request that the user’s e-mail address is issued in the identity token. See 4.1.2 Requesting e-mail address.<br><br>In case of cross-border authentication, further scopes can be used to either specify the foreign country and direct the user to its authentication service or to request additional personal data (see 4.1.4 and 4.1.1).<br><br>When using several scopes, the scopes must be separated by spaces. Thereat, the space is presented in the URL encoding (`%20`) ([RFC 3986](https://www.ietf.org/rfc/rfc3986.txt)). Scope values are case sensitive. Only scope values described in current document are allowed, other values cause an error with code `invalid_scope` to be returned. |
-| `state`                   | yes        | `state=hkMVY7vjuN7xyLl5`                                                          | Security code against false request attacks (_cross-site request forgery_, CSRF). Read more about formation and verification of `state` under ‘Protection against false request attacks.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `state` | yes | `state=hkMVY7vjuN7xyLl5` | `state` parameter is used to maintain state between the authentication and callback requests. Used to mitigate Cross-Site Request Forgery (CSRF, XSRF) attacks. Read more about formation and verification of `state` under ‘Protection against false request attacks’. |
 | `response_type`           | yes        | `response_type=code`                                                              | Determines the manner of communication of the authentication result to the server. The method of authorisation code is supported (_authorization flow_ of the OpenID Connect protocol) and it is referred to the `code` value.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | `client_id`               | yes        | `client_id=58e7...`                                                               | Application identifier. The application identifier is issued to the institution by RIA upon registration of the client application as a user of the authentication service.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | `ui_locales`              | no         | `ui_locales=et`                                                                   | Selection of the user interface language. The following languages are supported: `et`, `en`, `ru`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| `nonce`                   | no         | `fsdsfwrerhtry3qeewq`                                                             | A unique parameter which helps to prevent replay attacks based on the protocol ([References](Viited), [Core], subsection 3.1.2.1. Authentication Request). The `nonce` parameter is not compulsory.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `nonce` | no | `nonce=fsdsfwrerhtry3qeewq` | Recommended to use and verify. A unique value which helps to prevent replay attacks based on the protocol ([References](Viited), [Core], subsection 3.1.2.1. Authentication Request). Can be used to associate and verify identity token with a specific authentication process. Read more about formation and verification of `nonce` under ‘Protection against false request attacks’. |
 | `acr_values`              | no         | `acr_values=high`                                                                 | The minimum required level of authentication based on the eIDAS LoA ([read more about eIDAS level-of-assurance](TechnicalSpecification#8-eidas-levels-of-assurance)). It is permitted to apply only one of the following values: `low`, `substantial`, `high` . `substantial` is used by default if the value has not been specified. <br><br>TARA will only display authentication methods which have an equal or higher LoA compared to the value of `acr_values` in the authentication request. For cross-border authentication, the value is forwarded to the foreign country's eIDAS authentication service. <br><br> On the interfaced client side, [it must be verified](https://e-gov.github.io/TARA-Doku/TechnicalSpecification#517-verifying-the-eidas-level-of-assurance) that the authentication level in the `acr` claim of an identity token is not lower than the minimum allowed level-of-assurance.                                                                                                                                |
 
 #### 4.1.1 Requesting attributes about foreigners
@@ -515,6 +515,7 @@ The verification must verify identity token’s:
 - validity
 - authentication method
 - eIDAS level of assurance
+- value of `nonce` if the parameter was used in authentication request
 
 For more detailed information about the identity token verifications can be found from OpenID Connect and OAuth 2.0 protocol specifications.
 
@@ -632,39 +633,42 @@ For example, if the client application wants to use only authentication methods 
 
 In case the level of assurance in the authentication request using `acr_values` parameter is not specified, the identity token must be equal to a level of assurance `substantial` or `high`.
 
-#### 5.1.8 Creating a session
+#### 5.1.8 Verifying nonce parameter
+
+If the optional `nonce` parameter was sent in the authentication request, then the `nonce` claim must be present in ID token and client must verify the value with the value sent in the authentication request. See [References](Viited), [Core], subsection 15.5.2. Nonce Implementation Notes.
+
+#### 5.1.9 Creating a session
 
 After a successful verification of the identity token, the client application will create a session with the user (‘log in the user’). The client application is responsible for creating and holding the sessions. The methods for doing this are not included in the scope of the TARA authentication service.
 
 ### 5.2 Protection against false request attacks
 
-The client application must implement protective measures against false request attacks (_cross-site request forgery_, CSRF). This can be achieved by using `state` and `nonce` security codes. Using `state` is compulsory; using `nonce` is optional. Using `state` with a cookie set on the client application side means that the client application itself does not have to remember the state parameter value.  The process is described below.
+The client application must implement protective measures against cross-site request forgery and replay attacks. This can be achieved by using `state` and `nonce` security codes.
 
-The `state` security code is used to combat falsification of the redirect request following the authentication request. The client application must perform the following steps:
+* Using `state` is compulsory and the parameter should be verified during [redirect request](#42-redirect-request);
+* Using `nonce` is optional (but highly recommended) and its purpose is to avoid identity token replay attacks. `nonce` verification should be done during [identity token verification](#518-verifying-nonce-parameter);
 
-1 Generate a nonce word, for example of the length of 16 characters: `XoD2LIie4KZRgmyc` (referred to as `R`).
+The integrator has to decide whether `state` value is stored on the server side or in the user's browser as a cookie.
 
-2 Calculate from the `R` nonce word the `H = hash(R)`hash, for example by using the SHA256 hash algorithm and by converting the result to the Base64 format: `vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`.
+**When storing `state` as a cookie, the client application must perform the following steps:**
 
-3 Add an order to set a cookie for the client application domain with a value of R immediately before making the authentication request, for example:
+1) Generate a random string of at least 16 bytes: `XoD2LIie4KZRgmyc` (referred to as `R`);
 
-`Set-Cookie ETEENUS=XoD2LIie4KZRgmyc; HttpOnly`,
+2) Calculate the hash (referred to as `H`) of `R` (`H = hash(R)`), for example by using the SHA256 hash algorithm, and convert the result to Base64 format: `vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`;
 
-where `ETEENUS` is a freely selected cookie name. The `HttpOnly` attribute must be applied to the cookie.
+3) Immediately before making the authentication request, add an order to set a cookie for the client application domain with a value of `R`:
+    1) `Set-Cookie CLIENTSERVICE=XoD2LIie4KZRgmyc; HttpOnly; Secure` where `CLIENTSERVICE` is a freely selected cookie name. The `HttpOnly` and `Secure` attributes must be applied;
 
-4 Set the following value, in the authentication request to TARA, for the `state` parameter calculated based on section 2:
+4) In the authentication request, set the value of `state` to `H`:
+    1) `GET ... state=vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`;
 
-`GET ... state=vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`
+**During processing of the redirect request, the client application must:**
 
-Length of `state` parameter must be minimally 8 characters.
+1) Take the `CLIENTSERVICE` value of the cookie received with the request (two user specific elements are sent with the redirect request: the cookie containing `R` and the `state` parameter containing `H`);
 
-In the course of processing the redirect request, the client application must:
+2) Use the received cookie´s value to calculate the hash and encode it with Base64;
 
-5 Take the `ETEENUS` value of the cookie received with the request (two user specific elements are sent with the redirect request: a nonce word as a cookie and the hash value calculated from the nonce word in the `state` parameter).
-
-6 Calculate the hash based on the cookie value and encode it with base64.
-
-7 Verify that the hash matches the `state` value mirrored back in the redirect request.
+3) Verify that the hash matches the `state` value mirrored back in the redirect request;
 
 The redirect request may only be accepted if the checks described above is successful.
 

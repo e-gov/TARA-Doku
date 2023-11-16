@@ -4,7 +4,7 @@ permalink: TehnilineKirjeldus
 
 # Tehniline kirjeldus
 {: .no_toc}
-v 1.28, 15.06.2024
+v 1.29, 16.06.2024
 
 - TOC
 {:toc}
@@ -205,11 +205,11 @@ Autentimispäringu elemendid:
 | protokoll, host ja tee (_path_) | jah | `https://tara.ria.ee/oidc/authorize` | `/authorize` on TARA-teenuse OpenID Connect-kohane autentimisotspunkt (termin 'autoriseerimine' pärineb alusprotokollist OAuth 2.0). |
 | `redirect_uri` | jah | `redirect_uri=https%3A%2F%2F` `eteenus.asutus.ee%2Ftagasi` | Tagasisuunamis-URL. Tagasisuunamis-URL-i valib asutus ise. Tagasisuunamis-URL võib sisaldada _query_-osa. <br><br>Vajadusel kasutada [URLi kodeerimist](https://en.wikipedia.org/wiki/Percent-encoding). <br><br>URI-i [fragmendi osa](https://tools.ietf.org/html/rfc3986#section-3.5) (`#` märk ja sellele järgnev osa) kasutamine [ei ole lubatud](https://tools.ietf.org/html/rfc6749#section-3.1.2). |
 | `scope` | jah | `scope=openid`<br><br>`scope=openid%20eidas` <br><br>`scope=openid%20idcard%20mid` | Autentimise skoop.<br><br>`openid` on kohustuslik (seda nõuab OpenID Connect protokoll).<br><br> Skoopidega `idcard`, `mid`, `smartid`, `eidas` (ja `eidasonly`) saab nõuda, et kasutajale näidatakse ainult soovitud autentimismeetodeid. Vt jaotis 4.1.4 Autentimismeetodite valikuline kasutus.<br><br>Skoobiga `email` saab nõuda, et identsustõendis väljastatakse kasutaja e-posti aadress. Vt jaotis 4.1.2 E-posti aadressi küsimine.<br><br>Piiriülesel autentimisel saab kasutada lisaskoope sihtriigi valiku täpsustamiseks, et kasutaja suunata otse välisriigi autentimisteenusesse või täiendavate isikuandmete pärimiseks (vt jaotis 4.1.4 ja 4.1.1).<br><br>Mitme skoobi kasutamisel tuleb skoobid eraldada tühikutega. Tühik esitatakse seejuures URL-kodeeringus (`%20`) ([RFC 3986](https://www.ietf.org/rfc/rfc3986.txt)). Skoobi väärtused on tõstutundlikud. Lubatud on ainult käesolevas dokumendis kirjeldatud skoobid, teiste väärtuste korral tagastatakse viga koodiga `invalid_scope`. |
-| `state` | jah | `state=hkMVY7vjuN7xyLl5` | Võltspäringuründe (_cross-site request forgery_, CSRF) vastane turvakood. `state` moodustamise ja kontrollimise kohta vt lähemalt jaotis "Võltspäringuründe vastane kaitse". |
+| `state` | jah | `state=hkMVY7vjuN7xyLl5` | `state` parameetrit kasutatakse autentimis- ja tagasisuunamispäringu sidumiseks. Võimaldab vähendada võltspäringuründe (CSRF, XSRF) ohtu. `state` moodustamise ja kontrollimise kohta vaata lähemalt jaotis "Võltspäringuründe vastane kaitse". |
 | `response_type` | jah | `response_type=code` | Määrab autentimise tulemuse serverile edastamise viisi. Toetatud on volituskoodi viis (OpenID Connect protokolli _authorization flow_), selle tähiseks on väärtus `code`. |
 | `client_id` | jah | `client_id=58e7...` | Rakenduse identifikaator. Rakenduse identifikaatori annab RIA asutusele klientrakenduse registreerimisel autentimisteenuse kasutajaks. |
 | `ui_locales` | ei | `ui_locales=et` | Kasutajaliidese keele valik. Toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida. |
-| `nonce` | ei | `fsdsfwrerhtry3qeewq` | Taasesitusründeid vältida aitav unikaalne parameeter, vastavalt protokollile ([Viited](Viited), [Core], jaotis 3.1.2.1. Authentication Request). Parameeter `nonce` ei ole kohustuslik. |
+| `nonce` | ei | `nonce=fsdsfwrerhtry3qeewq` | Soovitatav kasutada ning kontrollida. Taasesitusründeid ja autoriseerimiskoodi süstimisründeid vältida aitav unikaalne väärtus ([Viited](Viited), [Core], jaotis 3.1.2.1. Authentication Request). Kasutatakse identsustõendi sidumiseks ja verifitseerimiseks konkreetse autentimisseansiga. `nonce` moodustamise ja kontrollimise kohta vaata lähemalt jaotis "Võltspäringuründe vastane kaitse". |
 | `acr_values` | ei | `acr_values=high` | Nõutav minimaalne eIDAS autentimistase isikutuvastuseks kasutatavale autentimismeetodile (loe rohkem jaotisest [eIDAS autentimistasemed](TehnilineKirjeldus#8-eidas-autentimistasemed)). Lubatud on määrata üks väärtus järgmisest loetelust: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Kui määramata, siis vaikimisi `substantial` (märkimisväärne). <br><br>Kui `acr_values` väärtus on määratud, kuvab TARA kasutajale ainult autentimismeetodid, mille tase on sama või kõrgem kui `acr_values` väärtus. Piiriüleste autentimisvahendite korral edastatakse nõue välisriigi eIDAS autentimisteenusele. <br><br>TARA-lt saadud identsustõendis tuleb `acr` väite vastavust kontrollida nõutud minimaalsele tasemele (vt jaotis 5.1 Identsustõendi kontrollimine). |
 
 #### 4.1.1 Atribuutide küsimine välismaalase kohta
@@ -513,6 +513,7 @@ Kontrollida tuleb:
 - tõendi ajalist kehtivust
 - kasutaja autentinud autentimismeetodit tõendis
 - ülepiirilise autentimise korral eIDAS autentimistaset tõendis
+- `nonce` parameetri väärtust, kui parameeter saadeti autentimispäringus
 
 Lähemalt nendest kontrollidest allpool. Vajadusel saate täpsemat teavet OpenID Connect ja OAuth 2.0 protokollikirjeldustest.
 
@@ -632,8 +633,11 @@ Näiteks, kui liidestuja soovib kasutada vaid kõrge eIDAS autentimistasemega au
 
 Juhul kui autentimispäringus eIDAS autentimistaset `acr_values` parameetri abil ei täpsustatud, peab identsustõendis olev väärtus olema `substantial` või `high`.
 
+#### 5.1.8 Nonce parameetri kontrollimine
 
-#### 5.1.8 Seansi loomine
+Kui autentimispäringuga saadeti `nonce` parameeter, siis identsustõend peab sisaldama `nonce` väidet ning klientrakendus peab kontrollima, et selle väärtus ühtiks autentimispäringus saadetud väärtusega. Vaata [Viited](Viited), [Core], alamjaotis 15.5.2. Nonce Implementation Notes.
+
+#### 5.1.9 Seansi loomine
 
 Identsustõendi eduka kontrollimise järel loob klientrakendus kasutajaga seansi ("logib kasutaja sisse"). Seansi loomine ja pidamine on klientrakenduse kohustus. Kuidas seda teha, ei ole enam autentimisteenuse TARA skoobis.
 
@@ -641,33 +645,32 @@ Märkus. Tavaliselt peetakse veebirakendusega seanssi küpsises hoitava seansit�
 
 ### 5.2 Võltspäringuründe vastane kaitse
 
-Klientrakenduses tuleb rakendada võltspäringuründe (_cross-site request forgery_, CSRF) vastaseid kaitsemeetmeid. Seda tehakse turvakoodide `state` ja `nonce` abil. `state` kasutamine on kohustuslik; `nonce` kasutamine on vabatahtlik. Kirjeldame `state` kasutamise protseduuri, kasutades klientrakenduses seatud küpsist (sellisel juhul ei pea klientrakendus saadetud state parameetri väärtust ise meeles pidama).
+Klientrakenduses tuleb rakendada võltspäringuründe ja taasesitusründe vastaseid kaitsemeetmeid. Seda tehakse turvakoodide `state` ja `nonce` abil.
 
-Turvakoodi `state` kasutatakse autentimispäringule järgneva tagasisuunamispäringu võltsimise vastu. Klientrakenduses tuleb teostada järgmised sammud:
+* `state` kasutamine on kohustuslik ning tuleb rakendada autentimispäringule järgneva [tagasisuunamispäringu](#42-tagasisuunamisp%C3%A4ring) kontrolliks;
+* `nonce` kasutamine on vabatahtlik, kuid rangelt soovitatav ning selle eesmärk on identsustõendi taasesitusründe tõkestamine. `nonce` kontroll peaks toimuma [identsustõendi kontrolli osana](#518-nonce-parameetri-kontrollimine);
 
-1 Genereerida juhusõne, näiteks pikkusega 16 tärki: `XoD2LIie4KZRgmyc` (tähistame `R`).
+Liidestuja peab otsustama, kas `state` väärtust hoiustatakse liidestuja rakendus poolel või kasutaja brauseris küpsisena.
 
-2 Arvutada juhusõnest `R` räsi `H = hash(R)`, näiteks SHA256 räsialgoritmiga ja teisendades tulemuse Base64 vormingusse: `vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`.
+**Talletades `state` kasutaja brauseris seatud küpsisena, tuleb teostada järgmised sammud:**
 
-3 Seada vahetult enne autentimispäringu tegemist klientrakenduse domeenile küpsis, mille väärtuseks juhusõne `R`. 
+1) Genereerida klientrakenduses vähemalt 16 baidine juhusõne: `XoD2LIie4KZRgmyc` (tähistame `R`);
 
-`Set-Cookie ETEENUS=XoD2LIie4KZRgmyc; HttpOnly`,
+2) Arvutada juhusõnest `R` räsi `H = hash(R)`, näiteks SHA256 räsialgoritmiga, ja teisendades tulemuse Base64 vormingusse: `vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`;
 
-kus `ETEENUS` on vabalt valitud küpsisenimi. Küpsisele tuleb rakendada atribuuti `HttpOnly`.
+3) Seada vahetult enne autentimispäringu tegemist klientrakenduse domeenile küpsis, mille väärtuseks juhusõne `R`:
+    1) `Set-Cookie ETEENUS=XoD2LIie4KZRgmyc; HttpOnly; Secure`, kus `ETEENUS` on vabalt valitud küpsisenimi. Küpsisele tuleb rakendada atribuudid `HttpOnly` ja `Secure`;
 
-4 Seada TARA autentimispäringu tegemisel p 2 arvutatud räsi parameetri `state` väärtuseks:
+4) Seada TARA autentimispäringu tegemisel p 2 arvutatud räsi parameetri `state` väärtuseks:
+    1) `GET ... state=vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`
 
-`GET ... state=vCg0HahTdjiYZsI+yxsuhm/0BJNDgvVkT6BAFNU394A=`
+**Tagasisuunamispäringu töötlemisel peab klientrakendus tegema järgmist:**
 
-Parameetri `state` pikkus peab olema minimaalselt 8 tähemärki.
+1) Võtta päringuga tuleva küpsise `ETEENUS` väärtus (tagasisuunamispäringuga saadetakse kasutaja kaks asja: kasutaja brauserist juhusõne küpsisena ja juhusõnest arvutatud räsiväärtus `state` parameetris);
 
-Tagasisuunamispäringu töötlemisel peab klientrakendus tegema järgmist:
+2) Arvutada küpsise väärtusest räsi ja teisendama Base64 kodeeringusse;
 
-5 Võtab päringuga tuleva küpsise `ETEENUS` väärtuse (tagasisuunamispäringuga saadetakse kasutaja kaks asja: kasutaja brauserist juhusõne küpsisena ja juhusõnest arvutatud räsiväärtus `state` parameetris).
-
-6 Arvutab küpsise väärtusest räsi ja teisendab base64 kodeeringusse.
-
-7 Kontrollib, et räsi ühtib tagasisuunamispäringus tagasipeegeldatava `state` väärtusega.
+3) Kontrollida, et räsi ühtib tagasisuunamispäringus tagasipeegeldatava `state` väärtusega;
 
 Tagasisuunamispäringut tohib aktsepteerida ainult ülalkirjeldatud kontrolli õnnestumisel.
 
@@ -675,7 +678,7 @@ Kirjeldatud protseduuris on võtmetähtsusega väärtuse `state` sidumine sessio
 
 Täiendav teave: OpenID Connect protokollis kahjuks ei ole teema selgelt esitatud. Mõningast teavet saab soovi korral mitteametlikust dokumendist [OpenID Connect Basic Client Implementer's Guide 1.0](https://openid.net/specs/openid-connect-basic-1_0.html), jaotis "2.1.1.1 Request Parameters".
 
-Soovi korral võite veel tutvuda ründe (ja kaitse) detailse seletusega: [Võltspäringurünne ja kaitse selle vastu](Volts).  
+Soovi korral võite veel tutvuda ründe (ja kaitse) detailse seletusega: [Võltspäringurünne ja kaitse selle vastu](Volts).
 
 ### 5.3 Logimine
 
@@ -829,6 +832,7 @@ Kui klientrakenduse poolel on piiratud väljuvad ühendused TARA-sse IP-aadressi
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
+| 1.29, 16.06.2024   | `state` ja `nonce` parameetrite kasutuse täpsustused. |
 | 1.28, 15.06.2024   | Eemaldatud autentimispäringu parameeter `locale`, mis pole toetatud pärast 2019. aasta juulit. Identsustõendis `nbf`, `state` ja `at_hash` ei ole standardijärgsed (säilitatakse tagasiühilduvuseks). Lisatud peatükk "10 Keskkonnad", kus on kirjeldatud TARA teenuse IP-aadresside kasutust. Eemaldatud TLS kätluse aegumisaeg, kuna ID-kaardiga autentimiseks on TLS Client Certificate Authentication (TLS-CCA) asendatud Web eID-ga. Lisatud peatükk "5.1.2.1 TLS ühenduse parameetrid". Täpsustatud identsustõendipäringu `Authorization` päises `client_id` ja `client_secret` kodeerimist "application/x-www-form-urlencoded" vormingus. |
 | 1.27, 25.04.2024   | TLS usaldusankru muutus (juursertifikaatide lisamine, lõppolemi sertifikaadi eemaldamine). |
 | 1.26, 23.11.2023   | TARA võtmevahetusprotsess viidud eraldi peatükki. |
