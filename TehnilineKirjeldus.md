@@ -188,7 +188,7 @@ Autentimispäring on HTTP GET päring, millega kasutaja suunatakse klientrakendu
 
 Autentimispäringu näide (URL-i _query_-osa on loetavuse huvides jagatud mitmele reale):
 
-````
+```
 GET https://tara.ria.ee/oidc/authorize?
 
 redirect_uri=https%3A%2F%2Feteenindus.asutus.ee%2FCallback&
@@ -196,7 +196,7 @@ scope=openid&
 state=hkMVY7vjuN7xyLl5&
 response_type=code&
 client_id=58e7ba35aab5b4f1671a
-````
+```
 
 Autentimispäringu elemendid:
 
@@ -286,11 +286,11 @@ Tagasisuunamine tehakse klientrakenduse poolt autentimispäringus kaasa antud na
 
 Tagasisuunamispäringu näide:
 
-````
+```
 HTTP GET https://eteenus.asutus.ee/tagasi?
 code=71ed5797c3d957817d31&
 state=OFfVLKu0kNbJ2EZk
-````
+```
 
 Tagasisuunamispäringu elemendid:
 
@@ -311,13 +311,13 @@ Muude veakoodide tagastamisel lähtub TARA OpenID Connect standardist (loe võim
 
 Tagastatakse ka `state`, kuid volituskoodi (`code`) ei saadeta. Nt:
 
-````
+```
 HTTP GET https://eteenus.asutus.ee/tagasi?
 error=invalid_scope&
 error_description=Required+scope+%3Copenid%3E+not+provided.+
 TARA+do+not+allow+this+request+to+be+processed&
 state=qnYY56Ra8QF7IUzqvw+PPLzMKoHtQkuUWbV/wcrkvdU=
-````
+```
 
 Tagasisuunamispäringu vigade korral on tavaliselt probleem liidestuses ja `error_description` parameetris esitatavat veakirjeldust ei ole vaja otse kasutajale kuvada. Klientrakenduses tuleks kontrollida, kas saadeti veakood. 
 
@@ -333,7 +333,7 @@ Identsustõendipäring on HTTP POST päring, millega klientrakendus pärib TARA 
 
 Identsustõendipäringu näide (HTTP POST päringu keha on loetavuse huvides jagatud mitmele reale):
 
-````
+```
 POST /oidc/token HTTP/1.1
 Host: tara.ria.ee
 Content-Type: application/x-www-form-urlencoded
@@ -342,7 +342,7 @@ Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW
 grant_type=authorization_code&
 code=SplxlOBeZQQYbYS6WxSbIA&
 redirect_uri=https%3A%2F%2eteenus.asutus.ee%2Ftagasi
-````
+```
 
 Identsustõendipäringus tuleb esitada salasõna. Selleks tuleb päringusse lisada `Authorization` päis (_request header_), väärtusega, mis moodustatakse sõnast `Basic`, tühikust ja Base64 kodeeringus stringist `<client_id>:<client_secret>` (vt _RFC 2617 HTTP Authentication: Basic and Digest Access Authentication_, jaotis 2 _Basic Authentication Scheme_).
 
@@ -380,7 +380,7 @@ Identsustõend on alati [allkirjastatud](https://tools.ietf.org/html/rfc7515#sec
 
 Näide (identsustõendi sisu e _payload_):
 
-````json
+```json
 {
   "jti": "0c597356-3771-4315-a129-c7bc1f02a1b2",
   "iss": "https://tara-test.ria.ee",
@@ -401,7 +401,7 @@ Näide (identsustõendi sisu e _payload_):
   "nonce": "",
   "at_hash": "X0MVjwrmMQs/IBzfU2osvw=="
 }
-````
+```
 
 Identsustõendis väljastatakse järgmised väited (_claims_).
 
@@ -440,23 +440,23 @@ Kasutajainfopäring võimaldab kehtiva  `OAuth 2.0` pääsutõendi alusel küsid
 Pääsutõend tuleb esitada kasutajainfot väljastavale otspunktile [Bearer Token meetodil](https://tools.ietf.org/html/rfc6750#section-2.1) HTTP päises (soovituslik) või [URLi parameetrina](https://tools.ietf.org/html/rfc6750#section-2.3).
 
 Näide 1 - pääsutõendi edastamine `Authorization` päises:
-````
+```
 GET /oidc/profile HTTP/1.1
 Host: tara.ria.ee
 Authorization: Bearer AT-20-qWuioSEtFhYVdW89JJ4yWvtI5SaNWep0
-````
+```
 
 Näide 2 - pääsutõendi edastamine `access_token` parameetrina :
-````
+```
 GET /oidc/profile?access_token=AT-20-qWuioSEtFhYVdW89JJ4yWvtI5SaNWep0 HTTP/1.1
 Host: tara.ria.ee
-````
+```
 
 Kehtiva pääsutõendi korral väljastatakse JSON vormingus vastus.
 
 Näide:
 
-````json
+```json
 {
   "amr": [
     "mID"
@@ -467,7 +467,7 @@ Näide:
   "sub": "EE60001019906",
   "auth_time": 1550735597
 }
-```` 
+```
 
 Vastuses esitatavad väited väljastatakse identsustõendi alusel. 
 
@@ -494,10 +494,10 @@ Päringu vastus võib sisaldada muid välju, mida klientrakendus peab ignoreerim
 Juhul kui kasutajainfo otspunktile esitatav pääsutõend puudub või on aegunud tagastatakse veakood ja lühikirjeldus `WWW-Authenticate` päises vastavalt [OpenID Connect Core 1.0 spetsifikatsioonile](https://openid.net/specs/openid-connect-core-1_0.html#UserInfoError)
 
 Näide:
-````
+```
 HTTP/1.1 401 Unauthorized
 WWW-Authenticate: Bearer error="invalid_token",error_description="The access token has expired"
-````
+```
 
 ## 5 Turvatoimingud
 

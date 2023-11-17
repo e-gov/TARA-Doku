@@ -186,7 +186,7 @@ An authentication request is an HTTP GET request by which the user is redirected
 
 An example of an authentication request (for better readability, the query component of the URL was divided over several lines):
 
-````
+```
 GET https://tara.ria.ee/oidc/authorize?
 
 redirect_uri=https%3A%2F%2Feteenindus.asutus.ee%2FCallback&
@@ -194,7 +194,7 @@ scope=openid&
 state=hkMVY7vjuN7xyLl5&
 response_type=code&
 client_id=58e7ba35aab5b4f1671a
-````
+```
 
 Elements of an authentication request:
 
@@ -287,11 +287,11 @@ The user is redirected to the return address included in the authentication requ
 
 An example of a redirect request:
 
-````
+```
 HTTP GET https://eteenus.asutus.ee/tagasi?
 code=71ed5797c3d957817d31&
 state=OFfVLKu0kNbJ2EZk
-````
+```
 
 Elements of a redirect request:
 
@@ -311,13 +311,13 @@ For other cases, TARA relies on the OpenID Connect standard on error messages (m
 
 `state` is also redirected but no authorisation code (`code`) is sent. E.g.:
 
-````
+```
 HTTP GET https://eteenus.asutus.ee/tagasi?
 error=invalid_scope&
 error_description=Required+scope+%3Copenid%3E+not+provided.+
 TARA+do+not+allow+this+request+to+be+processed&
 state=qnYY56Ra8QF7IUzqvw+PPLzMKoHtQkuUWbV/wcrkvdU=
-````
+```
 
 The redirect request errors are normally resulted by a misconfiguration; therefore the error description in parameter `error_description` is not needed to be displayed for the user directly. The client application should check whether an error message was sent.
 
@@ -333,7 +333,7 @@ The identity token request is an HTTP POST request which is used by the client a
 
 An example of an identity token request (for better readability, the body of the HTTP POST request is divided over several lines):
 
-````
+```
 POST /oidc/token HTTP/1.1
 Host: tara.ria.ee
 Content-Type: application/x-www-form-urlencoded
@@ -342,7 +342,7 @@ Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW
 grant_type=authorization_code&
 code=SplxlOBeZQQYbYS6WxSbIA&
 redirect_uri=https%3A%2F%2eteenus.asutus.ee%2Ftagasi
-````
+```
 
 The client secret code must be provided in the identity token request. For this purpose, the request must include the `Authorization` request header with the value formed of the word `Basic`, a space, and a string `<client_id>:<client_secret>` encoded in the Base64 format (see RFC 2617 HTTP Authentication: Basic and Digest Access Authentication, Section 2 Basic Authentication Scheme).
 
@@ -380,7 +380,7 @@ The identity token is always [signed](https://tools.ietf.org/html/rfc7515#sectio
 
 An example:
 
-````json
+```json
 {
   "jti": "0c597356-3771-4315-a129-c7bc1f02a1b2",
   "iss": "https://tara-test.ria.ee",
@@ -401,7 +401,7 @@ An example:
   "nonce": "",
   "at_hash": "X0MVjwrmMQs/IBzfU2osvw=="
 }
-````
+```
 
 The following claims are presented in the identity token:
 
@@ -441,22 +441,22 @@ The access token must be presented to the user info endpoint in the HTTP header 
 
 Example 1 – transferring an access certificate in the `Authorization` header:
 
-````
+```
 GET /oidc/profile HTTP/1.1
 Host: tara.ria.ee
 Authorization: Bearer AT-20-qWuioSEtFhYVdW89JJ4yWvtI5SaNWep0
-````
+```
 
 Example 2 – transferring of access certificate as an `access_token` parameter:
 
-````
+```
 GET /oidc/profile?access_token=AT-20-qWuioSEtFhYVdW89JJ4yWvtI5SaNWep0 HTTP/1.1
 Host: tara.ria.ee
-````
+```
 
 The valid access token response is provided in the JSON format. Example:
 
-````json
+```json
 {
   "amr": [
     "mID"
@@ -467,7 +467,7 @@ The valid access token response is provided in the JSON format. Example:
   "sub": "EE60001019906",
   "auth_time": 1550735597
 }
-```` 
+```
 
 The claims included in the response are issued based on the identity token.
 
@@ -495,10 +495,10 @@ In case the access token presented to the user information endpoint is missing o
 
 An example:
 
-````
+```
 HTTP/1.1 401 Unauthorized
 WWW-Authenticate: Bearer error="invalid_token",error_description="The access token has expired"
-````
+```
 
 ## 5 Security operations
 
