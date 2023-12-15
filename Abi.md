@@ -140,6 +140,10 @@ Jah, TARA kasutamiseks peab olema küpsiste salvestamine lubatud. Vastasel juhul
 
 Vt: Joh. V. Veski, [Sõna "tara" tähenduse asjus](https://dea.digar.ee/cgi-bin/dea?a=d&d=uuseesti19361028.2.57), "Uus Eesti", 1936 (Rahvusraamatukogu DIGARi Eesti artiklid)
 
+## Ligipääsetavus
+
+Riigi autentimisteenuse ligipääsetavuse kohta leiad rohkem informatsiooni [siit](Ligipaasetavus).
+
 <p>&nbsp;</p>
 
 Kui küsimustest ei saanud abi, siis pöördu kasutajatoe poole: [help@ria.ee](mailto:help@ria.ee).
