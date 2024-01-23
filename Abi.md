@@ -88,15 +88,33 @@ Samuti pakuvad sirvikud privaatsirvimise võimalust (private browsing). ID-kaard
 
 `clientid` on autentimisteenust TARA kasutava rakenduse avalik identifikaator. Internetis on küll [soovitusi](https://www.oauth.com/oauth2-servers/client-registration/client-id-secret/) valida `clientid` juhuslikult - siis on seda raskem ära arvata ja ründeid konstrueerida. Avalikus e-teenuses ei ole `clientid` peitmine siiski võimalik. Seetõttu soovitame `clientid` valida sisukana, s.t `clientid` peaks andma aimu rakendusest ja asutusest, samuti kas kasutatakse test- või toodangukeskkonda. Teenuse kasutajale on `clientid` nähtamatu. Kuna `clientid` edastatakse autentimispäringus, URL-i koosseisus, siis on lihtsam piirduda ladina tähtedega. Täpitähed on lubatud, kuid arvestada, et autentimispäringu URL-is edastatakse need [URL encoded](https://www.url-encode-decode.com/) kujul. Miinus, punkt ja allkriips on lubatud. Kaldkriipsu korral arvestada, et URL encoded kujul on see `%2F`. `clientid` on tõstutundlik.
 
+## Mida arvestada liitumisavalduses toodud klientrakenduse nimetuse valimisel?
+
+Klientrakenduse nimetus on mõeldud kasutajale kuvamiseks TARA autentimisvahendite valiku lehel. Klientrakenduse nimetuse kuvamise eesmärgiks on luua autentimise algatanud infosüsteemi ja TARA vahel kasutajale arusaadav seos.
+
+Klientrakenduse nimetuse valimisel peab arvestama järgmiste asjaoludega:
+
+1. Klientrakenduse nimetuse pikkus on piiratud 150 tähemärgiga.
+
+2. Klientrakenduse nimetus peab olema kasutajale arusaadav ja seostatav autentimist algatava infosüsteemiga. Kasutama peab nimetust, mida kuvatakse kasutajale ka autentimist alustavas süsteemis. Vältida tuleb tehnilisi, sisemiseks kasutuseks mõeldud nimetusi ning üldisi nimetusi, mis võivad rakenduda paljudele klientrakendustele (näiteks ei sobi `XYZ v2 toodangteenus` või `e-raamatukogu`).
+
+3. Kui klientrakenduses kasutatakse inglise keeles või vene keeles tõlgitud nimetust, siis tuleb vastavad inglis- ja venekeelse nimetuse tõlked lisada ka TARA-s. Antud tõlkeid kuvatakse vastavalt TARA-s valitud keelele.
+
+4. Juhul kui klientrakendus on teenus, mis vahendab autentimist mitmele süsteemile (nt SSO teenus) ja need süsteemid on kasutaja jaoks selgelt eristatavad, siis võiks nimetus siiski seostuda üldiselt antud teenustega (näiteks `X ministeeriumi e-teenused`). Kui kasutaja ei erista erinevaid süsteeme, siis peab nimetus põhinema peamisel süsteemil, mis on kasutajale arusaadava identiteediga.
+
 ## Mida arvestada liitumisavalduses toodud klientrakenduse lühinimetuse valimisel?
   
-Klientrakenduse lühinimetus on mõeldud kasutajale kuvamiseks mobiilseadmes. Lühinimetuse mobiilseadmes kuvamise eesmärgiks on autentimisprotsessi käigus lõppkasutaja täiendav informeerimine autentimise algatanud infosüsteemist, et muuta autentimise protsess läbipaistvamaks. 
+Klientrakenduse lühinimetus on mõeldud kasutajale kuvamiseks mobiilseadmes (näiteks Smart-ID ja Mobiil-ID korral). Lühinimetuse mobiilseadmes kuvamise eesmärgiks on autentimisprotsessi käigus lõppkasutaja täiendav informeerimine autentimise algatanud infosüsteemist, et muuta autentimise protsess läbipaistvamaks.
 
-Lühinimetuse valimisel tuleks arvestada järgmiste asjaoludega:
+Klientrakenduse lühinimetuse valimisel peab arvestama järgmiste asjaoludega:
 
 1. Klientrakenduse lühinimetuse pikkus on piiratud. <br/><br/>Lühinimetuse maksimaalne lubatud pikkus sõltub nimetuses kasutatavatest tähemärkidest. Kui piirdutakse standardsete [GSM märgistiku](https://en.wikipedia.org/wiki/GSM_03.38) sümbolitega võib lühinimetus olla maksimaalselt 40 tähemärki. Juhul kui kasutatakse GSM-7 väliseid sümboleid, võib lühinimetus olla maksimaalselt 20 tähemärki.
 
-2. Klientrakenduse lühinimetus peaks olema kasutajale arusaadav ja seostatav autentimist algatava infosüsteemiga. <br/><br/>Kui klientrakenduse nimetuse maksimaalne pikkus ei ületa ülaltoodud piirangut võib sama nimetust kasutada ka lühinimetuse puhul. Muul juhul võib klientrakenduse lühinimetuse tuletada infosüsteemi täispikast nimetusest. Näiteid klientrakenduse lühinimetustest:`Eesti.ee`, `E-MTA`, `eKool`.
+2. Klientrakenduse lühinimetus peab olema kasutajale arusaadav ja seostatav autentimist algatava infosüsteemiga. Vältida tuleb tehnilisi, sisemiseks kasutuseks mõeldud lühinimetusi, mis ei loo kasutajale seost autenditava infosüsteemiga (näiteks ei sobi `Live SSO V2`). <br/><br/>Kui klientrakenduse nimetuse maksimaalne pikkus ei ületa ülaltoodud piirangut, võib sama nimetust kasutada ka lühinimetuse puhul (näiteks `Riigiandmete register`). Muul juhul võib klientrakenduse lühinimetuse tuletada infosüsteemi täispikast nimetusest (näiteks nimetus `Eesti Vabariigi riigiandmete infosüsteemi (EVRIS) e-teenindus` ning lühinimetus `EVRIS e-teenindus`).
+
+3. Kui klientrakenduses kasutatakse inglise keeles või vene keeles tõlgitud nimetust, siis tuleb vastavad inglis- ja venekeelse lühinime tõlked lisada ka TARA-s. Antud tõlkeid kuvatakse mobiilseadmes vastavalt TARA-s valitud keelele.
+
+4. Juhul kui lisaks TARA teenusele kasutatakse paralleelselt teisi autentimismeetodeid, peab teenuse lühinimetus olema sama üle kõigi autentimismeetodite.
 
 ## Autentimisdialoog avaneb, teen autentimise läbi, aga siis tuleb veateade `Teenusele ligipääs suletud`.
 
