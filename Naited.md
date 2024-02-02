@@ -10,13 +10,12 @@ Siit leiate TARA kasutavaid näiterakendusi ja kogukonna arendatud, vaba litsent
 
 Näiterakendused on mõeldud õppeotstarbeliseks uurimiseks, neid ei saa _out of the box_ toodangus kasutada. 
 
-Näiterakendused on paigaldatud Heroku free tier pilve. Kui soovite neid proovida, siis arvestage, et rakenduse käivitamine võib võtta natuke aega.
-
 | nimetus | keel | lähtekood | avalik paigaldus? | kommentaarid |
 |---------|------|-----------|-------------------|--------------|
-| TARA-Demo | Node.js | [https://github.com/e-gov/TARA-Demo](https://github.com/e-gov/TARA-Demo)<br>klientrakenduse nimi: `TARA-Demo`<br>klientrakenduse tagasisuunamis-URL: `https://tara-demo.herokuapp.com/Callback` | [https://tara-demo.herokuapp.com](https://tara-demo.herokuapp.com) | Demo rakenduses kasutatav avaliku sektori näidisklient.<br>Autentimiseks kasutatavad ID-kaart, Mobiil-ID, Smart-ID ja eIDAS autentimine |
-| TARA-Client | Java | [https://github.com/e-gov/TARA-Client](https://github.com/e-gov/TARA-Client) | |
-| TARA-Java | Java | [https://github.com/e-gov/TARA-Java](https://github.com/e-gov/TARA-Java)<br>klientrakenduse nimi: `TARAWelcome`<br>klientrakenduse tagasisuunamis-URL: `https://tara-java.herokuapp.com/Callback` | [https://tara-java.herokuapp.com](https://tara-java.herokuapp.com) | Demo rakenduses kasutatav erasektori näidisklient.<br>Autentimiseks kasutatavad eIDAS autentimine |
+| GOVSSO-Client | Java | [https://github.com/e-gov/GOVSSO-Client](https://github.com/e-gov/GOVSSO-Client) | Vt [demo](Demo) leht | TARA protokolli toetamiseks vajalik OpenID Connect liidestus põhineb Spring Security raamistiku OAuth 2.0 osal. Näidiskliendi koodibaasis on toetatud nii TARA kui ka GovSSO integratsioon, rakenduse käivitamisel tuleb Spring profiiliga valida üks režiim (TARA või GovSSO). |
+| ~~TARA-Demo~~ | ~~Node.js~~ | ~~[https://github.com/e-gov/TARA-Demo](https://github.com/e-gov/TARA-Demo)~~<br>NB! Tarkvara ei ajakohastata. | | |
+| ~~TARA-Client~~ | ~~Java~~ | ~~[https://github.com/e-gov/TARA-Client](https://github.com/e-gov/TARA-Client)~~<br>NB! Tarkvara ei ajakohastata. | |
+| ~~TARA-Java~~ | ~~Java~~ | ~~[https://github.com/e-gov/TARA-Java](https://github.com/e-gov/TARA-Java)~~<br>NB! Tarkvara ei ajakohastata. | | |
 
 ## Kogukonna arendatud
 
@@ -28,5 +27,5 @@ You are welcome to submit a link to your TARA integration solution to be added t
 | nimetus | keel | lähtekood | väljatöötaja |
 |---------|------|-----------|--------------|
 | OmniAuth::Tara | Ruby | [https://github.com/internetee/omniauth-tara](https://github.com/internetee/omniauth-tara) | Estonian Internet Foundation |
-| TARA-Go | Go | [https://github.com/e-gov/TARA-Go](https://github.com/e-gov/TARA-Go) | AS Cybernetica Riigi Infosüsteemi Ameti tellimusel |
+| ~~TARA-Go~~ | ~~Go~~ | ~~[https://github.com/e-gov/TARA-Go](https://github.com/e-gov/TARA-Go)~~<br>NB! Tarkvara ei ajakohastata. | ~~AS Cybernetica Riigi Infosüsteemi Ameti tellimusel~~ |
 | TARA-Mock | Go | [https://github.com/e-gov/TARA-Mock](https://github.com/e-gov/TARA-Mock) | Riigi Infosüsteemi Amet |

@@ -4,6 +4,15 @@ permalink: Uudised
 
 # Uudised
 
+**07.02.2024**
+## Näidisklient
+
+[Liidestuja tarkvara](Naited) lehel on vanad näidiskliendid märgitud mitteajakohaseks ning lisatud info uue TARA näidiskliendi kohta (põhineb Java platvormil). Näidisklient demonstreerib TARA autentimisvoogu. Koodibaas on mõeldud õppeotstarbeliseks uurimiseks, seda ei saa _out of the box_ toodangus kasutada.
+
+[Demo](Demo) lehel on uuendatud näidiskliendi paigalduste aadressid, mis on avalikult kättesaadavad demonstreerimise ja testimise eesmärgil. Need paigaldused on integreeritud TARA teenuse testkeskkonnaga (`tara-test.ria.ee`).
+
+___
+
 **23.11.2023**
 ## TARA identsustõendi allkirjastamise võtme vahetus
 TARA toodangukeskkonnas on alates 01.08.2023 lisatud https://tara.ria.ee/oidc/jwks nimekirja praegu kasutatava võtme (`kid` väärtusega `public:SOP0AEUxG6ZgUzYH`) kõrvale uus avalik võti (`kid` väärtusega `fcd76c92-bc34-4e9f-b874-4c816c34639d`). 

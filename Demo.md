@@ -4,12 +4,9 @@ permalink: Demo
 
 # Demo
 
-TARA demorakendused on Heroku pilveteenuses majutatud näidisrakendused, millega saate proovida TARA abil autentimist.
+Demonstreerimise ja testimise eesmärgil on avalikult kättesaadavad [TARA näidiskliendi](Naited) kaks paigaldust:
 
-Avaliku sektori näidisklient asub aadressil [https://tara-demo.herokuapp.com/](https://tara-demo.herokuapp.com/).
+* avaliku sektori asutuse liidestumise demonstreerimiseks asub näidisklient aadressil [https://tara-demo-client-publicsector.id.ee/](https://tara-demo-client-publicsector.id.ee/)
+* erasektori asutuse liidestumise demonstreerimiseks asub näidisklient aadressil [https://tara-demo-client-privatesector.id.ee/](https://tara-demo-client-privatesector.id.ee/) (näidiskliendi poolne liidestus on samasugune, aga [TARA poolt pakutakse erasektori kliendile alamosa autentimismeetoditest](https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus#9-erasektori-asutuse-erisused)).
 
-Erasektori näidisklient asub aadressil [https://tara-java.herokuapp.com/](https://tara-java.herokuapp.com/).
-
-Rakendus avaneb uuel sirvikusakil. Kuna rakendus on majutatud _free tier_-is, võib käivitamine võtta mõningase aja.
-
-Näiterakenduses kasutatakse testisikuandmeid.
+Need näidiskliendid on integreeritud TARA teenuse testkeskkonnaga (`tara-test.ria.ee`) ja demonstreerivad TARA kliendi autentimisvoogu.
