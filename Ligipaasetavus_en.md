@@ -1,7 +1,7 @@
 ---
 permalink: Accessibility
 ---
-[Eesti](Ligipaasetavus) | [Русский](Ligipaasetavus_ru)
+[Eesti](Ligipaasetavus.md) | [Русский](Ligipaasetavus_ru.md)
 
 # Accessibility statement
 The accessibility statement herein has been composed for the [State authentication service](https://www.ria.ee/en/state-information-system/electronic-identity-eid-and-trust-services/central-authentication-services#tara). 

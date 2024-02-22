@@ -1,7 +1,7 @@
 ---
 permalink: Ligipaasetavus
 ---
-[English](Ligipaasetavus_en) | [Русский](Ligipaasetavus_ru)
+[English](Ligipaasetavus_en.md) | [Русский](Ligipaasetavus_ru.md)
 
 # Ligipääsetavuse teatis
 Käesolev ligipääsetavuse teatis on koostatud [Riigi autentimisteenuse](https://www.ria.ee/riigi-infosusteem/elektrooniline-identiteet-ja-usaldusteenused/kesksed-autentimisteenused#tara) kohta.

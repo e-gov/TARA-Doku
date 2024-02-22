@@ -1,7 +1,7 @@
 ---
 permalink: Dostupnost
 ---
-[Eesti](Ligipaasetavus) | [English](Ligipaasetavus_en)
+[Eesti](Ligipaasetavus.md) | [English](Ligipaasetavus_en.md)
 
 # Уведомление о доступности
 Настоящее уведомление о доступности подготовлено для [государственной услуги аутентификации](https://www.ria.ee/ru/gosudarstvennaya-infosistema/eid-i-udostoveritelnye-uslugi/centralizovannye-uslugi-autentifikacii#tara).
