@@ -1,7 +1,7 @@
 ---
 permalink: Accessibility
 ---
-[Eesti](Ligipaasetavus.md) | [Русский](Ligipaasetavus_ru.md)
+[Eesti](https://e-gov.github.io/TARA-Doku/Ligipaasetavus) | [Русский](https://e-gov.github.io/TARA-Doku/Dostupnost)
 
 # Accessibility statement
 The accessibility statement herein has been composed for the [State authentication service](https://www.ria.ee/en/state-information-system/electronic-identity-eid-and-trust-services/central-authentication-services#tara). 
@@ -33,7 +33,7 @@ Depending on the browser window dimensions, zooming in over a certain level will
 ### Browser extensions
 Browser extensions that enhance the built-in functionalities of browsers can be used for zooming.
 
-For example, Firefox has [Zoom Page WE](https://addons.mozilla.org/en-US/firefox/addon/zoom-page-we/) extension, which allows zooming either the whole page or only text. Similarly, [Zoom for Google Chrome](https://chromewebstore.google.com/detail/zoom-for-google-chrome) can be used with Chrome browser.
+For example, Firefox has Zoom Page WE extension, which allows zooming either the whole page or only text. Similarly, Zoom for Google Chrome can be used with Chrome browser.
 
 ### Standalone programs
 All popular operating systems include programs for zooming.

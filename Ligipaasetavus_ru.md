@@ -1,7 +1,7 @@
 ---
 permalink: Dostupnost
 ---
-[Eesti](Ligipaasetavus.md) | [English](Ligipaasetavus_en.md)
+[Eesti](https://e-gov.github.io/TARA-Doku/Ligipaasetavus) | [English](https://e-gov.github.io/TARA-Doku/Accessibility)
 
 # Уведомление о доступности
 Настоящее уведомление о доступности подготовлено для [государственной услуги аутентификации](https://www.ria.ee/ru/gosudarstvennaya-infosistema/eid-i-udostoveritelnye-uslugi/centralizovannye-uslugi-autentifikacii#tara).
@@ -31,7 +31,7 @@ permalink: Dostupnost
 В зависимости от размеров окна браузера приложение автоматически переключается на мобильный вид, когда контент увеличивается до определенной степени.
 
 ### Расширения веб-браузера
-Для веб-браузеров существуют масштабируемые расширения, которые расширяют существующую функциональность веб-браузера. Например, [Zoom Page WE](https://addons.mozilla.org/en-US/firefox/addon/zoom-page-we/) для Firefox, который позволяет увеличивать как всю страницу, так и только текст. [Zoom for Google Chrome](https://chromewebstore.google.com/detail/zoom-for-google-chrome) для Google Chrome.
+Для веб-браузеров существуют масштабируемые расширения, которые расширяют существующую функциональность веб-браузера. Например, Zoom Page WE для Firefox, который позволяет увеличивать как всю страницу, так и только текст. Zoom for Google Chrome для Google Chrome.
 
 ### Автономные программы
 Все основные операционные системы включают настройки для увеличения содержимого, отображаемого на экране.

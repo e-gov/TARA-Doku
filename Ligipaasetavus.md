@@ -1,7 +1,7 @@
 ---
 permalink: Ligipaasetavus
 ---
-[English](Ligipaasetavus_en.md) | [Русский](Ligipaasetavus_ru.md)
+[English](https://e-gov.github.io/TARA-Doku/Accessibility) | [Русский](https://e-gov.github.io/TARA-Doku/Dostupnost)
 
 # Ligipääsetavuse teatis
 Käesolev ligipääsetavuse teatis on koostatud [Riigi autentimisteenuse](https://www.ria.ee/riigi-infosusteem/elektrooniline-identiteet-ja-usaldusteenused/kesksed-autentimisteenused#tara) kohta.
@@ -31,8 +31,8 @@ Kõikides populaarsetes veebibrauserites on võimalik lehte suurendada ja vähen
 Sõltuvalt brauseriakna mõõtmetest muutub rakendus sisu suurendamisel üle teatud astme automaatselt mobiilvaatele.
 
 ### Veebibrauseri laiendid
-Veebibrauserite jaoks on olemas suurendamist võimaldavad laiendid, mis täiendavad veebibrauseri olemasolevat funktsionaalsust. Näiteks Firefoxi jaoks [Zoom Page WE](https://addons.mozilla.org/en-US/firefox/addon/zoom-page-we/), mis lubab suurendada nii kogu lehte kui ka ainult teksti.
-Chrome'i jaoks [Zoom for Google Chrome](https://chromewebstore.google.com/detail/zoom-for-google-chrome).
+Veebibrauserite jaoks on olemas suurendamist võimaldavad laiendid, mis täiendavad veebibrauseri olemasolevat funktsionaalsust. Näiteks Firefoxi jaoks Zoom Page WE, mis lubab suurendada nii kogu lehte kui ka ainult teksti.
+Chrome'i jaoks Zoom for Google Chrome.
 
 ### Eraldiseisvad rakendused
 Kõik enamlevinud operatsioonisüsteemid sisaldavad rakendusi ekraanil esitatava sisu suurendamiseks.
@@ -68,6 +68,7 @@ Avalike teenuste veebide ja rakenduste ligipääsetavuse osas teostab järeleval
 Käesolev ligipääsetavuse teatis on koostatud 15.12.2023 enesehindamise teel.
 
 ## Muutelugu
+
 | Versioon, kuupäev | Muudatus         |
 |-------------------|------------------|
 | 1.0, 15.12.2023   | Esimene versioon |
