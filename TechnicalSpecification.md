@@ -405,29 +405,29 @@ An example:
 
 The following claims are presented in the identity token:
 
-| identity token element (_claim_)                 | example of a value, explanation                                                                                                                                                                                                                                                            |
-|--------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `jti` (_JSON Token Identifier_)                  | `0c597356... ` - identity token identifier                                                                                                                                                                                                                                                 |
-| `iss` (_Issuer_)                                 | `https://tara.ria.ee` - issuer of the certificate (TARA); in the case of test services `https://tara-test.ria.ee`                                                                                                                                                                          |
-| `aud` (_Audience_)                               | `TARA-Demo` - the ID of a client application that requested authentication (the value of `client_id` field is specified upon directing the user to the authentication process).                                                                                                            |
-| `exp` (_Expires_)                                | `1530295852` - the expiration time of the certificate (in Unix _epoch_ format).                                                                                                                                                                                                            |
-| `iat` (_Issued At_)                              | `1530267052` - the time of issuance of the certificate (in Unix _epoch_ format).                                                                                                                                                                                                           |
-| `nbf` (_Not Before_)                             | `1530267052` - same as `iat` value. Is not OpenID Connect standard claim, but for backward compatibility with older TARA versions. It is recommended to use `iat` value instead.                                                                                                           |
-| `sub` (_Subject_)                                | `EE60001019906` - the identifier of the authenticated user (personal identification code or eIDAS identifier) with the prefix of the country code of the citizen (country codes based on the ISO 3166-1 alpha-2 standard). NB! eIDAS identifier length may be a maximum of 256 characters. |
-| `profile_attributes`                             | the data of the authenticated user, including the eIDAS attributes                                                                                                                                                                                                                         |
-| `profile_attributes`<br>`.date_of_birth`         | `2000-01-01` - the date of birth of the authenticated user in the ISO_8601 format. Only sent in the case of persons with Estonian personal identification code and in the case of eIDAS authentication.                                                                                    |
-| `profile_attributes`<br>`.given_name`            | `MARY ÄNN` - the first name of the authenticated user (the test name was chosen because it consists special characters).                                                                                                                                                                   |
-| `profile_attributes`<br>`.family_name`           | `O’CONNEŽ-ŠUSLIK` - the surname of the authenticated user (the test name was selected because it includes special characters).                                                                                                                                                             |
-| `profile_attributes`<br>`_translit`              | Includes a JSON object consisting of profile attributes in the Latin alphabet (see the section on transliteration below). The value is present only in the case of eIDAS authentication.                                                                                                   |
-| `amr` (_Authentication Method Reference_)        | `mID` - the authentication method used for user authentication. Possible values: `mID` - Mobile-ID, `idcard` - Estonian ID-card, `eIDAS` - cross-border, `smartid` - Smart-ID                                                                                                              |
-| `state`                                          | `abcdefghijklmnop` - security element. The authentication request’s `state` parameter value. Is not OpenID Connect standard claim, but for backward compatibility with older TARA versions. It is recommended to use `state` parameter of callback request instead.                        |
-| `nonce`                                          | `qrstuvwxyzabcdef` - security element. The authentication request’s `nonce` parameter value. Value is present only in case the `nonce` parameter was sent in the authentication request.                                                                                                   |
-| `acr` (_Authentication Context Class Reference_) | `high` - level of authentication based on the eIDAS LoA (level of assurance). Possible values: `low`, `substantial`, `high`. The element is not used if the level of authentication is not applicable or is unknown.                                                                       |
-| `at_hash`                                        | `X0MVjwrmMQs/IBzfU2osvw==` - the access token hash. Not used in TARA. Value is not according to standard as Base64 URL encoded, but for backward compatibility with older TARA versions is Base64 Standard encoded.                                                                        |
-| `email`                                          | `60001019906@eesti.ee` - the user’s e-mail address. Only issued if an Estonian ID-card is used for authenticating the user. Is only read from the SAN extension of the user’s authentication certificate (from the RFC822 type `Subject Alternative Name` field)                           |
-| `email_verified`                                 | `false` - the e-mail address of the user has been verified. TARA always issues a value `false`. It means that TARA does not verify or issue information on whether or not the user has redirected his/her eesti.ee e-mail address.                                                         |
-| `phone_number`                                   | `+37200000766` - the user’s phone number. Issued only when authenticating with Estonian Mobile-ID service. The phone number is presented in E.164 format and prefixed by a country code.                                                                                                   |
-| `phone_number_verified`                          | `true` - the ownership of the phone number to the authenticating user has been confirmed. If the claim is present, then it is always `true`                                                                                                                                                |
+| identity token element (_claim_)                 | example of a value, explanation                                                                                                                                                                                                                                                                      |
+|--------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `jti` (_JSON Token Identifier_)                  | `0c597356... ` - identity token identifier                                                                                                                                                                                                                                                           |
+| `iss` (_Issuer_)                                 | `https://tara.ria.ee` - issuer of the certificate (TARA); in the case of test services `https://tara-test.ria.ee`                                                                                                                                                                                    |
+| `aud` (_Audience_)                               | `TARA-Demo` - the ID of a client application that requested authentication (the value of `client_id` field is specified upon directing the user to the authentication process).                                                                                                                      |
+| `exp` (_Expires_)                                | `1530295852` - the expiration time of the certificate (in Unix _epoch_ format).                                                                                                                                                                                                                      |
+| `iat` (_Issued At_)                              | `1530267052` - the time of issuance of the certificate (in Unix _epoch_ format).                                                                                                                                                                                                                     |
+| `nbf` (_Not Before_)                             | `1530267052` - same as `iat` value. This claim is returned to maintain backward compatibility with older TARA versions (it is not a standard OpenID Connect claim). It is recommended to use `iat` value instead.                                                                                    |
+| `sub` (_Subject_)                                | `EE60001019906` - the identifier of the authenticated user (personal identification code or eIDAS identifier) with the prefix of the country code of the citizen (country codes based on the ISO 3166-1 alpha-2 standard). NB! eIDAS identifier length may be a maximum of 256 characters.           |
+| `profile_attributes`                             | the data of the authenticated user, including the eIDAS attributes                                                                                                                                                                                                                                   |
+| `profile_attributes`<br>`.date_of_birth`         | `2000-01-01` - the date of birth of the authenticated user in the ISO_8601 format. Only sent in the case of persons with Estonian personal identification code and in the case of eIDAS authentication.                                                                                              |
+| `profile_attributes`<br>`.given_name`            | `MARY ÄNN` - the first name of the authenticated user (the test name was chosen because it consists special characters).                                                                                                                                                                             |
+| `profile_attributes`<br>`.family_name`           | `O’CONNEŽ-ŠUSLIK` - the surname of the authenticated user (the test name was selected because it includes special characters).                                                                                                                                                                       |
+| `profile_attributes`<br>`_translit`              | Includes a JSON object consisting of profile attributes in the Latin alphabet (see the section on transliteration below). The value is present only in the case of eIDAS authentication.                                                                                                             |
+| `amr` (_Authentication Method Reference_)        | `mID` - the authentication method used for user authentication. Possible values: `mID` - Mobile-ID, `idcard` - Estonian ID-card, `eIDAS` - cross-border, `smartid` - Smart-ID                                                                                                                        |
+| `state`                                          | `abcdefghijklmnop` - security element. The authentication request’s `state` parameter value. This claim is returned to maintain backward compatibility with older TARA versions (it is not a standard OpenID Connect claim). It is recommended to use `state` parameter of callback request instead. |
+| `nonce`                                          | `qrstuvwxyzabcdef` - security element. The authentication request’s `nonce` parameter value. Value is present only in case the `nonce` parameter was sent in the authentication request.                                                                                                             |
+| `acr` (_Authentication Context Class Reference_) | `high` - level of authentication based on the eIDAS LoA (level of assurance). Possible values: `low`, `substantial`, `high`. The element is not used if the level of authentication is not applicable or is unknown.                                                                                 |
+| `at_hash`                                        | `X0MVjwrmMQs/IBzfU2osvw==` - the access token hash. Not used in TARA. Value is Base64 Standard encoded (standard specifies Base64 URL encoded). The non-standard encoding is used to ensure backward compatibility with older TARA versions.                                                         |
+| `email`                                          | `60001019906@eesti.ee` - the user’s e-mail address. Only issued if an Estonian ID-card is used for authenticating the user. Is only read from the SAN extension of the user’s authentication certificate (from the RFC822 type `Subject Alternative Name` field)                                     |
+| `email_verified`                                 | `false` - the e-mail address of the user has been verified. TARA always issues a value `false`. It means that TARA does not verify or issue information on whether or not the user has redirected his/her eesti.ee e-mail address.                                                                   |
+| `phone_number`                                   | `+37200000766` - the user’s phone number. Issued only when authenticating with Estonian Mobile-ID service. The phone number is presented in E.164 format and prefixed by a country code.                                                                                                             |
+| `phone_number_verified`                          | `true` - the ownership of the phone number to the authenticating user has been confirmed. If the claim is present, then it is always `true`                                                                                                                                                          |
 
 Identity token might consist of other OpenID Connect protocol based fields that are not supported in TARA.
 
@@ -472,18 +472,18 @@ The valid access token response is provided in the JSON format. Example:
 The claims included in the response are issued based on the identity token.
 
 | json element (_claim_)  | disclosure is compulsory | explanation                                                                          | 
-|:------------------------|--------------------------|--------------------------------------------------------------------------------------|
-| `auth_time`             | yes                      | The same format and meaning as `iat` in identity token.                              |
-| `sub` (_Subject_)       | yes                      | The same format and meaning as `sub` in identity token.                              |
-| `given_name`            | yes                      | The same format and meaning as `profile_attributes.given_name` in identity token.    |
-| `family_name`           | yes                      | The same format and meaning as `profile_attributes.family_name` in identity token.   |
-| `amr`                   | yes                      | The same format and meaning as `amr` in identity token.                              |
-| `date_of_birth`         | no <sup>1</sup>          | The same format and meaning as `profile_attributes.date_of_birth` in identity token. |
-| `email`                 | no  <sup>1</sup>         | The same format and meaning as `email` in identity token.                            |
-| `email_verified`        | no  <sup>1</sup>         | The same format and meaning as `email_verified` in identity token.                   |
-| `phone_number`          | no  <sup>1</sup>         | The same format and meaning as `phone_number` in identity token.                     |
-| `phone_number_verified` | no  <sup>1</sup>         | The same format and meaning as `phone_number_verified` in identity token.            |
-| `acr`                   | no  <sup>1</sup>         | The same format and meaning as `acr` in identity token.                              |
+|:------------------------|---------------------|--------------------------------------------------------------------------------------|
+| `auth_time`             | yes                 | The same format and meaning as `iat` in identity token.                              |
+| `sub` (_Subject_)       | yes                 | The same format and meaning as `sub` in identity token.                              |
+| `given_name`            | yes                 | The same format and meaning as `profile_attributes.given_name` in identity token.    |
+| `family_name`           | yes                 | The same format and meaning as `profile_attributes.family_name` in identity token.   |
+| `amr`                   | yes                 | The same format and meaning as `amr` in identity token.                              |
+| `date_of_birth`         | no <sup>1</sup>     | The same format and meaning as `profile_attributes.date_of_birth` in identity token. |
+| `email`                 | no <sup>1</sup>     | The same format and meaning as `email` in identity token.                            |
+| `email_verified`        | no <sup>1</sup>     | The same format and meaning as `email_verified` in identity token.                   |
+| `phone_number`          | no <sup>1</sup>     | The same format and meaning as `phone_number` in identity token.                     |
+| `phone_number_verified` | no <sup>1</sup>     | The same format and meaning as `phone_number_verified` in identity token.            |
+| `acr`                   | no <sup>1</sup>     | The same format and meaning as `acr` in identity token.                              |
 
  <sup>1</sup> Only issued if the claim is also included in the identity token.
 
@@ -585,7 +585,7 @@ The verification is done using two elements in the identity token: `iat` and `ex
 
 The identity token also includes the `nbf` ('not before') claim (which value is equal to `iat` claim). This element is present for backwards compatibility with older versions of TARA. The ID token validity check should be done based on `iat` claim and `nbf` can be ignored.
 
-The application must choose the `permitted_difference_between_clocks` value (considering network latency, ...).
+The application must choose the `permitted_difference_between_clocks` value, taking into consideration network latency.
 
 The identity token must be obtained as soon as possible within 30 seconds. When the time limit is exceeded, the authorization code expires and identity token will not be issued.
 
@@ -613,12 +613,12 @@ After a successful verification of the identity token, the client application wi
 
 ### 5.2 Protection against false request attacks
 
-The client application must implement protective measures against false request attacks (_cross-site request forgery_, CSRF). This can be achieved by using `state` and `nonce` security codes.
+The client application must implement protective measures against cross-site request forgery and replay attacks. This can be achieved by using `state` and `nonce` security codes.
 
 * Using `state` is compulsory and the parameter should be verified during [redirect request](#42-redirect-request);
 * Using `nonce` is optional (but highly recommended) and its purpose is to avoid identity token replay attacks. `nonce` verification should be done during [identity token verification](#518-verifying-nonce-parameter);
 
-The interfacer has to decide whether `state` value is stored on the server side or in the user's browser as a cookie.
+The integrator has to decide whether `state` value is stored on the server side or in the user's browser as a cookie.
 
 **When storing `state` as a cookie, the client application must perform the following steps:**
 
@@ -757,19 +757,19 @@ RIA, having satisfied the application, issues a password for the production vers
 
 As stated by [eIDAS regulation](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014R0910&from=EN), eIDAS level of assurance (LoA) is the level of reliability (high, substantial, low) assigned to a means of authentication under the implementing regulation [(EL) 2015/1502](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015R1502&from=EN). The LoA of a means of authentication is determined by several aspects: the basis of identity issuance, organizational processes, the technical solution and management of the solution.
 
-Levels of assurance for domestic authentication methods used in TARA are approved by the Information System Authority according to eIDAS implementing regulation.
+LoA for domestic authentication methods used in TARA are approved by the Information System Authority according to eIDAS implementing regulation.
 
-Means of authentication used in TARA have been assigned the following levels of assurance:
+Means of authentication used in TARA have been assigned the following LoAs:
 
-| Means of authentication | Level of assurance                                                                                                         |
-|-------------------------|----------------------------------------------------------------------------------------------------------------------------|
-| ID-Card                 | [high](https://ec.europa.eu/digital-building-blocks/wikis/display/EIDCOMMUNITY/Estonia)                                    |
-| Mobile-ID               | [high](https://ec.europa.eu/digital-building-blocks/wikis/display/EIDCOMMUNITY/Estonia)                                    |
-| Smart-ID                | [high](https://www.ria.ee/media/586/download) <sup>1</sup> |
+| Means of authentication | LoA                                                                                     |
+|-------------------------|-----------------------------------------------------------------------------------------|
+| ID-Card                 | [high](https://ec.europa.eu/digital-building-blocks/wikis/display/EIDCOMMUNITY/Estonia) |
+| Mobile-ID               | [high](https://ec.europa.eu/digital-building-blocks/wikis/display/EIDCOMMUNITY/Estonia) |
+| Smart-ID                | [high](https://www.ria.ee/media/586/download) <sup>1</sup>                              |
 
 <sup>1</sup>NB! The LoA applies only for persons with an Estonian identity code and a Smart-ID account. Interfacing party has to consider that non-residents (Estonian e-residents) are not distinguishable from residents.
 
-Every member state assigns LoA's to their own domestic means of authentication and notifies other member states of them according to [eIDAS regulation](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015R1502&from=EN). Please refer [here](https://ec.europa.eu/cefdigital/wiki/display/EIDCOMMUNITY/Overview+of+pre-notified+and+notified+eID+schemes+under+eIDAS) for a list of all authentication methods that have been notified by member states.
+Every member state assigns LoAs to their own domestic means of authentication and notifies other member states of them according to [eIDAS regulation](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015R1502&from=EN). Please refer [here](https://ec.europa.eu/cefdigital/wiki/display/EIDCOMMUNITY/Overview+of+pre-notified+and+notified+eID+schemes+under+eIDAS) for a list of all authentication methods that have been notified by member states.
 
 ## 9 Private sector client specifications
 
