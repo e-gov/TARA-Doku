@@ -783,7 +783,9 @@ Võrreldes avaliku sektori asutustega on erasektori asutuste jaoks autentimisel 
 
 `eidas:country:xx` skoop võimaldab TARAga liidestujal jätta vahele TARA kasutajaliidese kuva ning suunata autentija vahetult skoobis määratud riigi autentimisteenusesse.
 
-Erasektori asutustele on hetkel toetatud autentimiseks järgnevad riigid:
+Testkeskkonnas on erasektori asutustele kuvatud rohkem riike, kui toodangukeskkonnas toetatud on. Kõik kuvatud riigid ei pruugi toetada erasektori autentimist.
+
+Toodangukeskkonnas on erasektori asutustele hetkel toetatud autentimiseks järgnevad riigid:
 
 | Riik     | Riigikood |
 |----------|-----------|

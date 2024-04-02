@@ -775,7 +775,9 @@ Compared to public sector, private sector clients can explicitly only use the co
 
 `eidas:country:xx` scope allows for interfaced clients to skip TARA's user interface and direct the authentication flow straight to specified country's authentication service.
 
-Currently, the following countries are supported for private sector client authentication:
+In the test environment, more countries are displayed to private sector clients than in the production environment. Not all countries support private sector authentication.
+
+Currently, the following countries are supported in the production environment for private sector client authentication:
 
 | Country  | Country code |
 |----------|--------------|
