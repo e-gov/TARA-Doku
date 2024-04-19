@@ -4,7 +4,7 @@ permalink: TehnilineKirjeldus
 
 # Tehniline kirjeldus
 {: .no_toc}
-v 1.26, 23.11.2023
+v 1.27, 25.04.2024
 
 - TOC
 {:toc}
@@ -551,17 +551,27 @@ NB! Kindlasti tasuks vältida võtme käsitsi kirjutamist klientrakenduse konfig
 
 Klientrakendusest TARA poole sooritatavatel päringutel (kõikidesse otspunktidesse ehk teenuseteabe otspunkti, võtmeväljastusotspunkti, tõendiväljastusotspunkti) tuleb TLS ühenduse algatamisel sooritada korrektselt kõik vajalikud kontrollid. Soovitatav on neid mitte ise implementeerida, vaid kasutada mõnda HTTPS või TLS ühenduste funktsionaalsusega teeki.
 
-Klientrakenduses peab TLS ühenduse usaldusankruks määrama ainult [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) juursertifikaadi. Soovitatav ei ole klientrakenduses usaldada teiste CA-de sertifikaate ega tervet operatsioonisüsteemi CA sertifikaatide hoidlat. Veebisirvikud usaldavad paljude CA-de sertifikaate, kuid neil on sertifikaatide volitamata väljastamise probleemi leevendamiseks kasutusel Certificate Transparency mehhanism. TARA autentimisvoog on kombinatsioon veebisirviku poolt ja klientrakenduse poolt tehtavatest päringutest, seega autentimisvoo terviklikuks õnnestumiseks rakendub mõlema poolt sooritatavate kontrollide ühend. Võrreldes lõppolemi sertifikaadi usaldamisega on CA juursertifikaadi usaldamisel suurem risk ühenduda vale otspunktiga (juhul kui välisel osapoolel õnnestub edukalt läbi viia sertifikaatide volitamata väljastamise rünne selle CA usaldusahelaga seotud organisatsioonides ning võrguliikluse vahemeherünne klientrakenduse ja TARA vahel). Peame seda riski aktsepteeritavaks, kuid iga liidestuja võib enda hinnangu ise kujundada ja vajadusel määrata klientrakenduses TLS ühenduse usaldusankruks CA juursertifikaadi (DigiCert Global Root G2) asemel [TARA lõppolemi sertifikaadi (`*.ria.ee`)](https://github.com/e-gov/TARA-Doku/blob/master/certificates/star_ria_ee_valid_until_2024-11-17.crt), kuid peab arvestama, et viimane vahetub tihedamini (vähemalt iga aasta tagant).
+Klientrakenduses peab TLS ühenduse usaldusankruks määrama järgmised juursertifikaadid:
+* [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem);
+* [GlobalSign R4](https://pki.goog/repo/certs/gsr4.pem);
+* [GTS Root R1](https://pki.goog/repo/certs/gtsr1.pem);
+* [GTS Root R2](https://pki.goog/repo/certs/gtsr2.pem);
+* [GTS Root R3](https://pki.goog/repo/certs/gtsr3.pem);
+* [GTS Root R4](https://pki.goog/repo/certs/gtsr4.pem);
+* [ISRG Root X1](https://letsencrypt.org/certs/isrgrootx1.pem);
+* [ISRG Root X2](https://letsencrypt.org/certs/isrg-root-x2.pem).
+
+Soovitatav ei ole klientrakenduses usaldada teiste CA-de sertifikaate ega tervet operatsioonisüsteemi CA sertifikaatide hoidlat. Veebisirvikud usaldavad paljude CA-de sertifikaate, kuid neil on sertifikaatide volitamata väljastamise probleemi leevendamiseks kasutusel Certificate Transparency mehhanism. TARA autentimisvoog on kombinatsioon veebisirviku poolt ja klientrakenduse poolt tehtavatest päringutest, seega autentimisvoo terviklikuks õnnestumiseks rakendub mõlema poolt sooritatavate kontrollide ühend.
 
 HTTPS või TLS ühenduste funktsionaalsusega teek peab iga ühenduse algatamisel teostama järgnevad kontrollid:
-* kontrollima, kas moodustub valiidsete allkirjadega sertifikaadiahel, mis lõpeb [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) juursertifikaadiga;
+* kontrollima, kas moodustub valiidsete allkirjadega sertifikaadiahel, mis lõpeb mõnega ülalnimetatud juursertifikaatidest;
 * kontrollima, kas päringus olev _hostname_ (`tara.ria.ee` või `tara-test.ria.ee`) vastab serveri esitatud sertifikaadis olevale CN väljale või sisaldub SAN väljal;
 * kontrollima ahela kõikidel sertifikaatidel kehtivuse alguse ja lõpu väärtuseid;
 * kontrollima sertifikaatides defineeritud _constraint_'e (basic, name, key usage, critical extensions).
 
 Lisaks tuleb jälgida ahela kõikide sertifikaatide tühistamist mõnel järgnevatest viisidest:
 * RIA teavitab sertifikaatide tühistamisest liidestujate kontaktisikuid e-kirjaga.
-* Klientrakendus võib kontrollida CA poolt pakutavat kehtivuskinnitusteenust (OCSP) või tühistusnimekirja (CRL), kuid peab arvestama, et RIA ei vastuta CA kui välise osapoole teenuste kättesaadavuse eest. Praegu `tara.ria.ee` ja `tara-test.ria.ee` otspunktid kehtivuskinnituse klammerdamist (_OCSP stapling_) ei paku.
+* Klientrakendus võib kontrollida CA poolt pakutavat kehtivuskinnitusteenust (OCSP) või tühistusnimekirja (CRL), kuid peab arvestama, et RIA ei vastuta CA kui välise osapoole teenuste kättesaadavuse eest. `tara.ria.ee` ja `tara-test.ria.ee` otspunktid võivad, aga ei pruugi kehtivuskinnituse klammerdamist (_OCSP stapling_) pakkuda või see võib etteteatamata muutuda.
 
 #### 5.1.3 Tõendi väljaandja kontrollimine
 
@@ -799,6 +809,7 @@ NB! Riigi Infosüsteemi Amet ei taga teiste riikide autentimisteenuste toimimist
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
+| 1.27, 25.04.2024   | TLS usaldusankru muutus (juursertifikaatide lisamine, lõppolemi sertifikaadi eemaldamine). |
 | 1.26, 23.11.2023   | TARA võtmevahetusprotsess viidud eraldi peatükki. |
 | 1.25, 26.10.2023   | TLS usaldusankru muutus (juursertifikaadi vahetus, lõppolemi sertifikaadi vahetus). Täpsustatud TLS usaldusankru määramise ja sertifikaatide tühistamise kontrollimise juhiseid. |
 | 1.24, 09.05.2023   | Formaadi ja kirjavigade parandused. Autentimisvahendite nimetuste ühtlustamine, EU eID kui autentimismeetod (piiriülene autentimine eIDAS taristus). |

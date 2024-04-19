@@ -4,6 +4,15 @@ permalink: Uudised
 
 # Uudised
 
+**25.04.2024**
+## 02.05.2024 vahetub TLS sertifikaat `tara-test.ria.ee` keskkonnas ja 13.05.2024 vahetub `tara.ria.ee` keskkonnas.
+• Palume klientidel, kes on oma teenuses usaldanud senist DigiCert juursertifikaati (DigiCert Global Root CA), lisada enne vahetusaega usaldusankruks kõik [peatükis 5.1.2](https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus#512-otspunktide-tls-%C3%BChenduse-kontrollimine) loetletud juursertifikaadid.<br/>
+• Palume klientidel, kes on oma teenuses usaldanud otse Riigi autentimisteenuse TLS lõppolemi sertifikaati (`*.ria.ee`), lisada enne vahetusaega usaldusankruks kõik [peatükis 5.1.2](https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus#512-otspunktide-tls-%C3%BChenduse-kontrollimine) loetletud juursertifikaadid ja eemaldada pärast vahetusaega senine lõppolemi sertifikaat. Kaob võimalus usaldada TLS lõppolemi sertifikaati, kuna see võib muutuda tihedamini ja etteteatamata.<br/>
+
+Kui Teil esineb teenusega probleeme, siis palun võtke meiega ühendust [help@ria.ee](mailto:help@ria.ee).
+
+___
+
 **07.02.2024**
 ## Näidisklient
 
