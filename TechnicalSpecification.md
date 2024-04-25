@@ -4,7 +4,7 @@ permalink: TechnicalSpecification
 
 # Technical specification
 {: .no_toc}
-v 1.17, 23.11.2023
+v 1.18, 25.04.2024
 
 - TOC
 {:toc}
@@ -550,17 +550,27 @@ NB! "Hardcoding" the key to client application configuration must be avoided. Th
 
 When making requests from the client application to TARA (to all endpoints, i.e., server discovery endpoint, public signature key endpoint, token endpoint), all necessary checks must be correctly performed during the initiation of the TLS connection. It is recommended not to implement these checks yourself, but to use a library with HTTPS or TLS connection functionality.
 
-The trust anchor for the TLS connection in the client application must be set to the [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) root certificate only. It is not advisable to trust certificates from other CAs or the entire operating system's CA certificate store. Web browsers trust many CA certificates, but they use the Certificate Transparency mechanism to mitigate the unauthorized certificate issuance problem. TARA authentication flow is a combination of web browser requests and client application requests, therefore the union of checks from both applies for the authentication flow to completely succeed. Compared to trusting an end-entity certificate, trusting a CA root certificate has a greater risk of connecting to the wrong endpoint (if an external party succeeds in performing an unauthorized certificate issuance attack in organizations connected to this CA trust chain and network traffic man-in-the-middle attack between the client application and TARA). We consider this risk acceptable, but each integrator may form their own assessment and set TLS connection trust anchor to the [TARA end-entity certificate (`*.ria.ee`)](https://github.com/e-gov/TARA-Doku/blob/master/certificates/star_ria_ee_valid_until_2024-11-17.crt) instead of CA root certificate (DigiCert Global Root G2) if needed, but must take into account that the latter changes more often (at least every year).
+The trust anchor for the TLS connection in the client application must be set to the following root certificates:
+* [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem);
+* [GlobalSign R4](https://pki.goog/repo/certs/gsr4.pem);
+* [GTS Root R1](https://pki.goog/repo/certs/gtsr1.pem);
+* [GTS Root R2](https://pki.goog/repo/certs/gtsr2.pem);
+* [GTS Root R3](https://pki.goog/repo/certs/gtsr3.pem);
+* [GTS Root R4](https://pki.goog/repo/certs/gtsr4.pem);
+* [ISRG Root X1](https://letsencrypt.org/certs/isrgrootx1.pem);
+* [ISRG Root X2](https://letsencrypt.org/certs/isrg-root-x2.pem).
+
+It is not advisable to trust certificates from other CAs or the entire operating system's CA certificate store. Web browsers trust many CA certificates, but they use the Certificate Transparency mechanism to mitigate the unauthorized certificate issuance problem. TARA authentication flow is a combination of web browser requests and client application requests, therefore the union of checks from both applies for the authentication flow to completely succeed.
 
 The HTTPS or TLS connection functionality library must perform the following checks for each connection initiation:
-* check whether a certificate chain with valid signatures is formed, ending with the [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) root certificate;
+* check whether a certificate chain with valid signatures is formed, ending with any of the root certificates listed above;
 * check whether the hostname in the request (`tara.ria.ee` or `tara-test.ria.ee`) matches the CN field in the server's presented certificate or is included in the SAN field;
 * check the start and end validity values for all certificates in the chain;
 * check the constraints defined in the certificates (basic, name, key usage, critical extensions).
 
 Additionally, revocation of all certificates in the chain must be observed in any of the following ways:
 * RIA notifies contact persons of integrators by e-mail about certificate revocation.
-* Client application may check CA's validity confirmation service (OCSP) or revocation list (CRL), but must take into account that RIA is not responsible for the availability of CA's services as an external party. Currently `tara.ria.ee` ja `tara-test.ria.ee` endpoints don't provide OCSP stapling.
+* Client application may check CA's validity confirmation service (OCSP) or revocation list (CRL), but must take into account that RIA is not responsible for the availability of CA's services as an external party. `tara.ria.ee` ja `tara-test.ria.ee` endpoints may, but are not obligated to provide OCSP stapling, or it may change without notice.
 
 #### 5.1.3 Verifying the issuer of the certificate
 
