@@ -806,11 +806,20 @@ Toodangukeskkonnas on erasektori asutustele hetkel toetatud autentimiseks järgn
 
 NB! Riigi Infosüsteemi Amet ei taga teiste riikide autentimisteenuste toimimist. Erasektori autentimise võimalus sõltub eIDAS liikmesriikidest ning võib vastavalt liikmesriikide tegevusele muutuda.
 
+## 10 Keskkonnad
+
+| Keskkond | OpenID Connect Issuer URL | Kasutusel olevad IP-aadressid | Kõik võimalikud IP-aadressid, millele lubada klientrakendusest väljuvad ühendused |
+|----------|---------------------------|-------------------------------|-----------------------------------------------------------------------------------|
+| Test | `https://tara-test.ria.ee` | klientrakendus peab lahendama DNS kaudu | 141.101.90.16<br>141.101.90.17<br>2a06:98c1:3200::6<br>2a06:98c1:3200::7<br>195.80.123.174 |
+| Toodang | `https://tara.ria.ee` | klientrakendus peab lahendama DNS kaudu | 141.101.90.16<br>141.101.90.17<br>2a06:98c1:3200::6<br>2a06:98c1:3200::7<br>195.80.123.203 |
+
+Kui klientrakenduse poolel on piiratud väljuvad ühendused TARA-sse IP-aadresside järgi, siis tuleb klientrakenduse poolel lubada väljuvad ühendused kõikidele viimases veerus loetletud IP-aadressidele. Klientrakendus peab DNS kirje kaudu lahendama, millisele IP-aadressile sooritada ühendus (valima ükskõik millise DNS poolt tagastatud IP-aadressi). DNS kirjet uuendatakse vastavalt vajadusele, et see sisaldaks toimivaid IP-aadresse, mis serveerivad TARA teenust (alamosa viimases veerus loetletud IP-aadressidest). 
+
 ## Muutelugu
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
-| 1.28, 15.06.2024   | Eemaldatud autentimispäringu parameeter `locale`, mis pole toetatud pärast 2019. aasta juulit. Identsustõendis `nbf`, `state` ja `at_hash` ei ole standardijärgsed (säilitatakse tagasiühilduvuseks). |
+| 1.28, 15.06.2024   | Eemaldatud autentimispäringu parameeter `locale`, mis pole toetatud pärast 2019. aasta juulit. Identsustõendis `nbf`, `state` ja `at_hash` ei ole standardijärgsed (säilitatakse tagasiühilduvuseks). Lisatud peatükk "10 Keskkonnad", kus on kirjeldatud TARA teenuse IP-aadresside kasutust. |
 | 1.27, 25.04.2024   | TLS usaldusankru muutus (juursertifikaatide lisamine, lõppolemi sertifikaadi eemaldamine). |
 | 1.26, 23.11.2023   | TARA võtmevahetusprotsess viidud eraldi peatükki. |
 | 1.25, 26.10.2023   | TLS usaldusankru muutus (juursertifikaadi vahetus, lõppolemi sertifikaadi vahetus). Täpsustatud TLS usaldusankru määramise ja sertifikaatide tühistamise kontrollimise juhiseid. |

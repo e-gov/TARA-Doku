@@ -798,3 +798,12 @@ Currently, the following countries are supported in the production environment f
 | Sweden   | SE           |
 
 NB! Information System Authority does not guarantee the workability of other eIDAS member states' authentication services. Private sector eIDAS authentication depends on other member states and may be subject to change.
+
+## 10 Environments
+
+| Environment | OpenID Connect Issuer URL | IP addresses in use | All possible IP addresses to allow outgoing connections from client application |
+|-------------|---------------------------|---------------------|---------------------------------------------------------------------------------|
+| Test | `https://tara-test.ria.ee` | client application must resolve via DNS | 141.101.90.16<br>141.101.90.17<br>2a06:98c1:3200::6<br>2a06:98c1:3200::7<br>195.80.123.174 |
+| Production | `https://tara.ria.ee` | client application must resolve via DNS | 141.101.90.16<br>141.101.90.17<br>2a06:98c1:3200::6<br>2a06:98c1:3200::7<br>195.80.123.203 |
+
+If outgoing connections to TARA are restricted by IP addresses on the client application side, the client application must allow outgoing connections to all IP addresses listed in the last column. The client application must resolve the connection to any of the IP addresses returned by the DNS record. The DNS record is updated as needed to include the functioning IP addresses serving the TARA service (a subset of the IP addresses listed in the last column).
