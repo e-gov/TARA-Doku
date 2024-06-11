@@ -343,7 +343,7 @@ code=SplxlOBeZQQYbYS6WxSbIA&
 redirect_uri=https%3A%2F%2eteenus.asutus.ee%2Ftagasi
 ```
 
-Identsustõendipäringus tuleb esitada salasõna. Selleks tuleb päringusse lisada `Authorization` päis (_request header_), väärtusega, mis moodustatakse sõnast `Basic`, tühikust ja Base64 kodeeringus stringist `<client_id>:<client_secret>` (vt _RFC 2617 HTTP Authentication: Basic and Digest Access Authentication_, jaotis 2 _Basic Authentication Scheme_).
+Identsustõendipäringus tuleb esitada salasõna. Selleks tuleb päringusse lisada `Authorization` päis (_request header_), väärtusega, mis moodustatakse sõnast `Basic`, tühikust ja Base64 kodeeringus stringist `<form_urlencoded_client_id>:<form_urlencoded_client_secret>`. `form_urlencoded_client_id` tähistab `client_id` väärtust "application/x-www-form-urlencoded"-kodeerituna ning `form_urlencoded_client_secret` tähistab `client_secret` väärtust "application/x-www-form-urlencoded"-kodeerituna (vt [RFC 6749](https://www.rfc-editor.org/rfc/rfc6749.html#section-2.3.1)). 
 
 HTTP POST päringu keha peab olema esitatud OpenID Connect protokolli kohaselt serialiseeritud [kujul](https://openid.net/specs/openid-connect-core-1_0.html#FormSerialization).
 
@@ -829,7 +829,7 @@ Kui klientrakenduse poolel on piiratud väljuvad ühendused TARA-sse IP-aadressi
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
-| 1.28, 15.06.2024   | Eemaldatud autentimispäringu parameeter `locale`, mis pole toetatud pärast 2019. aasta juulit. Identsustõendis `nbf`, `state` ja `at_hash` ei ole standardijärgsed (säilitatakse tagasiühilduvuseks). Lisatud peatükk "10 Keskkonnad", kus on kirjeldatud TARA teenuse IP-aadresside kasutust. Eemaldatud TLS kätluse aegumisaeg, kuna ID-kaardiga autentimiseks on TLS Client Certificate Authentication (TLS-CCA) asendatud Web eID-ga. Lisatud peatükk "5.1.2.1 TLS ühenduse parameetrid". |
+| 1.28, 15.06.2024   | Eemaldatud autentimispäringu parameeter `locale`, mis pole toetatud pärast 2019. aasta juulit. Identsustõendis `nbf`, `state` ja `at_hash` ei ole standardijärgsed (säilitatakse tagasiühilduvuseks). Lisatud peatükk "10 Keskkonnad", kus on kirjeldatud TARA teenuse IP-aadresside kasutust. Eemaldatud TLS kätluse aegumisaeg, kuna ID-kaardiga autentimiseks on TLS Client Certificate Authentication (TLS-CCA) asendatud Web eID-ga. Lisatud peatükk "5.1.2.1 TLS ühenduse parameetrid". Täpsustatud identsustõendipäringu `Authorization` päises `client_id` ja `client_secret` kodeerimist "application/x-www-form-urlencoded" vormingus. |
 | 1.27, 25.04.2024   | TLS usaldusankru muutus (juursertifikaatide lisamine, lõppolemi sertifikaadi eemaldamine). |
 | 1.26, 23.11.2023   | TARA võtmevahetusprotsess viidud eraldi peatükki. |
 | 1.25, 26.10.2023   | TLS usaldusankru muutus (juursertifikaadi vahetus, lõppolemi sertifikaadi vahetus). Täpsustatud TLS usaldusankru määramise ja sertifikaatide tühistamise kontrollimise juhiseid. |

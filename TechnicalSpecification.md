@@ -344,7 +344,7 @@ code=SplxlOBeZQQYbYS6WxSbIA&
 redirect_uri=https%3A%2F%2eteenus.asutus.ee%2Ftagasi
 ```
 
-The client secret code must be provided in the identity token request. For this purpose, the request must include the `Authorization` request header with the value formed of the word `Basic`, a space, and a string `<client_id>:<client_secret>` encoded in the Base64 format (see RFC 2617 HTTP Authentication: Basic and Digest Access Authentication, Section 2 Basic Authentication Scheme).
+The client secret code must be provided in the identity token request. For this purpose, the request must include the `Authorization` request header with the value formed of the word `Basic`, a space, and a string `<form_urlencoded_client_id>:<form_urlencoded_client_secret>` encoded in the Base64 format. `form_urlencoded_client_id` represents `client_id` value encoded in the "application/x-www-form-urlencoded" format and `form_urlencoded_client_secret` represents `client_secret` value encoded in the "application/x-www-form-urlencoded" format (see [RFC 6749](https://www.rfc-editor.org/rfc/rfc6749.html#section-2.3.1)).
 
 The body of the HTTP POST request must be presented in a serialised [format](https://openid.net/specs/openid-connect-core-1_0.html#FormSerialization) based on the OpenID Connect protocol.
 
