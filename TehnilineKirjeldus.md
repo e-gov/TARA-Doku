@@ -364,7 +364,7 @@ Päringu vastus on JSON-struktuur, milles on neli elementi (vt järgnev tabel).
 
 | element | selgitus |
 |:-------:|----------|
-| `access_token` | OAuth 2.0 pääsutõend. Pääsutõendiga saab klientrakendus pärida `userinfo` otspunktist autenditud isikut kirjeldavad andmed.<br><br>TARA väljastab küll pääsutõendi, kuid soovitame pääsutõendit kasutada ainult siis, kui nn "karbitoote" liidestamisel ei ole võimalust kasutada identsustõendit (vt allpool). Kõik autenditud isikut kirjeldavad andmed väljastatakse juba identsustõendis. Identsustõendi kasutamine on eelistatud ja ka teoreetiliselt turvalisem, kuna identsustõend on allkirjastatud, `userinfo` otspunkti väljund aga mitte |
+| `access_token` | OAuth 2.0 pääsutõend. Pääsutõendiga saab klientrakendus pärida kasutajainfo otspunktist autenditud isikut kirjeldavad andmed.<br><br>TARA väljastab küll pääsutõendi, kuid soovitame pääsutõendit kasutada ainult siis, kui nn "karbitoote" liidestamisel ei ole võimalust kasutada identsustõendit (vt allpool). Kõik autenditud isikut kirjeldavad andmed väljastatakse juba identsustõendis. Identsustõendi kasutamine on eelistatud ja ka teoreetiliselt turvalisem, kuna identsustõend on allkirjastatud, kasutajainfo otspunkti väljund aga mitte |
 | `token_type` | Väärtusega `bearer`. OAuth 2.0 pääsutõendi tüüp |
 | `expires_in` | OAuth 2.0 pääsutõendi aegumiskestus |
 | `id_token` | identsustõend. Veebitõend esitatakse nn kompaktselt serialiseeritud kujul (vt [JWS Compact Serialization](https://tools.ietf.org/html/rfc7515#section-3.1)) | 
@@ -422,7 +422,7 @@ Identsustõendis väljastatakse järgmised väited (_claims_).
 | `state` | `abcdefghijklmnop` - turvaelement. Autentimispäringu `state` parameetri väärtus. Väide tagastatakse tagasiühilduvuse tagamiseks vanemate TARA versioonidega (ei ole OpenID Connect standardijärgne väide). Selle asemel on soovitav kasutada tagasisuunamispäringu `state` URL-parameetrit. |
 | `nonce` | `qrstuvwxyzabcdef` - turvaelement. Autentimispäringu `nonce` parameetri väärtus. Väärtustatud ainult juhul kui autentimispäringus saadeti `nonce` parameeter. |
 | `acr` (_Authentication Context Class Reference_) | `high` - autentimistase, vastavalt eIDAS tasemetele. Võimalikud väärtused: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Elementi ei kasutata, kui autentimistase ei kohaldu või pole teada |
-| `at_hash` | `X0MVjwrmMQs/IBzfU2osvw==` - pääsutõendi räsi. TARA-s ei kasutata. Väärtus on Base64 Standard kodeeringus (standardikohane on Base64 URL kodeering). Mittestandardne kodeering on kasutusel tagamaks tagasiühilduvust vanemate TARA versioonidega. |
+| `at_hash` | `X0MVjwrmMQs/IBzfU2osvw==` - pääsutõendi räsi. TARA väljastab küll pääsutõendi, kuid soovitame pääsutõendit kasutada ainult siis, kui nn "karbitoote" liidestamisel ei ole võimalust kasutada identsustõendit. Kõik autenditud isikut kirjeldavad andmed väljastatakse juba identsustõendis. Räsi väärtus on Base64 Standard kodeeringus (standardikohane on Base64 URL kodeering). Mittestandardne kodeering on kasutusel tagamaks tagasiühilduvust vanemate TARA versioonidega. |
 | `email` | `60001019906@eesti.ee` - kasutaja e-posti aadress. Väljastatakse ainult  Eesti ID-kaardiga kasutaja autentimisel. Loetakse kasutaja autentimissertifikaadi SAN laiendist (RFC822 tüüpi `Subject Alternative Name` väljast) |
 | `email_verified` | `false` - tähendab, et e-posti aadressi kuulumine kasutajale on tuvastatud. TARA väljastab alati väärtuse `false`. See tähendab, et TARA ei kontrolli ega väljasta teavet, kas kasutaja on oma eesti.ee e-postiaadressi suunanud või mitte. |
 | `phone_number`| `+37200000766` - kasutaja telefoninumber. Väljastatakse ainult  Eesti Mobiil-ID'ga kasutaja autentimisel. Telefoninumber esitatakse E.164 formaadis koos riikliku suunakoodiga. | 
@@ -434,9 +434,9 @@ Klientrakendus peab identsustõendile järgi tulema kohe tagasisuunamispäringu 
 
 ### 4.4 Kasutajainfopäring
 
-Kasutajainfopäring võimaldab kehtiva  `OAuth 2.0` pääsutõendi alusel küsida infot autenditud kasutaja kohta. Päring peab olema esitatud HTTP GET meetodil. Kehtiva pääsutõendi korral väljastatakse JSON vormingus vastus.
+Kasutajainfopäring võimaldab kehtiva `OAuth 2.0` pääsutõendi alusel küsida infot autenditud kasutaja kohta. TARA väljastab küll pääsutõendi, kuid soovitame pääsutõendit kasutada ainult siis, kui nn "karbitoote" liidestamisel ei ole võimalust kasutada identsustõendit. Kõik autenditud isikut kirjeldavad andmed väljastatakse juba identsustõendis. Identsustõendi kasutamine on eelistatud ja ka teoreetiliselt turvalisem, kuna identsustõend on allkirjastatud, kasutajainfo otspunkti väljund aga mitte.
 
-Pääsutõend tuleb esitada kasutajainfot väljastavale otspunktile [Bearer Token meetodil](https://tools.ietf.org/html/rfc6750#section-2.1) HTTP päises (soovituslik) või [URLi parameetrina](https://tools.ietf.org/html/rfc6750#section-2.3).
+Päring peab olema esitatud HTTP GET meetodil. Pääsutõend tuleb esitada kasutajainfot väljastavale otspunktile [Bearer Token meetodil](https://tools.ietf.org/html/rfc6750#section-2.1) HTTP päises (soovituslik) või [URLi parameetrina](https://tools.ietf.org/html/rfc6750#section-2.3).
 
 Näide 1 - pääsutõendi edastamine `Authorization` päises:
 ```
@@ -706,6 +706,7 @@ Vaata ka peatükki [Allkirjade kontrollimine](#511-allkirja-kontrollimine), kus 
 | klientrakenduse registreerimine | dünaamilist registreerimist ei toetata, registreerimine staatiliselt, [help@ria.ee](mailto:help@ria.ee) kaudu |
 | autentimine (_authorization_) | `/oidc/authorize` | 
 | tõendiväljastus (_token_) | `/oidc/token` | 
+| kasutajainfo (_userinfo_) | `/oidc/profile` - TARA väljastab küll pääsutõendi, kuid soovitame pääsutõendit kasutada kasutaja info otspunkti päringuks ainult siis, kui nn "karbitoote" liidestamisel ei ole võimalust kasutada identsustõendit. Kõik autenditud isikut kirjeldavad andmed väljastatakse juba identsustõendis. Identsustõendi kasutamine on eelistatud ja ka teoreetiliselt turvalisem, kuna identsustõend on allkirjastatud, kasutajainfo otspunkti väljund aga mitte. |
 
 6.2 Aegumisajad (_timeout_)
 
