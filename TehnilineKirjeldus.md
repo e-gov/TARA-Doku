@@ -572,6 +572,26 @@ Lisaks tuleb jälgida ahela kõikide sertifikaatide tühistamist mõnel järgnev
 * RIA teavitab sertifikaatide tühistamisest liidestujate kontaktisikuid e-kirjaga.
 * Klientrakendus võib kontrollida CA poolt pakutavat kehtivuskinnitusteenust (OCSP) või tühistusnimekirja (CRL), kuid peab arvestama, et RIA ei vastuta CA kui välise osapoole teenuste kättesaadavuse eest. `tara.ria.ee` ja `tara-test.ria.ee` otspunktid võivad, aga ei pruugi kehtivuskinnituse klammerdamist (_OCSP stapling_) pakkuda või see võib etteteatamata muutuda.
 
+#### 5.1.2.1 TLS ühenduse parameetrid
+
+Klientrakendus peab TLS ühenduste sooritamiseks toetama:
+
+* TLS protokolli 1.2 ja/või 1.3 versiooni;
+* Server Name Indication (SNI) laiendit;
+* RSA ja EC tüüpi sertifikaate;
+* järgmisi šifrikomplekte:
+    * TLS 1.2 puhul:
+        * `TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`;
+        * `TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256`;
+        * `TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384`;
+        * `TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384`;
+        * `TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256`;
+        * `TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256`;
+    * TLS 1.3 puhul:
+        * `TLS_AES_128_GCM_SHA256`;
+        * `TLS_AES_256_GCM_SHA384`;
+        * `TLS_CHACHA20_POLY1305_SHA256`.
+
 #### 5.1.3 Tõendi väljaandja kontrollimine
 
 Identsustõendi elemendi `iss` väärtus peab olema `https://tara-test.ria.ee` (TARA testkeskkonna puhul) või `https://tara.ria.ee` (TARA toodangukeskkonna puhul).
@@ -809,7 +829,7 @@ Kui klientrakenduse poolel on piiratud väljuvad ühendused TARA-sse IP-aadressi
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
-| 1.28, 15.06.2024   | Eemaldatud autentimispäringu parameeter `locale`, mis pole toetatud pärast 2019. aasta juulit. Identsustõendis `nbf`, `state` ja `at_hash` ei ole standardijärgsed (säilitatakse tagasiühilduvuseks). Lisatud peatükk "10 Keskkonnad", kus on kirjeldatud TARA teenuse IP-aadresside kasutust. Eemaldatud TLS kätluse aegumisaeg, kuna ID-kaardiga autentimiseks on TLS Client Certificate Authentication (TLS-CCA) asendatud Web eID-ga. |
+| 1.28, 15.06.2024   | Eemaldatud autentimispäringu parameeter `locale`, mis pole toetatud pärast 2019. aasta juulit. Identsustõendis `nbf`, `state` ja `at_hash` ei ole standardijärgsed (säilitatakse tagasiühilduvuseks). Lisatud peatükk "10 Keskkonnad", kus on kirjeldatud TARA teenuse IP-aadresside kasutust. Eemaldatud TLS kätluse aegumisaeg, kuna ID-kaardiga autentimiseks on TLS Client Certificate Authentication (TLS-CCA) asendatud Web eID-ga. Lisatud peatükk "5.1.2.1 TLS ühenduse parameetrid". |
 | 1.27, 25.04.2024   | TLS usaldusankru muutus (juursertifikaatide lisamine, lõppolemi sertifikaadi eemaldamine). |
 | 1.26, 23.11.2023   | TARA võtmevahetusprotsess viidud eraldi peatükki. |
 | 1.25, 26.10.2023   | TLS usaldusankru muutus (juursertifikaadi vahetus, lõppolemi sertifikaadi vahetus). Täpsustatud TLS usaldusankru määramise ja sertifikaatide tühistamise kontrollimise juhiseid. |

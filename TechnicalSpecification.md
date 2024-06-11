@@ -572,6 +572,26 @@ Additionally, revocation of all certificates in the chain must be observed in an
 * RIA notifies contact persons of integrators by e-mail about certificate revocation.
 * Client application may check CA's validity confirmation service (OCSP) or revocation list (CRL), but must take into account that RIA is not responsible for the availability of CA's services as an external party. `tara.ria.ee` ja `tara-test.ria.ee` endpoints may, but are not obligated to provide OCSP stapling, or it may change without notice.
 
+#### 5.1.2.1 TLS connection parameters
+
+The client application must support the following for establishing TLS connections:
+
+* TLS protocol version 1.2 and/or 1.3;
+* Server Name Indication (SNI) extension;
+* RSA and EC type certificates;
+* the following cipher suites:
+    * for TLS 1.2:
+        * `TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`;
+        * `TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256`;
+        * `TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384`;
+        * `TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384`;
+        * `TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256`;
+        * `TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256`;
+    * for TLS 1.3:
+        * `TLS_AES_128_GCM_SHA256`;
+        * `TLS_AES_256_GCM_SHA384`;
+        * `TLS_CHACHA20_POLY1305_SHA256`.
+
 #### 5.1.3 Verifying the issuer of the certificate
 
 The `iss` value of the identity token element must be `https://tara-test.ria.ee` (for TARA test environment) or `https://tara.ria.ee` (for TARA production environment).
