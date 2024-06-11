@@ -692,27 +692,17 @@ See also [Verifying the signature](#511-verifying-the-signature) chapter for inf
 
 ## 6 Endpoints and timeouts
 
-6.1 Test service
+6.1 Endpoints
 
-| endpoint                               | URL                                                                                                                                                                                                                                                         |
+| description | endpoint  |
 |----------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| server discovery                       | [https://tara-test.ria.ee/.well-known/openid-configuration](https://tara-test.ria.ee/.well-known/openid-configuration) <br>[https://tara-test.ria.ee/oidc/.well-known/openid-configuration](https://tara-test.ria.ee/oidc/.well-known/openid-configuration) |
-| public signature key of the service    | [https://tara-test.ria.ee/oidc/jwks](https://tara-test.ria.ee/oidc/jwks)                                                                                                                                                                                    |
+| server discovery | `/.well-known/openid-configuration`<br>`/oidc/.well-known/openid-configuration` |
+| public signature key of the service | `/oidc/jwks` |
 | registration of the client application | dynamic registration is not supported, static registration via [help@ria.ee](mailto:help@ria.ee). |
-| authorization                          | [https://tara-test.ria.ee/oidc/authorize](https://tara-test.ria.ee/oidc/authorize)                                                                                                                                                                          | 
-| token                                  | [https://tara-test.ria.ee/oidc/token](https://tara-test.ria.ee/oidc/token)                                                                                                                                                                                  | 
+| authorization | `/oidc/authorize` | 
+| token | `/oidc/token` | 
 
-6.2 Production service
-
-| endpoint                               | URL                                                                                                                                                                                                                                     |
-|----------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| server discovery                       | [https://tara.ria.ee/.well-known/openid-configuration](https://tara.ria.ee/.well-known/openid-configuration) <br>[https://tara.ria.ee/oidc/.well-known/openid-configuration](https://tara.ria.ee/oidc/.well-known/openid-configuration) |
-| public signature key of the service    | [https://tara.ria.ee/oidc/jwks](https://tara.ria.ee/oidc/jwks)                                                                                                                                                                          |
-| registration of the client application | dynamic registration is not supported, static registration via [help@ria.ee](mailto:help@ria.ee). |
-| authorization                          | [https://tara.ria.ee/oidc/authorize](https://tara.ria.ee/oidc/authorize)                                                                                                                                                                | 
-| token                                  | [https://tara.ria.ee/oidc/token](https://tara.ria.ee/oidc/token)                                                                                                                                                                        | 
-
-6.3 Timeouts
+6.2 Timeouts
 
 | timeout                           | value  | remark                                                                                                                                                                                                                                                                       |
 |-----------------------------------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

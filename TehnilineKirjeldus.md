@@ -697,27 +697,17 @@ Vaata ka peatükki [Allkirjade kontrollimine](#511-allkirja-kontrollimine), kus 
 
 ## 6 Otspunktid ja aegumisajad
 
-6.1 Testteenus
+6.1 Otspunktid
 
-| otspunkt      |                        URL      |
+| kirjeldus | otspunkt |
 |---------------|---------------------------------|
-| teenuseteave (_server discovery_) | [https://tara-test.ria.ee/.well-known/openid-configuration](https://tara-test.ria.ee/.well-known/openid-configuration) <br>[https://tara-test.ria.ee/oidc/.well-known/openid-configuration](https://tara-test.ria.ee/oidc/.well-known/openid-configuration) |
-| teenuse avalik allkirjastamisvõti | [https://tara-test.ria.ee/oidc/jwks](https://tara-test.ria.ee/oidc/jwks) |
+| teenuseteave (_server discovery_) | `/.well-known/openid-configuration`<br>`/oidc/.well-known/openid-configuration` |
+| teenuse avalik allkirjastamisvõti | `/oidc/jwks` |
 | klientrakenduse registreerimine | dünaamilist registreerimist ei toetata, registreerimine staatiliselt, [help@ria.ee](mailto:help@ria.ee) kaudu |
-| autentimine (_authorization_) | [https://tara-test.ria.ee/oidc/authorize](https://tara-test.ria.ee/oidc/authorize) | 
-| tõendiväljastus (_token_) | [https://tara-test.ria.ee/oidc/token](https://tara-test.ria.ee/oidc/token) | 
+| autentimine (_authorization_) | `/oidc/authorize` | 
+| tõendiväljastus (_token_) | `/oidc/token` | 
 
-6.2 Toodanguteenus
-
-| otspunkt      |                        URL      |
-|---------------|---------------------------------|
-| teenuseteave (_server discovery_) | [https://tara.ria.ee/.well-known/openid-configuration](https://tara.ria.ee/.well-known/openid-configuration) <br>[https://tara.ria.ee/oidc/.well-known/openid-configuration](https://tara.ria.ee/oidc/.well-known/openid-configuration) |
-| teenuse avalik allkirjastamisvõti | [https://tara.ria.ee/oidc/jwks](https://tara.ria.ee/oidc/jwks) |
-| klientrakenduse registreerimine | dünaamilist registreerimist ei toetata, registreerimine staatiliselt, [help@ria.ee](mailto:help@ria.ee) kaudu |
-| autentimine (_authorization_) | [https://tara.ria.ee/oidc/authorize](https://tara.ria.ee/oidc/authorize) | 
-| tõendiväljastus (_token_) | [https://tara.ria.ee/oidc/token](https://tara.ria.ee/oidc/token) | 
-
-6.3 Aegumisajad (_timeout_)
+6.2 Aegumisajad (_timeout_)
 
 | aegumisaeg  | väärtus  | märkus
 |---------------------|----------|
