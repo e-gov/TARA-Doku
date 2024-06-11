@@ -713,7 +713,6 @@ Vaata ka peatükki [Allkirjade kontrollimine](#511-allkirja-kontrollimine), kus 
 | aegumisaeg  | väärtus  | märkus
 |---------------------|----------|
 | TARA seansi aegumisag | 30 min | TARA server loob autentimise läbiviimiseks TARAsse saabuva kasutajaga oma seansi. Kui kasutaja TARA esilehel midagi ei tee, siis 30 min järel seanss aegub. TARA seanssi ei tohi segi ajada autentimise järel klientrakenduse ja kasutaja vahel loodava seansiga. |
-| SSL/TLS kätluse aegumisaeg | 25 s | Omab tähtsust ID-kaardiga autentimisel. Kasutaja peab 25 s jooksul jõudma PIN1 sisestada. Selle aja ületamisel turvalisuse kaalutlustel autentimine katkestatakse. | 
 | OAuth volituskoodi aegumisaeg  | 30 s | Klientrakendus peab volituskoodi (_authorization code_) abil identsustõendi välja lunastama 30 s jooksul. |
 | identsustõendi (ja OAuth juurdepääsutõendi (_access token_)) aegumisaeg | 40 s | Identsustõendis on märgitud tõendi aegumise aeg. Turvalisuse kaalutlustel on tõendi kehtivuse periood seatud lühikeseks (40 sekundit). Klientrakendus ei tohi aegunud tõendit kasutada. Märgime, et identsustõend ei sobi klientrakenduse ja kasutaja vahelise seansi tõendiks. Kui klientrakendus soovib veebitõendi (JWT) vormingus seansitõendit kasutada, siis peaks ta looma identsustõendi alusel uue tõendi. |
 
@@ -810,7 +809,7 @@ Kui klientrakenduse poolel on piiratud väljuvad ühendused TARA-sse IP-aadressi
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
-| 1.28, 15.06.2024   | Eemaldatud autentimispäringu parameeter `locale`, mis pole toetatud pärast 2019. aasta juulit. Identsustõendis `nbf`, `state` ja `at_hash` ei ole standardijärgsed (säilitatakse tagasiühilduvuseks). Lisatud peatükk "10 Keskkonnad", kus on kirjeldatud TARA teenuse IP-aadresside kasutust. |
+| 1.28, 15.06.2024   | Eemaldatud autentimispäringu parameeter `locale`, mis pole toetatud pärast 2019. aasta juulit. Identsustõendis `nbf`, `state` ja `at_hash` ei ole standardijärgsed (säilitatakse tagasiühilduvuseks). Lisatud peatükk "10 Keskkonnad", kus on kirjeldatud TARA teenuse IP-aadresside kasutust. Eemaldatud TLS kätluse aegumisaeg, kuna ID-kaardiga autentimiseks on TLS Client Certificate Authentication (TLS-CCA) asendatud Web eID-ga. |
 | 1.27, 25.04.2024   | TLS usaldusankru muutus (juursertifikaatide lisamine, lõppolemi sertifikaadi eemaldamine). |
 | 1.26, 23.11.2023   | TARA võtmevahetusprotsess viidud eraldi peatükki. |
 | 1.25, 26.10.2023   | TLS usaldusankru muutus (juursertifikaadi vahetus, lõppolemi sertifikaadi vahetus). Täpsustatud TLS usaldusankru määramise ja sertifikaatide tühistamise kontrollimise juhiseid. |
