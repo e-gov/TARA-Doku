@@ -773,11 +773,11 @@ RIA, having satisfied the application, issues a password for the production vers
 
 As stated by [eIDAS regulation](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014R0910&from=EN), eIDAS level of assurance (LoA) is the level of reliability (high, substantial, low) assigned to a means of authentication under the implementing regulation [(EL) 2015/1502](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015R1502&from=EN). The LoA of a means of authentication is determined by several aspects: the basis of identity issuance, organizational processes, the technical solution and management of the solution.
 
-Levels of assurance for domestic authentication methods used in TARA are approved by the Information System Authority according to eIDAS implementing regulation.
+LoA for domestic authentication methods used in TARA are approved by the Information System Authority according to eIDAS implementing regulation.
 
-Means of authentication used in TARA have been assigned the following levels of assurance:
+Means of authentication used in TARA have been assigned the following LoAs:
 
-| Means of authentication | Level of assurance                                                                                                         |
+| Means of authentication | LoA                                                                                     |
 |-------------------------|----------------------------------------------------------------------------------------------------------------------------|
 | ID-Card                 | [high](https://ec.europa.eu/digital-building-blocks/wikis/display/EIDCOMMUNITY/Estonia)                                    |
 | Mobile-ID               | [high](https://ec.europa.eu/digital-building-blocks/wikis/display/EIDCOMMUNITY/Estonia)                                    |
@@ -785,7 +785,7 @@ Means of authentication used in TARA have been assigned the following levels of 
 
 <sup>1</sup>NB! The LoA applies only for persons with an Estonian identity code and a Smart-ID account. Interfacing party has to consider that non-residents (Estonian e-residents) are not distinguishable from residents.
 
-Every member state assigns LoA's to their own domestic means of authentication and notifies other member states of them according to [eIDAS regulation](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015R1502&from=EN). Please refer [here](https://ec.europa.eu/cefdigital/wiki/display/EIDCOMMUNITY/Overview+of+pre-notified+and+notified+eID+schemes+under+eIDAS) for a list of all authentication methods that have been notified by member states.
+Every member state assigns LoAs to their own domestic means of authentication and notifies other member states of them according to [eIDAS regulation](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015R1502&from=EN). Please refer [here](https://ec.europa.eu/cefdigital/wiki/display/EIDCOMMUNITY/Overview+of+pre-notified+and+notified+eID+schemes+under+eIDAS) for a list of all authentication methods that have been notified by member states.
 
 ## 9 Private sector client specifications
 
