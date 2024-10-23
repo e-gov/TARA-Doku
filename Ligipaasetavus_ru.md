@@ -4,7 +4,7 @@ permalink: Dostupnost
 [Eesti](https://e-gov.github.io/TARA-Doku/Ligipaasetavus) | [English](https://e-gov.github.io/TARA-Doku/Accessibility)
 
 # Уведомление о доступности
-Настоящее уведомление о доступности подготовлено для [государственной услуги аутентификации](https://www.ria.ee/ru/gosudarstvennaya-infosistema/eid-i-udostoveritelnye-uslugi/centralizovannye-uslugi-autentifikacii#tara).
+Настоящее уведомление о доступности подготовлено для [государственной услуги аутентификации](https://www.ria.ee/riigi-infosusteem/elektrooniline-identiteet-ja-usaldusteenused/kesksed-autentimisteenused#tara).
 
 Государственная услуга аутентификации соответствует требованиям доступности, установленным на основании §32 Закона о публичной информации, и соответствует требованиям WCAG 2.1 AA, за исключением следующих случаев:
 
