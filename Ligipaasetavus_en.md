@@ -6,10 +6,20 @@ permalink: Accessibility
 # Accessibility statement
 The accessibility statement herein has been composed for the [State authentication service](https://www.ria.ee/en/state-information-system/electronic-identity-eid-and-trust-services/central-authentication-services#tara). 
 
-The State authentication service complies with accessibility requirements established under §32 of the Public Information Act and adheres to requirements set forth by WCAG 2.1 AA standard, except for the following criteria:
+The State authentication service complies with the accessibility requirements established under §32 of the Public Information Act, except in the following cases:
 
-- The State authentication service uses a custom font style, and as a result, the font style cannot be changed from browser settings. To modify the font style, a separate browser extension, such as Font Changer, is required. Due to this limitation, the service does not comply with the European standard for digital accessibility ([EN 301 549](https://www.etsi.org/deliver/etsi_en/301500_301599/301549/03.02.01_60/en_301549v030201p.pdf)) requirement 11.7.
-- Text spacing bookmarklet is not applicable in the State authentication service. To use the bookmarklet, the content security policy (CSP) of the service must first be disabled with a browser extension. The service provider does not recommend disabling CSP, as it is a web security setting. Due to this limitation, the service does not comply with the European standard for digital accessibility requirement 9.1.4.12 and WCAG 2.1 AA requirement 1.4.12.
+- When using the keyboard, the session expiration pop-up cannot be closed with the Esc key or the cross icon but only by pressing the "I understand" button. This results in non-compliance with accessibility requirement 9.2.1.1.
+- After pressing the "Continue" button with an incorrect input, it is not visually apparent where the screen focus is located. This results in non-compliance with accessibility requirement 9.2.4.3.
+- Upon revisiting the same tab, the screen reader does not automatically read the tab’s content. This results in non-compliance with accessibility requirement 9.2.4.3.
+- The focus on the "Continue" button is not visually clearly distinguishable. This results in non-compliance with accessibility requirement 9.2.4.7.
+- In the EU eID view, the country selection menu lacks a specific label. This results in non-compliance with accessibility requirement 9.3.3.2.
+- The error page for an incorrect personal identification code does not provide the user with suggestions to correct the error. This results in non-compliance with accessibility requirement 9.3.3.3.
+
+The disproportionate burden exception applies to the following deficiencies:
+
+- The length of the State authentication service session is related to the session length of the authenticating information system, and as a result, it is not possible to extend the session in the State authentication service. The user must be able to complete the authentication in 30 minutes or restart the authentication process.
+- The State authentication service defines a specific font style, which cannot be changed through browser settings. To change the font style, a separate browser extension, such as Font Changer, must be used.
+- The text spacing bookmarklet does not apply in the State authentication service. To use the bookmarklet, the content security policy (CSP) within the service would need to be disabled first using an appropriate browser extension. The service provider does not recommend disabling CSP, as it is a web security setting.
 
 ## Keyboard navigation and data entry
 Navigation and data entry in the State authentication service can be done with a keyboard. 
@@ -66,4 +76,4 @@ Accessibility compliance supervision of public services is conducted by the Cons
 - Telephone: +372 667 2000
 
 ## Accessibility statement information
-This accessibility statement has been created through self-assessment on 12/15/2023.
+This accessibility statement has been created through self-assessment on 11/14/2024.

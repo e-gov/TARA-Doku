@@ -6,10 +6,20 @@ permalink: Ligipaasetavus
 # Ligipääsetavuse teatis
 Käesolev ligipääsetavuse teatis on koostatud [Riigi autentimisteenuse](https://www.ria.ee/riigi-infosusteem/elektrooniline-identiteet-ja-usaldusteenused/kesksed-autentimisteenused#tara) kohta.
 
-Riigi autentimisteenus on vastavuses avaliku teabe seaduse §32 alusel kehtestatud ligipääsetavusnõuetega ning järgib WCAG 2.1 AA nõudeid, välja arvatud järgnevatel juhtudel:
+Riigi autentimisteenus on vastavuses avaliku teabe seaduse §32 alusel kehtestatud ligipääsetavusnõuetega, välja arvatud järgnevatel juhtudel:
 
-- Riigi autentimisteenuses on defineeritud spetsiifiline kirjastiil ja sellest tulenevalt ei saa brauseri seadetest kirjastiili muuta. Kirjastiili muutmiseks on tarvis kasutada eraldi brauserilaiendit, näiteks Font Changer. Puudujäägi tõttu on teenus mittevastav Euroopa Liidu digiligipääsetavuse standardi ([EN 301 549](https://www.etsi.org/deliver/etsi_en/301500_301599/301549/03.02.01_60/en_301549v030201p.pdf)) nõudega 11.7.
-- Riigi autentimisteenuses ei rakendu tekstivahe lõigendviit (*text spacing bookmarklet*). Lõigendviite kasutamiseks peaks teenuses sisu turvapoliitika (CSP) esmalt vastava brauserilaiendiga välja lülitama. Teenuse pakkuja ei soovita CSP väljalülitamist, sest tegemist on veebiturvalisuse seadega. Puudujäägi tõttu on teenus mittevastav Euroopa Liidu digiligipääsetavuse standardi nõudega 9.1.4.12 ja WCAG 2.1 AA nõudega 1.4.12.
+- Klaviatuuri kasutades ei saa seansi aegumise hüpikakent sulgeda Esc klahvi ega ristiga, vaid üksnes "Sain aru" nupu vajutamisega. Puudujäägi tõttu on mittevastav ligipääsetavusnõue 9.2.1.1.
+- Vajutades "Jätka" nuppu vigase sisendi korral, ei ole visuaalselt arusaadav, kus fookus ekraanil asub. Puudujäägi tõttu on mittevastav ligipääsetavusnõue 9.2.4.3.
+- Sattudes teistkordselt samale vahelehele, ei loe ekraaniluger automaatselt ette vahelehe sisu. Puudujäägi tõttu on mittevastav ligipääsetavusnõue 9.2.4.3.
+- "Jätka" nupu fokuseerimine ei ole visuaalselt hästi tajutav. Puudujäägi tõttu on mittevastav ligipääsetavusnõue 9.2.4.7.
+- EU eID vaates puudub riigivaliku menüül eraldi sellekohane silt. Puudujäägi tõttu on mittevastav ligipääsetavusnõue 9.3.3.2.
+- Ebakorrektse isikukoodi vealeht ei anna kasutajale soovitusi vea parandamiseks. Puudujäägi tõttu on mittevastav ligipääsetavusnõue 9.3.3.3.
+
+Järgnevatele puudustele rakendub ebaproportsionaalse koormuse erand:
+
+- Riigi autentimisteenuse seansi pikkus on seotud autentiva infosüsteemi seansi pikkusega ning sellest tulenevalt ei ole võimalik Riigi autentimisteenuses seanssi pikendada. Kasutaja peab olema võimeline viima autentimise lõpuni 30 minutiga või alustama autentimist uuesti.
+- Riigi autentimisteenuses on defineeritud spetsiifiline kirjastiil ja sellest tulenevalt ei saa brauseri seadetest kirjastiili muuta. Kirjastiili muutmiseks on tarvis kasutada eraldi brauserilaiendit, näiteks Font Changer.
+- Riigi autentimisteenuses ei rakendu tekstivahe lõigendviit (*text spacing bookmarklet*). Lõigendviite kasutamiseks peaks teenuses sisu turvapoliitika (CSP) esmalt vastava brauserilaiendiga välja lülitama. Teenuse pakkuja ei soovita CSP väljalülitamist, sest tegemist on veebiturvalisuse seadega.
 
 ## Klaviatuuriga navigeerimine ja andmete sisestamine
 Riigi autentimisteenuses on võimalik navigeerida ja infot sisestada klaviatuuriga.
@@ -65,10 +75,11 @@ Avalike teenuste veebide ja rakenduste ligipääsetavuse osas teostab järeleval
 - Telefon: +372 667 2000
 
 ## Info teatise kohta
-Käesolev ligipääsetavuse teatis on koostatud 15.12.2023 enesehindamise teel.
+Käesolev ligipääsetavuse teatis on koostatud 14.11.2024 enesehindamise teel.
 
 ## Muutelugu
 
 | Versioon, kuupäev | Muudatus         |
 |-------------------|------------------|
 | 1.0, 15.12.2023   | Esimene versioon |
+| 1.1, 14.11.2024   | Teatise ajakohastamine |
