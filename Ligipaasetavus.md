@@ -17,9 +17,9 @@ Riigi autentimisteenus on vastavuses avaliku teabe seaduse §32 alusel kehtestat
 
 Järgnevatele puudustele rakendub ebaproportsionaalse koormuse erand:
 
-- Riigi autentimisteenuse seansi pikkus on seotud autentiva infosüsteemi seansi pikkusega ning sellest tulenevalt ei ole võimalik Riigi autentimisteenuses seanssi pikendada. Kasutaja peab olema võimeline viima autentimise lõpuni 30 minutiga või alustama autentimist uuesti.
-- Riigi autentimisteenuses on defineeritud spetsiifiline kirjastiil ja sellest tulenevalt ei saa brauseri seadetest kirjastiili muuta. Kirjastiili muutmiseks on tarvis kasutada eraldi brauserilaiendit, näiteks Font Changer.
-- Riigi autentimisteenuses ei rakendu tekstivahe lõigendviit (*text spacing bookmarklet*). Lõigendviite kasutamiseks peaks teenuses sisu turvapoliitika (CSP) esmalt vastava brauserilaiendiga välja lülitama. Teenuse pakkuja ei soovita CSP väljalülitamist, sest tegemist on veebiturvalisuse seadega.
+- Riigi autentimisteenuses ei rakendu tekstivahe lõigendviit (*text spacing bookmarklet*). Lõigendviite kasutamiseks peaks teenuses sisu turvapoliitika (CSP) esmalt vastava brauserilaiendiga välja lülitama. Teenuse pakkuja ei soovita CSP väljalülitamist, sest tegemist on veebiturvalisuse seadega. Puudujäägi tõttu on mittevastav ligipääsetavusnõue 9.1.4.12.
+- Riigi autentimisteenuse seansi pikkus on seotud autentiva infosüsteemi seansi pikkusega ning sellest tulenevalt ei ole võimalik Riigi autentimisteenuses seanssi pikendada. Kasutaja peab olema võimeline viima autentimise lõpuni 30 minutiga või alustama autentimist uuesti. Puudujäägi tõttu on mittevastav ligipääsetavusnõue 9.2.2.1.
+- Riigi autentimisteenuses on defineeritud spetsiifiline kirjastiil ja sellest tulenevalt ei saa brauseri seadetest kirjastiili muuta. Kirjastiili muutmiseks on tarvis kasutada eraldi brauserilaiendit, näiteks Font Changer. Puudujäägi tõttu on mittevastav ligipääsetavusnõue 11.7.
 
 ## Klaviatuuriga navigeerimine ja andmete sisestamine
 Riigi autentimisteenuses on võimalik navigeerida ja infot sisestada klaviatuuriga.

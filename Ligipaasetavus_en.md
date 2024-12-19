@@ -17,9 +17,9 @@ The State authentication service complies with the accessibility requirements es
 
 The disproportionate burden exception applies to the following deficiencies:
 
-- The length of the State authentication service session is related to the session length of the authenticating information system, and as a result, it is not possible to extend the session in the State authentication service. The user must be able to complete the authentication in 30 minutes or restart the authentication process.
-- The State authentication service defines a specific font style, which cannot be changed through browser settings. To change the font style, a separate browser extension, such as Font Changer, must be used.
-- The text spacing bookmarklet does not apply in the State authentication service. To use the bookmarklet, the content security policy (CSP) within the service would need to be disabled first using an appropriate browser extension. The service provider does not recommend disabling CSP, as it is a web security setting.
+- The text spacing bookmarklet does not apply in the State authentication service. To use the bookmarklet, the content security policy (CSP) within the service would need to be disabled first using an appropriate browser extension. The service provider does not recommend disabling CSP, as it is a web security setting. This results in non-compliance with accessibility requirement 9.1.4.12.
+- The length of the State authentication service session is related to the session length of the authenticating information system, and as a result, it is not possible to extend the session in the State authentication service. The user must be able to complete the authentication in 30 minutes or restart the authentication process. This results in non-compliance with accessibility requirement 9.2.2.1.
+- The State authentication service defines a specific font style, which cannot be changed through browser settings. To change the font style, a separate browser extension, such as Font Changer, must be used. This results in non-compliance with accessibility requirement 11.7.
 
 ## Keyboard navigation and data entry
 Navigation and data entry in the State authentication service can be done with a keyboard. 
