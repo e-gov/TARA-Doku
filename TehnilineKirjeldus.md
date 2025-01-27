@@ -4,7 +4,7 @@ permalink: TehnilineKirjeldus
 
 # Tehniline kirjeldus
 {: .no_toc}
-v 1.28, 15.06.2024
+v 1.29, 17.02.2025
 
 - TOC
 {:toc}
@@ -330,7 +330,15 @@ Autentimise katkestamise korral suunatakse kasutaja tagasi teenusepakkuja juurde
 
 Identsustõendipäring on HTTP POST päring, millega klientrakendus pärib TARA serverilt identsustõendi (_ID token_).
 
-Identsustõendipäringu näide (HTTP POST päringu keha on loetavuse huvides jagatud mitmele reale):
+Vaikimisi peab klientrakendus kasutama `client_secret_basic` tõendipäringu autentimismeetodit identsustõendite pärimiseks. Klientrakendus võib kasutada `client_secret_post` tõendipäringu autentimismeetodit, kui see on eraldi klientrakenduse registreeringus täpsustatud. Klientrakendus saab kasutada ainult ühte tõendipäringu autentimismeetodit - mõlema kasutamine korraga ei ole võimalik.
+
+#### 4.3.1 `client_secret_basic` tõendipäringu autentimismeetodi kasutus
+
+`client_secret_basic` tõendipäringu autentimismeetodi kasutamisel tuleb päringusse lisada `Authorization` päis (_request header_) väärtusega, mis moodustatakse sõnast `Basic`, tühikust ja Base64 kodeeringus stringist `<form_urlencoded_client_id>:<form_urlencoded_client_secret>`. `form_urlencoded_client_id` tähistab `client_id` väärtust "application/x-www-form-urlencoded"-kodeerituna ning `form_urlencoded_client_secret` tähistab `client_secret` väärtust "application/x-www-form-urlencoded"-kodeerituna (vt [RFC 6749](https://www.rfc-editor.org/rfc/rfc6749.html#section-2.3.1)).
+
+HTTP POST päringu keha peab olema esitatud OpenID Connect protokolli kohaselt serialiseeritud [kujul](https://openid.net/specs/openid-connect-core-1_0.html#FormSerialization).
+
+`client_secret_basic` tõendipäringu autentimismeetodi näide identsustõendi pärimiseks:
 
 ```
 POST /oidc/token HTTP/1.1
@@ -343,20 +351,45 @@ code=SplxlOBeZQQYbYS6WxSbIA&
 redirect_uri=https%3A%2F%2eteenus.asutus.ee%2Ftagasi
 ```
 
-Identsustõendipäringus tuleb esitada salasõna. Selleks tuleb päringusse lisada `Authorization` päis (_request header_), väärtusega, mis moodustatakse sõnast `Basic`, tühikust ja Base64 kodeeringus stringist `<form_urlencoded_client_id>:<form_urlencoded_client_secret>`. `form_urlencoded_client_id` tähistab `client_id` väärtust "application/x-www-form-urlencoded"-kodeerituna ning `form_urlencoded_client_secret` tähistab `client_secret` väärtust "application/x-www-form-urlencoded"-kodeerituna (vt [RFC 6749](https://www.rfc-editor.org/rfc/rfc6749.html#section-2.3.1)). 
-
-HTTP POST päringu keha peab olema esitatud OpenID Connect protokolli kohaselt serialiseeritud [kujul](https://openid.net/specs/openid-connect-core-1_0.html#FormSerialization).
-
 Päringu kehas tuleb esitada järgnevad parameetrid:
 
-| POST päringu keha element | näide                    |  selgitus     |
-|------------------------|-----------------------------|---------------|
-| protokoll, host ja tee | `https://tara.ria.ee/oidc/token` |   |
+| POST päringu keha element | näide | selgitus |
+|---------------------------|-------|----------|
 | `grant_type`  | `grant_type=authorization_code` | Protokollikohane nõutav väärtus `authorization_code`. |
 | `code` | `code=Splx...` | Autentimisteenuselt saadud volituskood. | 
 | `redirect_uri` | `redirect_uri=https%3A%2F` | Autentimispäringus saadetud ümbersuunamis-URI. |
 
-#### 4.3.1 Identsustõend
+#### 4.3.2 `client_secret_post` tõendipäringu autentimismeetodi kasutus
+
+`client_secret_post` tõendipäringu autentimismeetodit kasutades tuleb `client_id` ja `client_secret` saata päringu päise asemel päringu kehas.
+
+HTTP POST päringu keha peab olema esitatud OpenID Connect protokolli kohaselt serialiseeritud [kujul](https://openid.net/specs/openid-connect-core-1_0.html#FormSerialization).
+
+`client_secret_post` tõendipäringu autentimismeetodi näide identsustõendi pärimiseks:
+
+```
+POST /oidc/token HTTP/1.1
+Host: tara.ria.ee
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=authorization_code&
+code=SplxlOBeZQQYbYS6WxSbIA&
+redirect_uri=https%3A%2F%2eteenus.asutus.ee%2Ftagasi&
+client_id=<client_id>&
+client_secret=<client_secret>
+```
+
+Päringu kehas tuleb esitada järgnevad parameetrid:
+
+| POST päringu keha element | näide | selgitus |
+|---------------------------|-------|----------|
+| `grant_type` | `grant_type=authorization_code` | Protokollikohane nõutav väärtus `authorization_code`. |
+| `code` | `code=Splx...` | Autentimisteenuselt saadud volituskood. | 
+| `redirect_uri` | `redirect_uri=https%3A%2F` | Autentimispäringus saadetud ümbersuunamis-URI. |
+| `client_id` | `de39d9dc-3c1b-4105-81ec-54a449c1ae36` | Rakenduse identifikaator. |
+| `client_secret` | `t3fx3ehWoL9z6yzw` | Rakenduse salasõna. |
+
+#### 4.3.3 Identsustõend
 
 TARA server kontrollib, et identsustõendit küsiv klientrakendus on TARAs registreeritud. Seejärel väljastab päringu vastuses (_HTTP response body_) identsustõendi.
 
@@ -622,7 +655,7 @@ Identsustõendi peab pärima kohe kui võimalik, 30 sekundi jooksul. Selle aja �
 
 Juhul kui kasutusel on autentimismeetodite valikuline kuvamine (vt jaotis 4.1.4 Autentimismeetodite valikuline kasutus), peab identsustõendis veenduma, et identsustõendi `amr` väites (_authentication method reference_) toodud autentimismeetod on lubatud.  Vastasel juhul võetakse vahendajaründe risk, kus autentimispäringu `scope` parameetri manipuleerimise läbi on võimalik kasutajal autentida meetodiga, mis pole liidestuja süsteemis aktsepteeritav (nt ID-kaardiga autentimise asemel kasutatakse Smart-ID-d).
 
-Näide: Kui autentimispäringus on `scope` parameetris määratud ainult ID-kaart, tuleb veenduda, et identsustõendi `amr` väide sisaldaks koodi `idcard` (koodide nimekiri on toodud jaotises 4.3.1 Identsustõend).
+Näide: Kui autentimispäringus on `scope` parameetris määratud ainult ID-kaart, tuleb veenduda, et identsustõendi `amr` väide sisaldaks koodi `idcard` (koodide nimekiri on toodud jaotises 4.3.3 Identsustõend).
 
 #### 5.1.7 Minimaalse lubatud eIDAS autentimistaseme kontrollimine
 
@@ -829,6 +862,7 @@ Kui klientrakenduse poolel on piiratud väljuvad ühendused TARA-sse IP-aadressi
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
+| 1.29, 17.02.2025   | Lisatud `client_secret_post` kirjeldus. |
 | 1.28, 15.06.2024   | Eemaldatud autentimispäringu parameeter `locale`, mis pole toetatud pärast 2019. aasta juulit. Identsustõendis `nbf`, `state` ja `at_hash` ei ole standardijärgsed (säilitatakse tagasiühilduvuseks). Lisatud peatükk "10 Keskkonnad", kus on kirjeldatud TARA teenuse IP-aadresside kasutust. Eemaldatud TLS kätluse aegumisaeg, kuna ID-kaardiga autentimiseks on TLS Client Certificate Authentication (TLS-CCA) asendatud Web eID-ga. Lisatud peatükk "5.1.2.1 TLS ühenduse parameetrid". Täpsustatud identsustõendipäringu `Authorization` päises `client_id` ja `client_secret` kodeerimist "application/x-www-form-urlencoded" vormingus. |
 | 1.27, 25.04.2024   | TLS usaldusankru muutus (juursertifikaatide lisamine, lõppolemi sertifikaadi eemaldamine). |
 | 1.26, 23.11.2023   | TARA võtmevahetusprotsess viidud eraldi peatükki. |

@@ -4,7 +4,7 @@ permalink: TechnicalSpecification
 
 # Technical specification
 {: .no_toc}
-v 1.19, 15.06.2024
+v 1.20, 17.02.2025
 
 - TOC
 {:toc}
@@ -329,9 +329,17 @@ Terminating the authentication process will redirect the user back to the client
 
 ### 4.3 Identity token request
 
-The identity token request is an HTTP POST request which is used by the client application to request the identity token from the server of TARA.
+The identity token request is an HTTP POST request which is used by the client application to request an identity token from the TARA server.
 
-An example of an identity token request (for better readability, the body of the HTTP POST request is divided over several lines):
+By default, client applications must use the `client_secret_basic` client authentication method to acquire identity tokens. A client application may use the `client_secret_post` client authentication method instead, but this must be specified in client application registration. A client application must use only one authentication method - the methods cannot be used concurrently.
+
+#### 4.3.1 Using `client_secret_basic` client authentication method
+
+When using `client_secret_basic`, the request must include the `Authorization` request header with the value formed of the word `Basic`, a space, and a string `<form_urlencoded_client_id>:<form_urlencoded_client_secret>` encoded in the Base64 format. `form_urlencoded_client_id` represents `client_id` value encoded in the "application/x-www-form-urlencoded" format and `form_urlencoded_client_secret` represents `client_secret` value encoded in the "application/x-www-form-urlencoded" format (see [RFC 6749](https://www.rfc-editor.org/rfc/rfc6749.html#section-2.3.1)).
+
+The body of the HTTP POST request must be presented in a serialised [format](https://openid.net/specs/openid-connect-core-1_0.html#FormSerialization) based on the OpenID Connect protocol.
+
+An example of an identity token request using `client_secret_basic`:
 
 ```
 POST /oidc/token HTTP/1.1
@@ -344,20 +352,45 @@ code=SplxlOBeZQQYbYS6WxSbIA&
 redirect_uri=https%3A%2F%2eteenus.asutus.ee%2Ftagasi
 ```
 
-The client secret code must be provided in the identity token request. For this purpose, the request must include the `Authorization` request header with the value formed of the word `Basic`, a space, and a string `<form_urlencoded_client_id>:<form_urlencoded_client_secret>` encoded in the Base64 format. `form_urlencoded_client_id` represents `client_id` value encoded in the "application/x-www-form-urlencoded" format and `form_urlencoded_client_secret` represents `client_secret` value encoded in the "application/x-www-form-urlencoded" format (see [RFC 6749](https://www.rfc-editor.org/rfc/rfc6749.html#section-2.3.1)).
+The body of the request must include the following parameters:
+
+| POST request body element | example | explanation |
+|---------------------------|---------|-------------|
+| `grant_type` | `grant_type=authorization_code` | The `authorization_code` value required based on the protocol. |
+| `code` | `code=Splx...` | The authorization code received from the authentication service. | 
+| `redirect_uri` | `redirect_uri=https%3A%2F` | The redirect URL sent in the authorisation request. |
+
+#### 4.3.2 Using `client_secret_post` client authentication method
+
+When using `client_secret_post`, the client credentials are included directly in the request body as parameters instead of the `Authorization` header.
 
 The body of the HTTP POST request must be presented in a serialised [format](https://openid.net/specs/openid-connect-core-1_0.html#FormSerialization) based on the OpenID Connect protocol.
 
+An example of an identity token request using `client_secret_post`:
+
+```
+POST /oidc/token HTTP/1.1
+Host: tara.ria.ee
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=authorization_code&
+code=SplxlOBeZQQYbYS6WxSbIA&
+redirect_uri=https%3A%2F%2eteenus.asutus.ee%2Ftagasi&
+client_id=<client_id>&
+client_secret=<client_secret>
+```
+
 The body of the request must include the following parameters:
 
-| POST request body element | example                          | explanation                                                      |
-|---------------------------|----------------------------------|------------------------------------------------------------------|
-| protocol, host, and path  | `https://tara.ria.ee/oidc/token` |                                                                  |
-| `grant_type`              | `grant_type=authorization_code`  | The `authorization_code` value required based on the protocol.   |
-| `code`                    | `code=Splx...`                   | The authorization code received from the authentication service. | 
-| `redirect_uri`            | `redirect_uri=https%3A%2F`       | The redirect URL sent in the authorisation request.              |
+| POST request body element | example | explanation |
+|---------------------------|---------|-------------|
+| `grant_type` | `grant_type=authorization_code` | The `authorization_code` value required based on the protocol. |
+| `code` | `code=Splx...` | The authorization code received from the authentication service. | 
+| `redirect_uri` | `redirect_uri=https%3A%2F` | The redirect URL sent in the authorisation request. |
+| `client_id` | `de39d9dc-3c1b-4105-81ec-54a449c1ae36` | Client application's ID. |
+| `client_secret` | `t3fx3ehWoL9z6yzw` | Client application's secret. |
 
-#### 4.3.1 Identity token
+#### 4.3.3 Identity token
 
 TARA server verifies that the identity token is requested by the right application and issues the identity token included in the response body (HTTP response body).
 
@@ -622,7 +655,7 @@ The identity token must be obtained as soon as possible within 30 seconds. When 
 
 When using the selective means of authentication (see section 4.1.4) the identity token must verify that the authentication method provided by the authentication method reference, `amr` ,is allowed. Otherwise, the risk of intermediary attacks is taken by allowing the user to authenticate through the method that is not acceptable in the interface (e.g. Smart-ID is used instead of authentication with an ID-card) through manipulation of the authentication request `scope` parameter.
 
-For example, when in the authentication request the `scope` parameter is defined to use only ID-card authentication method, it must be verified that the `amr` claim also contains an `idcard` code (the full list of all codes is described under section 4.3.1).
+For example, when in the authentication request the `scope` parameter is defined to use only ID-card authentication method, it must be verified that the `amr` claim also contains an `idcard` code (the full list of all codes is described under section 4.3.3).
 
 #### 5.1.7 Verifying the eIDAS level of assurance
 
