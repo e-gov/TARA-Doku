@@ -440,7 +440,7 @@ Identsustõendis väljastatakse järgmised väited (_claims_).
 | identsustõendi element (väide) | näiteväärtus, selgitus     |
 |:-----------------------|---------------------|
 | `jti` (_JSON Token Identifier_) | `0c597356... ` - identsustõendi identifikaator |
-| `iss` (_Issuer_)       | `https://tara.ria.ee` - tõendi väljastaja (TARA-teenus); testteenuse puhul `https://tara-test.ria.ee` |
+| `iss` (_Issuer_)       | `https://tara.ria.ee` - tõendi väljastaja (TARA-teenus); demoteenuse puhul `https://tara-test.ria.ee` |
 | `aud` (_Audience_)     | `TARA-Demo` - autentimist küsinud infosüsteemi ID (kasutaja autentimisele suunamisel määratud `client_id` välja väärtus)|
 | `exp` (_Expires_) | `1530295852` - tõendi aegumisaeg, Unix _epoch_ vormingus |
 | `iat` (_Issued At_) | `1530267052` - tõendi väljaandmisaeg, Unix _epoch_ vormingus |
@@ -627,7 +627,7 @@ Klientrakendus peab TLS ühenduste sooritamiseks toetama:
 
 #### 5.1.3 Tõendi väljaandja kontrollimine
 
-Identsustõendi elemendi `iss` väärtus peab olema `https://tara-test.ria.ee` (TARA testkeskkonna puhul) või `https://tara.ria.ee` (TARA toodangukeskkonna puhul).
+Identsustõendi elemendi `iss` väärtus peab olema `https://tara-test.ria.ee` (TARA demokeskkonna puhul) või `https://tara.ria.ee` (TARA toodangukeskkonna puhul).
 
 #### 5.1.4 Tõendi adressaadi kontrollimine
 
@@ -782,16 +782,16 @@ Asutus peaks välja selgitama, kas ja millistes oma e-teenustes soovib TARA kasu
 
 Seejärel kavandada ja teostada teenuse kasutamiseks vajalik arendustöö - klientrakenduse täiendamine OpenID Connect protokolli kohase klientkomponendiga, sh testimine. Hinnanguline töömaht: kogenud arendajal u 2 päeva; kui OpenID Connect-i pole varem teinud, siis 2 nädalat. Aluseks käesolev [tehniline kirjeldus](TehnilineKirjeldus)
 
-Arenduse valmides tuleb liidest testida. Selleks kasutatakse TARA testteenust. Asutus esitab taotluse testteenusega liitumiseks. Taotluse võib esitada juba enne arenduse algust. Taotluses teatab asutus:
+Arenduse valmides tuleb liidest testida. Selleks kasutatakse TARA demoteenust. Asutus esitab taotluse demoteenusega liitumiseks. Taotluse võib esitada juba enne arenduse algust. Taotluses teatab asutus:
 
-- teenuse, millega soovitakse liituda (test- või toodanguteenus)
-- kinnituse, et liituja on välja arendanud omapoolse liidese ja seda TARA testteenuse vastu testinud (toodanguteenusega liitumise puhul)
+- teenuse, millega soovitakse liituda (demo- või toodanguteenus)
+- kinnituse, et liituja on välja arendanud omapoolse liidese ja seda TARA demoteenuse vastu testinud (toodanguteenusega liitumise puhul)
 - e-teenuse või -teenused, mille kasutajaid soovitakse TARA abil autentida
 - kasutajate arvu prognoosi
-- kohustumuse kasutada teenust eesmärgipäraselt. Sh testteenust kasutada ainult testimiseks, mitte toodangus autentimiseks
+- kohustumuse kasutada teenust eesmärgipäraselt. Sh demoteenust kasutada ainult testimiseks, mitte toodangus autentimiseks
 - nõustumuse teenustasemega (SLA-ga)
 - klientrakenduse identifikaatori ettepanek -`client_id`, OpenID Connect protokolli kohaselt
-- klientrakenduse testversiooni tagasisuunamis-URL (_redirect-URL_), OpenID Connect protokolli kohaselt. Lubatud on ainult HTTPS protokoll. URL-i fragmendi osa (`#` sümbol ja sellele järgnev osa) kasutamine ei ole lubatud.
+- klientrakenduse demoversiooni tagasisuunamis-URL (_redirect-URL_), OpenID Connect protokolli kohaselt. Lubatud on ainult HTTPS protokoll. URL-i fragmendi osa (`#` sümbol ja sellele järgnev osa) kasutamine ei ole lubatud.
 - autentimismeetod või meetodid, mida soovitakse kasutada
 - klientrakenduse haldaja kontaktandmed (e-post, telefon, isikukood).
 
@@ -799,7 +799,7 @@ Taotlus esitatakse ja edasine suhtlus teenuse haldamisel käib läbi RIA kasutaj
 
 RIA, rahuldades taotluse:
 - väljastab asutusele klientrakenduse salasõna `client_secret`. Salasõna on ette nähtud identsustõendi päringute allkirjastamiseks
-- avab asutuse klientrakenduse testversioonile juurdepääsu testteenusele.
+- avab asutuse klientrakenduse demoversioonile juurdepääsu demoteenusele.
 
 Järgneb liidestuse testimine. RIA abistab siin võimalike probleemide lahendamisel. Vaata lähemalt [testimise juhiseid](https://e-gov.github.io/TARA-Doku/Testing).
 
@@ -837,7 +837,7 @@ Võrreldes avaliku sektori asutustega on erasektori asutuste jaoks autentimisel 
 
 `eidas:country:xx` skoop võimaldab TARAga liidestujal jätta vahele TARA kasutajaliidese kuva ning suunata autentija vahetult skoobis määratud riigi autentimisteenusesse.
 
-Testkeskkonnas on erasektori asutustele kuvatud rohkem riike, kui toodangukeskkonnas toetatud on. Kõik kuvatud riigid ei pruugi toetada erasektori autentimist.
+Demokeskkonnas on erasektori asutustele kuvatud rohkem riike, kui toodangukeskkonnas toetatud on. Kõik kuvatud riigid ei pruugi toetada erasektori autentimist.
 
 Toodangukeskkonnas on erasektori asutustele hetkel toetatud autentimiseks järgnevad riigid:
 
@@ -853,7 +853,7 @@ NB! Riigi Infosüsteemi Amet ei taga teiste riikide autentimisteenuste toimimist
 
 | Keskkond | OpenID Connect Issuer URL | Kasutusel olevad IP-aadressid | Kõik võimalikud IP-aadressid, millele lubada klientrakendusest väljuvad ühendused |
 |----------|---------------------------|-------------------------------|-----------------------------------------------------------------------------------|
-| Test | `https://tara-test.ria.ee` | klientrakendus peab lahendama DNS kaudu | 141.101.90.16<br>141.101.90.17<br>2a06:98c1:3200::6<br>2a06:98c1:3200::7<br>195.80.123.174 |
+| Demo | `https://tara-test.ria.ee` | klientrakendus peab lahendama DNS kaudu | 141.101.90.16<br>141.101.90.17<br>2a06:98c1:3200::6<br>2a06:98c1:3200::7<br>195.80.123.174 |
 | Toodang | `https://tara.ria.ee` | klientrakendus peab lahendama DNS kaudu | 141.101.90.16<br>141.101.90.17<br>2a06:98c1:3200::6<br>2a06:98c1:3200::7<br>195.80.123.203 |
 
 Kui klientrakenduse poolel on piiratud väljuvad ühendused TARA-sse IP-aadresside järgi, siis tuleb klientrakenduse poolel lubada väljuvad ühendused kõikidele viimases veerus loetletud IP-aadressidele. Klientrakendus peab DNS kirje kaudu lahendama, millisele IP-aadressile sooritada ühendus (valima ükskõik millise DNS poolt tagastatud IP-aadressi). DNS kirjet uuendatakse vastavalt vajadusele, et see sisaldaks toimivaid IP-aadresse, mis serveerivad TARA teenust (alamosa viimases veerus loetletud IP-aadressidest). 

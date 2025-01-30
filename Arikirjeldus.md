@@ -67,9 +67,9 @@ Asutusel tuleb:
 4 esitada RIA-le taotlus teenusega liitumiseks<br>
 
 - seejuures esitada kasutajate arvu prognoos
-- RIA registreerib teie rakenduse teenuse kliendiks ja avab teile testteenuse.
+- RIA registreerib teie rakenduse teenuse kliendiks ja avab teile demoteenuse.
 
-5 testida liidest RIA testteenuse vastu
+5 testida liidest RIA demoteenuse vastu
 
 - RIA abistab võimalike probleemide lahendamisel
 
@@ -79,7 +79,7 @@ Asutusel tuleb:
 
 ## Millal?
 
-Testteenus on avatud 2017. a sügisest.
+Demoteenus on avatud 2017. a sügisest.
 
 Teenus on toodangukeskkonnas avatud 2018. a märtsist.
 

@@ -20,7 +20,7 @@ If you need further advice than present in TARA documentation or wish to report 
 
 ## 2 Prerequisites
 
-In order to perform testing, the integrating party has to first [submit an application to join the TARA test environment](Liitumine).
+In order to perform testing, the integrating party has to first [submit an application to join the TARA demo environment](Liitumine).
 
 The integrator should beforehand acquaint with TARA [technical specifications](TechnicalSpecification).
 
@@ -40,7 +40,7 @@ The table below holds information on test accounts for quick access.
 
 ## 3 Testing
 
-Once your client application has been integrated with test TARA and you have familiarized yourself with other prerequisites, you are ready to start the testing process.
+Once your client application has been integrated with demo TARA and you have familiarized yourself with other prerequisites, you are ready to start the testing process.
 
 Please note that the processes described below include both workflows through the user interface and backend processes.
 
@@ -48,7 +48,7 @@ The backend processes mainly include processes dealing with ID tokens and securi
 
 For backend processes the integrator should ensure conformity through static testing, code reviews and unit tests.
 
-NB! test and production TARA environments **must not** be used for performance or load testing.
+NB! demo and production TARA environments **must not** be used for performance or load testing.
 
 ### 3.1 Authentication
 

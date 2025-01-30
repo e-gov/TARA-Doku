@@ -18,7 +18,7 @@ ___
 
 [Liidestuja tarkvara](Naited) lehel on vanad näidiskliendid märgitud mitteajakohaseks ning lisatud info uue TARA näidiskliendi kohta (põhineb Java platvormil). Näidisklient demonstreerib TARA autentimisvoogu. Koodibaas on mõeldud õppeotstarbeliseks uurimiseks, seda ei saa _out of the box_ toodangus kasutada.
 
-[Demo](Demo) lehel on uuendatud näidiskliendi paigalduste aadressid, mis on avalikult kättesaadavad demonstreerimise ja testimise eesmärgil. Need paigaldused on integreeritud TARA teenuse testkeskkonnaga (`tara-test.ria.ee`).
+[Demo](Demo) lehel on uuendatud näidiskliendi paigalduste aadressid, mis on avalikult kättesaadavad demonstreerimise ja testimise eesmärgil. Need paigaldused on integreeritud TARA teenuse demokeskkonnaga (`tara-test.ria.ee`).
 
 ___
 
@@ -89,7 +89,7 @@ TARA2 toodangukeskkonda migreerime kliendid (eeldatavalt) 31.05.2021. TARA2 plat
 ___
 
 **14.12.2020**
-## Alates 09.12.2020 ei ole võimalik TARA test keskkonnas kasutada Mobiil-ID testimiseks isiklikku Mobiil-ID numbrit.
+## Alates 09.12.2020 ei ole võimalik TARA demo keskkonnas kasutada Mobiil-ID testimiseks isiklikku Mobiil-ID numbrit.
 Testida saab ainult kasutades testnumbreid. Rohkem infot [siit.](https://www.skidsolutions.eu/uudised/mobiil-id-demo-keskkond-ei-ole-tehnilistel-pohjustel-kattesaadav/)
 
 ___

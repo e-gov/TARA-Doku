@@ -441,7 +441,7 @@ The following claims are presented in the identity token:
 | identity token element (_claim_)                 | example of a value, explanation                                                                                                                                                                                                                                                            |
 |--------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `jti` (_JSON Token Identifier_)                  | `0c597356... ` - identity token identifier                                                                                                                                                                                                                                                 |
-| `iss` (_Issuer_)                                 | `https://tara.ria.ee` - issuer of the certificate (TARA); in the case of test services `https://tara-test.ria.ee`                                                                                                                                                                          |
+| `iss` (_Issuer_)                                 | `https://tara.ria.ee` - issuer of the certificate (TARA); in the case of demo services `https://tara-test.ria.ee`                                                                                                                                                                          |
 | `aud` (_Audience_)                               | `TARA-Demo` - the ID of a client application that requested authentication (the value of `client_id` field is specified upon directing the user to the authentication process).                                                                                                            |
 | `exp` (_Expires_)                                | `1530295852` - the expiration time of the certificate (in Unix _epoch_ format).                                                                                                                                                                                                            |
 | `iat` (_Issued At_)                              | `1530267052` - the time of issuance of the certificate (in Unix _epoch_ format).                                                                                                                                                                                                           |
@@ -627,7 +627,7 @@ The client application must support the following for establishing TLS connectio
 
 #### 5.1.3 Verifying the issuer of the certificate
 
-The `iss` value of the identity token element must be `https://tara-test.ria.ee` (for TARA test environment) or `https://tara.ria.ee` (for TARA production environment).
+The `iss` value of the identity token element must be `https://tara-test.ria.ee` (for TARA demo environment) or `https://tara.ria.ee` (for TARA production environment).
 
 #### 5.1.4 Verifying the addressee of the certificate
 
@@ -776,25 +776,25 @@ The institution must determine whether and which of their e-services they would 
 
 Then, the development required for using the service should be planned and executed – complementation of the client application with the OpenID Connect protocol-based client component, including testing. The estimated volume of the development: approx. two days for an experienced developer; if the developer has no previous experience with OpenID Connect, two weeks. The development should be planned based on the current [technical specification](TechnicalSpecification)
 
-When the development is completed, the interface must be tested with the TARA test service. The representative of the institution must submit an application for subscribing to the test service. The application may be submitted before launching the development. In the application, the institution must state:
+When the development is completed, the interface must be tested with the TARA demo service. The representative of the institution must submit an application for subscribing to the demo service. The application may be submitted before launching the development. In the application, the institution must state:
 
-- the service to which they wish to subscribe to (test or production service)
-- confirmation that the subscriber has developed their interface and tested it against the TARA test service (when subscribing to the production service)
+- the service to which they wish to subscribe to (demo or production service)
+- confirmation that the subscriber has developed their interface and tested it against the TARA demo service (when subscribing to the production service)
 - name(s) of the e-service(s)/client application(s) that will be integrated with TARA
 - the estimated number of users of the e-service
-- the obligation to only use the service for the intended purpose, including to only use the test service for testing, not for authentication
--	consent with the service level agreement (SLA)
+- the obligation to only use the service for the intended purpose, including to only use the demo service for testing, not for authentication
+- consent with the service level agreement (SLA)
 - the proposal of the client application identifier – `client_id`, based on the OpenID Connect protocol
-- the redirect-URL of the test version of the client application, based on the OpenID Connect protocol. Only HTTPS protocol is allowed. URL fragment part (`#` character and characters following it) is not allowed.
+- the redirect-URL of the demo version of the client application, based on the OpenID Connect protocol. Only HTTPS protocol is allowed. URL fragment part (`#` character and characters following it) is not allowed.
 - the authentication method or methods which the institution intends to use
--	the contact details of the person responsible for the client application (e-mail address, telephone, personal identification code).
+- the contact details of the person responsible for the client application (e-mail address, telephone, personal identification code).
 
 The application is submitted and any further communication in the course of administration of the service is conducted via the user support of RIA, `help@ria.ee`. Read more from the [website of RIA authentication services](https://www.ria.ee/en/state-information-system/eid/partners.html#tara).
 
 RIA, having satisfied the application:
 
 - issues a client application password `client_secret` for the institution. The client secret code is used for signing the identity token requests.
-- provides access to the TARA test service.
+- provides access to the TARA demo service.
 
 As a next step, the institution performs tests of its client application interface. See the testing [guidelines](https://e-gov.github.io/TARA-Doku/Testing).
 
@@ -830,7 +830,7 @@ Compared to public sector, private sector clients can explicitly only use the co
 
 `eidas:country:xx` scope allows for interfaced clients to skip TARA's user interface and direct the authentication flow straight to specified country's authentication service.
 
-In the test environment, more countries are displayed to private sector clients than in the production environment. Not all countries support private sector authentication.
+In demo environment, more countries are displayed to private sector clients than in production environment. Not all countries support private sector authentication.
 
 Currently, the following countries are supported in the production environment for private sector client authentication:
 
@@ -846,7 +846,7 @@ NB! Information System Authority does not guarantee the workability of other eID
 
 | Environment | OpenID Connect Issuer URL | IP addresses in use | All possible IP addresses to allow outgoing connections from client application |
 |-------------|---------------------------|---------------------|---------------------------------------------------------------------------------|
-| Test | `https://tara-test.ria.ee` | client application must resolve via DNS | 141.101.90.16<br>141.101.90.17<br>2a06:98c1:3200::6<br>2a06:98c1:3200::7<br>195.80.123.174 |
+| Demo | `https://tara-test.ria.ee` | client application must resolve via DNS | 141.101.90.16<br>141.101.90.17<br>2a06:98c1:3200::6<br>2a06:98c1:3200::7<br>195.80.123.174 |
 | Production | `https://tara.ria.ee` | client application must resolve via DNS | 141.101.90.16<br>141.101.90.17<br>2a06:98c1:3200::6<br>2a06:98c1:3200::7<br>195.80.123.203 |
 
 If outgoing connections to TARA are restricted by IP addresses on the client application side, the client application must allow outgoing connections to all IP addresses listed in the last column. The client application must resolve the connection to any of the IP addresses returned by the DNS record. The DNS record is updated as needed to include the functioning IP addresses serving the TARA service (a subset of the IP addresses listed in the last column).
