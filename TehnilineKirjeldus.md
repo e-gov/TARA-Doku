@@ -790,7 +790,6 @@ Arenduse valmides tuleb liidest testida. Selleks kasutatakse TARA demoteenust. A
 - kasutajate arvu prognoosi
 - kohustumuse kasutada teenust eesmärgipäraselt. Sh demoteenust kasutada ainult testimiseks, mitte toodangus autentimiseks
 - nõustumuse teenustasemega (SLA-ga)
-- klientrakenduse identifikaatori ettepanek -`client_id`, OpenID Connect protokolli kohaselt
 - klientrakenduse demoversiooni tagasisuunamis-URL (_redirect-URL_), OpenID Connect protokolli kohaselt. Lubatud on ainult HTTPS protokoll. URL-i fragmendi osa (`#` sümbol ja sellele järgnev osa) kasutamine ei ole lubatud.
 - autentimismeetod või meetodid, mida soovitakse kasutada
 - klientrakenduse haldaja kontaktandmed (e-post, telefon, isikukood).

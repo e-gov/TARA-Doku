@@ -784,7 +784,6 @@ When the development is completed, the interface must be tested with the TARA de
 - the estimated number of users of the e-service
 - the obligation to only use the service for the intended purpose, including to only use the demo service for testing, not for authentication
 - consent with the service level agreement (SLA)
-- the proposal of the client application identifier – `client_id`, based on the OpenID Connect protocol
 - the redirect-URL of the demo version of the client application, based on the OpenID Connect protocol. Only HTTPS protocol is allowed. URL fragment part (`#` character and characters following it) is not allowed.
 - the authentication method or methods which the institution intends to use
 - the contact details of the person responsible for the client application (e-mail address, telephone, personal identification code).
@@ -830,7 +829,7 @@ Compared to public sector, private sector clients can explicitly only use the co
 
 `eidas:country:xx` scope allows for interfaced clients to skip TARA's user interface and direct the authentication flow straight to specified country's authentication service.
 
-In demo environment, more countries are displayed to private sector clients than in production environment. Not all countries support private sector authentication.
+In the demo environment, more countries are displayed to private sector clients than in the production environment. Not all countries support private sector authentication.
 
 Currently, the following countries are supported in the production environment for private sector client authentication:
 

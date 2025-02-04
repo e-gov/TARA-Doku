@@ -84,10 +84,6 @@ Täiendava meetmena on hea võõrast inimest oma isiklikku arvutisse üldse mitt
 
 Samuti pakuvad sirvikud privaatsirvimise võimalust (private browsing). ID-kaardi kasutamisel sirviku privaatsirvimisaknas on suurem kindlus, et puhvrid ja kasutusajalugu tühjendatakse.
 
-## Millised on nõuded `clientid`-le?
-
-`clientid` on autentimisteenust TARA kasutava rakenduse avalik identifikaator. Internetis on küll [soovitusi](https://www.oauth.com/oauth2-servers/client-registration/client-id-secret/) valida `clientid` juhuslikult - siis on seda raskem ära arvata ja ründeid konstrueerida. Avalikus e-teenuses ei ole `clientid` peitmine siiski võimalik. Seetõttu soovitame `clientid` valida sisukana, s.t `clientid` peaks andma aimu rakendusest ja asutusest, samuti kas kasutatakse test- või toodangukeskkonda. Teenuse kasutajale on `clientid` nähtamatu. Kuna `clientid` edastatakse autentimispäringus, URL-i koosseisus, siis on lihtsam piirduda ladina tähtedega. Täpitähed on lubatud, kuid arvestada, et autentimispäringu URL-is edastatakse need [URL encoded](https://www.url-encode-decode.com/) kujul. Miinus, punkt ja allkriips on lubatud. Kaldkriipsu korral arvestada, et URL encoded kujul on see `%2F`. `clientid` on tõstutundlik.
-
 ## Mida arvestada liitumisavalduses toodud klientrakenduse nimetuse valimisel?
 
 Klientrakenduse nimetus on mõeldud kasutajale kuvamiseks TARA autentimisvahendite valiku lehel. Klientrakenduse nimetuse kuvamise eesmärgiks on luua autentimise algatanud infosüsteemi ja TARA vahel kasutajale arusaadav seos.
