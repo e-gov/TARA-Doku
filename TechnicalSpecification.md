@@ -357,8 +357,8 @@ The body of the request must include the following parameters:
 | POST request body element | example | explanation |
 |---------------------------|---------|-------------|
 | `grant_type` | `grant_type=authorization_code` | The `authorization_code` value required based on the protocol. |
-| `code` | `code=Splx...` | The authorization code received from the authentication service. | 
-| `redirect_uri` | `redirect_uri=https%3A%2F` | The redirect URL sent in the authorisation request. |
+| `code` | `code=SplxlOBeZQQYbYS6WxSbIA` | The authorization code received from the authentication service. | 
+| `redirect_uri` | `redirect_uri=https%3A%2F%2eteenus.asutus.ee%2Ftagasi` | The redirect URL sent in the authentication request. |
 
 #### 4.3.2 Using `client_secret_post` client authentication method
 
@@ -385,10 +385,10 @@ The body of the request must include the following parameters:
 | POST request body element | example | explanation |
 |---------------------------|---------|-------------|
 | `grant_type` | `grant_type=authorization_code` | The `authorization_code` value required based on the protocol. |
-| `code` | `code=Splx...` | The authorization code received from the authentication service. | 
-| `redirect_uri` | `redirect_uri=https%3A%2F` | The redirect URL sent in the authorisation request. |
-| `client_id` | `de39d9dc-3c1b-4105-81ec-54a449c1ae36` | Client application's ID. |
-| `client_secret` | `t3fx3ehWoL9z6yzw` | Client application's secret. |
+| `code` | `code=SplxlOBeZQQYbYS6WxSbIA` | The authorization code received from the authentication service. | 
+| `redirect_uri` | `redirect_uri=https%3A%2F%2eteenus.asutus.ee%2Ftagasi` | The redirect URL sent in the authentication request. |
+| `client_id` | `client_id=de39d9dc-3c1b-4105-81ec-54a449c1ae36` | Client application's ID. |
+| `client_secret` | `client_secret=t3fx3ehWoL9z6yzw` | Client application's secret. |
 
 #### 4.3.3 Identity token
 

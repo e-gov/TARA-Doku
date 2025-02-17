@@ -356,8 +356,8 @@ Päringu kehas tuleb esitada järgnevad parameetrid:
 | POST päringu keha element | näide | selgitus |
 |---------------------------|-------|----------|
 | `grant_type`  | `grant_type=authorization_code` | Protokollikohane nõutav väärtus `authorization_code`. |
-| `code` | `code=Splx...` | Autentimisteenuselt saadud volituskood. | 
-| `redirect_uri` | `redirect_uri=https%3A%2F` | Autentimispäringus saadetud ümbersuunamis-URI. |
+| `code` | `code=SplxlOBeZQQYbYS6WxSbIA` | Autentimisteenuselt saadud volituskood. | 
+| `redirect_uri` | `redirect_uri=https%3A%2F%2eteenus.asutus.ee%2Ftagasi` | Autentimispäringus saadetud ümbersuunamis-URI. |
 
 #### 4.3.2 `client_secret_post` tõendipäringu autentimismeetodi kasutus
 
@@ -384,10 +384,10 @@ Päringu kehas tuleb esitada järgnevad parameetrid:
 | POST päringu keha element | näide | selgitus |
 |---------------------------|-------|----------|
 | `grant_type` | `grant_type=authorization_code` | Protokollikohane nõutav väärtus `authorization_code`. |
-| `code` | `code=Splx...` | Autentimisteenuselt saadud volituskood. | 
-| `redirect_uri` | `redirect_uri=https%3A%2F` | Autentimispäringus saadetud ümbersuunamis-URI. |
-| `client_id` | `de39d9dc-3c1b-4105-81ec-54a449c1ae36` | Rakenduse identifikaator. |
-| `client_secret` | `t3fx3ehWoL9z6yzw` | Rakenduse salasõna. |
+| `code` | `code=SplxlOBeZQQYbYS6WxSbIA` | Autentimisteenuselt saadud volituskood. | 
+| `redirect_uri` | `redirect_uri=https%3A%2F%2eteenus.asutus.ee%2Ftagasi` | Autentimispäringus saadetud ümbersuunamis-URI. |
+| `client_id` | `client_id=de39d9dc-3c1b-4105-81ec-54a449c1ae36` | Rakenduse identifikaator. |
+| `client_secret` | `client_secret=t3fx3ehWoL9z6yzw` | Rakenduse salasõna. |
 
 #### 4.3.3 Identsustõend
 
@@ -862,7 +862,7 @@ Kui klientrakenduse poolel on piiratud väljuvad ühendused TARA-sse IP-aadressi
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
-| 1.29, 17.02.2025   | Lisatud `client_secret_post` kirjeldus. |
+| 1.29, 17.02.2025   | Lisatud `client_secret_post` tugi. |
 | 1.28, 15.06.2024   | Eemaldatud autentimispäringu parameeter `locale`, mis pole toetatud pärast 2019. aasta juulit. Identsustõendis `nbf`, `state` ja `at_hash` ei ole standardijärgsed (säilitatakse tagasiühilduvuseks). Lisatud peatükk "10 Keskkonnad", kus on kirjeldatud TARA teenuse IP-aadresside kasutust. Eemaldatud TLS kätluse aegumisaeg, kuna ID-kaardiga autentimiseks on TLS Client Certificate Authentication (TLS-CCA) asendatud Web eID-ga. Lisatud peatükk "5.1.2.1 TLS ühenduse parameetrid". Täpsustatud identsustõendipäringu `Authorization` päises `client_id` ja `client_secret` kodeerimist "application/x-www-form-urlencoded" vormingus. |
 | 1.27, 25.04.2024   | TLS usaldusankru muutus (juursertifikaatide lisamine, lõppolemi sertifikaadi eemaldamine). |
 | 1.26, 23.11.2023   | TARA võtmevahetusprotsess viidud eraldi peatükki. |
