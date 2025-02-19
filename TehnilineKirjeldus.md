@@ -332,7 +332,7 @@ Identsustõendipäring on HTTP POST päring, millega klientrakendus pärib TARA 
 
 Vaikimisi peab klientrakendus kasutama `client_secret_basic` tõendipäringu autentimismeetodit identsustõendite pärimiseks. Klientrakendus võib kasutada `client_secret_post` tõendipäringu autentimismeetodit, kui see on eraldi klientrakenduse registreeringus täpsustatud. Klientrakendus saab kasutada ainult ühte tõendipäringu autentimismeetodit - mõlema kasutamine korraga ei ole võimalik.
 
-#### 4.3.1 `client_secret_basic` tõendipäringu autentimismeetodi kasutus
+#### 4.3.1 client_secret_basic tõendipäringu autentimismeetodi kasutus
 
 `client_secret_basic` tõendipäringu autentimismeetodi kasutamisel tuleb päringusse lisada `Authorization` päis (_request header_) väärtusega, mis moodustatakse sõnast `Basic`, tühikust ja Base64 kodeeringus stringist `<form_urlencoded_client_id>:<form_urlencoded_client_secret>`. `form_urlencoded_client_id` tähistab `client_id` väärtust "application/x-www-form-urlencoded"-kodeerituna ning `form_urlencoded_client_secret` tähistab `client_secret` väärtust "application/x-www-form-urlencoded"-kodeerituna (vt [RFC 6749](https://www.rfc-editor.org/rfc/rfc6749.html#section-2.3.1)).
 
@@ -359,7 +359,7 @@ Päringu kehas tuleb esitada järgnevad parameetrid:
 | `code` | `code=SplxlOBeZQQYbYS6WxSbIA` | Autentimisteenuselt saadud volituskood. | 
 | `redirect_uri` | `redirect_uri=https%3A%2F%2eteenus.asutus.ee%2Ftagasi` | Autentimispäringus saadetud ümbersuunamis-URI. |
 
-#### 4.3.2 `client_secret_post` tõendipäringu autentimismeetodi kasutus
+#### 4.3.2 client_secret_post tõendipäringu autentimismeetodi kasutus
 
 `client_secret_post` tõendipäringu autentimismeetodit kasutades tuleb `client_id` ja `client_secret` saata päringu päise asemel päringu kehas.
 
