@@ -6,16 +6,7 @@ permalink: Ligipaasetavus
 # Ligipääsetavuse teatis
 Käesolev ligipääsetavuse teatis on koostatud [Riigi autentimisteenuse](https://www.ria.ee/riigi-infosusteem/elektrooniline-identiteet-ja-usaldusteenused/kesksed-autentimisteenused#tara) kohta.
 
-Riigi autentimisteenus on vastavuses avaliku teabe seaduse §32 alusel kehtestatud ligipääsetavusnõuetega, välja arvatud järgnevatel juhtudel:
-
-- Klaviatuuri kasutades ei saa seansi aegumise hüpikakent sulgeda Esc klahvi ega ristiga, vaid üksnes "Sain aru" nupu vajutamisega. Puudujäägi tõttu on mittevastav ligipääsetavusnõue 9.2.1.1.
-- Vajutades "Jätka" nuppu vigase sisendi korral, ei ole visuaalselt arusaadav, kus fookus ekraanil asub. Puudujäägi tõttu on mittevastav ligipääsetavusnõue 9.2.4.3.
-- Sattudes teistkordselt samale vahelehele, ei loe ekraaniluger automaatselt ette vahelehe sisu. Puudujäägi tõttu on mittevastav ligipääsetavusnõue 9.2.4.3.
-- "Jätka" nupu fokuseerimine ei ole visuaalselt hästi tajutav. Puudujäägi tõttu on mittevastav ligipääsetavusnõue 9.2.4.7.
-- EU eID vaates puudub riigivaliku menüül eraldi sellekohane silt. Puudujäägi tõttu on mittevastav ligipääsetavusnõue 9.3.3.2.
-- Ebakorrektse isikukoodi vealeht ei anna kasutajale soovitusi vea parandamiseks. Puudujäägi tõttu on mittevastav ligipääsetavusnõue 9.3.3.3.
-
-Järgnevatele puudustele rakendub ebaproportsionaalse koormuse erand:
+Riigi autentimisteenus on vastavuses avaliku teabe seaduse §32 alusel kehtestatud ligipääsetavusnõuetega, välja arvatud järgnevatel juhtudel, millele rakendub ebaproportsionaalse koormuse erand:
 
 - Riigi autentimisteenuses ei rakendu tekstivahe lõigendviit (*text spacing bookmarklet*). Lõigendviite kasutamiseks peaks teenuses sisu turvapoliitika (CSP) esmalt vastava brauserilaiendiga välja lülitama. Teenuse pakkuja ei soovita CSP väljalülitamist, sest tegemist on veebiturvalisuse seadega. Puudujäägi tõttu on mittevastav ligipääsetavusnõue 9.1.4.12.
 - Riigi autentimisteenuse seansi pikkus on seotud autentiva infosüsteemi seansi pikkusega ning sellest tulenevalt ei ole võimalik Riigi autentimisteenuses seanssi pikendada. Kasutaja peab olema võimeline viima autentimise lõpuni 30 minutiga või alustama autentimist uuesti. Puudujäägi tõttu on mittevastav ligipääsetavusnõue 9.2.2.1.
@@ -75,11 +66,12 @@ Avalike teenuste veebide ja rakenduste ligipääsetavuse osas teostab järeleval
 - Telefon: +372 667 2000
 
 ## Info teatise kohta
-Käesolev ligipääsetavuse teatis on koostatud 14.11.2024 enesehindamise teel.
+Käesolev ligipääsetavuse teatis on koostatud 03.03.2025 enesehindamise teel.
 
 ## Muutelugu
 
 | Versioon, kuupäev | Muudatus         |
 |-------------------|------------------|
-| 1.0, 15.12.2023   | Esimene versioon |
+| 1.2, 03.03.2025   | Teatise ajakohastamine |
 | 1.1, 14.11.2024   | Teatise ajakohastamine |
+| 1.0, 15.12.2023   | Esimene versioon |

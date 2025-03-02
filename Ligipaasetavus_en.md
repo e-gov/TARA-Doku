@@ -6,16 +6,7 @@ permalink: Accessibility
 # Accessibility statement
 The accessibility statement herein has been composed for the [State authentication service](https://www.ria.ee/en/state-information-system/electronic-identity-eid-and-trust-services/central-authentication-services#tara). 
 
-The State authentication service complies with the accessibility requirements established under §32 of the Public Information Act, except in the following cases:
-
-- When using the keyboard, the session expiration pop-up cannot be closed with the Esc key or the cross icon but only by pressing the "I understand" button. This results in non-compliance with accessibility requirement 9.2.1.1.
-- After pressing the "Continue" button with an incorrect input, it is not visually apparent where the screen focus is located. This results in non-compliance with accessibility requirement 9.2.4.3.
-- Upon revisiting the same tab, the screen reader does not automatically read the tab’s content. This results in non-compliance with accessibility requirement 9.2.4.3.
-- The focus on the "Continue" button is not visually clearly distinguishable. This results in non-compliance with accessibility requirement 9.2.4.7.
-- In the EU eID view, the country selection menu lacks a specific label. This results in non-compliance with accessibility requirement 9.3.3.2.
-- The error page for an incorrect personal identification code does not provide the user with suggestions to correct the error. This results in non-compliance with accessibility requirement 9.3.3.3.
-
-The disproportionate burden exception applies to the following deficiencies:
+The State authentication service complies with the accessibility requirements established under §32 of the Public Information Act, except in the following cases which fall under the disproportionate burden exception:
 
 - The text spacing bookmarklet does not apply in the State authentication service. To use the bookmarklet, the content security policy (CSP) within the service would need to be disabled first using an appropriate browser extension. The service provider does not recommend disabling CSP, as it is a web security setting. This results in non-compliance with accessibility requirement 9.1.4.12.
 - The length of the State authentication service session is related to the session length of the authenticating information system, and as a result, it is not possible to extend the session in the State authentication service. The user must be able to complete the authentication in 30 minutes or restart the authentication process. This results in non-compliance with accessibility requirement 9.2.2.1.
