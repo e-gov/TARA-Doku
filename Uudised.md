@@ -4,6 +4,18 @@ permalink: Uudised
 
 # Uudised
 
+**07.05.2025**
+## Alates 30.04.2025 on TARA demokeskkonnas (`tara-test.ria.ee`) võimalik testida autentimist Thales testkaartidega
+TARA demokeskkond (`tara-test.ria.ee`) võimaldab alates 30.04.2025 testida autentimist Thales testkaartidega. Täpsem informatsioon uute Thales testkaartide tellimise ja kasutamise kohta on leitav artiklist:  https://www.id.ee/artikkel/thales-id-kaart/.
+
+Oluline on meeles pidada, et uute Thales testkaartide kasutamiseks tuleb paigaldada Thalese testkaardi toega ID-tarkvara ning antud kaardi autentimise ja allkirjastamise sertifikaadid tuleb laadida https://ocsp-test.eidpki.ee/ui/ keskkonda GOOD olekuga.
+
+TARA ja GovSSO-ga liidestunud infosüsteeme uue Thales ID-kaardi kasutuselevõtt ei mõjuta, kuid autentimise toimimist on siiski soovitatav üle testida. Kui teie infosüsteem teostab peale autentimist ka allkirjastamist, tuleb kindlasti testida ka allkirjastamise toimimist.
+
+Uued Thales ID-kaardid tulevad kasutusele 2025. aasta novembris, kuid soovitatav on testida võimalikult varakult.
+
+___
+
 **25.04.2024**
 ## 02.05.2024 vahetub TLS sertifikaat `tara-test.ria.ee` keskkonnas ja 13.05.2024 vahetub `tara.ria.ee` keskkonnas.
 • Palume klientidel, kes on oma teenuses usaldanud senist DigiCert juursertifikaati (DigiCert Global Root CA), lisada enne vahetusaega usaldusankruks kõik [peatükis 5.1.2](https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus#512-otspunktide-tls-%C3%BChenduse-kontrollimine) loetletud juursertifikaadid.<br/>
