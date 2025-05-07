@@ -6,7 +6,7 @@ permalink: Uudised
 
 **07.05.2025**
 ## Alates 30.04.2025 on TARA demokeskkonnas (`tara-test.ria.ee`) võimalik testida autentimist Thales testkaartidega
-TARA demokeskkond (`tara-test.ria.ee`) võimaldab alates 30.04.2025 testida autentimist Thales testkaartidega. Täpsem informatsioon uute Thales testkaartide tellimise ja kasutamise kohta on leitav [id.ee](https://www.id.ee/artikkel/thales-id-kaart/) artikklist.
+TARA demokeskkond (`tara-test.ria.ee`) võimaldab alates 30.04.2025 testida autentimist Thales testkaartidega. Täpsem informatsioon uute Thales testkaartide tellimise ja kasutamise kohta on leitav [id.ee](https://www.id.ee/artikkel/thales-id-kaart/) artiklist.
 
 Oluline on meeles pidada, et uute Thales testkaartide kasutamiseks tuleb paigaldada Thalese testkaardi toega ID-tarkvara ning antud kaardi autentimise ja allkirjastamise sertifikaadid tuleb laadida [https://ocsp-test.eidpki.ee/ui/](https://ocsp-test.eidpki.ee/ui/) keskkonda GOOD olekuga.
 
