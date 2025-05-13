@@ -4,7 +4,7 @@ permalink: TehnilineKirjeldus
 
 # Tehniline kirjeldus
 {: .no_toc}
-v 1.29, 17.02.2025
+v 1.30, 13.05.2025
 
 - TOC
 {:toc}
@@ -180,6 +180,14 @@ Tavaliselt loob klientrakendus seejärel kasutajaga seansi. Seansi loomine ei pu
 
 Klientrakendus saadab sirvikusse HTTP vastuse **4b**, näiteks lehe "Sisse logitud".
 
+## 4 Klientrakenduse seadistus TARA poolel
+
+Iga klientrakenduse kohta hallatakse järgnevaid seadistusi TARA teenuse poolel. TARA teenusega liitumisel tuleb nende seadete väärtused anda kliendi poolt RIA-le [liitumistaotlusel](https://www.ria.ee/riigi-infosusteem/elektrooniline-identiteet-ja-usaldusteenused/kesksed-autentimisteenused#tara). Hiljem nende väärtuste muutmiseks tuleb kirjutada [help@ria.ee](mailto:help@ria.ee) ja täpsustada enda klientrakenduse `client_id` väärtus ja uued seadistusväärtused.
+
+| Seadistusparameeter | näide | selgitus |
+|---------------------|-------|----------|
+| Identsustõendipäringu lubatud IP-aadressid | `1.2.3.4`, `1:2:3:4:5:6:7:8` | TARA lubab identsustõendipäringuid klientrakendustelt ainult määratud IPv4 ja IPv6 aadressidelt. Mitu IP-aadressi saab määrata loendina või vahemikuna järgmistes vormingutes: `1.2.3.80/29`, `1.2.3.12-14`, `1111:222::/126`, `1111:222::3b-3d`. **NB! Kui planeerite muuta klientrakenduse väljuvaid IP-aadresse, tuleb kirjutada RIA-le, et muuta TARA seadistusi.** |
+
 ## 4 Päringud
 
 ### 4.1 Autentimispäring
@@ -331,6 +339,8 @@ Autentimise katkestamise korral suunatakse kasutaja tagasi teenusepakkuja juurde
 Identsustõendipäring on HTTP POST päring, millega klientrakendus pärib TARA serverilt identsustõendi (_ID token_).
 
 Vaikimisi peab klientrakendus kasutama `client_secret_basic` tõendipäringu autentimismeetodit identsustõendite pärimiseks. Klientrakendus võib kasutada `client_secret_post` tõendipäringu autentimismeetodit, kui see on eraldi klientrakenduse registreeringus täpsustatud. Klientrakendus saab kasutada ainult ühte tõendipäringu autentimismeetodit - mõlema kasutamine korraga ei ole võimalik.
+
+Päringud on lubatud ainult IP-aadressidelt, mis on klientrakendusepõhiselt seadistatud, vaata "Identsustõendipäringu lubatud IP-aadressid" seadistusparameetrit peatükis [4 Klientrakenduse seadistus TARA poolel](#4-klientrakenduse-seadistus-tara-poolel).
 
 #### 4.3.1 client_secret_basic tõendipäringu autentimismeetodi kasutus
 
@@ -758,7 +768,7 @@ Vaata ka peatükki [Allkirjade kontrollimine](#511-allkirja-kontrollimine), kus 
 | teenuse avalik allkirjastamisvõti | `/oidc/jwks` |
 | klientrakenduse registreerimine | dünaamilist registreerimist ei toetata, registreerimine staatiliselt, [help@ria.ee](mailto:help@ria.ee) kaudu |
 | autentimine (_authorization_) | `/oidc/authorize` | 
-| tõendiväljastus (_token_) | `/oidc/token` | 
+| tõendiväljastus (_token_) | `/oidc/token` - Päringud on lubatud ainult IP-aadressidelt, mis on klientrakendusepõhiselt seadistatud, vaata "Identsustõendipäringu lubatud IP-aadressid" seadistusparameetrit peatükis [4 Klientrakenduse seadistus TARA poolel](#4-klientrakenduse-seadistus-tara-poolel). | 
 | kasutajainfo (_userinfo_) | `/oidc/profile` - TARA väljastab küll pääsutõendi, kuid soovitame pääsutõendit kasutada kasutaja info otspunkti päringuks ainult siis, kui nn "karbitoote" liidestamisel ei ole võimalust kasutada identsustõendit. Kõik autenditud isikut kirjeldavad andmed väljastatakse juba identsustõendis. Identsustõendi kasutamine on eelistatud ja ka teoreetiliselt turvalisem, kuna identsustõend on allkirjastatud, kasutajainfo otspunkti väljund aga mitte. |
 
 6.2 Aegumisajad (_timeout_)
@@ -861,6 +871,7 @@ Kui klientrakenduse poolel on piiratud väljuvad ühendused TARA-sse IP-aadressi
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
+| 1.30, 13.05.2025   | Lisatud identsustõendipäringu piirang klientrakenduse IP-aadresside järgi. |
 | 1.29, 17.02.2025   | Lisatud `client_secret_post` tugi. |
 | 1.28, 15.06.2024   | Eemaldatud autentimispäringu parameeter `locale`, mis pole toetatud pärast 2019. aasta juulit. Identsustõendis `nbf`, `state` ja `at_hash` ei ole standardijärgsed (säilitatakse tagasiühilduvuseks). Lisatud peatükk "10 Keskkonnad", kus on kirjeldatud TARA teenuse IP-aadresside kasutust. Eemaldatud TLS kätluse aegumisaeg, kuna ID-kaardiga autentimiseks on TLS Client Certificate Authentication (TLS-CCA) asendatud Web eID-ga. Lisatud peatükk "5.1.2.1 TLS ühenduse parameetrid". Täpsustatud identsustõendipäringu `Authorization` päises `client_id` ja `client_secret` kodeerimist "application/x-www-form-urlencoded" vormingus. |
 | 1.27, 25.04.2024   | TLS usaldusankru muutus (juursertifikaatide lisamine, lõppolemi sertifikaadi eemaldamine). |

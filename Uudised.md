@@ -4,6 +4,11 @@ permalink: Uudised
 
 # Uudised
 
+**13.05.2025**
+## Alates xx.05.2025 piiratakse TARA toodangukeskkonnas (`tara.ria.ee`) identsustõendipäringud klientrakenduste IP-aadresside järgi
+
+Alates xx.05.2025 keelatakse TARA toodangukeskkonnas identsustõendipäringute (POST https://tara.ria.ee/oidc/token) sooritamine IP-aadressidelt, mis ei ole kliendi seadistusega määratud. Kui klientrakenduse _back-end_'ist `tara.ria.ee` poole väljuva võrguliikluse IP-aadresse on soov muuta, tuleb kirjutada [help@ria.ee](mailto:help@ria.ee) ja täpsustada enda klientrakenduse `client_id` väärtus ja uued seadistusväärtused. IP-aadresside määramine on täpsemalt kirjeldatud tehnilise kirjelduse peatükis [4 Klientrakenduse seadistus TARA poolel](TehnilineKirjeldus#4-klientrakenduse-seadistus-tara-poolel).
+
 **07.05.2025**
 ## Alates 30.04.2025 on TARA demokeskkonnas (`tara-test.ria.ee`) võimalik testida autentimist Thales testkaartidega
 TARA demokeskkond (`tara-test.ria.ee`) võimaldab alates 30.04.2025 testida autentimist Thales testkaartidega. Täpsem informatsioon uute Thales testkaartide tellimise ja kasutamise kohta on leitav [id.ee](https://www.id.ee/artikkel/thales-id-kaart/) artiklist.
