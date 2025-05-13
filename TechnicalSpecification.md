@@ -4,7 +4,7 @@ permalink: TechnicalSpecification
 
 # Technical specification
 {: .no_toc}
-v 1.20, 17.02.2025
+v 1.21, 03.09.2025
 
 - TOC
 {:toc}
@@ -178,6 +178,14 @@ In most cases, the client application then launches a session with the user. Lau
 
 The client application sends an HTTP response **4b** to the browser, such as the ‘Logged in’ page.
 
+## 4 Client application configuration on the TARA side
+
+The following configuration regarding each client application registration is managed on the TARA service side. During initial registration for joining the TARA service, these configuration values must be provided by the client to RIA on the [client application registration form](https://www.ria.ee/en/state-information-system/electronic-identity-eid-and-trust-services/central-authentication-services#tara). To change these values later, write to [klient@ria.ee](mailto:klient@ria.ee) and specify your client application `client_id` value and new configuration values.
+
+| Configuration element | example | explanation |
+|-----------------------|---------|-------------|
+| Identity token request allowed IP addresses | `1.2.3.4`, `1:2:3:4:5:6:7:8` | The TARA production environment allows client application identity token requests only from the specified IPv4 and IPv6 addresses. Multiple IP addresses can be specified as lists, or ranges in the following formats: `1.2.3.80/29`, `1.2.3.12-14`, `1111:222::/126`, `1111:222::3b-3d`. IP address restriction in the production environment is an additional protection measure that complements `client_secret` - client can specify client application outgoing traffic IP address list/range with the level of specificity that the client application network architecture provides and the client application risk analysis permits. The TARA demo environment allows identity token requests from all IPv4 and IPv6 addresses (i.e., this configuration element does not exist for the TARA demo environment). **NB! When planning to change client application outgoing IP addresses, write to RIA in advance to change the TARA production environment configuration.** |
+
 ## 4 Requests
 
 ### 4.1 Authentication request
@@ -332,6 +340,8 @@ Terminating the authentication process will redirect the user back to the client
 The identity token request is an HTTP POST request which is used by the client application to request an identity token from the TARA server.
 
 By default, client applications must use the `client_secret_basic` client authentication method to acquire identity tokens. A client application may use the `client_secret_post` client authentication method instead, but this must be specified in client application registration. A client application must use only one authentication method - the methods cannot be used concurrently.
+
+In the TARA production environment, requests are allowed only from IP addresses that are configured per client application. See the "Identity token request allowed IP addresses" configuration element in chapter [4 Client application configuration on the TARA side](#4-client-application-configuration-on-the-tara-side).
 
 #### 4.3.1 Using client_secret_basic client authentication method
 
@@ -753,7 +763,7 @@ See also [Verifying the signature](#511-verifying-the-signature) chapter for inf
 | public signature key of the service | `/oidc/jwks` |
 | registration of the client application | dynamic registration is not supported, static registration via [klient@ria.ee](mailto:klient@ria.ee). |
 | authorization | `/oidc/authorize` | 
-| token | `/oidc/token` | 
+| token | `/oidc/token` - In the TARA production environment, requests are allowed only from IP addresses that are configured per client application. See the "Identity token request allowed IP addresses" configuration element in chapter [4 Client application configuration on the TARA side](#4-client-application-configuration-on-the-tara-side). | 
 | userinfo | `/oidc/profile` - Even though TARA issues the access token, we only advise to use it for user info endpoint request in case it is not possible to use the identity token (e.g when interfacing out-of-the-box products). All the data of authenticated user are already issued within the identity token. Using the identity token is recommended and, in theory, is considered to be more secure (as the identity token is signed, while the user info endpoint output is not). |
 
 6.2 Timeouts
