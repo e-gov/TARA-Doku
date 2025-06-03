@@ -22,7 +22,7 @@ Autentimisteenus TARA on Riigi Infosüsteemi Ameti poolt pakutav teenus, millega
 
 Tehniline kirjeldus on suunatud TARA liidestajatele (arendajatele). Lugejalt eeldame HTTP protokolli tundmist. Kasulik, kuid mitte vajalik on  OpenID Connect või OAuth 2.0 kogemus. Lugeja peab olema valmis vajadusel hankima lisateavet OpenID Connect protokolli originaaltekstist [Core].
 
-Kui leiate vea või soovite midagi küsida, siis palun pöörduge meie kasutajatoe poole: [help@ria.ee](mailto:help@ria.ee).
+Kui leiate vea või soovite midagi küsida, siis palun pöörduge meie kasutajatoe poole: [klient@ria.ee](mailto:klient@ria.ee).
 
 Tehnilises kirjelduses on püütud järgida ühtset terminoloogiat. Sõnaseletusi leiab [sonastikust](Sonastik) ja [viidatud](Viited) materjalides. Arvestama peab, et OpenID Connect, OAuth 2.0 jm mõistesüsteemid ei ole ideaalselt ühtlustatud. Näiteks, TARAga liidestuvat, e-teenust pakkuvat asutuse infosüsteemi nimetame siin "klientrakenduseks". OAuth ja mõneski muus kontekstis on klientrakendus aga "teenusepakkuja" (_service provider_).
 
@@ -756,7 +756,7 @@ Vaata ka peatükki [Allkirjade kontrollimine](#511-allkirja-kontrollimine), kus 
 |---------------|---------------------------------|
 | teenuseteave (_server discovery_) | `/.well-known/openid-configuration`<br>`/oidc/.well-known/openid-configuration` |
 | teenuse avalik allkirjastamisvõti | `/oidc/jwks` |
-| klientrakenduse registreerimine | dünaamilist registreerimist ei toetata, registreerimine staatiliselt, [help@ria.ee](mailto:help@ria.ee) kaudu |
+| klientrakenduse registreerimine | dünaamilist registreerimist ei toetata, registreerimine staatiliselt, [klient@ria.ee](mailto:klient@ria.ee) kaudu |
 | autentimine (_authorization_) | `/oidc/authorize` | 
 | tõendiväljastus (_token_) | `/oidc/token` | 
 | kasutajainfo (_userinfo_) | `/oidc/profile` - TARA väljastab küll pääsutõendi, kuid soovitame pääsutõendit kasutada kasutaja info otspunkti päringuks ainult siis, kui nn "karbitoote" liidestamisel ei ole võimalust kasutada identsustõendit. Kõik autenditud isikut kirjeldavad andmed väljastatakse juba identsustõendis. Identsustõendi kasutamine on eelistatud ja ka teoreetiliselt turvalisem, kuna identsustõend on allkirjastatud, kasutajainfo otspunkti väljund aga mitte. |
@@ -778,7 +778,7 @@ Liidestuja peab erilist tähelepanu pöörama, et kõik protokollikohased kontro
 
 Liidestamise protsess näeb välja järgmine.
 
-Asutus peaks välja selgitama, kas ja millistes oma e-teenustes soovib TARA kasutada. Selleks tuleks tutvuda TARA [ärikirjeldusega](Arikirjeldus), teenustaseme leppega (SLA-ga), käesoleva [tehnilise kirjeldusega](TehnilineKirjeldus). Vajadusel pidada nõu RIA-ga, [help@ria.ee](mailto:help@ria.ee).
+Asutus peaks välja selgitama, kas ja millistes oma e-teenustes soovib TARA kasutada. Selleks tuleks tutvuda TARA [ärikirjeldusega](Arikirjeldus), teenustaseme leppega (SLA-ga), käesoleva [tehnilise kirjeldusega](TehnilineKirjeldus). Vajadusel pidada nõu RIA-ga, [klient@ria.ee](mailto:klient@ria.ee).
 
 Seejärel kavandada ja teostada teenuse kasutamiseks vajalik arendustöö - klientrakenduse täiendamine OpenID Connect protokolli kohase klientkomponendiga, sh testimine. Hinnanguline töömaht: kogenud arendajal u 2 päeva; kui OpenID Connect-i pole varem teinud, siis 2 nädalat. Aluseks käesolev [tehniline kirjeldus](TehnilineKirjeldus)
 
@@ -794,7 +794,7 @@ Arenduse valmides tuleb liidest testida. Selleks kasutatakse TARA demoteenust. A
 - autentimismeetod või meetodid, mida soovitakse kasutada
 - klientrakenduse haldaja kontaktandmed (e-post, telefon, isikukood).
 
-Taotlus esitatakse ja edasine suhtlus teenuse haldamisel käib läbi RIA kasutajatoe, `help@ria.ee`. Vt lähemalt [RIA autentimisteenuste lehel](https://www.ria.ee/et/riigi-infosusteem/eid/partnerile.html#tara).
+Taotlus esitatakse ja edasine suhtlus teenuse haldamisel käib läbi RIA kasutajatoe, `klient@ria.ee`. Vt lähemalt [RIA autentimisteenuste lehel](https://www.ria.ee/et/riigi-infosusteem/eid/partnerile.html#tara).
 
 RIA, rahuldades taotluse:
 - väljastab asutusele klientrakenduse salasõna `client_secret`. Salasõna on ette nähtud identsustõendi päringute allkirjastamiseks
