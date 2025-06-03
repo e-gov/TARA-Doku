@@ -21,7 +21,7 @@ Näiterakendused on mõeldud õppeotstarbeliseks uurimiseks, neid ei saa _out of
 
 Kui kasutate tasuta saadud tarkvara, siis andke ka kogukonnale midagi tagasi. Täiendused on teretulnud.
 
-You are welcome to submit a link to your TARA integration solution to be added to this list. Please contact: [help@ria.ee](mailto:help@ria.ee).
+You are welcome to submit a link to your TARA integration solution to be added to this list. Please contact: [klient@ria.ee](mailto:klient@ria.ee).
 {: .note}
 
 | nimetus | keel | lähtekood | väljatöötaja |
