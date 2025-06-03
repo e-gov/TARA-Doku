@@ -16,19 +16,28 @@ Siseriiklikest autentimismeetoditest pakume autentimist järgmiste vahenditega:
 
 Samuti pakume piiriülest autentimist [Euroopa Liidu teavitatud eID vahenditega](https://ec.europa.eu/cefdigital/wiki/display/EIDCOMMUNITY/Overview+of+pre-notified+and+notified+eID+schemes+under+eIDAS) läbi eIDAS-Node taristu. Käesolevalt on TARAs toetatud järgmiste riikide teavitatud eID vahendid:
 
-- Saksamaa: National Identity Card; Electronic Residence Permit
-- Itaalia: Carta di Identità elettronica (CIE); Aruba PEC SpA; Namirial SpA; InfoCert SpA; In.Te.S.A. SpA; Poste Italiane SpA; Register.it SpA; Sielte SpA; Telecom Italia Trust Technologies S.r.l.; Lepida SpA
-- Hispaania: Documento Nacional de Identidad electrónico (DNIe)
+- Austria: ID Austria
 - Belgia: Belgian Citizen eCard; Foreigner eCard; itsme® mobile App
-- Luksemburg: Luxembourg eID card
+- Bulgaaria: Evrotrust eID
+- Hispaania: Documento Nacional de Identidad electrónico (DNIe)
+- Holland: eHerkenning; DigiD Substantieel; DigiD Hoog
 - Horvaatia: Personal Identity Card (eOI)
-- Portugal: Portuguese national identity card (eID card); Digital Mobile Key
+- Itaalia: Carta di Identità elettronica (CIE); Aruba PEC SpA; Namirial SpA; InfoCert SpA; In.Te.S.A. SpA; Poste Italiane SpA; Register.it SpA; Sielte SpA; Telecom Italia Trust Technologies S.r.l.; Lepida SpA
+- Küpros: IDMe.cy
 - Läti: eID karte; eParaksts karte; eParaksts karte+; eParaksts
 - Leedu: Lithuanian National Identity card (eID / ATK)
-- Holland: eHerkenning; DigiD Substantieel; DigiD Hoog
-- Tšehhi: CZ eID card
+- Liechtenstein: eID.li
+- Luksemburg: Luxembourg eID card
+- Malta: Maltese eID card and e-residence documents
+- Poola: Trusted profile, personal profile
+- Portugal: Portuguese national identity card (eID card); Digital Mobile Key
+- Prantsusmaa: France Identité; FranceConnect+ / The Digital Identity La Poste 
+- Rootsi: BankID; Freja eID; EFOS
+- Saksamaa: National Identity Card; Electronic Residence Permit; eID Card for Union Citizens and EEA Nationals
 - Slovakkia: Slovak Citizen eCard; Foreigner eCard
-- Taani: NemID
+- Sloveenia: eID card
+- Taani: MitID Mobile App; MitID App enhanced security; MitID chip; MitID code display; MitID Audio code reader; MitID Password
+- Tšehhi: CZ eID card; Mobile eGovernment Key (MEG); mojeID.
 
 Eesti riiklike ja piiriüleselt tunnustatud eID vahenditega (ID-kaart, mobiil-ID) on tagatud juurdepääs järgmiste Euroopa Liidu riikide e-teenustele: Austria, Belgia, Hispaania, Holland, Horvaatia, Itaalia, Kreeka, Leedu, Luksemburg, Läti, Malta, Norra, Poola, Portugal, Rootsi, Saksamaa, Slovakkia, Sloveenia, Soome, Taani, Tšehhi.
 
