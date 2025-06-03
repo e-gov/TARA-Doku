@@ -16,7 +16,7 @@ The information contained here focuses on testing integration with TARA from the
 
 If you are a private sector client, then additionally please consider [private sector client limitations and specifics](TechnicalSpecification#9-private-sector-client-specifications).
 
-If you need further advice than present in TARA documentation or wish to report a possible bug, please send an e-mail to [help@ria.ee](mailto:help@ria.ee).
+If you need further advice than present in TARA documentation or wish to report a possible bug, please send an e-mail to [klient@ria.ee](mailto:klient@ria.ee).
 
 ## 2 Prerequisites
 
