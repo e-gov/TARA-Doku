@@ -751,7 +751,7 @@ See also [Verifying the signature](#511-verifying-the-signature) chapter for inf
 |----------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | server discovery | `/.well-known/openid-configuration`<br>`/oidc/.well-known/openid-configuration` |
 | public signature key of the service | `/oidc/jwks` |
-| registration of the client application | dynamic registration is not supported, static registration via [help@ria.ee](mailto:help@ria.ee). |
+| registration of the client application | dynamic registration is not supported, static registration via [klient@ria.ee](mailto:klient@ria.ee). |
 | authorization | `/oidc/authorize` | 
 | token | `/oidc/token` | 
 | userinfo | `/oidc/profile` - Even though TARA issues the access token, we only advise to use it for user info endpoint request in case it is not possible to use the identity token (e.g when interfacing out-of-the-box products). All the data of authenticated user are already issued within the identity token. Using the identity token is recommended and, in theory, is considered to be more secure (as the identity token is signed, while the user info endpoint output is not). |
@@ -788,7 +788,7 @@ When the development is completed, the interface must be tested with the TARA de
 - the authentication method or methods which the institution intends to use
 - the contact details of the person responsible for the client application (e-mail address, telephone, personal identification code).
 
-The application is submitted and any further communication in the course of administration of the service is conducted via the user support of RIA, `help@ria.ee`. Read more from the [website of RIA authentication services](https://www.ria.ee/en/state-information-system/eid/partners.html#tara).
+The application is submitted and any further communication in the course of administration of the service is conducted via the user support of RIA, `klient@ria.ee`. Read more from the [website of RIA authentication services](https://www.ria.ee/en/state-information-system/eid/partners.html#tara).
 
 RIA, having satisfied the application:
 
