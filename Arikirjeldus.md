@@ -106,7 +106,7 @@ Teenus on toodangukeskkonnas avatud 2018. a märtsist.
 
 ## Rohkem teavet?
 
-Kontakt: [help@ria.ee](mailto:help@ria.ee).
+Kontakt: [klient@ria.ee](mailto:klient@ria.ee).
 
 Kui pöördute liidestamisel või liidestatud klientrakenduses TARA kasutamise tehnilise probleemiga, siis palume valmis panna väljavõte klientrakenduse logist. Tõrkepõhjuse väljaselgitamiseks vajame teavet, mis päring(ud) TARAsse saadeti ja mis vastuseks saadi.
 
