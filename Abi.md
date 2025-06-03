@@ -2,7 +2,7 @@
 permalink: Abi
 ---
 
-Küsimuste korral, täiendava teabe või abi saamiseks palume pöörduda kasutajatoe poole [help@ria.ee](mailto:help@ria.ee).
+Küsimuste korral, täiendava teabe või abi saamiseks palume pöörduda kasutajatoe poole [klient@ria.ee](mailto:klient@ria.ee).
 
 Kui pöördute liidestamisel või TARA kasutamisel tekkinud tehnilise probleemiga, siis palume valmis panna väljavõte klientrakenduse logist. Tõrkepõhjuse väljaselgitamiseks vajame teavet, millised päring(ud) TARAsse saadeti ja mida vastuseks saadi.
 
@@ -142,5 +142,5 @@ Riigi autentimisteenuse ligipääsetavuse kohta leiad rohkem informatsiooni [sii
 
 <p>&nbsp;</p>
 
-Kui küsimustest ei saanud abi, siis pöördu kasutajatoe poole: [help@ria.ee](mailto:help@ria.ee).
+Kui küsimustest ei saanud abi, siis pöördu kasutajatoe poole: [klient@ria.ee](mailto:klient@ria.ee).
 {: .adv}
