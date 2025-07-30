@@ -824,7 +824,7 @@ Siseriiklikele autentimismeetoditele on TARA-s määratud järgmised autentimist
 
 <sup>1</sup>NB! Tase kehtib vaid Eesti isikukoodiga isikutele, kellele on Smart-ID konto. Tuleb arvestada, et mitteresidendid (Eesti e-residendid) pole eristatavad residentidest.
 
-Välisriigi autentimismeetodite autentimistasemed on määratud vastava välisriigi enda poolt ja neist teavitatakse teisi liikmesriike vastavalt [eIDAS määruse](https://eur-lex.europa.eu/legal-content/ET/TXT/HTML/?uri=CELEX:32015R1502&from=EN) nõuetele. Nimekirja kõigist ülepiiriliselt kasutatavatest autentimismeetoditest, millest riigid on teisi liikmesriike teavitanud, leiab [siit](https://ec.europa.eu/cefdigital/wiki/display/EIDCOMMUNITY/Overview+of+pre-notified+and+notified+eID+schemes+under+eIDAS).
+Välisriigi autentimismeetodite autentimistasemed on määratud vastava välisriigi enda poolt ja neist teavitatakse teisi liikmesriike vastavalt [eIDAS määruse](https://eur-lex.europa.eu/legal-content/ET/TXT/HTML/?uri=CELEX:32015R1502&from=EN) nõuetele. Nimekirja kõigist ülepiiriliselt kasutatavatest autentimismeetoditest, millest riigid on teisi liikmesriike teavitanud, leiab [siit](https://ec.europa.eu/digital-building-blocks/sites/display/EIDCOMMUNITY/Overview+of+pre-notified+and+notified+eID+schemes+under+eIDAS).
 
 ## 9 Erasektori asutuse erisused
 

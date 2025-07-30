@@ -817,7 +817,7 @@ Means of authentication used in TARA have been assigned the following levels of 
 
 <sup>1</sup>NB! The LoA applies only for persons with an Estonian identity code and a Smart-ID account. Interfacing party has to consider that non-residents (Estonian e-residents) are not distinguishable from residents.
 
-Every member state assigns LoA's to their own domestic means of authentication and notifies other member states of them according to [eIDAS regulation](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015R1502&from=EN). Please refer [here](https://ec.europa.eu/cefdigital/wiki/display/EIDCOMMUNITY/Overview+of+pre-notified+and+notified+eID+schemes+under+eIDAS) for a list of all authentication methods that have been notified by member states.
+Every member state assigns LoA's to their own domestic means of authentication and notifies other member states of them according to [eIDAS regulation](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015R1502&from=EN). Please refer [here](https://ec.europa.eu/digital-building-blocks/sites/display/EIDCOMMUNITY/Overview+of+pre-notified+and+notified+eID+schemes+under+eIDAS) for a list of all authentication methods that have been notified by member states.
 
 ## 9 Private sector client specifications
 
