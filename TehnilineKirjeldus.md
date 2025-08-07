@@ -4,7 +4,7 @@ permalink: TehnilineKirjeldus
 
 # Tehniline kirjeldus
 {: .no_toc}
-v 1.29, 17.02.2025
+v 1.30, 07.08.2025
 
 - TOC
 {:toc}
@@ -445,7 +445,7 @@ Identsustõendis väljastatakse järgmised väited (_claims_).
 | `exp` (_Expires_) | `1530295852` - tõendi aegumisaeg, Unix _epoch_ vormingus |
 | `iat` (_Issued At_) | `1530267052` - tõendi väljaandmisaeg, Unix _epoch_ vormingus |
 | `nbf` (_Not Before_)   | `1530267052` - sama, mis `iat` väärtus. Väide tagastatakse tagasiühilduvuse tagamiseks vanemate TARA versioonidega (ei ole OpenID Connect standardijärgne väide). Selle asemel on soovitav kasutada `iat` väärtust. |
-| `sub` (_Subject_)      | `EE60001019906` - autenditud kasutaja identifikaator (isikukood või eIDAS identifikaator) koos kodaniku riigikoodi eesliitega (riigikoodid vastavalt ISO 3166-1 alpha-2 standardile). NB! eIDAS identifikaator võib olla maksimaalselt kuni 256 tähemärki. |
+| `sub` (_Subject_)      | `EE60001019906` - autenditud kasutaja identifikaator (isikukood või eIDAS identifikaator) koos kodaniku riigikoodi eesliitega (riigikoodid vastavalt ISO 3166-1 alpha-2 standardile). NB! eIDAS identifikaatori väärtustab iga liikmesriik antud liikmesriigi piires unikaalse tunnusega (tegemist ei pruugi olla isikukoodiga). eIDAS identifikaatori maksimaalne pikkus 256 tähemärki. |
 | `profile_attributes`   | autenditud isikut kirjeldavad andmed |
 | `profile_attributes`<br>`.date_of_birth` | `2000-01-01` - autenditud kasutaja sünnikuupäev ISO_8601 formaadis. Tagastatakse ainult Eesti isikukoodiga isikute puhul ning eIDAS autentimisel |
 | `profile_attributes`<br>`.given_name` | `MARY ÄNN` - autenditud kasutaja eesnimi (testnimi, valitud täpitähtede sisalduvuse pärast) |
@@ -861,6 +861,7 @@ Kui klientrakenduse poolel on piiratud väljuvad ühendused TARA-sse IP-aadressi
 
 | Versioon, kuupäev | Muudatus |
 |-----------------|--------------|
+| 1.30, 07.08.2025   | Lisatud `sub` välja kirjeldust eIDAS autentimise korral. |
 | 1.29, 17.02.2025   | Lisatud `client_secret_post` tugi. |
 | 1.28, 15.06.2024   | Eemaldatud autentimispäringu parameeter `locale`, mis pole toetatud pärast 2019. aasta juulit. Identsustõendis `nbf`, `state` ja `at_hash` ei ole standardijärgsed (säilitatakse tagasiühilduvuseks). Lisatud peatükk "10 Keskkonnad", kus on kirjeldatud TARA teenuse IP-aadresside kasutust. Eemaldatud TLS kätluse aegumisaeg, kuna ID-kaardiga autentimiseks on TLS Client Certificate Authentication (TLS-CCA) asendatud Web eID-ga. Lisatud peatükk "5.1.2.1 TLS ühenduse parameetrid". Täpsustatud identsustõendipäringu `Authorization` päises `client_id` ja `client_secret` kodeerimist "application/x-www-form-urlencoded" vormingus. |
 | 1.27, 25.04.2024   | TLS usaldusankru muutus (juursertifikaatide lisamine, lõppolemi sertifikaadi eemaldamine). |

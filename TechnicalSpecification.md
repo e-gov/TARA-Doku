@@ -4,7 +4,7 @@ permalink: TechnicalSpecification
 
 # Technical specification
 {: .no_toc}
-v 1.20, 17.02.2025
+v 1.21, 07.08.2025
 
 - TOC
 {:toc}
@@ -446,7 +446,7 @@ The following claims are presented in the identity token:
 | `exp` (_Expires_)                                | `1530295852` - the expiration time of the certificate (in Unix _epoch_ format).                                                                                                                                                                                                            |
 | `iat` (_Issued At_)                              | `1530267052` - the time of issuance of the certificate (in Unix _epoch_ format).                                                                                                                                                                                                           |
 | `nbf` (_Not Before_)                             | `1530267052` - same as `iat` value. This claim is returned to maintain backward compatibility with older TARA versions (it is not a standard OpenID Connect claim). It is recommended to use `iat` value instead. |
-| `sub` (_Subject_)                                | `EE60001019906` - the identifier of the authenticated user (personal identification code or eIDAS identifier) with the prefix of the country code of the citizen (country codes based on the ISO 3166-1 alpha-2 standard). NB! eIDAS identifier length may be a maximum of 256 characters. |
+| `sub` (_Subject_)                                | `EE60001019906` - the identifier of the authenticated user (personal identification code or eIDAS identifier) with the prefix of the country code of the citizen (country codes based on the ISO 3166-1 alpha-2 standard). NB! eIDAS identifier is set by each member state with unique identifier in their state (the value might not be personal identification code). NB! eIDAS identifier maximum length is 256 characters. |
 | `profile_attributes`                             | the data of the authenticated user, including the eIDAS attributes                                                                                                                                                                                                                         |
 | `profile_attributes`<br>`.date_of_birth`         | `2000-01-01` - the date of birth of the authenticated user in the ISO_8601 format. Only sent in the case of persons with Estonian personal identification code and in the case of eIDAS authentication.                                                                                    |
 | `profile_attributes`<br>`.given_name`            | `MARY ÄNN` - the first name of the authenticated user (the test name was chosen because it consists special characters).                                                                                                                                                                   |
