@@ -461,7 +461,7 @@ Identsustõendis väljastatakse järgmised väited (_claims_).
 | `exp` (_Expires_) | `1530295852` - tõendi aegumisaeg, Unix _epoch_ vormingus |
 | `iat` (_Issued At_) | `1530267052` - tõendi väljaandmisaeg, Unix _epoch_ vormingus |
 | `nbf` (_Not Before_)   | `1530267052` - sama, mis `iat` väärtus. Väide tagastatakse tagasiühilduvuse tagamiseks vanemate TARA versioonidega (ei ole OpenID Connect standardijärgne väide). Selle asemel on soovitav kasutada `iat` väärtust. |
-| `sub` (_Subject_)      | `EE60001019906` - autenditud kasutaja identifikaator (isikukood või eIDAS identifikaator) koos kodaniku riigikoodi eesliitega (riigikoodid vastavalt ISO 3166-1 alpha-2 standardile). NB! eIDAS identifikaator võib olla maksimaalselt kuni 256 tähemärki. |
+| `sub` (_Subject_)      | `EE60001019906` - autenditud kasutaja identifikaator (isikukood või eIDAS identifikaator) koos kodaniku riigikoodi eesliitega (riigikoodid vastavalt ISO 3166-1 alpha-2 standardile). NB! eIDAS identifikaatori väärtustab iga liikmesriik antud liikmesriigi piires unikaalse tunnusega (tegemist ei pruugi olla isikukoodiga). eIDAS identifikaatori maksimaalne pikkus on 256 tähemärki. |
 | `profile_attributes`   | autenditud isikut kirjeldavad andmed |
 | `profile_attributes`<br>`.date_of_birth` | `2000-01-01` - autenditud kasutaja sünnikuupäev ISO_8601 formaadis. Tagastatakse ainult Eesti isikukoodiga isikute puhul ning eIDAS autentimisel |
 | `profile_attributes`<br>`.given_name` | `MARY ÄNN` - autenditud kasutaja eesnimi (testnimi, valitud täpitähtede sisalduvuse pärast) |
