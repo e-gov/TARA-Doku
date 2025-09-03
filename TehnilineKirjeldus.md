@@ -188,9 +188,11 @@ Iga klientrakenduse kohta hallatakse järgnevat konfiguratsiooni TARA teenuse po
 |-------------------------|-------|----------|
 | Identsustõendipäringu lubatud IP-aadressid | `1.2.3.4`, `1:2:3:4:5:6:7:8` | TARA toodangukeskkond lubab klientrakenduste identsustõendipäringuid ainult määratud IPv4 ja IPv6 aadressidelt. Mitu IP-aadressi saab määrata loendina või vahemikuna järgmistes vormingutes: `1.2.3.80/29`, `1.2.3.12-14`, `1111:222::/126`, `1111:222::3b-3d`. IP-aadresside piirang toodangukeskkonnas on `client_secret`-it täiendav kaitsemeede - kliendil on võimalik määrata klientrakendusest väljuva võrguliikluse IP-aadresside nimekiri/vahemik sellise täpsusega nagu klientrakenduse võrguarhitektuurist tulenevalt on võimalik ja nagu klientrakenduse riskianalüüs lubab. TARA demokeskkond lubab identsustõendipäringuid kõikidelt IPv4 ja IPv6 aadressidelt (s.t. see konfiguratsioonielement ei eksisteeri TARA demokeskkonnas). **NB! Kui planeerite muuta klientrakenduse väljuvaid IP-aadresse, tuleb eelnevalt kirjutada RIA-le, et muuta TARA toodangukeskkonna konfiguratsiooni.** |
 
-## 4 Päringud
+<a id="4-päringud"/>
+## 5 Päringud
 
-### 4.1 Autentimispäring
+<a id="41-autentimispäring"/>
+### 5.1 Autentimispäring
 
 Autentimispäring on HTTP GET päring, millega kasutaja suunatakse klientrakendusest TARA-sse autentima.
 
@@ -218,15 +220,17 @@ Autentimispäringu elemendid:
 | `client_id` | jah | `client_id=58e7...` | Rakenduse identifikaator. Rakenduse identifikaatori annab RIA asutusele klientrakenduse registreerimisel autentimisteenuse kasutajaks. |
 | `ui_locales` | ei | `ui_locales=et` | Kasutajaliidese keele valik. Toetatakse keeli `et`, `en`, `ru`. Vaikimisi on kasutajaliides eesti keeles. Kasutaja saab keelt ise valida. |
 | `nonce` | ei | `fsdsfwrerhtry3qeewq` | Taasesitusründeid vältida aitav unikaalne parameeter, vastavalt protokollile ([Viited](Viited), [Core], jaotis 3.1.2.1. Authentication Request). Parameeter `nonce` ei ole kohustuslik. |
-| `acr_values` | ei | `acr_values=high` | Nõutav minimaalne eIDAS autentimistase isikutuvastuseks kasutatavale autentimismeetodile (loe rohkem jaotisest [eIDAS autentimistasemed](TehnilineKirjeldus#8-eidas-autentimistasemed)). Lubatud on määrata üks väärtus järgmisest loetelust: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Kui määramata, siis vaikimisi `substantial` (märkimisväärne). <br><br>Kui `acr_values` väärtus on määratud, kuvab TARA kasutajale ainult autentimismeetodid, mille tase on sama või kõrgem kui `acr_values` väärtus. Piiriüleste autentimisvahendite korral edastatakse nõue välisriigi eIDAS autentimisteenusele. <br><br>TARA-lt saadud identsustõendis tuleb `acr` väite vastavust kontrollida nõutud minimaalsele tasemele (vt jaotis 5.1 Identsustõendi kontrollimine). |
+| `acr_values` | ei | `acr_values=high` | Nõutav minimaalne eIDAS autentimistase isikutuvastuseks kasutatavale autentimismeetodile (loe rohkem jaotisest [eIDAS autentimistasemed](TehnilineKirjeldus#9-eidas-autentimistasemed)). Lubatud on määrata üks väärtus järgmisest loetelust: `low` (madal), `substantial` (märkimisväärne), `high` (kõrge). Kui määramata, siis vaikimisi `substantial` (märkimisväärne). <br><br>Kui `acr_values` väärtus on määratud, kuvab TARA kasutajale ainult autentimismeetodid, mille tase on sama või kõrgem kui `acr_values` väärtus. Piiriüleste autentimisvahendite korral edastatakse nõue välisriigi eIDAS autentimisteenusele. <br><br>TARA-lt saadud identsustõendis tuleb `acr` väite vastavust kontrollida nõutud minimaalsele tasemele (vt jaotis 5.1 Identsustõendi kontrollimine). |
 
-#### 4.1.1 Atribuutide küsimine välismaalase kohta
+<a id="411-atribuutide-küsimine-välismaalase-kohta"/>
+#### 5.1.1 Atribuutide küsimine välismaalase kohta
 
 Välismaalase autentimisel suunab TARA välismaalase tema koduriigi autentimisteenusesse. Euroopa Komisjoni määrusega on riigid kokku leppinud, et teise riigi autentimisteenus on alati kohustatud väljastama füüsilise isiku kohta neli atribuuti: 1) eesnimi; 2)  perekonnanimi; 3) sünniaeg; 4) isikukood vm identifikaator.
 
 Füüsilise isiku autentimise korral tagastatakse TARAs alati nn **kohustuslikud atribuudid** (eesnimi, perenimi, sünniaeg ja isiku identifikaator). Täiendavate lisaatribuutide pärimist ning juriidilise isiku autentimist läbi TARA hetkel ei toeta.
 
-#### 4.1.2 E-posti aadressi küsimine
+<a id="412-e-posti-aadressi-küsimine"/>
+#### 5.1.2 E-posti aadressi küsimine
 
 Skoobiga `email` saab nõuda, et identsustõendis väljastatakse kasutaja e-posti aadress. See võimalus on suunatud asutustele, kelle klientrakendus nõuab kasutaja autentimisel e-postiaadressi kindlakstegemist. Skoop `email` tuleb lisada põhiskoobile `openid`. Identsustõendis väljastatakse väited (_claims_) `email` ja `email_verified`. Näiteks:
 
@@ -240,7 +244,8 @@ Väite `email` väärtus loetakse kasutaja autentimissertifikaadi SAN laiendist 
 
 Väite `email_verified` väärtus on alati `false`. See tähendab, et TARA ei kontrolli ega väljasta teavet, kas kasutaja on oma eesti.ee e-posti aadressi suunanud või mitte. (Vastav funktsionaalsus võib lisanduda tulevikus).
 
-#### 4.1.3 Mobiilinumbri küsimine
+<a id="413-mobiilinumbri-küsimine"/>
+#### 5.1.3 Mobiilinumbri küsimine
 
 Skoobiga `phone` saab nõuda, et Mobiil-ID'ga autentimisel väljastatakse identsustõendis kasutaja telefoninumber. See võimalus on suunatud asutustele, kes kasutavad Mobiil-ID allkirjastamist, mis nõuab sisendina ka kasutaja telefoninumbrit. Skoop `phone` tuleb lisada põhiskoobile `openid`. Identsustõendis väljastatakse väited (_claims_) `phone_number` ja `phone_number_verified`. Näiteks:
 
@@ -256,7 +261,8 @@ Väite `phone_number_verified` väärtus on alati `true`. See tähendab, et `pho
 
 Väited `phone_number` ja `phone_number_verified` väljastatakse ainult juhul, kui kasutaja autentimiseks kasutatakse Mobiil-ID'd.
 
-#### 4.1.4 Autentimismeetodite valikuline kasutus
+<a id="414-autentimismeetodite-valikuline-kasutus"/>
+#### 5.1.4 Autentimismeetodite valikuline kasutus
 
 Vaikimisi kuvatakse kasutajale kõik toetatud ja eIDAS autentimistaseme poolt lubatud autentimismeetodid. Soovi korral on kuvatavaid autentimisvalikuid võimalik juhtida `scope` parameetri väärtuste abil. Sobivaid autentimismeetodeid on võimalik kombineerida, koostades loetelu soovitud autentimismeetoditest (lubatud väärtuste nimekiri on toodud tabelis 1).
 
@@ -285,7 +291,8 @@ Näide 3: Ainult piiriülene autentimine
 Näide 4: Piiriülene autentimine ilma TARA kasutajaliideses riigi valikuta. Riik valitakse autentimist alustanud infosüsteemis.
 `scope=openid%20eidasonly%20eidas%3Acountry%3Abe`
 
-### 4.2 Tagasisuunamispäring
+<a id="42-tagasisuunamispäring"/>
+### 5.2 Tagasisuunamispäring
 
 Tagasisuunamispäring on HTTP GET päring, millega kasutaja suunatakse autentimise järel TARA-st tagasi klientrakendusse.
 
@@ -334,7 +341,8 @@ Autentimise katkestamise korral suunatakse kasutaja tagasi teenusepakkuja juurde
 
 <sup>1</sup> Alates augustist 2020 ei nõua RIA teenusega liitumise taotluses asutuselt enam eraldi URL-i tagasipöördumisurli kasutaja katkestamise jaoks (URL, kuhu suunatakse juhul kui kasutaja vajutab "Tagasi teenuspakkuja juurde". NB! OpenID Connect protokolli kohane tagasisuunamis-URL ja siin nimetatud URL on erineva tähendusega).
 
-### 4.3 Identsustõendipäring
+<a id="43-identsustõendipäring"/>
+### 5.3 Identsustõendipäring
 
 Identsustõendipäring on HTTP POST päring, millega klientrakendus pärib TARA serverilt identsustõendi (_ID token_).
 
@@ -342,7 +350,8 @@ Vaikimisi peab klientrakendus kasutama `client_secret_basic` tõendipäringu aut
 
 TARA toodangukeskkonnas on päringud lubatud ainult IP-aadressidelt, mis on klientrakendusepõhiselt konfigureeritud. Vaata "Identsustõendipäringu lubatud IP-aadressid" konfiguratsioonielementi peatükis [4 Klientrakenduse konfiguratsioon TARA poolel](#4-klientrakenduse-konfiguratsioon-tara-poolel).
 
-#### 4.3.1 client_secret_basic tõendipäringu autentimismeetodi kasutus
+<a id="431-client_secret_basic-tõendipäringu-autentimismeetodi-kasutus"/>
+#### 5.3.1 client_secret_basic tõendipäringu autentimismeetodi kasutus
 
 `client_secret_basic` tõendipäringu autentimismeetodi kasutamisel tuleb päringusse lisada `Authorization` päis (_request header_) väärtusega, mis moodustatakse sõnast `Basic`, tühikust ja Base64 kodeeringus stringist `<form_urlencoded_client_id>:<form_urlencoded_client_secret>`. `form_urlencoded_client_id` tähistab `client_id` väärtust "application/x-www-form-urlencoded"-kodeerituna ning `form_urlencoded_client_secret` tähistab `client_secret` väärtust "application/x-www-form-urlencoded"-kodeerituna (vt [RFC 6749](https://www.rfc-editor.org/rfc/rfc6749.html#section-2.3.1)).
 
@@ -369,7 +378,8 @@ Päringu kehas tuleb esitada järgnevad parameetrid:
 | `code` | `code=SplxlOBeZQQYbYS6WxSbIA` | Autentimisteenuselt saadud volituskood. | 
 | `redirect_uri` | `redirect_uri=https%3A%2F%2eteenus.asutus.ee%2Ftagasi` | Autentimispäringus saadetud ümbersuunamis-URI. |
 
-#### 4.3.2 client_secret_post tõendipäringu autentimismeetodi kasutus
+<a id="432-client_secret_post-tõendipäringu-autentimismeetodi-kasutus"/>
+#### 5.3.2 client_secret_post tõendipäringu autentimismeetodi kasutus
 
 `client_secret_post` tõendipäringu autentimismeetodit kasutades tuleb `client_id` ja `client_secret` saata päringu päise asemel päringu kehas.
 
@@ -399,7 +409,8 @@ Päringu kehas tuleb esitada järgnevad parameetrid:
 | `client_id` | `client_id=de39d9dc-3c1b-4105-81ec-54a449c1ae36` | Rakenduse identifikaator. |
 | `client_secret` | `client_secret=t3fx3ehWoL9z6yzw` | Rakenduse salasõna. |
 
-#### 4.3.3 Identsustõend
+<a id="433-identsustõend"/>
+#### 5.3.3 Identsustõend
 
 TARA server kontrollib, et identsustõendit küsiv klientrakendus on TARAs registreeritud. Seejärel väljastab päringu vastuses (_HTTP response body_) identsustõendi.
 
@@ -475,7 +486,8 @@ Identsustõend võib sisaldada muid OpenID Connect protokolli kohaseid välju, k
 
 Klientrakendus peab identsustõendile järgi tulema kohe tagasisuunamispäringu saamisel. Kui identsustõendit ei pärita `30` sekundi jooksul, siis volituskood (_authorization code_) aegub ja autentimisprotsessi tuleb korrata.
 
-### 4.4 Kasutajainfopäring
+<a id="44-kasutajainfopäring"/>
+### 5.4 Kasutajainfopäring
 
 Kasutajainfopäring võimaldab kehtiva `OAuth 2.0` pääsutõendi alusel küsida infot autenditud kasutaja kohta. TARA väljastab küll pääsutõendi, kuid soovitame pääsutõendit kasutada ainult siis, kui nn "karbitoote" liidestamisel ei ole võimalust kasutada identsustõendit. Kõik autenditud isikut kirjeldavad andmed väljastatakse juba identsustõendis. Identsustõendi kasutamine on eelistatud ja ka teoreetiliselt turvalisem, kuna identsustõend on allkirjastatud, kasutajainfo otspunkti väljund aga mitte.
 
@@ -541,9 +553,11 @@ HTTP/1.1 401 Unauthorized
 WWW-Authenticate: Bearer error="invalid_token",error_description="The access token has expired"
 ```
 
-## 5 Turvatoimingud
+<a id="5-turvatoimingud"/>
+## 6 Turvatoimingud
 
-### 5.1 Identsustõendi kontrollimine
+<a id="51-identsustõendi-kontrollimine"/>
+### 6.1 Identsustõendi kontrollimine
 
 Klientrakendus peab identsustõendit kindlasti kontrollima. Teostada tuleb kõik protokollikohased (OpenID Connect ja selle alusprotokoll OAuth 2.0) kontrollid.
 {: .adv}
@@ -559,15 +573,16 @@ Kontrollida tuleb:
 
 Lähemalt nendest kontrollidest allpool. Vajadusel saate täpsemat teavet OpenID Connect ja OAuth 2.0 protokollikirjeldustest.
 
-#### 5.1.1 Allkirja kontrollimine
+<a id="511-allkirja-kontrollimine"/>
+#### 6.1.1 Allkirja kontrollimine
 
 Identsustõend väljastatakse autentimisteenuse TARA poolt allkirjastatult. Allkiri vastab JWT standardile.
 
 Allkirjaalgoritmina kasutab TARA `RS256`. Klientrakendus peab suutma vähemalt selle algoritmiga antud allkirja kontrollida. Allkirja kontrollimine on otstarbekas teostada standardse JWT teegiga, mis toetaks kõiki JWT algoritme. Seda vähetõenäoliseks, kuid siiski võimalikuks juhuks, kui `RS256`-s peaks avastatama turvanõrkus, mis tingib algoritmi vahetamise.
 
-Allkirja kontrollimisel tuleb kasutada TARA avalikku allkirjavõtit (edaspidi "võti"). Võtme saate võtmeväljastuse [otspunktist](#6-otspunktid-ja-aegumisajad). 
+Allkirja kontrollimisel tuleb kasutada TARA avalikku allkirjavõtit (edaspidi "võti"). Võtme saate võtmeväljastuse [otspunktist](#7-otspunktid-ja-aegumisajad). 
 
-Võti on tüüpiliselt stabiilne. Vahetame võtit vastavalt turvasoovitustele, kuid ei ole välistatud erakorraline võtmevahetus võtme korrumpeerumise korral. Võtmevahetuse protsess on kirjeldatud [eraldi peatükis](#54-identsust%C3%B5endi-allkirjastamise-v%C3%B5tme-vahetus).
+Võti on tüüpiliselt stabiilne. Vahetame võtit vastavalt turvasoovitustele, kuid ei ole välistatud erakorraline võtmevahetus võtme korrumpeerumise korral. Võtmevahetuse protsess on kirjeldatud [eraldi peatükis](#64-identsust%C3%B5endi-allkirjastamise-v%C3%B5tme-vahetus).
 
 Võtmel on identifikaator (`kid`). Võtmeidentifikaatorite osas järgime [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#Signing) ja OAuth 2.0 soovitatud praktikat, mis teeb võimalikuks võtmevahetuse ilma teenuse katkestuseta. 
 
@@ -589,7 +604,8 @@ Soovitame võtit puhverdada (koos `kid` väärtusega), kuna see vähendab TARA s
 
 NB! Kindlasti tasuks vältida võtme käsitsi kirjutamist klientrakenduse konfiguratsiooni. Võtme vahetusest teatatakse tüüpiliselt küll ette (va kiirest turvavajadusest tingitud vahetus), kuid selline lahendus vajab klientrakenduse poolset käsitsi seadistust ning toob kaasa teenuse katkemise perioodiks mil TARA kasutab juba uut võtit aga klientrakendusse ei ole uut võtit seadistatud.
 
-#### 5.1.2 Otspunktide TLS ühenduse kontrollimine
+<a id="512-otspunktide-tls-ühenduse-kontrollimine"/>
+#### 6.1.2 Otspunktide TLS ühenduse kontrollimine
 
 Klientrakendusest TARA poole sooritatavatel päringutel (kõikidesse otspunktidesse ehk teenuseteabe otspunkti, võtmeväljastusotspunkti, tõendiväljastusotspunkti) tuleb TLS ühenduse algatamisel sooritada korrektselt kõik vajalikud kontrollid. Soovitatav on neid mitte ise implementeerida, vaid kasutada mõnda HTTPS või TLS ühenduste funktsionaalsusega teeki.
 
@@ -615,7 +631,8 @@ Lisaks tuleb jälgida ahela kõikide sertifikaatide tühistamist mõnel järgnev
 * RIA teavitab sertifikaatide tühistamisest liidestujate kontaktisikuid e-kirjaga.
 * Klientrakendus võib kontrollida CA poolt pakutavat kehtivuskinnitusteenust (OCSP) või tühistusnimekirja (CRL), kuid peab arvestama, et RIA ei vastuta CA kui välise osapoole teenuste kättesaadavuse eest. `tara.ria.ee` ja `tara-test.ria.ee` otspunktid võivad, aga ei pruugi kehtivuskinnituse klammerdamist (_OCSP stapling_) pakkuda või see võib etteteatamata muutuda.
 
-#### 5.1.2.1 TLS ühenduse parameetrid
+<a id="5121-tls-ühenduse-parameetrid"/>
+#### 6.1.2.1 TLS ühenduse parameetrid
 
 Klientrakendus peab TLS ühenduste sooritamiseks toetama:
 
@@ -635,15 +652,18 @@ Klientrakendus peab TLS ühenduste sooritamiseks toetama:
         * `TLS_AES_256_GCM_SHA384`;
         * `TLS_CHACHA20_POLY1305_SHA256`.
 
-#### 5.1.3 Tõendi väljaandja kontrollimine
+<a id="513-tõendi-väljaandja-kontrollimine"/>
+#### 6.1.3 Tõendi väljaandja kontrollimine
 
 Identsustõendi elemendi `iss` väärtus peab olema `https://tara-test.ria.ee` (TARA demokeskkonna puhul) või `https://tara.ria.ee` (TARA toodangukeskkonna puhul).
 
-#### 5.1.4 Tõendi adressaadi kontrollimine
+<a id="514-tõendi-adressaadi-kontrollimine"/>
+#### 6.1.4 Tõendi adressaadi kontrollimine
 
 Klientrakendus peab kontrollima, et saadud tõend on välja antud just temale. Selleks veenduda, et identsustõendi elemendi `aud` väärtus ühtib klientrakendusele registreerimisel väljaantud kliendinimega (_Client ID_).
 
-#### 5.1.5 Tõendi ajalise kehtivuse kontrollimine
+<a id="515-tõendi-ajalise-kehtivuse-kontrollimine"/>
+#### 6.1.5 Tõendi ajalise kehtivuse kontrollimine
 
 Tõendi ajalist kehtivust kontrollitakse kahe identsustõendis sisalduva elemendi abil - `iat` ja `exp`. Klientrakendus kasutab kontrollimisel oma kellaaega. Kontrollida tuleks, et:
 
@@ -661,13 +681,15 @@ Täiendavalt leidub identsustõendis ka `nbf` ("not before") väide (mille vää
 
 Identsustõendi peab pärima kohe kui võimalik, 30 sekundi jooksul. Selle aja ületamisel volituskood aegub ning identsustõendit ei väljastata.
 
-#### 5.1.6 Autentimismeetodi kontrollimine
+<a id="516-autentimismeetodi-kontrollimine"/>
+#### 6.1.6 Autentimismeetodi kontrollimine
 
 Juhul kui kasutusel on autentimismeetodite valikuline kuvamine (vt jaotis 4.1.4 Autentimismeetodite valikuline kasutus), peab identsustõendis veenduma, et identsustõendi `amr` väites (_authentication method reference_) toodud autentimismeetod on lubatud.  Vastasel juhul võetakse vahendajaründe risk, kus autentimispäringu `scope` parameetri manipuleerimise läbi on võimalik kasutajal autentida meetodiga, mis pole liidestuja süsteemis aktsepteeritav (nt ID-kaardiga autentimise asemel kasutatakse Smart-ID-d).
 
 Näide: Kui autentimispäringus on `scope` parameetris määratud ainult ID-kaart, tuleb veenduda, et identsustõendi `amr` väide sisaldaks koodi `idcard` (koodide nimekiri on toodud jaotises 4.3.3 Identsustõend).
 
-#### 5.1.7 Minimaalse lubatud eIDAS autentimistaseme kontrollimine
+<a id="517-minimaalse-lubatud-eidas-autentimistaseme-kontrollimine"/>
+#### 6.1.7 Minimaalse lubatud eIDAS autentimistaseme kontrollimine
 
 Välistamaks ligipääsu soovitust madalama turvalisusastmega autentimisvahenditele, peab autentimisel kontrollima, et identsustõendi `acr` väites esitatud autentimistase ei oleks väiksem minimaalsest lubatud autentimistasemest (loe autentimistasemete kohta [siit](https://www.ria.ee/media/1971/download)).
 
@@ -675,14 +697,15 @@ Näiteks, kui liidestuja soovib kasutada vaid kõrge eIDAS autentimistasemega au
 
 Juhul kui autentimispäringus eIDAS autentimistaset `acr_values` parameetri abil ei täpsustatud, peab identsustõendis olev väärtus olema `substantial` või `high`.
 
-
-#### 5.1.8 Seansi loomine
+<a id="518-seansi-loomine"/>
+#### 6.1.8 Seansi loomine
 
 Identsustõendi eduka kontrollimise järel loob klientrakendus kasutajaga seansi ("logib kasutaja sisse"). Seansi loomine ja pidamine on klientrakenduse kohustus. Kuidas seda teha, ei ole enam autentimisteenuse TARA skoobis.
 
 Märkus. Tavaliselt peetakse veebirakendusega seanssi küpsises hoitava seansitõendi (_session token_) abil. Seansitõend võib olla juhusõneline (_opaque_) või veebitõend (JWT). Identsustõend ei sobi otseselt seansitõendiks, sest identsustõendi kehtivusaeg väljendab tõendi väljastamise perioodi, mitte seansi kehtivusperioodi. Küll aga saab klientrakendus seansitõendi koostada identsustõendi põhjal, valides seansi sobiva kehtivusaja. 
 
-### 5.2 Võltspäringuründe vastane kaitse
+<a id="52-võltspäringuründe-vastane-kaitse"/>
+### 6.2 Võltspäringuründe vastane kaitse
 
 Klientrakenduses tuleb rakendada võltspäringuründe (_cross-site request forgery_, CSRF) vastaseid kaitsemeetmeid. Seda tehakse turvakoodide `state` ja `nonce` abil. `state` kasutamine on kohustuslik; `nonce` kasutamine on vabatahtlik. Kirjeldame `state` kasutamise protseduuri, kasutades klientrakenduses seatud küpsist (sellisel juhul ei pea klientrakendus saadetud state parameetri väärtust ise meeles pidama).
 
@@ -720,17 +743,19 @@ Täiendav teave: OpenID Connect protokollis kahjuks ei ole teema selgelt esitatu
 
 Soovi korral võite veel tutvuda ründe (ja kaitse) detailse seletusega: [Võltspäringurünne ja kaitse selle vastu](Volts).  
 
-### 5.3 Logimine
+<a id="53-logimine"/>
+### 6.3 Logimine
 
-Logimine peab võimaldama rekonstrueerida TARA ja klientrakenduse suhtluse käigu TARA iga kasutuse jaoks. Selleks tuleb nii TARA kui ka klientrakenduse poolel logida kõik päringud ja päringute vastused: [autentimispäring](#41-autentimisp%C3%A4ring), [tagasisuunamispäring](#42-tagasisuunamisp%C3%A4ring) ja [identsustõendipäring](#43-identsust%C3%B5endip%C3%A4ring). Kuna edastatavad andmemahud ei ole suured, siis tuleb logida nii URL kui ka identsustõend täielikul kujul. Logide säilitamistähtaja määramisel arvestada klientrakenduse olulisust. Orientiiriks pakume 1..7 aastat. Probleemide lahendamiseks pöördumisel palume esitada väljavõte logist (mis päringud TARA poole saadeti? mis saadi vastuseks?).
+Logimine peab võimaldama rekonstrueerida TARA ja klientrakenduse suhtluse käigu TARA iga kasutuse jaoks. Selleks tuleb nii TARA kui ka klientrakenduse poolel logida kõik päringud ja päringute vastused: [autentimispäring](#51-autentimisp%C3%A4ring), [tagasisuunamispäring](#52-tagasisuunamisp%C3%A4ring) ja [identsustõendipäring](#53-identsust%C3%B5endip%C3%A4ring). Kuna edastatavad andmemahud ei ole suured, siis tuleb logida nii URL kui ka identsustõend täielikul kujul. Logide säilitamistähtaja määramisel arvestada klientrakenduse olulisust. Orientiiriks pakume 1..7 aastat. Probleemide lahendamiseks pöördumisel palume esitada väljavõte logist (mis päringud TARA poole saadeti? mis saadi vastuseks?).
 
-### 5.4 Identsustõendi allkirjastamise võtme vahetus
+<a id="54-identsustõendi-allkirjastamise-võtme-vahetus"/>
+### 6.4 Identsustõendi allkirjastamise võtme vahetus
 
 Võtmevahetuse protsessis järgitakse [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#RotateSigKeys) standardit.
 
 RIA teavitab identsustõendi allkirjastamise võtme vahetamisest liidestujate kontaktisikuid e-kirjaga.
 
-Kuni teavitatava kuupäevani allkirjastab TARA identsustõendeid seni kasutusel oleva võtmega. Alates teavitatavast kuupäevast hakkab TARA allkirjastama identsustõendeid uue võtmega, mis lisatakse [võtmeväljastuse otspunkti](#6-otspunktid-ja-aegumisajad) hiljemalt sellega esimese identsustõendi allkirjastamise ajaks. Seega on teatud ajaperioodil võtmeväljastuse otspunktis nähtavad kaks avalikku võtit korraga, kumbki oma unikaalse `kid` identifikaatoriga. Näide kahe võtme publitseerimisest:
+Kuni teavitatava kuupäevani allkirjastab TARA identsustõendeid seni kasutusel oleva võtmega. Alates teavitatavast kuupäevast hakkab TARA allkirjastama identsustõendeid uue võtmega, mis lisatakse [võtmeväljastuse otspunkti](#7-otspunktid-ja-aegumisajad) hiljemalt sellega esimese identsustõendi allkirjastamise ajaks. Seega on teatud ajaperioodil võtmeväljastuse otspunktis nähtavad kaks avalikku võtit korraga, kumbki oma unikaalse `kid` identifikaatoriga. Näide kahe võtme publitseerimisest:
 ```json
 {
    "keys": [
@@ -756,11 +781,12 @@ Kuni teavitatava kuupäevani allkirjastab TARA identsustõendeid seni kasutusel 
 
 Vana avalik võti eemaldatakse võtmeväljastuse otspunktist pärast seda kui sellega allkirjastatud viimased identsustõendid on aegunud.
 
-Vaata ka peatükki [Allkirjade kontrollimine](#511-allkirja-kontrollimine), kus kirjeldatakse, kuidas peab avalikku võtit allkirja kontrollimiseks kasutama.
+Vaata ka peatükki [Allkirjade kontrollimine](#611-allkirja-kontrollimine), kus kirjeldatakse, kuidas peab avalikku võtit allkirja kontrollimiseks kasutama.
 
-## 6 Otspunktid ja aegumisajad
+<a id="6-otspunktid-ja-aegumisajad"/>
+## 7 Otspunktid ja aegumisajad
 
-6.1 Otspunktid
+7.1 Otspunktid
 
 | kirjeldus | otspunkt |
 |---------------|---------------------------------|
@@ -771,7 +797,7 @@ Vaata ka peatükki [Allkirjade kontrollimine](#511-allkirja-kontrollimine), kus 
 | tõendiväljastus (_token_) | `/oidc/token` - TARA toodangukeskkonnas on päringud lubatud ainult IP-aadressidelt, mis on klientrakendusepõhiselt konfigureeritud. Vaata "Identsustõendipäringu lubatud IP-aadressid" konfiguratsioonielementi peatükis [4 Klientrakenduse konfiguratsioon TARA poolel](#4-klientrakenduse-konfiguratsioon-tara-poolel). | 
 | kasutajainfo (_userinfo_) | `/oidc/profile` - TARA väljastab küll pääsutõendi, kuid soovitame pääsutõendit kasutada kasutaja info otspunkti päringuks ainult siis, kui nn "karbitoote" liidestamisel ei ole võimalust kasutada identsustõendit. Kõik autenditud isikut kirjeldavad andmed väljastatakse juba identsustõendis. Identsustõendi kasutamine on eelistatud ja ka teoreetiliselt turvalisem, kuna identsustõend on allkirjastatud, kasutajainfo otspunkti väljund aga mitte. |
 
-6.2 Aegumisajad (_timeout_)
+7.2 Aegumisajad (_timeout_)
 
 | aegumisaeg  | väärtus  | märkus
 |---------------------|----------|
@@ -779,8 +805,8 @@ Vaata ka peatükki [Allkirjade kontrollimine](#511-allkirja-kontrollimine), kus 
 | OAuth volituskoodi aegumisaeg  | 30 s | Klientrakendus peab volituskoodi (_authorization code_) abil identsustõendi välja lunastama 30 s jooksul. |
 | identsustõendi (ja OAuth juurdepääsutõendi (_access token_)) aegumisaeg | 40 s | Identsustõendis on märgitud tõendi aegumise aeg. Turvalisuse kaalutlustel on tõendi kehtivuse periood seatud lühikeseks (40 sekundit). Klientrakendus ei tohi aegunud tõendit kasutada. Märgime, et identsustõend ei sobi klientrakenduse ja kasutaja vahelise seansi tõendiks. Kui klientrakendus soovib veebitõendi (JWT) vormingus seansitõendit kasutada, siis peaks ta looma identsustõendi alusel uue tõendi. |
 
-
-## 7 Soovitusi liidestajale
+<a id="7-soovitusi-liidestajale"/>
+## 8 Soovitusi liidestajale
 
 TARA-ga liidestamine on lihtne. Siiski on vaja töid kavandada ja hoolikalt teostada.
 
@@ -818,7 +844,8 @@ Liitumine TARA toodanguteenusega. Eduka testimise järel asutus esitab taotluse 
 
 RIA, rahuldades taotluse, väljastab asutusele klientrakenduse toodanguversiooni salasõna `client_secret` ja avab asutuse klientrakenduse toodanguversioonile juurdepääsu toodanguteenusele.
 
-## 8 eIDAS autentimistasemed
+<a id="8-eidas-autentimistasemed"/>
+## 9 eIDAS autentimistasemed
 
 eIDAS autentimistase on [eIDAS määruse](https://eur-lex.europa.eu/legal-content/ET/TXT/HTML/?uri=CELEX:32014R0910&from=EN) kohaselt autentimisvahendile määratud usaldusväärtuse tase (kõrge, märkimisväärne, madal), mis on määratud rakendusmääruse [(EL) 2015/1502](https://eur-lex.europa.eu/legal-content/ET/TXT/HTML/?uri=CELEX:32015R1502&from=EN) sätete alusel. Taseme määramisel hinnatakse autentimisvahendi kasutuse erinevaid aspekte - identiteedi väljastamise alused, lahenduse haldus, tehniline lahendus ja organisatoorsed protsessid (loe rohkem [siit](https://www.ria.ee/sites/default/files/content-editors/EID/eidas-autentimistasemed.pdf)). 
 
@@ -836,11 +863,12 @@ Siseriiklikele autentimismeetoditele on TARA-s määratud järgmised autentimist
 
 Välisriigi autentimismeetodite autentimistasemed on määratud vastava välisriigi enda poolt ja neist teavitatakse teisi liikmesriike vastavalt [eIDAS määruse](https://eur-lex.europa.eu/legal-content/ET/TXT/HTML/?uri=CELEX:32015R1502&from=EN) nõuetele. Nimekirja kõigist ülepiiriliselt kasutatavatest autentimismeetoditest, millest riigid on teisi liikmesriike teavitanud, leiab [siit](https://ec.europa.eu/digital-building-blocks/sites/display/EIDCOMMUNITY/Overview+of+pre-notified+and+notified+eID+schemes+under+eIDAS).
 
-## 9 Erasektori asutuse erisused
+<a id="9-erasektori-asutuse-erisused"/>
+## 10 Erasektori asutuse erisused
 
 Erasektori asutuste liidestumisprotsessid ja autentimisvood on avaliku sektori asutustega identsed.
 
-Võrreldes avaliku sektori asutustega on erasektori asutuste jaoks autentimisel lubatud kohustuslik skoop `openid` koos piiriülese eIDAS-autentimise skoopidega `eidas`, `eidasonly`, `eidas:country:xx`. Vt ka [`scope` parameetri kohta autentimispäringus.](https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus#41-autentimisp%C3%A4ring)
+Võrreldes avaliku sektori asutustega on erasektori asutuste jaoks autentimisel lubatud kohustuslik skoop `openid` koos piiriülese eIDAS-autentimise skoopidega `eidas`, `eidasonly`, `eidas:country:xx`. Vt ka [`scope` parameetri kohta autentimispäringus.](https://e-gov.github.io/TARA-Doku/TehnilineKirjeldus#51-autentimisp%C3%A4ring)
 
 `eidas:country:xx` skoop töötab üksnes koos `eidasonly` autentimisvalikuga.
 
@@ -858,7 +886,8 @@ Toodangukeskkonnas on erasektori asutustele hetkel toetatud autentimiseks järgn
 
 NB! Riigi Infosüsteemi Amet ei taga teiste riikide autentimisteenuste toimimist. Erasektori autentimise võimalus sõltub eIDAS liikmesriikidest ning võib vastavalt liikmesriikide tegevusele muutuda.
 
-## 10 Keskkonnad
+<a id="10-keskkonnad"/>
+## 11 Keskkonnad
 
 | Keskkond | OpenID Connect Issuer URL | Kasutusel olevad IP-aadressid | Kõik võimalikud IP-aadressid, millele lubada klientrakendusest väljuvad ühendused |
 |----------|---------------------------|-------------------------------|-----------------------------------------------------------------------------------|
