@@ -24,7 +24,7 @@ In order to perform testing, the integrating party has to first [submit an appli
 
 The integrator should beforehand acquaint with TARA [technical specifications](TechnicalSpecification).
 
-It is also important to be aware of different authentication methods and test accounts for [ID-card](https://www.id.ee/en/article/service-testing-general-information/), [Mobile-ID](https://www.id.ee/en/article/mobile-id-testing-2/), [Smart-ID](https://github.com/SK-EID/smart-id-documentation/wiki/Environment-technical-parameters#test-accounts-for-automated-testing) and [eIDAS](#33-adjusting-level-of-assurance).
+It is also important to be aware of different authentication methods and test accounts for [ID-card](https://www.id.ee/en/article/service-testing-general-information/), [Mobile-ID](https://www.id.ee/en/article/mobile-id-testing-2/), [Smart-ID](https://sk-eid.github.io/smart-id-documentation/rp-api/mock_service.html) and [eIDAS](#33-adjusting-level-of-assurance).
 
 ### 2.1 Quick reference of testing accounts
 
@@ -33,7 +33,7 @@ The table below holds information on test accounts for quick access.
 | Authentication method | Login info                                                                                                                                                                                         |
 |-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Mobile-ID             | **ID code:** 60001017869, **Number:** 68000769 / [List of all Mobile-ID test accounts](https://github.com/SK-EID/MID/wiki/Test-number-for-automated-testing-in-DEMO#test-numbers-for-automated-testing) |
-| Smart-ID              | **ID code:** 39901012239 / [List of all Smart-ID test accounts](https://github.com/SK-EID/smart-id-documentation/wiki/Environment-technical-parameters#test-accounts-for-automated-testing) |
+| Smart-ID              | With the introduction of Smart-ID+, it is no longer possible to use ID code based automated test accounts. Please refer to [Smart-ID documentation](https://sk-eid.github.io/smart-id-documentation/rp-api/mock_service.html) for creating workarounds for automated tests. It is still possible to test manually using a personal [Smart-ID demo account](https://sk-eid.github.io/smart-id-documentation/demo.html). 
 | EU eID (eIDAS)        | Option 1: Choose **Czech Republic** from the drop-down menu. Press `Continue`. You will be redirected to the Czech Republic demo authentication service. Select **Testovací profily** and press `Přihlásit`.
 |                       | Option 2: Choose **Sweden** from the drop-down menu. Press `Continue`. You will be redirected to the Swedish demo authentication service. Select **Sweden Connect Reference IdP**. Select person to authenticate as **Ulla Alm** and press `Authenticate` and then `Approve`.
 |                       | Option 3: Choose **Malta** from the drop-down menu. Press `Continue`. You will be redirected to the Maltese demo authentication service. Sign in using 2FA test account with ID number **0367882M** and password **6Kucerkrq** and press `Continue`. For OTP code use this [link](https://stgdemosp.gov.mt/totp/index.html?secret=g43diqkcgi3eknjyhfatmnseguyuimzr).
@@ -140,3 +140,8 @@ When using the parameter, the integrator should test that TARA is displayed in t
 ### 3.9 Browsers and devices
 
 The integrator should test whether the client application works with TARA with a combination of browsers and devices supported by the client.
+
+### 3.10 Smart-ID+
+
+Smart-ID+ introduces new device link based flows (QR code and Web2App flow). Special attention must be paid to the Web2App flow on mobile devices. For example, it must be noted that in the Web2App flow user is redirected to a new browser tab after successful authentication.
+
