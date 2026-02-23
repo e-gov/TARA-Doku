@@ -10,9 +10,9 @@ Teenust osutatakse kõigile valitsussektori asutustele vastavalt Rahandusministe
 
 Siseriiklikest autentimismeetoditest pakume autentimist järgmiste vahenditega:
 
-- mobiil-ID (ainult Eesti isikukoodiga kasutajad)
+- Mobiil-ID (ainult Eesti isikukoodiga kasutajad)
 - ID-kaart
-- smart-ID (ainult Eesti isikukoodiga kasutajad) *Palume pöörata e-teenuste osutajatel tähelepanu asjaolule, et Smart-IDga isiku tuvastamisel ei ole võimalik eristada Eesti residente mitte residentidest (näiteks nagu seda võimaldab e-residentide sertifikaat).*
+- Smart-ID (ainult Eesti isikukoodiga kasutajad) *Palume pöörata e-teenuste osutajatel tähelepanu asjaolule, et Smart-IDga isiku tuvastamisel ei ole võimalik eristada Eesti residente mitte residentidest (näiteks nagu seda võimaldab e-residentide sertifikaat).*
 
 Samuti pakume piiriülest autentimist [Euroopa Liidu teavitatud eID vahenditega](https://ec.europa.eu/digital-building-blocks/sites/display/EIDCOMMUNITY/Overview+of+pre-notified+and+notified+eID+schemes+under+eIDAS) läbi eIDAS-Node taristu. Käesolevalt on TARAs toetatud järgmiste riikide teavitatud eID vahendid:
 
@@ -39,7 +39,7 @@ Samuti pakume piiriülest autentimist [Euroopa Liidu teavitatud eID vahenditega]
 - Taani: MitID Mobile App; MitID App enhanced security; MitID chip; MitID code display; MitID Audio code reader; MitID Password
 - Tšehhi: CZ eID card; Mobile eGovernment Key (MEG); mojeID.
 
-Eesti riiklike ja piiriüleselt tunnustatud eID vahenditega (ID-kaart, mobiil-ID) on tagatud juurdepääs järgmiste Euroopa Liidu riikide e-teenustele: Austria, Belgia, Hispaania, Holland, Horvaatia, Itaalia, Kreeka, Leedu, Luksemburg, Läti, Malta, Norra, Poola, Portugal, Rootsi, Saksamaa, Slovakkia, Sloveenia, Soome, Taani, Tšehhi.
+Eesti riiklike ja piiriüleselt tunnustatud eID vahenditega (ID-kaart, Mobiil-ID) on tagatud juurdepääs järgmiste Euroopa Liidu riikide e-teenustele: Austria, Belgia, Hispaania, Holland, Horvaatia, Itaalia, Kreeka, Leedu, Luksemburg, Läti, Malta, Norra, Poola, Portugal, Rootsi, Saksamaa, Slovakkia, Sloveenia, Soome, Taani, Tšehhi.
 
 ## Kellele?
 

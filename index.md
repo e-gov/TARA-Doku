@@ -9,7 +9,7 @@ permalink: /
 
 # <img src='img/LOVID.png' style='width: 80px;'> Riigi autentimisteenus (TARA)
 
-Riigi autentimisteenus (tehnilise nimega TARA) on Riigi Infosüsteemi Ameti poolt keskselt osutatav teenus, millega asutus saab oma e-teenuses autentida ID-kaardi, mobiil-ID, smart-ID ja Euroopa Liidu eID kasutaja.
+Riigi autentimisteenus (tehnilise nimega TARA) on Riigi Infosüsteemi Ameti poolt keskselt osutatav teenus, millega asutus saab oma e-teenuses autentida ID-kaardi, Mobiil-ID, Smart-ID ja Euroopa Liidu eID kasutaja.
 
 Teenust osutatakse:
 1. Kõigile valitsussektori asutustele vastavalt Rahandusministeeriumi [kodulehel](https://www.fin.ee/riigihaldus-ja-avalik-teenistus-kinnisvara/riigihaldus/avaliku-sektori-statistika) toodud tabelile "Avaliku sektori asutused haldusalade kaupa" (v.a Muu avalik sektor);
