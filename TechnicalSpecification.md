@@ -56,69 +56,64 @@ In the context of eIDAS, TARA is providing the ‘Authentication of an Estonian 
 
 1 The user uses a client application providing an e-service
 
-- the user may be Estonian or a foreigner;
-- a screen with a ‘Log in’ or an equivalent button is displayed to the user;
-- the user clicks ‘Log in’.
+- The user may be either Estonian or a foreigner.
+- A screen with a ‘Log in’ or an equivalent button is displayed to the user;
+- The user clicks ‘Log in’.
 
-2 The client application redirects the user to the TARA service (by browser redirection)
+2 The client application redirects the user to the TARA service (via a browser redirect)
 
-- authentication request in the redirection URL.
+- The redirect URL contains an authentication request.
 
 3 The authentication method selection screen is displayed to the user. Here, the user can:
 
-- choose authentication by ID-card (step 4)
-- choose authentication by Mobile-ID (step 5)
-- choose authentication by Smart-ID (step 6)
-- choose authentication by EU eID (cross-border) (step 7)
-- return to the client application.
+- Choose authentication by ID-card (step 4).
+- Choose authentication by Mobile-ID (step 5).
+- Choose authentication by Smart-ID (step 6).
+- Choose authentication by EU eID (cross-border) (step 7).
+- Return to the client application.
 
 4 ID-card authentication
 
-- information about the authentication certificate is displayed to the user (it may be required to select correct certificate)
-- the user enters PIN1
-- in case of a successful authentication, move to step 8; in case of an error, to step 9.
+- The user inserts the ID-card and clicks the “Continue” button.
+- Information about the authentication certificate is displayed to the user (the user may need to select a certificate).
+- The user enters the PIN1 code.
+- Upon successful authentication, proceed to step 8; in case of an error, proceed to step 9.
 
 5 Mobile-ID authentication
 
-- the user enters their mobile phone number and personal identification code
-- a verification code is displayed on the user’s mobile device
-- waiting for confirmation
-- in case of a successful authentication, move to step 8; in case of an error, to step 9.
+- The user enters their mobile phone number and personal identification code and clicks the “Continue” button.
+- A verification code is displayed to the user, which must match the code shown on the mobile device.
+- The user enters the PIN1 code in the Mobile-ID application.
+- Upon successful authentication, proceed to step 8; in case of an error, proceed to step 9.
 
 6 Smart-ID authentication
 
-- the user enters an Estonian personal identification code
-- a verification code is displayed on the user’s mobile device
-- waiting for confirmation
-- in case of a successful authentication, move to step 8; in case of an error, to step 9.
+- On a computer, a QR code is displayed to the user after clicking the “Continue” button. The user scans the QR code using the Smart-ID application.
+- On a mobile device, the Smart-ID application opens automatically after clicking the “Continue” button. Alternatively, the user can select “Show QR code” to display the QR code on the mobile device as well.
+- The user enters the PIN1 code in the Smart-ID application.
+- Upon successful authentication, proceed to step 8; in case of an error, proceed to step 9.
 
 7 EU eID (cross-border) authentication
 
-- the user selects the target country
-- the user is redirected to the authentication service of the foreign country through the eIDAS infrastructure
-- the user authenticates themselves by using the means of authentication of the foreign country
-- in case of a successful authentication (and if the level of the means of authentication of the foreign country is sufficient), move to step 8
-- in case of an error, move to step 9.
+- The user selects the target country.
+- The user is redirected via the eIDAS infrastructure to the foreign country’s authentication service.
+- The user authenticates using the foreign country’s authentication means.
+- Upon successful authentication (and if the level of the means of authentication of the foreign country is sufficient), proceed to step 8; in case of an error, proceed to step 9.
 
 NB! For EU eID authentication, it is possible to choose the target country in the interfaced client and specify it in the authentication request. This will allow the user to skip TARA user interface and be directed to the specified country's authentication service. If the authentication was successful and the means of authentication has a sufficient level of assurance, move to step 8.
 
 8 Authenticated user
 
-- is redirected back to the client application
-- the client application requests the identity token from the TARA server
-- the _identity token_ is a signed certificate confirming successful authentication
-- the identity token includes the user’s data (attributes) which were identified in the course of authentication
-- the client application notifies the user of successful login in an appropriate manner.
+- The user is redirected back to the client application.
+- The client application requests the identity token from the TARA server.
+- The identity token is a signed proof of successful authentication.
+- The identity token contains the user data (attributes) identified during authentication.
+- The client application appropriately informs that the login was successful.
 
-9 From the error message screen:
+9 In Case of an Error
 
-- the user can return to the selection of the authentication method
-- and try again, by using a different authentication method, if desired
-- or terminate the authentication process and return to the client application.
-
-10 The user can also:
-
-- obtain further information about the service of TARA.
+- An error message page is displayed to the user.
+- From the error page, the user can return to the authentication method selection to try another authentication method or cancel the authentication and return to the client application.
 
 ## 3 Authentication flow from the technical perspective
 

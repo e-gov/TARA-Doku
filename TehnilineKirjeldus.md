@@ -57,69 +57,64 @@ Joonis 1. Siseriiklik ja piiriülene autentimine
 
 1 Kasutaja on e-teenust osutavas klientrakenduses.
 
-- kasutaja võib olla nii eestlane kui ka välismaalane
-- kasutajale esitatakse kuva, millel on nupp "Logi sisse" vms
-- kasutaja vajutab "Logi sisse".
+- Kasutaja võib olla nii eestlane kui ka välismaalane.
+- Kasutajale esitatakse kuva, millel on nupp "Logi sisse" vms.
+- Kasutaja vajutab "Logi sisse".
 
 2 Klientrakendus suunab kasutaja TARA-teenusesse (sirviku ümbersuunamiskorralduse abil)
 
-- ümbersuunamis-URL-is on autentimispäring.
+- Ümbersuunamis-URL-is on autentimispäring.
 
 3 Kasutajale avaneb autentimismeetodi valiku kuva.  Siin võib kasutaja:
 
-- valida ID-kaardiga autentimise (samm 4)
-- valida Mobiil-ID-ga autentimise (samm 5)
-- valida Smart-ID-ga autentimise (samm 6)
-- valida EU eID-ga autentimise (piiriülese autentimise) (samm 7)
-- pöörduda tagasi klientrakendusse.
+- Valida ID-kaardiga autentimise (samm 4).
+- Valida Mobiil-ID-ga autentimise (samm 5).
+- Valida Smart-ID-ga autentimise (samm 6).
+- Valida EU eID-ga autentimise (piiriülese autentimise) (samm 7).
+- Pöörduda tagasi klientrakendusse.
 
 4 ID-kaardiga autentimine
 
-- algab kasutajale teabe kuvamisega autentimissertifikaadi kohta (vajalik võib olla sertifikaadi valik kasutaja poolt)
-- kasutaja sisestab PIN1-koodi
-- eduka autentimise korral edasi samm 8, vea korral samm 9.
+- Kasutaja sisestab ID-kaardi ja vajutab "Jätka" nupule.
+- Kasutajale kuvatakse teave autentimissertifikaadi kohta (vajalik võib olla sertifikaadi valik kasutaja poolt).
+- Kasutaja sisestab PIN1-koodi.
+- Eduka autentimise korral edasi samm 8, vea korral samm 9.
 
 5 Mobiil-ID-ga autentimine
 
-- kasutaja sisestab mobiilinumbri ja isikukoodi
-- kasutaja mobiilseadmele kuvatakse kontrollkood
-- kinnituse ootamine
-- eduka autentimise korral edasi samm 8, vea korral samm 9.
+- Kasutaja sisestab mobiilinumbri ja isikukoodi ning vajutab "Jätka" nupule.
+- Kasutajale kuvatakse kontrollkood, mis peab olema sama mobiilseadmes kuvatava koodiga.
+- Kasutaja sisestab Mobiil-ID rakenduses PIN1-koodi. 
+- Eduka autentimise korral edasi samm 8, vea korral samm 9
 
 6 Smart-ID-ga autentimine
 
-- kasutaja sisestab Eesti isikukoodi
-- kasutaja mobiilseadmele kuvatakse kontrollkood
-- kinnituse ootamine
-- eduka autentimise korral edasi samm 8, vea korral samm 9.
+- Arvutis kuvatakse kasutajale peale "Jätka" nupu vajutamist QR-kood. Kasutaja skaneerib Smart-ID rakendusega QR-koodi.
+- Mobiilseadmes avatakse "Jätka" nupule vajutades automaatselt Smart-ID rakendus. Alternatiivina on kasutajal võimalik valida "Kuva QR-kood", et kuvada QR-kood ka mobiilseadmes.
+- Kasutaja sisestab Smart-ID rakenduses PIN1-koodi.
+- Eduka autentimise korral edasi samm 8, vea korral samm 9.
 
 7 EU eID-ga (piiriülene) autentimine
 
-- kasutaja valib sihtriigi
-- kasutaja suunatakse läbi eIDAS taristu välisriigi autentimisteenusesse
-- kasutaja autendib end välisriigi autentimisvahendiga
-- eduka autentimise korral (ning kui välisriigi autentimisvahendi tase on piisav) edasi samm 8
-- vea korral samm 9.
+- Kasutaja valib sihtriigi.
+- Kasutaja suunatakse läbi eIDAS taristu välisriigi autentimisteenusesse.
+- Kasutaja autendib end välisriigi autentimisvahendiga.
+- Eduka autentimise korral (ning kui välisriigi autentimisvahendi tase on piisav) edasi samm 8, vea korral samm 9.
 
 NB! EU eID autentimise korral on võimalik sihtriigi valik teha ka otse TARA-ga liidestunud infosüsteemis ning saata soovitud riigi kood autentimispäringuga. Sellisel juhul kasutajale TARA kasutajaliidest ei kuvata ja tehakse automaatne edasisuunamine läbi eIDAS taristu otse välisriigi autentimisteenusesse, kus kasutaja autendib end välisriigi autentimisvahendiga. Eduka autentimise korral (ning kui välisriigi autentimisvahendi tase on piisav) edasi samm 8
 
 8 Autenditud kasutaja
 
-- suunatakse tagasi klientrakendusse
-- klientrakendus pärib TARA serverilt identsustõendi
-- identsustõend (_identity token_) on allkirjastatud tõend eduka autentimise kohta
-- identsustõendis sisalduvad autentimisel tuvastatud kasutaja andmed (atribuudid)
-- klientrakendus annab kasutajale asjakohasel viisil teada, et sisselogimine õnnestus.
+- Suunatakse tagasi klientrakendusse.
+- Klientrakendus pärib TARA serverilt identsustõendi.
+- Identsustõend (_identity token_) on allkirjastatud tõend eduka autentimise kohta.
+- Identsustõendis sisalduvad autentimisel tuvastatud kasutaja andmed (atribuudid).
+- Klientrakendus annab kasutajale asjakohasel viisil teada, et sisselogimine õnnestus.
 
-9 Veateate lehelt
+9 Veaolukorras
 
-- saab kasutaja minna tagasi autentimismeetodi valikusse
-- ja seal kas üritada uuesti, võimalik, et teise autentimismeetodiga
-- või katkestada autentimise ja minna tagasi klientrakendusse.
-
-10 Lisaks on kasutajal võimalik:
-
-- saada täiendavat teavet TARA-teenuse kohta.
+- Kuvatakse kasutajale veateate leht.
+- Veateate lehelt saab kasutaja minna tagasi autentimismeetodi valikusse, et proovida autentimist teise vahendiga või katkestada autentimise ja minna tagasi klientrakendusse.
 
 ## 3 Autentimisvoog tehnilises vaates
 
@@ -859,7 +854,7 @@ Siseriiklikele autentimismeetoditele on TARA-s määratud järgmised autentimist
 | Mobiil-ID | [kõrge](https://ec.europa.eu/digital-building-blocks/wikis/display/EIDCOMMUNITY/Estonia) | 
 | Smart-ID | [kõrge](https://www.ria.ee/media/586/download) <sup>1</sup> |
 
-<sup>1</sup>NB! Tase kehtib vaid Eesti isikukoodiga isikutele, kellele on Smart-ID konto. Tuleb arvestada, et mitteresidendid (Eesti e-residendid) pole eristatavad residentidest.
+<sup>1</sup>NB! Tase kehtib vaid Eesti isikukoodiga isikutele, kellel on Smart-ID konto. Tuleb arvestada, et mitteresidendid (Eesti e-residendid) pole eristatavad residentidest.
 
 Välisriigi autentimismeetodite autentimistasemed on määratud vastava välisriigi enda poolt ja neist teavitatakse teisi liikmesriike vastavalt [eIDAS määruse](https://eur-lex.europa.eu/legal-content/ET/TXT/HTML/?uri=CELEX:32015R1502&from=EN) nõuetele. Nimekirja kõigist ülepiiriliselt kasutatavatest autentimismeetoditest, millest riigid on teisi liikmesriike teavitanud, leiab [siit](https://ec.europa.eu/digital-building-blocks/sites/display/EIDCOMMUNITY/Overview+of+pre-notified+and+notified+eID+schemes+under+eIDAS).
 
