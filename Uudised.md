@@ -4,6 +4,11 @@ permalink: Uudised
 
 # Uudised
 
+**25.02.2026**
+## Alates 26.02.2026 ei ole isikukoodiga Smart-ID sisselogimise alustamine enam toetatud
+
+Alates 26.02.2026 ei ole isikukoodiga Smart-ID sisselogimise alustamine enam toetatud. Selle asemel kuvatakse kasutajale kas pidevalt muutuv QR-kood või avatakse Smart-ID rakendus automaatselt. Rohkem infot [RIA veebilehelt](https://www.ria.ee/uudised/riigi-e-teenuste-turvalisemaks-sisselogimiseks-26-veebruarist-kasutusel-smart-id) ja [Smart-ID veebilehelt](https://www.smart-id.com/et/abi/kkk/smart-id-uued-funktsioonid).
+
 **03.09.2025**
 ## Alates 09.09.2025 piiratakse TARA toodangukeskkonnas (`tara.ria.ee`) identsustõendipäringud klientrakenduste IP-aadresside järgi
 
