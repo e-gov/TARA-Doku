@@ -15,7 +15,7 @@ Käesolev dokument määratleb Riigi autentimisteenuse (TARA) kasutamise, haldam
 - _ID-kaart_, hõlmab ka elamisloakaarte ja digi-ID-kaarte
 - _kasutaja_, e-teenust kasutav füüsiline isik
 - _klientrakendus_, lühidalt _rakendus_, Riigi autentimisteenust kasutav süsteem.
-- _pääsutalong_, (_access token_), Riigi autentimisteenuse poolt rakendusele väljastatav allkirjastatud teave
+- _juurdepääsutõendi_, (_access token_), Riigi autentimisteenuse poolt rakendusele väljastatav allkirjastatud teave
 - _rakendus_, asutuse veebirakendus, mis pakub e-teenust; koosneb kahest osast: 1) kasutaja sirvijasse laetav osa; 2) serveripoolne osa
 - _RIA_, Riigi Infosüsteemi Amet, osutab Riigi autentimisteenust.
 - _registreerimine_, klientrakenduse registreerimine Riigi autentimisteenuse kasutajaks, vastavalt OpenID Connect protokolli nõuetele.
@@ -23,5 +23,6 @@ Käesolev dokument määratleb Riigi autentimisteenuse (TARA) kasutamise, haldam
 - _demoteenus_, Riigi autentimisteenuse instants, mida kasutatakse teenusega liidestumiste testimiseks.
 - _toodanguteenus_, Riigi autentimisteenuse instants, kus toimub reaalsete andmetega, toodangutähenduses autentimine.
 - _Riigi autentimisteenus_, lühidalt TARA, Riigi Infosüsteemi Ameti  osutatav teenus, millega asutus saab oma e-teenusesse lisada Mobiil-ID kasutaja autentimise toe. Teenuse II arendusjärgus lisatakse eIDAS jt autentimismeetodite tugi, hiljem võimalik, et ka ühekordse sisselogimise (SSO) tugi.
-- _volituskood_, (_authorization code_), juhuarv, mille esitamisel rakendus saab autentimisteenuselt identsustõendi ja pääsutalongi.
+- _volituskood_, (_authorization code_), juhuarv, mille esitamisel rakendus saab autentimisteenuselt identsustõendi ja juurdepääsutõendi.
 - _välismaalane_, Euroopa Liidu teise riigi eID kasutaja.
+- _Smart-ID_, SK ID Solutions AS poolt pakutav autentimisvahend. Kasutaja vaatest sõltub kasutuskogemus integreeritud API versioonist ja valitud voogudest.
