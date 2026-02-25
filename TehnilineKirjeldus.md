@@ -798,7 +798,7 @@ Vaata ka peatükki [Allkirjade kontrollimine](#611-allkirja-kontrollimine), kus 
 |---------------------|----------|
 | TARA seansi aegumisag | 30 min | TARA server loob autentimise läbiviimiseks TARAsse saabuva kasutajaga oma seansi. Kui kasutaja TARA esilehel midagi ei tee, siis 30 min järel seanss aegub. TARA seanssi ei tohi segi ajada autentimise järel klientrakenduse ja kasutaja vahel loodava seansiga. |
 | OAuth volituskoodi aegumisaeg  | 30 s | Klientrakendus peab volituskoodi (_authorization code_) abil identsustõendi välja lunastama 30 s jooksul. |
-| identsustõendi (ja OAuth juurdepääsutõendi (_access token_)) aegumisaeg | 40 s | Identsustõendis on märgitud tõendi aegumise aeg. Turvalisuse kaalutlustel on tõendi kehtivuse periood seatud lühikeseks (40 sekundit). Klientrakendus ei tohi aegunud tõendit kasutada. Märgime, et identsustõend ei sobi klientrakenduse ja kasutaja vahelise seansi tõendiks. Kui klientrakendus soovib veebitõendi (JWT) vormingus seansitõendit kasutada, siis peaks ta looma identsustõendi alusel uue tõendi. |
+| identsustõendi (ja OAuth pääsutõendi (_access token_)) aegumisaeg | 40 s | Identsustõendis on märgitud tõendi aegumise aeg. Turvalisuse kaalutlustel on tõendi kehtivuse periood seatud lühikeseks (40 sekundit). Klientrakendus ei tohi aegunud tõendit kasutada. Märgime, et identsustõend ei sobi klientrakenduse ja kasutaja vahelise seansi tõendiks. Kui klientrakendus soovib veebitõendi (JWT) vormingus seansitõendit kasutada, siis peaks ta looma identsustõendi alusel uue tõendi. |
 
 <a id="7-soovitusi-liidestajale"/>
 ## 8 Soovitusi liidestajale
