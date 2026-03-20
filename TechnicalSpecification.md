@@ -846,7 +846,16 @@ Currently, the following countries are supported in the production environment f
 
 NB! Information System Authority does not guarantee the workability of other eIDAS member states' authentication services. Private sector eIDAS authentication depends on other member states and may be subject to change.
 
-## 10 Environments
+## 10 Specifics for mobile application integration
+
+TARA does not support integration as a public client (from the OpenID Connect perspective), as it uses the Authorization Code authentication flow, which requires secure storage of the client secret issued to the client application.
+Therefore, a mobile application integrating with TARA must use a back-end server to securely store the client secret. This server is subject to all requirements specified in the TARA documentation, similar to an e-service back-end server.
+
+To perform the authentication flow in a mobile application, the system default web browser of the mobile device must be used in accordance with the [RFC 8252](https://datatracker.ietf.org/doc/html/rfc8252) specification.
+Using a web-view within the mobile application for authentication is not permitted, as it will cause interruptions in the authentication flow. Depending on the authentication method used, a separate authentication application may be launched during the process, which redirects the user back to TARA to finish the authentication. An authentication application can not redirect the user back to the mobile application's web-view, but only to the system default web browser.
+
+<a id="10-environments"/>
+## 11 Environments
 
 | Environment | OpenID Connect Issuer URL | IP addresses in use | All possible IP addresses to allow outgoing connections from client application |
 |-------------|---------------------------|---------------------|---------------------------------------------------------------------------------|

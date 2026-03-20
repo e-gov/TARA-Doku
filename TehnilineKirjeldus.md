@@ -881,8 +881,17 @@ Toodangukeskkonnas on erasektori asutustele hetkel toetatud autentimiseks järgn
 
 NB! Riigi Infosüsteemi Amet ei taga teiste riikide autentimisteenuste toimimist. Erasektori autentimise võimalus sõltub eIDAS liikmesriikidest ning võib vastavalt liikmesriikide tegevusele muutuda.
 
+## 11 Mobiilirakenduse integreerimise erisused
+
+TARA ei toeta avaliku kliendi (_public client_ OpenID Connect mõistes) liidestumist, kuna kasutusel on autoriseerimiskoodi põhine autentimisvoog (_authorization code flow_), mis eeldab klientrakendusele väljastatud saladuse (_client secret_) turvalist hoiustamist.
+Seetõttu peab liidestuv mobiilirakendus kasutama back-end serverit väljastatud saladuse (_client secret_) turvaliseks hoiustamiseks. Antud serverile rakenduvad kõik TARA dokumentatsioonis välja toodud nõuded, sarnaselt e-teenuse back-end serverile.
+
+Mobiilirakenduses autentimisvoo teostamiseks tuleb kasutada mobiilseadme süsteemset vaikebrauserit vastavalt [RFC 8252](https://datatracker.ietf.org/doc/html/rfc8252) spetsifikatsioonile.
+Autentimisvoo läbiviimine mobiilirakenduse web-view's ei ole lubatud, kuna see põhjustab autentimisvoo katkemist. Sõltuvalt kasutatavast autentimisvahendist võidakse protsessi käigus käivitada eraldi autentimisrakendus, mis suunab autentimise lõpetamiseks kasutaja tagasi TARA-sse. Autentimisrakendusel ei ole võimalik suunata kasutajat tagasi mobiilirakenduse web-view'sse, vaid ainult süsteemsesse vaikebrauserisse. 
+
 <a id="10-keskkonnad"/>
-## 11 Keskkonnad
+<a id="11-keskkonnad"/>
+## 12 Keskkonnad
 
 | Keskkond | OpenID Connect Issuer URL | Kasutusel olevad IP-aadressid | Kõik võimalikud IP-aadressid, millele lubada klientrakendusest väljuvad ühendused |
 |----------|---------------------------|-------------------------------|-----------------------------------------------------------------------------------|
