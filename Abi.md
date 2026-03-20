@@ -26,7 +26,8 @@ Hea TARA-ga liidestuja! Siit leiad valiku küsimusi, mis teistel on tekkinud - j
 
 TARA ei toeta avalikke klientsüsteeme ning teenus on mõeldud eelkõige vaid e-teenustele kus on võimalik liitumisel väljastatud saladust [turvaliselt hoiustada](https://tools.ietf.org/html/rfc6819#section-5.3.3).
 
-Mobiilirakendust võib aga lugeda avalikuks kliendiks kuna staatilise saladuse hoidmine mobiilirakendustes on raskendatud. Olenemata platvormist on saladust võimalik rakendusest erinevate tehnikatega välja lugeda või pöördprojekteerida. 
+Mobiilirakendust võib aga lugeda avalikuks kliendiks kuna staatilise saladuse hoidmine mobiilirakendustes on raskendatud. Olenemata platvormist on saladust võimalik rakendusest erinevate tehnikatega välja lugeda või pöördprojekteerida.
+Mobiilirakendusega liidestumisel peab olema kasutusel back-end server, mis suudab väljastatud saladust turvaliselt hoiustada ning teostada identsustõendi päringut ning valideerimist.
  
 ## Millist kaitset pakub TARA IT-kuritegude vastu?
 
