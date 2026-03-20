@@ -6,7 +6,7 @@ permalink: Arendajale
 
 TARA kood on avalik ja litsentseeritud avalitsentsiga.
 
-Kood asub GitHub organisatsioonis [https://github.com/e-gov](https://github.com/e-gov), repodes, mille nime eesliiteks on `TARA-` ja `TARA2-`.
+Kood asub GitHub organisatsioonis [https://github.com/e-gov](https://github.com/e-gov), repodes, mille nime eesliiteks on `TARA-` ja `ory-`.
 
 Näiteks TARA autentimisvahendite teenuse kood asub: [https://github.com/e-gov/TARA-Login](https://github.com/e-gov/TARA-Login).
 
